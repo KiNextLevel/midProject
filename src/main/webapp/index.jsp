@@ -1,17 +1,46 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-    <title>내 웹 애플리케이션</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <title>CodePen - Sign up / Login Form</title>
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
-<h1>안녕하세요! 톰캣 웹 애플리케이션입니다.</h1>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide Navbar</title>
+    <link rel="stylesheet" type="text/css" href="slide navbar style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
 
-<div id="result">여기에 AJAX 결과가 표시됩니다.</div>
+    <div class="signup">
+        <form>
+            <label for="chk" aria-hidden="true">Sign up</label>
+            <input type="text" name="txt" placeholder="User name" required="">
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button>Sign up</button>
+        </form>
+    </div>
 
-<button id="loadData">데이터 불러오기</button>
+    <div class="login">
+        <form>
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button>Login</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+<!-- partial -->
 
-<script src="js/script.js"></script>
 </body>
 </html>

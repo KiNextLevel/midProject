@@ -254,6 +254,7 @@
                 <h2>Our Contacts</h2>
                 <address class="margin-bottom-40">
                     서울 강남구 테헤란로26길 12<br>
+                    (우) 06236 (지번) 역삼동 736-56<br>
                     Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
                     Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
                 </address>

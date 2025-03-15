@@ -3,6 +3,95 @@
 <head>
     <meta charset="utf-8">
     <title>결제 상품 페이지</title>
+    <style>
+        .top-bar-right {
+            float: right;
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+
+        .top-bar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .top-bar-list li {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 767px) {
+            .top-bar-right {
+                margin-top: 0;
+                margin-bottom: 10px;
+                text-align: center;
+                float: none;
+            }
+        }
+
+        /* 결제 섹션 스타일 수정 */
+        .payment-section {
+            margin-bottom: 20px;
+            position: relative;
+            background-color: #f5f5f5;
+            padding: 15px;
+        }
+
+        /* 토큰 섹션 레이아웃 */
+        .token-section {
+            display: flex;
+        }
+
+        .token-info {
+            flex: 7;
+        }
+
+        .token-options {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option-box {
+            background-color: #f8d7d7;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* 프리미엄 섹션 레이아웃 */
+        .premium-section {
+            min-height: 120px;
+        }
+
+        /* 입력 필드 영역 스타일 */
+        .input-area {
+            margin-bottom: 15px;
+        }
+
+        /* 결제 버튼 스타일 */
+        .payment-button {
+            width: 150px;
+            padding: 10px 0;
+            font-weight: bold;
+            background-color: #ff00ff;
+            border-color: #ff00ff;
+            color: white;
+            margin-top: 15px;
+        }
+
+        .premium-button {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+
+        /* 구분선 스타일 */
+        .divider {
+            margin: 30px 0;
+            border-top: 1px solid #eee;
+        }
+    </style>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -21,7 +110,9 @@
     <link rel="shortcut icon" href="favicon.ico">
 
     <!-- Fonts START -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    <link
+            href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
+            rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
     <!-- Global styles START -->
@@ -47,6 +138,7 @@
 <!-- Head END -->
 
 <!-- Body BEGIN -->
+
 <body class="ecommerce">
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="color-panel hidden-sm">
@@ -69,71 +161,25 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png"
+                                                         alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+        <!-- BEGIN TOP BAR MENU -->
+        <div class="top-bar-right">
+            <ul class="top-bar-list">
+                <li><a href="mypage.html" class="btn btn-primary">마이페이지</a></li>
+            </ul>
+        </div>
+        <!-- END TOP BAR MENU -->
 
         <!-- BEGIN CART -->
         <div class="top-cart-block">
             <div class="top-cart-content-wrapper">
                 <div class="top-cart-content">
                     <ul class="scroller" style="height: 250px;">
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
+                        <!-- 장바구니 내용 -->
                     </ul>
                     <div class="text-right">
                         <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
@@ -156,8 +202,8 @@
                             <div class="input-group">
                                 <input type="text" placeholder="Search" class="form-control">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="submit">Search</button>
-                                </span>
+                    <button class="btn btn-primary" type="submit">Search</button>
+                  </span>
                             </div>
                         </form>
                     </div>
@@ -166,11 +212,9 @@
             </ul>
         </div>
         <!-- END NAVIGATION -->
-
     </div>
 </div>
 <!-- Header END -->
-
 <div class="main">
     <div class="container">
         <!-- BEGIN SIDEBAR & CONTENT -->
@@ -180,40 +224,41 @@
                 <h1>결제 상품 페이지</h1>
                 <div class="content-page">
                     <h3>Token</h3>
-                    <p>
-                        토큰은 채팅을 할 때 사용하는 Next Level 만의 화폐입니다.<br>
-                        채팅을 통해 상대방과 대화할 수 있으며, 한 사람당 1개의 토큰이 차감됩니다.
-                    </p>
-                    <div class="content-page">
-                        <div class="row">
-                            <div class="col-md-6">
+
+                    <!-- TOKEN 섹션 -->
+                    <div class="payment-section token-section">
+                        <div class="token-info">
+                            <p>
+                                토큰은 채팅을 할 때 사용하는 Next Level 만의 화폐입니다.<br>
+                                채팅을 통해 상대방과 대화할 수 있으며, 한 사람당 1개의 토큰이 차감됩니다.
+                            </p>
+                        </div>
+                        <div class="token-options">
+                            <div class="option-box">
                                 <select name="tokenSelect" class="form-control">
                                     <option value="1">1개 1100원</option>
                                     <option value="5">5개 5000원</option>
                                     <option value="10">10개 8800원</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <input type="hidden" name="action" value="TOKENPAYMENT">
-                                <input type="submit" class="btn btn-primary btn-lg" value="결제하기">
-                            </div>
+                            <input type="hidden" name="action" value="TOKENPAYMENT">
+                            <input type="submit" class="btn btn-primary btn-lg" value="결제하기">
                         </div>
                     </div>
 
-                    <hr>
+                    <div class="divider"></div>
 
+                    <!-- PREMIUM 섹션 -->
                     <h3>Premium</h3>
-                    <div class="row">
-                        <div class="col-md-6">
+                    <div class="payment-section premium-section">
+                        <div class="premium-info">
                             <p>
                                 프리미엄은 당신의 광고를 제거해줍니다.<br>
-                                평생가격은 9,900원
+                                평생가격 단돈 9,900원<br>
+                                당신에게 쾌적함을 제공합니다.
                             </p>
                         </div>
-                        <div class="col-md-6">
-                            <input type="hidden" name="action" value="PREMIUMPAYMENT">
-                            <input type="submit" class="btn btn-primary btn-lg" value="프리미엄 결제하기">
-                        </div>
+                        <input type="submit" class="btn btn-primary btn-lg payment-button premium-button" value="프리미엄 결제하기">
                     </div>
 
                 </div>
@@ -245,7 +290,9 @@
             <!-- BEGIN TWITTER BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2 class="margin-bottom-0">Github</h2>
-                <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">https://github.com/KiNextLevel</a>
+                <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2" data-theme="dark"
+                   data-link-color="#57C8EB" data-widget-id="455411516829736961"
+                   data-chrome="noheader nofooter noscrollbar noborders transparent">https://github.com/KiNextLevel</a>
             </div>
             <!-- END TWITTER BLOCK -->
 
@@ -263,37 +310,36 @@
         </div>
         <hr>
         <div class="row">
-            <!-- 여기에 추가 내용이 있다면 넣으세요 -->
-        </div>
-    </div>
-</div>
-<!-- END PRE-FOOTER -->
+            <!-- Load javascripts at bottom, this will reduce page load time -->
+            <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+            <!--[if lt IE 9]>
+            <script src="assets/plugins/respond.min.js"></script>
+            <![endif]-->
+            <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+            <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+            <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <!-- END CORE PLUGINS -->
 
-<!-- Load javascripts at bottom, this will reduce page load time -->
-<!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
-<!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
-<![endif]-->
-<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
+            <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+            <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+            <!-- pop up -->
+            <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+            <!-- slider for products -->
 
-<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-<script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-<script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
-
-<script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        Layout.init();
-        Layout.initOWL();
-        Layout.initTwitter();
-    });
-</script>
-<!-- END PAGE LEVEL JAVASCRIPTS -->
+            <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                jQuery(document).ready(function () {
+                    Layout.init();
+                    Layout.initOWL();
+                    Layout.initTwitter();
+                });
+            </script>
+            <!-- END PAGE LEVEL JAVASCRIPTS -->
+        </div> <!-- 이 부분이 닫히지 않았던 div 태그입니다 -->
+    </div> <!-- container div 닫기 -->
+</div> <!-- pre-footer div 닫기 -->
 </body>
 <!-- END BODY -->
 </html>

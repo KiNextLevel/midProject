@@ -407,15 +407,6 @@
             </div>
             <div class="col-md-6 col-sm-6 col-xs-9">
                 <h2>Cool green dress with red bell</h2>
-                <div class="price-availability-block clearfix">
-                    <div class="price">
-                        <strong><span>$</span>47.00</strong>
-                        <em>$<span>62.00</span></em>
-                    </div>
-                    <div class="availability">
-                        Availability: <strong>In Stock</strong>
-                    </div>
-                </div>
                 <div class="description">
                     <p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna
                         aliquarm erat volutpat

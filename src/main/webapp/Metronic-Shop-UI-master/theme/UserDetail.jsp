@@ -45,6 +45,84 @@
                 float: none;
             }
         }
+
+        /* 결제 섹션 스타일 수정 */
+        .payment-section {
+            margin-bottom: 20px;
+            position: relative;
+            background-color: #f5f5f5;
+            padding: 15px;
+        }
+
+        /* 토큰 섹션 레이아웃 */
+        .token-section {
+            display: flex;
+        }
+
+        .token-info {
+            flex: 7;
+        }
+
+        .token-options {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option-box {
+            background-color: #f8d7d7;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* 프리미엄 섹션 레이아웃 */
+        .premium-section {
+            min-height: 120px;
+        }
+
+        /* 입력 필드 영역 스타일 */
+        .input-area {
+            margin-bottom: 15px;
+        }
+
+        /* 결제 버튼 스타일 */
+        .payment-button {
+            width: 150px;
+            padding: 10px 0;
+            font-weight: bold;
+            background-color: #ff00ff;
+            border-color: #ff00ff;
+            color: white;
+            margin-top: 15px;
+        }
+
+        .premium-button {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+
+        /* 구분선 스타일 */
+        .divider {
+            margin: 30px 0;
+            border-top: 1px solid #eee;
+        }
+
+        /* Header Styles */
+        .header .header-navigation {
+            float: right;
+            margin-top: 10px;
+        }
+
+        .header .header-navigation .menu-search {
+            float: right;
+            padding-left: 20px;
+        }
+
+        .header .header-navigation .menu-search .search-box {
+            right: 0;
+            left: auto;
+        }
     </style>
 
     <!-- Fonts START -->
@@ -99,45 +177,38 @@
 </div>
 <!-- END BEGIN STYLE CUSTOMIZER -->
 
+<!-- BEGIN TOP BAR -->
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+            </div>
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    <li><a href="shop-account.html">My Account</a></li>
+                    <li><a href="shop-checkout.html">Checkout</a></li>
+                    <li><a href="page-login.html">Log In</a></li>
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
+        </div>
+    </div>
+</div>
+<!-- END TOP BAR -->
+
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png"
+        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
                                                          alt="Metronic Shop UI"></a>
 
-        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-        <!-- BEGIN TOP BAR MENU -->
-        <div class="top-bar-right">
-            <ul class="top-bar-list">
-                <li><a href="Index.jsp" class="btn btn-primary">마이페이지</a></li>
-            </ul>
-        </div>
-        <!-- END TOP BAR MENU -->
-
-        <!-- BEGIN CART -->
-        <div class="top-cart-block">
-            <div class="top-cart-content-wrapper">
-                <div class="top-cart-content">
-                    <ul class="scroller" style="height: 250px;">
-                        <!-- 장바구니 내용 -->
-                    </ul>
-                    <div class="text-right">
-                        <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
-                        <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--END CART -->
-
-
-        <!-- BEGIN NAVIGATION -->
+        <!-- BEGIN TOP SEARCH -->
         <div class="header-navigation">
             <ul>
-                <!-- BEGIN TOP SEARCH -->
                 <li class="menu-search">
-                    <span class="sep"></span>
                     <i class="fa fa-search search-btn"></i>
                     <div class="search-box">
                         <form action="#">
@@ -150,10 +221,18 @@
                         </form>
                     </div>
                 </li>
-                <!-- END TOP SEARCH -->
             </ul>
         </div>
-        <!-- END NAVIGATION -->
+        <!-- END TOP SEARCH -->
+
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+        <!-- BEGIN TOP BAR MENU -->
+        <div class="top-bar-right">
+            <ul class="top-bar-list">
+            </ul>
+        </div>
+        <!-- END TOP BAR MENU -->
     </div>
 </div>
 <!-- Header END -->

@@ -32,11 +32,11 @@
     </div>
 
     <div class="login">
-        <form>
+        <form action="ProductPage.jsp" method="post">
             <label for="chk" aria-hidden="true">Login</label>
             <input type="email" name="email" placeholder="Email" required="">
             <input type="password" name="pswd" placeholder="Password" required="">
-            <button a href="Product.jsp">Login</button>
+            <button>Login</button>
         </form>
     </div>
 </div>

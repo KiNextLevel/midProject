@@ -4,66 +4,66 @@ import java.util.Date;
 
 public class BoardDTO {
     // 이벤트 번호
-    private int BOARD_NUM;
+    private int boardNumber;
     // 이벤트 제목
-    private String BOARD_TITLE;
+    private String boardTitle;
     // 이벤트 내용
-    private String BOARD_CONTENT;
+    private String boardContent;
     // 작성 날짜
-    private Date BOARD_DATE;
+    private Date boardDate;
     // 최대 참여인원
-    private int BOARD_LIMIT;
+    private int boardLimit;
 
     // getter, setter 메서드
-    public int getBOARD_NUM() {
-        return BOARD_NUM;
+    public int getBoardNumber() {
+        return boardNumber;
     }
 
-    public void setBOARD_NUM(int BOARD_NUM) {
-        this.BOARD_NUM = BOARD_NUM;
+    public void setBoardNumber(int boardNumber) {
+        this.boardNumber = boardNumber;
     }
 
-    public String getBOARD_TITLE() {
-        return BOARD_TITLE;
+    public String getBoardTitle() {
+        return boardTitle;
     }
 
-    public void setBOARD_TITLE(String BOARD_TITLE) {
-        this.BOARD_TITLE = BOARD_TITLE;
+    public void setBoardTitle(String boardTitle) {
+        this.boardTitle = boardTitle;
     }
 
-    public String getBOARD_CONTENT() {
-        return BOARD_CONTENT;
+    public String getBoardContent() {
+        return boardContent;
     }
 
-    public void setBOARD_CONTENT(String BOARD_CONTENT) {
-        this.BOARD_CONTENT = BOARD_CONTENT;
+    public void setBoardContent(String boardContent) {
+        this.boardContent = boardContent;
     }
 
-    public Date getBOARD_DATE() {
-        return BOARD_DATE;
+    public Date getBoardDate() {
+        return boardDate;
     }
 
-    public void setBOARD_DATE(Date BOARD_DATE) {
-        this.BOARD_DATE = BOARD_DATE;
+    public void setBoardDate(Date boardDate) {
+        this.boardDate = boardDate;
     }
 
-    public int getBOARD_LIMIT() {
-        return BOARD_LIMIT;
+    public int getBoardLimit() {
+        return boardLimit;
     }
 
-    public void setBOARD_LIMIT(int BOARD_LIMIT) {
-        this.BOARD_LIMIT = BOARD_LIMIT;
+    public void setBoardLimit(int boardLimit) {
+        this.boardLimit = boardLimit;
     }
 
     // toString 메서드
     @Override
     public String toString() {
         return "BoardDTO{" +
-                "BOARD_NUM=" + BOARD_NUM +
-                ", BOARD_TITLE='" + BOARD_TITLE + '\'' +
-                ", BOARD_CONTENT='" + BOARD_CONTENT + '\'' +
-                ", BOARD_DATE=" + BOARD_DATE +
-                ", BOARD_LIMIT=" + BOARD_LIMIT +
+                "BOARD_NUM=" + boardNumber +
+                ", BOARD_TITLE='" + boardTitle + '\'' +
+                ", BOARD_CONTENT='" + boardContent + '\'' +
+                ", BOARD_DATE=" + boardDate +
+                ", BOARD_LIMIT=" + boardLimit +
                 '}';
     }
 }

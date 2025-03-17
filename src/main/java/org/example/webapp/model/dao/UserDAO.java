@@ -33,19 +33,19 @@ public class UserDAO {
             // 아이디 중복 검사
             if(userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE_CHECK")){
                 pstmt = conn.prepareStatement(SELECTONE_CHECK);
-                pstmt.setString(1, userDTO.getUSER_EMAIL());
+                pstmt.setString(1, userDTO.getUserEmail());
             }
             // 로그인
             else if(userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE")){
                 pstmt = conn.prepareStatement(SELECTONE);
-                pstmt.setString(1, userDTO.getUSER_EMAIL());
-                pstmt.setString(2, userDTO.getUSER_PASSWORD());
+                pstmt.setString(1, userDTO.getUserEmail());
+                pstmt.setString(2, userDTO.getUserPassword());
             }
             rs = pstmt.executeQuery();
             if(rs.next()){
                 data = new UserDTO();
-                data.setUSER_EMAIL(rs.getString("USER_EMAIL"));
-                data.setUSER_PASSWORD(rs.getString("USER_PASSWORD"));
+                data.setUserEmail(rs.getString("USER_EMAIL"));
+                data.setUserPassword(rs.getString("USER_PASSWORD"));
             }
             return data;
         } catch (Exception e) {

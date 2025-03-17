@@ -9,10 +9,14 @@ public class UserDTO {
     private String userPassword;
     // 사용자 닉네임
     private String userNickname;
+    // 전화번호
+    private String userPhone;
     // 회원가입 날짜
     private Date userRegdate;
     // 성별
     private boolean userGender;
+    // 성별 변경 여부를 나타내는 플래그
+    private boolean userGenderChanged = false;
     // 생년월일
     private String userBirth;
     // 사용자 키
@@ -31,6 +35,8 @@ public class UserDTO {
     private int userDrink;
     // 흡연
     private boolean userSmoke;
+    // 흡연 변경 여부를 나타내는 플래그
+    private boolean userSmokeChanged = false;
     // 직업
     private String userJob;
     // 역할
@@ -51,6 +57,14 @@ public class UserDTO {
     private String searchKeyword;
 
     // Getter, Setter 메서드
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
     public String getUserEmail() {
         return userEmail;
     }
@@ -83,12 +97,25 @@ public class UserDTO {
         this.userRegdate = userRegdate;
     }
 
+    // boolean 타입의 getter는 'is'로 시작하는 것이 일관성 있습니다.
+    // 하지만 기존 코드와의 호환성을 위해 getUserGender()도 유지합니다.
+    public boolean getUserGender() {
+        return userGender;
+    }
+
+    // 추가: 일관성을 위한 isUserGender() 메소드
     public boolean isUserGender() {
         return userGender;
     }
 
     public void setUserGender(boolean userGender) {
         this.userGender = userGender;
+        this.userGenderChanged = true;
+    }
+
+    // 성별 변경 여부 확인 메소드
+    public boolean isUserGenderChanged() {
+        return userGenderChanged;
     }
 
     public String getUserBirth() {
@@ -161,6 +188,12 @@ public class UserDTO {
 
     public void setUserSmoke(boolean userSmoke) {
         this.userSmoke = userSmoke;
+        this.userSmokeChanged = true;  // 변경 플래그 설정
+    }
+
+    // 추가: 흡연 변경 여부 확인 메소드
+    public boolean isUserSmokeChanged() {
+        return userSmokeChanged;
     }
 
     public String getUserJob() {

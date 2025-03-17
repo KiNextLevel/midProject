@@ -281,8 +281,7 @@
                                     sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit volutpat Nostrud duis molestie
                                     at dolore. </p>
                             </div>
-                            <div class="tab-pane fade in active" id="Reviews">
-                                <!--<p>There are no reviews for this product.</p>-->
+                            <div class="tab-pane fade in active" id="Information">
                                 <div class="review-item clearfix">
                                     <div class="review-item-submitted">
                                         <strong>Bob</strong>

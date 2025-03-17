@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class AlertDTO {
 
-	private int alertNum; 	// 알림 번호 (PK)
+	private int alertNumber; 	// 알림 번호 (PK)
 	private Date alertDate; // 알림 날짜
 	private String alertContent; // 알림 내용
 	private boolean alertIsWatch; // 열람 여부 (TINYINT → boolean 변환)
@@ -12,12 +12,13 @@ public class AlertDTO {
 	private String condition; // 컨디션
 	private String searchKeyword; // SearchKeyword
 
-	public int getAlertNum() {
-		return alertNum;
+
+	public int getAlertNumber() {
+		return alertNumber;
 	}
 
-	public void setAlertNum(int alertNum) {
-		this.alertNum = alertNum;
+	public void setAlertNumber(int alertNumber) {
+		this.alertNumber = alertNumber;
 	}
 
 	public Date getAlertDate() {
@@ -67,5 +68,14 @@ public class AlertDTO {
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
+
+	@Override
+	public String toString() {
+		return "AlertDTO [alertNumber=" + alertNumber + ", alertDate=" + alertDate + ", alertContent=" + alertContent
+				+ ", alertIsWatch=" + alertIsWatch + ", userEmail=" + userEmail + ", condition=" + condition
+				+ ", searchKeyword=" + searchKeyword + "]";
+	}
+	
+	
 
 }

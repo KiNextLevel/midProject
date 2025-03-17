@@ -56,4 +56,13 @@ public class PreferenceDTO {
 		this.searchKeyword = searchKeyword;
 	}
 
+	@Override
+	public String toString() {
+		return "PreferenceDTO [userEmail=" + userEmail + ", preferenceHeight=" + preferenceHeight + ", preferenceBody="
+				+ preferenceBody + ", preferenceAge=" + preferenceAge + ", condition=" + condition + ", searchKeyword="
+				+ searchKeyword + "]";
+	}
+	
+	
+
 }

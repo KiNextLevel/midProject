@@ -45,7 +45,8 @@ public class UserDTO {
     private String USER_DESCRIPTION;
     // 이름
     private String USER_NAME;
-
+    // 컨디션
+    private String condition;
     // Getter, Setter 메서드
     public String getUSER_EMAIL() {
         return USER_EMAIL;
@@ -213,6 +214,14 @@ public class UserDTO {
 
     public void setUSER_NAME(String USER_NAME) {
         this.USER_NAME = USER_NAME;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     // toString 메서드

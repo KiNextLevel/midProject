@@ -91,6 +91,22 @@
             margin: 30px 0;
             border-top: 1px solid #eee;
         }
+
+        /* Header Styles */
+        .header .header-navigation {
+            float: right;
+            margin-top: 10px;
+        }
+
+        .header .header-navigation .menu-search {
+            float: right;
+            padding-left: 20px;
+        }
+
+        .header .header-navigation .menu-search .search-box {
+            right: 0;
+            left: auto;
+        }
     </style>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -158,44 +174,38 @@
 </div>
 <!-- END BEGIN STYLE CUSTOMIZER -->
 
+<!-- BEGIN TOP BAR -->
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+            </div>
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    <li><a href="shop-account.html">My Account</a></li>
+                    <li><a href="shop-checkout.html">Checkout</a></li>
+                    <li><a href="page-login.html">Log In</a></li>
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
+        </div>
+    </div>
+</div>
+<!-- END TOP BAR -->
+
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png"
+        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
                                                          alt="Metronic Shop UI"></a>
 
-        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-        <!-- BEGIN TOP BAR MENU -->
-        <div class="top-bar-right">
-            <ul class="top-bar-list">
-                <li><a href="mypage.html" class="btn btn-primary">마이페이지</a></li>
-            </ul>
-        </div>
-        <!-- END TOP BAR MENU -->
-
-        <!-- BEGIN CART -->
-        <div class="top-cart-block">
-            <div class="top-cart-content-wrapper">
-                <div class="top-cart-content">
-                    <ul class="scroller" style="height: 250px;">
-                        <!-- 장바구니 내용 -->
-                    </ul>
-                    <div class="text-right">
-                        <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
-                        <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--END CART -->
-
-        <!-- BEGIN NAVIGATION -->
+        <!-- BEGIN TOP SEARCH -->
         <div class="header-navigation">
             <ul>
-                <!-- BEGIN TOP SEARCH -->
                 <li class="menu-search">
-                    <span class="sep"></span>
                     <i class="fa fa-search search-btn"></i>
                     <div class="search-box">
                         <form action="#">
@@ -208,13 +218,23 @@
                         </form>
                     </div>
                 </li>
-                <!-- END TOP SEARCH -->
             </ul>
         </div>
-        <!-- END NAVIGATION -->
+        <!-- END TOP SEARCH -->
+
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+        <!-- BEGIN TOP BAR MENU -->
+        <div class="top-bar-right">
+            <ul class="top-bar-list">
+            </ul>
+        </div>
+        <!-- END TOP BAR MENU -->
     </div>
 </div>
 <!-- Header END -->
+
+
 <div class="main">
     <div class="container">
         <!-- BEGIN SIDEBAR & CONTENT -->
@@ -337,9 +357,10 @@
                 });
             </script>
             <!-- END PAGE LEVEL JAVASCRIPTS -->
-        </div> <!-- 이 부분이 닫히지 않았던 div 태그입니다 -->
-    </div> <!-- container div 닫기 -->
-</div> <!-- pre-footer div 닫기 -->
+        </div>
+    </div>
+</div>
 </body>
 <!-- END BODY -->
+
 </html>

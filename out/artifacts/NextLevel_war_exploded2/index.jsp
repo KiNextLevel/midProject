@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Sign up / Login Form</title>
+    <title>로그인 회원가입</title>
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -34,7 +36,7 @@
             <label for="chk" aria-hidden="true">Login</label>
             <input type="email" name="email" placeholder="Email" required="">
             <input type="password" name="pswd" placeholder="Password" required="">
-            <button>Login</button>
+            <button a href="Product.jsp">Login</button>
         </form>
     </div>
 </div>

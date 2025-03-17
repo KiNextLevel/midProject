@@ -281,8 +281,7 @@
                                     sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit volutpat Nostrud duis molestie
                                     at dolore. </p>
                             </div>
-                            <div class="tab-pane fade in active" id="Reviews">
-                                <!--<p>There are no reviews for this product.</p>-->
+                            <div class="tab-pane fade in active" id="Information">
                                 <div class="review-item clearfix">
                                     <div class="review-item-submitted">
                                         <strong>Bob</strong>
@@ -407,15 +406,6 @@
             </div>
             <div class="col-md-6 col-sm-6 col-xs-9">
                 <h2>Cool green dress with red bell</h2>
-                <div class="price-availability-block clearfix">
-                    <div class="price">
-                        <strong><span>$</span>47.00</strong>
-                        <em>$<span>62.00</span></em>
-                    </div>
-                    <div class="availability">
-                        Availability: <strong>In Stock</strong>
-                    </div>
-                </div>
                 <div class="description">
                     <p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna
                         aliquarm erat volutpat

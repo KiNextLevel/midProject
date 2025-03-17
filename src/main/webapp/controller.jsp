@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="model.dto.MemberDTO, model.dto.ProductDTO, model.dto.LikesDTO, java.util.ArrayList, java.util.Map, java.util.HashMap,
     controller.action.AddProductPageAction, controller.action.AddProductAction, controller.common.ActionForward, 
     controller.action.ProductDetailPageAction, controller.common.*" %>
@@ -23,4 +23,4 @@
 	}
 %>
 </body>
-</html>
+</html> --%>

@@ -249,6 +249,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="product-main-image">
+                            <!-- 여기에 userDTO.getUserProfile() 넣으면 됨. -->
                             <img src="assets/pages/img/products/차은우.jfif" alt="Cool green dress with red bell"
                                  class="img-responsive" data-BigImgsrc="assets/pages/img/products/차은우.jfif">
                         </div>
@@ -275,7 +276,7 @@
                     <div class="product-page-content">
                         <ul id="myTab" class="nav nav-tabs">
                             <li><a href="#Information" data-toggle="tab">Information</a></li>
-                            <li><a href="#favorite" data-toggle="tab">Favorite</a></li>
+                            <li class="active"><a href="#favorite" data-toggle="tab">Favorite</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade" id="Information">

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="reportDTO" class="org.example.webapp.model.dto.ReportDTO" scope="page" />
+<jsp:useBean id="reportDTO" class="org.example.webapp.model.dto.ReportDTO" scope="page"/>
 <html>
 <head>
     <meta charset="utf-8">
@@ -236,7 +236,6 @@
 <!-- Header END -->
 
 
-
 <div class="main">
     <div class="container">
         <!-- BEGIN SIDEBAR & CONTENT -->
@@ -287,10 +286,15 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <h3>신고하기에 관하여</h3>
-                                    <p>신고하기는 어쩌구 저쩌구 뭐시기</p>
+                                    <div class="payment-section">
+                                        <p>
+                                            신고하기는 관리자에게 정보가 전달됩니다. 신고자와 피신고자의 정보가 들어가며, 대화 내용이 함께 전송됩니다.
+                                            개인정보가 포함되어 있을 수 있으며, 이는 「개인정보 보호법」 제15조에 따라 신고 처리 목적으로만 수집·이용됩니다. 수집된 개인정보는 신고 처리 완료 후 관련 법령에 따른 보관 기간이 지나면 안전하게 파기됩니다.
+                                        </p>
+                                    </div>
                                     <form role="form" action="#">
                                         <div class="form-group">
-                                            <label for="agree">동의한다면 체크박스를 눌러주세요.</label>
+                                            <label for="agree">동의한다면 체크해주세요.</label>
                                             <input type="checkbox" id="AGREE">
                                         </div>
                                     </form>
@@ -325,7 +329,8 @@
                     <!-- BEGIN TWITTER BLOCK -->
                     <div class="col-md-3 col-sm-6 pre-footer-col">
                         <h2 class="margin-bottom-0">Github</h2>
-                        <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2" data-theme="dark"
+                        <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2"
+                           data-theme="dark"
                            data-link-color="#57C8EB" data-widget-id="455411516829736961"
                            data-chrome="noheader nofooter noscrollbar noborders transparent">https://github.com/KiNextLevel</a>
                     </div>
@@ -354,11 +359,13 @@
                     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
                     <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
                     <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-                    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+                    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+                            type="text/javascript"></script>
                     <!-- END CORE PLUGINS -->
 
                     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-                    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+                    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js"
+                            type="text/javascript"></script>
                     <!-- pop up -->
                     <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
                     <!-- slider for products -->

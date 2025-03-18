@@ -172,6 +172,7 @@
                                 <h5 class="option-title">토큰 패키지 선택</h5>
                                 <div class="option-select">
                                     <select name="tokenSelect" class="form-control">
+                                        <!-- value를 pk로 수정 -->
                                         <option value="1">기본 패키지 - 1개 (₩1,100)</option>
                                         <option value="5">인기 패키지 - 5개 (₩5,000)</option>
                                         <option value="10">프리미엄 패키지 - 10개 (₩8,800)</option>

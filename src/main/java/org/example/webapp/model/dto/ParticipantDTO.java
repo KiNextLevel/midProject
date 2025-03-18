@@ -2,17 +2,17 @@ package org.example.webapp.model.dto;
 
 public class ParticipantDTO {
     // 참가한 유저의 이벤트 번호
-    private int participantBoardNum;
+    private int participantBoardNumber;
     // 참가한 유저의 이메일
     private String participantUserEmail;
 
     // getter, setter 메서드
-    public int getParticipantBoardNum() {
-        return participantBoardNum;
+    public int getParticipantBoardNumber() {
+        return participantBoardNumber;
     }
 
-    public void setParticipantBoardNum(int participantBoardNum) {
-        this.participantBoardNum = participantBoardNum;
+    public void setParticipantBoardNumber(int participantBoardNumber) {
+        this.participantBoardNumber = participantBoardNumber;
     }
 
     public String getParticipantUserEmail() {
@@ -27,7 +27,7 @@ public class ParticipantDTO {
     @Override
     public String toString() {
         return "ParticipantDTO{" +
-                "PARTICIPANT_BOARD_NUM=" + participantBoardNum +
+                "PARTICIPANT_BOARD_NUM=" + participantBoardNumber +
                 ", PARTICIPANT_USER_EMAIL='" + participantUserEmail + '\'' +
                 '}';
     }

@@ -198,7 +198,6 @@ public class UserDAO {
     }
 
     // 정보변경
-    // 정보변경
     public boolean update(UserDTO userDTO) {
         try {
             conn = JDBCUtil.connect();

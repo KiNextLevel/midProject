@@ -26,7 +26,7 @@ public class ParticipantDAO {
             rs = pstmt.executeQuery();
             while(rs.next()){
                 ParticipantDTO dto = new ParticipantDTO();
-                dto.setParticipantBoardNum(rs.getInt("PARTICIPANT_BOARD_NUM"));
+                dto.setParticipantBoardNumber(rs.getInt("PARTICIPANT_BOARD_NUM"));
                 dto.setParticipantUserEmail(rs.getString("PARTICIPANT_USER_EMAIL"));
                 list.add(dto);
             }
@@ -50,7 +50,7 @@ public class ParticipantDAO {
         try {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(INSERT);
-            pstmt.setInt(1, participantDTO.getParticipantBoardNum());
+            pstmt.setInt(1, participantDTO.getParticipantBoardNumber());
             pstmt.setString(2, participantDTO.getParticipantUserEmail());
             int result = pstmt.executeUpdate();
             return result > 0;
@@ -72,7 +72,7 @@ public class ParticipantDAO {
         try {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(DELETE);
-            pstmt.setInt(1, participantDTO.getParticipantBoardNum());
+            pstmt.setInt(1, participantDTO.getParticipantBoardNumber());
             pstmt.setString(2, participantDTO.getParticipantUserEmail());
             int result = pstmt.executeUpdate();
             return result > 0;

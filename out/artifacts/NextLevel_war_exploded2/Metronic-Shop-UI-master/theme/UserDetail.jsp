@@ -1,4 +1,8 @@
+<%@ page import="org.example.webapp.model.dto.UserDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="userDTO" class="org.example.webapp.model.dto.UserDTO" scope="page" />
+<jsp:useBean id="preferenceDTO" class="org.example.webapp.model.dto.PreferenceDTO" scope="page" />
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -250,17 +254,18 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                        <h1>{users} 의 프로필</h1>
+                        <h1><%= userDTO.getUserNickname() %>의 프로필</h1>
                         <div class="price-availability-block clearfix">
                             <div class="price">
-                                <strong>{users}</strong>
+                                <strong>이름 : <%= userDTO.getUserName() %></strong><br>
+                                <p>닉네임 : <%= userDTO.getUserNickname() %></p>
                             </div>
                             <div class="availability">
-                                지역 : <strong>서울</strong>
+                                지역 : <strong><%= userDTO.getUserRegion() %></strong>
                             </div>
                         </div>
                         <div class="description">
-                            <p>users description</p>
+                            <p><%= userDTO.getUserDescription() %></p>
                         </div>
                         <div class="product-page-cart">
                             <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
@@ -269,45 +274,29 @@
 
                     <div class="product-page-content">
                         <ul id="myTab" class="nav nav-tabs">
-                            <li><a href="#Description" data-toggle="tab">Description</a></li>
                             <li><a href="#Information" data-toggle="tab">Information</a></li>
+                            <li><a href="#favorite" data-toggle="tab">Favorite</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
-                            <div class="tab-pane fade" id="Description">
-                                <p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed sit nonumy nibh sed euismod laoreet
-                                    dolore magna aliquarm erat sit volutpat Nostrud duis molestie at dolore. Lorem ipsum dolor ut sit
-                                    ame dolore adipiscing elit, sed sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit
-                                    volutpat Nostrud duis molestie at dolore. Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed
-                                    sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit volutpat Nostrud duis molestie
-                                    at dolore. </p>
+                            <div class="tab-pane fade" id="Information">
+                                <p>생년월일 : <%= userDTO.getUserBirth() %></p><br>
+                                <p>키 : <%= userDTO.getUserHeight() %></p><br>
+                                <p>체형 : <%= userDTO.getUserBody() %></p><br>
+                                <p>MBTI : <%= userDTO.getUserMbti() %></p><br>
+                                <p>학력 : <%= userDTO.getUserEducation() %></p><br>
+                                <p>종교 : <%= userDTO.getUserReligion() %></p><br>
+                                <p>음주 : <%= userDTO.getUserDrink() %></p><br>
+                                <p>흡연 : <%= userDTO.isUserSmoke() %></p><br>
+                                <p>직업 : <%= userDTO.getUserJob() %></p><br>
+
                             </div>
-                            <div class="tab-pane fade in active" id="Information">
+                            <div class="tab-pane fade in active" id="favorite">
+                                <!-- 첫번째 취향 넣는 곳-->
                                 <div class="review-item clearfix">
-                                    <div class="review-item-submitted">
-                                        <strong>Bob</strong>
-                                        <em>30/12/2013 - 07:37</em>
-                                        <div class="rateit" data-rateit-value="5" data-rateit-ispreset="true" data-rateit-readonly="true">
-                                        </div>
-                                    </div>
                                     <div class="review-item-content">
-                                        <p>Sed velit quam, auctor id semper a, hendrerit eget justo. Cum sociis natoque penatibus et
-                                            magnis dis parturient montes, nascetur ridiculus mus. Duis vel arcu pulvinar dolor tempus
-                                            feugiat id in orci. Phasellus sed erat leo. Donec luctus, justo eget ultricies tristique, enim
-                                            mauris bibendum orci, a sodales lectus purus ut lorem.</p>
-                                    </div>
-                                </div>
-                                <div class="review-item clearfix">
-                                    <div class="review-item-submitted">
-                                        <strong>Mary</strong>
-                                        <em>13/12/2013 - 17:49</em>
-                                        <div class="rateit" data-rateit-value="2.5" data-rateit-ispreset="true"
-                                             data-rateit-readonly="true"></div>
-                                    </div>
-                                    <div class="review-item-content">
-                                        <p>Sed velit quam, auctor id semper a, hendrerit eget justo. Cum sociis natoque penatibus et
-                                            magnis dis parturient montes, nascetur ridiculus mus. Duis vel arcu pulvinar dolor tempus
-                                            feugiat id in orci. Phasellus sed erat leo. Donec luctus, justo eget ultricies tristique, enim
-                                            mauris bibendum orci, a sodales lectus purus ut lorem.</p>
+                                        <p>선호 키 : <%= preferenceDTO.getPreferenceHeight() %></p><br>
+                                        <p>선호 체형 : <%= preferenceDTO.getPreferenceBody() %></p><br>
+                                        <p>선호 나이 : <%= preferenceDTO.getPreferenceAge() %></p><br>
                                     </div>
                                 </div>
                             </div>

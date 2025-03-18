@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="reportDTO" class="org.example.webapp.model.dto.ReportDTO" scope="page" />
 <html>
 <head>
     <meta charset="utf-8">
@@ -259,7 +260,7 @@
                         <div id="checkout-content" class="panel-collapse collapse in">
                             <div class="panel-body row">
                                 <div class="col-md-6 col-sm-6">
-                                    <h3>{user name} 신고하기</h3>
+                                    <h3><%= reportDTO.getReportReported() %> 신고하기</h3>
                                     <div class="radio-list">
                                         <label>
                                             <input type="checkbox" name="REPORT_REASON" value="REPORT_REASON"> 욕설
@@ -281,7 +282,6 @@
                                   style="width: 100%; height: 120px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; resize: vertical;"></textarea>
                                         </label>
                                     </div>
-                                    <!-- HTML 부분 수정 -->
                                     <button class="btn btn-primary" type="button" value="report-submit">제출하기</button>
 
                                 </div>
@@ -375,6 +375,8 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 </body>
 <!-- END BODY -->
 <script>

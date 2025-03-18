@@ -3,111 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>결제 상품 페이지</title>
-    <style>
-        .top-bar-right {
-            float: right;
-            margin-right: 20px;
-            margin-top: 10px;
-        }
-
-        .top-bar-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .top-bar-list li {
-            display: inline-block;
-            margin-left: 10px;
-        }
-
-        @media (max-width: 767px) {
-            .top-bar-right {
-                margin-top: 0;
-                margin-bottom: 10px;
-                text-align: center;
-                float: none;
-            }
-        }
-
-        /* 결제 섹션 스타일 수정 */
-        .payment-section {
-            margin-bottom: 20px;
-            position: relative;
-            background-color: #f5f5f5;
-            padding: 15px;
-        }
-
-        /* 토큰 섹션 레이아웃 */
-        .token-section {
-            display: flex;
-        }
-
-        .token-info {
-            flex: 7;
-        }
-
-        .token-options {
-            flex: 3;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .option-box {
-            background-color: #f8d7d7;
-            padding: 15px;
-            margin-bottom: 10px;
-        }
-
-        /* 프리미엄 섹션 레이아웃 */
-        .premium-section {
-            min-height: 120px;
-        }
-
-        /* 입력 필드 영역 스타일 */
-        .input-area {
-            margin-bottom: 15px;
-        }
-
-        /* 결제 버튼 스타일 */
-        .payment-button {
-            width: 150px;
-            padding: 10px 0;
-            font-weight: bold;
-            background-color: #ff00ff;
-            border-color: #ff00ff;
-            color: white;
-            margin-top: 15px;
-        }
-
-        .premium-button {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-        }
-
-        /* 구분선 스타일 */
-        .divider {
-            margin: 30px 0;
-            border-top: 1px solid #eee;
-        }
-
-        /* Header Styles */
-        .header .header-navigation {
-            float: right;
-            margin-top: 10px;
-        }
-
-        .header .header-navigation .menu-search {
-            float: right;
-            padding-left: 20px;
-        }
-
-        .header .header-navigation .menu-search .search-box {
-            right: 0;
-            left: auto;
-        }
-    </style>
+    <link href="css/ProductPage.css" rel="stylesheet">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -246,40 +142,93 @@
                     <h3>Token</h3>
 
                     <!-- TOKEN 섹션 -->
+                    <h3 class="section-title"><i class="fa fa-diamond"></i> 프리미엄 토큰</h3>
                     <div class="payment-section token-section">
                         <div class="token-info">
-                            <p>
-                                토큰은 채팅을 할 때 사용하는 Next Level 만의 화폐입니다.<br>
-                                채팅을 통해 상대방과 대화할 수 있으며, 한 사람당 1개의 토큰이 차감됩니다.
-                            </p>
+                            <div class="content-box">
+                                <h4 class="feature-title">Next Love의 특별한 화폐, 토큰</h4>
+                                <p class="feature-description">
+                                    토큰은 Next Love에서 제공하는 프리미엄 서비스를 이용하기 위한 특별한 화폐입니다.
+                                    토큰을 사용하여 마음에 드는 상대방과 1:1 채팅을 시작하고, 더 깊은 인연으로 발전시켜 보세요.
+                                </p>
+                                <div class="feature-list">
+                                    <div class="feature-item">
+                                        <i class="fa fa-check-circle"></i>
+                                        <span>실시간 1:1 채팅 서비스</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fa fa-check-circle"></i>
+                                        <span>상대방당 1개의 토큰만 사용</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fa fa-check-circle"></i>
+                                        <span>토큰 구매 시 할인 혜택</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="token-options">
                             <div class="option-box">
-                                <select name="tokenSelect" class="form-control">
-                                    <option value="1">1개 1100원</option>
-                                    <option value="5">5개 5000원</option>
-                                    <option value="10">10개 8800원</option>
-                                </select>
+                                <h5 class="option-title">토큰 패키지 선택</h5>
+                                <div class="option-select">
+                                    <select name="tokenSelect" class="form-control">
+                                        <option value="1">기본 패키지 - 1개 (₩1,100)</option>
+                                        <option value="5">인기 패키지 - 5개 (₩5,000)</option>
+                                        <option value="10">프리미엄 패키지 - 10개 (₩8,800)</option>
+                                    </select>
+                                </div>
+                                <div class="payment-action">
+                                    <input type="hidden" name="action" value="TOKENPAYMENT">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fa fa-credit-card"></i> 토큰 구매하기
+                                    </button>
+                                </div>
                             </div>
-                            <input type="hidden" name="action" value="TOKENPAYMENT">
-                            <input type="submit" class="btn btn-primary btn-lg" value="결제하기">
                         </div>
                     </div>
-
-                    <div class="divider"></div>
 
                     <!-- PREMIUM 섹션 -->
-                    <h3>Premium</h3>
+                    <h3 class="section-title"><i class="fa fa-star"></i> 프리미엄 멤버십</h3>
                     <div class="payment-section premium-section">
-                        <div class="premium-info">
-                            <p>
-                                프리미엄은 당신의 광고를 제거해줍니다.<br>
-                                평생가격 단돈 9,900원<br>
-                                당신에게 쾌적함을 제공합니다.
-                            </p>
+                        <div class="premium-content">
+                            <div class="premium-header">
+                                <h4 class="premium-title">광고 없는 쾌적한 서비스 경험</h4>
+                                <div class="premium-price">
+                                    <span class="price-tag">₩9,900</span>
+                                    <span class="price-period">평생 이용권</span>
+                                </div>
+                            </div>
+                            <div class="premium-features">
+                                <div class="premium-feature">
+                                    <i class="fa fa-ban"></i>
+                                    <div class="feature-text">
+                                        <h5>광고 완전 제거</h5>
+                                        <p>모든 페이지에서 광고를 제거하여 쾌적한 사용 환경 제공</p>
+                                    </div>
+                                </div>
+                                <div class="premium-feature">
+                                    <i class="fa fa-bolt"></i>
+                                    <div class="feature-text">
+                                        <h5>빠른 페이지 로딩</h5>
+                                        <p>광고 로딩 없이 더 빠르고 쾌적한 서비스 이용 가능</p>
+                                    </div>
+                                </div>
+                                <div class="premium-feature">
+                                    <i class="fa fa-heart"></i>
+                                    <div class="feature-text">
+                                        <h5>프리미엄 뱃지</h5>
+                                        <p>프로필에 특별한 프리미엄 뱃지로 더 많은 관심 유도</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="premium-action">
+                                <button type="submit" class="btn btn-primary btn-lg payment-button">
+                                    <i class="fa fa-crown"></i> 프리미엄 멤버십 가입하기
+                                </button>
+                            </div>
                         </div>
-                        <input type="submit" class="btn btn-primary btn-lg payment-button premium-button" value="프리미엄 결제하기">
                     </div>
+
 
                 </div>
             </div>

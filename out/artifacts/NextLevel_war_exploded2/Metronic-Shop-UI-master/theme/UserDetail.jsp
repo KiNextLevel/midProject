@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>사용자 상세 페이지</title>
+    <title>사용자 상세 페이지${userDTO.userEmail}</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -249,8 +249,8 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="product-main-image">
-                            <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell"
-                                 class="img-responsive" data-BigImgsrc="assets/pages/img/products/model7.jpg">
+                            <img src="assets/pages/img/products/차은우.jfif" alt="Cool green dress with red bell"
+                                 class="img-responsive" data-BigImgsrc="assets/pages/img/products/차은우.jfif">
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
@@ -302,8 +302,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="sticker sticker-sale"></div>
                 </div>
             </div>
         </div>
@@ -448,6 +446,32 @@
         Layout.initTouchspin();
         Layout.initUniform();
     });
+
+    jQuery(document).ready(function() {
+        // 기존 코드 유지
+        Layout.init();
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initImageZoom();
+        Layout.initTouchspin();
+        Layout.initUniform();
+
+        // 검색 버튼 토글 기능 추가
+        $('.search-btn').click(function(e) {
+            e.preventDefault(); // 기본 동작 방지
+            $('.search-box').toggle(); // 검색창 토글
+        });
+
+        // 검색 폼 제출 처리
+        $('.search-box form').submit(function(e) {
+            e.preventDefault(); // 기본 제출 동작 방지
+            var searchQuery = $(this).find('input[type="text"]').val();
+            // 여기에 검색 처리 로직 추가
+            console.log('검색어: ' + searchQuery);
+            // 실제 검색 처리를 위한 AJAX 요청 등을 추가할 수 있습니다.
+        });
+    });
+
 </script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>

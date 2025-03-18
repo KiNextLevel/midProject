@@ -186,7 +186,7 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="shop-account.html">My Account</a></li>
+                    <li><a href="MyPageView.jsp">My Account</a></li>
                     <li><a href="shop-checkout.html">Checkout</a></li>
                     <li><a href="page-login.html">Log In</a></li>
                 </ul>
@@ -200,7 +200,7 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
+        <a class="site-logo" href="MainPage.jsp"><img src="assets/corporate/img/logos/3.png"
                                                          alt="Metronic Shop UI"></a>
 
         <!-- BEGIN TOP SEARCH -->

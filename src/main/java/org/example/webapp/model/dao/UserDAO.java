@@ -32,7 +32,12 @@ public class UserDAO {
     // 회원가입(프로필 빼고, 소개만 입력)
     final String INSERT_DESCRIPTION = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
             "USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    // 회원 정보 수정(효율성을 위해 쿼리문은 메서드 내에 사용)
+    // 회원 정보 수정
+    final String UPDATE = "UPDATE USER SET USER_NICKNAME = ?, USER_PHONE = ?, USER_GENDER = ?, USER_BIRTH = ?, USER_HEIGHT = ?, USER_BODY = ?, USER_MBTI = ?, " +
+            "USER_PROFILE = ?, USER_EDUCATION = ?, USER_RELIGEION = ?, USER_DRINK = ?, USER_SMOKE = ?, USER_JOB = ?, USER_REGION = ?, USER_DESCRIPTION = ?, USER_NAME = ? " +
+            "WHERE USER_EMAIL = ?";
+    // 회원 ROLE 변경
+    final String UPDATE_ROLE = "UPDATE USER SET USER_ROLE = ? WHERE USER_EMAIL = ?";
 
     // 회원 탈퇴
     final String DELETE = "DELETE FROM USER WHERE USER_EMAIL = ?";
@@ -201,149 +206,33 @@ public class UserDAO {
     public boolean update(UserDTO userDTO) {
         try {
             conn = JDBCUtil.connect();
-
-            StringBuilder queryBuilder = new StringBuilder("UPDATE USER SET ");
-            ArrayList<Object> parameters = new ArrayList<>();
-            boolean isFirstParam = true;
-
-            // 비밀번호
-            if (userDTO.getUserPassword() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_PASSWORD=?");
-                parameters.add(userDTO.getUserPassword());
-                isFirstParam = false;
+            if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE")){
+                pstmt = conn.prepareStatement(UPDATE);
+                pstmt.setString(1, userDTO.getUserNickname());
+                pstmt.setString(2, userDTO.getUserPhone());
+                pstmt.setBoolean(3, userDTO.getUserGender());
+                pstmt.setString(4, userDTO.getUserBirth());
+                pstmt.setInt(5, userDTO.getUserHeight());
+                pstmt.setString(6, userDTO.getUserBody());
+                pstmt.setString(7, userDTO.getUserMbti());
+                pstmt.setString(8, userDTO.getUserProfile());
+                pstmt.setString(9, userDTO.getUserEducation());
+                pstmt.setString(10, userDTO.getUserReligion());
+                pstmt.setInt(11, userDTO.getUserDrink());
+                pstmt.setBoolean(12,userDTO.isUserSmoke());
+                pstmt.setString(13, userDTO.getUserJob());
+                pstmt.setString(14, userDTO.getUserRegion());
+                pstmt.setString(15, userDTO.getUserDescription());
+                pstmt.setString(16, userDTO.getUserName());
+                pstmt.setString(17, userDTO.getUserEmail());
             }
-
-            // 닉네임
-            if (userDTO.getUserNickname() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_NICKNAME=?");
-                parameters.add(userDTO.getUserNickname());
-                isFirstParam = false;
+            else if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_ROLE")){
+                pstmt = conn.prepareStatement(UPDATE_ROLE);
+                pstmt.setString(1, userDTO.getUserRole());
+                pstmt.setString(2, userDTO.getUserEmail());
             }
-
-            // 전화번호
-            if (userDTO.getUserPhone() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_PHONE=?");
-                parameters.add(userDTO.getUserPhone());
-                isFirstParam = false;
-            }
-
-            // 성별 (플래그 변수 사용)
-            if (userDTO.isUserGenderChanged()) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_GENDER=?");
-                parameters.add(userDTO.getUserGender());
-                isFirstParam = false;
-            }
-
-            // 생년월일
-            if (userDTO.getUserBirth() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_BIRTH=?");
-                parameters.add(userDTO.getUserBirth());
-                isFirstParam = false;
-            }
-
-            // 키
-            if (userDTO.getUserHeight() != 0) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_HEIGHT=?");
-                parameters.add(userDTO.getUserHeight());
-                isFirstParam = false;
-            }
-
-            // 체형
-            if (userDTO.getUserBody() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_BODY=?");
-                parameters.add(userDTO.getUserBody());
-                isFirstParam = false;
-            }
-
-            // MBTI
-            if (userDTO.getUserMbti() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_MBTI=?");
-                parameters.add(userDTO.getUserMbti());
-                isFirstParam = false;
-            }
-
-            // 프로필 사진
-            if (userDTO.getUserProfile() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_PROFILE=?");
-                parameters.add(userDTO.getUserProfile());
-                isFirstParam = false;
-            }
-
-            // 학력
-            if (userDTO.getUserEducation() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_EDUCATION=?");
-                parameters.add(userDTO.getUserEducation());
-                isFirstParam = false;
-            }
-
-            // 종교
-            if (userDTO.getUserReligion() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_RELIGEION=?");
-                parameters.add(userDTO.getUserReligion());
-                isFirstParam = false;
-            }
-
-            // 음주
-            if (userDTO.getUserDrink() != 0) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_DRINK=?");
-                parameters.add(userDTO.getUserDrink());
-                isFirstParam = false;
-            }
-
-            // 흡연 상태 업데이트
-            if (userDTO.isUserSmokeChanged()) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_SMOKE=?");
-                parameters.add(userDTO.isUserSmoke() ? 1 : 0);  // boolean을 int로 변환
-                isFirstParam = false;
-            }
-
-            // 직업
-            if (userDTO.getUserJob() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_JOB=?");
-                parameters.add(userDTO.getUserJob());
-                isFirstParam = false;
-            }
-
-            // 지역
-            if (userDTO.getUserRegion() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_REGION=?");
-                parameters.add(userDTO.getUserRegion());
-                isFirstParam = false;
-            }
-
-            // 자기소개
-            if (userDTO.getUserDescription() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_DESCRIPTION=?");
-                parameters.add(userDTO.getUserDescription());
-                isFirstParam = false;
-            }
-
-            // 이름
-            if (userDTO.getUserName() != null) {
-                queryBuilder.append(isFirstParam ? "" : ", ").append("USER_NAME=?");
-                parameters.add(userDTO.getUserName());
-                isFirstParam = false;
-            }
-
-            // 변경할 내용이 없으면 true 반환
-            if (isFirstParam) {
-                return true;
-            }
-
-            // WHERE 조건 추가
-            queryBuilder.append(" WHERE USER_EMAIL=?");
-            parameters.add(userDTO.getUserEmail());
-
-            pstmt = conn.prepareStatement(queryBuilder.toString());
-
-            // 파라미터 설정
-            for (int i = 0; i < parameters.size(); i++) {
-                pstmt.setObject(i + 1, parameters.get(i));
-            }
-
             int result = pstmt.executeUpdate();
             return result > 0;
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;

@@ -6,12 +6,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>안녕하세요! 톰캣 웹 애플리케이션입니다.</h1>
-
-<div id="result">여기에 AJAX 결과가 표시됩니다.</div>
-
-<button id="loadData">데이터 불러오기</button>
-
-<script src="js/script.js"></script>
+    <a href="loginpage.jsp"></a>
 </body>
 </html>

@@ -171,12 +171,12 @@
                             <div class="option-box">
                                 <h5 class="option-title">토큰 패키지 선택</h5>
                                 <div class="option-select">
-                                    <select name="tokenSelect" class="form-control">
-                                        <!-- value를 pk로 수정 -->
-                                        <option value="1">기본 패키지 - 1개 (₩1,100)</option>
-                                        <option value="5">인기 패키지 - 5개 (₩5,000)</option>
-                                        <option value="10">프리미엄 패키지 - 10개 (₩8,800)</option>
+                                    <select name="PRODUCT_NUM" class="form-control">
+                                        <option value="2">기본 패키지 - 1개 (₩1,100)</option>
+                                        <option value="3">인기 패키지 - 5개 (₩5,000)</option>
+                                        <option value="4">프리미엄 패키지 - 10개 (₩8,800)</option>
                                     </select>
+
                                 </div>
                                 <div class="payment-action">
                                     <input type="hidden" name="action" value="TOKENPAYMENT">
@@ -223,12 +223,17 @@
                                 </div>
                             </div>
                             <div class="premium-action">
-                                <button type="submit" class="btn btn-primary btn-lg payment-button">
-                                    <i class="fa fa-crown"></i> 프리미엄 멤버십 가입하기
-                                </button>
+                                <form action="processPayment" method="post">
+                                    <input type="hidden" name="PRODUCT_NUM" value="1">
+                                    <input type="hidden" name="action" value="PREMIUM">
+                                    <button type="submit" class="btn btn-primary btn-lg payment-button">
+                                        <i class="fa fa-crown"></i> 프리미엄 멤버십 가입하기
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
+
 
 
                 </div>

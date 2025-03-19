@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
+<!--정보 보기 페이지
 Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
 Version: 1.0.0
 Author: KeenThemes
@@ -12,13 +14,24 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="kr">
 <!--<![endif]-->
 
 <!-- Head BEGIN -->
 <head>
+  <style>
+    /* 파일 업로드 input 숨기기 */
+#profileUpload {
+    display: none;
+}
+  </style>
+
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   <meta charset="utf-8">
-  <title>My Wish List | Metronic Shop UI</title>
+  <title>My Account | Metronic Shop UI</title>
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -37,7 +50,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
   <link rel="shortcut icon" href="favicon.ico">
 
   <!-- Fonts START -->
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"> 
   <!-- Fonts END -->
 
   <!-- Global styles START -->          
@@ -48,9 +61,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
   <!-- Page level plugin styles START -->
   <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
   <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-  <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
-  <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"><!-- for slider-range -->
-  <link href="assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
   <!-- Page level plugin styles END -->
 
   <!-- Theme styles START -->
@@ -381,8 +391,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <li><a href="shop-checkout.html">Checkout</a></li>
                 <li><a href="shop-about.html">About</a></li>
                 <li><a href="shop-contacts.html">Contacts</a></li>
-                <li><a href="shop-account.html">My account</a></li>
-                <li class="active"><a href="shop-wishlist.html">My Wish List</a></li>
+                <li class="active"><a href="shop-account.html">My account</a></li>
+                <li><a href="shop-wishlist.html">My Wish List</a></li>
                 <li><a href="shop-goods-compare.html">Product Comparison</a></li>
                 <li><a href="shop-standart-forms.html">Standart Forms</a></li>
                 <li><a href="shop-faq.html">FAQ</a></li>
@@ -422,90 +432,126 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <ul class="breadcrumb">
             <li><a href="index.html">Home</a></li>
             <li><a href="">Store</a></li>
-            <li class="active">My Wish List</li>
+            <li class="active">My Account Page</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
           <!-- BEGIN SIDEBAR -->
-          <div class="sidebar col-md-3 col-sm-5">
+          <div class="sidebar col-md-3 col-sm-3">
             <ul class="list-group margin-bottom-25 sidebar-menu">
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Ladies</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Kids</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Accessories</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sports</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Brands</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Electronics</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Home & Garden</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Custom Link</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Login/Register</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Restore Password</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> My account</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Address book</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Wish list</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Returns</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Newsletter</a></li>
             </ul>
           </div>
           <!-- END SIDEBAR -->
 
-          <!-- BEGIN CONTENT -->
+          <!-- 정보 나오는 부분-->
           <div class="col-md-9 col-sm-7">
-            <h1>My Wish List</h1>
-            <div class="goods-page">
-              <div class="goods-data clearfix">
-                <div class="table-wrapper-responsive">
-                <table summary="Shopping cart">
-                  <tr>
-                    <th class="goods-page-image">Image</th>
-                    <th class="goods-page-description">Description</th>
-                    <th class="goods-page-stock">Stock</th>
-                    <th class="goods-page-price" colspan="2">Unit price</th>
-                  </tr>
-                  <tr>
-                    <td class="goods-page-image">
-                      <a href="javascript:;"><img src="assets/pages/img/products/model3.jpg" alt="Berry Lace Dress"></a>
-                    </td>
-                    <td class="goods-page-description">
-                      <h3><a href="javascript:;">Cool green dress with red bell</a></h3>
-                      <p><strong>Item 1</strong> - Color: Green; Size: S</p>
-                      <em>More info is here</em>
-                    </td>
-                    <td class="goods-page-stock">
-                      In Stock
-                    </td>
-                    <td class="goods-page-price">
-                      <strong><span>$</span>47.00</strong>
-                    </td>
-                    <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
-                      <a class="add-goods" href="javascript:;">&nbsp;</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="goods-page-image">
-                      <a href="javascript:;"><img src="assets/pages/img/products/model4.jpg" alt="Berry Lace Dress"></a>
-                    </td>
-                    <td class="goods-page-description">
-                      <h3><a href="javascript:;">Cool green dress with red bell</a></h3>
-                      <p><strong>Item 1</strong> - Color: Green; Size: S</p>
-                      <em>More info is here</em>
-                    </td>
-                    <td class="goods-page-stock">
-                      In Stock
-                    </td>
-                    <td class="goods-page-price">
-                      <strong><span>$</span>47.00</strong>
-                    </td>
-                    <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
-                      <a class="add-goods" href="javascript:;">&nbsp;</a>
-                    </td>
-                  </tr>
-                </table>
-                </div>
+            <h1>My Account Page</h1>
+            <div class="content-page">
+              <h3>My Account</h3>
+              <!-- 프로필 이미지 -->
+              <div class="profile-container text-center">
+                <div class="position-relative d-inline-block">
+                  <!-- 프로필 이미지 -->
+                  <img id="profileImage" img src="assets/img/profile-default.png" alt="프로필 이미지" class="rounded-circle" width="100">
+                  <!-- 카메라 아이콘 -->
+    <label for="profileUpload" class="position-absolute camera-icon">
+      <i class="fa fa-camera"></i>
+    </label>
+                  <!-- 파일 업로드 input (숨김 처리는 나중에 css파일 파서 하기, 자바스크립트 파일로 업로드 되게 하기) --> 
+    <input type="file" id="profileUpload" class="d-none" accept="image/*" >
+  </div>
+                <h4 class="mt-2">닉네임</h4>
               </div>
+
+        <!-- 수정 버튼 -->
+        <a href="profile-edit.html" class="btn btn-outline-secondary btn-sm position-absolute" style="top: 15px; right: 15px;">
+          <i class="fa fa-edit"></i>
+        </a>
+              <ul>
+                <li>자기소개</li>
+                <li><i class="fa fa-user"></i> 이름</li>
+                <li><i class="fa fa-phone"></i> 전화번호</li>
+                <!-- <li><i class="fa fa-envelope"></i> 이메일</li> -->
+          <li><i class="fa fa-venus-mars"></i> 성별</li>
+          <li><i class="fa fa-birthday-cake"></i> 생년월일</li>
+          <li><i class="fas fa-ruler"></i> 키</li>
+          <li><i class="fas fa-weight"></i> 체형</li>
+          <li><i class="fa fa-graduation-cap"></i> 학력</li>
+          <li><i class="fa fa-map-marker"></i> 지역</li>
+          <li><i class="fas fa-theater-masks"></i> MBTI</li>
+          <li><i class="fas fa-wine-glass"></i> 음주</li>
+          <li><i class="fas fa-smoking"></i> 흡연</li>
+          
+              </ul>
+              <hr>
+
+              <h3>선호 취향</h3>
+              <ul>
+                <li><i class="fas fa-heart"></i> 선호 키</li>
+                <li><i class="fas fa-heart"></i> 선호 체형</li>
+                <li><i class="fas fa-heart"></i> 선호 나이</li>
+              </ul>
+              
+              <h3>참가 중인 이벤트</h3>
+              <ul>
+                <li><i class="fa fa-calendar"></i> 이벤트 1: <strong>이벤트 이름</strong> - 진행 중</li>
+                <li><i class="fa fa-calendar"></i> 이벤트 2: <strong>이벤트 이름</strong> - 진행 중</li>
+              </ul>
+
+
+              <h3>토큰 잔액 및 구매 내역</h3>
+<div class="token-info">
+  <p><i class="fas fa-coins"></i> 현재 보유 토큰: <strong>1000</strong> 개</p>
+</div>
+
+<h4>결제한 상품 목록</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>상품명</th>
+      <th>결제일</th>
+      <th>토큰 사용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>매칭 서비스 이용권</td>
+      <td>2025-03-10</td>
+      <td>500 토큰</td>
+    </tr>
+    <tr>
+      <td>이벤트 참가권</td>
+      <td>2025-03-12</td>
+      <td>300 토큰</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="account-settings">
+  <h3>계정 설정</h3>
+  <p>
+    <a href="delete-account.html" class="delete-account-link">회원 탈퇴 하기는 여기를 눌러주세요</a>
+  </p>
+</div>
+
+              
+
             </div>
           </div>
-          <!-- END CONTENT -->
+          <!-- 정보 보기 끝 -->
         </div>
         <!-- END SIDEBAR & CONTENT -->
       </div>
     </div>
 
-    <!-- BEGIN BRANDS -->
+    <!-- BEGIN BRANDS
     <div class="brands">
       <div class="container">
             <div class="owl-carousel owl-carousel6-brands">
@@ -523,11 +569,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               <a href="shop-product-list.html"><img src="assets/pages/img/brands/zara.jpg" alt="zara" title="zara"></a>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- END BRANDS -->
 
     <!-- BEGIN STEPS -->
-    <div class="steps-block steps-block-red">
+    <!-- <div class="steps-block steps-block-red">
       <div class="container">
         <div class="row">
           <div class="col-md-4 steps-block-col">
@@ -555,8 +601,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           </div>
         </div>
       </div>
-    </div>
-    <!-- END STEPS -->
+    </div> -->
+   
 
     <!-- BEGIN PRE-FOOTER -->
     <div class="pre-footer">
@@ -576,7 +622,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Delivery Information</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Customer Service</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Order Tracking</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Shipping & Returns</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Shipping &amp; Returns</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="contacts.html">Contact Us</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Careers</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Payment Methods</a></li>
@@ -671,68 +717,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     </div>
     <!-- END FOOTER -->
 
-    <!-- BEGIN fast view of a product -->
-    <div id="product-pop-up" style="display: none; width: 700px;">
-            <div class="product-page product-pop-up">
-              <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-3">
-                  <div class="product-main-image">
-                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
-                  </div>
-                  <div class="product-other-images">
-                    <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>
-                    <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model4.jpg"></a>
-                    <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-9">
-                  <h2>Cool green dress with red bell</h2>
-                  <div class="price-availability-block clearfix">
-                    <div class="price">
-                      <strong><span>$</span>47.00</strong>
-                      <em>$<span>62.00</span></em>
-                    </div>
-                    <div class="availability">
-                      Availability: <strong>In Stock</strong>
-                    </div>
-                  </div>
-                  <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat 
-Nostrud duis molestie at dolore.</p>
-                  </div>
-                  <div class="product-page-options">
-                    <div class="pull-left">
-                      <label class="control-label">Size:</label>
-                      <select class="form-control">
-                        <option>L</option>
-                        <option>M</option>
-                        <option>XL</option>
-                      </select>
-                    </div>
-                    <div class="pull-left">
-                      <label class="control-label">Color:</label>
-                      <select class="form-control">
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Black</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="product-page-cart">
-                    <div class="product-quantity">
-                        <input id="product-quantity2" type="text" value="1" readonly class="form-control input-sm">
-                    </div>
-                    <button class="btn btn-primary" type="submit">Add to cart</button>
-                    <a href="shop-item.html" class="btn btn-default">More details</a>
-                  </div>
-                </div>
-
-                <div class="sticker sticker-sale"></div>
-              </div>
-            </div>
-    </div>
-    <!-- END fast view of a product -->
-
     <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
@@ -748,11 +732,6 @@ Nostrud duis molestie at dolore.</p>
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
     <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
     <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
-    <script src='assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
-    <script src="assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
-    <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
 
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -760,10 +739,6 @@ Nostrud duis molestie at dolore.</p>
             Layout.init();    
             Layout.initOWL();
             Layout.initTwitter();
-            Layout.initImageZoom();
-            Layout.initTouchspin();
-            Layout.initUniform();
-            Layout.initSliderRange();
         });
     </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->

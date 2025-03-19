@@ -460,6 +460,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                    //} else {
                      //for(ReportDTO data : (ArrayList<ReportDTO>)request.getAttribute("REPORTDATAS")) {
                   %>
+                  <c:forEach var="data" items="${datas }"></c:forEach>
                     <tr>
                       <th colspan="3">
                         <h2>신고 한 회원 [이름:이메일${reportDTO.REPORTER_REPORTER}]</h2>
@@ -481,7 +482,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       </td>
                       <td class="compare-item">
                         <form action="AddBlackAction.jsp" method="POST">
-  						<input type="hidden" name="REPORTEDUSER" value="${reportDTO.REPORTER_REPORTED}">
+  						<input type="hidden" name="reportedUser" value="${reportDTO.REPORTER_REPORTED}">
  						 <input type="hidden" name="reason" value="${reportDTO.REPORT_REASON}">
  						 <select id="WARNING" name="action">
   							  <option value="WARNING">경고</option>

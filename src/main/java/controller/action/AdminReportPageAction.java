@@ -20,12 +20,12 @@ public class AdminReportPageAction implements Action{
 		ArrayList<ReportDTO> datas = reportDAO.selectAll(reportDTO);
 		
 		if(session.getAttribute("userRole").equals("ADMIN")) {
-			request.setAttribute("reportDTO", reportDTO);
+			request.setAttribute("datas", reportDTO);
 			forward.setPath("/mywebapp/theme/AdminReportPage.jsp");
 			forward.setRedirect(false);
 		}	
 		else {
-			forward.setPath("/mywewbapp/theme/Main.jsp");
+			forward.setPath("/mywewbapp/theme/MainPage.jsp");
 			forward.setRedirect(true);
 		}
 		return forward;

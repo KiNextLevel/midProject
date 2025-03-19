@@ -29,5 +29,4 @@ public class MyPageAction implements Action{
 		}
 		return forward;
 	}
-
 }

@@ -26,7 +26,7 @@ public class AdminAddBoardAction implements Action{
 		if(boardDAO.update(boardDTO)) {
 			request.setAttribute("msg", "이벤트 추가 성공");
 			request.setAttribute("flag", true);
-			request.setAttribute("url", "/mywebapp/theme/controller.jsp?command=BOARDPAGE");
+			request.setAttribute("url", "/mywebapp/theme/controller.jsp?command=BOARDPAGE&");
 		}
 		else {
 			request.setAttribute("msg", "이벤트 추가 실패");

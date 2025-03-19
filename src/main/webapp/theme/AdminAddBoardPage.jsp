@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <!--
 Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
@@ -446,33 +447,32 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <h1>이벤트 추가</h1>
             <div class="content-form-page">
               <form action="controller.jsp" method="POST" role="form" class="form-horizontal form-without-legend">
-              <input type="hidden" name="command" value="ADDBOARD">
+              <input type="hidden" name="command" value="ADMINADDBOARD">
               
                 <div class="form-group">
                   <label class="col-lg-2 control-label" for="first-name">제목<span class="require">*</span></label>
                   <div class="col-lg-8">
-                    <input type="text" id="first-name" name="BOARDTITLE" class="form-control">
+                    <input type="text" id="first-name" name="boardTitle" class="form-control">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-lg-2 control-label" for="message">내용 및 날짜<span class="require">*</span></label>
                   <div class="col-lg-8">
-                    <textarea class="form-control" rows="10" name="BOARDCONTENT"></textarea>
+                    <textarea class="form-control" rows="10" name="boardContent"></textarea>
                   </div>
                 </div>
                 
                 <div class="form-group">
                   <label class="col-lg-2 control-label" for="email">최대 참여 인원<span class="require">*</span></label>
                   <div class="col-lg-8">
-                    <input type="text" id="email" name="BOARDLIMIT" class="form-control">
+                    <input type="number" id="email" name="boardLimit" class="form-control">
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-8 col-md-offset-2 padding-left-0 padding-top-20">
                     <button class="btn btn-primary" type="submit">추가하기</button>
-                    <input type="submit" href="./target-free-admin-template/index.html">
                   </div>
                 </div>
               </form>

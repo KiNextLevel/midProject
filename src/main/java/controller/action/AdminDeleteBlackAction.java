@@ -22,7 +22,7 @@ public class AdminDeleteBlackAction implements Action{
 		
 		request.setAttribute("msg", "사용자를 블랙 해제했습니다");
 		request.setAttribute("flag", true);
-		request.setAttribute("url", "/mywebapp/theme/controller.jsp?command=ADMINREPORTPAGEACTION");
+		request.setAttribute("url", "/mywebapp/theme/controller.jsp?command=ADMINREPORTPAGE");
 
 		}
 		else {

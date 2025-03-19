@@ -5,8 +5,11 @@ import java.util.Map;
 
 import controller.action.AdminAddBlackAction;
 import controller.action.AdminAddBoardAction;
+import controller.action.AdminAddBoardPageAction;
 import controller.action.AdminDeleteBlackAction;
 import controller.action.AdminDeleteBoardAction;
+import controller.action.AdminMainPageAction;
+import controller.action.AdminModifyBoardPageAction;
 import controller.action.AdminPaymentListPageAction;
 import controller.action.AdminReportPageAction;
 import controller.action.BoardPageAction;
@@ -31,6 +34,8 @@ public class ActionFactory {
 		factory.put("MODIFYMYPAGE", new ModifyMyPageAction());
 		factory.put("MYPAGE", new MyPageAction());
 		factory.put("PARTICIPANTBOARD", new ParticipantBoardAction());
+		factory.put("ADMINMODITYBOARDPAGE", new AdminModifyBoardPageAction());
+		factory.put("ADMINADDBOARDPAGE", new AdminAddBoardPageAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

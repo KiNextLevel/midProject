@@ -32,7 +32,7 @@ public class AdminAddBlackAction implements Action{
 		}
 
 		userDTO.setUserRole("BLACK");
-		request.setAttribute("msg", "사용자를 블랙 처리 했습니다!");
+		request.setAttribute("msg", "사용자를 블랙 처리 했습니다");
 		request.setAttribute("flag", true);
 		request.setAttribute("url", "/mywebapp/theme/controller.jsp?command=ADMINREPORTPAGE");
 

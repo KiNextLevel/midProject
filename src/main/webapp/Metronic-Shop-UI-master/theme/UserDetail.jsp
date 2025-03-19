@@ -192,7 +192,7 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="shop-account.html">My Account</a></li>
+                    <li><a href="MyPage.jsp">마이페이지</a></li>
                     <li><a href="shop-checkout.html">Checkout</a></li>
                     <li><a href="page-login.html">Log In</a></li>
                 </ul>

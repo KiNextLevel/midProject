@@ -6,10 +6,11 @@ import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import model.dao.ReportDAO;
-import model.dao.UserDAO;
-import model.dto.ReportDTO;
-import model.dto.UserDTO;
+import org.example.webapp.model.dao.ReportDAO;
+import org.example.webapp.model.dao.UserDAO;
+import org.example.webapp.model.dto.ReportDTO;
+import org.example.webapp.model.dto.UserDTO;
+
 
 public class AdminReportPageAction implements Action{
 

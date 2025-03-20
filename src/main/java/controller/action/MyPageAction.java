@@ -4,8 +4,8 @@ import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import model.dao.UserDAO;
-import model.dto.UserDTO;
+import org.example.webapp.model.dao.UserDAO;
+import org.example.webapp.model.dto.UserDTO;
 
 public class MyPageAction implements Action{
 

@@ -10,7 +10,7 @@ public class PaymentPageAction implements Action {
 		System.out.println("CONT 로그: PATMENTPAGE ACTION 도착");
 		ActionForward forward = new ActionForward();
 		request.setAttribute("productNum", request.getAttribute("productNum"));
-	    forward.setPath("PaymentPage.jsp");
+	    forward.setPath("paymentPage.do");
 		forward.setRedirect(false);
 		return forward;
 	}

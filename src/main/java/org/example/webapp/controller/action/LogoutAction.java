@@ -20,7 +20,7 @@ public class LogoutAction implements Action {
 	    // alert.jsp에 url, true, msg 보내기
 	    request.setAttribute("msg", "로그아웃 성공!");
 	    request.setAttribute("flag", true);
-	    request.setAttribute("url", "controller.jsp?action=MAINPAGE");
+	    request.setAttribute("url", "mainPage.do");
 	    forward.setPath("alert.jsp");
 		forward.setRedirect(false);
 		return forward;

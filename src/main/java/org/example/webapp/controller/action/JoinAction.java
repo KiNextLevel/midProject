@@ -2,6 +2,7 @@ package org.example.webapp.controller.action;
 
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.example.webapp.controller.common.Action;
 import org.example.webapp.controller.common.ActionForward;
 import org.example.webapp.model.dao.UserDAO;
@@ -17,14 +18,15 @@ public class JoinAction implements Action {
 		UserDTO userDTO = new UserDTO();
 		userDTO.setUserEmail(request.getParameter("userEmail"));
 		userDTO.setUserPassword(request.getParameter("userPassword"));
-		userDTO.setUserNickname(request.getParameter("userNickname"));
+		userDTO.setUserName(request.getParameter("userName"));
 		System.out.println("JOIN 로그 가져온 ID[" + userDTO.getUserEmail() + "]");
 		// 중복이 없으면 회원가입 진행
-		if (userDAO.insert(userDTO)) {
-			request.setAttribute("userEmail", request.getParameter("userEmail"));
+		if (userDAO.selectOne(userDTO) == null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userDTO", userDTO);
 			request.setAttribute("msg", "회원가입 성공!");
 			request.setAttribute("flag", true);
-			request.setAttribute("url", "controller.jsp?action=MYPAGEVIEWPAGE");
+			request.setAttribute("url", "joinNextPage.do");
 		} else {
 			request.setAttribute("msg", "회원가입 실패!");
 			request.setAttribute("flag", false);

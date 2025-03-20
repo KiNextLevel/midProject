@@ -3,20 +3,7 @@ package controller.common;
 import java.util.HashMap;
 import java.util.Map;
 
-import controller.action.AdminAddBlackAction;
-import controller.action.AdminAddBoardAction;
-import controller.action.AdminAddBoardPageAction;
-import controller.action.AdminDeleteBlackAction;
-import controller.action.AdminDeleteBoardAction;
-import controller.action.AdminModifyBoardAction;
-import controller.action.AdminModifyBoardPageAction;
-import controller.action.AdminPaymentListPageAction;
-import controller.action.AdminReportPageAction;
-import controller.action.AdminSendWarningAction;
-import controller.action.BoardPageAction;
-import controller.action.ModifyMyPageAction;
-import controller.action.MyPageAction;
-import controller.action.ParticipantBoardAction;
+import controller.action.*;
 
 
 public class ActionFactory {
@@ -24,21 +11,33 @@ public class ActionFactory {
 	private Map<String, Action>factory;
 	
 	public ActionFactory() {
-		factory = new HashMap<String, Action>(); //command 넣으면 Action 반환
-		factory.put("/adminDeleteBoard", new AdminDeleteBoardAction());
-		factory.put("/adminPaymentListPage", new AdminPaymentListPageAction());
-		factory.put("/adminAddBlack", new AdminAddBlackAction());
-		factory.put("/adminAddBoard", new AdminAddBoardAction());
-		factory.put("/adminDeleteBlack", new AdminDeleteBlackAction());
-		factory.put("/adminReportPage", new AdminReportPageAction());
-		factory.put("/boardPage", new BoardPageAction());
-		factory.put("/modifyMyPage", new ModifyMyPageAction());
-		factory.put("/myPage", new MyPageAction());
-		factory.put("/participantBoard", new ParticipantBoardAction());
-		factory.put("/adminModifyBoardPage", new AdminModifyBoardPageAction());
-		factory.put("/adminModifyBoard", new AdminModifyBoardAction());
-		factory.put("/adminAddBoardPage", new AdminAddBoardPageAction());
-		factory.put("/adminSendWarning", new AdminSendWarningAction());
+		factory = new HashMap<>(); //command 넣으면 Action 반환
+		factory.put("/adminDeleteBoard.do", new AdminDeleteBoardAction());
+		factory.put("/adminPaymentListPage.do", new AdminPaymentListPageAction());
+		factory.put("/adminAddBlack.do", new AdminAddBlackAction());
+		factory.put("/adminAddBoard.do", new AdminAddBoardAction());
+		factory.put("/adminDeleteBlack.do", new AdminDeleteBlackAction());
+		factory.put("/adminReportPage.do", new AdminReportPageAction());
+		factory.put("/boardPage.do", new BoardPageAction());
+		factory.put("/modifyMyPage.do", new ModifyMyPageAction());
+		factory.put("/myPage.do", new MyPageAction());
+		factory.put("/participantBoard.do", new ParticipantBoardAction());
+		factory.put("/adminModifyBoardPage.do", new AdminModifyBoardPageAction());
+		factory.put("/adminModifyBoard.do", new AdminModifyBoardAction());
+		factory.put("/adminAddBoardPage.do", new AdminAddBoardPageAction());
+		factory.put("/adminSendWarning.do", new AdminSendWarningAction());
+		factory.put("loginPage.do", new LoginPageAction());
+		factory.put("login.do", new LoginAction());
+		factory.put("logout.do", new LogoutAction());
+		factory.put("join.do", new JoinAction());
+		factory.put("joinPage.do", new JoinNextAction());
+		factory.put("mainPage.do",new MainPageAction());
+		factory.put("paymentPage.do",new PaymentPageAction());
+		factory.put("payment.do",new PaymentAction());
+		factory.put("productPage.do",new ProductPageAction());
+		factory.put("report.do",new ReportAction());
+		factory.put("reportPage.do",new ReportPageAction());
+		factory.put("userDetailPage.do",new UserDetailPageAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

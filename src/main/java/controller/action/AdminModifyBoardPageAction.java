@@ -3,8 +3,9 @@ package controller.action;
 import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
-import model.dao.BoardDAO;
-import model.dto.BoardDTO;
+import org.example.webapp.model.dao.BoardDAO;
+import org.example.webapp.model.dto.BoardDTO;
+
 
 public class AdminModifyBoardPageAction implements Action{
 

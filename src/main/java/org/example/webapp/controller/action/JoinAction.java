@@ -22,11 +22,11 @@ public class JoinAction implements Action {
 		System.out.println("JOIN 로그 가져온 ID[" + userDTO.getUserEmail() + "]");
 		// 중복이 없으면 회원가입 진행
 		if (userDAO.selectOne(userDTO) == null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("userDTO", userDTO);
-			request.setAttribute("msg", "회원가입 성공!");
+//			HttpSession session = request.getSession();
+			request.setAttribute("userDTO", userDTO);
+			request.setAttribute("msg", "회원가입 진행");
 			request.setAttribute("flag", true);
-			request.setAttribute("url", "joinNextPage.do");
+			request.setAttribute("url", "joinPage.do");
 		} else {
 			request.setAttribute("msg", "회원가입 실패!");
 			request.setAttribute("flag", false);

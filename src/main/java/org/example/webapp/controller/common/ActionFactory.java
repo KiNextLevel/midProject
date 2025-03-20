@@ -14,7 +14,7 @@ public class ActionFactory {
 		factory.put("login.do", new LoginAction());
 		factory.put("logout.do", new LogoutAction());
 		factory.put("join.do", new JoinAction());
-		factory.put("joinNext.do", new JoinNextAction());
+		factory.put("joinPage.do", new JoinNextAction());
 		factory.put("mainPage.do",new MainPageAction());
 		factory.put("paymentPage.do",new PaymentPageAction());
 		factory.put("payment.do",new PaymentAction());

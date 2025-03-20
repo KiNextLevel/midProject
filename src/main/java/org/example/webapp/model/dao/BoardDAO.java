@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class BoardDAO {
-    private String SELECTALL = "SELECT * FROM BOARD";
+    private String SELECTALL = "SELECT * FROM BOARD ORDER BY BOARD_NUM DESC";
     private String SELECTONE = "SELECT * FROM BOARD WHERE BOARD_NUM = ?";
     private String INSERT = "INSERT INTO BOARD (BOARD_TITLE, BOARD_CONTENT, BOARD_LIMIT) VALUES (?, ?, ?)";
     private String UPDATE_TITLE = "UPDATE BOARD SET BOARD_TITLE = ? WHERE BOARD_NUM = ?";

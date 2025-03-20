@@ -11,25 +11,23 @@ public class AdminDeleteBlackAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
 		ActionForward forward = new ActionForward();
-		String user = request.getParameter("reportedUser");
+		String reportedUserEmail = request.getParameter("reportedUser");
 		UserDTO userDTO = new UserDTO();
 		UserDAO userDAO = new UserDAO();
-		userDTO.setUserEmail(user);
-		userDTO = userDAO.selectOne(userDTO);
-		
-		if(userDTO.getUserRole().equals("BLACK")) {
-		userDTO.setUserRole("USER");
-		
-		request.setAttribute("msg", "사용자를 블랙 해제했습니다");
-		request.setAttribute("flag", true);
-		request.setAttribute("url", "/mywebapp/theme/controller.jsp?command=ADMINREPORTPAGE");
 
+		userDTO.setUserEmail(reportedUserEmail);
+		userDTO.setUserRole(0);
+
+		if(userDAO.update(userDTO)) {
+			request.setAttribute("msg", "사용자를 블랙 해제했습니다");
+			request.setAttribute("flag", true);
+			request.setAttribute("url", "adminReportPage.do");
 		}
 		else {
-			request.setAttribute("msg", "블랙리스트에 존재하는 사용자가 아닙니다");
-			request.setAttribute("flag",false);
+			request.setAttribute("msg", "블랙 해제 실패");
+			request.setAttribute("flag", false);
 		}
-		forward.setPath("alert.jsp");
+		forward.setPath("/mywebapp/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 

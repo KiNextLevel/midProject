@@ -19,8 +19,10 @@ public class ModifyMyPageAction implements Action{
 		UserDAO userDAO = new UserDAO();
 		PreferenceDTO preferenceDTO = new PreferenceDTO();
 		PreferenceDAO preferenceDAO = new PreferenceDAO();
+
 		String userEmail = (String)session.getAttribute("userEmail");
-		userDTO = userDAO.selectOne(userEmail);
+		userDTO.setUserEmail(userEmail);
+		userDTO = userDAO.selectOne(userDTO);
 
 		userDTO.setUserDescription(request.getParameter("userDescription"));
 		userDTO.setUserHeight(Integer.parseInt((String)request.getParameter("userHeight")));
@@ -39,15 +41,14 @@ public class ModifyMyPageAction implements Action{
 		if(userDAO.update(userDTO) && preferenceDAO.update(preferenceDTO)) {
 			request.setAttribute("msg", "회원 정보가 수정되었습니다.");
 			request.setAttribute("flag", true);
-			request.setAttribute("url", "/mywebapp/theme/controller.jsp?command=MYPAGEACTION");
+			request.setAttribute("url", "/myPageAction.do");
 		}
 		else {
 			request.setAttribute("msg", "회원 정보 수정 실패했습니다");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("alert.jsp");
+		forward.setPath("/mywebapp/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
-
 }

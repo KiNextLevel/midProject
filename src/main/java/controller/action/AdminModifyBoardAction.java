@@ -15,8 +15,6 @@ public class AdminModifyBoardAction implements Action{
 		BoardDAO boardDAO = new BoardDAO();
 		
 		boardDTO.setBoardNumber(Integer.parseInt((String)request.getAttribute("boardNum")));
-		boardDTO = boardDAO.selectOne(boardDTO);
-		
 		boardDTO.setBoardTitle((String)request.getAttribute("boardTitle"));
 		boardDTO.setBoardContent((String)request.getAttribute("boardContent"));
 		boardDTO.setBoardLimit(Integer.parseInt((String)request.getAttribute("boardLimit")));
@@ -24,13 +22,13 @@ public class AdminModifyBoardAction implements Action{
 		if(boardDAO.update(boardDTO)) {
 			request.setAttribute("msg", "수정 완료");
 			request.setAttribute("flag", true);
-			request.setAttribute("url", "/mywebapp/target-free-admin-template/AdminPaymentListPage.jsp");
+			request.setAttribute("url", "boardPage.do");
 		}
 		else {
 			request.setAttribute("msg", "수정 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("alert.jsp");
+		forward.setPath("/mywebapp/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

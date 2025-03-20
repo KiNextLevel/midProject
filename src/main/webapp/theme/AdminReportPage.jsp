@@ -450,17 +450,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               <div class="goods-data compare-goods clearfix">
                 <div class="table-wrapper-responsive">                
                   <table summary="Product Details">                  
-                    <%
-                      //if(request.getAttribute("REPORTDATAS") == null) {
-                     %>
+
+                    <c:choose>
+                    <c:when test="${empty reported }">
                      <tr>
                       <td colspan="5">신고 목록이 없습니다</td>
                   </tr>
-                  <%
-                   //} else {
-                     //for(ReportDTO data : (ArrayList<ReportDTO>)request.getAttribute("REPORTDATAS")) {
-                  %>
-                  <c:forEach var="data" items="${datas }"></c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                    
+                 <c:forEach var="data" items="${datas }">
                     <tr>
                       <th colspan="3">
                         <h2>신고 한 회원 [이름:이메일${reportDTO.REPORTER_REPORTER}]</h2>
@@ -481,22 +480,22 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         ${reportDTO.REPORT_REASON}
                       </td>
                       <td class="compare-item">
-                        <form action="AddBlackAction.jsp" method="POST">
+                        <form id="sendAlert" method="POST">
   						<input type="hidden" name="reportedUser" value="${reportDTO.REPORTER_REPORTED}">
  						 <input type="hidden" name="reason" value="${reportDTO.REPORT_REASON}">
  						 <select id="WARNING" name="action">
-  							  <option value="WARNING">경고</option>
-  							  <option value="ADDBLACK">블랙리스트 추가</option>
+  							  <option value="sendWarning.do">경고</option>
+  							  <option value="adminAddBlack.do">블랙리스트 추가</option>
   						</select>
  								 <input type="submit" value="보내기">
 						</form>
                       </td>
                     </tr>
+                    </c:forEach>
                     
-                    <%
-                      //  }
-                      //  }
-                     %>
+                    </c:otherwise>
+                    </c:choose>          
+
                      <tr>
                       <th colspan="3">
                         <h2>블랙리스트 ${reportDTO.REPORT_REPORTED}</h2>

@@ -21,7 +21,7 @@ public class AdminModifyBoardPageAction implements Action{
 		if(boardDTO == null) {
 			request.setAttribute("msg", "이벤트를 찾을 수 없습니다");
 			request.setAttribute("flag", false);
-			forward.setPath("mywebapp/theme/alert.jsp");
+			forward.setPath("/mywebapp/theme/alert.jsp");
 			forward.setRedirect(false);
 		}
 		else {

@@ -18,11 +18,13 @@ public class UserDAO {
     // 유저 선호 취향 정보 불러오기
     final String SELCETALL_FAVORITE = "SELECT * FROM PREFERENCE P LEFT JOIN USER U ON P.PREFERENCE_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
     // 참가 중인 이벤트 목록 불러오기
-    final String SELCETALL_EVENT = "SELECT * FROM PARTICIPANT P LEFT JOIN USER U ON P.PARTICIPANT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
+    final String SELECTALL_EVENT = "SELECT * FROM PARTICIPANT P LEFT JOIN USER U ON P.PARTICIPANT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
     // 토큰 잔액 정보 불러오기
-    final String SELCETALL_TOKEN = "SELECT USER_TOEKN FROM USER WHERE USER_EMAIL = ?";
+    final String SELECTALL_TOKEN = "SELECT USER_TOEKN FROM USER WHERE USER_EMAIL = ?";
     // 결제한 상품 목록 불러오기
-    final String SELCETALL_PRODUCT = "SELECT * FROM PAYMENT P LEFT JOIN USER U ON P.PAYMENT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
+    final String SELECTALL_PRODUCT = "SELECT * FROM PAYMENT P LEFT JOIN USER U ON P.PAYMENT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
+    // 블랙리스트 유저 불러오기
+    final String SELECLTALL_BLACK = "SELECT * FROM USER WHERE USER_ROLE = 2";
     // 회원가입(정보 다 입력)
     final String INSERT = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
             "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -51,33 +53,38 @@ public class UserDAO {
     // 참가 중인 이벤트 목록 불러오기
     // 토큰 잔액 정보 불러오기
     // 결제한 상품 목록 불러오기
+    // 블랙리스트 유저 불러오기
     public ArrayList<UserDTO> selectAll(UserDTO userDTO) {
         ArrayList<UserDTO> datas = new ArrayList<>();
         try {
             conn = JDBCUtil.connect();
-            if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELCETALL")) {
+            if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL")) {
                 pstmt = conn.prepareStatement(SELCETALL);
                 pstmt.setString(1, userDTO.getUserEmail());
             }
             // 유저 선호 취향 정보 불러오기
-            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELCETALL_FAVORITE")) {
+            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
                 pstmt = conn.prepareStatement(SELCETALL_FAVORITE);
                 pstmt.setString(1, userDTO.getUserEmail());
             }
             // 참가 중인 이벤트 목록 불러오기
-            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELCETALL_EVENT")) {
-                pstmt = conn.prepareStatement(SELCETALL_EVENT);
+            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_EVENT")) {
+                pstmt = conn.prepareStatement(SELECTALL_EVENT);
                 pstmt.setString(1, userDTO.getUserEmail());
             }
             // 토큰 잔액 정보 불러오기
-            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELCETALL_TOKEN")) {
-                pstmt = conn.prepareStatement(SELCETALL_TOKEN);
+            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_TOKEN")) {
+                pstmt = conn.prepareStatement(SELECTALL_TOKEN);
                 pstmt.setString(1, userDTO.getUserEmail());
             }
             // 결제한 상품 목록 불러오기
-            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELCETALL_PRODUCT")) {
-                pstmt = conn.prepareStatement(SELCETALL_PRODUCT);
+            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_PRODUCT")) {
+                pstmt = conn.prepareStatement(SELECTALL_PRODUCT);
                 pstmt.setString(1, userDTO.getUserEmail());
+            }
+            // 블랙리스트 유저 불러오기
+            else if(userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_BLACK")) {
+                pstmt = conn.prepareStatement(SELECLTALL_BLACK);
             }
             rs = pstmt.executeQuery();
             while (rs.next()) {

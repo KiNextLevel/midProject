@@ -1,9 +1,9 @@
 package controller.action;
 
 
+import controller.common.Action;
+import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
-import org.example.webapp.controller.common.Action;
-import org.example.webapp.controller.common.ActionForward;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
 
@@ -25,7 +25,7 @@ public class JoinAction implements Action {
 			request.setAttribute("userDTO", userDTO);
 			request.setAttribute("msg", "회원가입 진행");
 			request.setAttribute("flag", true);
-			request.setAttribute("url", "joinPage.do");
+			request.setAttribute("url", "JoinPage.jsp");
 		} else {
 			request.setAttribute("msg", "회원가입 실패!");
 			request.setAttribute("flag", false);

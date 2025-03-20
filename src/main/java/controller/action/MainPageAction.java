@@ -1,9 +1,11 @@
 package controller.action;
 
+import controller.common.Action;
+import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.example.webapp.controller.common.Action;
-import org.example.webapp.controller.common.ActionForward;
+import org.example.webapp.model.dao.AlertDAO;
+import org.example.webapp.model.dto.AlertDTO;
 
 import java.util.ArrayList;
 
@@ -16,14 +18,14 @@ public class MainPageAction implements Action {
         //넘어가야하는 정보: 비동기로 처리할듯
         //1. 알람
 	    //2. 메시지(최프)
-	    AlertDAO alerDAO = new AlertDAO();
+	    AlertDAO alertDAO = new AlertDAO();
 	    AlertDTO alertDTO = new AlertDTO();
-	    alertDTO.setUserEmail(session.removeAttribute("userEmail"));
+	    alertDTO.setUserEmail((String) session.getAttribute("userEmail"));
 	    ArrayList<AlertDTO> alertDatas = alertDAO.selectAll(alertDTO);
 	    if (alertDatas != null) {
 	    	//알람이 있음
 	    	for(AlertDTO data : alertDatas) {
-	    		if (!data.getAlertIsWatch()) { // 열람한적 없는 데이터가 있다면
+	    		if (!data.isAlertIsWatch()) { // 열람한적 없는 데이터가 있다면
 	    			request.setAttribute("unread", true);
 	    		}
 	    	}

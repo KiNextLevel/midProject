@@ -68,14 +68,16 @@
 
                 <div class="progress-container">
                     <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">2/3 단계</div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 66%;" aria-valuenow="66"
+                             aria-valuemin="0" aria-valuemax="100">2/3 단계
+                        </div>
                     </div>
                     <div class="text-center mt-2">
                         <small>기본 정보를 입력하셨습니다. 이제 추가 정보를 입력해 주세요.</small>
                     </div>
                 </div>
 
-                <form action="JoinPage.jsp" method="post" id="userInfoForm" enctype="multipart/form-data">
+                <form action="joinPage.do" method="post" id="userInfoForm" enctype="multipart/form-data">
                     <!-- 이전 페이지에서 받아온 정보를 hidden 필드로 저장 -->
                     <input type="hidden" name="userEmail" value="${userDTO.userEmail}">
                     <input type="hidden" name="userPassword" value="${userDTO.userPassword}">
@@ -89,14 +91,16 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nickname" class="required-field">닉네임</label>
-                                    <input type="text" class="form-control" id="nickname" name="userNickname" required maxlength="50">
+                                    <input type="text" class="form-control" id="nickname" name="userNickname" required
+                                           maxlength="50">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phone">전화번호</label>
-                                    <input type="tel" class="form-control" id="phone" name="userPhone" placeholder="010-0000-0000" maxlength="50">
+                                    <input type="tel" class="form-control" id="phone" name="userPhone"
+                                           placeholder="010-0000-0000" maxlength="50">
                                 </div>
                             </div>
                         </div>
@@ -156,7 +160,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="height">키 (cm)</label>
-                                    <input type="number" class="form-control" id="height" name="userHeight" min="140" max="220">
+                                    <input type="number" class="form-control" id="height" name="userHeight" min="140"
+                                           max="220">
                                 </div>
                             </div>
 
@@ -269,7 +274,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="job">직업</label>
-                                    <input type="text" class="form-control" id="job" name="userJob" placeholder="직업을 입력하세요" maxlength="30">
+                                    <input type="text" class="form-control" id="job" name="userJob"
+                                           placeholder="직업을 입력하세요" maxlength="30">
                                 </div>
                             </div>
                         </div>
@@ -287,15 +293,16 @@
 
                         <div class="form-group">
                             <label for="description">자기소개</label>
-                            <textarea class="form-control" id="description" name="userDescription" rows="5" maxlength="255" placeholder="자신에 대해 소개해 주세요. (최대 255자)"></textarea>
+                            <textarea class="form-control" id="description" name="userDescription" rows="5"
+                                      maxlength="255" placeholder="자신에 대해 소개해 주세요. (최대 255자)"></textarea>
                         </div>
                     </div>
 
                     <!-- 제출 버튼 -->
                     <div class="text-center mt-4 mb-5">
-                        <button type="submit" class="btn btn-primary btn-lg btn-next-step">
-                            <i class="fa fa-check-circle"></i> 회원가입 완료하기
-                        </button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-next-step">
+                                <i class="fa fa-check-circle"></i> 회원가입 완료하기
+                            </button>
                     </div>
                 </form>
             </div>
@@ -342,7 +349,8 @@
                 <address class="margin-bottom-40">
                     서울 강남구 테헤란로26길 12<br>
                     (우) 06236 (지번) 역삼동 736-56<br>
-                    Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
+                    Notion: <a
+                        href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
                     Email: <a href="mailto:0414minyoung@naver.com">0414minyoung@naver.com</a>
                 </address>
             </div>
@@ -362,11 +370,11 @@
 <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
 <script src="js/SignUp.js" type="text/javascript"></script>
 <script type="text/javascript">
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
         Layout.init();
 
         // 폼 유효성 검사
-        $('#userInfoForm').submit(function(e) {
+        $('#userInfoForm').submit(function (e) {
             const nickname = $('#nickname').val();
             const gender = $('#gender').val();
             const birth = $('#birth').val();

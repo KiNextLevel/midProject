@@ -1,9 +1,6 @@
 package org.example.webapp.model.common;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JDBCUtil {
     static final String driverName = "com.mysql.cj.jdbc.Driver";
@@ -28,8 +25,31 @@ public class JDBCUtil {
     public static void disconnect(Connection conn, PreparedStatement pstmt){
         // 4. DB 연결 해제
         try {
-            pstmt.close();
-            conn.close();
+            // null 체크 추가
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // ResultSet까지 함께 닫는 메소드 추가
+    public static void disconnect(Connection conn, PreparedStatement pstmt, ResultSet rs){
+        // 4. DB 연결 해제
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pstmt != null) {
+                pstmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,9 +1,9 @@
 package controller.action;
 
+import controller.common.Action;
+import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.example.webapp.controller.common.Action;
-import org.example.webapp.controller.common.ActionForward;
 
 public class LogoutAction implements Action {
 	@Override

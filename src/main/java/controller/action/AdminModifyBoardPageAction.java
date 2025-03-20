@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.example.webapp.model.dao.BoardDAO;
 import org.example.webapp.model.dto.BoardDTO;
 
-
 public class AdminModifyBoardPageAction implements Action{
 
 	@Override

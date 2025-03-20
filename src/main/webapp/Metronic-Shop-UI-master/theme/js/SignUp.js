@@ -1,7 +1,7 @@
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', function() {
     // 전화번호 입력 필드 가져오기
-    const phoneNumberField = document.querySelector('input[name="USER_PHONE"]');
+    const phoneNumberField = document.querySelector('input[name="userPhone"]');
     if(phoneNumberField) {
         // 전화번호 입력 필드에 input 이벤트 리스너 추가
         phoneNumberField.addEventListener('input', function(e) {

@@ -4,12 +4,12 @@ import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import model.dao.BoardDAO;
-import model.dao.ParticipantDAO;
-import model.dao.UserDAO;
-import model.dto.BoardDTO;
-import model.dto.ParticipantDTO;
-import model.dto.UserDTO;
+import org.example.webapp.model.dao.BoardDAO;
+import org.example.webapp.model.dao.ParticipantDAO;
+import org.example.webapp.model.dao.UserDAO;
+import org.example.webapp.model.dto.BoardDTO;
+import org.example.webapp.model.dto.ParticipantDTO;
+import org.example.webapp.model.dto.UserDTO;
 
 public class ParticipantBoardAction implements Action{
 

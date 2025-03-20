@@ -7,6 +7,6 @@
     <display-name>내 웹 애플리케이션</display-name>
 
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>Index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

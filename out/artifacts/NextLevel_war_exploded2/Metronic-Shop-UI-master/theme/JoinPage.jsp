@@ -77,7 +77,7 @@
                     </div>
                 </div>
 
-                <form action="JoinPage.jsp" method="post" id="userInfoForm" enctype="multipart/form-data">
+                <form action="joinPage.do" method="post" id="userInfoForm" enctype="multipart/form-data">
                     <!-- 이전 페이지에서 받아온 정보를 hidden 필드로 저장 -->
                     <input type="hidden" name="userEmail" value="${userDTO.userEmail}">
                     <input type="hidden" name="userPassword" value="${userDTO.userPassword}">
@@ -300,11 +300,9 @@
 
                     <!-- 제출 버튼 -->
                     <div class="text-center mt-4 mb-5">
-                        <form action="joinNext.do" method="POST">
                             <button type="submit" class="btn btn-primary btn-lg btn-next-step">
                                 <i class="fa fa-check-circle"></i> 회원가입 완료하기
                             </button>
-                        </form>
                     </div>
                 </form>
             </div>

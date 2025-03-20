@@ -25,7 +25,7 @@ public class AdminDeleteBoardAction implements Action{
 			request.setAttribute("msg", "이벤트 삭제 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("alert.jsp");
+		forward.setPath("/mywebapp/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

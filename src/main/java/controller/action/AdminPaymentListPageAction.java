@@ -24,7 +24,11 @@ public class AdminPaymentListPageAction implements Action{
 			forward.setRedirect(false);
 		}
 		else {
-			System.out.println("매출페이지 에러"+datas);
+			System.out.println("매출페이지 에러["+datas+"]");
+			request.setAttribute("msg", "매출 페이지 이동 실패");
+			request.setAttribute("flag", false);
+			forward.setPath("/mywebapp/theme/alert.jsp");
+			forward.setRedirect(false);
 		}
 		return forward;
 	}

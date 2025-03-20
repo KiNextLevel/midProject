@@ -26,13 +26,13 @@ public class AdminAddBoardAction implements Action{
 		if(boardDAO.update(boardDTO)) {
 			request.setAttribute("msg", "이벤트 추가 성공");
 			request.setAttribute("flag", true);
-			request.setAttribute("url", "/mywebapp/theme/controller.jsp?command=BOARDPAGE&");
+			request.setAttribute("url", "boardPage.do");
 		}
 		else {
 			request.setAttribute("msg", "이벤트 추가 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("alert.jsp");
+		forward.setPath("/mywebapp/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

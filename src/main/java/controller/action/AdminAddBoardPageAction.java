@@ -12,14 +12,14 @@ public class AdminAddBoardPageAction implements Action{
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("ROLE").equals("ADMIN")) {
-			forward.setPath("/mywebapp/theme/AdminAddBoardPage.jsp");
+		if(Integer.parseInt((String)session.getAttribute("userRole"))==1) {
+			forward.setPath("adminAddBoardPage.do");
 			forward.setRedirect(true);
 		}
 		else {
 			request.setAttribute("msg", "관리자만 가능합니다");
 			request.setAttribute("flag", false);
-			forward.setPath("mywebapp/theme/Alert.jsp");
+			forward.setPath("/mywebapp/theme/alert.jsp");
 			forward.setRedirect(false);
 		}
 		return forward;

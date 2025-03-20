@@ -446,13 +446,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <div class="col-md-9 col-sm-7">
             <h1>이벤트 수정</h1>
             <div class="content-form-page">
-              <form action="controller.jsp" method="POST" role="form" class="form-horizontal form-without-legend">
-              <input type="hidden" name="command" value="ADMINADDBOARD">
+              <form action="adminModifyBoard.do" method="POST" role="form" class="form-horizontal form-without-legend">
               
                 <div class="form-group">
                   <label class="col-lg-2 control-label" for="first-name">제목<span class="require">*</span></label>
                   <div class="col-lg-8">
-                    <input type="text" id="first-name" name="boardTitle" class="form-control" value="${data.boardTitle }">
+                    <input type="text" id="first-name" name="boardTitle" class="form-control" value="${data.boardTitle }ㅎㅇㅎㅇㅎㅇㅎㅇㅎ">
                   </div>
                 </div>
 
@@ -472,7 +471,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
                 <div class="row">
                   <div class="col-lg-8 col-md-offset-2 padding-left-0 padding-top-20">
-                    <button class="btn btn-primary" type="submit">추가하기</button>
+                    <button class="btn btn-primary" type="submit">변경하기</button>
                   </div>
                 </div>
               </form>

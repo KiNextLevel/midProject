@@ -19,9 +19,10 @@ public class MyPageAction implements Action{
 		UserDAO userDAO = new UserDAO();
 		userDTO.setUserEmail(userEmail);
 		userDTO = userDAO.selectOne(userDTO);
+		
 		if(userDTO != null) {
-			request.setAttribute("userDTO", userDTO);
-			forward.setPath("/mywebapp/theme/UserDetailPage.jsp");
+			request.setAttribute("data", userDTO);
+			forward.setPath("userDetailPage.do");
 			forward.setRedirect(false);
 		}
 		else {

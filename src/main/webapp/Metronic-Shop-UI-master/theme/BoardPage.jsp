@@ -472,12 +472,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   			<div class="panel panel-default">
                                <div class="panel-heading">
                                   <h4 class="panel-title">											<!-- href를 id랑 맞춰야 토글이 맞아 -->
-                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#${data.boardNumber}">
+                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#${data.boardTitle}">
                                      ${data.boardTitle}
+                                     ${data.boardNumber}                                     
                                      </a>
                                   </h4>
                                </div>
-                               <div id="collapse${data.boardNumber}" class="panel-collapse collapse">
+                               <div id="collapse${data.boardTitle}" class="panel-collapse collapse">
                                   <div class="panel-body">
                                   ${data.boardContent}
                                   <span style="font-size: 14px; color: #555;">현재 참가 인원 ${data.boardLimit} / ${data.boardLimit}</span>

@@ -235,7 +235,7 @@ public class UserDAO {
             }
             else if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_ROLE")){
                 pstmt = conn.prepareStatement(UPDATE_ROLE);
-                pstmt.setString(1, userDTO.getUserRole());
+                pstmt.setInt(1, userDTO.getUserRole());
                 pstmt.setString(2, userDTO.getUserEmail());
             }
             int result = pstmt.executeUpdate();

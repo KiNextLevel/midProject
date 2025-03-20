@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import controller.common.Action;
 import controller.common.ActionFactory;
 import controller.common.ActionForward;
@@ -31,7 +32,7 @@ public class FrontController extends HttpServlet {
     private void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String command = request.getRequestURI();
     	System.out.println(" CTRL 로그 : command ["+command+"]");
-    	command = command.replace("/Metronic-Shop-UI-master/theme/", "");
+    	command = command.replace("/mywebapp/Metronic-Shop-UI-master/theme/", "");
     	System.out.println(" CTRL 로그 : command ["+command+"]");
     	
     	Action action = factory.getAction(command); // 팩토리 패턴
@@ -60,3 +61,4 @@ public class FrontController extends HttpServlet {
 		doAction(request, response);
 	}
 }
+

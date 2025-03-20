@@ -24,7 +24,7 @@ public class UserDAO {
     // 결제한 상품 목록 불러오기
     final String SELECTALL_PRODUCT = "SELECT * FROM PAYMENT P LEFT JOIN USER U ON P.PAYMENT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
     // 블랙리스트 유저 불러오기
-    final String SELECLTALL_BLACK = "SELECT * FROM USER WHERE USER_ROLE = 2";
+    final String SELECTALL_BLACK = "SELECT * FROM USER WHERE USER_ROLE = 2";
     // 회원가입(정보 다 입력)
     final String INSERT = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
             "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -84,7 +84,7 @@ public class UserDAO {
             }
             // 블랙리스트 유저 불러오기
             else if(userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_BLACK")) {
-                pstmt = conn.prepareStatement(SELECLTALL_BLACK);
+                pstmt = conn.prepareStatement(SELECTALL_BLACK);
             }
             rs = pstmt.executeQuery();
             while (rs.next()) {

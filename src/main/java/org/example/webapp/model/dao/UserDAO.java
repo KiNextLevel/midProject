@@ -213,6 +213,7 @@ public class UserDAO {
     public boolean update(UserDTO userDTO) {
         try {
             conn = JDBCUtil.connect();
+            // 회원정보 변경
             if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE")){
                 pstmt = conn.prepareStatement(UPDATE);
                 pstmt.setString(1, userDTO.getUserNickname());
@@ -233,6 +234,7 @@ public class UserDAO {
                 pstmt.setString(16, userDTO.getUserName());
                 pstmt.setString(17, userDTO.getUserEmail());
             }
+            // ROLE 변경
             else if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_ROLE")){
                 pstmt = conn.prepareStatement(UPDATE_ROLE);
                 pstmt.setInt(1, userDTO.getUserRole());

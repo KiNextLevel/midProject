@@ -8,6 +8,7 @@
     <title>마이페이지 | Next Level</title>
     <link href="css/MyPage.css" rel="stylesheet">
     <link href="css/ProductPage.css" rel="stylesheet">
+    <link href="css/MyPage2.css" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -81,7 +82,7 @@
     <div class="container">
         <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
                                                          alt="Metronic Shop UI"></a>
-        
+
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
         <!-- BEGIN TOP BAR MENU -->
@@ -159,88 +160,6 @@
                     </div>
 
 
-                    <style>
-                        /* 정보 카드 스타일 */
-                        .info-card {
-                            background: #fff;
-                            border-radius: 8px;
-                            padding: 25px;
-                            margin-bottom: 30px;
-                            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-                            position: relative;
-                        }
-
-                        .info-card h3 {
-                            font-size: 20px;
-                            font-weight: 600;
-                            margin-bottom: 20px;
-                            color: #333;
-                            border-bottom: 2px solid #e94d1c;
-                            padding-bottom: 10px;
-                            display: inline-block;
-                        }
-
-                        .info-list {
-                            list-style: none;
-                            padding: 0;
-                            margin: 0;
-                        }
-
-                        .info-item {
-                            display: flex;
-                            align-items: center;
-                            margin-bottom: 15px;
-                            padding-bottom: 15px;
-                            border-bottom: 1px solid #f0f0f0;
-                        }
-
-                        .info-item:last-child {
-                            margin-bottom: 0;
-                            padding-bottom: 0;
-                            border-bottom: none;
-                        }
-
-                        .info-icon {
-                            color: #e94d1c;
-                            font-size: 18px;
-                            width: 30px;
-                            text-align: center;
-                            margin-right: 15px;
-                        }
-
-                        .info-label {
-                            font-weight: 600;
-                            color: #555;
-                            width: 100px;
-                        }
-
-                        .info-value {
-                            color: #333;
-                            flex: 1;
-                        }
-
-                        /* 선호 취향 태그 스타일 */
-                        .preference-tags {
-                            display: flex;
-                            flex-wrap: wrap;
-                            gap: 10px;
-                        }
-
-                        .preference-tag {
-                            background-color: #f5f5f5;
-                            border-radius: 20px;
-                            padding: 5px 15px;
-                            font-size: 14px;
-                            color: #333;
-                            display: inline-flex;
-                            align-items: center;
-                            gap: 5px;
-                        }
-
-                        .preference-tag i {
-                            color: #e94d1c;
-                        }
-                    </style>
                     <!-- 기본 정보 카드 -->
                     <div class="info-card">
                         <h3>기본 정보</h3>

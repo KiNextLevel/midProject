@@ -7,6 +7,7 @@
 <head>
     <meta charset="utf-8">
     <title>사용자 상세 페이지${userDTO.userEmail}</title>
+    <link href="css/UserDetail.css" rel="stylesheet">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -24,109 +25,7 @@
 
     <link rel="shortcut icon" href="favicon.ico">
     <style>
-        .top-bar-right {
-            float: right;
-            margin-right: 20px;
-            margin-top: 10px;
-        }
 
-        .top-bar-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .top-bar-list li {
-            display: inline-block;
-            margin-left: 10px;
-        }
-
-        @media (max-width: 767px) {
-            .top-bar-right {
-                margin-top: 0;
-                margin-bottom: 10px;
-                text-align: center;
-                float: none;
-            }
-        }
-
-        /* 결제 섹션 스타일 수정 */
-        .payment-section {
-            margin-bottom: 20px;
-            position: relative;
-            background-color: #f5f5f5;
-            padding: 15px;
-        }
-
-        /* 토큰 섹션 레이아웃 */
-        .token-section {
-            display: flex;
-        }
-
-        .token-info {
-            flex: 7;
-        }
-
-        .token-options {
-            flex: 3;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .option-box {
-            background-color: #f8d7d7;
-            padding: 15px;
-            margin-bottom: 10px;
-        }
-
-        /* 프리미엄 섹션 레이아웃 */
-        .premium-section {
-            min-height: 120px;
-        }
-
-        /* 입력 필드 영역 스타일 */
-        .input-area {
-            margin-bottom: 15px;
-        }
-
-        /* 결제 버튼 스타일 */
-        .payment-button {
-            width: 150px;
-            padding: 10px 0;
-            font-weight: bold;
-            background-color: #ff00ff;
-            border-color: #ff00ff;
-            color: white;
-            margin-top: 15px;
-        }
-
-        .premium-button {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-        }
-
-        /* 구분선 스타일 */
-        .divider {
-            margin: 30px 0;
-            border-top: 1px solid #eee;
-        }
-
-        /* Header Styles */
-        .header .header-navigation {
-            float: right;
-            margin-top: 10px;
-        }
-
-        .header .header-navigation .menu-search {
-            float: right;
-            padding-left: 20px;
-        }
-
-        .header .header-navigation .menu-search .search-box {
-            right: 0;
-            left: auto;
-        }
     </style>
 
     <!-- Fonts START -->
@@ -207,26 +106,6 @@
     <div class="container">
         <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
                                                          alt="Metronic Shop UI"></a>
-
-        <!-- BEGIN TOP SEARCH -->
-        <div class="header-navigation">
-            <ul>
-                <li class="menu-search">
-                    <i class="fa fa-search search-btn"></i>
-                    <div class="search-box">
-                        <form action="#">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search" class="form-control">
-                                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                  </span>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <!-- END TOP SEARCH -->
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -437,42 +316,6 @@
 <script src="assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
 
 <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function () {
-        Layout.init();
-        Layout.initOWL();
-        Layout.initTwitter();
-        Layout.initImageZoom();
-        Layout.initTouchspin();
-        Layout.initUniform();
-    });
-
-    jQuery(document).ready(function() {
-        // 기존 코드 유지
-        Layout.init();
-        Layout.initOWL();
-        Layout.initTwitter();
-        Layout.initImageZoom();
-        Layout.initTouchspin();
-        Layout.initUniform();
-
-        // 검색 버튼 토글 기능 추가
-        $('.search-btn').click(function(e) {
-            e.preventDefault(); // 기본 동작 방지
-            $('.search-box').toggle(); // 검색창 토글
-        });
-
-        // 검색 폼 제출 처리
-        $('.search-box form').submit(function(e) {
-            e.preventDefault(); // 기본 제출 동작 방지
-            var searchQuery = $(this).find('input[type="text"]').val();
-            // 여기에 검색 처리 로직 추가
-            console.log('검색어: ' + searchQuery);
-            // 실제 검색 처리를 위한 AJAX 요청 등을 추가할 수 있습니다.
-        });
-    });
-
-</script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

@@ -81,9 +81,8 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="MyPageView.jsp">My Account</a></li>
-                    <li><a href="shop-checkout.html">Checkout</a></li>
-                    <li><a href="page-login.html">Log In</a></li>
+                    <li><a href="MyPage.jsp">마이페이지</a></li>
+                    <li><a href="">로그아웃</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
@@ -98,25 +97,6 @@
         <a class="site-logo" href="MainPage.jsp"><img src="assets/corporate/img/logos/3.png"
                                                          alt="Metronic Shop UI"></a>
 
-        <!-- BEGIN TOP SEARCH -->
-        <div class="header-navigation">
-            <ul>
-                <li class="menu-search">
-                    <i class="fa fa-search search-btn"></i>
-                    <div class="search-box">
-                        <form action="#">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search" class="form-control">
-                                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                  </span>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <!-- END TOP SEARCH -->
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -281,39 +261,6 @@
 </div>
 </body>
 <!-- END BODY -->
-<script>
-    // 제출하기 버튼 클릭 이벤트 핸들러
-    $('button[value="report-submit"]').click(function (event) {
-        // 신고 사유 체크박스 선택 여부 확인
-        var reportReasonChecked = $('input[name="REPORT_REASON"]:checked').length > 0;
-
-        // 동의 체크박스 선택 여부 확인
-        var agreeChecked = $('#AGREE').is(':checked');
-
-        // 필수 조건 충족 여부 확인
-        if (!reportReasonChecked || !agreeChecked) {
-            alert('신고 사유를 선택하고 동의 체크박스를 선택해 주세요.'); // 알림 메시지 표시
-            return; // 함수 종료
-        }
-
-        // 비동기 요청 보내기
-        $.ajax({
-            type: 'POST',
-            url: 'report-submit.php', // 실제 제출 처리 URL
-            data: {
-                reportReason: $('input[name="REPORT_REASON"]:checked').val(),
-                reportDescription: $('textarea[name="REPORT_DESCRIPTION"]').val()
-            },
-            success: function (response) {
-                alert('신고가 접수되었습니다.'); // 성공 메시지 표시
-                // 추가 처리 로직 작성
-            },
-            error: function (xhr, status, error) {
-                alert('신고 제출에 실패했습니다. 다시 시도해 주세요.'); // 실패 메시지 표시
-                // 오류 처리 로직 작성
-            }
-        });
-    });
-</script>
+<script src="js/Submit.js"></script>
 
 </html>

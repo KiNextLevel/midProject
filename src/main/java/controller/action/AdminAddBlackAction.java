@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
 
-
 public class AdminAddBlackAction implements Action{
 
 	@Override

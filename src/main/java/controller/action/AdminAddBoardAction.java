@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.BoardDAO;
 import org.example.webapp.model.dto.BoardDTO;
 
-
 public class AdminAddBoardAction implements Action{
 
 	@Override

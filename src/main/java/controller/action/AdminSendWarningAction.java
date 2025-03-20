@@ -3,7 +3,9 @@ package controller.action;
 import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
+import org.example.webapp.model.dao.AlertDAO;
 import org.example.webapp.model.dao.UserDAO;
+import org.example.webapp.model.dto.AlertDTO;
 import org.example.webapp.model.dto.UserDTO;
 
 public class AdminSendWarningAction implements Action{

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
-import model.dao.PaymentDAO;
-import model.dto.PaymentDTO;
+import org.example.webapp.model.dao.PaymentDAO;
+import org.example.webapp.model.dto.PaymentDTO;
 
 public class AdminPaymentListPageAction implements Action{
 

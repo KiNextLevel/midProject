@@ -1,11 +1,12 @@
 package controller.action;
 
+
+import controller.common.Action;
+import controller.common.ActionForward;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
-import org.example.webapp.controller.common.Action;
-import org.example.webapp.controller.common.ActionForward;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
 
@@ -138,7 +139,7 @@ public class JoinNextAction implements Action {
     }
 
     // 파일 업로드 처리 메서드
-    private String processFileUpload(HttpServletRequest request) throws IOException, ServletException {
+    private String processFileUpload(HttpServletRequest request) throws Exception {
         String filePathForDB = null;
 
         try {

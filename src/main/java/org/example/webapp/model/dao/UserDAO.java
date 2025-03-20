@@ -108,31 +108,54 @@ public class UserDAO {
         UserDTO data = null;
         try {
             conn = JDBCUtil.connect();
-            // 아이디 중복 검사
-            if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE_CHECK")) {
-                pstmt = conn.prepareStatement(SELECTONE_CHECK);
-                pstmt.setString(1, userDTO.getUserEmail());
+
+            // 조건 확인 및 적절한 쿼리 준비
+            if (userDTO.getCondition() != null) {
+                if (userDTO.getCondition().equals("SELECTONE_CHECK")) {
+                    pstmt = conn.prepareStatement(SELECTONE_CHECK);
+                    pstmt.setString(1, userDTO.getUserEmail());
+                }
+                else if (userDTO.getCondition().equals("SELECTONE")) {
+                    pstmt = conn.prepareStatement(SELECTONE);
+                    pstmt.setString(1, userDTO.getUserEmail());
+                    pstmt.setString(2, userDTO.getUserPassword());
+                }
+                else {
+                    // 알 수 없는 조건인 경우 로그 출력 및 null 반환
+                    System.out.println("알 수 없는 조건: " + userDTO.getCondition());
+                    return null;
+                }
+
+                // 쿼리 실행 및 결과 처리
+                rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    data = new UserDTO();
+                    data.setUserEmail(rs.getString("USER_EMAIL"));
+                    data.setUserPassword(rs.getString("USER_PASSWORD"));
+                }
             }
-            // 로그인
-            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE")) {
-                pstmt = conn.prepareStatement(SELECTONE);
-                pstmt.setString(1, userDTO.getUserEmail());
-                pstmt.setString(2, userDTO.getUserPassword());
+            else {
+                // 조건이 null인 경우 로그 출력
+                System.out.println("조건이 null입니다.");
             }
-            rs = pstmt.executeQuery();
-            if (rs.next()) {
-                data = new UserDTO();
-                data.setUserEmail(rs.getString("USER_EMAIL"));
-                data.setUserPassword(rs.getString("USER_PASSWORD"));
-            }
+
             return data;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         } finally {
+            // 리소스 정리
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
             JDBCUtil.disconnect(conn, pstmt);
         }
     }
+
 
     // 회원가입
     public boolean insert(UserDTO userDTO) {

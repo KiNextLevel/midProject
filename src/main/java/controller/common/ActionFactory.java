@@ -7,25 +7,25 @@ import controller.action.*;
 
 
 public class ActionFactory {
-	
+
 	private Map<String, Action>factory;
 	
 	public ActionFactory() {
-		factory = new HashMap<>(); //command 넣으면 Action 반환
-		factory.put("/adminDeleteBoard.do", new AdminDeleteBoardAction());
-		factory.put("/adminPaymentListPage.do", new AdminPaymentListPageAction());
-		factory.put("/adminAddBlack.do", new AdminAddBlackAction());
-		factory.put("/adminAddBoard.do", new AdminAddBoardAction());
-		factory.put("/adminDeleteBlack.do", new AdminDeleteBlackAction());
-		factory.put("/adminReportPage.do", new AdminReportPageAction());
-		factory.put("/boardPage.do", new BoardPageAction());
-		factory.put("/modifyMyPage.do", new ModifyMyPageAction());
-		factory.put("/myPage.do", new MyPageAction());
-		factory.put("/participantBoard.do", new ParticipantBoardAction());
-		factory.put("/adminModifyBoardPage.do", new AdminModifyBoardPageAction());
-		factory.put("/adminModifyBoard.do", new AdminModifyBoardAction());
-		factory.put("/adminAddBoardPage.do", new AdminAddBoardPageAction());
-		factory.put("/adminSendWarning.do", new AdminSendWarningAction());
+		factory = new HashMap<String, Action>(); //command 넣으면 Action 반환
+		factory.put("adminDeleteBoard.do", new AdminDeleteBoardAction());
+		factory.put("adminPaymentListPage.do", new AdminPaymentListPageAction());
+		factory.put("adminAddBlack.do", new AdminAddBlackAction());
+		factory.put("adminAddBoard.do", new AdminAddBoardAction());
+		factory.put("adminDeleteBlack.do", new AdminDeleteBlackAction());
+		factory.put("adminReportPage.do", new AdminReportPageAction());
+		factory.put("boardPage.do", new BoardPageAction());
+		factory.put("modifyMyPage.do", new ModifyMyPageAction());
+		factory.put("myPage.do", new MyPageAction());
+		factory.put("participantBoard.do", new ParticipantBoardAction());
+		factory.put("adminModifyBoardPage.do", new AdminModifyBoardPageAction());
+		factory.put("adminModifyBoard.do", new AdminModifyBoardAction());
+		factory.put("adminAddBoardPage.do", new AdminAddBoardPageAction());
+		factory.put("adminSendWarning.do", new AdminSendWarningAction());
 		factory.put("loginPage.do", new LoginPageAction());
 		factory.put("login.do", new LoginAction());
 		factory.put("logout.do", new LogoutAction());

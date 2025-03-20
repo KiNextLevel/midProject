@@ -177,7 +177,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
     <div class="title-wrapper">
       <div class="container"><div class="container-inner">
-      <a href="eventPage.do">
+      <a href="boardDetailPage.do">
         <h1><span>이벤트!</span></h1>
         <em>온/오프라인 이벤트 참여하기</em>
       </a>

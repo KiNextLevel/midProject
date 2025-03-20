@@ -4,12 +4,18 @@ import java.io.IOException;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("*.do")
+@MultipartConfig(
+		fileSizeThreshold = 1024 * 1024, // 1MB
+		maxFileSize = 5 * 1024 * 1024,   // 5MB
+		maxRequestSize = 10 * 1024 * 1024 // 10MB
+)
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ActionFactory factory;

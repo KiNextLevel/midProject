@@ -2,6 +2,9 @@ package model.dao;
 
 import model.dto.StyleDTO;
 
+
+// 보류 !!!(아직 페이지 없음)
+
 public class StyleDAO {
 	
 	

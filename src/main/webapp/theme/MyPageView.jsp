@@ -1,747 +1,644 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- <%@ page import="org.example.webapp.model.dto.UserDTO" %> --%>
+
 <!DOCTYPE html>
-<!--정보 보기 페이지
-Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-Version: 1.0.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
 <html lang="kr">
-<!--<![endif]-->
-
-<!-- Head BEGIN -->
 <head>
-  <style>
+    <meta charset="utf-8" />
+    <title>마이페이지 | Next Level</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- 메타 태그 -->
+    <meta content="Next Level - 마이페이지" name="description" />
+    <meta content="dating, social, next level" name="keywords" />
+    <meta content="Next Level" name="author" />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- 폰트 -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <!-- 글로벌 스타일 -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- 테마 스타일 -->
+    <link href="assets/pages/css/components.css" rel="stylesheet" />
+    <link href="assets/corporate/css/style.css" rel="stylesheet" />
+    <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css" />
+    <link href="assets/corporate/css/style-responsive.css" rel="stylesheet" />
+    <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color" />
+    <link href="assets/corporate/css/custom.css" rel="stylesheet" />
+
+    <style>/* 전체 레이아웃 스타일 */
+    body {
+        background-color: #f9f9f9;
+    }
+
+    .main-content {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    /* 사이드바 스타일 */
+    .sidebar-menu {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar-menu .list-group-item {
+        border-left: none;
+        border-right: none;
+        padding: 12px 20px;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-menu .list-group-item:first-child {
+        border-top: none;
+    }
+
+    .sidebar-menu .list-group-item:last-child {
+        border-bottom: none;
+    }
+
+    .sidebar-menu .list-group-item i {
+        margin-right: 10px;
+        color: #e94d1c;
+    }
+
+    .sidebar-menu .list-group-item.active {
+        background-color: #e94d1c;
+        border-color: #e94d1c;
+    }
+
+    .sidebar-menu .list-group-item.active i {
+        color: #fff;
+    }
+
+    .sidebar-menu .list-group-item:hover {
+        background-color: #f5f5f5;
+    }
+
+    .sidebar-menu .list-group-item.active:hover {
+        background-color: #d43e0a;
+    }
+
     /* 파일 업로드 input 숨기기 */
-#profileUpload {
-    display: none;
-}
-  </style>
+    #profileUpload {
+        display: none;
+    }
 
+    /* 프로필 섹션 스타일 - 가로 배치로 수정 */
+    .profile-container {
+        background: linear-gradient(135deg, #f9f9f9, #f5f5f5);
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        position: relative;
+    }
 
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    .profile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
 
-  <meta charset="utf-8">
-  <title>My Account | Metronic Shop UI</title>
+    .profile-left {
+        display: flex;
+        align-items: center;
+    }
 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    /* 프로필 이미지 컨테이너 스타일 수정 */
+    .profile-image-container {
+        position: relative;
+        margin-right: 20px;
+        cursor: pointer;
+    }
 
-  <meta content="Metronic Shop UI description" name="description">
-  <meta content="Metronic Shop UI keywords" name="keywords">
-  <meta content="keenthemes" name="author">
+    #profileImage {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fff;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
 
-  <meta property="og:site_name" content="-CUSTOMER VALUE-">
-  <meta property="og:title" content="-CUSTOMER VALUE-">
-  <meta property="og:description" content="-CUSTOMER VALUE-">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
-  <meta property="og:url" content="-CUSTOMER VALUE-">
+    /* 오버레이 효과 추가 */
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
 
-  <link rel="shortcut icon" href="favicon.ico">
+    .image-overlay i {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
 
-  <!-- Fonts START -->
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"> 
-  <!-- Fonts END -->
+    .image-overlay span {
+        font-size: 12px;
+        font-weight: 500;
+    }
 
-  <!-- Global styles START -->          
-  <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Global styles END --> 
-   
-  <!-- Page level plugin styles START -->
-  <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-  <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-  <!-- Page level plugin styles END -->
+    /* 호버 시 오버레이 표시 */
+    .profile-image-container:hover .image-overlay {
+        opacity: 1;
+    }
 
-  <!-- Theme styles START -->
-  <link href="assets/pages/css/components.css" rel="stylesheet">
-  <link href="assets/corporate/css/style.css" rel="stylesheet">
-  <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-  <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-  <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-  <link href="assets/corporate/css/custom.css" rel="stylesheet">
-  <!-- Theme styles END -->
+    .profile-info {
+        text-align: left;
+    }
+
+    .profile-name {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0 0 8px;
+        color: #333;
+    }
+
+    .profile-role {
+        display: inline-block;
+        background-color: #e94d1c;
+        color: #fff;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .profile-actions {
+        margin-left: auto;
+    }
+
+    .profile-actions .btn {
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 반응형 디자인을 위한 미디어 쿼리 */
+    @media (max-width: 767px) {
+        .profile-header {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-left {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-image-container {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+
+        .profile-info {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-actions {
+            margin-left: 0;
+        }
+    }
+
+    /* 정보 카드 스타일 */
+    .info-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        position: relative;
+    }
+
+    .info-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #333;
+        border-bottom: 2px solid #e94d1c;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+    .info-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .info-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .info-icon {
+        color: #e94d1c;
+        font-size: 18px;
+        width: 30px;
+        text-align: center;
+        margin-right: 15px;
+    }
+
+    .info-label {
+        font-weight: 600;
+        color: #555;
+        width: 100px;
+    }
+
+    .info-value {
+        color: #333;
+        flex: 1;
+    }
+
+    /* 선호 취향 태그 스타일 */
+    .preference-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .preference-tag {
+        background-color: #f5f5f5;
+        border-radius: 20px;
+        padding: 5px 15px;
+        font-size: 14px;
+        color: #333;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .preference-tag i {
+        color: #e94d1c;
+    }
+
+    </style>
 </head>
-<!-- Head END -->
-
-<!-- Body BEGIN -->
 <body class="ecommerce">
-    <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel hidden-sm">
-      <div class="color-mode-icons icon-color"></div>
-      <div class="color-mode-icons icon-color-close"></div>
-      <div class="color-mode">
-        <p>THEME COLOR</p>
-        <ul class="inline">
-          <li class="color-red current color-default" data-style="red"></li>
-          <li class="color-blue" data-style="blue"></li>
-          <li class="color-green" data-style="green"></li>
-          <li class="color-orange" data-style="orange"></li>
-          <li class="color-gray" data-style="gray"></li>
-          <li class="color-turquoise" data-style="turquoise"></li>
-        </ul>
-      </div>
-    </div>
-    <!-- END BEGIN STYLE CUSTOMIZER --> 
+<!-- 헤더 부분은 include로 처리하거나 그대로 유지 -->
 
-    <!-- BEGIN TOP BAR -->
-    <div class="pre-header">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN TOP BAR LEFT PART -->
-                <div class="col-md-6 col-sm-6 additional-shop-info">
-                    <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
-                        <!-- BEGIN CURRENCIES -->
-                        <li class="shop-currencies">
-                            <a href="javascript:void(0);">€</a>
-                            <a href="javascript:void(0);">£</a>
-                            <a href="javascript:void(0);" class="current">$</a>
-                        </li>
-                        <!-- END CURRENCIES -->
-                        <!-- BEGIN LANGS -->
-                        <li class="langs-block">
-                            <a href="javascript:void(0);" class="current">English </a>
-                            <div class="langs-block-others-wrapper"><div class="langs-block-others">
-                              <a href="javascript:void(0);">French</a>
-                              <a href="javascript:void(0);">Germany</a>
-                              <a href="javascript:void(0);">Turkish</a>
-                            </div></div>
-                        </li>
-                        <!-- END LANGS -->
-                    </ul>
-                </div>
-                <!-- END TOP BAR LEFT PART -->
-                <!-- BEGIN TOP BAR MENU -->
-                <div class="col-md-6 col-sm-6 additional-nav">
-                    <ul class="list-unstyled list-inline pull-right">
-                        <li><a href="shop-account.html">My Account</a></li>
-                        <li><a href="shop-wishlist.html">My Wishlist</a></li>
-                        <li><a href="shop-checkout.html">Checkout</a></li>
-                        <li><a href="page-login.html">Log In</a></li>
-                    </ul>
-                </div>
-                <!-- END TOP BAR MENU -->
-            </div>
-        </div>        
-    </div>
-    <!-- END TOP BAR -->
-
-    <!-- BEGIN HEADER -->
-    <div class="header">
-      <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
-
-        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-        <!-- BEGIN CART -->
-        <div class="top-cart-block">
-          <div class="top-cart-info">
-            <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
-            <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
-          </div>
-          <i class="fa fa-shopping-cart"></i>
-                        
-          <div class="top-cart-content-wrapper">
-            <div class="top-cart-content">
-              <ul class="scroller" style="height: 250px;">
-                <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-              </ul>
-              <div class="text-right">
-                <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
-                <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
-              </div>
-            </div>
-          </div>            
-        </div>
-        <!--END CART -->
-
-        <!-- BEGIN NAVIGATION -->
-        <div class="header-navigation">
-          <ul>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                Woman 
-                
-              </a>
-                
-              <!-- BEGIN DROPDOWN MENU -->
-              <ul class="dropdown-menu">
-                <li class="dropdown-submenu">
-                  <a href="shop-product-list.html">Hi Tops <i class="fa fa-angle-right"></i></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="shop-product-list.html">Second Level Link</a></li>
-                    <li><a href="shop-product-list.html">Second Level Link</a></li>
-                    <li class="dropdown-submenu">
-                      <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        Second Level Link 
-                        <i class="fa fa-angle-right"></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a href="shop-product-list.html">Third Level Link</a></li>
-                        <li><a href="shop-product-list.html">Third Level Link</a></li>
-                        <li><a href="shop-product-list.html">Third Level Link</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="shop-product-list.html">Running Shoes</a></li>
-                <li><a href="shop-product-list.html">Jackets and Coats</a></li>
-              </ul>
-              <!-- END DROPDOWN MENU -->
-            </li>
-            <li class="dropdown dropdown-megamenu">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                Man
-                
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <div class="header-navigation-content">
-                    <div class="row">
-                      <div class="col-md-4 header-navigation-col">
-                        <h4>Footwear</h4>
-                        <ul>
-                          <li><a href="shop-product-list.html">Astro Trainers</a></li>
-                          <li><a href="shop-product-list.html">Basketball Shoes</a></li>
-                          <li><a href="shop-product-list.html">Boots</a></li>
-                          <li><a href="shop-product-list.html">Canvas Shoes</a></li>
-                          <li><a href="shop-product-list.html">Football Boots</a></li>
-                          <li><a href="shop-product-list.html">Golf Shoes</a></li>
-                          <li><a href="shop-product-list.html">Hi Tops</a></li>
-                          <li><a href="shop-product-list.html">Indoor and Court Trainers</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-4 header-navigation-col">
-                        <h4>Clothing</h4>
-                        <ul>
-                          <li><a href="shop-product-list.html">Base Layer</a></li>
-                          <li><a href="shop-product-list.html">Character</a></li>
-                          <li><a href="shop-product-list.html">Chinos</a></li>
-                          <li><a href="shop-product-list.html">Combats</a></li>
-                          <li><a href="shop-product-list.html">Cricket Clothing</a></li>
-                          <li><a href="shop-product-list.html">Fleeces</a></li>
-                          <li><a href="shop-product-list.html">Gilets</a></li>
-                          <li><a href="shop-product-list.html">Golf Tops</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-4 header-navigation-col">
-                        <h4>Accessories</h4>
-                        <ul>
-                          <li><a href="shop-product-list.html">Belts</a></li>
-                          <li><a href="shop-product-list.html">Caps</a></li>
-                          <li><a href="shop-product-list.html">Gloves, Hats and Scarves</a></li>
-                        </ul>
-
-                        <h4>Clearance</h4>
-                        <ul>
-                          <li><a href="shop-product-list.html">Jackets</a></li>
-                          <li><a href="shop-product-list.html">Bottoms</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-12 nav-brands">
-                        <ul>
-                          <li><a href="shop-product-list.html"><img title="esprit" alt="esprit" src="assets/pages/img/brands/esprit.jpg"></a></li>
-                          <li><a href="shop-product-list.html"><img title="gap" alt="gap" src="assets/pages/img/brands/gap.jpg"></a></li>
-                          <li><a href="shop-product-list.html"><img title="next" alt="next" src="assets/pages/img/brands/next.jpg"></a></li>
-                          <li><a href="shop-product-list.html"><img title="puma" alt="puma" src="assets/pages/img/brands/puma.jpg"></a></li>
-                          <li><a href="shop-product-list.html"><img title="zara" alt="zara" src="assets/pages/img/brands/zara.jpg"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li><a href="shop-item.html">Kids</a></li>
-            <li class="dropdown dropdown100 nav-catalogue">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                New
-                
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <div class="header-navigation-content">
-                    <div class="row">
-                      <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="product-item">
-                          <div class="pi-img-wrapper">
-                            <a href="shop-item.html"><img src="assets/pages/img/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
-                          </div>
-                          <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                          <div class="pi-price">$29.00</div>
-                          <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="product-item">
-                          <div class="pi-img-wrapper">
-                            <a href="shop-item.html"><img src="assets/pages/img/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
-                          </div>
-                          <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                          <div class="pi-price">$29.00</div>
-                          <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="product-item">
-                          <div class="pi-img-wrapper">
-                            <a href="shop-item.html"><img src="assets/pages/img/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
-                          </div>
-                          <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                          <div class="pi-price">$29.00</div>
-                          <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="product-item">
-                          <div class="pi-img-wrapper">
-                            <a href="shop-item.html"><img src="assets/pages/img/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
-                          </div>
-                          <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                          <div class="pi-price">$29.00</div>
-                          <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown active">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                Pages 
-                
-              </a>
-                
-              <ul class="dropdown-menu">
-                <li><a href="shop-index.html">Home Default</a></li>
-                <li><a href="shop-index-header-fix.html">Home Header Fixed</a></li>
-                <li><a href="shop-index-light-footer.html">Home Light Footer</a></li>
-                <li><a href="shop-product-list.html">Product List</a></li>
-                <li><a href="shop-search-result.html">Search Result</a></li>
-                <li><a href="shop-item.html">Product Page</a></li>
-                <li><a href="shop-shopping-cart-null.html">Shopping Cart (Null Cart)</a></li>
-                <li><a href="shop-shopping-cart.html">Shopping Cart</a></li>
-                <li><a href="shop-checkout.html">Checkout</a></li>
-                <li><a href="shop-about.html">About</a></li>
-                <li><a href="shop-contacts.html">Contacts</a></li>
-                <li class="active"><a href="shop-account.html">My account</a></li>
-                <li><a href="shop-wishlist.html">My Wish List</a></li>
-                <li><a href="shop-goods-compare.html">Product Comparison</a></li>
-                <li><a href="shop-standart-forms.html">Standart Forms</a></li>
-                <li><a href="shop-faq.html">FAQ</a></li>
-                <li><a href="shop-privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="shop-terms-conditions-page.html">Terms &amp; Conditions</a></li>
-              </ul>
-            </li>
-            
-            
-            <li><a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes&amp;utm_source=download&amp;utm_medium=banner&amp;utm_campaign=metronic_frontend_freebie" target="_blank">Admin theme</a></li>
-
-            <!-- BEGIN TOP SEARCH -->
-            <li class="menu-search">
-              <span class="sep"></span>
-              <i class="fa fa-search search-btn"></i>
-              <div class="search-box">
-                <form action="#">
-                  <div class="input-group">
-                    <input type="text" placeholder="Search" class="form-control">
-                    <span class="input-group-btn">
-                      <button class="btn btn-primary" type="submit">Search</button>
-                    </span>
-                  </div>
-                </form>
-              </div> 
-            </li>
-            <!-- END TOP SEARCH -->
-          </ul>
-        </div>
-        <!-- END NAVIGATION -->
-      </div>
-    </div>
-    <!-- Header END -->
-    
-    <div class="main">
-      <div class="container">
+<div class="main">
+    <div class="container">
+        <!-- 경로 표시 -->
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="">Store</a></li>
-            <li class="active">My Account Page</li>
+            <li><a href="index.html">홈</a></li>
+            <li><a href="">마이페이지</a></li>
+            <li class="active">내 정보</li>
         </ul>
-        <!-- BEGIN SIDEBAR & CONTENT -->
+
+        <!-- 메인 콘텐츠 -->
         <div class="row margin-bottom-40">
-          <!-- BEGIN SIDEBAR -->
-          <div class="sidebar col-md-3 col-sm-3">
-            <ul class="list-group margin-bottom-25 sidebar-menu">
-              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Login/Register</a></li>
-              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Restore Password</a></li>
-              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> My account</a></li>
-              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Address book</a></li>
-              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Wish list</a></li>
-              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Returns</a></li>
-              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Newsletter</a></li>
-            </ul>
-          </div>
-          <!-- END SIDEBAR -->
-
-          <!-- 정보 나오는 부분-->
-          <div class="col-md-9 col-sm-7">
-            <h1>My Account Page</h1>
-            <div class="content-page">
-              <h3>My Account</h3>
-              <!-- 프로필 이미지 -->
-              <div class="profile-container text-center">
-                <div class="position-relative d-inline-block">
-                  <!-- 프로필 이미지 -->
-                  <img id="profileImage" img src="assets/img/profile-default.png" alt="프로필 이미지" class="rounded-circle" width="100">
-                  <!-- 카메라 아이콘 -->
-    <label for="profileUpload" class="position-absolute camera-icon">
-      <i class="fa fa-camera"></i>
-    </label>
-                  <!-- 파일 업로드 input (숨김 처리는 나중에 css파일 파서 하기, 자바스크립트 파일로 업로드 되게 하기) --> 
-    <input type="file" id="profileUpload" class="d-none" accept="image/*" >
-  </div>
-                <h4 class="mt-2">닉네임</h4>
-              </div>
-
-        <!-- 수정 버튼 -->
-        <a href="profile-edit.html" class="btn btn-outline-secondary btn-sm position-absolute" style="top: 15px; right: 15px;">
-          <i class="fa fa-edit"></i>
-        </a>
-              <ul>
-                <li>자기소개</li>
-                <li><i class="fa fa-user"></i> 이름</li>
-                <li><i class="fa fa-phone"></i> 전화번호</li>
-                <!-- <li><i class="fa fa-envelope"></i> 이메일</li> -->
-          <li><i class="fa fa-venus-mars"></i> 성별</li>
-          <li><i class="fa fa-birthday-cake"></i> 생년월일</li>
-          <li><i class="fas fa-ruler"></i> 키</li>
-          <li><i class="fas fa-weight"></i> 체형</li>
-          <li><i class="fa fa-graduation-cap"></i> 학력</li>
-          <li><i class="fa fa-map-marker"></i> 지역</li>
-          <li><i class="fas fa-theater-masks"></i> MBTI</li>
-          <li><i class="fas fa-wine-glass"></i> 음주</li>
-          <li><i class="fas fa-smoking"></i> 흡연</li>
-          
-              </ul>
-              <hr>
-
-              <h3>선호 취향</h3>
-              <ul>
-                <li><i class="fas fa-heart"></i> 선호 키</li>
-                <li><i class="fas fa-heart"></i> 선호 체형</li>
-                <li><i class="fas fa-heart"></i> 선호 나이</li>
-              </ul>
-              
-              <h3>참가 중인 이벤트</h3>
-              <ul>
-                <li><i class="fa fa-calendar"></i> 이벤트 1: <strong>이벤트 이름</strong> - 진행 중</li>
-                <li><i class="fa fa-calendar"></i> 이벤트 2: <strong>이벤트 이름</strong> - 진행 중</li>
-              </ul>
-
-
-              <h3>토큰 잔액 및 구매 내역</h3>
-<div class="token-info">
-  <p><i class="fas fa-coins"></i> 현재 보유 토큰: <strong>1000</strong> 개</p>
-</div>
-
-<h4>결제한 상품 목록</h4>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>상품명</th>
-      <th>결제일</th>
-      <th>토큰 사용</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>매칭 서비스 이용권</td>
-      <td>2025-03-10</td>
-      <td>500 토큰</td>
-    </tr>
-    <tr>
-      <td>이벤트 참가권</td>
-      <td>2025-03-12</td>
-      <td>300 토큰</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="account-settings">
-  <h3>계정 설정</h3>
-  <p>
-    <a href="delete-account.html" class="delete-account-link">회원 탈퇴 하기는 여기를 눌러주세요</a>
-  </p>
-</div>
-
-              
-
+            <!-- 사이드바 메뉴 -->
+            <div class="sidebar col-md-3 col-sm-3">
+                <ul class="list-group margin-bottom-25 sidebar-menu">
+                    <li class="list-group-item clearfix active">
+                        <a href="javascript:;"><i class="fa fa-user"></i> 내 정보</a>
+                    </li>
+                    <li class="list-group-item clearfix">
+                        <a href="javascript:;"><i class="fa fa-heart"></i> 관심 목록</a>
+                    </li>
+                    <li class="list-group-item clearfix">
+                        <a href="javascript:;"><i class="fa fa-calendar"></i> 이벤트 참가 내역</a>
+                    </li>
+                    <li class="list-group-item clearfix">
+                        <a href="javascript:;"><i class="fa fa-coins"></i> 토큰 관리</a>
+                    </li>
+                    <li class="list-group-item clearfix">
+                        <a href="javascript:;"><i class="fa fa-cog"></i> 계정 설정</a>
+                    </li>
+                </ul>
             </div>
-          </div>
-          <!-- 정보 보기 끝 -->
-        </div>
-        <!-- END SIDEBAR & CONTENT -->
-      </div>
-    </div>
 
-    <!-- BEGIN BRANDS
-    <div class="brands">
-      <div class="container">
-            <div class="owl-carousel owl-carousel6-brands">
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/canon.jpg" alt="canon" title="canon"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/esprit.jpg" alt="esprit" title="esprit"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/gap.jpg" alt="gap" title="gap"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/next.jpg" alt="next" title="next"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/puma.jpg" alt="puma" title="puma"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/zara.jpg" alt="zara" title="zara"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/canon.jpg" alt="canon" title="canon"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/esprit.jpg" alt="esprit" title="esprit"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/gap.jpg" alt="gap" title="gap"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/next.jpg" alt="next" title="next"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/puma.jpg" alt="puma" title="puma"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/zara.jpg" alt="zara" title="zara"></a>
-            </div>
-        </div>
-    </div> -->
-    <!-- END BRANDS -->
+            <!-- 메인 콘텐츠 영역 -->
+            <div class="col-md-9 col-sm-9">
+                <div class="main-content">
+                    <h1>마이 페이지</h1>
 
-    <!-- BEGIN STEPS -->
-    <!-- <div class="steps-block steps-block-red">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 steps-block-col">
-            <i class="fa fa-truck"></i>
-            <div>
-              <h2>Free shipping</h2>
-              <em>Express delivery withing 3 days</em>
-            </div>
-            <span>&nbsp;</span>
-          </div>
-          <div class="col-md-4 steps-block-col">
-            <i class="fa fa-gift"></i>
-            <div>
-              <h2>Daily Gifts</h2>
-              <em>3 Gifts daily for lucky customers</em>
-            </div>
-            <span>&nbsp;</span>
-          </div>
-          <div class="col-md-4 steps-block-col">
-            <i class="fa fa-phone"></i>
-            <div>
-              <h2>477 505 8877</h2>
-              <em>24/7 customer care available</em>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-   
+                    <!-- 프로필 섹션 -->
+                    <div class="profile-container">
+                        <div class="profile-header">
+                            <div class="profile-left">
+                                <div class="profile-image-container">
+                                    <label for="profileUpload">
+                                        <img id="profileImage" src="assets/img/profile-default.png" alt="프로필 이미지" />
+                                        <div class="image-overlay">
+                                            <i class="fa fa-camera"></i>
+                                            <span>사진 변경</span>
+                                        </div>
+                                    </label>
+                                    <input type="file" id="profileUpload" accept="image/*" />
+                                </div>
+                                <div class="profile-info">
+                                    <h3 class="profile-name">닉네임</h3>
+                                    <span class="profile-role">일반 회원</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <a href="/theme/MyPageEdit.jsp" class="btn btn-primary">
+                                    <i class="fa fa-edit"></i> 정보 수정
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN BOTTOM ABOUT BLOCK -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2>About us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
-            <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
-          </div>
-          <!-- END BOTTOM ABOUT BLOCK -->
-          <!-- BEGIN BOTTOM INFO BLOCK -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2>Information</h2>
-            <ul class="list-unstyled">
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Delivery Information</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Customer Service</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Order Tracking</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Shipping &amp; Returns</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="contacts.html">Contact Us</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Careers</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Payment Methods</a></li>
-            </ul>
-          </div>
-          <!-- END INFO BLOCK -->
 
-          <!-- BEGIN TWITTER BLOCK --> 
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2 class="margin-bottom-0">Latest Tweets</h2>
-            <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>      
-          </div>
-          <!-- END TWITTER BLOCK -->
-          
-          <!-- BEGIN BOTTOM CONTACTS -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2>Our Contacts</h2>
-            <address class="margin-bottom-40">
-              35, Lorem Lis Street, Park Ave<br>
-              California, US<br>
-              Phone: 300 323 3456<br>
-              Fax: 300 323 1456<br>
-              Email: <a href="mailto:info@metronic.com">info@metronic.com</a><br>
-              Skype: <a href="skype:metronic">metronic</a>
-            </address>
-          </div>
-          <!-- END BOTTOM CONTACTS -->
-        </div>
-        <hr>
-        <div class="row">
-          <!-- BEGIN SOCIAL ICONS -->
-          <div class="col-md-6 col-sm-6">
-            <ul class="social-icons">
-              <li><a class="rss" data-original-title="rss" href="javascript:;"></a></li>
-              <li><a class="facebook" data-original-title="facebook" href="javascript:;"></a></li>
-              <li><a class="twitter" data-original-title="twitter" href="javascript:;"></a></li>
-              <li><a class="googleplus" data-original-title="googleplus" href="javascript:;"></a></li>
-              <li><a class="linkedin" data-original-title="linkedin" href="javascript:;"></a></li>
-              <li><a class="youtube" data-original-title="youtube" href="javascript:;"></a></li>
-              <li><a class="vimeo" data-original-title="vimeo" href="javascript:;"></a></li>
-              <li><a class="skype" data-original-title="skype" href="javascript:;"></a></li>
-            </ul>
-          </div>
-          <!-- END SOCIAL ICONS -->
-          <!-- BEGIN NEWLETTER -->
-          <div class="col-md-6 col-sm-6">
-            <div class="pre-footer-subscribe-box pull-right">
-              <h2>Newsletter</h2>
-              <form action="#">
-                <div class="input-group">
-                  <input type="text" placeholder="youremail@mail.com" class="form-control">
-                  <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Subscribe</button>
-                  </span>
+                    <style>
+                        /* 정보 카드 스타일 */
+                        .info-card {
+                            background: #fff;
+                            border-radius: 8px;
+                            padding: 25px;
+                            margin-bottom: 30px;
+                            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+                            position: relative;
+                        }
+
+                        .info-card h3 {
+                            font-size: 20px;
+                            font-weight: 600;
+                            margin-bottom: 20px;
+                            color: #333;
+                            border-bottom: 2px solid #e94d1c;
+                            padding-bottom: 10px;
+                            display: inline-block;
+                        }
+
+                        .info-list {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                        }
+
+                        .info-item {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 15px;
+                            padding-bottom: 15px;
+                            border-bottom: 1px solid #f0f0f0;
+                        }
+
+                        .info-item:last-child {
+                            margin-bottom: 0;
+                            padding-bottom: 0;
+                            border-bottom: none;
+                        }
+
+                        .info-icon {
+                            color: #e94d1c;
+                            font-size: 18px;
+                            width: 30px;
+                            text-align: center;
+                            margin-right: 15px;
+                        }
+
+                        .info-label {
+                            font-weight: 600;
+                            color: #555;
+                            width: 100px;
+                        }
+
+                        .info-value {
+                            color: #333;
+                            flex: 1;
+                        }
+
+                        /* 선호 취향 태그 스타일 */
+                        .preference-tags {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                        }
+
+                        .preference-tag {
+                            background-color: #f5f5f5;
+                            border-radius: 20px;
+                            padding: 5px 15px;
+                            font-size: 14px;
+                            color: #333;
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 5px;
+                        }
+
+                        .preference-tag i {
+                            color: #e94d1c;
+                        }
+                    </style>
+                    <!-- 기본 정보 카드 -->
+                    <div class="info-card">
+                        <h3>기본 정보</h3>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fa fa-comment"></i>
+                                </div>
+                                <div class="info-label">자기소개</div>
+                                <div class="info-value">${userDTO.userDescription != null ? userDTO.userDescription : '자기소개를 입력해주세요.'}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div class="info-label">이름</div>
+                                <div class="info-value">${userDTO.userName != null ? userDTO.userName : '이름을 입력해주세요.'}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <div class="info-label">전화번호</div>
+                                <div class="info-value">${userDTO.userPhone != null ? userDTO.userPhone : '전화번호를 입력해주세요.'}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fa fa-venus-mars"></i>
+                                </div>
+                                <div class="info-label">성별</div>
+                                <div class="info-value">${userDTO.userGender ? '여성' : '남성'}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fa fa-birthday-cake"></i>
+                                </div>
+                                <div class="info-label">생년월일</div>
+                                <div class="info-value">${userDTO.userBirth != null ? userDTO.userBirth : '생년월일을 입력해주세요.'}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-ruler"></i>
+                                </div>
+                                <div class="info-label">키</div>
+                                <div class="info-value">${userDTO.userHeight != null ? userDTO.userHeight : '0'} cm</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 추가 정보 카드 -->
+                    <div class="info-card">
+                        <h3>추가 정보</h3>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-weight"></i>
+                                </div>
+                                <div class="info-label">체형</div>
+                                <div class="info-value">${userDTO.userBody != null ? userDTO.userBody : '체형을 입력해주세요.'}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fa fa-graduation-cap"></i>
+                                </div>
+                                <div class="info-label">학력</div>
+                                <div class="info-value">${userDTO.userEducation != null ? userDTO.userEducation : '학력을 입력해주세요.'}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <div class="info-label">지역</div>
+                                <div class="info-value">${userDTO.userRegion != null ? userDTO.userRegion : '지역을 입력해주세요.'}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-theater-masks"></i>
+                                </div>
+                                <div class="info-label">MBTI</div>
+                                <div class="info-value">${userDTO.userMbti != null ? userDTO.userMbti : 'MBTI를 입력해주세요.'}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-wine-glass"></i>
+                                </div>
+                                <div class="info-label">음주</div>
+                                <div class="info-value">
+                                    ${userDTO.userDrink == 0 ? '전혀 안함' : userDTO.userDrink == 1 ? '가끔' : userDTO.userDrink == 2 ? '자주' : '음주 정보를 입력해주세요.'}
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-smoking"></i>
+                                </div>
+                                <div class="info-label">흡연</div>
+                                <div class="info-value">${userDTO.userSmoke ? '흡연' : '비흡연'}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 선호 취향 카드 -->
+                    <div class="info-card">
+                        <h3>선호 취향</h3>
+                        <div class="preference-tags">
+                            <span class="preference-tag"><i class="fas fa-ruler"></i> ${PreferenceDTO.preferenceHeight != null ? PreferenceDTO.preferenceHeight : '키 선호도 미설정'}</span>
+                            <span class="preference-tag"><i class="fas fa-weight"></i> ${PreferenceDTO.preferenceBody != null ? PreferenceDTO.preferenceBody : '체형 선호도 미설정'}</span>
+                            <span class="preference-tag"><i class="fas fa-birthday-cake"></i> ${PreferenceDTO.preferenceAge != null ? PreferenceDTO.preferenceAge : '나이 선호도 미설정'}</span>
+                        </div>
+                    </div>
                 </div>
-              </form>
-            </div> 
-          </div>
-          <!-- END NEWLETTER -->
+            </div>
         </div>
-      </div>
     </div>
-    <!-- END PRE-FOOTER -->
-
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-      <div class="container">
+</div>
+<!-- 푸터 영역 -->
+<div class="pre-footer">
+    <div class="container">
         <div class="row">
-          <!-- BEGIN COPYRIGHT -->
-          <div class="col-md-4 col-sm-4 padding-top-10">
-            2015 © Keenthemes. ALL Rights Reserved. 
-          </div>
-          <!-- END COPYRIGHT -->
-          <!-- BEGIN PAYMENTS -->
-          <div class="col-md-4 col-sm-4">
-            <ul class="list-unstyled list-inline pull-right">
-              <li><img src="assets/corporate/img/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union"></li>
-              <li><img src="assets/corporate/img/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express"></li>
-              <li><img src="assets/corporate/img/payments/MasterCard.jpg" alt="We accept MasterCard" title="We accept MasterCard"></li>
-              <li><img src="assets/corporate/img/payments/PayPal.jpg" alt="We accept PayPal" title="We accept PayPal"></li>
-              <li><img src="assets/corporate/img/payments/visa.jpg" alt="We accept Visa" title="We accept Visa"></li>
-            </ul>
-          </div>
-          <!-- END PAYMENTS -->
-          <!-- BEGIN POWERED -->
-          <div class="col-md-4 col-sm-4 text-right">
-            <p class="powered">Powered by: <a href="http://www.keenthemes.com/">KeenThemes.com</a></p>
-          </div>
-          <!-- END POWERED -->
+            <!-- 푸터 내용 -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Next Level</h2>
+                <p>우리는 인연과 연인을 중시합니다.</p>
+            </div>
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Our Contacts</h2>
+                <address class="margin-bottom-40">
+                    서울 강남구 테헤란로26길 12<br />
+                    (우) 06236 (지번) 역삼동 736-56<br />
+                    Email: <a href="mailto:0414minyoung@naver.com">0414minyoung@naver.com</a>
+                </address>
+            </div>
         </div>
-      </div>
     </div>
-    <!-- END FOOTER -->
+</div>
 
-    <!-- Load javascripts at bottom, this will reduce page load time -->
-    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
-    <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.min.js"></script>  
-    <![endif]-->  
-    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
-    <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
+<!-- 자바스크립트 -->
+<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 프로필 이미지 업로드 처리
+        document.getElementById('profileUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('profileImage').src = event.target.result;
+                };
+                reader.readAsDataURL(file);
 
-    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-    <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
-
-    <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            Layout.init();    
-            Layout.initOWL();
-            Layout.initTwitter();
+                // 여기에 이미지 업로드 AJAX 코드 추가
+                // const formData = new FormData();
+                // formData.append('profileImage', file);
+                // $.ajax({
+                //     url: '/api/user/profile-image',
+                //     type: 'POST',
+                //     data: formData,
+                //     contentType: false,
+                //     processData: false,
+                //     success: function(response) {
+                //         console.log('프로필 이미지가 성공적으로 업로드되었습니다.');
+                //     },
+                //     error: function(error) {
+                //         console.error('프로필 이미지 업로드 중 오류가 발생했습니다:', error);
+                //     }
+                // });
+            }
         });
-    </script>
-    <!-- END PAGE LEVEL JAVASCRIPTS -->
+
+        // 사이드바 메뉴 활성화
+        $('.sidebar-menu .list-group-item').on('click', function() {
+            $('.sidebar-menu .list-group-item').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+</script>
 </body>
-<!-- END BODY -->
 </html>

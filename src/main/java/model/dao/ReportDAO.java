@@ -1,22 +1,31 @@
 package model.dao;
 
+import java.util.ArrayList;
+
 import model.dto.ReportDTO;
 
 public class ReportDAO {
-	
 
 	final String SELECTONE = "";
-	final String SELECTALL = "";
-	final String INSERT = "";
-	final String UPDATE="";
-	final String DELETE="";
+	// (관리자용) 00유저 신고자, 신고사유, 신고날짜, 00유저 피신고자, 신고 설명 전체 출력하기
+	final String SELECTALL = "SELECT REPORT_REPORTED, REPORT_REASON, REPORT_DATE, REPORT_REPORTER, REPORT_DESCRIPTION "
+			+ "FROM REPORT";
 
-	public ReportDTO selectOne(ReportDTO reportDTO) {
+	// (유저용) 사용자가 또 다른 사용자를 신고하는 쿼리문(신고자, 신고이유, 신고날짜, 피신고자, 신고설명)
+	final String INSERT = "INSERT INTO REPORT"
+			+ "(REPORT_REPORTED, REPORT_REASON, REPORT_DATE, REPORT_REPORTER, REPORT_DESCRIPTION) "
+			+ "VALUES (?, ?, CURRENT_DATE, ?, ?)";
+	
+	
+	final String UPDATE = "";
+	final String DELETE = "";
+
+	public ArrayList<ReportDTO> selectAll(ReportDTO reportDTO) {
 		return null;
 
 	}
 
-	public ReportDTO selectAll(ReportDTO reportDTO) {
+	public ReportDTO selectOne(ReportDTO reportDTO) {
 		return null;
 
 	}

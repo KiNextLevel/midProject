@@ -81,9 +81,8 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="shop-account.html">My Account</a></li>
-                    <li><a href="shop-checkout.html">Checkout</a></li>
-                    <li><a href="page-login.html">Log In</a></li>
+                    <li><a href="MyPage.jsp">마이페이지</a></li>
+                    <li><a href="">로그아웃</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
@@ -98,25 +97,6 @@
         <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
                                                          alt="Metronic Shop UI"></a>
 
-        <!-- BEGIN TOP SEARCH -->
-        <div class="header-navigation">
-            <ul>
-                <li class="menu-search">
-                    <i class="fa fa-search search-btn"></i>
-                    <div class="search-box">
-                        <form action="#">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search" class="form-control">
-                                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                  </span>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <!-- END TOP SEARCH -->
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 

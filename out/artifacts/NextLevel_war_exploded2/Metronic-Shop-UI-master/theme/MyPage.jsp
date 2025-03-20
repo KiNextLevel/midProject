@@ -6,6 +6,8 @@
 <head>
     <meta charset="utf-8" />
     <title>마이페이지 | Next Level</title>
+    <link href="css/MyPage.css" rel="stylesheet">
+    <link href="css/ProductPage.css" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -34,288 +36,63 @@
     <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color" />
     <link href="assets/corporate/css/custom.css" rel="stylesheet" />
 
-    <style>/* 전체 레이아웃 스타일 */
-    body {
-        background-color: #f9f9f9;
-    }
-
-    .main-content {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-        padding: 30px;
-        margin-bottom: 30px;
-    }
-
-    /* 사이드바 스타일 */
-    .sidebar-menu {
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .sidebar-menu .list-group-item {
-        border-left: none;
-        border-right: none;
-        padding: 12px 20px;
-        transition: all 0.3s ease;
-    }
-
-    .sidebar-menu .list-group-item:first-child {
-        border-top: none;
-    }
-
-    .sidebar-menu .list-group-item:last-child {
-        border-bottom: none;
-    }
-
-    .sidebar-menu .list-group-item i {
-        margin-right: 10px;
-        color: #e94d1c;
-    }
-
-    .sidebar-menu .list-group-item.active {
-        background-color: #e94d1c;
-        border-color: #e94d1c;
-    }
-
-    .sidebar-menu .list-group-item.active i {
-        color: #fff;
-    }
-
-    .sidebar-menu .list-group-item:hover {
-        background-color: #f5f5f5;
-    }
-
-    .sidebar-menu .list-group-item.active:hover {
-        background-color: #d43e0a;
-    }
-
-    /* 파일 업로드 input 숨기기 */
-    #profileUpload {
-        display: none;
-    }
-
-    /* 프로필 섹션 스타일 - 가로 배치로 수정 */
-    .profile-container {
-        background: linear-gradient(135deg, #f9f9f9, #f5f5f5);
-        border-radius: 10px;
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-        position: relative;
-    }
-
-    .profile-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-    }
-
-    .profile-left {
-        display: flex;
-        align-items: center;
-    }
-
-    /* 프로필 이미지 컨테이너 스타일 수정 */
-    .profile-image-container {
-        position: relative;
-        margin-right: 20px;
-        cursor: pointer;
-    }
-
-    #profileImage {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid #fff;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
-
-    /* 오버레이 효과 추가 */
-    .image-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .image-overlay i {
-        font-size: 20px;
-        margin-bottom: 5px;
-    }
-
-    .image-overlay span {
-        font-size: 12px;
-        font-weight: 500;
-    }
-
-    /* 호버 시 오버레이 표시 */
-    .profile-image-container:hover .image-overlay {
-        opacity: 1;
-    }
-
-    .profile-info {
-        text-align: left;
-    }
-
-    .profile-name {
-        font-size: 22px;
-        font-weight: 600;
-        margin: 0 0 8px;
-        color: #333;
-    }
-
-    .profile-role {
-        display: inline-block;
-        background-color: #e94d1c;
-        color: #fff;
-        padding: 3px 10px;
-        border-radius: 20px;
-        font-size: 13px;
-        font-weight: 500;
-    }
-
-    .profile-actions {
-        margin-left: auto;
-    }
-
-    .profile-actions .btn {
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    /* 반응형 디자인을 위한 미디어 쿼리 */
-    @media (max-width: 767px) {
-        .profile-header {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .profile-left {
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .profile-image-container {
-            margin-right: 0;
-            margin-bottom: 15px;
-        }
-
-        .profile-info {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .profile-actions {
-            margin-left: 0;
-        }
-    }
-
-    /* 정보 카드 스타일 */
-    .info-card {
-        background: #fff;
-        border-radius: 8px;
-        padding: 25px;
-        margin-bottom: 30px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        position: relative;
-    }
-
-    .info-card h3 {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: #333;
-        border-bottom: 2px solid #e94d1c;
-        padding-bottom: 10px;
-        display: inline-block;
-    }
-
-    .info-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .info-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #f0f0f0;
-    }
-
-    .info-item:last-child {
-        margin-bottom: 0;
-        padding-bottom: 0;
-        border-bottom: none;
-    }
-
-    .info-icon {
-        color: #e94d1c;
-        font-size: 18px;
-        width: 30px;
-        text-align: center;
-        margin-right: 15px;
-    }
-
-    .info-label {
-        font-weight: 600;
-        color: #555;
-        width: 100px;
-    }
-
-    .info-value {
-        color: #333;
-        flex: 1;
-    }
-
-    /* 선호 취향 태그 스타일 */
-    .preference-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .preference-tag {
-        background-color: #f5f5f5;
-        border-radius: 20px;
-        padding: 5px 15px;
-        font-size: 14px;
-        color: #333;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .preference-tag i {
-        color: #e94d1c;
-    }
-
-    </style>
 </head>
-<body class="ecommerce">
-<!-- 헤더 부분은 include로 처리하거나 그대로 유지 -->
+<!-- BEGIN STYLE CUSTOMIZER -->
+<div class="color-panel hidden-sm">
+    <div class="color-mode-icons icon-color"></div>
+    <div class="color-mode-icons icon-color-close"></div>
+    <div class="color-mode">
+        <p>THEME COLOR</p>
+        <ul class="inline">
+            <li class="color-red current color-default" data-style="red"></li>
+            <li class="color-blue" data-style="blue"></li>
+            <li class="color-green" data-style="green"></li>
+            <li class="color-orange" data-style="orange"></li>
+            <li class="color-gray" data-style="gray"></li>
+            <li class="color-turquoise" data-style="turquoise"></li>
+        </ul>
+    </div>
+</div>
+<!-- END BEGIN STYLE CUSTOMIZER -->
+
+<!-- BEGIN TOP BAR -->
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+            </div>
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    <li><a href="MyPage.jsp">마이페이지</a></li>
+                    <li><a href="">로그아웃</a></li>
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
+        </div>
+    </div>
+</div>
+<!-- END TOP BAR -->
+
+<!-- BEGIN HEADER -->
+<div class="header">
+    <div class="container">
+        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
+                                                         alt="Metronic Shop UI"></a>
+        
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+        <!-- BEGIN TOP BAR MENU -->
+        <div class="top-bar-right">
+            <ul class="top-bar-list">
+            </ul>
+        </div>
+        <!-- END TOP BAR MENU -->
+    </div>
+</div>
+<!-- Header END -->
 
 <div class="main">
     <div class="container">
@@ -602,43 +379,6 @@
 <!-- 자바스크립트 -->
 <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        // 프로필 이미지 업로드 처리
-        document.getElementById('profileUpload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    document.getElementById('profileImage').src = event.target.result;
-                };
-                reader.readAsDataURL(file);
-
-                // 여기에 이미지 업로드 AJAX 코드 추가
-                // const formData = new FormData();
-                // formData.append('profileImage', file);
-                // $.ajax({
-                //     url: '/api/user/profile-image',
-                //     type: 'POST',
-                //     data: formData,
-                //     contentType: false,
-                //     processData: false,
-                //     success: function(response) {
-                //         console.log('프로필 이미지가 성공적으로 업로드되었습니다.');
-                //     },
-                //     error: function(error) {
-                //         console.error('프로필 이미지 업로드 중 오류가 발생했습니다:', error);
-                //     }
-                // });
-            }
-        });
-
-        // 사이드바 메뉴 활성화
-        $('.sidebar-menu .list-group-item').on('click', function() {
-            $('.sidebar-menu .list-group-item').removeClass('active');
-            $(this).addClass('active');
-        });
-    });
-</script>
+<script src="js/MyPageUploadProfile.js"></script>
 </body>
 </html>

@@ -250,19 +250,8 @@ public class UserDAO {
         }
     }
 
-    // 회원탈퇴
+    // x
     public boolean delete(UserDTO userDTO) {
-        try {
-            conn = JDBCUtil.connect();
-            pstmt = conn.prepareStatement(DELETE);
-            pstmt.setString(1, userDTO.getUserEmail());
-            int result = pstmt.executeUpdate();
-            return result > 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        } finally {
-            JDBCUtil.disconnect(conn, pstmt);
-        }
+        return false;
     }
 }

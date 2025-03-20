@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Slide Navbar</title>
+    <title>nextLevel</title>
     <link rel="stylesheet" type="text/css" href="slide navbar style.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
@@ -22,21 +22,21 @@
     <input type="checkbox" id="chk" aria-hidden="true">
 
     <div class="signup">
-        <form>
-            <label for="chk" aria-hidden="true">Sign up</label>
-            <input type="text" name="txt" placeholder="User name" required="">
-            <input type="email" name="email" placeholder="Email" required="">
-            <input type="password" name="pswd" placeholder="Password" required="">
-            <button>Sign up</button>
+        <form action="join.do" method="POST">
+            <label for="chk" aria-hidden="true">회원가입</label>
+            <input type="text" name="userName" placeholder="User name" required>
+            <input type="email" name="userEmail" placeholder="Email" required>
+            <input type="password" name="userPassword" placeholder="Password" required>
+            <button>가입하기</button>
         </form>
     </div>
 
     <div class="login">
-        <form action="ProductPage.jsp" method="post">
-            <label for="chk" aria-hidden="true">Login</label>
-            <input type="email" name="email" placeholder="Email" required="">
-            <input type="password" name="pswd" placeholder="Password" required="">
-            <button>Login</button>
+        <form action="login.do" method="POST">
+            <label for="chk" aria-hidden="true">로그인</label>
+            <input type="email" name="userEmail" placeholder="Email" required>
+            <input type="password" name="userPassword" placeholder="Password" required>
+            <button type="submit">로그인</button>
         </form>
     </div>
 </div>

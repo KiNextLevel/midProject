@@ -40,7 +40,7 @@ public class UserDTO {
     // 직업
     private String userJob;
     // 역할
-    private String userRole;
+    private Integer userRole;
     // 구독 여부
     private boolean userPreminum;
     // 토큰 개수
@@ -204,11 +204,11 @@ public class UserDTO {
         this.userJob = userJob;
     }
 
-    public String getUserRole() {
+    public Integer getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(String userRole) {
+    public void setUserRole(Integer userRole) {
         this.userRole = userRole;
     }
 

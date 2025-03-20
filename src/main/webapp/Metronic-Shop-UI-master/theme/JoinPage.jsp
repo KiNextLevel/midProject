@@ -75,7 +75,7 @@
                     </div>
                 </div>
 
-                <form action="completeSignup.jsp" method="post" id="userInfoForm">
+                <form action="JoinPage.jsp" method="post" id="userInfoForm" enctype="multipart/form-data">
                     <!-- 이전 페이지에서 받아온 정보를 hidden 필드로 저장 -->
                     <input type="hidden" name="email" value="${param.email}">
                     <input type="hidden" name="password" value="${param.password}">

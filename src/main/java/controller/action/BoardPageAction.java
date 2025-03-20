@@ -20,7 +20,7 @@ public class BoardPageAction implements Action{
 		ArrayList<BoardDTO> datas = boardDAO.selectAll(boardDTO);
 		
 		request.setAttribute("datas", datas);
-		forward.setPath("/mywebapp/theme/BoardPage.jsp");
+		forward.setPath("BoardDetailPage.jsp");
 		forward.setRedirect(false);
 		return forward;
 

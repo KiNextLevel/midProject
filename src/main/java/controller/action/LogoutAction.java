@@ -13,14 +13,13 @@ public class LogoutAction implements Action {
 		HttpSession session = request.getSession();
 		// session에서 id,닉네임, role remove
 	    session.removeAttribute("userEmail");
-	    session.removeAttribute("userNickname");
 	    session.removeAttribute("userRole");
 
 	    // url, flag, msg 요청단위 저장
 	    // alert.jsp에 url, true, msg 보내기
 	    request.setAttribute("msg", "로그아웃 성공!");
 	    request.setAttribute("flag", true);
-	    request.setAttribute("url", "mainPage.do");
+	    request.setAttribute("url", "LoginPage.jsp");
 	    forward.setPath("alert.jsp");
 		forward.setRedirect(false);
 		return forward;

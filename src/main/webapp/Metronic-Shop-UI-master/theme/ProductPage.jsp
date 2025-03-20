@@ -81,8 +81,8 @@ m
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="MyPage.jsp">마이페이지</a></li>
-                    <li><a href="">로그아웃</a></li>
+                    <li><a href="myPage.do">마이페이지</a></li>
+                    <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
@@ -94,9 +94,8 @@ m
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
+        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png"
                                                          alt="Metronic Shop UI"></a>
-
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 

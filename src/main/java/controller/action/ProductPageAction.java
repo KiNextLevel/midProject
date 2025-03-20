@@ -9,7 +9,7 @@ public class ProductPageAction implements Action {
 	public ActionForward execute(HttpServletRequest request) {
 		System.out.println("CONT 로그: PRODUCTPAGE ACTION 도착");
 		ActionForward forward = new ActionForward();
-	    forward.setPath("productPage.do");
+	    forward.setPath("ProductPage.jsp");
 		forward.setRedirect(true);
 		return forward;
 	}

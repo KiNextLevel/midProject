@@ -30,8 +30,8 @@ public class MainPageAction implements Action {
 	    		}
 	    	}
 	    }
-	    forward.setPath("mainPage.do");
-		forward.setRedirect(true);
+	    forward.setPath("MainPage.jsp");
+		forward.setRedirect(false);
 		return forward;
     }
 }

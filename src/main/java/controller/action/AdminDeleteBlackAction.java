@@ -1,0 +1,35 @@
+package controller.action;
+
+import controller.common.Action;
+import controller.common.ActionForward;
+import jakarta.servlet.http.HttpServletRequest;
+import model.dao.UserDAO;
+import model.dto.UserDTO;
+
+public class AdminDeleteBlackAction implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request) {
+		ActionForward forward = new ActionForward();
+		String reportedUserEmail = request.getParameter("reportedUser");
+		UserDTO userDTO = new UserDTO();
+		UserDAO userDAO = new UserDAO();
+
+		userDTO.setUserEmail(reportedUserEmail);
+		userDTO.setUserRole(0);
+
+		if(userDAO.update(userDTO)) {
+			request.setAttribute("msg", "사용자를 블랙 해제했습니다");
+			request.setAttribute("flag", true);
+			request.setAttribute("url", "adminReportPage.do");
+		}
+		else {
+			request.setAttribute("msg", "블랙 해제 실패");
+			request.setAttribute("flag", false);
+		}
+		forward.setPath("/mywebapp/theme/alert.jsp");
+		forward.setRedirect(false);
+		return forward;
+
+	}
+}

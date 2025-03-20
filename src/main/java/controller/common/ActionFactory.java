@@ -18,7 +18,7 @@ public class ActionFactory {
 		factory.put("adminAddBoard.do", new AdminAddBoardAction());
 		factory.put("adminDeleteBlack.do", new AdminDeleteBlackAction());
 		factory.put("adminReportPage.do", new AdminReportPageAction());
-		factory.put("boardDetailPage.do", new BoardPageAction());
+		factory.put("boardPage.do", new BoardPageAction());
 		factory.put("modifyMyPage.do", new ModifyMyPageAction());
 		factory.put("myPage.do", new MyPageAction());
 		factory.put("participantBoard.do", new ParticipantBoardAction());

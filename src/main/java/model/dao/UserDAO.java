@@ -5,8 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import model.common.JDBCUtil;
+
 import model.dto.UserDTO;
+import org.example.webapp.model.common.JDBCUtil;
 
 public class UserDAO {
     // 아이디 중복 검사
@@ -235,7 +236,7 @@ public class UserDAO {
             }
             else if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_ROLE")){
                 pstmt = conn.prepareStatement(UPDATE_ROLE);
-                pstmt.setString(1, userDTO.getUserRole());
+                pstmt.setInt(1, userDTO.getUserRole());
                 pstmt.setString(2, userDTO.getUserEmail());
             }
             int result = pstmt.executeUpdate();

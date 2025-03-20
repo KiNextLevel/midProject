@@ -1,7 +1,8 @@
 package model.dao;
 
-import model.common.JDBCUtil;
+
 import model.dto.ParticipantDTO;
+import org.example.webapp.model.common.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

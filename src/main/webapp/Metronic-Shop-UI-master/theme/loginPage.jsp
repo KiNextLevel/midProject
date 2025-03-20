@@ -24,9 +24,9 @@
     <div class="signup">
         <form action="join.do" method="POST">
             <label for="chk" aria-hidden="true">회원가입</label>
-            <input type="text" name="nickName" placeholder="User name" required>
-            <input type="email" name="eamil" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="userName" placeholder="User name" required>
+            <input type="email" name="userEmail" placeholder="Email" required>
+            <input type="password" name="userPassword" placeholder="Password" required>
             <button>가입하기</button>
         </form>
     </div>
@@ -34,8 +34,8 @@
     <div class="login">
         <form action="login.do" method="POST">
             <label for="chk" aria-hidden="true">로그인</label>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="email" name="userEmail" placeholder="Email" required>
+            <input type="password" name="userPassword" placeholder="Password" required>
             <button type="submit">로그인</button>
         </form>
     </div>

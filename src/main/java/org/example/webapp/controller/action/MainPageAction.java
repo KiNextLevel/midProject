@@ -28,7 +28,7 @@ public class MainPageAction implements Action {
 	    		}
 	    	}
 	    }
-	    forward.setPath("MainPage.jsp");
+	    forward.setPath("mainPage.do");
 		forward.setRedirect(true);
 		return forward;
     }

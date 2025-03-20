@@ -28,8 +28,7 @@ public class LoginAction implements Action {
         System.out.println("로그인 로그: " + userDTO);
         if (userDTO != null) {
             // session에 userId, userName, role저장
-            session.setAttribute("userId", userDTO.getUserEmail());
-            session.setAttribute("userName", userDTO.getUserNickname());
+            session.setAttribute("userEmail", userDTO.getUserEmail());
             session.setAttribute("userRole", userDTO.getUserRole());
 
             // url, flag, msg 요청단위 저장

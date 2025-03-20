@@ -26,13 +26,13 @@ public class ReportAction implements Action {
         if (reportDAO.selectOne(reportDTO) != null) {
             request.setAttribute("msg", "해당 회원은 이미 신고하셨습니다");
 			request.setAttribute("flag", false);
-			request.setAttribute("url", "controller.jsp?action=MainPage.jsp");
+			request.setAttribute("url", "mainPage.do");
         } else {
             reportDTO.setCondition("INSERT");
             if (reportDAO.insert(reportDTO)) {
                 request.setAttribute("msg", "신고완료. 직원이 검토 후 처리 됩니다.");
                 request.setAttribute("flag", true);
-                request.setAttribute("url", "controller.jsp?action=MAINPAGE");
+                request.setAttribute("url", "mainPage.do");
             } else {
                 request.setAttribute("msg", "실패");
                 request.setAttribute("flag", false);

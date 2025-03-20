@@ -1,12 +1,13 @@
 package model.dao;
 
-import model.common.JDBCUtil;
-import model.dto.BoardDTO;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import org.example.webapp.model.common.JDBCUtil;
+
+import model.dto.BoardDTO;
 
 public class BoardDAO {
     private String SELECTALL = "SELECT * FROM BOARD";
@@ -26,10 +27,16 @@ public class BoardDAO {
         ArrayList<BoardDTO> datas = new ArrayList<>();
         try {
             conn = JDBCUtil.connect();
+            if (conn != null) {	//연결 확인
+                System.out.println("DB 연결 성공!");
+            } else {
+                System.out.println("DB 연결 실패!");
+            }
             pstmt = conn.prepareStatement(SELECTALL);
             rs = pstmt.executeQuery();
             while(rs.next()){
                 BoardDTO data = new BoardDTO();
+                data.setBoardTitle(rs.getString("BOARD_NUMBER"));	//이거 추가했습니다
                 data.setBoardTitle(rs.getString("BOARD_TITLE"));
                 data.setBoardContent(rs.getString("BOARD_CONTENT"));
                 data.setBoardLimit(rs.getInt("BOARD_LIMIT"));

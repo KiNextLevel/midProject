@@ -10,7 +10,7 @@ public class JDBCUtil {
     static final String url = "jdbc:mysql://localhost:3306/midProject";
     static final String userName = "root";
     // db pw desktop은 030414, ki는 12345678
-    static final String password = "030414";
+    static final String password = "12345678";
 
     public static Connection connect(){
         Connection conn = null;

@@ -1,6 +1,6 @@
 var Layout = function () {
 
-     // IE mode
+    // IE mode
     var isRTL = false;
     var isIE8 = false;
     var isIE9 = false;
@@ -10,6 +10,83 @@ var Layout = function () {
     var responsive = true;
 
     var responsiveHandlers = [];
+
+    // 페이지네이션을 위한 변수
+    var currentPage = 1; // 기본 페이지
+    var totalPages = 5; // 페이지 수 (기본값 설정)
+
+    // AJAX로 데이터를 불러오는 함수
+    var loadPageData = function (pageNumber) {
+        $.ajax({
+            url: '/get-data', // 데이터를 가져오는 API 주소 (예시)
+            type: 'GET',
+            data: { page: pageNumber }, // 페이지 번호를 전송
+            success: function (response) {
+                // 데이터가 성공적으로 로드되면
+                // 1. 페이지 데이터 출력 (예: 상품 리스트 업데이트)
+                // 2. 페이지네이션 UI 갱신
+                updatePagination(response.totalPages, pageNumber);
+                renderData(response.data); // 데이터를 HTML로 렌더링
+            },
+            error: function () {
+                alert("페이지 데이터를 불러오는 데 실패했습니다.");
+            }
+        });
+    };
+
+    // 페이지네이션 UI 업데이트 함수
+    var updatePagination = function (totalPages, currentPage) {
+        // 페이지 수가 변경되면 totalPages를 업데이트
+        var paginationHtml = '';
+        for (var i = 1; i <= totalPages; i++) {
+            paginationHtml += '<li' + (i === currentPage ? ' class="active"' : '') + '><a href="javascript:;" data-page="' + i + '">' + i + '</a></li>';
+        }
+        // 페이지네이션 HTML을 업데이트
+        $('.pagination').html(paginationHtml);
+
+        // "이전", "다음" 버튼 갱신
+        if (currentPage > 1) {
+            $('.pagination').prepend('<li><a href="javascript:;" data-page="' + (currentPage - 1) + '">&laquo;</a></li>');
+        } else {
+            $('.pagination').prepend('<li class="disabled"><a href="javascript:;">&laquo;</a></li>');
+        }
+
+        if (currentPage < totalPages) {
+            $('.pagination').append('<li><a href="javascript:;" data-page="' + (currentPage + 1) + '">&raquo;</a></li>');
+        } else {
+            $('.pagination').append('<li class="disabled"><a href="javascript:;">&raquo;</a></li>');
+        }
+    };
+
+    // 데이터를 HTML로 렌더링하는 함수
+    var renderData = function (data) {
+        var htmlContent = '';
+        // 예시: 데이터가 상품 리스트일 경우
+        data.forEach(function (item) {
+            htmlContent += '<div class="item">' +
+                '<h4>' + item.name + '</h4>' +
+                '<p>' + item.description + '</p>' +
+                '</div>';
+        });
+        $('#item-container').html(htmlContent); // 데이터를 표시할 컨테이너에 삽입
+    };
+
+    // 페이지네이션 버튼 클릭 이벤트
+    var handlePaginationClick = function () {
+        $('body').on('click', '.pagination a', function () {
+            var pageNumber = $(this).data('page'); // 클릭된 페이지 번호
+            if (pageNumber && pageNumber !== currentPage) {
+                currentPage = pageNumber;
+                loadPageData(currentPage); // 페이지 데이터 로딩
+            }
+        });
+    };
+
+    // 페이지 데이터 로딩 및 페이지네이션 초기화
+    var initPagination = function () {
+        loadPageData(currentPage); // 첫 번째 페이지 데이터 로딩
+        handlePaginationClick();    // 페이지네이션 클릭 이벤트 처리
+    };
 
     var handleInit = function() {
 
@@ -21,7 +98,7 @@ var Layout = function () {
         isIE9 = !! navigator.userAgent.match(/MSIE 9.0/);
         isIE10 = !! navigator.userAgent.match(/MSIE 10.0/);
         isIE11 = !! navigator.userAgent.match(/MSIE 11.0/);
-        
+
         if (isIE10) {
             jQuery('html').addClass('ie10'); // detect IE10 version
         }
@@ -53,7 +130,7 @@ var Layout = function () {
                 }
                 resize = setTimeout(function () {
                     runResponsiveHandlers();
-                }, 50); // wait 50ms until window resize finishes.                
+                }, 50); // wait 50ms until window resize finishes.
                 currheight = document.documentElement.clientHeight; // store last body client height
             });
         } else {
@@ -118,8 +195,8 @@ var Layout = function () {
         });
     }
 
-    var handleSearch = function() {    
-        $('.search-btn').click(function () {            
+    var handleSearch = function() {
+        $('.search-btn').click(function () {
             if($('.search-btn').hasClass('show-search-icon')){
                 if ($(window).width()>767) {
                     $('.search-box').fadeOut(300);
@@ -134,8 +211,8 @@ var Layout = function () {
                     $('.search-box').fadeIn(0);
                 }
                 $('.search-btn').addClass('show-search-icon');
-            } 
-        }); 
+            }
+        });
 
         // close search box on body click
         if($('.search-btn').size() != 0) {
@@ -156,10 +233,10 @@ var Layout = function () {
         $(".header .navbar-toggle").click(function () {
             if ($(".header .navbar-collapse").hasClass("open")) {
                 $(".header .navbar-collapse").slideDown(300)
-                .removeClass("open");
-            } else {             
+                    .removeClass("open");
+            } else {
                 $(".header .navbar-collapse").slideDown(300)
-                .addClass("open");
+                    .addClass("open");
             }
         });
     }
@@ -170,7 +247,7 @@ var Layout = function () {
                     $(".header-navigation-description").css("height", $(".header-navigation-content-ext").height()+22);
                 }
             }
-        });        
+        });
     }
 
     var handleSidebarMenu = function () {
@@ -184,11 +261,11 @@ var Layout = function () {
                     $(this).removeClass("collapsed");
                     $(this).siblings(".dropdown-menu").slideUp(300);
                 }
-            } 
+            }
         });
     }
 
-    function handleDifInits() { 
+    function handleDifInits() {
         $(".header .navbar-toggle span:nth-child(2)").addClass("short-icon-bar");
         $(".header .navbar-toggle span:nth-child(4)").addClass("short-icon-bar");
     }
@@ -200,11 +277,11 @@ var Layout = function () {
         var test = $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)");
         if (test.size() > 0) {
             test.each(function () {
-                    if ($(this).parents(".checker").size() == 0) {
-                        $(this).show();
-                        $(this).uniform();
-                    }
-                });
+                if ($(this).parents(".checker").size() == 0) {
+                    $(this).show();
+                    $(this).uniform();
+                }
+            });
         }
     }
 
@@ -212,10 +289,10 @@ var Layout = function () {
         if (!jQuery.fancybox) {
             return;
         }
-        
+
         jQuery(".fancybox-fast-view").fancybox();
 
-        if (jQuery(".fancybox-button").size() > 0) {            
+        if (jQuery(".fancybox-button").size() > 0) {
             jQuery(".fancybox-button").fancybox({
                 groupAttr: 'data-rel',
                 prevEffect: 'none',
@@ -236,11 +313,11 @@ var Layout = function () {
 
     // Handles Bootstrap Accordions.
     var handleAccordions = function () {
-       
+
         jQuery('body').on('shown.bs.collapse', '.accordion.scrollable', function (e) {
             Layout.scrollTo($(e.target), -100);
         });
-        
+
     }
 
     // Handles Bootstrap Tabs.
@@ -260,16 +337,16 @@ var Layout = function () {
     var handleMobiToggler = function () {
         $(".mobi-toggler").on("click", function(event) {
             event.preventDefault();//the default action of the event will not be triggered
-            
+
             $(".header").toggleClass("menuOpened");
             $(".header").find(".header-navigation").toggle(300);
         });
     }
 
     var handleTheme = function () {
-    
+
         var panel = $('.color-panel');
-    
+
         // handle theme colors
         var setColor = function (color) {
             $('#style-color').attr("href", "../../assets/corporate/css/themes/" + color + ".css");
@@ -294,7 +371,7 @@ var Layout = function () {
             $(this).addClass("current");
         });
     }
-	
+
     return {
         init: function () {
             // init core variables
@@ -311,16 +388,19 @@ var Layout = function () {
             handleScrollers();
             handleSubMenuExt();
             handleMobiToggler();
+
+            // 페이지네이션 초기화
+            initPagination(); // 페이지네이션 관련 함수 호출
         },
 
         initUniform: function (els) {
             if (els) {
                 jQuery(els).each(function () {
-                        if ($(this).parents(".checker").size() == 0) {
-                            $(this).show();
-                            $(this).uniform();
-                        }
-                    });
+                    if ($(this).parents(".checker").size() == 0) {
+                        $(this).show();
+                        $(this).uniform();
+                    }
+                });
             } else {
                 handleUniform();
             }
@@ -342,7 +422,7 @@ var Layout = function () {
         },
 
         initFixHeaderWithPreHeader: function () {
-            jQuery(window).scroll(function() {                
+            jQuery(window).scroll(function() {
                 if (jQuery(window).scrollTop()>37){
                     jQuery("body").addClass("page-header-fixed");
                 }
@@ -361,9 +441,9 @@ var Layout = function () {
                     jQuery(".header").removeClass("reduce-header");
                 }
             }
-            
+
             NavScrolling();
-            
+
             jQuery(window).scroll(function() {
                 NavScrolling ();
             });
@@ -450,22 +530,42 @@ var Layout = function () {
             });
         },
 
+
+
         initImageZoom: function () {
             $('.product-main-image').zoom({url: $('.product-main-image img').attr('data-BigImgSrc')});
         },
 
-        initSliderRange: function () {
-            $( "#slider-range" ).slider({
-              range: true,
-              min: 0,
-              max: 500,
-              values: [ 50, 250 ],
-              slide: function( event, ui ) {
-                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-              }
+        initAgeSliderRange: function () { //initSliderRange 에서 이름 변경함함
+            $( "#height-slider-range" ).slider({
+                range: true,
+                min: 19,   // 최소값을 19로 설정 (나이의 시작)
+                max: 100,  // 최대값을 100으로 설정 (나이의 끝)
+                values: [ 25, 60 ],  // 초기 값 (예: 25세 ~ 60세)
+                slide: function( event, ui ) {
+                    // 슬라이더가 움직일 때마다 나이 범위를 업데이트
+                    $( "#ageAmount" ).val( ui.values[ 0 ] + "세 - " + ui.values[ 1 ] + "세" );
+                }
             });
-            $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-            " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+            // 슬라이더 초기값을 표시
+            $( "#ageAmount" ).val( $( "#age-slider-range" ).slider( "values", 0 ) + "세 - " + $( "#age-slider-range" ).slider( "values", 1 ) + "세" );
+        },
+
+        initHeightSliderRange: function () { //initSliderRange 에서 이름 변경함함
+            $( "#height-slider-range" ).slider({
+                range: true,
+                min: 0,   // 최소값을 0로 설정
+                max: 300,  // 최대값을 300으로 설정
+                values: [ 140, 190 ],  // 초기 값
+                slide: function( event, ui ) {
+                    // 슬라이더가 움직일 때마다 나이 범위를 업데이트
+                    $( "#heightAmount" ).val( ui.values[ 0 ] + "cm - " + ui.values[ 1 ] + "cm" );
+                }
+            });
+
+            // 슬라이더 초기값을 표시
+            $( "#heightAmount" ).val( $( "#height-slider-range" ).slider( "values", 0 ) + "세 - " + $( "#height-slider-range" ).slider( "values", 1 ) + "세" );
         },
 
         // wrapper function to scroll(focus) to an element
@@ -473,8 +573,8 @@ var Layout = function () {
             var pos = (el && el.size() > 0) ? el.offset().top : 0;
             if (el) {
                 if ($('body').hasClass('page-header-fixed')) {
-                    pos = pos - $('.header').height(); 
-                }            
+                    pos = pos - $('.header').height();
+                }
                 pos = pos + (offeset ? offeset : -1 * el.height());
             }
 
@@ -495,7 +595,7 @@ var Layout = function () {
         gridOption1: function () {
             $(function(){
                 $('.grid-v1').mixitup();
-            });    
+            });
         }
 
     };

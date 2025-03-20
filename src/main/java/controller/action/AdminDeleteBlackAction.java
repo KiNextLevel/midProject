@@ -3,8 +3,8 @@ package controller.action;
 import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
-import model.dao.UserDAO;
-import model.dto.UserDTO;
+import org.example.webapp.model.dao.UserDAO;
+import org.example.webapp.model.dto.UserDTO;
 
 public class AdminDeleteBlackAction implements Action{
 

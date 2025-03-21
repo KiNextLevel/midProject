@@ -3,15 +3,6 @@
 <jsp:useBean id="preferenceDTO" class="org.example.webapp.model.dto.PreferenceDTO" scope="page" />
 <%@ page isELIgnored="false" %>
 
-<%
-    UserDTO dto = (UserDTO)request.getAttribute("userDTO");
-    if(dto != null) {
-        out.println("전달된 userDTO: " + dto.toString());
-    } else {
-        out.println("userDTO가 null입니다.");
-    }
-%>
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -168,7 +159,7 @@
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade" id="Information">
                                 <%
-                                    dto = (UserDTO)request.getAttribute("userDTO");
+                                    UserDTO dto = (UserDTO)request.getAttribute("userDTO");
                                     if(dto != null) {
                                 %>
                                 <p>생년월일 : <%= dto.getUserBirth() %></p><br>

@@ -19,12 +19,16 @@ public class JoinAction implements Action {
 		userDTO.setUserEmail(request.getParameter("userEmail"));
 		userDTO.setUserPassword(request.getParameter("userPassword"));
 		userDTO.setUserName(request.getParameter("userName"));
+		userDTO.setCondition("SELECTONE_CHECK");
 		System.out.println("JOIN 로그 가져온 ID[" + userDTO.getUserEmail() + "]");
+		System.out.println("JOIN 로그 가져온 pass[" +userDTO.getUserPassword() + "]");
+		System.out.println("JOIN 로그 가져온 name[" + userDTO.getUserName() + "]");
 		// 중복이 없으면 회원가입 진행
 		if (userDAO.selectOne(userDTO) == null) {
-			// 세션에 userDTO 저장
 			HttpSession session = request.getSession();
-			session.setAttribute("userDTO", userDTO);
+			session.setAttribute("userEmail", request.getParameter("userEmail"));
+			session.setAttribute("userPassword", request.getParameter("userPassword"));
+			session.setAttribute("userName", request.getParameter("userName"));
 
 			request.setAttribute("msg", "회원가입 진행");
 			request.setAttribute("flag", true);

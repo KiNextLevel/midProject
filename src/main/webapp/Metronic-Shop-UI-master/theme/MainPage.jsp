@@ -195,45 +195,58 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <div class="sidebar col-md-3 col-sm-5">
             <div class="sidebar-filter margin-bottom-25">
               <h2>Filter</h2>
-              <h3>성별</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 남</label>
-                <label><input type="checkbox"> 녀</label>
-              </div>
-                  <h3>나이</h3>
-	              <p>
-	                <label for="ageAmount">나이</label>
-	                <input type="text" id="ageAmount" style="border:0; color:#f6931f; font-weight:bold;">
-	              </p>
-              <div id="age-slider-range" class="age"></div>
-              <h3>거주지역</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 내 주위 0~100km</label>
-              </div>
-                   <h3>키</h3>
-                    <p>
-	                    <label for="heightAmount">키</label>
-	                    <input type="text" id="heightAmount" style="border:0; color:#f6931f; font-weight:bold;">
-	                </p>
-              <div id="height-slider-range" class="height"></div>
-              <h3>학력</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 범위 지정</label>
-              </div>
-              <h3>종교</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 무교</label>
-                <label><input type="checkbox"> 기독교</label>
-                <label><input type="checkbox"> 불교</label>
-                <label><input type="checkbox"> 천주교</label>
-                <label><input type="checkbox"> 힌두교</label>
-                <label><input type="checkbox"> 기타</label>
-              </div>
-              <h3>흡연</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 흡연</label>
-                <label><input type="checkbox"> 비흡연</label>
-              </div>
+                <!-- 성별 필터 -->
+                <h3>성별</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 남</label>
+                    <label><input type="checkbox"> 녀</label>
+                </div>
+
+                <!-- 나이 슬라이더 -->
+                <h3>나이</h3>
+                <p>
+                    <label for="ageAmount">나이</label>
+                    <input type="text" id="ageAmount" style="border:0; color:#f6931f; font-weight:bold;">
+                </p>
+                <div id="age-slider-range" class="age"></div>
+
+                <!-- 거주지역 -->
+                <h3>거주지역</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 내 주위 0~100km</label>
+                </div>
+
+                <!-- 키 슬라이더 -->
+                <h3>키</h3>
+                <p>
+                    <label for="heightAmount">키</label>
+                    <input type="text" id="heightAmount" style="border:0; color:#f6931f; font-weight:bold;">
+                </p>
+                <div id="height-slider-range" class="height"></div>
+
+                <!-- 학력 -->
+                <h3>학력</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 범위 지정</label>
+                </div>
+
+                <!-- 종교 -->
+                <h3>종교</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 무교</label>
+                    <label><input type="checkbox"> 기독교</label>
+                    <label><input type="checkbox"> 불교</label>
+                    <label><input type="checkbox"> 천주교</label>
+                    <label><input type="checkbox"> 힌두교</label>
+                    <label><input type="checkbox"> 기타</label>
+                </div>
+
+                <!-- 흡연 -->
+                <h3>흡연</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 흡연</label>
+                    <label><input type="checkbox"> 비흡연</label>
+                </div>
             </div>
 
             <div class="sidebar-products clearfix">

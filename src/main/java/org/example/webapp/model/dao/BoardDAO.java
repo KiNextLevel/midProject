@@ -9,9 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-// selectall에서 갖고와야하는게 이벤트번호, 제목, 내용, 날짜, 최대참여인원, 이벤트번호에 해당하는 현재참여자 인원
-
-
 public class BoardDAO {
     private String SELECTALL = "SELECT B.BOARD_NUM, B.BOARD_TITLE,B.BOARD_CONTENT, B.BOARD_DATE, B.BOARD_LIMIT, COUNT(P.PARTICIPANT_USER_EMAIL) AS CNT " +
             "FROM BOARD B LEFT JOIN PARTICIPANT P " +

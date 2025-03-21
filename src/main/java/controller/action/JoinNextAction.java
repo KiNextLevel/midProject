@@ -29,15 +29,15 @@ public class JoinNextAction implements Action {
             // UserDTO 객체 생성 및 데이터 설정
             UserDTO userDTO = new UserDTO();
 
-            // 세션에 저장된 userDTO가 있으면 가져오기
-            if (session.getAttribute("userDTO") != null) {
-                userDTO = (UserDTO) session.getAttribute("userDTO");
-            }
-
+            System.out.println(request.getParameter("userEmail"));
             // 기본 정보 설정
-            userDTO.setUserEmail(request.getParameter("email"));
-            userDTO.setUserPassword(request.getParameter("password"));
-            userDTO.setUserName(request.getParameter("name"));
+            userDTO.setUserEmail((String)session.getAttribute("userEmail")); // email -> userEmail
+            userDTO.setUserPassword((String)session.getAttribute("userPassword")); // password -> userPassword
+            userDTO.setUserName((String)session.getAttribute("userName")); // name -> userName
+            session.removeAttribute("userEmail");
+            session.removeAttribute("userPassword");
+            session.removeAttribute("userName");
+            //
             userDTO.setUserNickname(request.getParameter("userNickname"));
             userDTO.setUserPhone(request.getParameter("userPhone"));
 
@@ -107,7 +107,7 @@ public class JoinNextAction implements Action {
                 userDTO.setCondition("INSERT");
             }
 
-            System.out.println("JOIN 로그 가져온 ID[" + userDTO.getUserEmail() + "]");
+            System.out.println("JOIN Next Action 로그 userDTO[" + userDTO + "]");
 
             // UserDAO를 사용하여 회원가입 처리
             boolean result = userDAO.insert(userDTO);
@@ -155,7 +155,7 @@ public class JoinNextAction implements Action {
 
             if (isMultipart) {
                 // 파일 처리
-                Part filePart = request.getPart("USER_PROFILE");
+                Part filePart = request.getPart("userProfile");
 
                 if (filePart != null && filePart.getSize() > 0) {
                     String fileName = getSubmittedFileName(filePart);

@@ -11,9 +11,9 @@ public class UserDAO {
     // 아이디 중복 검사
     final String SELECTONE_CHECK = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ?";
     // 로그인
-    final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
+    final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
     // 유저 전체 정보 불러오기
-    final String SELCETALL = "SELECT * FROM USER WHERE USER_EMAIL = ?";
+    final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
     // 유저 선호 취향 정보 불러오기
     final String SELCETALL_FAVORITE = "SELECT * FROM PREFERENCE P LEFT JOIN USER U ON P.PREFERENCE_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
     // 참가 중인 이벤트 목록 불러오기
@@ -57,12 +57,12 @@ public class UserDAO {
         ArrayList<UserDTO> datas = new ArrayList<>();
         try {
             conn = JDBCUtil.connect();
-            if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL")) {
-                pstmt = conn.prepareStatement(SELCETALL);
-                pstmt.setString(1, userDTO.getUserEmail());
-            }
+//            if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL")) {
+//                pstmt = conn.prepareStatement(SELCETALL);
+//                pstmt.setString(1, userDTO.getUserEmail());
+//            }
             // 유저 선호 취향 정보 불러오기
-            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
+            if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
                 pstmt = conn.prepareStatement(SELCETALL_FAVORITE);
                 pstmt.setString(1, userDTO.getUserEmail());
             }
@@ -90,6 +90,26 @@ public class UserDAO {
                 UserDTO data = new UserDTO();
                 data.setUserEmail(rs.getString("USER_EMAIL"));
                 data.setUserPassword(rs.getString("USER_PASSWORD"));
+                data.setUserNickname(rs.getString("USER_NICKNAME"));
+                data.setUserPhone(rs.getString("USER_PHONE"));
+                data.setUserRegdate(rs.getDate("USER_REGDATE"));
+                data.setUserGender(rs.getInt("USER_GENDER") == 1);
+                data.setUserBirth(rs.getString("USER_BIRTH"));
+                data.setUserHeight(rs.getInt("USER_HEIGHT"));
+                data.setUserBody(rs.getString("USER_BODY"));
+                data.setUserMbti(rs.getString("USER_MBTI"));
+                data.setUserProfile(rs.getString("USER_PROFILE"));
+                data.setUserEducation(rs.getString("USER_EDUCATION"));
+                data.setUserReligion(rs.getString("USER_RELIGEION"));
+                data.setUserDrink(rs.getInt("USER_DRINK"));
+                data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
+                data.setUserJob(rs.getString("USER_JOB"));
+                data.setUserRole(rs.getInt("USER_ROLE"));
+                data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                data.setUserToken(rs.getInt("USER_TOKEN"));
+                data.setUserRegion(rs.getString("USER_REGION"));
+                data.setUserDescription(rs.getString("USER_DESCRIPTION"));
+                data.setUserName(rs.getString("USER_NAME"));
                 datas.add(data);
             }
             return datas;
@@ -118,6 +138,11 @@ public class UserDAO {
                     pstmt = conn.prepareStatement(SELECTONE);
                     pstmt.setString(1, userDTO.getUserEmail());
                     pstmt.setString(2, userDTO.getUserPassword());
+
+                }
+                else if(userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE_USERINFO")) {
+                    pstmt = conn.prepareStatement(SELECTONE_USERINFO);
+                    pstmt.setString(1, userDTO.getUserEmail());
                 }
                 else {
                     // 알 수 없는 조건인 경우 로그 출력 및 null 반환
@@ -130,7 +155,32 @@ public class UserDAO {
                 if (rs.next()) {
                     data = new UserDTO();
                     data.setUserEmail(rs.getString("USER_EMAIL"));
-                    data.setUserPassword(rs.getString("USER_PASSWORD"));
+                    if (userDTO.getCondition().equals("SELECTONE")) {
+                        data.setUserPassword(rs.getString("USER_PASSWORD"));
+                        data.setUserRole(rs.getInt("USER_ROLE"));
+                    } else if (userDTO.getCondition().equals("SELECTONE_USERINFO")) {
+                        data.setUserPassword(rs.getString("USER_PASSWORD"));
+                        data.setUserName(rs.getString("USER_NAME"));
+                        data.setUserNickname(rs.getString("USER_NICKNAME"));
+                        data.setUserPhone(rs.getString("USER_PHONE"));
+                        data.setUserRegdate(rs.getDate("USER_REGDATE"));
+                        data.setUserGender(rs.getInt("USER_GENDER") == 1);
+                        data.setUserBirth(rs.getString("USER_BIRTH"));
+                        data.setUserHeight(rs.getInt("USER_HEIGHT"));
+                        data.setUserBody(rs.getString("USER_BODY"));
+                        data.setUserMbti(rs.getString("USER_MBTI"));
+                        data.setUserProfile(rs.getString("USER_PROFILE"));
+                        data.setUserEducation(rs.getString("USER_EDUCATION"));
+                        data.setUserReligion(rs.getString("USER_RELIGEION"));
+                        data.setUserDrink(rs.getInt("USER_DRINK"));
+                        data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
+                        data.setUserJob(rs.getString("USER_JOB"));
+                        data.setUserRole(rs.getInt("USER_ROLE"));
+                        data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                        data.setUserToken(rs.getInt("USER_TOKEN"));
+                        data.setUserRegion(rs.getString("USER_REGION"));
+                        data.setUserDescription(rs.getString("USER_DESCRIPTION"));
+                    }
                 }
             }
             else {

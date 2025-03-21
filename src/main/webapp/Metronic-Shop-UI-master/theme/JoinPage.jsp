@@ -78,11 +78,6 @@
                 </div>
 
                 <form action="joinPage.do" method="post" id="userInfoForm" enctype="multipart/form-data">
-                    <!-- 이전 페이지에서 받아온 정보를 hidden 필드로 저장 -->
-                    <input type="hidden" name="userEmail" value="${userDTO.userEmail}">
-                    <input type="hidden" name="userPassword" value="${userDTO.userPassword}">
-                    <input type="hidden" name="userName" value="${userDTO.userName}">
-
                     <!-- 기본 정보 섹션 -->
                     <div class="form-section">
                         <h3><i class="fa fa-user"></i> 기본 정보</h3>

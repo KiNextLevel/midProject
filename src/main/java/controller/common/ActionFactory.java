@@ -37,7 +37,7 @@ public class ActionFactory {
 	private Map<String, Action>factory;
 	
 	public ActionFactory() {
-		factory = new HashMap<String, Action>(); //command 넣으면 Action 반환
+		factory = new HashMap<>(); //command 넣으면 Action 반환
 		factory.put("adminDeleteBoard.do", new AdminDeleteBoardAction());
 		factory.put("adminPaymentListPage.do", new AdminPaymentListPageAction());
 		factory.put("adminAddBlack.do", new AdminAddBlackAction());

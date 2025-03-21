@@ -14,6 +14,7 @@ public class BoardDTO {
     // 최대 참여인원
     private int boardLimit;
     private String condition;
+
     
     private String searchKeyword;
     
@@ -35,7 +36,9 @@ public class BoardDTO {
         this.condition = condition;
     }
 
-    public String getSearchKeyword() {
+
+    public String getSearchKeyword(int cnt) {
+
         return searchKeyword;
     }
 

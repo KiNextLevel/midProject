@@ -12,9 +12,10 @@ public class AdminMainPageAction implements Action{
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		System.out.println("AdminMainPageAction 로그: 도착");	
+		System.out.println("로그 userRole:["+session.getAttribute("userRole")+"]");
 		
 		try {
-		if(Integer.parseInt((String)session.getAttribute("userRole")) == 1) {
+		if(((Integer)session.getAttribute("userRole")) == 1) {
 			forward.setPath("/mywebapp/target-free-admin-template/AdminMainPage.jsp");
 			forward.setRedirect(true);
 		}
@@ -25,7 +26,7 @@ public class AdminMainPageAction implements Action{
 			forward.setRedirect(false);
 		}
 		}catch(Exception e) {		//session이 null인거 막기위해서
-			request.setAttribute("msg", "로그인 해주세요");
+			request.setAttribute("msg", "예외 발생");
 			request.setAttribute("flag", false);
 			forward.setPath("alert.jsp");
 			forward.setRedirect(false);

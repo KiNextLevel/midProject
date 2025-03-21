@@ -22,7 +22,6 @@ public class LoginAction implements Action {
         // 컨디션"로그인"
         userDTO.setCondition("SELECTONE");
         userDTO = userDAO.selectOne(userDTO);
-        System.out.println("로그인 로그: " + userDTO);
         if (userDTO != null) {
             // session에 userId, userName, role저장
             session.setAttribute("userEmail", userDTO.getUserEmail());
@@ -30,10 +29,10 @@ public class LoginAction implements Action {
 
             // url, flag, msg 요청단위 저장
             // alert.jsp에 url, true, msg 보내기
-            request.setAttribute("msg", "로그인 성공!");
-            request.setAttribute("flag", true);
             if (userDTO.getUserRole() == 1) { // 관리자
-                request.setAttribute("url", "adminPage.do");
+                request.setAttribute("msg", "관리자 로그인 성공!");
+                request.setAttribute("url", "adminMainPage.do");
+                request.setAttribute("flag", true);
             } else if (userDTO.getUserRole() == 2) { // 블랙
                 request.setAttribute("msg", "블랙당한 계정입니다");
                 request.setAttribute("flag", false);
@@ -41,7 +40,9 @@ public class LoginAction implements Action {
                 request.setAttribute("msg", "탈퇴한 계정입니다");
                 request.setAttribute("flag", false);
             } else { //유저
+                request.setAttribute("msg", "로그인 성공!");
                 request.setAttribute("url", "mainPage.do");
+                request.setAttribute("flag", true);
             }
         } else {
             // url, flag, msg 요청단위 저장

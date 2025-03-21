@@ -1,6 +1,10 @@
 package org.example.webapp.model.dao;
 
 
+import org.example.webapp.model.common.JDBCUtil;
+import org.example.webapp.model.dto.BoardDTO;
+import org.example.webapp.model.dto.ParticipantDTO;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+   <!-- 회원탈퇴 가운데로 정렬하기  -->
 <!DOCTYPE html>
 <!--
 Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
@@ -62,6 +64,63 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
   <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
   <link href="assets/corporate/css/custom.css" rel="stylesheet">
   <!-- Theme styles END -->
+
+<style>
+/* 회원탈퇴 안내 박스 스타일 */
+.main {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center;
+    min-height: 100vh; /* 화면 전체 높이 확보 */
+    background-color: #f5f5f5; /* 배경색 변경 */
+    padding: 20px;
+}
+
+/* 회원탈퇴 안내 박스 스타일 */
+.info-card {
+    width: 100%;
+    max-width: 600px; /* 박스 크기 조정 */
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 약관 텍스트 박스 */
+.form-group textarea {
+    width: 100%;
+    height: 150px;
+    resize: none;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+/* 체크박스와 버튼 정렬 */
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 탈퇴하기 버튼 스타일 */
+.btn-danger {
+    width: 100%;
+    max-width: 150px;
+    display: block;
+    margin: 10px auto;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    
+    
+}
+
+</style>
+
 </head>
 <!-- Head END -->
 
@@ -230,14 +289,51 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
 
               <!-- BEGIN CHECKOUT -->
-              <div id="checkout" class="panel panel-default">
+             <!--  <div id="checkout" class="panel panel-default"> -->
                 <div class="panel-heading">
                   <h2 class="panel-title">
                   
                   </h2>
                 </div>
-                <div id="checkout-content" class="panel-collapse collapse in">
-                  <div class="panel-body row">
+                <!-- <div id="checkout-content" class="panel-collapse collapse in"> -->
+                <!-- 회원탈퇴 안내 -->
+<div class="info-card">
+    <h3>회원탈퇴 안내</h3>
+    <p>회원탈퇴 약관</p>
+    <form id="deleteForm" action="processDeleteAccount.jsp" method="post">
+        <div class="form-group">
+            <textarea class="form-control" rows="6" readonly>
+                제1조
+                이 약관은 샘플 약관입니다.
+                ① 약관 내용 1
+                ② 약관 내용 2
+                ③ 약관 내용 3
+                ④ 약관 내용 4
+
+                제2조
+                이 약관은 샘플 약관입니다.
+                ① 약관 내용 1
+            </textarea>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="agreeTerms" required>
+            <label for="agreeTerms">위 약관에 동의합니다.</label>
+        </div>
+        <div class="padding-top-20">                  
+            <button type="button" class="btn btn-danger" onclick="confirmDelete()">탈퇴하기</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function confirmDelete() {
+        if (confirm("정말로 회원 탈퇴를 진행하시겠습니까?\n탈퇴 후에는 계정을 복구할 수 없습니다.")) {
+            document.getElementById("deleteForm").submit();
+        }
+    }
+</script>
+                
+                <!--   <div class="panel-body row">
                    
                     <div class="col-md-6 col-sm-6">
                       <h3>회원탈퇴 안내</h3>
@@ -267,13 +363,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       </form>
                     </div>
                       
-              </div>
+              </div> -->
               <!-- END CHECKOUT -->
 
-          
-            </div>
+          <!-- 
+            </div> -->
             <!-- END CHECKOUT PAGE -->
-          </div>
+         <!--  </div> -- -->
           <!-- END CONTENT -->
         </div>
         <!-- END SIDEBAR & CONTENT -->

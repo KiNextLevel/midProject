@@ -35,9 +35,9 @@ public class JoinNextAction implements Action {
             }
 
             // 기본 정보 설정
-            userDTO.setUserEmail(request.getParameter("email"));
-            userDTO.setUserPassword(request.getParameter("password"));
-            userDTO.setUserName(request.getParameter("name"));
+            userDTO.setUserEmail(request.getParameter("userEmail")); // email -> userEmail
+            userDTO.setUserPassword(request.getParameter("userPassword")); // password -> userPassword
+            userDTO.setUserName(request.getParameter("userName")); // name -> userName
             userDTO.setUserNickname(request.getParameter("userNickname"));
             userDTO.setUserPhone(request.getParameter("userPhone"));
 
@@ -155,7 +155,7 @@ public class JoinNextAction implements Action {
 
             if (isMultipart) {
                 // 파일 처리
-                Part filePart = request.getPart("USER_PROFILE");
+                Part filePart = request.getPart("userProfile");
 
                 if (filePart != null && filePart.getSize() > 0) {
                     String fileName = getSubmittedFileName(filePart);

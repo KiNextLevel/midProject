@@ -4,6 +4,7 @@ package controller.action;
 import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
 
@@ -21,8 +22,10 @@ public class JoinAction implements Action {
 		System.out.println("JOIN 로그 가져온 ID[" + userDTO.getUserEmail() + "]");
 		// 중복이 없으면 회원가입 진행
 		if (userDAO.selectOne(userDTO) == null) {
-//			HttpSession session = request.getSession();
-			request.setAttribute("userDTO", userDTO);
+			// 세션에 userDTO 저장
+			HttpSession session = request.getSession();
+			session.setAttribute("userDTO", userDTO);
+
 			request.setAttribute("msg", "회원가입 진행");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "JoinPage.jsp");

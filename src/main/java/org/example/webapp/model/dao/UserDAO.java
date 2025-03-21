@@ -66,7 +66,7 @@ public class UserDAO {
 //            }
             // 유저 선호 취향 정보 불러오기
             if (userDTO.getCondition().equals("SELECTALL")) {
-                pstmt = conn.prepareStatement("SELCETALL");
+                pstmt = conn.prepareStatement(SELECTALL);
             }else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
                 pstmt = conn.prepareStatement(SELCETALL_FAVORITE);
                 pstmt.setString(1, userDTO.getUserEmail());

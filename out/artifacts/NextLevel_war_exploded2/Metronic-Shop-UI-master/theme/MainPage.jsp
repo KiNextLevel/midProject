@@ -1,7 +1,9 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="org.example.webapp.model.dto.AlertDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--
 Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
@@ -21,548 +23,440 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 <!-- Head BEGIN -->
 <head>
-  <meta charset="utf-8">
-  <title>Men category | Metronic Shop UI</title>
+    <meta charset="utf-8">
+    <title>Men category | Metronic Shop UI</title>
+    <link href="css/ProductPage.css" rel="stylesheet">
 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <meta content="Metronic Shop UI description" name="description">
-  <meta content="Metronic Shop UI keywords" name="keywords">
-  <meta content="keenthemes" name="author">
+    <meta content="Metronic Shop UI description" name="description">
+    <meta content="Metronic Shop UI keywords" name="keywords">
+    <meta content="keenthemes" name="author">
 
-  <meta property="og:site_name" content="-CUSTOMER VALUE-">
-  <meta property="og:title" content="-CUSTOMER VALUE-">
-  <meta property="og:description" content="-CUSTOMER VALUE-">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
-  <meta property="og:url" content="-CUSTOMER VALUE-">
+    <meta property="og:site_name" content="-CUSTOMER VALUE-">
+    <meta property="og:title" content="-CUSTOMER VALUE-">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
 
-  <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
 
-  <!-- Fonts START -->
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"> 
-  <!-- Fonts END -->
+    <!-- Fonts START -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    <!-- Fonts END -->
 
-  <!-- Global styles START -->          
-  <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Global styles END --> 
-   
-  <!-- Page level plugin styles START -->
-  <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-  <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-  <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
-  <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"><!-- for slider-range -->
-  <link href="assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
-  <!-- Page level plugin styles END -->
+    <!-- Global styles START -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Global styles END -->
 
-  <!-- Theme styles START -->
-  <link href="assets/pages/css/components.css" rel="stylesheet">
-  <link href="assets/corporate/css/style.css" rel="stylesheet">
-  <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-  <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-  <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-  <link href="assets/corporate/css/custom.css" rel="stylesheet">
-  <!-- Theme styles END -->
+    <!-- Page level plugin styles START -->
+    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"><!-- for slider-range -->
+    <link href="assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin styles END -->
+
+    <!-- Theme styles START -->
+    <link href="assets/pages/css/components.css" rel="stylesheet">
+    <link href="assets/corporate/css/style.css" rel="stylesheet">
+    <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
+    <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
+    <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+    <link href="assets/corporate/css/custom.css" rel="stylesheet">
+    <!-- Theme styles END -->
 </head>
 <!-- Head END -->
 
 <!-- Body BEGIN -->
 <body class="ecommerce">
-    <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel hidden-sm">
-      <div class="color-mode-icons icon-color"></div>
-      <div class="color-mode-icons icon-color-close"></div>
-      <div class="color-mode">
+<!-- BEGIN STYLE CUSTOMIZER -->
+<div class="color-panel hidden-sm">
+    <div class="color-mode-icons icon-color"></div>
+    <div class="color-mode-icons icon-color-close"></div>
+    <div class="color-mode">
         <p>THEME COLOR</p>
         <ul class="inline">
-          <li class="color-red current color-default" data-style="red"></li>
-          <li class="color-blue" data-style="blue"></li>
-          <li class="color-green" data-style="green"></li>
-          <li class="color-orange" data-style="orange"></li>
-          <li class="color-gray" data-style="gray"></li>
-          <li class="color-turquoise" data-style="turquoise"></li>
+            <li class="color-red current color-default" data-style="red"></li>
+            <li class="color-blue" data-style="blue"></li>
+            <li class="color-green" data-style="green"></li>
+            <li class="color-orange" data-style="orange"></li>
+            <li class="color-gray" data-style="gray"></li>
+            <li class="color-turquoise" data-style="turquoise"></li>
         </ul>
-      </div>
     </div>
-    <!-- END BEGIN STYLE CUSTOMIZER --> 
+</div>
+<!-- END BEGIN STYLE CUSTOMIZER -->
 
-    <!-- BEGIN TOP BAR -->
-    <div class="pre-header">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN TOP BAR LEFT PART -->
-                <div class="col-md-6 col-sm-6 additional-shop-info">
-                    <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
-                        <!-- BEGIN CURRENCIES -->
-                        <li class="shop-currencies">
-                            <a href="productPage.do">광고 제거</a>
-                        </li>
-                        <!-- END CURRENCIES -->
-                        <!-- BEGIN LANGS -->
-                        <li class="langs-block">
-                            <a href="productPage.do" class="current"> 토큰 구매 </a>
-                        </li>
-                        <!-- END LANGS -->
-                    </ul>
-                </div>
-                <!-- END TOP BAR LEFT PART -->
-                <!-- BEGIN TOP BAR MENU -->
-                <div class="col-md-6 col-sm-6 additional-nav">
-                    <ul class="list-unstyled list-inline pull-right">
-                        <li><a href="myPage.do">마이페이지</a></li>
-                        <li>메시지</li>
-                        <li><a href="logout.do">로그아웃</a></li>
-                    </ul>
-                </div>
-                <!-- END TOP BAR MENU -->
+<!-- BEGIN TOP BAR -->
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
+                    <!-- BEGIN CURRENCIES -->
+                    <li class="shop-currencies">
+                        <a href="productPage.do">광고 제거</a>
+                    </li>
+                    <!-- END CURRENCIES -->
+                    <!-- BEGIN LANGS -->
+                    <li class="langs-block">
+                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                    </li>
+                    <!-- END LANGS -->
+                </ul>
             </div>
-        </div>        
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    <li><a href="myPage.do">마이페이지</a></li>
+                    <li>메시지</li>
+                    <li><a href="logout.do">로그아웃</a></li>
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
+        </div>
     </div>
-    <!-- END TOP BAR -->
+</div>
+<!-- END TOP BAR -->
 
-    <!-- BEGIN HEADER -->
-    <div class="header">
-      <div class="container">
+<!-- BEGIN HEADER -->
+<div class="header">
+    <div class="container">
         <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
-        <!-- BEGIN CART  읽지 않은 알림이 있으면 비동기로 "새 알림이 있습니다", 없으면 그냥 없음-->
+        <!-- BEGIN CART 읽지 않은 알림이 있으면 비동기로 "새 알림이 있습니다", 없으면 그냥 없음-->
         <div class="top-cart-block">
-        	<!-- 여기가 새 알림이 있습니다 칸 -->
-        	<%
-              if (request.getAttribute("alerts") != null) {
-			    %>
-                  <div class="top-cart-info">
-                      <p>새 알림이 있습니다</p>
-                  </div>
-            <%
-              }
-            %>
-          <i class="fa fa-shopping-cart"></i>
-                        
-          <div class="top-cart-content-wrapper">
-            <div class="top-cart-content">
-              <ul class="scroller" style="height: 250px;">
-              	<%
-                  if(request.getAttribute("alerts") == null) {
-                %>
-                  <li>
-                        <p>받은 알림이 아직 없습니다</p>
-                  </li>
-<%--                <%--%>
-<%--                    } else {--%>
-<%--                      for (AlertDTO data : (ArrayList<AlertDTO>)request.getAttribute("alerts")) {--%>
-<%--                %>       --%>
-<%--                  <li>--%>
-<%--                    <span class="cart-content-count"><%=data.getAlertNumber()%></span>--%>
-<%--                    <strong><%=data.getAlertContent()%></strong>--%>
-<%--                    <em><%=data.getAlertDate()%></em>--%>
-<%--                  </li>--%>
-                <% 
-//                        }
-                    }
-                %>
-              </ul>
+            <!-- 여기가 새 알림이 있습니다 칸 -->
+            <c:if test="${not empty alerts}">
+                <div class="top-cart-info">
+                    <p>새 알림이 있습니다</p>
+                </div>
+            </c:if>
+
+            <i class="fa fa-shopping-cart"></i>
+
+            <div class="top-cart-content-wrapper">
+                <div class="top-cart-content">
+                    <ul class="scroller" style="height: 250px;">
+                        <c:if test="${empty alerts}">
+                            <li>
+                                <p>받은 알림이 아직 없습니다</p>
+                            </li>
+                        </c:if>
+
+                        <c:forEach var="data" items="${alerts}">
+                            <li>
+                                <span class="cart-content-count">${data.alertNumber}</span>
+                                <strong>${data.alertContent}</strong>
+                                <em>${data.alertDate}</em>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
             </div>
-          </div>            
         </div>
         <!--END CART -->
-      </div>
     </div>
-    <!-- Header END -->
+</div>
+<!-- Header END -->
 
-    <div class="title-wrapper">
-      <div class="container"><div class="container-inner">
-      <a href="eventPage.do">
-        <h1><span>이벤트!</span></h1>
-        <em>온/오프라인 이벤트 참여하기</em>
-      </a>
-      </div></div>
-    </div>
+<div class="title-wrapper">
+    <div class="container"><div class="container-inner">
+        <a href="boardPage.do">
+            <h1><span>이벤트!</span></h1>
+            <em>온/오프라인 이벤트 참여하기</em>
+        </a>
+    </div></div>
+</div>
 
-    <div class="main">
-      <div class="container">
+<div class="main">
+    <div class="container">
         <ul class="breadcrumb">
             <li class="active">Home</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
-          <!-- BEGIN SIDEBAR -->
-          <div class="sidebar col-md-3 col-sm-5">
-            <div class="sidebar-filter margin-bottom-25">
-              <h2>Filter</h2>
-              <h3>성별</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 남</label>
-                <label><input type="checkbox"> 녀</label>
-              </div>
-                  <h3>나이</h3>
-	              <p>
-	                <label for="ageAmount">나이</label>
-	                <input type="text" id="ageAmount" style="border:0; color:#f6931f; font-weight:bold;">
-	              </p>
-              <div id="age-slider-range" class="age"></div>
-              <h3>거주지역</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 내 주위 0~100km</label>
-              </div>
-                   <h3>키</h3>
-                    <p>
-	                    <label for="heightAmount">키</label>
-	                    <input type="text" id="heightAmount" style="border:0; color:#f6931f; font-weight:bold;">
-	                </p>
-              <div id="height-slider-range" class="height"></div>
-              <h3>학력</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 범위 지정</label>
-              </div>
-              <h3>종교</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 무교</label>
-                <label><input type="checkbox"> 기독교</label>
-                <label><input type="checkbox"> 불교</label>
-                <label><input type="checkbox"> 천주교</label>
-                <label><input type="checkbox"> 힌두교</label>
-                <label><input type="checkbox"> 기타</label>
-              </div>
-              <h3>흡연</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 흡연</label>
-                <label><input type="checkbox"> 비흡연</label>
-              </div>
-            </div>
+            <!-- BEGIN SIDEBAR -->
+            <div class="sidebar col-md-3 col-sm-5">
+                <div class="sidebar-filter margin-bottom-25">
+                    <h2>Filter</h2>
+                    <!-- 성별 필터 -->
+                    <h3>성별</h3>
+                    <div class="checkbox-list">
+                        <label><input type="checkbox"> 남</label>
+                        <label><input type="checkbox"> 여</label>
+                    </div>
 
-            <div class="sidebar-products clearfix">
-              <h2>구글 광고</h2>
-              <div class="item">
-                <a href="shop-item.html"><img src="assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
-                <div class="price">$31.00</div>
-              </div>
-              <div class="item">
-                <a href="shop-item.html"><img src="assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
-                <div class="price">$23.00</div>
-              </div>
-              <div class="item">
-                <a href="shop-item.html"><img src="assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
-                <div class="price">$86.00</div>
-              </div>
-            </div>
-          </div>
-          <!-- END SIDEBAR -->
-          
-          <!-- BEGIN CONTENT -->
-          <div class="col-md-9 col-sm-7">
-            <div class="row list-view-sorting clearfix">
-              <div class="col-md-2 col-sm-2 list-view">
-                <a href="javascript:;"><i class="fa fa-th-large"></i></a>
-                <a href="javascript:;"><i class="fa fa-th-list"></i></a>
-              </div>
-              <div class="col-md-10 col-sm-10">
-                <div class="pull-right">
-                  <label class="control-label">Show:</label>
-                  <select class="form-control input-sm">
-                    <option value="#?limit=24" selected="selected">24</option>
-                    <option value="#?limit=25">25</option>
-                    <option value="#?limit=50">50</option>
-                    <option value="#?limit=75">75</option>
-                    <option value="#?limit=100">100</option>
-                  </select>
-                </div>
-                <div class="pull-right">
-                  <label class="control-label">Sort&nbsp;By:</label>
-                  <select class="form-control input-sm">
-                    <option value="#?sort=p.sort_order&amp;order=ASC" selected="selected">Default</option>
-                    <option value="#?sort=pd.name&amp;order=ASC">Name (A - Z)</option>
-                    <option value="#?sort=pd.name&amp;order=DESC">Name (Z - A)</option>
-                    <option value="#?sort=p.price&amp;order=ASC">Price (Low &gt; High)</option>
-                    <option value="#?sort=p.price&amp;order=DESC">Price (High &gt; Low)</option>
-                    <option value="#?sort=rating&amp;order=DESC">Rating (Highest)</option>
-                    <option value="#?sort=rating&amp;order=ASC">Rating (Lowest)</option>
-                    <option value="#?sort=p.model&amp;order=ASC">Model (A - Z)</option>
-                    <option value="#?sort=p.model&amp;order=DESC">Model (Z - A)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <!-- BEGIN PRODUCT LIST -->
-            <div class="row product-list">
-              <%
-                if(application.getAttribute("userDatas") == null) {
-              %>
-                <li>
-                      <p>회원이 없습니다</p>
-                </li>
-              <%
-                  } else {
-                    for (UserDTO data : (ArrayList<UserDTO>)application.getAttribute("userDatas")) {
-              %>
-              <!-- PRODUCT ITEM START -->
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src=<%=data.getUserProfile()%> class="img-responsive" alt="userImage">
-                    <div>
-                      <a href="" class="btn btn-default fancybox-button" > Zoom </a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                    <!-- 나이 슬라이더 -->
+                    <h3>나이</h3>
+                    <p>
+                        <label for="ageAmount">나이</label>
+                        <input type="text" id="ageAmount" style="border:0; color:#f6931f; font-weight:bold;">
+                    </p>
+                    <div id="age-slider-range" class="age"></div>
+
+                    <!-- 거주지역 -->
+                    <h3>거주지역</h3>
+                    <div class="checkbox-list">
+                        <label><input type="checkbox"> 내 주위 0~100km</label>
                     </div>
-                  </div>
-                  <h3><a href="userDetailPage.do?userEmail=<%=data.getUserEmail()%>"><%=data.getUserNickname()%></a></h3>
-<%--                  <div class="age">나이: <%=data.getUserAge()%>세</div>--%>
-                  <div class="height">키: <%=data.getUserHeight()%>cm</div>
-                  <div class="description"><%=data.getUserDescription()%></div>
-                </div>
-              </div>
-              <!-- PRODUCT ITEM END -->
-              <%
-                  }
-                }
-              %>
-              <!-- PRODUCT ITEM START -->
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="TEST" class="img-responsive" alt="userImage">
-                    <div>
-                      <a href="TEST" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+
+                    <!-- 키 슬라이더 -->
+                    <h3>키</h3>
+                    <p>
+                        <label for="heightAmount">키</label>
+                        <input type="text" id="heightAmount" style="border:0; color:#f6931f; font-weight:bold;">
+                    </p>
+                    <div id="height-slider-range" class="height"></div>
+
+                    <!-- 학력 -->
+                    <h3>학력</h3>
+                    <div class="checkbox-list">
+                        <label><input type="checkbox"> 범위 지정</label>
                     </div>
-                  </div>
-                  <h3><a href="userDetailPage.do?userEmail=EMAIL">TEST</a></h3>
-                  <div class="age">나이: 22세</div>
-                  <div class="height">키: 222cm</div>
-                  <div class="자기소개">ㅎㅇ</div>
+
+                    <!-- 종교 -->
+                    <h3>종교</h3>
+                    <div class="checkbox-list">
+                        <label><input type="checkbox"> 무교</label>
+                        <label><input type="checkbox"> 기독교</label>
+                        <label><input type="checkbox"> 불교</label>
+                        <label><input type="checkbox"> 천주교</label>
+                        <label><input type="checkbox"> 힌두교</label>
+                        <label><input type="checkbox"> 기타</label>
+                    </div>
+
+                    <!-- 흡연 -->
+                    <h3>흡연</h3>
+                    <div class="checkbox-list">
+                        <label><input type="checkbox"> 흡연</label>
+                        <label><input type="checkbox"> 비흡연</label>
+                    </div>
                 </div>
-              </div>
-              <!-- PRODUCT ITEM END -->
+
+                <div class="sidebar-products clearfix">
+                    <h2>구글 광고</h2>
+                    <div class="item">
+                        <a href="shop-item.html"><img src="assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                        <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
+                        <div class="price">$31.00</div>
+                    </div>
+                    <div class="item">
+                        <a href="shop-item.html"><img src="assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                        <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
+                        <div class="price">$23.00</div>
+                    </div>
+                    <div class="item">
+                        <a href="shop-item.html"><img src="assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                        <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
+                        <div class="price">$86.00</div>
+                    </div>
+                </div>
             </div>
-            <!-- END PRODUCT LIST -->
-            <div class="row">
-              <div class="col-md-4 col-sm-4 items-info">Items 1 to 9 of 10 total</div>
-              <div class="col-md-8 col-sm-8">
-                <ul class="pagination pull-right">
-                  <li><a href="javascript:;" class="prev-page">&laquo;</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="1">1</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="2">2</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="3">3</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="4">4</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="5">5</a></li>
-                  <li><a href="javascript:;" class="next-page">&raquo;</a></li>
-                </ul>
-              </div>
+            <!-- END SIDEBAR -->
+
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-9 col-sm-7">
+                <div class="row list-view-sorting clearfix">
+                    <div class="col-md-2 col-sm-2 list-view">
+                        <a href="javascript:;"><i class="fa fa-th-large"></i></a>
+                        <a href="javascript:;"><i class="fa fa-th-list"></i></a>
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="pull-right">
+                            <label class="control-label">Show:</label>
+                            <select class="form-control input-sm">
+                                <option value="#?limit=24" selected="selected">24</option>
+                                <option value="#?limit=25">25</option>
+                                <option value="#?limit=50">50</option>
+                                <option value="#?limit=75">75</option>
+                                <option value="#?limit=100">100</option>
+                            </select>
+                        </div>
+                        <div class="pull-right">
+                            <label class="control-label">Sort&nbsp;By:</label>
+                            <select class="form-control input-sm">
+                                <option value="#?sort=p.sort_order&amp;order=ASC" selected="selected">Default</option>
+                                <option value="#?sort=pd.name&amp;order=ASC">Name (A - Z)</option>
+                                <option value="#?sort=pd.name&amp;order=DESC">Name (Z - A)</option>
+                                <option value="#?sort=p.price&amp;order=ASC">Price (Low &gt; High)</option>
+                                <option value="#?sort=p.price&amp;order=DESC">Price (High &gt; Low)</option>
+                                <option value="#?sort=rating&amp;order=DESC">Rating (Highest)</option>
+                                <option value="#?sort=rating&amp;order=ASC">Rating (Lowest)</option>
+                                <option value="#?sort=p.model&amp;order=ASC">Model (A - Z)</option>
+                                <option value="#?sort=p.model&amp;order=DESC">Model (Z - A)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- BEGIN PRODUCT LIST -->
+                <div class="row product-list">
+                    <c:if test="${empty userDatas}">
+                        <li>
+                            <p>회원이 없습니다</p>
+                        </li>
+                    </c:if>
+                    <c:forEach var="data" items="${userDatas}">
+                        <!-- PRODUCT ITEM START -->
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="product-item">
+                                <div class="pi-img-wrapper">
+                                    <img src="${data.userProfile}" class="img-responsive" alt="userImage">
+                                    <div class="product-page-cart">
+                                        <button class="btn btn-primary" type="submit">메시지 보내기</button>
+                                        <a href="userDetailPage.do?userEmail=${data.userEmail}" class="btn btn-default">프로필 보기</a>
+                                    </div>
+                                </div>
+                                <h3><a href="userDetailPage.do?userEmail=${data.userEmail}">${data.userNickname}</a></h3>
+                                <div class="height">키: ${data.userHeight}cm</div>
+                                <div class="description">${data.userDescription}</div>
+                            </div>
+                        </div>
+                        <!-- PRODUCT ITEM END -->
+                    </c:forEach>
+
+                    <!-- Default Product Item -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="product-item">
+                            <div class="pi-img-wrapper">
+                                <img src="TEST" class="img-responsive" alt="userImage">
+                                <div>
+                                    <button class="btn btn-default" type="submit">메시지 보내기</button>
+                                    <a href="userDetailPage.do?userEmail=test@test.com" class="btn btn-default">프로필 보기</a>
+                                </div>
+                            </div>
+                            <div class="age">나이: 22세</div>
+                            <div class="height">키: 222cm</div>
+                            <div class="자기소개">ㅎㅇ</div>
+                        </div>
+                    </div>
+                    <!-- PRODUCT ITEM END -->
+                </div>
+                <!-- END PRODUCT LIST -->
             </div>
-          </div>
-          <!-- END CONTENT -->
+            <!-- END CONTENT -->
         </div>
         <!-- END SIDEBAR & CONTENT -->
-      </div>
     </div>
+</div>
 
-    <!-- BEGIN BRANDS 이게 광고가 될듯-->
-    <div class="brands">
-      <div class="container">
-            <div class="owl-carousel owl-carousel6-brands">
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/canon.jpg" alt="canon" title="canon"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/esprit.jpg" alt="esprit" title="esprit"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/gap.jpg" alt="gap" title="gap"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/next.jpg" alt="next" title="next"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/puma.jpg" alt="puma" title="puma"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/zara.jpg" alt="zara" title="zara"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/canon.jpg" alt="canon" title="canon"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/esprit.jpg" alt="esprit" title="esprit"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/gap.jpg" alt="gap" title="gap"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/next.jpg" alt="next" title="next"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/puma.jpg" alt="puma" title="puma"></a>
-              <a href="shop-product-list.html"><img src="assets/pages/img/brands/zara.jpg" alt="zara" title="zara"></a>
+<!-- BEGIN FOOTER -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN BOTTOM ABOUT BLOCK -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Next Level</h2>
+                <p>
+                    우리는 인연과 연인인을 중시합니다.
+                </p>
             </div>
-        </div>
-    </div>
-    <!-- END BRANDS -->
-
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN BOTTOM ABOUT BLOCK -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2>About us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
-            <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
-          </div>
-          <!-- END BOTTOM ABOUT BLOCK -->
-          <!-- BEGIN BOTTOM INFO BLOCK -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2>Information</h2>
-            <ul class="list-unstyled">
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Delivery Information</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Customer Service</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Order Tracking</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Shipping & Returns</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="contacts.html">Contact Us</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Careers</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Payment Methods</a></li>
-            </ul>
-          </div>
-          <!-- END INFO BLOCK -->
-
-          <!-- BEGIN TWITTER BLOCK --> 
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2 class="margin-bottom-0">Latest Tweets</h2>
-            <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>      
-          </div>
-          <!-- END TWITTER BLOCK -->
-          
-          <!-- BEGIN BOTTOM CONTACTS -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2>Our Contacts</h2>
-            <address class="margin-bottom-40">
-              35, Lorem Lis Street, Park Ave<br>
-              California, US<br>
-              Phone: 300 323 3456<br>
-              Fax: 300 323 1456<br>
-              Email: <a href="mailto:info@metronic.com">info@metronic.com</a><br>
-              Skype: <a href="skype:metronic">metronic</a>
-            </address>
-          </div>
-          <!-- END BOTTOM CONTACTS -->
-        </div>
-        <hr>
-        <div class="row">
-          <!-- BEGIN SOCIAL ICONS -->
-          <div class="col-md-6 col-sm-6">
-            <ul class="social-icons">
-              <li><a class="rss" data-original-title="rss" href="javascript:;"></a></li>
-              <li><a class="facebook" data-original-title="facebook" href="javascript:;"></a></li>
-              <li><a class="twitter" data-original-title="twitter" href="javascript:;"></a></li>
-              <li><a class="googleplus" data-original-title="googleplus" href="javascript:;"></a></li>
-              <li><a class="linkedin" data-original-title="linkedin" href="javascript:;"></a></li>
-              <li><a class="youtube" data-original-title="youtube" href="javascript:;"></a></li>
-              <li><a class="vimeo" data-original-title="vimeo" href="javascript:;"></a></li>
-              <li><a class="skype" data-original-title="skype" href="javascript:;"></a></li>
-            </ul>
-          </div>
-          <!-- END SOCIAL ICONS -->
-          <!-- BEGIN NEWLETTER -->
-          <div class="col-md-6 col-sm-6">
-            <div class="pre-footer-subscribe-box pull-right">
-              <h2>Newsletter</h2>
-              <form action="#">
-                <div class="input-group">
-                  <input type="text" placeholder="youremail@mail.com" class="form-control">
-                  <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Subscribe</button>
-                  </span>
-                </div>
-              </form>
-            </div> 
-          </div>
-          <!-- END NEWLETTER -->
-        </div>
-      </div>
-    </div>
-    <!-- END PRE-FOOTER -->
-
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN COPYRIGHT -->
-          <div class="col-md-4 col-sm-4 padding-top-10">
-            2015 © Keenthemes. ALL Rights Reserved. 
-          </div>
-          <!-- END COPYRIGHT -->
-          <!-- BEGIN PAYMENTS -->
-          <div class="col-md-4 col-sm-4">
-            <ul class="list-unstyled list-inline pull-right">
-              <li><img src="assets/corporate/img/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union"></li>
-              <li><img src="assets/corporate/img/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express"></li>
-              <li><img src="assets/corporate/img/payments/MasterCard.jpg" alt="We accept MasterCard" title="We accept MasterCard"></li>
-              <li><img src="assets/corporate/img/payments/PayPal.jpg" alt="We accept PayPal" title="We accept PayPal"></li>
-              <li><img src="assets/corporate/img/payments/visa.jpg" alt="We accept Visa" title="We accept Visa"></li>
-            </ul>
-          </div>
-          <!-- END PAYMENTS -->
-          <!-- BEGIN POWERED -->
-          <div class="col-md-4 col-sm-4 text-right">
-            <p class="powered">Powered by: <a href="http://www.keenthemes.com/">KeenThemes.com</a></p>
-          </div>
-          <!-- END POWERED -->
-        </div>
-      </div>
-    </div>
-    <!-- END FOOTER -->
-
-    <!-- BEGIN fast view of a product -->
-    <div id="product-pop-up" style="display: none; width: 700px;">
-            <div class="product-page product-pop-up">
-              <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-3">
-                  <div class="product-main-image">
-                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-9">
-                  <h1>회원이름</h1>
-                  <div class="price-availability-block clearfix">
-                  </div>
-                  <div class="description">
-                    <p>회원설명</p>
-                  </div>
-                  <div class="product-page-options">
-                  </div>
-                  <div class="product-page-cart">
-                    <button class="btn btn-primary" type="submit">메시지 보내기</button>
-                    <a href="shop-item.html" class="btn btn-default">프로필 보기</a>
-                  </div>
-                </div>
-
-                <div class="sticker sticker-sale"></div>
-              </div>
+            <!-- END BOTTOM ABOUT BLOCK -->
+            <!-- BEGIN BOTTOM INFO BLOCK -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Information</h2>
             </div>
+            <!-- END INFO BLOCK -->
+
+            <!-- BEGIN TWITTER BLOCK -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2 class="margin-bottom-0">Github</h2>
+                <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2" data-theme="dark"
+                   data-link-color="#57C8EB" data-widget-id="455411516829736961"
+                   data-chrome="noheader nofooter noscrollbar noborders transparent">https://github.com/KiNextLevel</a>
+            </div>
+            <!-- END TWITTER BLOCK -->
+
+            <!-- BEGIN BOTTOM CONTACTS -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Our Contacts</h2>
+                <address class="margin-bottom-40">
+                    서울 강남구 테헤란로26길 12<br>
+                    (우) 06236 (지번) 역삼동 736-56<br>
+                    Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
+                    Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
+                </address>
+            </div>
+            <!-- END BOTTOM CONTACTS -->
+        </div>
     </div>
-    <!-- END fast view of a product -->
+</div>
+<!-- END FOOTER -->
 
-    <!-- Load javascripts at bottom, this will reduce page load time -->
-    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
-    <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.min.js"></script>  
-    <![endif]-->  
-    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
-    <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
+<!-- BEGIN fast view of a product -->
+<%--    <div id="product-pop-up" style="display: none; width: 700px;">--%>
+<%--            <div class="product-page product-pop-up">--%>
+<%--              <div class="row">--%>
+<%--                <div class="col-md-6 col-sm-6 col-xs-3">--%>
+<%--                  <div class="product-main-image">--%>
+<%--                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--                <div class="col-md-6 col-sm-6 col-xs-9">--%>
+<%--                  <h1>회원이름</h1>--%>
+<%--                  <div class="price-availability-block clearfix">--%>
+<%--                  </div>--%>
+<%--                  <div class="description">--%>
+<%--                    <p>회원설명</p>--%>
+<%--                  </div>--%>
+<%--                  <div class="product-page-options">--%>
+<%--                  </div>--%>
+<%--                  <div class="product-page-cart">--%>
+<%--                    <button class="btn btn-primary" type="submit">메시지 보내기</button>--%>
+<%--                    <a href="shop-item.html" class="btn btn-default">프로필 보기</a>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
 
-    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-    <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
-    <script src='assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
-    <script src="assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
-    <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
+<%--                <div class="sticker sticker-sale"></div>--%>
+<%--              </div>--%>
+<%--            </div>--%>
+<%--    </div>--%>
+<!-- END fast view of a product -->
 
-    <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            Layout.init();    
-            Layout.initOWL();
-            Layout.initTwitter();
-            Layout.initImageZoom();
-            Layout.initTouchspin();
-            Layout.initUniform();
-            Layout.initAgeSliderRange();
-            Layout.initHeightSliderRange();
-        });
-    </script>
-    <!-- END PAGE LEVEL JAVASCRIPTS -->
+<!-- Load javascripts at bottom, this will reduce page load time -->
+<!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<![endif]-->
+<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+<script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+<script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+<script src='assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
+<script src="assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
+<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
+
+<script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        Layout.init();
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initImageZoom();
+        Layout.initTouchspin();
+        Layout.initUniform();
+        Layout.initAgeSliderRange();
+        Layout.initHeightSliderRange();
+    });
+</script>
+<!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>

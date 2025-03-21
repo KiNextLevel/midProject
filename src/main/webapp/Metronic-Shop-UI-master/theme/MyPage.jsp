@@ -80,7 +80,7 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
+        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png"
                                                          alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>

@@ -13,6 +13,24 @@ public class BoardDTO {
     private Date boardDate;
     // 최대 참여인원
     private int boardLimit;
+    private String condition;
+    private String searchKeyword;
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public String getSearchKeyword(int cnt) {
+        return searchKeyword;
+    }
+
+    public void setSearchKeyword(String searchKeyword) {
+        this.searchKeyword = searchKeyword;
+    }
 
     // getter, setter 메서드
     public int getBoardNumber() {

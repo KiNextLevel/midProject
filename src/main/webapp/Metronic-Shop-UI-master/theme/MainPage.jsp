@@ -1,7 +1,9 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="org.example.webapp.model.dto.AlertDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--
 Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
@@ -130,46 +132,37 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
-        <!-- BEGIN CART  읽지 않은 알림이 있으면 비동기로 "새 알림이 있습니다", 없으면 그냥 없음-->
-        <div class="top-cart-block">
-        	<!-- 여기가 새 알림이 있습니다 칸 -->
-        	<%
-              if (request.getAttribute("alerts") != null) {
-			    %>
+          <!-- BEGIN CART 읽지 않은 알림이 있으면 비동기로 "새 알림이 있습니다", 없으면 그냥 없음-->
+          <div class="top-cart-block">
+              <!-- 여기가 새 알림이 있습니다 칸 -->
+              <c:if test="${not empty alerts}">
                   <div class="top-cart-info">
                       <p>새 알림이 있습니다</p>
                   </div>
-            <%
-              }
-            %>
-          <i class="fa fa-shopping-cart"></i>
-                        
-          <div class="top-cart-content-wrapper">
-            <div class="top-cart-content">
-              <ul class="scroller" style="height: 250px;">
-              	<%
-                  if(request.getAttribute("alerts") == null) {
-                %>
-                  <li>
-                        <p>받은 알림이 아직 없습니다</p>
-                  </li>
-<%--                <%--%>
-<%--                    } else {--%>
-<%--                      for (AlertDTO data : (ArrayList<AlertDTO>)request.getAttribute("alerts")) {--%>
-<%--                %>       --%>
-<%--                  <li>--%>
-<%--                    <span class="cart-content-count"><%=data.getAlertNumber()%></span>--%>
-<%--                    <strong><%=data.getAlertContent()%></strong>--%>
-<%--                    <em><%=data.getAlertDate()%></em>--%>
-<%--                  </li>--%>
-                <% 
-//                        }
-                    }
-                %>
-              </ul>
-            </div>
-          </div>            
-        </div>
+              </c:if>
+
+              <i class="fa fa-shopping-cart"></i>
+
+              <div class="top-cart-content-wrapper">
+                  <div class="top-cart-content">
+                      <ul class="scroller" style="height: 250px;">
+                          <c:if test="${empty alerts}">
+                              <li>
+                                  <p>받은 알림이 아직 없습니다</p>
+                              </li>
+                          </c:if>
+
+                          <c:forEach var="data" items="${alerts}">
+                              <li>
+                                  <span class="cart-content-count">${data.alertNumber}</span>
+                                  <strong>${data.alertContent}</strong>
+                                  <em>${data.alertDate}</em>
+                              </li>
+                          </c:forEach>
+                      </ul>
+                  </div>
+              </div>
+          </div>
         <!--END CART -->
       </div>
     </div>
@@ -271,109 +264,84 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <!-- END SIDEBAR -->
           
           <!-- BEGIN CONTENT -->
-          <div class="col-md-9 col-sm-7">
-            <div class="row list-view-sorting clearfix">
-              <div class="col-md-2 col-sm-2 list-view">
-                <a href="javascript:;"><i class="fa fa-th-large"></i></a>
-                <a href="javascript:;"><i class="fa fa-th-list"></i></a>
-              </div>
-              <div class="col-md-10 col-sm-10">
-                <div class="pull-right">
-                  <label class="control-label">Show:</label>
-                  <select class="form-control input-sm">
-                    <option value="#?limit=24" selected="selected">24</option>
-                    <option value="#?limit=25">25</option>
-                    <option value="#?limit=50">50</option>
-                    <option value="#?limit=75">75</option>
-                    <option value="#?limit=100">100</option>
-                  </select>
+            <div class="col-md-9 col-sm-7">
+                <div class="row list-view-sorting clearfix">
+                    <div class="col-md-2 col-sm-2 list-view">
+                        <a href="javascript:;"><i class="fa fa-th-large"></i></a>
+                        <a href="javascript:;"><i class="fa fa-th-list"></i></a>
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="pull-right">
+                            <label class="control-label">Show:</label>
+                            <select class="form-control input-sm">
+                                <option value="#?limit=24" selected="selected">24</option>
+                                <option value="#?limit=25">25</option>
+                                <option value="#?limit=50">50</option>
+                                <option value="#?limit=75">75</option>
+                                <option value="#?limit=100">100</option>
+                            </select>
+                        </div>
+                        <div class="pull-right">
+                            <label class="control-label">Sort&nbsp;By:</label>
+                            <select class="form-control input-sm">
+                                <option value="#?sort=p.sort_order&amp;order=ASC" selected="selected">Default</option>
+                                <option value="#?sort=pd.name&amp;order=ASC">Name (A - Z)</option>
+                                <option value="#?sort=pd.name&amp;order=DESC">Name (Z - A)</option>
+                                <option value="#?sort=p.price&amp;order=ASC">Price (Low &gt; High)</option>
+                                <option value="#?sort=p.price&amp;order=DESC">Price (High &gt; Low)</option>
+                                <option value="#?sort=rating&amp;order=DESC">Rating (Highest)</option>
+                                <option value="#?sort=rating&amp;order=ASC">Rating (Lowest)</option>
+                                <option value="#?sort=p.model&amp;order=ASC">Model (A - Z)</option>
+                                <option value="#?sort=p.model&amp;order=DESC">Model (Z - A)</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="pull-right">
-                  <label class="control-label">Sort&nbsp;By:</label>
-                  <select class="form-control input-sm">
-                    <option value="#?sort=p.sort_order&amp;order=ASC" selected="selected">Default</option>
-                    <option value="#?sort=pd.name&amp;order=ASC">Name (A - Z)</option>
-                    <option value="#?sort=pd.name&amp;order=DESC">Name (Z - A)</option>
-                    <option value="#?sort=p.price&amp;order=ASC">Price (Low &gt; High)</option>
-                    <option value="#?sort=p.price&amp;order=DESC">Price (High &gt; Low)</option>
-                    <option value="#?sort=rating&amp;order=DESC">Rating (Highest)</option>
-                    <option value="#?sort=rating&amp;order=ASC">Rating (Lowest)</option>
-                    <option value="#?sort=p.model&amp;order=ASC">Model (A - Z)</option>
-                    <option value="#?sort=p.model&amp;order=DESC">Model (Z - A)</option>
-                  </select>
+                <!-- BEGIN PRODUCT LIST -->
+                <div class="row product-list">
+                    <c:if test="${empty userDatas}">
+                        <li>
+                            <p>회원이 없습니다</p>
+                        </li>
+                    </c:if>
+                    <c:forEach var="data" items="${userDatas}">
+                        <!-- PRODUCT ITEM START -->
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="product-item">
+                                <div class="pi-img-wrapper">
+                                    <img src="${data.userProfile}" class="img-responsive" alt="userImage">
+                                    <div class="product-page-cart">
+                                        <button class="btn btn-primary" type="submit">메시지 보내기</button>
+                                        <a href="userDetailPage.do?userEmail=${data.userEmail}" class="btn btn-default">프로필 보기</a>
+                                    </div>
+                                </div>
+                                <h3><a href="userDetailPage.do?userEmail=${data.userEmail}">${data.userNickname}</a></h3>
+                                <div class="height">키: ${data.userHeight}cm</div>
+                                <div class="description">${data.userDescription}</div>
+                            </div>
+                        </div>
+                        <!-- PRODUCT ITEM END -->
+                    </c:forEach>
+
+                    <!-- Default Product Item -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="product-item">
+                            <div class="pi-img-wrapper">
+                                <img src="TEST" class="img-responsive" alt="userImage">
+                                <div>
+                                    <button class="btn btn-default" type="submit">메시지 보내기</button>
+                                    <a href="userDetailPage.do?userEmail=test@test.com" class="btn btn-default">프로필 보기</a>
+                                </div>
+                            </div>
+                            <div class="age">나이: 22세</div>
+                            <div class="height">키: 222cm</div>
+                            <div class="자기소개">ㅎㅇ</div>
+                        </div>
+                    </div>
+                    <!-- PRODUCT ITEM END -->
                 </div>
-              </div>
+                <!-- END PRODUCT LIST -->
             </div>
-            <!-- BEGIN PRODUCT LIST -->
-            <div class="row product-list">
-              <%
-                if(application.getAttribute("userDatas") == null) {
-              %>
-                <li>
-                      <p>회원이 없습니다</p>
-                </li>
-              <%
-                  } else {
-                    for (UserDTO data : (ArrayList<UserDTO>)application.getAttribute("userDatas")) {
-              %>
-              <!-- PRODUCT ITEM START -->
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src=<%=data.getUserProfile()%> class="img-responsive" alt="userImage">
-                      <div class="product-page-cart">
-                          <button class="btn btn-primary" type="submit">메시지 보내기</button>
-                          <a href="userDetailPage.do?userEmail=\<%=data.getUserEmail()%>>" class="btn btn-default">프로필 보기</a>
-                      </div>
-                  </div>
-                  <h3><a href="userDetailPage.do?userEmail=<%=data.getUserEmail()%>"><%=data.getUserNickname()%></a></h3>
-<%--                  <div class="age">나이: <%=data.getUserAge()%>세</div>--%>
-                  <div class="height">키: <%=data.getUserHeight()%>cm</div>
-                  <div class="description"><%=data.getUserDescription()%></div>
-                </div>
-              </div>
-              <!-- PRODUCT ITEM END -->
-              <%
-                  }
-                }
-              %>
-              <!-- PRODUCT ITEM START -->
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="TEST" class="img-responsive" alt="userImage">
-<%--                    <div>--%>
-<%--                      <a href="TEST" class="btn btn-default fancybox-button">메시지 보내기</a>--%>
-<%--                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">프로필 보기</a>--%>
-<%--                    </div>--%>
-                      <div>
-                          <button class="btn btn-default" type="submit">메시지 보내기</button>
-                          <a href="userDetailPage.do?userEmail=test@test.com" class="btn btn-default">프로필 보기</a>
-                      </div>
-                  </div>
-                  <div class="age">나이: 22세</div>
-                  <div class="height">키: 222cm</div>
-                  <div class="자기소개">ㅎㅇ</div>
-                </div>
-              </div>
-              <!-- PRODUCT ITEM END -->
-            </div>
-            <!-- END PRODUCT LIST -->
-            <div class="row">
-              <div class="col-md-4 col-sm-4 items-info">Items 1 to 9 of 10 total</div>
-              <div class="col-md-8 col-sm-8">
-                <ul class="pagination pull-right">
-                  <li><a href="javascript:;" class="prev-page">&laquo;</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="1">1</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="2">2</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="3">3</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="4">4</a></li>
-                  <li><a href="javascript:;" class="page-num" data-page="5">5</a></li>
-                  <li><a href="javascript:;" class="next-page">&raquo;</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
           <!-- END CONTENT -->
         </div>
         <!-- END SIDEBAR & CONTENT -->

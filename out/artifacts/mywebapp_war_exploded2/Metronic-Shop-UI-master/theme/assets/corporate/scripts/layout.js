@@ -11,77 +11,6 @@ var Layout = function () {
 
     var responsiveHandlers = [];
 
-    // 페이지네이션을 위한 변수
-    var currentPage = 1; // 기본 페이지
-    var totalPages = 5; // 페이지 수 (기본값 설정)
-
-    // AJAX로 데이터를 불러오는 함수
-    var loadPageData = function (pageNumber) {
-        $.ajax({
-            url: '/get-data', // 데이터를 가져오는 API 주소 (예시)
-            type: 'GET',
-            data: { page: pageNumber }, // 페이지 번호를 전송
-            success: function (response) {
-                // 데이터가 성공적으로 로드되면
-                // 1. 페이지 데이터 출력 (예: 상품 리스트 업데이트)
-                // 2. 페이지네이션 UI 갱신
-                updatePagination(response.totalPages, pageNumber);
-                renderData(response.data); // 데이터를 HTML로 렌더링
-            },
-            error: function () {
-                alert("페이지 데이터를 불러오는 데 실패했습니다.");
-            }
-        });
-    };
-
-    // 페이지네이션 UI 업데이트 함수
-    var updatePagination = function (totalPages, currentPage) {
-        // 페이지 수가 변경되면 totalPages를 업데이트
-        var paginationHtml = '';
-        for (var i = 1; i <= totalPages; i++) {
-            paginationHtml += '<li' + (i === currentPage ? ' class="active"' : '') + '><a href="javascript:;" data-page="' + i + '">' + i + '</a></li>';
-        }
-        // 페이지네이션 HTML을 업데이트
-        $('.pagination').html(paginationHtml);
-
-        // "이전", "다음" 버튼 갱신
-        if (currentPage > 1) {
-            $('.pagination').prepend('<li><a href="javascript:;" data-page="' + (currentPage - 1) + '">&laquo;</a></li>');
-        } else {
-            $('.pagination').prepend('<li class="disabled"><a href="javascript:;">&laquo;</a></li>');
-        }
-
-        if (currentPage < totalPages) {
-            $('.pagination').append('<li><a href="javascript:;" data-page="' + (currentPage + 1) + '">&raquo;</a></li>');
-        } else {
-            $('.pagination').append('<li class="disabled"><a href="javascript:;">&raquo;</a></li>');
-        }
-    };
-
-    // 데이터를 HTML로 렌더링하는 함수
-    var renderData = function (data) {
-        var htmlContent = '';
-        // 예시: 데이터가 상품 리스트일 경우
-        data.forEach(function (item) {
-            htmlContent += '<div class="item">' +
-                '<h4>' + item.name + '</h4>' +
-                '<p>' + item.description + '</p>' +
-                '</div>';
-        });
-        $('#item-container').html(htmlContent); // 데이터를 표시할 컨테이너에 삽입
-    };
-
-    // 페이지네이션 버튼 클릭 이벤트
-    var handlePaginationClick = function () {
-        $('body').on('click', '.pagination a', function () {
-            var pageNumber = $(this).data('page'); // 클릭된 페이지 번호
-            if (pageNumber && pageNumber !== currentPage) {
-                currentPage = pageNumber;
-                loadPageData(currentPage); // 페이지 데이터 로딩
-            }
-        });
-    };
-
     // 페이지 데이터 로딩 및 페이지네이션 초기화
     var initPagination = function () {
         loadPageData(currentPage); // 첫 번째 페이지 데이터 로딩
@@ -388,9 +317,6 @@ var Layout = function () {
             handleScrollers();
             handleSubMenuExt();
             handleMobiToggler();
-
-            // 페이지네이션 초기화
-            initPagination(); // 페이지네이션 관련 함수 호출
         },
 
         initUniform: function (els) {
@@ -536,8 +462,8 @@ var Layout = function () {
             $('.product-main-image').zoom({url: $('.product-main-image img').attr('data-BigImgSrc')});
         },
 
-        initAgeSliderRange: function () { //initSliderRange 에서 이름 변경함함
-            $( "#height-slider-range" ).slider({
+        initAgeSliderRange: function () {
+            $( "#age-slider-range" ).slider({
                 range: true,
                 min: 19,   // 최소값을 19로 설정 (나이의 시작)
                 max: 100,  // 최대값을 100으로 설정 (나이의 끝)
@@ -552,20 +478,20 @@ var Layout = function () {
             $( "#ageAmount" ).val( $( "#age-slider-range" ).slider( "values", 0 ) + "세 - " + $( "#age-slider-range" ).slider( "values", 1 ) + "세" );
         },
 
-        initHeightSliderRange: function () { //initSliderRange 에서 이름 변경함함
+        initHeightSliderRange: function () {
             $( "#height-slider-range" ).slider({
                 range: true,
                 min: 0,   // 최소값을 0로 설정
                 max: 300,  // 최대값을 300으로 설정
                 values: [ 140, 190 ],  // 초기 값
                 slide: function( event, ui ) {
-                    // 슬라이더가 움직일 때마다 나이 범위를 업데이트
+                    // 슬라이더가 움직일 때마다 키 범위를 업데이트
                     $( "#heightAmount" ).val( ui.values[ 0 ] + "cm - " + ui.values[ 1 ] + "cm" );
                 }
             });
 
             // 슬라이더 초기값을 표시
-            $( "#heightAmount" ).val( $( "#height-slider-range" ).slider( "values", 0 ) + "세 - " + $( "#height-slider-range" ).slider( "values", 1 ) + "세" );
+            $( "#heightAmount" ).val( $( "#height-slider-range" ).slider( "values", 0 ) + "cm - " + $( "#height-slider-range" ).slider( "values", 1 ) + "cm" );
         },
 
         // wrapper function to scroll(focus) to an element

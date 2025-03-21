@@ -482,8 +482,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                   <div class="panel-body">
                                   ${data.boardContent}
                                   <span style="font-size: 14px; color: #555;">현재 참가 인원 ${data.boardParticipant} / ${data.boardLimit}</span>
-                               <form action="controller.jsp" method="POST">
-                                <input type="hidden" name="command" value="PARTICIPANTBOARD">
+                               <form action="participantBoard.do" method="POST">
                                  <input type="hidden" name="boardNumber" value="${data.boardNumber}">
                               <input type="submit" value="참가하기">
                               </form>

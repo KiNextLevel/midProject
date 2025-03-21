@@ -33,7 +33,7 @@ public class MyPageAction implements Action{
 
 		if(userList != null && !userList.isEmpty()) {
 			request.setAttribute("data", userList.get(0)); // 첫 번째 사용자 정보
-			forward.setPath("myPage.do");
+			forward.setPath("userDetailPage.do");
 			forward.setRedirect(false);
 		}
 		else {

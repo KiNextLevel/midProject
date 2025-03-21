@@ -1,7 +1,7 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="userDTO" class="org.example.webapp.model.dto.UserDTO" scope="page" />
 <jsp:useBean id="preferenceDTO" class="org.example.webapp.model.dto.PreferenceDTO" scope="page" />
+<%@ page isELIgnored="false" %>
 
 <html>
 <head>
@@ -128,16 +128,16 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="product-main-image">
                             <!-- 여기에 userDTO.getUserProfile() 넣으면 됨. -->
-                            <img src="assets/pages/img/products/차은우.jfif" alt="Cool green dress with red bell"
-                                 class="img-responsive" data-BigImgsrc="assets/pages/img/products/차은우.jfif">
+                            <img src="${userDTO.userProfile}" alt="Cool green dress with red bell"
+                                 class="img-responsive" data-BigImgsrc="${userDTO.userProfile}">
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                        <h1>${param.userNickname}의 프로필</h1>
+                        <h1>${userDTO.userNickname}의 프로필</h1>
                         <div class="price-availability-block clearfix">
                             <div class="price">
-                                <strong>이름 : ${param.userName}</strong><br>
-                                <p>닉네임 : ${param.userNickname}</p>
+                                <strong>이름 : ${userDTO.userName}</strong><br>
+                                <p>닉네임 : ${userDTO.userNickname}</p>
                             </div>
                             <div class="availability">
                                 지역 : <strong>${param.userRegion}</strong>
@@ -158,17 +158,28 @@
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade" id="Information">
-                                <p>생년월일 : ${param.userBirth}</p><br>
-                                <p>키 : ${param.userHeight}</p><br>
-                                <p>체형 : ${param.userBody}</p><br>
-                                <p>MBTI : ${param.userMbti}</p><br>
-                                <p>학력 : ${param.userEducation}</p><br>
-                                <p>종교 : ${param.userReligion}</p><br>
-                                <p>음주 : ${param.userDrink}</p><br>
-                                <p>흡연 : ${param.userSmoke}</p><br>
-                                <p>직업 : ${param.userJob}</p><br>
-
+                                <%
+                                    UserDTO dto = (UserDTO)request.getAttribute("userDTO");
+                                    if(dto != null) {
+                                %>
+                                <p>생년월일 : <%= dto.getUserBirth() %></p><br>
+                                <p>키 : <%= dto.getUserHeight() %></p><br>
+                                <p>체형 : <%= dto.getUserBody() %></p><br>
+                                <p>MBTI : <%= dto.getUserMbti() %></p><br>
+                                <p>학력 : <%= dto.getUserEducation() %></p><br>
+                                <p>종교 : <%= dto.getUserReligion() %></p><br>
+                                <p>음주 : <%= dto.getUserDrink() %></p><br>
+                                <p>흡연 : <%= dto.isUserSmoke() %></p><br>
+                                <p>직업 : <%= dto.getUserJob() %></p><br>
+                                <%
+                                } else {
+                                %>
+                                <p>사용자 정보를 찾을 수 없습니다.</p>
+                                <%
+                                    }
+                                %>
                             </div>
+
                             <div class="tab-pane fade in active" id="favorite">
                                 <!-- 첫번째 취향 넣는 곳-->
                                 <div class="review-item clearfix">

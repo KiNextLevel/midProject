@@ -105,7 +105,7 @@
 <div class="header">
     <div class="container">
         <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png"
-                                                         alt="Metronic Shop UI"></a>
+                                                     alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -133,18 +133,18 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                        <h1>${param.getUserNickname}의 프로필</h1>
+                        <h1>${param.userNickname}의 프로필</h1>
                         <div class="price-availability-block clearfix">
                             <div class="price">
-                                <strong>이름 : ${param.getUserName}</strong><br>
-                                <p>닉네임 : ${param.getUserNickname}</p>
+                                <strong>이름 : ${param.userName}</strong><br>
+                                <p>닉네임 : ${param.userNickname}</p>
                             </div>
                             <div class="availability">
-                                지역 : <strong>${param.getUserRegion}</strong>
+                                지역 : <strong>${param.userRegion}</strong>
                             </div>
                         </div>
                         <div class="description">
-                            <p>${param.getUserDescription}</p>
+                            <p>${param.userDescription}</p>
                         </div>
                         <div class="product-page-cart">
                             <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
@@ -158,15 +158,15 @@
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade" id="Information">
-                                <p>생년월일 : ${param.getUserBirth}</p><br>
-                                <p>키 : ${param.getUserHeight}</p><br>
-                                <p>체형 : ${param.getUserBody}</p><br>
-                                <p>MBTI : ${param.getUserMbti}</p><br>
-                                <p>학력 : ${param.getUserEducation}</p><br>
-                                <p>종교 : ${param.getUserReligion}</p><br>
-                                <p>음주 : ${param.getUserDrink}</p><br>
-                                <p>흡연 : ${param.isUserSmoke}</p><br>
-                                <p>직업 : ${param.getUserJob}</p><br>
+                                <p>생년월일 : ${param.userBirth}</p><br>
+                                <p>키 : ${param.userHeight}</p><br>
+                                <p>체형 : ${param.userBody}</p><br>
+                                <p>MBTI : ${param.userMbti}</p><br>
+                                <p>학력 : ${param.userEducation}</p><br>
+                                <p>종교 : ${param.userReligion}</p><br>
+                                <p>음주 : ${param.userDrink}</p><br>
+                                <p>흡연 : ${param.userSmoke}</p><br>
+                                <p>직업 : ${param.userJob}</p><br>
 
                             </div>
                             <div class="tab-pane fade in active" id="favorite">

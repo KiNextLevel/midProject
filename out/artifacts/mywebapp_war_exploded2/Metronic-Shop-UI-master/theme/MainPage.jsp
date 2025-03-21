@@ -195,45 +195,58 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <div class="sidebar col-md-3 col-sm-5">
             <div class="sidebar-filter margin-bottom-25">
               <h2>Filter</h2>
-              <h3>성별</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 남</label>
-                <label><input type="checkbox"> 녀</label>
-              </div>
-                  <h3>나이</h3>
-	              <p>
-	                <label for="ageAmount">나이</label>
-	                <input type="text" id="ageAmount" style="border:0; color:#f6931f; font-weight:bold;">
-	              </p>
-              <div id="age-slider-range" class="age"></div>
-              <h3>거주지역</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 내 주위 0~100km</label>
-              </div>
-                   <h3>키</h3>
-                    <p>
-	                    <label for="heightAmount">키</label>
-	                    <input type="text" id="heightAmount" style="border:0; color:#f6931f; font-weight:bold;">
-	                </p>
-              <div id="height-slider-range" class="height"></div>
-              <h3>학력</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 범위 지정</label>
-              </div>
-              <h3>종교</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 무교</label>
-                <label><input type="checkbox"> 기독교</label>
-                <label><input type="checkbox"> 불교</label>
-                <label><input type="checkbox"> 천주교</label>
-                <label><input type="checkbox"> 힌두교</label>
-                <label><input type="checkbox"> 기타</label>
-              </div>
-              <h3>흡연</h3>
-              <div class="checkbox-list">
-                <label><input type="checkbox"> 흡연</label>
-                <label><input type="checkbox"> 비흡연</label>
-              </div>
+                <!-- 성별 필터 -->
+                <h3>성별</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 남</label>
+                    <label><input type="checkbox"> 여</label>
+                </div>
+
+                <!-- 나이 슬라이더 -->
+                <h3>나이</h3>
+                <p>
+                    <label for="ageAmount">나이</label>
+                    <input type="text" id="ageAmount" style="border:0; color:#f6931f; font-weight:bold;">
+                </p>
+                <div id="age-slider-range" class="age"></div>
+
+                <!-- 거주지역 -->
+                <h3>거주지역</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 내 주위 0~100km</label>
+                </div>
+
+                <!-- 키 슬라이더 -->
+                <h3>키</h3>
+                <p>
+                    <label for="heightAmount">키</label>
+                    <input type="text" id="heightAmount" style="border:0; color:#f6931f; font-weight:bold;">
+                </p>
+                <div id="height-slider-range" class="height"></div>
+
+                <!-- 학력 -->
+                <h3>학력</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 범위 지정</label>
+                </div>
+
+                <!-- 종교 -->
+                <h3>종교</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 무교</label>
+                    <label><input type="checkbox"> 기독교</label>
+                    <label><input type="checkbox"> 불교</label>
+                    <label><input type="checkbox"> 천주교</label>
+                    <label><input type="checkbox"> 힌두교</label>
+                    <label><input type="checkbox"> 기타</label>
+                </div>
+
+                <!-- 흡연 -->
+                <h3>흡연</h3>
+                <div class="checkbox-list">
+                    <label><input type="checkbox"> 흡연</label>
+                    <label><input type="checkbox"> 비흡연</label>
+                </div>
             </div>
 
             <div class="sidebar-products clearfix">
@@ -308,10 +321,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <div class="product-item">
                   <div class="pi-img-wrapper">
                     <img src=<%=data.getUserProfile()%> class="img-responsive" alt="userImage">
-                    <div>
-                      <a href="" class="btn btn-default fancybox-button" > Zoom </a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
+                      <div class="product-page-cart">
+                          <button class="btn btn-primary" type="submit">메시지 보내기</button>
+                          <a href="shop-item.html" class="btn btn-default">프로필 보기</a>
+                      </div>
                   </div>
                   <h3><a href="userDetailPage.do?userEmail=<%=data.getUserEmail()%>"><%=data.getUserNickname()%></a></h3>
 <%--                  <div class="age">나이: <%=data.getUserAge()%>세</div>--%>
@@ -329,12 +342,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <div class="product-item">
                   <div class="pi-img-wrapper">
                     <img src="TEST" class="img-responsive" alt="userImage">
-                    <div>
-                      <a href="TEST" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
+<%--                    <div>--%>
+<%--                      <a href="TEST" class="btn btn-default fancybox-button">메시지 보내기</a>--%>
+<%--                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">프로필 보기</a>--%>
+<%--                    </div>--%>
+                      <div>
+                          <button class="btn btn-default" type="submit">메시지 보내기</button>
+                          <a href="userDetailPage.do?userEmail=test@test.com" class="btn btn-default">프로필 보기</a>
+                      </div>
                   </div>
-                  <h3><a href="userDetailPage.do?userEmail=EMAIL">TEST</a></h3>
                   <div class="age">나이: 22세</div>
                   <div class="height">키: 222cm</div>
                   <div class="자기소개">ㅎㅇ</div>
@@ -499,33 +515,33 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- END FOOTER -->
 
     <!-- BEGIN fast view of a product -->
-    <div id="product-pop-up" style="display: none; width: 700px;">
-            <div class="product-page product-pop-up">
-              <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-3">
-                  <div class="product-main-image">
-                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-9">
-                  <h1>회원이름</h1>
-                  <div class="price-availability-block clearfix">
-                  </div>
-                  <div class="description">
-                    <p>회원설명</p>
-                  </div>
-                  <div class="product-page-options">
-                  </div>
-                  <div class="product-page-cart">
-                    <button class="btn btn-primary" type="submit">메시지 보내기</button>
-                    <a href="shop-item.html" class="btn btn-default">프로필 보기</a>
-                  </div>
-                </div>
+<%--    <div id="product-pop-up" style="display: none; width: 700px;">--%>
+<%--            <div class="product-page product-pop-up">--%>
+<%--              <div class="row">--%>
+<%--                <div class="col-md-6 col-sm-6 col-xs-3">--%>
+<%--                  <div class="product-main-image">--%>
+<%--                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--                <div class="col-md-6 col-sm-6 col-xs-9">--%>
+<%--                  <h1>회원이름</h1>--%>
+<%--                  <div class="price-availability-block clearfix">--%>
+<%--                  </div>--%>
+<%--                  <div class="description">--%>
+<%--                    <p>회원설명</p>--%>
+<%--                  </div>--%>
+<%--                  <div class="product-page-options">--%>
+<%--                  </div>--%>
+<%--                  <div class="product-page-cart">--%>
+<%--                    <button class="btn btn-primary" type="submit">메시지 보내기</button>--%>
+<%--                    <a href="shop-item.html" class="btn btn-default">프로필 보기</a>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
 
-                <div class="sticker sticker-sale"></div>
-              </div>
-            </div>
-    </div>
+<%--                <div class="sticker sticker-sale"></div>--%>
+<%--              </div>--%>
+<%--            </div>--%>
+<%--    </div>--%>
     <!-- END fast view of a product -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->

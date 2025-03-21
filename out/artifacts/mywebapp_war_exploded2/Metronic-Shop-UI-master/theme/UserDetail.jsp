@@ -1,12 +1,12 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="userDTO" class="org.example.webapp.model.dto.UserDTO" scope="page" />
 <jsp:useBean id="preferenceDTO" class="org.example.webapp.model.dto.PreferenceDTO" scope="page" />
+<%@ page isELIgnored="false" %>
 
 <html>
 <head>
     <meta charset="utf-8">
-    <title>사용자 상세 페이지${userDTO.userEmail}</title>
+    <title>사용자 상세 페이지${param.userEmail}</title>
     <link href="css/UserDetail.css" rel="stylesheet">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -91,7 +91,7 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="MyPage.jsp">마이페이지</a></li>
+                    <li><a href="myPage.do">마이페이지</a></li>
                     <li><a href="">로그아웃</a></li>
                 </ul>
             </div>
@@ -104,8 +104,8 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/3.png"
-                                                         alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png"
+                                                     alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -128,23 +128,23 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="product-main-image">
                             <!-- 여기에 userDTO.getUserProfile() 넣으면 됨. -->
-                            <img src="assets/pages/img/products/차은우.jfif" alt="Cool green dress with red bell"
-                                 class="img-responsive" data-BigImgsrc="assets/pages/img/products/차은우.jfif">
+                            <img src="${userDTO.userProfile}" alt="Cool green dress with red bell"
+                                 class="img-responsive" data-BigImgsrc="${userDTO.userProfile}">
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                        <h1><%= userDTO.getUserNickname() %>의 프로필</h1>
+                        <h1>${userDTO.userNickname}의 프로필</h1>
                         <div class="price-availability-block clearfix">
                             <div class="price">
-                                <strong>이름 : <%= userDTO.getUserName() %></strong><br>
-                                <p>닉네임 : <%= userDTO.getUserNickname() %></p>
+                                <strong>이름 : ${userDTO.userName}</strong><br>
+                                <p>닉네임 : ${userDTO.userNickname}</p>
                             </div>
                             <div class="availability">
-                                지역 : <strong><%= userDTO.getUserRegion() %></strong>
+                                지역 : <strong>${param.userRegion}</strong>
                             </div>
                         </div>
                         <div class="description">
-                            <p><%= userDTO.getUserDescription() %></p>
+                            <p>${param.userDescription}</p>
                         </div>
                         <div class="product-page-cart">
                             <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
@@ -158,17 +158,28 @@
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade" id="Information">
-                                <p>생년월일 : <%= userDTO.getUserBirth() %></p><br>
-                                <p>키 : <%= userDTO.getUserHeight() %></p><br>
-                                <p>체형 : <%= userDTO.getUserBody() %></p><br>
-                                <p>MBTI : <%= userDTO.getUserMbti() %></p><br>
-                                <p>학력 : <%= userDTO.getUserEducation() %></p><br>
-                                <p>종교 : <%= userDTO.getUserReligion() %></p><br>
-                                <p>음주 : <%= userDTO.getUserDrink() %></p><br>
-                                <p>흡연 : <%= userDTO.isUserSmoke() %></p><br>
-                                <p>직업 : <%= userDTO.getUserJob() %></p><br>
-
+                                <%
+                                    UserDTO dto = (UserDTO)request.getAttribute("userDTO");
+                                    if(dto != null) {
+                                %>
+                                <p>생년월일 : <%= dto.getUserBirth() %></p><br>
+                                <p>키 : <%= dto.getUserHeight() %></p><br>
+                                <p>체형 : <%= dto.getUserBody() %></p><br>
+                                <p>MBTI : <%= dto.getUserMbti() %></p><br>
+                                <p>학력 : <%= dto.getUserEducation() %></p><br>
+                                <p>종교 : <%= dto.getUserReligion() %></p><br>
+                                <p>음주 : <%= dto.getUserDrink() %></p><br>
+                                <p>흡연 : <%= dto.isUserSmoke() %></p><br>
+                                <p>직업 : <%= dto.getUserJob() %></p><br>
+                                <%
+                                } else {
+                                %>
+                                <p>사용자 정보를 찾을 수 없습니다.</p>
+                                <%
+                                    }
+                                %>
                             </div>
+
                             <div class="tab-pane fade in active" id="favorite">
                                 <!-- 첫번째 취향 넣는 곳-->
                                 <div class="review-item clearfix">

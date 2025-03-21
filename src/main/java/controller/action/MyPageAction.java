@@ -13,12 +13,14 @@ public class MyPageAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("CTRL 로그: MyPageAction");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		String userEmail = (String)session.getAttribute("userEmail");
 
 		if(userEmail == null) {
 			// 로그인되지 않은 경우
+			System.out.println("Mypage Action Log: userEmail is null");
 			forward.setPath("loginPage.do");
 			forward.setRedirect(true);
 			return forward;
@@ -27,13 +29,13 @@ public class MyPageAction implements Action{
 		UserDTO userDTO = new UserDTO();
 		UserDAO userDAO = new UserDAO();
 		userDTO.setUserEmail(userEmail);
-		userDTO.setCondition("SELECTALL"); // 조건 설정 추가
+		userDTO.setCondition("SELECTONE_USERINFO"); // 조건 설정 추가
 
-		ArrayList<UserDTO> userList = userDAO.selectAll(userDTO);
+		UserDTO user = userDAO.selectOne(userDTO);
 
-		if(userList != null && !userList.isEmpty()) {
-			request.setAttribute("data", userList.get(0)); // 첫 번째 사용자 정보
-			forward.setPath("userDetailPage.do");
+		if(user != null) {
+			request.setAttribute("data", user); // 첫 번째 사용자 정보
+			forward.setPath("MyPage.jsp");
 			forward.setRedirect(false);
 		}
 		else {

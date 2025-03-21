@@ -128,8 +128,8 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="product-main-image">
                             <!-- 여기에 userDTO.getUserProfile() 넣으면 됨. -->
-                            <img src="assets/pages/img/products/차은우.jfif" alt="Cool green dress with red bell"
-                                 class="img-responsive" data-BigImgsrc="assets/pages/img/products/차은우.jfif">
+                            <img src="${userDTO.userProfile}" alt="Cool green dress with red bell"
+                                 class="img-responsive" data-BigImgsrc="${userDTO.userProfile}">
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
@@ -159,7 +159,11 @@
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade" id="Information">
                                 <%
+                                    <<<<<<< HEAD
                                     dto = (UserDTO)request.getAttribute("userDTO");
+                                    =======
+                                    UserDTO dto = (UserDTO)request.getAttribute("userDTO");
+                                    >>>>>>> d8f25624a21101ebe6acaed8b02139271913f206
                                     if(dto != null) {
                                 %>
                                 <p>생년월일 : <%= dto.getUserBirth() %></p><br>
@@ -172,7 +176,7 @@
                                 <p>흡연 : <%= dto.isUserSmoke() %></p><br>
                                 <p>직업 : <%= dto.getUserJob() %></p><br>
                                 <%
-                                } else {
+                                    } else {
                                 %>
                                 <p>사용자 정보를 찾을 수 없습니다.</p>
                                 <%

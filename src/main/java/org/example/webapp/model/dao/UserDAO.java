@@ -66,7 +66,7 @@ public class UserDAO {
 //            }
             // 유저 선호 취향 정보 불러오기
             if (userDTO.getCondition().equals("SELECTALL")) {
-                pstmt = conn.prepareStatement("SELCETALL");
+                pstmt = conn.prepareStatement(SELECTALL);
             }else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
                 pstmt = conn.prepareStatement(SELCETALL_FAVORITE);
                 pstmt.setString(1, userDTO.getUserEmail());
@@ -162,6 +162,10 @@ public class UserDAO {
                     data.setUserEmail(rs.getString("USER_EMAIL"));
                     if (userDTO.getCondition().equals("SELECTONE")) {
                         data.setUserPassword(rs.getString("USER_PASSWORD"));
+                        data.setUserRole(rs.getInt("USER_ROLE"));
+                    } else if (userDTO.getCondition().equals("SELECTONE_USERINFO")) {
+                        data.setUserPassword(rs.getString("USER_PASSWORD"));
+                        data.setUserName(rs.getString("USER_NAME"));
                         data.setUserNickname(rs.getString("USER_NICKNAME"));
                         data.setUserPhone(rs.getString("USER_PHONE"));
                         data.setUserRegdate(rs.getDate("USER_REGDATE"));
@@ -181,7 +185,6 @@ public class UserDAO {
                         data.setUserToken(rs.getInt("USER_TOKEN"));
                         data.setUserRegion(rs.getString("USER_REGION"));
                         data.setUserDescription(rs.getString("USER_DESCRIPTION"));
-                        data.setUserName(rs.getString("USER_NAME"));
                     }
                 }
             }

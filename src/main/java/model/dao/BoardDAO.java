@@ -27,21 +27,24 @@ public class BoardDAO {
         ArrayList<BoardDTO> datas = new ArrayList<>();
         try {
             conn = JDBCUtil.connect();
-            if (conn != null) {	//연결 확인
-                System.out.println("DB 연결 성공!");
-            } else {
-                System.out.println("DB 연결 실패!");
-            }
             pstmt = conn.prepareStatement(SELECTALL);
             rs = pstmt.executeQuery();
+            if (rs.isBeforeFirst()) {
+                System.out.println("DEBUG: ResultSet에 데이터가 있습니다.");
+            } else {
+                System.out.println("DEBUG: ResultSet이 비어 있습니다.");
+            }
             while(rs.next()){
                 BoardDTO data = new BoardDTO();
-                data.setBoardNumber(rs.getInt("BOARD_NUMBER"));  //이거 추가했습니다
+                data.setBoardNumber(rs.getInt("BOARD_NUM"));  //이거 추가했습니다
+                System.out.println("DEBUG: BOARD_NUM 값은 " + data.getBoardNumber());
                 data.setBoardTitle(rs.getString("BOARD_TITLE"));
                 data.setBoardContent(rs.getString("BOARD_CONTENT"));
-                data.setBoardLimit(rs.getInt("BOARD_LIMIT"));
+                data.setBoardLimit(rs.getInt("BOARD_LIMIT"));               
                 datas.add(data);
             }
+            
+            System.out.println("DAO 로그"+datas);
             return datas;
         } catch (Exception e){
             e.printStackTrace();

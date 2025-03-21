@@ -2,12 +2,14 @@ package controller.action;
 
 import java.util.ArrayList;
 
+import org.example.webapp.model.dao.BoardDAO;
+import org.example.webapp.model.dao.ParticipantDAO;
+import org.example.webapp.model.dto.BoardDTO;
+import org.example.webapp.model.dto.ParticipantDTO;
+
 import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-import org.example.webapp.model.dao.BoardDAO;
-import org.example.webapp.model.dto.BoardDTO;
 
 public class BoardPageAction implements Action{
 
@@ -18,8 +20,9 @@ public class BoardPageAction implements Action{
 		
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
+		
 		ArrayList<BoardDTO> datas = boardDAO.selectAll(boardDTO);
-		System.out.println("board SELECTALL 로그:"+datas);
+		System.out.println("BoardPage SELECTALL 로그:"+datas);
 		
 		request.setAttribute("datas", datas);
 		forward.setPath("BoardPage.jsp");

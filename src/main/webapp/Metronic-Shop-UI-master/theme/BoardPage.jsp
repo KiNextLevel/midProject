@@ -130,7 +130,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- BEGIN HEADER -->
     <div class="header">
       <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="adminMainPage.do"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -438,7 +438,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 							
 							<!-- 이벤트 있고 관리자이면 -->
                   			<c:choose>   	
-                  			<c:when test="${sessionScope.userRole=='0'}">
+                  			<c:when test="${sessionScope.userRole=='1'}">
                   			<c:forEach var="data" items="${datas}">
                   			<a href="controller.jsp?command=ADMINADDBOARD" class="btn btn-primary" style="float: right; margin-top: -10px;">이벤트 추가</a>
                   			<div class="panel panel-default">
@@ -460,7 +460,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                   </tr>
                               </table>
                           </div>
-                                  <span style="font-size: 14px; color: #555;">현재 참가 인원 ${data.boardLimit} / ${data.boardLimit}</span>
+                                  <span style="font-size: 14px; color: #555;">현재 참가 인원 ${data.boardParticipant} / ${data.boardLimit}</span>
                                      </div>
                                </div>
                             </div>
@@ -472,16 +472,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   			<div class="panel panel-default">
                                <div class="panel-heading">
                                   <h4 class="panel-title">											<!-- href를 id랑 맞춰야 토글이 맞아 -->
-                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#${data.boardTitle}">
+                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse${data.boardNumber}">
                                      ${data.boardTitle}
                                      ${data.boardNumber}                                     
                                      </a>
                                   </h4>
                                </div>
-                               <div id="collapse${data.boardTitle}" class="panel-collapse collapse">
+                               <div id="collapse${data.boardNumber}" class="panel-collapse collapse">
                                   <div class="panel-body">
                                   ${data.boardContent}
-                                  <span style="font-size: 14px; color: #555;">현재 참가 인원 ${data.boardLimit} / ${data.boardLimit}</span>
+                                  <span style="font-size: 14px; color: #555;">현재 참가 인원 ${data.boardParticipant} / ${data.boardLimit}</span>
                                <form action="controller.jsp" method="POST">
                                 <input type="hidden" name="command" value="PARTICIPANTBOARD">
                                  <input type="hidden" name="boardNumber" value="${data.boardNumber}">

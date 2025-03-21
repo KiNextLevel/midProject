@@ -3,7 +3,33 @@ package controller.common;
 import java.util.HashMap;
 import java.util.Map;
 
-import controller.action.*;
+import controller.action.AdminAddBlackAction;
+import controller.action.AdminAddBoardAction;
+import controller.action.AdminAddBoardPageAction;
+import controller.action.AdminDeleteBlackAction;
+import controller.action.AdminDeleteBoardAction;
+import controller.action.AdminMainPageAction;
+import controller.action.AdminModifyBoardAction;
+import controller.action.AdminModifyBoardPageAction;
+import controller.action.AdminPaymentListPageAction;
+import controller.action.AdminReportPageAction;
+import controller.action.AdminSendWarningAction;
+import controller.action.BoardPageAction;
+import controller.action.JoinAction;
+import controller.action.JoinNextAction;
+import controller.action.LoginAction;
+import controller.action.LoginPageAction;
+import controller.action.LogoutAction;
+import controller.action.MainPageAction;
+import controller.action.ModifyMyPageAction;
+import controller.action.MyPageAction;
+import controller.action.ParticipantBoardAction;
+import controller.action.PaymentAction;
+import controller.action.PaymentPageAction;
+import controller.action.ProductPageAction;
+import controller.action.ReportAction;
+import controller.action.ReportPageAction;
+import controller.action.UserDetailPageAction;
 
 
 public class ActionFactory {
@@ -38,6 +64,7 @@ public class ActionFactory {
 		factory.put("report.do",new ReportAction());
 		factory.put("reportPage.do",new ReportPageAction());
 		factory.put("userDetailPage.do",new UserDetailPageAction());
+		factory.put("adminMainPage.do", new AdminMainPageAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

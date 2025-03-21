@@ -24,6 +24,7 @@ public class AdminReportPageAction implements Action{
 		ReportDAO reportDAO = new ReportDAO();
 		
 		ArrayList<ReportDTO> reported = reportDAO.selectAll(reportDTO);//신고회원 전체
+		System.out.println("AdminReportPageAction 로그: "+reported);
 		
 		userDTO.setCondition("SELECTALL_BLACK");	//블랙리스트 전체
 		ArrayList<UserDTO> blacks = userDAO.selectAll(userDTO);

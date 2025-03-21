@@ -6,9 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import org.example.webapp.model.common.JDBCUtil;
-
 import model.dto.UserDTO;
+import org.example.webapp.model.common.JDBCUtil;
 
 public class UserDAO {
     // 아이디 중복 검사

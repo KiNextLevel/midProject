@@ -13,6 +13,35 @@ public class BoardDTO {
     private Date boardDate;
     // 최대 참여인원
     private int boardLimit;
+    private String condition;
+    
+    private String searchKeyword;
+    
+    private int boardParticipant;
+    
+    public int getBoardParticipant() {
+		return boardParticipant;
+	}
+
+	public void setBoardParticipant(int boardParticipant) {
+		this.boardParticipant = boardParticipant;
+	}
+
+	public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public String getSearchKeyword() {
+        return searchKeyword;
+    }
+
+    public void setSearchKeyword(String searchKeyword) {
+        this.searchKeyword = searchKeyword;
+    }
 
     // getter, setter 메서드
     public int getBoardNumber() {
@@ -56,14 +85,10 @@ public class BoardDTO {
     }
 
     // toString 메서드
-    @Override
-    public String toString() {
-        return "BoardDTO{" +
-                "BOARD_NUM=" + boardNumber +
-                ", BOARD_TITLE='" + boardTitle + '\'' +
-                ", BOARD_CONTENT='" + boardContent + '\'' +
-                ", BOARD_DATE=" + boardDate +
-                ", BOARD_LIMIT=" + boardLimit +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "BoardDTO [boardNumber=" + boardNumber + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
+				+ ", boardDate=" + boardDate + ", boardLimit=" + boardLimit + ", condition=" + condition
+				+ ", searchKeyword=" + searchKeyword + "]";
+	}
 }

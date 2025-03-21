@@ -33,7 +33,7 @@ public class FrontController extends HttpServlet {
     	String command = request.getRequestURI();
     	System.out.println(" CTRL 로그 : command ["+command+"]");
     	command = command.replace("/mywebapp/Metronic-Shop-UI-master/theme/", "");
-    	System.out.println(" CTRL 로그 : command ["+command+"]");
+    	System.out.println(" CTRL 자른 로그 : command ["+command+"]");
     	
     	Action action = factory.getAction(command); // 팩토리 패턴
     	ActionForward forward = action.execute(request);

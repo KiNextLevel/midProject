@@ -1,7 +1,16 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="userDTO" class="org.example.webapp.model.dto.UserDTO" scope="page" />
 <jsp:useBean id="preferenceDTO" class="org.example.webapp.model.dto.PreferenceDTO" scope="page" />
+<%@ page isELIgnored="false" %>
+
+<%
+    UserDTO dto = (UserDTO)request.getAttribute("userDTO");
+    if(dto != null) {
+        out.println("전달된 userDTO: " + dto.toString());
+    } else {
+        out.println("userDTO가 null입니다.");
+    }
+%>
 
 <html>
 <head>
@@ -105,7 +114,7 @@
 <div class="header">
     <div class="container">
         <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png"
-                                                         alt="Metronic Shop UI"></a>
+                                                     alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -133,18 +142,18 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                        <h1>${param.getUserNickname}의 프로필</h1>
+                        <h1>${userDTO.userNickname}의 프로필</h1>
                         <div class="price-availability-block clearfix">
                             <div class="price">
-                                <strong>이름 : ${param.getUserName}</strong><br>
-                                <p>닉네임 : ${param.getUserNickname}</p>
+                                <strong>이름 : ${userDTO.userName}</strong><br>
+                                <p>닉네임 : ${userDTO.userNickname}</p>
                             </div>
                             <div class="availability">
-                                지역 : <strong>${param.getUserRegion}</strong>
+                                지역 : <strong>${param.userRegion}</strong>
                             </div>
                         </div>
                         <div class="description">
-                            <p>${param.getUserDescription}</p>
+                            <p>${param.userDescription}</p>
                         </div>
                         <div class="product-page-cart">
                             <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
@@ -158,17 +167,28 @@
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade" id="Information">
-                                <p>생년월일 : ${param.getUserBirth}</p><br>
-                                <p>키 : ${param.getUserHeight}</p><br>
-                                <p>체형 : ${param.getUserBody}</p><br>
-                                <p>MBTI : ${param.getUserMbti}</p><br>
-                                <p>학력 : ${param.getUserEducation}</p><br>
-                                <p>종교 : ${param.getUserReligion}</p><br>
-                                <p>음주 : ${param.getUserDrink}</p><br>
-                                <p>흡연 : ${param.isUserSmoke}</p><br>
-                                <p>직업 : ${param.getUserJob}</p><br>
-
+                                <%
+                                    dto = (UserDTO)request.getAttribute("userDTO");
+                                    if(dto != null) {
+                                %>
+                                <p>생년월일 : <%= dto.getUserBirth() %></p><br>
+                                <p>키 : <%= dto.getUserHeight() %></p><br>
+                                <p>체형 : <%= dto.getUserBody() %></p><br>
+                                <p>MBTI : <%= dto.getUserMbti() %></p><br>
+                                <p>학력 : <%= dto.getUserEducation() %></p><br>
+                                <p>종교 : <%= dto.getUserReligion() %></p><br>
+                                <p>음주 : <%= dto.getUserDrink() %></p><br>
+                                <p>흡연 : <%= dto.isUserSmoke() %></p><br>
+                                <p>직업 : <%= dto.getUserJob() %></p><br>
+                                <%
+                                } else {
+                                %>
+                                <p>사용자 정보를 찾을 수 없습니다.</p>
+                                <%
+                                    }
+                                %>
                             </div>
+
                             <div class="tab-pane fade in active" id="favorite">
                                 <!-- 첫번째 취향 넣는 곳-->
                                 <div class="review-item clearfix">

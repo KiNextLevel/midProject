@@ -323,7 +323,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <img src=<%=data.getUserProfile()%> class="img-responsive" alt="userImage">
                       <div class="product-page-cart">
                           <button class="btn btn-primary" type="submit">메시지 보내기</button>
-                          <a href="shop-item.html" class="btn btn-default">프로필 보기</a>
+                          <a href="userDetailPage.do?userEmail=\<%=data.getUserEmail()%>>" class="btn btn-default">프로필 보기</a>
                       </div>
                   </div>
                   <h3><a href="userDetailPage.do?userEmail=<%=data.getUserEmail()%>"><%=data.getUserNickname()%></a></h3>

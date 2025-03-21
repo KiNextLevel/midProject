@@ -15,6 +15,8 @@ public class UserDAO {
     final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
     // 유저 전체 정보 불러오기
     final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
+    // 유저 전체 정보 불러오기
+    final String SELECTALL = "SELECT * FROM USER";
     // 유저 선호 취향 정보 불러오기
     final String SELCETALL_FAVORITE = "SELECT * FROM PREFERENCE P LEFT JOIN USER U ON P.PREFERENCE_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
     // 참가 중인 이벤트 목록 불러오기
@@ -63,7 +65,9 @@ public class UserDAO {
 //                pstmt.setString(1, userDTO.getUserEmail());
 //            }
             // 유저 선호 취향 정보 불러오기
-            if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
+            if (userDTO.getCondition().equals("SELECTALL")) {
+                pstmt = conn.prepareStatement("SELCETALL");
+            }else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
                 pstmt = conn.prepareStatement(SELCETALL_FAVORITE);
                 pstmt.setString(1, userDTO.getUserEmail());
             }

@@ -65,6 +65,7 @@
 <head>
     <title>nextLevel</title>
     <link rel="stylesheet" type="text/css" href="slide navbar style.css">
+    <link href="css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>

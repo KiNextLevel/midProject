@@ -138,7 +138,7 @@
                             <div class="profile-left">
                                 <div class="profile-image-container">
                                     <label for="profileUpload">
-                                        <img id="profileImage" src="assets/img/profile-default.png" alt="프로필 이미지" />
+                                        <img id="profileImage" src="${userDTO.userProfile}" alt="프로필 이미지" />
                                         <div class="image-overlay">
                                             <i class="fa fa-camera"></i>
                                             <span>사진 변경</span>

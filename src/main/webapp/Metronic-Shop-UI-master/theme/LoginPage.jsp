@@ -6,7 +6,57 @@
     <meta charset="UTF-8">
     <title>로그인 회원가입</title>
     <link rel="stylesheet" href="css/style.css">
-
+    <!-- 네이버 아이콘을 위한 Font Awesome 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* 네이버 로그인 버튼 스타일 */
+        .naver-login-btn {
+            width: 60%;
+            height: 40px;
+            margin: 10px auto;
+            justify-content: center;
+            display: block;
+            color: #fff;
+            background: #1EC800; /* 네이버 색상 */
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 10px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            transition: .2s ease-in;
+            cursor: pointer;
+        }
+        .naver-login-btn:hover {
+            background: #19A400; /* 호버 시 색상 */
+        }
+        .social-login {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .social-login p {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .or-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 15px 0;
+            color: #fff;
+        }
+        .or-divider::before, .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #fff;
+        }
+        .or-divider::before {
+            margin-right: 10px;
+        }
+        .or-divider::after {
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -38,8 +88,41 @@
             <input type="password" name="userPassword" placeholder="Password" required>
             <button type="submit">로그인</button>
         </form>
+
+        <!-- 소셜 로그인 섹션 추가 -->
+        <div class="social-login">
+            <div class="or-divider">또는</div>
+            <button type="button" class="naver-login-btn" onclick="naverLogin()">
+                <i class="fas fa-n-square"></i> 네이버 아이디로 로그인
+            </button>
+        </div>
     </div>
 </div>
+
+<!-- 네이버 로그인 스크립트 -->
+<script>
+    function naverLogin() {
+        var clientId = "HPtl9HdFUiGzoDPAPQ4a";
+        var redirectURI = encodeURIComponent("http://localhost:8088/Metronic-Shop-UI-master/theme/naverCallback.do");
+        var state = generateState();
+
+        // 상태 토큰 저장
+        localStorage.setItem("naverState", state);
+
+        // 네이버 로그인 페이지로 리다이렉트
+        var naverLoginUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code"
+            + "&client_id=" + clientId
+            + "&redirect_uri=" + redirectURI
+            + "&state=" + state;
+
+        window.location.href = naverLoginUrl;
+    }
+
+    // 랜덤 상태 토큰 생성 함수
+    function generateState() {
+        return Math.random().toString(36).substr(2, 11);
+    }
+</script>
 </body>
 </html>
 <!-- partial -->

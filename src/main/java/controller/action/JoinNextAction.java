@@ -29,14 +29,22 @@ public class JoinNextAction implements Action {
             // UserDTO 객체 생성 및 데이터 설정
             UserDTO userDTO = new UserDTO();
 
-            System.out.println(request.getParameter("userEmail"));
             // 기본 정보 설정
-            userDTO.setUserEmail((String)session.getAttribute("userEmail")); // email -> userEmail
-            userDTO.setUserPassword((String)session.getAttribute("userPassword")); // password -> userPassword
-            userDTO.setUserName((String)session.getAttribute("userName")); // name -> userName
+            userDTO.setUserEmail((String)session.getAttribute("userEmail"));
+            userDTO.setUserPassword((String)session.getAttribute("userPassword"));
+            userDTO.setUserName((String)session.getAttribute("userName"));
+
+            // 소셜 로그인 타입 설정
+            String socialType = (String)session.getAttribute("socialType");
+            if (socialType != null && !socialType.isEmpty()) {
+                userDTO.setSocialType(socialType);
+            }
+
+            // 세션에서 기본 정보 제거
             session.removeAttribute("userEmail");
             session.removeAttribute("userPassword");
             session.removeAttribute("userName");
+            session.removeAttribute("socialType");
             //
             userDTO.setUserNickname(request.getParameter("userNickname"));
             userDTO.setUserPhone(request.getParameter("userPhone"));

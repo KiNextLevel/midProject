@@ -56,6 +56,16 @@ public class UserDTO {
     // 키워드 검색
     private String searchKeyword;
 
+    public String getSocialType() {
+        return socialType;
+    }
+
+    public void setSocialType(String socialType) {
+        this.socialType = socialType;
+    }
+
+    private String socialType;
+
     // Getter, Setter 메서드
     public String getUserPhone() {
         return userPhone;
@@ -274,8 +284,10 @@ public class UserDTO {
                 "userEmail='" + userEmail + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userNickname='" + userNickname + '\'' +
+                ", userPhone='" + userPhone + '\'' +
                 ", userRegdate=" + userRegdate +
                 ", userGender=" + userGender +
+                ", userGenderChanged=" + userGenderChanged +
                 ", userBirth='" + userBirth + '\'' +
                 ", userHeight=" + userHeight +
                 ", userBody='" + userBody + '\'' +
@@ -285,8 +297,9 @@ public class UserDTO {
                 ", userReligion='" + userReligion + '\'' +
                 ", userDrink=" + userDrink +
                 ", userSmoke=" + userSmoke +
+                ", userSmokeChanged=" + userSmokeChanged +
                 ", userJob='" + userJob + '\'' +
-                ", userRole='" + userRole + '\'' +
+                ", userRole=" + userRole +
                 ", userPreminum=" + userPreminum +
                 ", userToken=" + userToken +
                 ", userRegion='" + userRegion + '\'' +
@@ -294,6 +307,7 @@ public class UserDTO {
                 ", userName='" + userName + '\'' +
                 ", condition='" + condition + '\'' +
                 ", searchKeyword='" + searchKeyword + '\'' +
+                ", socialType='" + socialType + '\'' +
                 '}';
     }
 }

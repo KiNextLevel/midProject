@@ -128,8 +128,8 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="product-main-image">
                             <!-- 여기에 userDTO.getUserProfile() 넣으면 됨. -->
-                            <img src="assets/pages/img/products/차은우.jfif" alt="Cool green dress with red bell"
-                                 class="img-responsive" data-BigImgsrc="assets/pages/img/products/차은우.jfif">
+                            <img src="${userDTO.userProfile}" alt="Cool green dress with red bell"
+                                 class="img-responsive" data-BigImgsrc="${userDTO.userProfile}">
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">

@@ -27,15 +27,17 @@ public class UserDAO {
     final String SELECTALL_PRODUCT = "SELECT * FROM PAYMENT P LEFT JOIN USER U ON P.PAYMENT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
     // 블랙리스트 유저 불러오기
     final String SELECTALL_BLACK = "SELECT * FROM USER WHERE USER_ROLE = 2";
-    // 회원가입(정보 다 입력)
+    // 회원가입(정보 다 입력) - social_type 컬럼 추가
     final String INSERT = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
-            "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    // 회원가입(소개 뺴고, 프로필만 입력)
+            "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    // 회원가입(소개 뺴고, 프로필만 입력) - social_type 컬럼 추가
     final String INSERT_PROFILE = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
-            "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_NAME) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    // 회원가입(프로필 빼고, 소개만 입력)
+            "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    // 회원가입(프로필 빼고, 소개만 입력) - social_type 컬럼 추가
     final String INSERT_DESCRIPTION = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
-            "USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            "USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     // 회원 정보 수정
     final String UPDATE = "UPDATE USER SET USER_NICKNAME = ?, USER_PHONE = ?, USER_GENDER = ?, USER_BIRTH = ?, USER_HEIGHT = ?, USER_BODY = ?, USER_MBTI = ?, " +
             "USER_PROFILE = ?, USER_EDUCATION = ?, USER_RELIGEION = ?, USER_DRINK = ?, USER_SMOKE = ?, USER_JOB = ?, USER_REGION = ?, USER_DESCRIPTION = ?, USER_NAME = ? " +
@@ -67,7 +69,7 @@ public class UserDAO {
             // 유저 선호 취향 정보 불러오기
             if (userDTO.getCondition().equals("SELECTALL")) {
                 pstmt = conn.prepareStatement(SELECTALL);
-            }else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
+            } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
                 pstmt = conn.prepareStatement(SELCETALL_FAVORITE);
                 pstmt.setString(1, userDTO.getUserEmail());
             }
@@ -87,7 +89,7 @@ public class UserDAO {
                 pstmt.setString(1, userDTO.getUserEmail());
             }
             // 블랙리스트 유저 불러오기
-            else if(userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_BLACK")) {
+            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_BLACK")) {
                 pstmt = conn.prepareStatement(SELECTALL_BLACK);
             }
             rs = pstmt.executeQuery();
@@ -138,18 +140,15 @@ public class UserDAO {
                 if (userDTO.getCondition().equals("SELECTONE_CHECK")) {
                     pstmt = conn.prepareStatement(SELECTONE_CHECK);
                     pstmt.setString(1, userDTO.getUserEmail());
-                }
-                else if (userDTO.getCondition().equals("SELECTONE")) {
+                } else if (userDTO.getCondition().equals("SELECTONE")) {
                     pstmt = conn.prepareStatement(SELECTONE);
                     pstmt.setString(1, userDTO.getUserEmail());
                     pstmt.setString(2, userDTO.getUserPassword());
 
-                }
-                else if(userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE_USERINFO")) {
+                } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE_USERINFO")) {
                     pstmt = conn.prepareStatement(SELECTONE_USERINFO);
                     pstmt.setString(1, userDTO.getUserEmail());
-                }
-                else {
+                } else {
                     // 알 수 없는 조건인 경우 로그 출력 및 null 반환
                     System.out.println("알 수 없는 조건: " + userDTO.getCondition());
                     return null;
@@ -185,10 +184,17 @@ public class UserDAO {
                         data.setUserToken(rs.getInt("USER_TOKEN"));
                         data.setUserRegion(rs.getString("USER_REGION"));
                         data.setUserDescription(rs.getString("USER_DESCRIPTION"));
+
+                        // social_type 필드 추가
+                        try {
+                            data.setSocialType(rs.getString("SOCIAL_TYPE"));
+                        } catch (Exception e) {
+                            // SOCIAL_TYPE 컬럼이 없는 경우 예외 처리
+                            data.setSocialType(null);
+                        }
                     }
                 }
-            }
-            else {
+            } else {
                 // 조건이 null인 경우 로그 출력
                 System.out.println("조건이 null입니다.");
             }
@@ -236,6 +242,7 @@ public class UserDAO {
                 pstmt.setString(16, userDTO.getUserRegion());
                 pstmt.setString(17, userDTO.getUserDescription());
                 pstmt.setString(18, userDTO.getUserName());
+                pstmt.setString(19, userDTO.getSocialType());
             } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("INSERT_PROFILE")) {
                 pstmt = conn.prepareStatement(INSERT_PROFILE);
                 pstmt.setString(1, userDTO.getUserEmail());
@@ -255,6 +262,7 @@ public class UserDAO {
                 pstmt.setString(15, userDTO.getUserJob());
                 pstmt.setString(16, userDTO.getUserRegion());
                 pstmt.setString(17, userDTO.getUserName());
+                pstmt.setString(18, userDTO.getSocialType());
             } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("INSERT_DESCRIPTION")) {
                 pstmt = conn.prepareStatement(INSERT_DESCRIPTION);
                 pstmt.setString(1, userDTO.getUserEmail());
@@ -274,6 +282,7 @@ public class UserDAO {
                 pstmt.setString(15, userDTO.getUserRegion());
                 pstmt.setString(16, userDTO.getUserDescription());
                 pstmt.setString(17, userDTO.getUserName());
+                pstmt.setString(18, userDTO.getSocialType());
             }
             int result = pstmt.executeUpdate();
             System.out.println("insert 로그:" + result);
@@ -291,7 +300,7 @@ public class UserDAO {
         try {
             conn = JDBCUtil.connect();
             // 회원정보 변경
-            if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE")){
+            if (userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE")) {
                 pstmt = conn.prepareStatement(UPDATE);
                 pstmt.setString(1, userDTO.getUserNickname());
                 pstmt.setString(2, userDTO.getUserPhone());
@@ -304,7 +313,7 @@ public class UserDAO {
                 pstmt.setString(9, userDTO.getUserEducation());
                 pstmt.setString(10, userDTO.getUserReligion());
                 pstmt.setInt(11, userDTO.getUserDrink());
-                pstmt.setBoolean(12,userDTO.isUserSmoke());
+                pstmt.setBoolean(12, userDTO.isUserSmoke());
                 pstmt.setString(13, userDTO.getUserJob());
                 pstmt.setString(14, userDTO.getUserRegion());
                 pstmt.setString(15, userDTO.getUserDescription());
@@ -312,7 +321,7 @@ public class UserDAO {
                 pstmt.setString(17, userDTO.getUserEmail());
             }
             // ROLE 변경
-            else if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_ROLE")){
+            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_ROLE")) {
                 pstmt = conn.prepareStatement(UPDATE_ROLE);
                 pstmt.setInt(1, userDTO.getUserRole());
                 pstmt.setString(2, userDTO.getUserEmail());

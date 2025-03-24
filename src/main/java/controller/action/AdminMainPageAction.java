@@ -12,7 +12,7 @@ public class AdminMainPageAction implements Action{
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		System.out.println("AdminMainPageAction 로그: 도착");	
-		System.out.println("로그 userRole:["+session.getAttribute("userRole")+"]");
+		System.out.println("AdminMainPageAction 로그 userRole:["+session.getAttribute("userRole")+"]");
 		
 		try {
 		if(((Integer)session.getAttribute("userRole")) == 1) {

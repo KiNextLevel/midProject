@@ -16,7 +16,9 @@ public class BoardPageAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
 		ActionForward forward = new ActionForward();
-			System.out.println("baordPage 로그: 도착");
+			System.out.println("boardPage 로그: 도착");
+			String realPath = request.getServletContext().getRealPath("/theme/BoardPage.jsp");
+			System.out.println("실제 파일 경로: " + realPath);
 		
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
@@ -25,10 +27,12 @@ public class BoardPageAction implements Action{
 		System.out.println("BoardPage SELECTALL 로그:"+datas);
 		
 		request.setAttribute("datas", datas);
-		forward.setPath("BoardPage.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/BoardPage.jsp");
+		String path = forward.getPath();
+		System.out.println(path);
 					//	webapp/Metronic-Shop-UI-master/theme/BoardPage.jsp
 		forward.setRedirect(false);
 		return forward;
-
+		
 	}
 }

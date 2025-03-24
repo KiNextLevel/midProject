@@ -10,6 +10,7 @@ public class AdminAddBlackAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("adminAddBlackAcion 로그: 도착");
 		ActionForward forward = new ActionForward();
 
 		UserDTO userDTO = new UserDTO();

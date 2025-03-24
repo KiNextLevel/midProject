@@ -10,6 +10,7 @@ public class AdminModifyBoardAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("adminModifyBoardAction 로그: 도착");
 		ActionForward forward = new ActionForward();
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
@@ -28,9 +29,8 @@ public class AdminModifyBoardAction implements Action{
 			request.setAttribute("msg", "수정 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/mywebapp/theme/alert.jsp");
+		forward.setPath("alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
-
 }

@@ -215,7 +215,7 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu waves-effect waves-dark" href="/mywebapp/theme/BoardPage.jsp"><i class="fa fa-dashboard"></i> 게시글 페이지</a>
+                        <a class="active-menu waves-effect waves-dark" href="boardPage.do"><i class="fa fa-dashboard"></i> 게시글 페이지</a>
                     </li>
                     <li>
                         <a href="/mywebapp/target-free-admin-template/AdminPaymentListPage.jsp" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>

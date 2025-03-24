@@ -147,6 +147,7 @@ m
                             </div>
                         </div>
                         <div class="token-options">
+                        <!-- 
                             <div class="option-box">
                                 <h5 class="option-title">토큰 패키지 선택</h5>
                                 <div class="option-select">
@@ -164,6 +165,45 @@ m
                                     </button>
                                 </div>
                             </div>
+                             -->
+<form action="payment.do" method="POST">
+    <div class="token-options">
+        <div class="option-box">
+            <h5 class="option-title">토큰 패키지 선택</h5>
+            <div class="option-select">
+                <!-- 첫 번째 옵션 -->
+                <div>
+                    <input type="radio" id="basic" name="productNum" value="2" required>
+                    <label for="basic">기본 패키지 - 1개 (₩1,100)</label>
+                    <input type="hidden" name="productName" value="기본 패키지">
+                    <input type="hidden" name="productPrice" value="1100">
+                </div>
+                <!-- 두 번째 옵션 -->
+                <div>
+                    <input type="radio" id="popular" name="productNum" value="3" required>
+                    <label for="popular">인기 패키지 - 5개 (₩5,000)</label>
+                    <input type="hidden" name="productName" value="인기 패키지">
+                    <input type="hidden" name="productPrice" value="5000">
+                </div>
+                <!-- 세 번째 옵션 -->
+                <div>
+                    <input type="radio" id="premium" name="productNum" value="4" required>
+                    <label for="premium">프리미엄 패키지 - 10개 (₩8,800)</label>
+                    <input type="hidden" name="productName" value="프리미엄 패키지">
+                    <input type="hidden" name="productPrice" value="8800">
+                </div>
+            </div>
+            <div class="payment-action">
+                <input type="hidden" name="action" value="TOKENPAYMENT">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fa fa-credit-card"></i> 토큰 구매하기
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+                             
                         </div>
                     </div>
 

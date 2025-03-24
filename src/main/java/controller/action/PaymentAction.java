@@ -24,32 +24,44 @@ public class PaymentAction implements Action {
 		ProductDTO productDTO = new ProductDTO();
 		PaymentDAO paymentDAO = new PaymentDAO();
 		PaymentDTO paymentDTO = new PaymentDTO();
-        int productNum = (int)request.getAttribute("productNum");
+        int productNum = Integer.parseInt(request.getParameter("productNum"));
+        System.out.println("PaymentAction 로그 productNum: "+productNum);
         // 상품에 해당하는 정보 가져오기
         productDTO.setProductNumber(productNum);
         productDTO = productDAO.selectOne(productDTO);
+        request.setAttribute("productName", "토큰 10개");
         
+        //이제 결제 하기
+        if(productDTO == null) {
+        	request.setAttribute("msg", "상품 정보를 찾을 수 없습니다");
+        	request.setAttribute("flag", false);
+        }
+        else {
+        	request.setAttribute("data", productDTO);
+        	forward.setPath("/widget/indexToss.jsp");
+        	forward.setRedirect(false);
+        }
+        return forward;
         //유저가 상품을 결제
         // 결제 api 사용후 결과 
         // 결제 테이블에 결제금액, 이메일, 상품번호 저장
-        paymentDTO.setProductNumber(productNum);
-        paymentDTO.setPaymentPrice(productDTO.getProductPrice());
-        paymentDTO.setUserEmail((String) session.getAttribute("userEamil"));
-//      //상품번호에 따라서 행동이 다름
-//      if (productNum == 1) { // 프리미엄 계정
-//          System.out.println(" -- 프리미엄 구매");
-//      } else { // 토큰 구매
-//      	System.out.println(" -- 토큰 구매");
-//      }
-
-        // 결제정보 insert위해 정보 넣기
-        if (paymentDAO.insert(paymentDTO)) {
-        	
-        }
-
-        
-		forward.setPath("alert.jsp");
-		forward.setRedirect(false);
-		return forward;
+//        paymentDTO.setProductNumber(productNum);
+//        paymentDTO.setPaymentPrice(productDTO.getProductPrice());
+//        paymentDTO.setUserEmail((String) session.getAttribute("userEamil"));
+////      //상품번호에 따라서 행동이 다름
+////      if (productNum == 1) { // 프리미엄 계정
+////          System.out.println(" -- 프리미엄 구매");
+////      } else { // 토큰 구매
+////      	System.out.println(" -- 토큰 구매");
+////      }
+//
+//        // 결제정보 insert위해 정보 넣기
+//        if (paymentDAO.insert(paymentDTO)) {
+//        	
+//        }
+//
+//		forward.setPath("alert.jsp");
+//		forward.setRedirect(false);
+//		return forward;
 	}
 }

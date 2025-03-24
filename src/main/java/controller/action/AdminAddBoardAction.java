@@ -11,6 +11,7 @@ public class AdminAddBoardAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("adminAddBoardAcion 로그: 도착");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		BoardDTO boardDTO = new BoardDTO();

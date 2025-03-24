@@ -21,7 +21,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- Head BEGIN -->
 <head>
   <meta charset="utf-8">
-  <title>이벤트 페이지</title>
+  <title>이벤트 페이지??</title>
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -43,23 +43,27 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"> 
   <!-- Fonts END -->
 
-  <!-- Global styles START -->          
+  <!-- Global styles START -->      
+  <!-- 
   <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   -->    
+  <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Global styles END --> 
    
   <!-- Page level plugin styles START -->
-  <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-  <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
   <!-- Page level plugin styles END -->
 
   <!-- Theme styles START -->
-  <link href="assets/pages/css/components.css" rel="stylesheet">
-  <link href="assets/corporate/css/style.css" rel="stylesheet">
-  <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-  <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-  <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-  <link href="assets/corporate/css/custom.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+  <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
   <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -130,7 +134,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- BEGIN HEADER -->
     <div class="header">
       <div class="container">
-        <a class="site-logo" href="adminMainPage.do"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="adminMainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -146,21 +150,21 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="top-cart-content">
               <ul class="scroller" style="height: 250px;">
                 <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                  <a href="shop-item.html"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                   <span class="cart-content-count">x 1</span>
                   <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
                   <em>$1230</em>
                   <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
                 </li>
                 <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                  <a href="shop-item.html"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                   <span class="cart-content-count">x 1</span>
                   <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
                   <em>$1230</em>
                   <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
                 </li>
                 <li>
-                  <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                  <a href="shop-item.html"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
                   <span class="cart-content-count">x 1</span>
                   <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
                   <em>$1230</em>
@@ -444,19 +448,25 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   			<div class="panel panel-default">
                                <div class="panel-heading">
                                   <h4 class="panel-title">											<!-- href를 id랑 맞춰야 토글이 맞아 -->
-                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="${data.boardTitle }">
+                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse${data.boardNumber}">
+                                     ${data.boardNumber}
                                      ${data.boardTitle}
                                      </a>
                                   </h4>
                                </div>
-                               <div id="${data.boardTitle }" class="panel-collapse collapse">
+                               <div id="collapse${data.boardNumber}" class="panel-collapse collapse">
                                   <div class="panel-body">
                                   ${data.boardContent}
                                   <div style="text-align: right;">
                               <table border="1">
                                   <tr>
                                       <td><a href="controller.jsp?command=ADMINMODIFYBOARDPAGE&boardNumber=${data.boardNumber}">수정</a></td>
-                                      <td><a href="controller.jsp?command=ADMINDELETEBOARD&boardNumber=${data.boardNumber}">삭제</a></td>
+                                        <td>
+       									 <form action="adminDeleteBoard.do" method="POST">
+        							 	  	  <input type="hidden" name="boardNum" value="${data.boardNumber}">
+       								  		   <input type="submit" value="삭제">
+      									  </form>
+ 									    </td>
                                   </tr>
                               </table>
                           </div>
@@ -473,8 +483,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                <div class="panel-heading">
                                   <h4 class="panel-title">											<!-- href를 id랑 맞춰야 토글이 맞아 -->
                                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse${data.boardNumber}">
-                                     ${data.boardTitle}
                                      ${data.boardNumber}                                     
+                                     ${data.boardTitle}
                                      </a>
                                   </h4>
                                </div>
@@ -691,20 +701,20 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <!--[if lt IE 9]>
     <script src="assets/plugins/respond.min.js"></script>  
     <![endif]-->
-        <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-        <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
 
         <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-        <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
         <!-- pop up -->
-        <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
         <!-- slider for products -->
 
-        <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
         <script type="text/javascript">
           jQuery(document).ready(function () {
             Layout.init();

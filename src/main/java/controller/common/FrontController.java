@@ -10,10 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import controller.common.Action;
-import controller.common.ActionFactory;
-import controller.common.ActionForward;
-
 @WebServlet("*.do")
 @MultipartConfig(
 		fileSizeThreshold = 1024 * 1024, // 1MB
@@ -34,11 +30,17 @@ public class FrontController extends HttpServlet {
     	System.out.println(" CTRL 로그 : command ["+command+"]");
 
     	command = command.replace("/mywebapp/Metronic-Shop-UI-master/theme/", "");
+    	if(command.contains(("target"))){
+    		command = command.replace("/mywebapp/target-free-admin-template/", "");
+    	}
     	System.out.println(" CTRL 자른 로그 : command ["+command+"]");
 
     	
     	Action action = factory.getAction(command); // 팩토리 패턴
+    	System.out.println("apple 1");
     	ActionForward forward = action.execute(request);
+    	System.out.println("apple 2");
+    	
     	
     	if(forward == null){
     		// 에러페이지로 이동

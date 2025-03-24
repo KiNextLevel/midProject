@@ -139,6 +139,7 @@ public class BoardDAO {
 
     // 이벤트 게시판 글 삭제
     public boolean delete(BoardDTO boardDTO) {
+    	System.out.println("deleteBoard dao 로그");
         try {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(DELETE);

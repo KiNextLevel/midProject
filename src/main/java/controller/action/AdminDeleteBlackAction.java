@@ -10,6 +10,7 @@ public class AdminDeleteBlackAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("adminDeleteBlackAcion 로그: 도착");
 		ActionForward forward = new ActionForward();
 		String reportedUserEmail = request.getParameter("reportedUser");
 		UserDTO userDTO = new UserDTO();

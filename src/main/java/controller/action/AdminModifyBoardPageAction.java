@@ -13,23 +13,22 @@ public class AdminModifyBoardPageAction implements Action{
 		ActionForward forward = new ActionForward();
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
-		
+
 		int boardNum = Integer.parseInt((String)request.getAttribute("boardNum"));
 		boardDTO.setBoardNumber(boardNum);
 		boardDTO = boardDAO.selectOne(boardDTO);
-		
+
 		if(boardDTO == null) {
 			request.setAttribute("msg", "이벤트를 찾을 수 없습니다");
 			request.setAttribute("flag", false);
-			forward.setPath("/mywebapp/theme/alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 			forward.setRedirect(false);
 		}
 		else {
 			request.setAttribute("data", boardDTO);
-			forward.setPath("/mywebapp/theme/AdminModifyBoardPage.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/AdminModifyBoardPage.jsp");
 			forward.setRedirect(false);
 		}
 		return forward;
 	}
 }
-

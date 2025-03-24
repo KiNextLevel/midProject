@@ -32,9 +32,12 @@ public class FrontController extends HttpServlet {
     private void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String command = request.getRequestURI();
     	System.out.println(" CTRL 로그 : command ["+command+"]");
-    	command = command.replace("/Metronic-Shop-UI-master/theme/", "");
-    	System.out.println(" CTRL 로그 : command ["+command+"]");
-    	
+		command = command.replace("/Metronic-Shop-UI-master/theme/", "");
+		if(command.contains(("target"))){
+			command = command.replace("/target-free-admin-template/", "");
+		}
+		System.out.println(" CTRL 자른 로그 : command ["+command+"]");
+
     	Action action = factory.getAction(command); // 팩토리 패턴
     	ActionForward forward = action.execute(request);
     	

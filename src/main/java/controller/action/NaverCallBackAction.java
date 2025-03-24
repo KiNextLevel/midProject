@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.UUID;
 
 public class NaverCallBackAction implements Action {
     private static final String CLIENT_ID = "HPtl9HdFUiGzoDPAPQ4a";
@@ -67,11 +68,14 @@ public class NaverCallBackAction implements Action {
 
             JSONObject userInfoResponse = (JSONObject) parser.parse(sb.toString());
             JSONObject userInfo = (JSONObject) userInfoResponse.get("response");
+            System.out.println(userInfoResponse + " : userInfoResponse");
+            System.out.println(userInfo + " : userInfo");
 
             // 네이버에서 받은 정보
             String email = (String) userInfo.get("email");
-            String nickname = (String) userInfo.get("nickname");
             String name = (String) userInfo.get("name");
+            System.out.println(email + " email");
+            System.out.println(name + " name");
 
             // UserDAO를 이용하여 회원 정보 조회
             UserDAO userDAO = new UserDAO();
@@ -84,45 +88,53 @@ public class NaverCallBackAction implements Action {
             UserDTO user = userDAO.selectOne(searchDTO);
 
             if (user == null) {
-                // 회원 정보가 없으면 회원가입 페이지로 리다이렉트
-                // 네이버에서 받은 정보를 세션에 저장
+                // 회원 정보가 없으면 회원가입 진행
+                // 세션에 네이버에서 받은 정보 저장 (JoinAction과 동일한 방식으로)
                 HttpSession session = request.getSession();
-                session.setAttribute("naverEmail", email);
-                session.setAttribute("naverName", name);
-                session.setAttribute("naverNickname", nickname);
+                session.setAttribute("userEmail", email);
+                session.setAttribute("userName", name);
+                // 비밀번호는 랜덤하게 생성 (소셜 로그인은 비밀번호가 필요 없지만 DB 구조상 필요할 수 있음)
+                String randomPassword = generateRandomPassword();
+                session.setAttribute("userPassword", randomPassword);
+                // 소셜 로그인 타입 저장
+                session.setAttribute("socialType", "naver");
 
-                // joinPage.jsp로 리다이렉트
-                forward.setRedirect(true);
-                forward.setPath("joinPage.do");
+                // 회원가입 페이지로 리다이렉트
+                request.setAttribute("msg", "네이버 계정으로 회원가입을 진행합니다.");
+                request.setAttribute("flag", true);
+                request.setAttribute("url", "JoinPage.jsp");
+                forward.setPath("alert.jsp");
+                forward.setRedirect(false);
             } else {
-                // 기존 회원이면 전체 정보 조회
+                // 기존 회원이면 로그인 처리
                 searchDTO.setCondition("SELECTONE_USERINFO");
                 user = userDAO.selectOne(searchDTO);
 
                 // 세션에 로그인 정보 저장
                 HttpSession session = request.getSession();
-                session.setAttribute("user", user);
+                session.setAttribute("userEmail", user.getUserEmail());
 
-                // 로그인 성공 후 메인 페이지로 리다이렉트
-                forward.setRedirect(true);
-                forward.setPath("mainPage.do");
+                // 로그인 성공 메시지 및 메인 페이지로 리다이렉트
+                request.setAttribute("msg", "네이버 계정으로 로그인되었습니다.");
+                request.setAttribute("flag", true);
+                request.setAttribute("url", "mainPage.do");
+                forward.setPath("alert.jsp");
+                forward.setRedirect(false);
             }
-
-
-            // 세션에 로그인 정보 저장
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-
-            // 로그인 성공 후 메인 페이지로 리다이렉트
-            forward.setRedirect(true);
-            forward.setPath("mainPage.do");
 
         } catch (Exception e) {
             e.printStackTrace();
-            forward.setRedirect(true);
-            forward.setPath("loginPage.do?error=naver");
+            request.setAttribute("msg", "네이버 로그인 중 오류가 발생했습니다.");
+            request.setAttribute("flag", false);
+            forward.setPath("alert.jsp");
+            forward.setRedirect(false);
         }
 
         return forward;
+    }
+
+    // 랜덤 비밀번호 생성 메서드
+    private String generateRandomPassword() {
+        return UUID.randomUUID().toString().substring(0, 10);
     }
 }

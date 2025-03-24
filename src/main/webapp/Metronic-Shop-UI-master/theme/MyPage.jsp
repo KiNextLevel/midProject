@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 <html lang="kr">
 <head>
     <meta charset="utf-8" />
-    <title>마이페이지 | Next Level</title>
+    <title> 마이페이지 | Next Level</title>
     <link href="css/MyPage.css" rel="stylesheet">
     <link href="css/ProductPage.css" rel="stylesheet">
     <link href="css/MyPage2.css" rel="stylesheet">
@@ -18,7 +19,8 @@
     <meta content="Next Level" name="author" />
 
     <link rel="shortcut icon" href="favicon.ico" />
-
+    <script src="http://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <!-- 폰트 -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css" />
 
@@ -299,5 +301,41 @@
 <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/MyPageUploadProfile.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        Layout.init();
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initImageZoom();
+        Layout.initTouchspin();
+        Layout.initUniform();
+
+        // 슬라이더 직접 초기화
+        $("#age-slider-range").slider({
+            range: true,
+            min: 18,
+            max: 60,
+            values: [18, 35],
+            slide: function (event, ui) {
+                $("#ageAmount").val(ui.values[0] + " - " + ui.values[1] + "세");
+            }
+        });
+        $("#ageAmount").val($("#age-slider-range").slider("values", 0) + " - " +
+            $("#age-slider-range").slider("values", 1) + "세");
+
+        $("#height-slider-range").slider({
+            range: true,
+            min: 150,
+            max: 200,
+            values: [160, 180],
+            slide: function (event, ui) {
+                $("#heightAmount").val(ui.values[0] + " - " + ui.values[1] + "cm");
+            }
+        });
+        $("#heightAmount").val($("#height-slider-range").slider("values", 0) + " - " +
+            $("#height-slider-range").slider("values", 1) + "cm");
+    });
+</script>
+
 </body>
 </html>

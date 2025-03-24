@@ -9,7 +9,7 @@ import controller.action.*;
 public class ActionFactory {
 
 	private Map<String, Action>factory;
-	
+
 	public ActionFactory() {
 		factory = new HashMap<>(); //command 넣으면 Action 반환
 		factory.put("adminDeleteBoard.do", new AdminDeleteBoardAction());
@@ -38,6 +38,7 @@ public class ActionFactory {
 		factory.put("report.do",new ReportAction());
 		factory.put("reportPage.do",new ReportPageAction());
 		factory.put("userDetailPage.do",new UserDetailPageAction());
+		factory.put("naverCallback.do", new NaverCallBackAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

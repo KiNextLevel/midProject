@@ -112,7 +112,7 @@ public class NaverCallBackAction implements Action {
 
                 // 세션에 로그인 정보 저장
                 HttpSession session = request.getSession();
-                session.setAttribute("user", user);
+                session.setAttribute("userEmail", user.getUserEmail());
 
                 // 로그인 성공 메시지 및 메인 페이지로 리다이렉트
                 request.setAttribute("msg", "네이버 계정으로 로그인되었습니다.");

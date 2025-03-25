@@ -28,7 +28,8 @@ public class UpdateProfileAction implements Action {
         try {
             // 폼에서 전송된 데이터 받기
             // 사용자 정보
-            String userDescription = request.getParameter("introduction"); // 자기소개
+            String userDescription = request.getParameter("userDescription"); // 자기소개
+            String userNickname = request.getParameter("userNickname");
             String userHeightStr = request.getParameter("userHeight"); // 키
             String userBody = request.getParameter("userBody"); // 체형
             String userEducation = request.getParameter("userEducation"); // 학력
@@ -66,7 +67,13 @@ public class UpdateProfileAction implements Action {
             UserDTO userDTO = new UserDTO();
             userDTO.setUserEmail(userEmail);
             userDTO.setUserDescription(userDescription); // 자기소개 설정
+            userDTO.setUserNickname(userNickname); // 기존 닉네임 유지
 
+            String newNickname = request.getParameter("userNickName");
+            if (newNickname != null && !newNickname.trim().isEmpty()) {
+                userDTO.setUserNickname(newNickname);
+            }
+            
             // 숫자형 데이터 변환 처리 (키)
             if (userHeightStr != null && !userHeightStr.isEmpty()) {
                 try {
@@ -101,7 +108,7 @@ public class UpdateProfileAction implements Action {
                 userDTO.setUserSmoke(userSmoke);
             }
 
-            userDTO.setCondition("UPDATE_PROFILE");
+            userDTO.setCondition("UPDATE");
 
             // PreferenceDTO 객체 생성 및 설정
             PreferenceDTO preferenceDTO = new PreferenceDTO();

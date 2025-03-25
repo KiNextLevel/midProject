@@ -9,9 +9,10 @@ public class AdminAddBoardPageAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("adminAddBoardPageAction 로그: 도착");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
-		
+
 		if(Integer.parseInt((String)session.getAttribute("userRole"))==1) {
 			forward.setPath("adminAddBoardPage.do");
 			forward.setRedirect(true);
@@ -19,7 +20,7 @@ public class AdminAddBoardPageAction implements Action{
 		else {
 			request.setAttribute("msg", "관리자만 가능합니다");
 			request.setAttribute("flag", false);
-			forward.setPath("/mywebapp/theme/alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 			forward.setRedirect(false);
 		}
 		return forward;

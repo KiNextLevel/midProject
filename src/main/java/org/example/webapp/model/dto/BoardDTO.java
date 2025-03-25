@@ -15,6 +15,19 @@ public class BoardDTO {
     private int boardLimit;
     private String condition;
     private String searchKeyword;
+    private int boardParticipant;
+
+    public String getSearchKeyword() {
+        return searchKeyword;
+    }
+
+    public int getBoardParticipant() {
+        return boardParticipant;
+    }
+
+    public void setBoardParticipant(int boardParticipant) {
+        this.boardParticipant = boardParticipant;
+    }
 
     public String getCondition() {
         return condition;

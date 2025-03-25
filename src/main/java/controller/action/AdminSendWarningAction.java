@@ -17,7 +17,7 @@ public class AdminSendWarningAction implements Action{
 		UserDAO userDAO = new UserDAO();
 		AlertDTO alertDTO = new AlertDTO();
 		AlertDAO alertDAO = new AlertDAO();
-		
+
 		// userDTO.setUserEmail(request.getParameter("reportedUser"));
 		alertDTO.setUserEmail(request.getParameter("reportedUser"));	//신고당한 회원 이메일
 
@@ -30,7 +30,7 @@ public class AdminSendWarningAction implements Action{
 			request.setAttribute("msg", "경고 보내기 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/mywebapp/theme/alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

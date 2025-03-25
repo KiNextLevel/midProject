@@ -22,7 +22,7 @@ public class BoardPageAction implements Action{
 		System.out.println("board SELECTALL 로그:"+datas);
 		
 		request.setAttribute("datas", datas);
-		forward.setPath("BoardPage.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/BoardPage.jsp");
 					//	webapp/Metronic-Shop-UI-master/theme/BoardPage.jsp
 		forward.setRedirect(false);
 		return forward;

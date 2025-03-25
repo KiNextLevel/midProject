@@ -39,7 +39,7 @@ public class ReportAction implements Action {
                 request.setAttribute("flag", false);
             }
         }
-		forward.setPath("alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

@@ -1,27 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
-
-<!--정보 입력하기 페이지
-Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-Version: 1.0.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
-
-<!-- Head BEGIN -->
-
+<html lang="ko">
 <head>
     <meta charset="utf-8">
     <title>정보 수정 페이지</title>
@@ -76,10 +60,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <link href="assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
 </head>
-<!-- Head END -->
-
-<!-- Body BEGIN -->
-
 <body class="ecommerce">
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="color-panel hidden-sm">
@@ -99,523 +79,247 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 </div>
 <!-- END BEGIN STYLE CUSTOMIZER -->
 
+<!-- BEGIN TOP BAR -->
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+            </div>
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    <li><a href="myPage.do">마이페이지</a></li>
+                    <li><a href="logout.do">로그아웃</a></li>
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
+        </div>
+    </div>
+</div>
+<!-- END TOP BAR -->
+
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img
-                src="assets/corporate/img/logos/logo-shop-red.png"
-                alt="Metronic Shop UI"></a> <a href="javascript:void(0);"
-                                               class="mobi-toggler"><i class="fa fa-bars"></i></a>
+        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png"
+                                                     alt="Metronic Shop UI"></a>
 
-        <!-- BEGIN CART -->
-        <div class="top-cart-block">
-            <div class="top-cart-info">
-                <a href="javascript:void(0);" class="top-cart-info-count">3
-                    items</a> <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
-            </div>
-            <i class="fa fa-shopping-cart"></i>
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
-
-        </div>
-        <!--END CART -->
-
-        <!-- BEGIN NAVIGATION -->
-        <div class="header-navigation">
-            <ul>
-                <li class="dropdown"><a class="dropdown-toggle"
-                                        data-toggle="dropdown" data-target="#" href="javascript:;">
-                    Woman </a> <!-- BEGIN DROPDOWN MENU -->
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a
-                                href="shop-product-list.html">Hi Tops <i
-                                class="fa fa-angle-right"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="shop-product-list.html">Second Level Link</a></li>
-                                <li><a href="shop-product-list.html">Second Level Link</a></li>
-                                <li class="dropdown-submenu"><a class="dropdown-toggle"
-                                                                data-toggle="dropdown" data-target="#" href="javascript:;">
-                                    Second Level Link <i class="fa fa-angle-right"></i>
-                                </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="shop-product-list.html">Third Level
-                                            Link</a></li>
-                                        <li><a href="shop-product-list.html">Third Level
-                                            Link</a></li>
-                                        <li><a href="shop-product-list.html">Third Level
-                                            Link</a></li>
-                                    </ul></li>
-                            </ul></li>
-                        <li><a href="shop-product-list.html">Running Shoes</a></li>
-                        <li><a href="shop-product-list.html">Jackets and Coats</a></li>
-                    </ul> <!-- END DROPDOWN MENU --></li>
-
-
-
-                <li><a href="shop-item.html">Kids</a></li>
-                <li class="dropdown dropdown100 nav-catalogue"><a
-                        class="dropdown-toggle" data-toggle="dropdown" data-target="#"
-                        href="javascript:;"> New </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="header-navigation-content">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-4 col-xs-6">
-                                        <div class="product-item">
-                                            <div class="pi-img-wrapper">
-                                                <a href="shop-item.html"><img
-                                                        src="assets/pages/img/products/model4.jpg"
-                                                        class="img-responsive" alt="Berry Lace Dress"></a>
-                                            </div>
-                                            <h3>
-                                                <a href="shop-item.html">Berry Lace Dress</a>
-                                            </h3>
-                                            <div class="pi-price">$29.00</div>
-                                            <a href="javascript:;" class="btn btn-default add2cart">Add
-                                                to cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-6">
-                                        <div class="product-item">
-                                            <div class="pi-img-wrapper">
-                                                <a href="shop-item.html"><img
-                                                        src="assets/pages/img/products/model3.jpg"
-                                                        class="img-responsive" alt="Berry Lace Dress"></a>
-                                            </div>
-                                            <h3>
-                                                <a href="shop-item.html">Berry Lace Dress</a>
-                                            </h3>
-                                            <div class="pi-price">$29.00</div>
-                                            <a href="javascript:;" class="btn btn-default add2cart">Add
-                                                to cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-6">
-                                        <div class="product-item">
-                                            <div class="pi-img-wrapper">
-                                                <a href="shop-item.html"><img
-                                                        src="assets/pages/img/products/model7.jpg"
-                                                        class="img-responsive" alt="Berry Lace Dress"></a>
-                                            </div>
-                                            <h3>
-                                                <a href="shop-item.html">Berry Lace Dress</a>
-                                            </h3>
-                                            <div class="pi-price">$29.00</div>
-                                            <a href="javascript:;" class="btn btn-default add2cart">Add
-                                                to cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-6">
-                                        <div class="product-item">
-                                            <div class="pi-img-wrapper">
-                                                <a href="shop-item.html"><img
-                                                        src="assets/pages/img/products/model4.jpg"
-                                                        class="img-responsive" alt="Berry Lace Dress"></a>
-                                            </div>
-                                            <h3>
-                                                <a href="shop-item.html">Berry Lace Dress</a>
-                                            </h3>
-                                            <div class="pi-price">$29.00</div>
-                                            <a href="javascript:;" class="btn btn-default add2cart">Add
-                                                to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul></li>
-                <li class="dropdown active"><a class="dropdown-toggle"
-                                               data-toggle="dropdown" data-target="#" href="javascript:;">
-                    Pages </a>
-                <li><a
-                        href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes&amp;utm_source=download&amp;utm_medium=banner&amp;utm_campaign=metronic_frontend_freebie"
-                        target="_blank">Admin theme</a></li>
-
-                <!-- BEGIN TOP SEARCH -->
-                <li class="menu-search"><span class="sep"></span> <i
-                        class="fa fa-search search-btn"></i>
-                    <div class="search-box">
-                        <form action="#">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search" class="form-control">
-                                <span class="input-group-btn">
-										<button class="btn btn-primary" type="submit">Search</button>
-									</span>
-                            </div>
-                        </form>
-                    </div></li>
-                <!-- END TOP SEARCH -->
+        <!-- BEGIN TOP BAR MENU -->
+        <div class="top-bar-right">
+            <ul class="top-bar-list">
             </ul>
         </div>
-        <!-- END NAVIGATION -->
+        <!-- END TOP BAR MENU -->
     </div>
 </div>
 <!-- Header END -->
 
-
-<form action="updateProfile.jsp" method="POST" role="form" class="form-horizontal form-without-legend">
+<form action="updateProfile.do" method="POST" role="form" class="form-horizontal form-without-legend">
     <div class="container">
         <h1>정보 변경하기</h1>
 
         <!-- 자기소개 -->
         <div class="form-group">
-            <label class="col-md-2 control-label" for="introduction">자기소개</label>
+            <label class="col-md-2 control-label" for="userDescription">자기소개</label>
             <div class="col-md-8">
-                <textarea class="form-control" id="introduction" name="introduction" rows="6" maxlength="200">${sessionScope.loginUser.introduction}</textarea>
+                <textarea class="form-control" id="userDescription" name="userDescription" rows="6" maxlength="200"><c:out value="${userDTO.userDescription}"/></textarea>
                 <small id="charCount">0 / 200</small>
             </div>
         </div>
 
-
-
         <!-- 키 선택 -->
         <div class="form-group">
-            <label class="col-md-2 control-label" for="height">키 <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label" for="height">키 <span class="require">*</span></label>
             <div class="col-md-8">
-                <input type="number" id="height" class="form-control"
-                       placeholder="cm 단위로 입력하세요" step="0.01" min="100" max="200">
-
+                <input type="number" id="height" name="userHeight" class="form-control"
+                       value="<c:out value="${userDTO.userHeight}"/>" placeholder="cm 단위로 입력하세요" step="0.01" min="100" max="200">
             </div>
         </div>
-
 
         <!-- 체형 선택 -->
         <div class="form-group">
-            <label class="col-md-2 control-label" for="bodyType">체형 <span
-                    class="require">*</span>
-            </label>
+            <label class="col-md-2 control-label" for="bodyType">체형 <span class="require">*</span></label>
             <div class="col-md-8">
                 <select id="bodyType" name="userBody" class="form-control">
                     <option value="">선택하세요</option>
-                    <option value="마름" ${userDTO.userBody == '마름' ? 'selected' : ''}>마름</option>
-                    <option value="보통" ${userDTO.userBody == '보통' ? 'selected' : ''}>보통</option>
-                    <option value="통통" ${userDTO.userBody == '통통' ? 'selected' : ''}>통통</option>
-                    <option value="뚱뚱" ${userDTO.userBody == '뚱뚱' ? 'selected' : ''}>뚱뚱</option>
+                    <c:forEach var="bodyType" items="${['마름', '보통', '통통', '뚱뚱']}">
+                        <option value="${bodyType}" <c:if test="${userDTO.userBody == bodyType}">selected</c:if>>${bodyType}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
-
-
-
         <!-- 학력 선택 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">학력 <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label">학력 <span class="require">*</span></label>
             <div class="col-md-8">
                 <select name="userEducation" class="form-control">
                     <option value="">선택하세요</option>
-                    <option value="고등학교 졸업"
-                    ${userDTO.userEducation == '고등학교 졸업' ? 'selected' : ''}>고등학교
-                        졸업</option>
-                    <option value="전문대"
-                    ${userDTO.userEducation == '전문대' ? 'selected' : ''}>전문대</option>
-                    <option value="대학교 재학"
-                    ${userDTO.userEducation == '대학교 재학' ? 'selected' : ''}>대학교
-                        재학</option>
-                    <option value="학사"
-                    ${userDTO.userEducation == '학사' ? 'selected' : ''}>학사</option>
-                    <option value="석사"
-                    ${userDTO.userEducation == '석사' ? 'selected' : ''}>석사</option>
-                    <option value="박사"
-                    ${userDTO.userEducation == '박사' ? 'selected' : ''}>박사</option>
+                    <c:forEach var="education" items="${['고등학교 졸업', '전문대', '대학교 재학', '대학교 졸업', '대학원 재학', '대학원 졸업']}">
+                        <option value="${education}" <c:if test="${userDTO.userEducation == education}">selected</c:if>>${education}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
 
+        <!-- 직업 입력 -->
         <div class="form-group">
-            <label class="col-md-2 control-label" for="job">직업 <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label" for="job">직업 <span class="require">*</span></label>
             <div class="col-md-8">
-                <input type="text" id="job" class="form-control"
-                       placeholder="직업을 입력하세요">
+                <input type="text" id="job" name="userJob" class="form-control"
+                       value="<c:out value="${userDTO.userJob}"/>" placeholder="직업을 입력하세요">
             </div>
         </div>
-
 
         <!-- 종교 선택 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">종교 <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label">종교 <span class="require">*</span></label>
             <div class="col-md-8">
-                <select name="userReligeon" class="form-control">
+                <select name="userReligion" class="form-control">
                     <option value="">선택하세요</option>
-                    <option value="무교"
-                    ${userDTO.userReligeon == '무교' ? 'selected' : ''}>무교</option>
-                    <option value="기독교"
-                    ${userDTO.userReligeon == '기독교' ? 'selected' : ''}>기독교</option>
-                    <option value="천주교"
-                    ${userDTO.userReligeon == '천주교' ? 'selected' : ''}>천주교</option>
-                    <option value="불교"
-                    ${userDTO.userReligeon == '불교' ? 'selected' : ''}>불교</option>
+                    <option value="무교" <c:if test="${userDTO.userReligion == '무교'}">selected</c:if>>무교</option>
+                    <option value="기독교" <c:if test="${userDTO.userReligion == '기독교'}">selected</c:if>>기독교</option>
+                    <option value="천주교" <c:if test="${userDTO.userReligion == '천주교'}">selected</c:if>>천주교</option>
+                    <option value="불교" <c:if test="${userDTO.userReligion == '불교'}">selected</c:if>>불교</option>
+                    <option value="이슬람교" <c:if test="${userDTO.userReligion == '이슬람교'}">selected</c:if>>이슬람교</option>
+                    <option value="기타" <c:if test="${userDTO.userReligion == '기타'}">selected</c:if>>기타</option>
                 </select>
             </div>
         </div>
 
-
-        <!-- 지역 -->
+        <!-- 지역 선택 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">지역 <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label">지역 <span class="require">*</span></label>
             <div class="col-md-8">
                 <select class="form-control" name="userRegion">
                     <option value="">선택하세요</option>
-                    <option value="서울특별시"
-                    ${userDTO.userRegion == '서울특별시' ? 'selected' : ''}>서울특별시</option>
-                    <option value="경기도"
-                    ${userDTO.userRegion == '경기도' ? 'selected' : ''}>경기도</option>
-                    <option value="인천광역시"
-                    ${userDTO.userRegion == '인천광역시' ? 'selected' : ''}>인천광역시</option>
-                    <option value="부산광역시"
-                    ${userDTO.userRegion == '부산광역시' ? 'selected' : ''}>부산광역시</option>
-                    <option value="대구광역시"
-                    ${userDTO.userRegion == '대구광역시' ? 'selected' : ''}>대구광역시</option>
-                    <option value="광주광역시"
-                    ${userDTO.userRegion == '광주광역시' ? 'selected' : ''}>광주광역시</option>
-                    <option value="대전광역시"
-                    ${userDTO.userRegion == '대전광역시' ? 'selected' : ''}>대전광역시</option>
-                    <option value="울산광역시"
-                    ${userDTO.userRegion == '울산광역시' ? 'selected' : ''}>울산광역시</option>
-                    <option value="세종특별자치시"
-                    ${userDTO.userRegion == '세종특별자치시' ? 'selected' : ''}>세종특별자치시</option>
-                    <option value="강원도"
-                    ${userDTO.userRegion == '강원도' ? 'selected' : ''}>강원도</option>
-                    <option value="충청북도"
-                    ${userDTO.userRegion == '충청북도' ? 'selected' : ''}>충청북도</option>
-                    <option value="충청남도"
-                    ${userDTO.userRegion == '충청남도' ? 'selected' : ''}>충청남도</option>
-                    <option value="전라북도"
-                    ${userDTO.userRegion == '전라북도' ? 'selected' : ''}>전라북도</option>
-                    <option value="전라남도"
-                    ${userDTO.userRegion == '전라남도' ? 'selected' : ''}>전라남도</option>
-                    <option value="경상북도"
-                    ${userDTO.userRegion == '경상북도' ? 'selected' : ''}>경상북도</option>
-                    <option value="경상남도"
-                    ${userDTO.userRegion == '경상남도' ? 'selected' : ''}>경상남도</option>
-                    <option value="제주특별자치도"
-                    ${userDTO.userRegion == '제주특별자치도' ? 'selected' : ''}>제주특별자치도</option>
+                    <option value="서울" <c:if test="${userDTO.userRegion == '서울'}">selected</c:if>>서울</option>
+                    <option value="경기" <c:if test="${userDTO.userRegion == '경기'}">selected</c:if>>경기도</option>
+                    <option value="인천" <c:if test="${userDTO.userRegion == '인천'}">selected</c:if>>인천</option>
+                    <option value="부산" <c:if test="${userDTO.userRegion == '부산'}">selected</c:if>>부산</option>
+                    <option value="대구" <c:if test="${userDTO.userRegion == '대구'}">selected</c:if>>대구</option>
+                    <option value="광주" <c:if test="${userDTO.userRegion == '광주'}">selected</c:if>>광주</option>
+                    <option value="대전" <c:if test="${userDTO.userRegion == '대전'}">selected</c:if>>대전</option>
+                    <option value="울산" <c:if test="${userDTO.userRegion == '울산'}">selected</c:if>>울산</option>
+                    <option value="세종" <c:if test="${userDTO.userRegion == '세종'}">selected</c:if>>세종</option>
+                    <option value="강원" <c:if test="${userDTO.userRegion == '강원'}">selected</c:if>>강원</option>
+                    <option value="충북" <c:if test="${userDTO.userRegion == '충북'}">selected</c:if>>충북</option>
+                    <option value="충남" <c:if test="${userDTO.userRegion == '충남'}">selected</c:if>>충남</option>
+                    <option value="전북" <c:if test="${userDTO.userRegion == '전북'}">selected</c:if>>전북</option>
+                    <option value="전남" <c:if test="${userDTO.userRegion == '전남'}">selected</c:if>>전남</option>
+                    <option value="경북" <c:if test="${userDTO.userRegion == '경북'}">selected</c:if>>경북</option>
+                    <option value="경남" <c:if test="${userDTO.userRegion == '경남'}">selected</c:if>>경남</option>
+                    <option value="제주" <c:if test="${userDTO.userRegion == '제주'}">selected</c:if>>제주</option>
                 </select>
             </div>
         </div>
 
 
+        <!-- MBTI 선택 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">MBTI <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label">MBTI <span class="require">*</span></label>
             <div class="col-md-8">
                 <select class="form-control" name="userMbti">
                     <option value="">선택하세요</option>
-                    <option value="ISTJ"
-                    ${userDTO.userMbti == 'ISTJ' ? 'selected' : ''}>ISTJ</option>
-                    <option value="ISFJ"
-                    ${userDTO.userMbti == 'ISFJ' ? 'selected' : ''}>ISFJ</option>
-                    <option value="INFJ"
-                    ${userDTO.userMbti == 'INFJ' ? 'selected' : ''}>INFJ</option>
-                    <option value="INTJ"
-                    ${userDTO.userMbti == 'INTJ' ? 'selected' : ''}>INTJ</option>
-                    <option value="ISTP"
-                    ${userDTO.userMbti == 'ISTP' ? 'selected' : ''}>ISTP</option>
-                    <option value="ISFP"
-                    ${userDTO.userMbti == 'ISFP' ? 'selected' : ''}>ISFP</option>
-                    <option value="INFP"
-                    ${userDTO.userMbti == 'INFP' ? 'selected' : ''}>INFP</option>
-                    <option value="INTP"
-                    ${userDTO.userMbti == 'INTP' ? 'selected' : ''}>INTP</option>
-                    <option value="ESTP"
-                    ${userDTO.userMbti == 'ESTP' ? 'selected' : ''}>ESTP</option>
-                    <option value="ESFP"
-                    ${userDTO.userMbti == 'ESFP' ? 'selected' : ''}>ESFP</option>
-                    <option value="ENFP"
-                    ${userDTO.userMbti == 'ENFP' ? 'selected' : ''}>ENFP</option>
-                    <option value="ENTP"
-                    ${userDTO.userMbti == 'ENTP' ? 'selected' : ''}>ENTP</option>
-                    <option value="ESTJ"
-                    ${userDTO.userMbti == 'ESTJ' ? 'selected' : ''}>ESTJ</option>
-                    <option value="ESFJ"
-                    ${userDTO.userMbti == 'ESFJ' ? 'selected' : ''}>ESFJ</option>
-                    <option value="ENFJ"
-                    ${userDTO.userMbti == 'ENFJ' ? 'selected' : ''}>ENFJ</option>
-                    <option value="ENTJ"
-                    ${userDTO.userMbti == 'ENTJ' ? 'selected' : ''}>ENTJ</option>
+                    <c:forEach var="mbti" items="${['ISTJ', 'ISFJ', 'INFJ', 'INTJ', 'ISTP', 'ISFP', 'INFP', 'INTP', 'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ']}">
+                        <option value="${mbti}" <c:if test="${userDTO.userMbti == mbti}">selected</c:if>>${mbti}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
 
         <!-- 음주 여부 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">음주 <span
-                    class="require">*</span></label>
-            <div class="col-md-8">
-                <select class="form-control" name="userDrink">
-                    <option value="">선택하세요</option>
-                    <option value="전혀 안 함"
-                    ${userDTO.userDrink == '전혀 안 함' ? 'selected' : ''}>전혀
-                        안 함</option>
-                    <option value="가끔 마심"
-                    ${userDTO.userDrink == '가끔 마심' ? 'selected' : ''}>가끔
-                        마심</option>
-                    <option value="자주 마심"
-                    ${userDTO.userDrink == '자주 마심' ? 'selected' : ''}>자주
-                        마심</option>
-                </select>
-            </div>
+        <label class="col-md-2 control-label">음주 <span class="require">*</span></label>
+        <div class="col-md-8">
+            <select class="form-control" name="userDrink">
+                <option value="">선택하세요</option>
+                <option value="0" <c:if test="${userDTO.userDrink == 0}">selected</c:if>>전혀 안 함</option>
+                <option value="1" <c:if test="${userDTO.userDrink == 1}">selected</c:if>>가끔 마심</option>
+                <option value="2" <c:if test="${userDTO.userDrink == 2}">selected</c:if>>자주 마심</option>
+            </select>
         </div>
+    </div>
+
 
         <!-- 흡연 여부 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">흡연 <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label">흡연 <span class="require">*</span></label>
             <div class="col-md-8">
                 <select class="form-control" name="userSmoke">
                     <option value="">선택하세요</option>
-                    <option value="no"
-                    ${userDTO.userSmoke == '비흡연' ? 'selected' : ''}>비흡연</option>
-                    <option value="yes"
-                    ${userDTO.userSmoke == '흡연' ? 'selected' : ''}>흡연</option>
+                    <option value="false" <c:if test="${userDTO.userSmoke == false}">selected</c:if>>비흡연</option>
+                    <option value="true" <c:if test="${userDTO.userSmoke == true}">selected</c:if>>흡연</option>
                 </select>
             </div>
         </div>
 
-
         <hr>
-        <!-- 구분선 추가 -->
-        <!--  <h3 class="text-center">선호 취향</h3> 제목 추가 -->
-
         <!-- 선호 키 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">선호 키 <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label">선호 키 <span class="require">*</span></label>
             <div class="col-md-8">
-                <select name="preferredHeight" class="form-control">
+                <select name="preferenceHeight" class="form-control">
                     <option value="">선택하세요</option>
-                    <option value="150cm 이하"
-                    ${preferenceDTO.preferenceHeight == '150cm 이하' ? 'selected' : ''}>150cm
-                        이하</option>
-                    <option value="150cm ~ 155cm"
-                    ${preferenceDTO.preferenceHeight == '150cm ~ 155cm' ? 'selected' : ''}>150cm
-                        ~ 155cm</option>
-                    <option value="155cm ~ 160cm"
-                    ${preferenceDTO.preferenceHeight == '155cm ~ 160cm' ? 'selected' : ''}>155cm
-                        ~ 160cm</option>
-                    <option value="160cm ~ 165cm"
-                    ${preferenceDTO.preferenceHeight == '160cm ~ 165cm' ? 'selected' : ''}>160cm
-                        ~ 165cm</option>
-                    <option value="165cm ~ 170cm"
-                    ${preferenceDTO.preferenceHeight == '165cm ~ 170cm' ? 'selected' : ''}>165cm
-                        ~ 170cm</option>
-                    <option value="170cm ~ 175cm"
-                    ${preferenceDTO.preferenceHeight == '170cm ~ 175cm' ? 'selected' : ''}>170cm
-                        ~ 175cm</option>
-                    <option value="175cm ~ 180cm"
-                    ${preferenceDTO.preferenceHeight == '175cm ~ 180cm' ? 'selected' : ''}>175cm
-                        ~ 180cm</option>
-                    <option value="180cm 이상"
-                    ${preferenceDTO.preferenceHeight == '180cm 이상' ? 'selected' : ''}>180cm
-                        이상</option>
+                    <c:forEach var="height" items="${['150cm 이하', '150cm ~ 155cm', '155cm ~ 160cm', '160cm ~ 165cm', '165cm ~ 170cm', '170cm ~ 175cm', '175cm ~ 180cm', '180cm 이상']}">
+                        <option value="${height}" <c:if test="${preferenceDTO.preferenceHeight == height}">selected</c:if>>${height}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
 
         <!-- 선호 체형 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">선호 체형 <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label">선호 체형 <span class="require">*</span></label>
             <div class="col-md-8">
-                <select name="preferredBodyType" class="form-control">
+                <select name="preferenceBody" class="form-control">
                     <option value="">선택하세요</option>
-                    <option value="마름"
-                    ${preferenceDTO.preferenceBody == '마름' ? 'selected' : ''}>마름</option>
-                    <option value="보통"
-                    ${preferenceDTO.preferenceBody == '보통' ? 'selected' : ''}>보통</option>
-                    <option value="통통"
-                    ${preferenceDTO.preferenceBody == '통통' ? 'selected' : ''}>통통</option>
-                    <option value="뚱뚱"
-                    ${preferenceDTO.preferenceBody == '뚱뚱' ? 'selected' : ''}>뚱뚱</option>
+                    <c:forEach var="body" items="${['마름', '보통', '통통', '뚱뚱']}">
+                        <option value="${body}" <c:if test="${preferenceDTO.preferenceBody == body}">selected</c:if>>${body}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
-
         <!-- 선호 나이 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">선호 나이 <span
-                    class="require">*</span></label>
+            <label class="col-md-2 control-label">선호 나이 <span class="require">*</span></label>
             <div class="col-md-8">
-                <select name="preferredAge" class="form-control">
+                <select name="preferenceAge" class="form-control">
                     <option value="">선택하세요</option>
-                    <option value="early20"
-                    ${preferenceDTO.preferenceAge == '20대 초반' ? 'selected' : ''}>20대
-                        초반</option>
-                    <option value="mid20"
-                    ${preferenceDTO.preferenceAge == '20대 중반' ? 'selected' : ''}>20대
-                        중반</option>
-                    <option value="late20"
-                    ${preferenceDTO.preferenceAge == '20대 후반' ? 'selected' : ''}>20대
-                        후반</option>
-                    <option value="early30"
-                    ${preferenceDTO.preferenceAge == '30대 초반' ? 'selected' : ''}>30대
-                        초반</option>
-                    <option value="mid30"
-                    ${preferenceDTO.preferenceAge == '30대 중반' ? 'selected' : ''}>30대
-                        중반</option>
-                    <option value="late30"
-                    ${preferenceDTO.preferenceAge == '30대 후반' ? 'selected' : ''}>30대
-                        후반</option>
-                    <option value="early40"
-                    ${preferenceDTO.preferenceAge == '40대 초반' ? 'selected' : ''}>40대
-                        초반</option>
-                    <option value="mid40"
-                    ${preferenceDTO.preferenceAge == '40대 중반' ? 'selected' : ''}>40대
-                        중반</option>
-                    <option value="late40"
-                    ${preferenceDTO.preferenceAge == '40대 후반' ? 'selected' : ''}>40대
-                        후반</option>
-                    <option value="early50"
-                    ${preferenceDTO.preferenceAge == '50대 초반' ? 'selected' : ''}>50대
-                        초반</option>
-                    <option value="mid50"
-                    ${preferenceDTO.preferenceAge == '50대 중반' ? 'selected' : ''}>50대
-                        중반</option>
-                    <option value="late50"
-                    ${preferenceDTO.preferenceAge == '50대 후반' ? 'selected' : ''}>50대
-                        후반</option>
-                    <option value="early60"
-                    ${preferenceDTO.preferenceAge == '60대 초반' ? 'selected' : ''}>60대
-                        초반</option>
-                    <option value="mid60"
-                    ${preferenceDTO.preferenceAge == '60대 중반' ? 'selected' : ''}>60대
-                        중반</option>
-                    <option value="late60"
-                    ${preferenceDTO.preferenceAge == '60대 후반' ? 'selected' : ''}>60대
-                        후반</option>
-                    <option value="early70"
-                    ${preferenceDTO.preferenceAge == '70대 초반' ? 'selected' : ''}>70대
-                        초반</option>
-                    <option value="mid70"
-                    ${preferenceDTO.preferenceAge == '70대 중반' ? 'selected' : ''}>70대
-                        중반</option>
-                    <option value="late70"
-                    ${preferenceDTO.preferenceAge == '70대 후반' ? 'selected' : ''}>70대
-                        후반</option>
-                    <option value="early80"
-                    ${preferenceDTO.preferenceAge == '80대 초반' ? 'selected' : ''}>80대
-                        초반</option>
-                    <option value="mid80"
-                    ${preferenceDTO.preferenceAge == '80대 중반' ? 'selected' : ''}>80대
-                        중반</option>
-                    <option value="late80"
-                    ${preferenceDTO.preferenceAge == '80대 후반' ? 'selected' : ''}>80대
-                        후반</option>
-                    <option value="early90"
-                    ${preferenceDTO.preferenceAge == '90대 초반' ? 'selected' : ''}>90대
-                        초반</option>
-                    <option value="mid90"
-                    ${preferenceDTO.preferenceAge == '90대 중반' ? 'selected' : ''}>90대
-                        중반</option>
-                    <option value="late90"
-                    ${preferenceDTO.preferenceAge == '90대 후반' ? 'selected' : ''}>90대
-                        후반</option>
-                    <option value="100plus"
-                    ${preferenceDTO.preferenceAge == '100세 이상' ? 'selected' : ''}>100세
-                        이상</option>
+                    <c:set var="ageGroups" value="${[
+                        {'value': 'early20', 'label': '20대 초반'},
+                        {'value': 'mid20', 'label': '20대 중반'},
+                        {'value': 'late20', 'label': '20대 후반'},
+                        {'value': 'early30', 'label': '30대 초반'},
+                        {'value': 'mid30', 'label': '30대 중반'},
+                        {'value': 'late30', 'label': '30대 후반'},
+                        {'value': 'early40', 'label': '40대 초반'},
+                        {'value': 'mid40', 'label': '40대 중반'},
+                        {'value': 'late40', 'label': '40대 후반'},
+                        {'value': 'early50', 'label': '50대 초반'},
+                        {'value': 'mid50', 'label': '50대 중반'},
+                        {'value': 'late50', 'label': '50대 후반'},
+                        {'value': 'early60', 'label': '60대 초반'},
+                        {'value': 'mid60', 'label': '60대 중반'},
+                        {'value': 'late60', 'label': '60대 후반'},
+                        {'value': 'early70', 'label': '70대 초반'},
+                        {'value': 'mid70', 'label': '70대 중반'},
+                        {'value': 'late70', 'label': '70대 후반'},
+                        {'value': 'early80', 'label': '80대 초반'},
+                        {'value': 'mid80', 'label': '80대 중반'},
+                        {'value': 'late80', 'label': '80대 후반'},
+                        {'value': 'early90', 'label': '90대 초반'},
+                        {'value': 'mid90', 'label': '90대 중반'},
+                        {'value': 'late90', 'label': '90대 후반'},
+                        {'value': '100plus', 'label': '100세 이상'}
+                    ]}" />
+
+                    <c:forEach var="age" items="${ageGroups}">
+                        <option value="${age.value}" <c:if test="${preferenceDTO.preferenceAge == age.label}">selected</c:if>>${age.label}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -628,8 +332,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
     </div>
 </form>
-
-
 <!-- BEGIN PRE-FOOTER -->
 <div class="pre-footer">
     <div class="container">
@@ -637,11 +339,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <!-- BEGIN BOTTOM ABOUT BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Next Level</h2>
-                <p>
-                    우리는 인연과 연인인을 중시합니다.
-                </p>
+                <p>우리는 인연과 연인인을 중시합니다.</p>
             </div>
             <!-- END BOTTOM ABOUT BLOCK -->
+
             <!-- BEGIN BOTTOM INFO BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Information</h2>
@@ -671,37 +372,40 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
         <hr>
         <div class="row">
-            <!-- Load javascripts at bottom, this will reduce page load time -->
-            <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
-            <!--[if lt IE 9]>
-            <script src="assets/plugins/respond.min.js"></script>
-            <![endif]-->
+            <!-- 자바스크립트 로드 부분 유지 -->
             <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
             <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
             <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
             <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
             <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-            <!-- END CORE PLUGINS -->
 
-            <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+            <!-- 페이지 레벨 자바스크립트 -->
             <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
-            <!-- pop up -->
             <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
-            <!-- slider for products -->
-
             <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+
             <script type="text/javascript">
                 jQuery(document).ready(function () {
                     Layout.init();
                     Layout.initOWL();
                     Layout.initTwitter();
                 });
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    const introTextarea = document.getElementById('userDescription');
+                    const charCount = document.getElementById('charCount');
+
+                    // 초기 글자 수 표시
+                    charCount.textContent = introTextarea.value.length + ' / 200';
+
+                    // 입력할 때마다 글자 수 업데이트
+                    introTextarea.addEventListener('input', function() {
+                        charCount.textContent = this.value.length + ' / 200';
+                    });
+                });
             </script>
-            <!-- END PAGE LEVEL JAVASCRIPTS -->
         </div>
     </div>
 </div>
 </body>
-
-
 </html>

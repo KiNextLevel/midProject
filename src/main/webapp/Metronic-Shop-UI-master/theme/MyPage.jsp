@@ -388,7 +388,7 @@
     <div class="container">
         <!-- 경로 표시 -->
         <ul class="breadcrumb">
-            <li><a href="index.html">홈</a></li>
+            <li><a href="mainPage.do">홈</a></li>
             <li><a href="">마이페이지</a></li>
             <li class="active">내 정보</li>
         </ul>
@@ -439,7 +439,7 @@
                                 </div>
                             </div>
                             <div class="profile-actions">
-                                <a href="/Metronic-Shop-UI-master/theme/MyPageEdit.jsp" class="btn btn-primary">
+                                <a href="updateProfilePage.do" class="btn btn-primary">
                                     <i class="fa fa-edit"></i> 정보 수정
                                 </a>
                             </div>

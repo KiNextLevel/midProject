@@ -42,40 +42,38 @@ public class ReportAction implements Action {
 
         String description = request.getParameter("description");
 
-        UserDAO userDAO = new UserDAO();
         ReportDTO reportDTO = new ReportDTO();
         ReportDAO reportDAO = new ReportDAO();
 
         // 세션에서 현재 로그인한 사용자 이메일 가져오기
         String reporterEmail = (String) session.getAttribute("userEmail");
 
-        reportDTO.setReportReported(reportedUserEmail);
-        reportDTO.setReportReporter(reporterEmail);
-        reportDTO.setReportReason(combinedReasons);
-        reportDTO.setReportDescription(description);
+        // 필요한 정보 설정
+        reportDTO.setReportReported(reportedUserEmail); // 피신고자
+        reportDTO.setReportReporter(reporterEmail);     // 신고자
+        reportDTO.setReportReason(combinedReasons);     // 신고 이유
+        reportDTO.setReportDescription(description);    // 신고 상세 설명
 
-        reportDTO.setCondition("SELECTONE");
-        if (reportDAO.selectOne(reportDTO) != null) {
-            request.setAttribute("msg", "해당 회원은 이미 신고하셨습니다");
-            request.setAttribute("flag", false);
+        // 신고 데이터 삽입 시도
+        boolean insertResult = reportDAO.insert(reportDTO);
+
+        if (insertResult) {
+            // 신고 성공
+            request.setAttribute("msg", "신고가 완료되었습니다. 직원이 검토 후 처리됩니다.");
+            request.setAttribute("flag", true);
             request.setAttribute("url", "mainPage.do");
         } else {
-            reportDTO.setCondition("INSERT");
-            if (reportDAO.insert(reportDTO)) {
-                request.setAttribute("msg", "신고완료. 직원이 검토 후 처리 됩니다.");
-                request.setAttribute("flag", true);
-                request.setAttribute("url", "mainPage.do");
-            } else {
-                request.setAttribute("msg", "실패");
-                request.setAttribute("flag", false);
+            // 신고 실패
+            request.setAttribute("msg", "신고 처리 중 오류가 발생했습니다. 다시 시도해주세요.");
+            request.setAttribute("flag", false);
+            request.setAttribute("url", "mainPage.do");
 
-                // 실패 원인 디버깅
-                System.out.println("신고 실패 원인:");
-                System.out.println("reportedUserEmail: " + reportedUserEmail);
-                System.out.println("reporterEmail: " + reporterEmail);
-                System.out.println("combinedReasons: " + combinedReasons);
-                System.out.println("description: " + description);
-            }
+            // 실패 원인 디버깅
+            System.out.println("신고 실패 원인:");
+            System.out.println("reportedUserEmail: " + reportedUserEmail);
+            System.out.println("reporterEmail: " + reporterEmail);
+            System.out.println("combinedReasons: " + combinedReasons);
+            System.out.println("description: " + description);
         }
 
         forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");

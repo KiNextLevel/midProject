@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 회원가입</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nka" crossorigin="anonymous"></script>
     <style>
+        /* 기존 스타일 그대로 유지 */
         body {
             margin: 0;
             padding: 0;
@@ -29,108 +30,38 @@
             box-shadow: 5px 20px 50px #000;
         }
 
-        #chk {
-            display: none;
-        }
-
-        .signup {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        label {
-            color: #fff;
-            font-size: 2.3em;
-            justify-content: center;
+        /* 소셜 로그인 버튼 스타일 */
+        .social-login-buttons {
             display: flex;
-            margin: 60px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: .5s ease-in-out;
-        }
-
-        input {
-            width: 60%;
-            height: 20px;
-            background: #e0dede;
-            justify-content: center;
-            display: flex;
-            margin: 20px auto;
-            padding: 10px;
-            border: none;
-            outline: none;
-            border-radius: 5px;
-        }
-
-        button {
-            width: 60%;
-            height: 40px;
-            margin: 10px auto;
-            justify-content: center;
-            display: block;
-            color: #fff;
-            background: #573b8a;
-            font-size: 1em;
-            font-weight: bold;
+            justify-content: space-between;
             margin-top: 20px;
-            outline: none;
-            border: none;
-            border-radius: 5px;
-            transition: .2s ease-in;
-            cursor: pointer;
         }
 
-        button:hover {
-            background: #6d44b8;
-        }
-
-        .login {
-            height: 460px;
-            background: #eee;
-            border-radius: 60% / 10%;
-            transform: translateY(-180px);
-            transition: .8s ease-in-out;
-        }
-
-        .login label {
-            color: #573b8a;
-            transform: scale(.6);
-        }
-
-        #chk:checked ~ .login {
-            transform: translateY(-500px);
-        }
-
-        #chk:checked ~ .login label {
-            transform: scale(1);
-        }
-
-        #chk:checked ~ .signup label {
-            transform: scale(.6);
-        }
-
-        /* 네이버 로그인 버튼 스타일 */
-        .naver-login-btn {
-            width: 60%;
+        .naver-login-btn, .kakao-login-btn {
+            width: 38%; /* 버튼의 너비를 48%로 설정하여 두 버튼이 나란히 배치되도록 */
             height: 40px;
-            margin: 10px auto;
-            justify-content: center;
-            display: block;
             color: #fff;
-            background: #1EC800; /* 네이버 색상 */
             font-size: 1em;
             font-weight: bold;
-            margin-top: 10px;
-            outline: none;
-            border: none;
             border-radius: 5px;
             transition: .2s ease-in;
             cursor: pointer;
+        }
+
+        .naver-login-btn {
+            background-color: #1EC800; /* 네이버 색상 */
         }
 
         .naver-login-btn:hover {
-            background: #19A400; /* 호버 시 색상 */
+            background-color: #19A400; /* 호버 시 색상 */
+        }
+
+        .kakao-login-btn {
+            background-color: #fee500; /* 카카오 색상 */
+        }
+
+        .kakao-login-btn:hover {
+            background-color: #fddc00; /* 카카오 호버 시 색상 */
         }
 
         .social-login {
@@ -167,16 +98,6 @@
     </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>nextLevel</title>
-    <link rel="stylesheet" type="text/css" href="slide navbar style.css">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-</head>
-<body>
 <div class="main">
     <input type="checkbox" id="chk" aria-hidden="true">
 
@@ -198,19 +119,21 @@
             <button type="submit">로그인</button>
         </form>
 
-        <!-- 소셜 로그인 섹션 추가 -->
+        <!-- 소셜 로그인 섹션 -->
         <div class="social-login">
             <div class="or-divider">또는</div>
-            <form action="login.do" method="POST">
+            <!-- 네이버 및 카카오 로그인 버튼을 나란히 배치 -->
+            <div class="social-login-buttons">
+                <!-- 네이버 로그인 버튼 -->
                 <button type="button" class="naver-login-btn" onclick="naverLogin()">
-                    <i class="fas fa-n-square"></i> 네이버 아이디로 로그인
+                    네이버 로그인
                 </button>
-            </form>
-            <form action="login.do" method="POST">
-                <button type="button" class="kakao-login-btn" onclick="kakaoLogin()">
-                    <img src="img/kakao_login_medinum_wide.png" alt="카카오 로그인 버튼">
+
+                <!-- 카카오 로그인 버튼 -->
+                <button type="button" class="kakao-login-btn" id="kakao-login-btn" onclick="kakaoLogin()">
+                    카카오 로그인
                 </button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
@@ -235,8 +158,13 @@
     }
 
     function kakaoLogin() {
-        // Kakao login functionality can be implemented here
-        alert('카카오 로그인 버튼 클릭됨');
+        // 카카오 SDK 초기화 (앱 키 설정)
+        Kakao.init('25a9dbf40f7886253bc52cd3038dab93');
+
+        // 카카오 로그인 처리
+        Kakao.Auth.authorize({
+            redirectUri: 'http://localhost:8088/Metronic-Shop-UI-master/theme/kakaoCallBack.do'  // 리다이렉트 URI 설정
+        });
     }
 
     // 랜덤 상태 토큰 생성 함수
@@ -244,9 +172,6 @@
         return Math.random().toString(36).substr(2, 11);
     }
 </script>
-</body>
-</html>
-<!-- partial -->
 
 </body>
 </html>

@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="reportDTO" class="org.example.webapp.model.dto.ReportDTO" scope="page"/>
+<%@ page isELIgnored="false" %>
+
 <html>
 <head>
     <meta charset="utf-8">
-    <title>신고 페이지</title>
+    <title>${param.userEmail} 신고 페이지</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -16,15 +18,14 @@
     <meta property="og:title" content="-CUSTOMER VALUE-">
     <meta property="og:description" content="-CUSTOMER VALUE-">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:image" content="-CUSTOMER VALUE-">
     <meta property="og:url" content="-CUSTOMER VALUE-">
 
     <link rel="shortcut icon" href="favicon.ico">
     <link href="css/Report.css" rel="stylesheet">
+
     <!-- Fonts START -->
-    <link
-            href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
-            rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
     <!-- Global styles START -->
@@ -46,10 +47,138 @@
     <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
     <link href="assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
-</head>
-<!-- Head END -->
 
-<!-- Body BEGIN -->
+    <style>
+        .report-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .report-title {
+            color: #e84d1c;
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-bottom: 2px solid #e84d1c;
+            padding-bottom: 10px;
+        }
+
+        .report-subtitle {
+            color: #3e4d5c;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .checkbox-group {
+            margin-bottom: 25px;
+        }
+
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .checkbox-group label:hover {
+            background-color: #f5f5f5;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .description-area {
+            margin-bottom: 25px;
+        }
+
+        .description-area textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .description-area textarea:focus {
+            border-color: #e84d1c;
+            outline: none;
+        }
+
+        .agreement-box {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e84d1c;
+        }
+
+        .agreement-box p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .agreement-check {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .agreement-check input {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #e84d1c;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #d13a0a;
+        }
+
+        .report-info {
+            background-color: #f5f7fa;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 30px;
+        }
+
+        .report-info h4 {
+            color: #3e4d5c;
+            margin-bottom: 15px;
+        }
+
+        .report-info p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 767px) {
+            .report-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
 
 <body class="ecommerce">
 <!-- BEGIN STYLE CUSTOMIZER -->
@@ -76,13 +205,16 @@
         <div class="row">
             <!-- BEGIN TOP BAR LEFT PART -->
             <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
+                </ul>
             </div>
             <!-- END TOP BAR LEFT PART -->
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="MyPage.jsp">마이페이지</a></li>
-                    <li><a href="">로그아웃</a></li>
+                    <li><a href="myPage.do">마이페이지</a></li>
+                    <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
@@ -94,9 +226,7 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="MainPage.jsp"><img src="assets/corporate/img/logos/3.png"
-                                                         alt="Metronic Shop UI"></a>
-
+        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png" alt="Next Level"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -110,157 +240,198 @@
 </div>
 <!-- Header END -->
 
-
 <div class="main">
     <div class="container">
         <!-- BEGIN SIDEBAR & CONTENT -->
-        <div class="row margin-bottom-40">
+        <div class="row">
             <!-- BEGIN CONTENT -->
-            <div class="col-md-12 col-sm-12">
-                <h1>REPORT</h1>
-                <!-- BEGIN CHECKOUT PAGE -->
-                <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+            <div class="col-md-12">
+                <div class="content-page">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="report-container">
+                                <%
+                                    // reportDTO 초기화
+                                    reportDTO.setReportReported(request.getParameter("userEmail"));
+                                %>
+                                <h2 class="report-title"><i class="fa fa-exclamation-triangle"></i> 사용자 신고</h2>
 
-                    <!-- BEGIN CHECKOUT -->
-                    <div id="checkout" class="panel panel-default">
-                        <div class="panel-heading">
-                            <h2 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#checkout-page" href="#checkout-content"
-                                   class="accordion-toggle">
-                                    신고하기
-                                </a>
-                            </h2>
-                        </div>
-                        <div id="checkout-content" class="panel-collapse collapse in">
-                            <div class="panel-body row">
-                                <div class="col-md-6 col-sm-6">
-                                    <h3><%= reportDTO.getReportReported() %> 신고하기</h3>
-                                    <div class="radio-list">
+                                <form action="report.do" method="post" id="reportForm">
+                                    <h3 class="report-subtitle"><%= reportDTO.getReportReported() %> 님에 대한 신고</h3>
+
+                                    <div class="checkbox-group">
+                                        <h4><i class="fa fa-list-ul"></i> 신고 사유 선택 (하나 이상 선택)</h4>
                                         <label>
-                                            <input type="checkbox" name="REPORT_REASON" value="REPORT_REASON"> 욕설
+                                            <input type="checkbox" name="reason" value="욕설"> 욕설 및 비방
                                         </label>
                                         <label>
-                                            <input type="checkbox" name="REPORT_REASON" value="REPORT_REASON"> 성희롱
+                                            <input type="checkbox" name="reason" value="성희롱"> 성희롱 및 불쾌한 발언
                                         </label>
                                         <label>
-                                            <input type="checkbox" name="REPORT_REASON" value="REPORT_REASON"> 광고
+                                            <input type="checkbox" name="reason" value="광고"> 스팸 및 광고성 내용
                                         </label>
                                         <label>
-                                            <input type="checkbox" name="REPORT_REASON" value="REPORT_REASON"> 버그 악용
+                                            <input type="checkbox" name="reason" value="버그 악용"> 시스템 버그 악용
                                         </label>
                                         <label>
-                                            <input type="checkbox" name="REPORT_REASON" value="REPORT_REASON"> 기타
-                                        </label>
-                                        <label style="display: block; margin-top: 10px;">
-                        <textarea name="REPORT_DESCRIPTION" placeholder="사유를 입력해주세요."
-                                  style="width: 100%; height: 120px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; resize: vertical;"></textarea>
+                                            <input type="checkbox" name="reason" value="기타"> 기타 사유
                                         </label>
                                     </div>
-                                    <button class="btn btn-primary" type="button" value="report-submit">제출하기</button>
 
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <h3>신고하기에 관하여</h3>
-                                    <div class="payment-section">
+                                    <div class="description-area">
+                                        <h4><i class="fa fa-comment"></i> 상세 내용</h4>
+                                        <textarea name="description" placeholder="신고 내용을 자세히 작성해주세요. 구체적인 정보가 있으면 처리가 빨라집니다." required></textarea>
+                                    </div>
+
+                                    <div class="agreement-box">
+                                        <h4><i class="fa fa-info-circle"></i> 신고 정보 안내</h4>
                                         <p>
-                                            신고하기는 관리자에게 정보가 전달됩니다. 신고자와 피신고자의 정보가 들어가며, 대화 내용이 함께 전송됩니다.
-                                            개인정보가 포함되어 있을 수 있으며, 이는 「개인정보 보호법」 제15조에 따라 신고 처리 목적으로만 수집·이용됩니다. 수집된 개인정보는 신고 처리 완료 후 관련 법령에 따른 보관 기간이 지나면 안전하게 파기됩니다.
+                                            신고 내용은 관리자에게 전달되며, 신고자와 피신고자의 정보 및 관련 대화 내용이 함께 전송됩니다.
+                                            개인정보가 포함될 수 있으며, 이는 「개인정보 보호법」 제15조에 따라 신고 처리 목적으로만 수집·이용됩니다.
+                                            수집된 개인정보는 신고 처리 완료 후 관련 법령에 따른 보관 기간이 지나면 안전하게 파기됩니다.
                                         </p>
-                                    </div>
-                                    <form role="form" action="#">
-                                        <div class="form-group">
-                                            <label for="agree">동의한다면 체크해주세요.</label>
-                                            <input type="checkbox" id="AGREE">
+
+                                        <div class="agreement-check">
+                                            <input type="checkbox" id="agree" name="agree" required>
+                                            <label for="agree">위 내용을 이해하고 동의합니다.</label>
                                         </div>
-                                    </form>
+                                    </div>
+
+                                    <input type="hidden" name="userEmail" value="${param.userEmail}">
+                                    <button class="submit-btn" type="submit">신고 제출하기</button>
+                                </form>
+
+                                <div class="report-info">
+                                    <h4>신고 처리 절차</h4>
+                                    <p>
+                                        1. 신고 접수: 신고가 접수되면 관리자에게 알림이 전송됩니다.<br>
+                                        2. 내용 검토: 관리자가 신고 내용을 검토하고 필요시 추가 자료를 요청할 수 있습니다.<br>
+                                        3. 조치 결정: 검토 결과에 따라 적절한 조치가 결정됩니다.<br>
+                                        4. 결과 통보: 처리 결과는 신고자에게 알림으로 통보됩니다.<br>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- END CHECKOUT -->
                 </div>
-                <!-- END SIDEBAR & CONTENT -->
             </div>
+            <!-- END CONTENT -->
         </div>
+        <!-- END SIDEBAR & CONTENT -->
+    </div>
+</div>
 
-        <!-- BEGIN PRE-FOOTER -->
-        <div class="pre-footer">
-            <div class="container">
-                <div class="row">
-                    <!-- BEGIN BOTTOM ABOUT BLOCK -->
-                    <div class="col-md-3 col-sm-6 pre-footer-col">
-                        <h2>Next Level</h2>
-                        <p>
-                            우리는 인연과 연인인을 중시합니다.
-                        </p>
-                    </div>
-                    <!-- END BOTTOM ABOUT BLOCK -->
-                    <!-- BEGIN BOTTOM INFO BLOCK -->
-                    <div class="col-md-3 col-sm-6 pre-footer-col">
-                        <h2>Information</h2>
-                    </div>
-                    <!-- END INFO BLOCK -->
+<!-- BEGIN PRE-FOOTER -->
+<div class="pre-footer">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN BOTTOM ABOUT BLOCK -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Next Level</h2>
+                <p>
+                    우리는 인연과 연인인을 중시합니다.
+                </p>
+            </div>
+            <!-- END BOTTOM ABOUT BLOCK -->
+            <!-- BEGIN BOTTOM INFO BLOCK -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Information</h2>
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-angle-right"></i> <a href="#">이용약관</a></li>
+                    <li><i class="fa fa-angle-right"></i> <a href="#">개인정보처리방침</a></li>
+                    <li><i class="fa fa-angle-right"></i> <a href="#">고객센터</a></li>
+                </ul>
+            </div>
+            <!-- END INFO BLOCK -->
 
-                    <!-- BEGIN TWITTER BLOCK -->
-                    <div class="col-md-3 col-sm-6 pre-footer-col">
-                        <h2 class="margin-bottom-0">Github</h2>
-                        <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2"
-                           data-theme="dark"
-                           data-link-color="#57C8EB" data-widget-id="455411516829736961"
-                           data-chrome="noheader nofooter noscrollbar noborders transparent">https://github.com/KiNextLevel</a>
-                    </div>
-                    <!-- END TWITTER BLOCK -->
+            <!-- BEGIN TWITTER BLOCK -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2 class="margin-bottom-0">Github</h2>
+                <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2"
+                   data-theme="dark"
+                   data-link-color="#57C8EB" data-widget-id="455411516829736961"
+                   data-chrome="noheader nofooter noscrollbar noborders transparent">https://github.com/KiNextLevel</a>
+            </div>
+            <!-- END TWITTER BLOCK -->
 
-                    <!-- BEGIN BOTTOM CONTACTS -->
-                    <div class="col-md-3 col-sm-6 pre-footer-col">
-                        <h2>Our Contacts</h2>
-                        <address class="margin-bottom-40">
-                            서울 강남구 테헤란로26길 12<br>
-                            (우) 06236 (지번) 역삼동 736-56<br>
-                            Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
-                            Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
-                        </address>
-                    </div>
-                    <!-- END BOTTOM CONTACTS -->
-                </div>
-                <hr>
-                <div class="row">
-                    <!-- Load javascripts at bottom, this will reduce page load time -->
-                    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
-                    <!--[if lt IE 9]>
-                    <script src="assets/plugins/respond.min.js"></script>
-                    <![endif]-->
-                    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-                    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-                    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-                    <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-                    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
-                            type="text/javascript"></script>
-                    <!-- END CORE PLUGINS -->
+            <!-- BEGIN BOTTOM CONTACTS -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Our Contacts</h2>
+                <address class="margin-bottom-40">
+                    서울 강남구 테헤란로26길 12<br>
+                    (우) 06236 (지번) 역삼동 736-56<br>
+                    Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
+                    Email: <a href="mailto:0414minyoung@naver.com">0414minyoung@naver.com</a>
+                </address>
+            </div>
+            <!-- END BOTTOM CONTACTS -->
+        </div>
+    </div>
+</div>
+<!-- END PRE-FOOTER -->
 
-                    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-                    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js"
-                            type="text/javascript"></script>
-                    <!-- pop up -->
-                    <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
-                    <!-- slider for products -->
-
-                    <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function () {
-                            Layout.init();
-                            Layout.initOWL();
-                            Layout.initTwitter();
-                        });
-                    </script>
-                    <!-- END PAGE LEVEL JAVASCRIPTS -->
-                </div>
+<!-- BEGIN FOOTER -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="copyright">2025 © Next Level. ALL Rights Reserved.</p>
             </div>
         </div>
     </div>
 </div>
-</body>
-<!-- END BODY -->
-<script src="js/Submit.js"></script>
+<!-- END FOOTER -->
 
+<!-- Load javascripts at bottom, this will reduce page load time -->
+<!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<![endif]-->
+<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL JAVASCRIPTS -->
+<script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+<script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL JAVASCRIPTS -->
+
+<script>
+    jQuery(document).ready(function() {
+        Layout.init();
+        Layout.initOWL();
+
+        // 폼 제출 전 유효성 검사
+        $("#reportForm").submit(function(e) {
+            // 최소 하나의 체크박스가 선택되었는지 확인
+            if($('input[name="reason"]:checked').length === 0) {
+                alert("최소 하나 이상의 신고 사유를 선택해주세요.");
+                e.preventDefault();
+                return false;
+            }
+
+            // 상세 내용이 입력되었는지 확인
+            if($('textarea[name="description"]').val().trim() === '') {
+                alert("상세 내용을 입력해주세요.");
+                $('textarea[name="description"]').focus();
+                e.preventDefault();
+                return false;
+            }
+
+            // 동의 체크박스 확인
+            if(!$('#agree').is(':checked')) {
+                alert("신고 정보 안내에 동의해주세요.");
+                e.preventDefault();
+                return false;
+            }
+
+            return true;
+        });
+    });
+</script>
+</body>
 </html>

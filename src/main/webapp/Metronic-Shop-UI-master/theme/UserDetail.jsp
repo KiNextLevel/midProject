@@ -104,7 +104,7 @@
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
                     <li><a href="myPage.do">마이페이지</a></li>
-                    <li><a href="">로그아웃</a></li>
+                    <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
@@ -163,8 +163,11 @@
                                 <button class="btn btn-primary btn-block" type="submit">1:1 채팅하기</button>
                             </div>
                             <div class="col-xs-6">
-                                <button class="btn btn-blue btn-block" type="submit"><a href="Report.jsp">${userDTO.userName} 신고하기</a></button>
+                                <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-blue btn-block">
+                                    ${userDTO.userName} 신고하기
+                                </a>
                             </div>
+
                         </div>
 
                     </div>

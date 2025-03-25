@@ -135,13 +135,7 @@ Header and header elements
 	position: relative;
 	font: 400 13px 'Open Sans', Arial, sans-serif;
 }
-.ecommerce .header .mobi-toggler {
-	margin-top: 30px;
-}
-.ecommerce .reduce-header .mobi-toggler,
-.reduce-header .top-cart-block {
-	margin-top: 19px;
-}
+
 .top-cart-info {
 	background: #f9f9f9;
 	color: #595f65;
@@ -151,17 +145,11 @@ Header and header elements
 	padding: 8px 39px 6px 13px;
 	line-height: 1.2;
 }
+
 .top-cart-info a {
 	color: #595f65;
 }
-.top-cart-info-count {
-	float: left;
-}
-.top-cart-info-value {
-	border-left: solid 1px #a5aab0;
-	margin-left: 5px;
-	padding-left: 5px;
-}
+
 .top-cart-block .fa-shopping-cart {
 	position: absolute;
 	top: 0;
@@ -173,12 +161,13 @@ Header and header elements
 	font-size: 16px;
 }
 
-.top-cart-content-wrapper{
+.top-cart-content-wrapper {
 	position: absolute;
 	right: -2px;
 	top: 100%;
 	z-index: 99999;
 }
+
 .top-cart-content {
 	padding: 8px 0 10px;
 	background: #fcfafb;
@@ -187,38 +176,43 @@ Header and header elements
 	width: 364px;
 	margin-top: 12px;
 	color: #717880;
-	display: none;
+	display: none; /* 기본적으로 숨김 처리 */
 	position: relative;
 	transition: opacity .3s ease-in-out;
-	-moz-transition: opacity .3s ease-in-out;
-	-webkit-transition: opacity .3s ease-in-out;
 }
-.top-cart-content:after { 
+
+.top-cart-content:after {
 	top: -8px;
-	width: 0; 
+	width: 0;
 	height: 0;
 	right: 8px;
-	z-index: 2; 
-	content: " "; 
-	display: block; 
+	z-index: 2;
+	content: " ";
+	display: block;
 	position: absolute;
 	border-bottom: 8px solid #e6400c;
 	border-right: 8px solid transparent;
 	border-left: 8px solid transparent;
 }
-.top-cart-block:hover .top-cart-content {
+
+/* active 클래스가 있을 경우 보이도록 처리 */
+.top-cart-block.active .top-cart-content {
 	display: block;
 }
+
 .top-cart-content p {
 	margin: 7px 0 5px;
 }
+
 .top-cart-content ul {
 	margin: 0;
 	padding: 0 8px;
 }
+
 .top-cart-content .scroller {
 	overflow: hidden;
 }
+
 .top-cart-content li {
 	list-style: none;
 	margin: 0;
@@ -227,6 +221,7 @@ Header and header elements
 	width: 100%;
 	overflow: hidden;
 }
+
 .top-cart-content img,
 .top-cart-content em,
 .top-cart-content strong,
@@ -235,12 +230,14 @@ Header and header elements
 .top-cart-content .add-goods {
 	float: left;
 }
+
 .top-cart-content img {
 	border: solid 2px #fff;
 	margin-right: 4px;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
 }
+
 .top-cart-content span,
 .top-cart-content strong,
 .top-cart-content em {
@@ -248,16 +245,20 @@ Header and header elements
 	overflow: hidden;
 	padding-top: 10px;
 }
+
 .top-cart-content span {
 	width: 26px;
 }
+
 .top-cart-content strong {
 	width: 165px;
 	font-weight: normal;
 }
+
 .top-cart-content strong a {
 	color: #717880;
 }
+
 .top-cart-content em {
 	width: 55px;
 	font-style: normal;
@@ -275,19 +276,24 @@ Header and header elements
 	line-height: 1;
 	font-size: 12px;
 }
+
 .del-goods:hover,
 .add-goods:hover {
 	text-decoration: none;
 }
+
 .del-goods {
 	background: #d7dde3 url(../../pages/img/icons/del-goods.png) no-repeat 50% 50%;
 }
+
 .del-goods:hover {
 	background: #E94D1C url(../../pages/img/icons/del-goods.png) no-repeat 50% 50%;
 }
+
 .add-goods {
 	background: #7bdd00 url(../../pages/img/icons/add-goods.png) no-repeat 50% 50%;
 }
+
 .add-goods:hover {
 	background: #E94D1C url(../../pages/img/icons/add-goods.png) no-repeat 50% 50%;
 }
@@ -296,25 +302,25 @@ Header and header elements
 	margin-right: 8px;
 	padding-top: 10px;
 }
+
 .top-cart-content .btn {
 	font-size: 11px;
 	padding: 8px 12px 7px;
 }
+
 .top-cart-content .btn-default {
 	color: #fff;
 	border: 1px solid #c1cad3;
 	background: #c1cad3;
 	margin-right: 4px;
 }
+
 .top-cart-content .btn-default:hover {
 	border: 1px solid #A8AEB3;
 	color: #fff;
 	background: #A8AEB3;
 }
 
-.ecommerce .page-slider {
-	margin-top: -23px;
-}
 
 /* breadcrumb */
 .ecommerce .breadcrumb {
@@ -691,15 +697,21 @@ div.radio input {
 	zoom: 1;
 	text-align: center;
 }
+/* active 상태에서 span의 배경 위치 */
 div.radio.active span {
-	background-position: -18px -18px -279px;
+	background-position: -18px -18px;  /* 수평 -18px, 수직 -18px */
 }
+
+/* checked 상태에서 span의 배경 위치 */
 div.radio.active span.checked {
-  	background-position: -90px -279px;
-  }
-div.radio.hover span, div.radio.focus span {
-	background-position: -36px -36px -279px;
+	background-position: -90px -279px; /* 수평 -90px, 수직 -279px */
 }
+
+/* hover와 focus 상태에서 span의 배경 위치 */
+div.radio.hover span, div.radio.focus span {
+	background-position: -36px -36px; /* 수평 -36px, 수직 -36px */
+}
+
 div.radio.hover span.checked, div.radio.focus span.checked {
   	background-position: -108px -279px;
   }

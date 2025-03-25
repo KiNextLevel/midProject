@@ -136,7 +136,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <!-- BEGIN CART 읽지 않은 알림이 있으면 비동기로 "새 알림이 있습니다", 없으면 그냥 없음-->
         <div class="top-cart-block">
             <!-- 여기가 새 알림이 있습니다 칸 -->
-            <c:if test="${not empty alerts}">
+            <c:if test="${hasUnreadAlerts}">
                 <div class="top-cart-info">
                     <p>새 알림이 있습니다</p>
                 </div>
@@ -147,15 +147,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="top-cart-content-wrapper">
                 <div class="top-cart-content">
                     <ul class="scroller" style="height: 250px;">
-                        <c:if test="${empty alerts}">
+                        <c:if test="${empty alertDatas}">
                             <li>
                                 <p>받은 알림이 아직 없습니다</p>
                             </li>
                         </c:if>
 
-                        <c:forEach var="data" items="${alerts}">
+                        <c:forEach var="data" items="${alertDatas}">
                             <li>
-                                <span class="cart-content-count">${data.alertNumber}</span>
+<%--                                <span class="cart-content-count">${data.alertNumber}</span>--%>
                                 <strong>${data.alertContent}</strong>
                                 <em>${data.alertDate}</em>
                             </li>
@@ -425,6 +425,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- Load javascripts at bottom, this will reduce page load time -->
 <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
 <!--[if lt IE 9]>
+<script src="${pageContext.request.contextPath}/theme/js/MainPage.js"></script>
 <script src="assets/plugins/respond.min.js"></script>
 <![endif]-->
 <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>

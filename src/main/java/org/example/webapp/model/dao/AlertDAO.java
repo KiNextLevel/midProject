@@ -26,12 +26,14 @@ public class AlertDAO {
         try {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(SELECTALL);
+            pstmt.setString(1, alertDTO.getUserEmail());  //추가
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 AlertDTO data = new AlertDTO();
                 data.setAlertContent(rs.getString("ALERT_CONTENT"));
-                data.setAlertDate(rs.getDate("ALRET_DATE"));
+                data.setAlertDate(rs.getDate("ALERT_DATE"));
                 data.setAlertIsWatch(rs.getBoolean("ALERT_ISWATCH"));
+                datas.add(data);
 
             }
             return datas;

@@ -1,6 +1,6 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
-<%@ page import="org.example.webapp.model.dto.PreferenceDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="preferenceDTO" class="org.example.webapp.model.dto.PreferenceDTO" scope="page" />
 <%@ page isELIgnored="false" %>
 
 <html>
@@ -56,6 +56,9 @@
     <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
     <link href="assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
+
+<%--    <iframe src="/API/map.html" width="100%" height="400" style="border: none;"></iframe>--%>
+
 </head>
 <!-- Head END -->
 
@@ -140,14 +143,19 @@
                                 <p>닉네임 : ${userDTO.userNickname}</p>
                             </div>
                             <div class="availability">
-                                지역 : <strong>${userDTO.userRegion}</strong>
+                                지역 : <strong>${param.userRegion}</strong>
                             </div>
                         </div>
                         <div class="description">
-                            <p>${userDTO.userDescription}</p>
+                            <p>${param.userDescription}</p>
                         </div>
                         <div class="product-page-cart">
                             <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
+                        </div>
+                        <!-- ✅ 지도 iframe 추가 -->
+                        <div style="margin-top: 20px;">
+                            <iframe src="<%= request.getContextPath() %>/API/map.html"
+                                    width="100%" height="400" style="border: none; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);"></iframe>
                         </div>
                     </div>
 
@@ -168,24 +176,8 @@
                                 <p>MBTI : <%= dto.getUserMbti() %></p><br>
                                 <p>학력 : <%= dto.getUserEducation() %></p><br>
                                 <p>종교 : <%= dto.getUserReligion() %></p><br>
-                                <p>음주 :
-                                    <%
-                                        int drinkStatus = dto.getUserDrink();
-                                        String drinkMessage = ""; // 출력할 메시지를 저장할 변수 선언
-
-                                        if (drinkStatus == 0) {
-                                            drinkMessage = "전혀 안 함";
-                                        } else if (drinkStatus == 1) {
-                                            drinkMessage = "가끔";
-                                        } else if (drinkStatus == 2) {
-                                            drinkMessage = "자주";
-                                        } else {
-                                            drinkMessage = "알 수 없음"; // 예외 처리
-                                        }
-                                    %>
-                                    <%= drinkMessage %>
-                                </p><br>
-                                <p>흡연 : <%= dto.isUserSmoke() ? "비흡연" : "흡연" %></p><br>
+                                <p>음주 : <%= dto.getUserDrink() %></p><br>
+                                <p>흡연 : <%= dto.isUserSmoke() %></p><br>
                                 <p>직업 : <%= dto.getUserJob() %></p><br>
                                 <%
                                 } else {
@@ -200,22 +192,9 @@
                                 <!-- 첫번째 취향 넣는 곳-->
                                 <div class="review-item clearfix">
                                     <div class="review-item-content">
-                                        <%
-                                            PreferenceDTO preferenceDTO = (PreferenceDTO)request.getAttribute("preferenceDTO");
-                                            if(preferenceDTO != null) {
-                                        %>
-                                        <p>선호 키 : <%= preferenceDTO.getPreferenceHeight() %> cm</p><br>
+                                        <p>선호 키 : <%= preferenceDTO.getPreferenceHeight() %></p><br>
                                         <p>선호 체형 : <%= preferenceDTO.getPreferenceBody() %></p><br>
                                         <p>선호 나이 : <%= preferenceDTO.getPreferenceAge() %></p><br>
-
-                                        <%
-                                        } else {
-                                        %>
-                                        <p>선호 정보를 찾을 수 없습니다.</p>
-                                        <%
-                                            }
-                                        %>
-
                                     </div>
                                 </div>
                             </div>
@@ -307,8 +286,23 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-3">
                 <div class="product-main-image">
-                    <img src="${userDTO.userProfile}" alt="User Profile" class="img-responsive">
+                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
                 </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-9">
+                <h2>Cool green dress with red bell</h2>
+                <div class="description">
+                    <p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna
+                        aliquarm erat volutpat
+                        Nostrud duis molestie at dolore.</p>
+                </div>
+            </div>
+            <div class="product-page-cart">
+                <div class="product-quantity">
+                    <input id="product-quantity2" type="text" value="1" readonly class="form-control input-sm">
+                </div>
+                <button class="btn btn-primary" type="submit">Add to cart</button>
+                <a href="shop-item.html" class="btn btn-default">More details</a>
             </div>
         </div>
 
@@ -342,6 +336,10 @@
 
 <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
+
+<%--<iframe src="<%= request.getContextPath() %>/API/map.html" width="100%" height="400" style="border: none;"></iframe>--%>
+
+<%--<iframe src="/API/map.html" width="100%" height="400" style="border: none;"></iframe>--%>
 </body>
 <!-- END BODY -->
 

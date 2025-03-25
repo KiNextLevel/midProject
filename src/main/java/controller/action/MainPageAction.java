@@ -18,6 +18,8 @@ public class MainPageAction implements Action {
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		String userEmail = (String) session.getAttribute("userEmail");
+
+		System.out.println("📧 세션에서 가져온 이메일: " + userEmail);
         //넘어가야하는 정보: 비동기로 처리할듯
         //1. 알람
 	    //2. 메시지(최프)

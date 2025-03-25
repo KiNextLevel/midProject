@@ -48,7 +48,7 @@ public class ModifyMyPageAction implements Action{
 			request.setAttribute("msg", "회원 정보 수정 실패했습니다");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/mywebapp/theme/alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

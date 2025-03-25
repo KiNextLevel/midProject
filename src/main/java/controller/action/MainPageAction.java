@@ -39,7 +39,7 @@ public class MainPageAction implements Action {
 		userDTO.setCondition("SELECTALL");
 		ArrayList<UserDTO> userDatas = userDAO.selectAll(userDTO);
 		session.setAttribute("userDatas", userDatas);
-	    forward.setPath("MainPage.jsp");
+	    forward.setPath("/Metronic-Shop-UI-master/theme/MainPage.jsp");
 		forward.setRedirect(false);
 		return forward;
     }

@@ -48,7 +48,7 @@ public class PaymentAction implements Action {
         }
 
         
-		forward.setPath("alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

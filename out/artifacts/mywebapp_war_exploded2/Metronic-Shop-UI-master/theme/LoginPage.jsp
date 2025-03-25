@@ -206,6 +206,11 @@
                     <i class="fas fa-n-square"></i> 네이버 아이디로 로그인
                 </button>
             </form>
+            <form action="login.do" method="POST">
+                <button type="button" class="kakao-login-btn" onclick="kakaoLogin()">
+                    <img src="img/kakao_login_medinum_wide.png" alt="카카오 로그인 버튼">
+                </button>
+            </form>
         </div>
     </div>
 </div>
@@ -227,6 +232,11 @@
             + "&state=" + state;
 
         window.location.href = naverLoginUrl;
+    }
+
+    function kakaoLogin() {
+        // Kakao login functionality can be implemented here
+        alert('카카오 로그인 버튼 클릭됨');
     }
 
     // 랜덤 상태 토큰 생성 함수

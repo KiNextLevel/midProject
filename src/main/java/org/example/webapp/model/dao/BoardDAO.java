@@ -37,7 +37,7 @@ public class BoardDAO {
                 data.setBoardTitle(rs.getString("BOARD_TITLE"));
                 data.setBoardContent(rs.getString("BOARD_CONTENT"));
                 data.setBoardLimit(rs.getInt("BOARD_LIMIT"));
-                data.getSearchKeyword(rs.getInt("CNT"));
+                data.setBoardParticipant(rs.getInt("CNT"));
                 datas.add(data);
             }
             return datas;
@@ -136,6 +136,7 @@ public class BoardDAO {
 
     // 이벤트 게시판 글 삭제
     public boolean delete(BoardDTO boardDTO) {
+        System.out.println("deleteBoard dao 로그");
         try {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(DELETE);

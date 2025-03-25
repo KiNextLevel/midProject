@@ -20,11 +20,11 @@ public class UserDetailPageAction implements Action {
 		if (userDTO == null) {
 			request.setAttribute("msg", "존재하지 않는 회원입니다");
 			request.setAttribute("flag", false);
-			forward.setPath("alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 		} else {
 			System.out.println(userDTO);
 			request.setAttribute("userDTO",userDTO);
-			forward.setPath("UserDetail.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/UserDetail.jsp");
 		}
 		forward.setRedirect(false);
 		return forward;

@@ -10,7 +10,7 @@
 <body>
 <%
     //표지(시작, index) 페이지
-    response.sendRedirect("boardPage.do");
+    response.sendRedirect("adminMainPage.do");
 %>
 </body>
 </html>

@@ -50,7 +50,7 @@ public class LoginAction implements Action {
             request.setAttribute("msg", "로그인정보가 틀렸습니다");
             request.setAttribute("flag", false);
         }
-        actionForward.setPath("alert.jsp");
+        actionForward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
         actionForward.setRedirect(false);
         return actionForward;
     }

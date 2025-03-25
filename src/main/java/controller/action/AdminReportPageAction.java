@@ -22,22 +22,23 @@ public class AdminReportPageAction implements Action{
 		UserDAO userDAO = new UserDAO();
 		ReportDTO reportDTO = new ReportDTO();
 		ReportDAO reportDAO = new ReportDAO();
-		
+
 		ArrayList<ReportDTO> reported = reportDAO.selectAll(reportDTO);//신고회원 전체
-		
+		System.out.println("AdminReportPageAction 로그: "+reported);
+
 		userDTO.setCondition("SELECTALL_BLACK");	//블랙리스트 전체
 		ArrayList<UserDTO> blacks = userDAO.selectAll(userDTO);
-				
+
 		if(Integer.parseInt((String)session.getAttribute("userRole"))==1) {
 			request.setAttribute("blacks", blacks);
 			request.setAttribute("reported", reported);
-			forward.setPath("/mywebapp/theme/AdminReportPage.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/AdminReportPage.jsp");
 			forward.setRedirect(false);
-		}	
+		}
 		else {
 			request.setAttribute("msg", "관리자만 이동 가능합니다");
 			request.setAttribute("flag", false);
-			forward.setPath("/mywebapp/theme/alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 			forward.setRedirect(false);
 		}
 		return forward;

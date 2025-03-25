@@ -10,6 +10,7 @@ public class AdminAddBlackAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("adminAddBlackAcion 로그: 도착");
 		ActionForward forward = new ActionForward();
 
 		UserDTO userDTO = new UserDTO();
@@ -18,7 +19,7 @@ public class AdminAddBlackAction implements Action{
 		String reportedUserEmail = request.getParameter("reportedUser");	//요청으로 신고받은사람 이메일 받음
 		System.out.println("AddBlackAction 로그["+reportedUserEmail+"]");
 		userDTO.setUserEmail(reportedUserEmail);
-		userDTO = userDAO.selectOne(userDTO);	//신고 받은 유저 
+		userDTO = userDAO.selectOne(userDTO);	//신고 받은 유저
 
 		if(userDTO == null) {	//신고 받은 유저 못 찾으면
 			request.setAttribute("msg", "사용자를 찾을 수 없습니다");
@@ -37,7 +38,7 @@ public class AdminAddBlackAction implements Action{
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "adminReportPage.do");
 
-			forward.setPath("/mywebapp/theme/alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 			forward.setRedirect(false);
 		}
 		return forward;

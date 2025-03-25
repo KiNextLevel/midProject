@@ -10,7 +10,7 @@ public class LoginPageAction implements Action {
         System.out.println("CONT 로그: LoginPage ACTION 도착");
         ActionForward forward = new ActionForward();
         request.setAttribute("userEmail",request.getParameter("userEmail"));
-        forward.setPath("LoginPage.jsp");
+        forward.setPath("/Metronic-Shop-UI-master/theme/LoginPage.jsp");
         forward.setRedirect(false);
         return forward;
     }

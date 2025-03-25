@@ -11,6 +11,7 @@ public class AdminAddBoardAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("adminAddBoardAcion 로그: 도착");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		BoardDTO boardDTO = new BoardDTO();
@@ -32,9 +33,8 @@ public class AdminAddBoardAction implements Action{
 			request.setAttribute("msg", "이벤트 추가 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/mywebapp/theme/alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
 }
-

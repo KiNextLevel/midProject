@@ -10,6 +10,7 @@ public class AdminDeleteBlackAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("adminDeleteBlackAcion 로그: 도착");
 		ActionForward forward = new ActionForward();
 		String reportedUserEmail = request.getParameter("reportedUser");
 		UserDTO userDTO = new UserDTO();
@@ -27,7 +28,7 @@ public class AdminDeleteBlackAction implements Action{
 			request.setAttribute("msg", "블랙 해제 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/mywebapp/theme/alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 

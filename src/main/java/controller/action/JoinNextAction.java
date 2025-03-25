@@ -139,7 +139,7 @@ public class JoinNextAction implements Action {
             e.printStackTrace();
             request.setAttribute("msg", "회원가입 중 오류가 발생했습니다!");
             request.setAttribute("flag", false);
-            forward.setPath("alert.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
             forward.setRedirect(false);
         }
 

@@ -1,0 +1,67 @@
+var mapContainer = document.getElementById('map');
+// 지도 생성할 때 기본 확대 수준(처음에만 적용)
+var mapOption = {
+    center: new kakao.maps.LatLng(33.450701, 126.570667),
+    level: 3  // 이게 처음 보여지는 확대 수준
+};
+
+var map = new kakao.maps.Map(mapContainer, mapOption);
+var marker = null; // 전역 마커 변수
+
+// 인포윈도우와 마커 표시 함수
+function displayMarker(locPosition, message) {
+    if (marker) marker.setMap(null); // 기존 마커 제거
+
+    marker = new kakao.maps.Marker({
+        map: map,
+        position: locPosition
+    });
+
+    var infowindow = new kakao.maps.InfoWindow({
+        content: message,
+        removable: true
+    });
+
+    infowindow.open(map, marker);
+    map.setCenter(locPosition);
+}
+
+// 페이지 로드 시 현재 위치 표시
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        var locPosition = new kakao.maps.LatLng(lat, lon);
+        var message = '<div style="padding:5px;">여기에 계신가요?!</div>';
+        displayMarker(locPosition, message);
+    }, function () {
+        var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+        var message = '위치 정보를 가져오는데 실패했습니다.';
+        displayMarker(locPosition, message);
+    });
+} else {
+    alert("이 브라우저는 Geolocation을 지원하지 않습니다.");
+}
+
+// 버튼 클릭 시 현재 위치 다시 가져오기
+function getCurrentPosBtn() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            var locPosition = new kakao.maps.LatLng(lat, lon);
+            var message = '<div style="padding:5px;">현재 위치입니다!</div>';
+            displayMarker(locPosition, message);
+            // 버튼을 눌렀을 때 확대 수준을 바꾸고 싶을 때
+            // 지도 확대 레벨 조정 (예: 3으로 설정)
+            map.setLevel(20);  // 더 작을수록 확대됨
+            map.panTo(locPosition);//부드럽게 이동
+
+
+        }, function () {
+            alert('위치 정보를 가져오는데 실패했습니다.');
+        });
+    } else {
+        alert('이 브라우저는 Geolocation을 지원하지 않습니다.');
+    }
+}

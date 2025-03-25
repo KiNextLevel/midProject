@@ -142,7 +142,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 </div>
             </c:if>
 
-            <i class="fa fa-shopping-cart"></i>
+            <!-- 클릭 시 JS 함수 호출하도록 수정 -->
+<%--            <a href="javascript:void(0);" class="top-cart-toggle" onclick="toggleCartContent()">--%>
+                <i class="fa fa-bell"></i>
+<%--            </a>--%>
 
             <div class="top-cart-content-wrapper">
                 <div class="top-cart-content">
@@ -154,10 +157,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         </c:if>
 
                         <c:forEach var="data" items="${alertDatas}">
-                            <li>
-<%--                                <span class="cart-content-count">${data.alertNumber}</span>--%>
-                                <strong>${data.alertContent}</strong>
+                            <li id="alert-${data.alertNumber}" onclick="markAsRead(${data.alertNumber})">
+                                <span class="cart-content-count">${data.alertNumber}</span>
+                                <a href="javascript:void(0);" class="alert-content">${data.alertContent}</a>
+
                                 <em>${data.alertDate}</em>
+
+                                <!-- 상태를 표시 (읽음/읽지 않음) -->
+                                <span class="alert-status" style="background-color: ${data.alertIsWatch ? '#4CAF50' : '#F44336'};">
+                                        ${data.alertIsWatch ? '읽음' : '읽지 않음'}
+                                </span>
                             </li>
                         </c:forEach>
                     </ul>
@@ -392,40 +401,54 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 </div>
 <!-- END FOOTER -->
 
-<!-- BEGIN fast view of a product -->
-<%--    <div id="product-pop-up" style="display: none; width: 700px;">--%>
-<%--            <div class="product-page product-pop-up">--%>
-<%--              <div class="row">--%>
-<%--                <div class="col-md-6 col-sm-6 col-xs-3">--%>
-<%--                  <div class="product-main-image">--%>
-<%--                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--                <div class="col-md-6 col-sm-6 col-xs-9">--%>
-<%--                  <h1>회원이름</h1>--%>
-<%--                  <div class="price-availability-block clearfix">--%>
-<%--                  </div>--%>
-<%--                  <div class="description">--%>
-<%--                    <p>회원설명</p>--%>
-<%--                  </div>--%>
-<%--                  <div class="product-page-options">--%>
-<%--                  </div>--%>
-<%--                  <div class="product-page-cart">--%>
-<%--                    <button class="btn btn-primary" type="submit">메시지 보내기</button>--%>
-<%--                    <a href="shop-item.html" class="btn btn-default">프로필 보기</a>--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-
-<%--                <div class="sticker sticker-sale"></div>--%>
-<%--              </div>--%>
-<%--            </div>--%>
-<%--    </div>--%>
-<!-- END fast view of a product -->
-
 <!-- Load javascripts at bottom, this will reduce page load time -->
 <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+<script>
+    function markAsRead(alertNumber) {
+        // 클릭된 알림 번호를 로그에 출력
+        console.log("로그: 알림 번호 [" + alertNumber + "]");
+
+        // AJAX 요청을 통해 알림 상태를 "읽음"으로 변경
+        $.ajax({
+            url: "/updateAlertStatus",  // 상태를 업데이트할 URL
+            type: "POST",
+            data: { alertNumber: alertNumber },  // alertNumber만 쿼리 문자열로 보내기
+            dataType: 'json',  // 서버에서 응답으로 받는 데이터 타입
+            success: function(response) {
+                console.log("로그: 상태 업데이트 성공 [" + response + "]");
+
+                // 상태 업데이트 성공 시, UI에서 해당 알림의 상태를 '읽음'으로 변경
+                $(".alert-item[data-alert-number='" + alertNumber + "']")
+                    .find(".alert-status")
+                    .css("background-color", "#4CAF50")  // '읽음' 색상으로 변경
+                    .text("읽음");  // 텍스트를 '읽음'으로 변경
+            },
+            error: function() {
+                console.log("비동기 처리 실패");
+            }
+        });
+    }
+
+    function updateAlertStatus(alertNumber, isRead) {
+        console.log("update Alert Status log")
+        // 클릭된 알림의 UI를 업데이트 (색상 및 텍스트)
+        var alertElement = document.getElementById("alert-" + alertNumber);
+        var alertStatusElement = alertElement.querySelector('.alert-status');
+        var alertContentElement = alertElement.querySelector('.alert-content');
+
+        if (isRead) {
+            alertStatusElement.style.backgroundColor = '#4CAF50'; // 읽음
+            alertStatusElement.textContent = '읽음';
+        } else {
+            alertStatusElement.style.backgroundColor = '#F44336'; // 읽지 않음
+            alertStatusElement.textContent = '읽지 않음';
+        }
+
+        // 읽음으로 표시 후, 클릭한 알림을 비활성화 하거나 추가 처리 가능
+        alertContentElement.style.color = '#a5a5a5'; // 읽은 알림은 색상을 회색으로 변경
+    }
+</script>
 <!--[if lt IE 9]>
-<script src="${pageContext.request.contextPath}/theme/js/MainPage.js"></script>
 <script src="assets/plugins/respond.min.js"></script>
 <![endif]-->
 <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>

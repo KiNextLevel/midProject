@@ -11,14 +11,13 @@ import java.util.ArrayList;
 public class PaymentDAO {
     // 결제 번호, 유저 이메일, 이름 , 상품명, 결제금액, 결제 날짜 조회하기
     final String SELECTALL_ADMIN_PAYMENTS = "SELECT "
-            + "p.PAYMENT_NUM, "   // 결제 번호
-            + "u.USER_EMAIL, " 	  // 유저 이메일
-            + "u.USER_NAME, "		// 유저 이름
-            + "pr.PRODUCT_NAME, "	// 상품명
-            + "p.PAYMENT_PRICE, "	// 결제 가격
-            + "p.PAYMENT_DATE "		// 결제 날짜
-            + "FROM PAYMENT p "
-            + "JOIN USER u ON p.PAYMENT_USER_EMAIL = u.USER_EMAIL "
+            + "p.PAYMENT_NUM, " // 결제 번호
+            + "u.USER_EMAIL, " // 유저 이메일
+            + "u.USER_NAME, " // 유저 이름
+            + "pr.PRODUCT_NAME, " // 상품명
+            + "p.PAYMENT_PRICE, " // 결제 가격
+            + "p.PAYMENT_DATE " // 결제 날짜
+            + "FROM PAYMENT p " + "JOIN USER u ON p.PAYMENT_USER_EMAIL = u.USER_EMAIL "
             + "JOIN PRODUCT pr ON p.PRODUCT_NUM = pr.PRODUCT_NUM";
     // 추가하기(일별, 월별, 연도별 매출 조회
 
@@ -82,11 +81,11 @@ public class PaymentDAO {
             pstmt.setInt(4, paymentDTO.getProductNumber());
 
             int result = pstmt.executeUpdate();
-            if(result > 0){
+            if (result > 0) {
                 return true;
             }
             return false;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         } finally {

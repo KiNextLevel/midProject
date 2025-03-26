@@ -101,3 +101,16 @@
     right: 0;
     left: auto;
 }
+
+.button-group {
+    display: flex;
+    align-items: center;
+}
+
+.button-group .btn {
+    margin-right: 10px;
+}
+
+.button-group .btn:last-child {
+    margin-right: 0;
+}

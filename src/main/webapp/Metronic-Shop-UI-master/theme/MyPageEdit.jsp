@@ -131,6 +131,15 @@
             </div>
         </div>
 
+        <!-- 직업 입력 -->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="userNickname">닉네임 <span class="require">*</span></label>
+            <div class="col-md-8">
+                <input type="text" id="userNickname" name="userNickname" class="form-control"
+                       value="<c:out value="${userDTO.userNickname}"/>" placeholder="닉네임을 입력하세요">
+            </div>
+        </div>
+
         <!-- 키 선택 -->
         <div class="form-group">
             <label class="col-md-2 control-label" for="height">키 <span class="require">*</span></label>
@@ -146,7 +155,7 @@
             <div class="col-md-8">
                 <select id="bodyType" name="userBody" class="form-control">
                     <option value="">선택하세요</option>
-                    <c:forEach var="bodyType" items="${['마름', '보통', '통통', '뚱뚱']}">
+                    <c:forEach var="bodyType" items="${['마른', '보통', '근육질', '통통', '건장']}">
                         <option value="${bodyType}" <c:if test="${userDTO.userBody == bodyType}">selected</c:if>>${bodyType}</option>
                     </c:forEach>
                 </select>
@@ -196,27 +205,26 @@
             <div class="col-md-8">
                 <select class="form-control" name="userRegion">
                     <option value="">선택하세요</option>
-                    <option value="서울" <c:if test="${userDTO.userRegion == '서울'}">selected</c:if>>서울</option>
-                    <option value="경기" <c:if test="${userDTO.userRegion == '경기'}">selected</c:if>>경기도</option>
-                    <option value="인천" <c:if test="${userDTO.userRegion == '인천'}">selected</c:if>>인천</option>
-                    <option value="부산" <c:if test="${userDTO.userRegion == '부산'}">selected</c:if>>부산</option>
-                    <option value="대구" <c:if test="${userDTO.userRegion == '대구'}">selected</c:if>>대구</option>
-                    <option value="광주" <c:if test="${userDTO.userRegion == '광주'}">selected</c:if>>광주</option>
-                    <option value="대전" <c:if test="${userDTO.userRegion == '대전'}">selected</c:if>>대전</option>
-                    <option value="울산" <c:if test="${userDTO.userRegion == '울산'}">selected</c:if>>울산</option>
-                    <option value="세종" <c:if test="${userDTO.userRegion == '세종'}">selected</c:if>>세종</option>
-                    <option value="강원" <c:if test="${userDTO.userRegion == '강원'}">selected</c:if>>강원</option>
-                    <option value="충북" <c:if test="${userDTO.userRegion == '충북'}">selected</c:if>>충북</option>
-                    <option value="충남" <c:if test="${userDTO.userRegion == '충남'}">selected</c:if>>충남</option>
-                    <option value="전북" <c:if test="${userDTO.userRegion == '전북'}">selected</c:if>>전북</option>
-                    <option value="전남" <c:if test="${userDTO.userRegion == '전남'}">selected</c:if>>전남</option>
-                    <option value="경북" <c:if test="${userDTO.userRegion == '경북'}">selected</c:if>>경북</option>
-                    <option value="경남" <c:if test="${userDTO.userRegion == '경남'}">selected</c:if>>경남</option>
-                    <option value="제주" <c:if test="${userDTO.userRegion == '제주'}">selected</c:if>>제주</option>
+                    <option value="서울" ${userDTO.userRegion=='서울' ? 'selected' : ''}>서울</option>
+                    <option value="경기" ${userDTO.userRegion=='경기' ? 'selected' : ''}>경기도</option>
+                    <option value="인천" ${userDTO.userRegion=='인천' ? 'selected' : ''}>인천</option>
+                    <option value="부산" ${userDTO.userRegion=='부산' ? 'selected' : ''}>부산</option>
+                    <option value="대구" ${userDTO.userRegion=='대구' ? 'selected' : ''}>대구</option>
+                    <option value="광주" ${userDTO.userRegion=='광주' ? 'selected' : ''}>광주</option>
+                    <option value="대전" ${userDTO.userRegion=='대전' ? 'selected' : ''}>대전</option>
+                    <option value="울산" ${userDTO.userRegion=='울산' ? 'selected' : ''}>울산</option>
+                    <option value="세종" ${userDTO.userRegion=='세종' ? 'selected' : ''}>세종</option>
+                    <option value="강원" ${userDTO.userRegion=='강원' ? 'selected' : ''}>강원</option>
+                    <option value="충북" ${userDTO.userRegion=='충북' ? 'selected' : ''}>충북</option>
+                    <option value="충남" ${userDTO.userRegion=='충남' ? 'selected' : ''}>충남</option>
+                    <option value="전북" ${userDTO.userRegion=='전북' ? 'selected' : ''}>전북</option>
+                    <option value="전남" ${userDTO.userRegion=='전남' ? 'selected' : ''}>전남</option>
+                    <option value="경북" ${userDTO.userRegion=='경북' ? 'selected' : ''}>경북</option>
+                    <option value="경남" ${userDTO.userRegion=='경남' ? 'selected' : ''}>경남</option>
+                    <option value="제주" ${userDTO.userRegion=='제주' ? 'selected' : ''}>제주</option>
                 </select>
             </div>
         </div>
-
 
         <!-- MBTI 선택 -->
         <div class="form-group">
@@ -225,7 +233,7 @@
                 <select class="form-control" name="userMbti">
                     <option value="">선택하세요</option>
                     <c:forEach var="mbti" items="${['ISTJ', 'ISFJ', 'INFJ', 'INTJ', 'ISTP', 'ISFP', 'INFP', 'INTP', 'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ']}">
-                        <option value="${mbti}" <c:if test="${userDTO.userMbti == mbti}">selected</c:if>>${mbti}</option>
+                        <option value="${mbti}" ${userDTO.userMbti == mbti ? 'selected' : ''}>${mbti}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -233,17 +241,16 @@
 
         <!-- 음주 여부 -->
         <div class="form-group">
-        <label class="col-md-2 control-label">음주 <span class="require">*</span></label>
-        <div class="col-md-8">
-            <select class="form-control" name="userDrink">
-                <option value="">선택하세요</option>
-                <option value="0" <c:if test="${userDTO.userDrink == 0}">selected</c:if>>전혀 안 함</option>
-                <option value="1" <c:if test="${userDTO.userDrink == 1}">selected</c:if>>가끔 마심</option>
-                <option value="2" <c:if test="${userDTO.userDrink == 2}">selected</c:if>>자주 마심</option>
-            </select>
+            <label class="col-md-2 control-label">음주 <span class="require">*</span></label>
+            <div class="col-md-8">
+                <select class="form-control" name="userDrink">
+                    <option value="">선택하세요</option>
+                    <option value="0" ${userDTO.userDrink == 0 ? 'selected' : ''}>전혀 안 함</option>
+                    <option value="1" ${userDTO.userDrink == 1 ? 'selected' : ''}>가끔 마심</option>
+                    <option value="2" ${userDTO.userDrink == 2 ? 'selected' : ''}>자주 마심</option>
+                </select>
+            </div>
         </div>
-    </div>
-
 
         <!-- 흡연 여부 -->
         <div class="form-group">
@@ -251,8 +258,8 @@
             <div class="col-md-8">
                 <select class="form-control" name="userSmoke">
                     <option value="">선택하세요</option>
-                    <option value="false" <c:if test="${userDTO.userSmoke == false}">selected</c:if>>비흡연</option>
-                    <option value="true" <c:if test="${userDTO.userSmoke == true}">selected</c:if>>흡연</option>
+                    <option value="false" ${userDTO.userSmoke == false ? 'selected' : ''}>비흡연</option>
+                    <option value="true" ${userDTO.userSmoke == true ? 'selected' : ''}>흡연</option>
                 </select>
             </div>
         </div>
@@ -260,15 +267,11 @@
         <hr>
         <!-- 선호 키 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">선호 키 <span class="require">*</span></label>
-            <div class="col-md-8">
-                <select name="preferenceHeight" class="form-control">
-                    <option value="">선택하세요</option>
-                    <c:forEach var="height" items="${['150cm 이하', '150cm ~ 155cm', '155cm ~ 160cm', '160cm ~ 165cm', '165cm ~ 170cm', '170cm ~ 175cm', '175cm ~ 180cm', '180cm 이상']}">
-                        <option value="${height}" <c:if test="${preferenceDTO.preferenceHeight == height}">selected</c:if>>${height}</option>
-                    </c:forEach>
-                </select>
-            </div>
+            <label class="col-md-2 control-label" for="preferenceHeight">선호 키 <span class="require">*</span></label>
+                <div class="col-md-8">
+                    <input type="text" id="preferenceHeight" name="preferenceHeight" class="form-control"
+                           value="<c:out value="${preferenceDTO.preferenceHeight}"/>" placeholder="선호 키를 입력하세요">
+                </div>
         </div>
 
         <!-- 선호 체형 -->
@@ -277,50 +280,19 @@
             <div class="col-md-8">
                 <select name="preferenceBody" class="form-control">
                     <option value="">선택하세요</option>
-                    <c:forEach var="body" items="${['마름', '보통', '통통', '뚱뚱']}">
-                        <option value="${body}" <c:if test="${preferenceDTO.preferenceBody == body}">selected</c:if>>${body}</option>
+                    <c:forEach var="body" items="${['마른', '보통', '근육질', '통통', '건장']}">
+                        <option value="${body}" ${preferenceDTO.preferenceBody == body ? 'selected' : ''}>${body}</option>
                     </c:forEach>
                 </select>
             </div>
         </div>
+
         <!-- 선호 나이 -->
         <div class="form-group">
-            <label class="col-md-2 control-label">선호 나이 <span class="require">*</span></label>
+            <label class="col-md-2 control-label" for="preferenceAge">선호 나이 <span class="require">*</span></label>
             <div class="col-md-8">
-                <select name="preferenceAge" class="form-control">
-                    <option value="">선택하세요</option>
-                    <c:set var="ageGroups" value="${[
-                        {'value': 'early20', 'label': '20대 초반'},
-                        {'value': 'mid20', 'label': '20대 중반'},
-                        {'value': 'late20', 'label': '20대 후반'},
-                        {'value': 'early30', 'label': '30대 초반'},
-                        {'value': 'mid30', 'label': '30대 중반'},
-                        {'value': 'late30', 'label': '30대 후반'},
-                        {'value': 'early40', 'label': '40대 초반'},
-                        {'value': 'mid40', 'label': '40대 중반'},
-                        {'value': 'late40', 'label': '40대 후반'},
-                        {'value': 'early50', 'label': '50대 초반'},
-                        {'value': 'mid50', 'label': '50대 중반'},
-                        {'value': 'late50', 'label': '50대 후반'},
-                        {'value': 'early60', 'label': '60대 초반'},
-                        {'value': 'mid60', 'label': '60대 중반'},
-                        {'value': 'late60', 'label': '60대 후반'},
-                        {'value': 'early70', 'label': '70대 초반'},
-                        {'value': 'mid70', 'label': '70대 중반'},
-                        {'value': 'late70', 'label': '70대 후반'},
-                        {'value': 'early80', 'label': '80대 초반'},
-                        {'value': 'mid80', 'label': '80대 중반'},
-                        {'value': 'late80', 'label': '80대 후반'},
-                        {'value': 'early90', 'label': '90대 초반'},
-                        {'value': 'mid90', 'label': '90대 중반'},
-                        {'value': 'late90', 'label': '90대 후반'},
-                        {'value': '100plus', 'label': '100세 이상'}
-                    ]}" />
-
-                    <c:forEach var="age" items="${ageGroups}">
-                        <option value="${age.value}" <c:if test="${preferenceDTO.preferenceAge == age.label}">selected</c:if>>${age.label}</option>
-                    </c:forEach>
-                </select>
+                <input type="text" id="preferenceAge" name="preferenceAge" class="form-control"
+                       value="<c:out value="${preferenceDTO.preferenceAge}"/>" placeholder="선호 나이를 입력하세요">
             </div>
         </div>
 

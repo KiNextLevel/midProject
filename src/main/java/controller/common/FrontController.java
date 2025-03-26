@@ -35,6 +35,8 @@ public class FrontController extends HttpServlet {
 		command = command.replace("/Metronic-Shop-UI-master/theme/", "");
 		if(command.contains(("target"))){
 			command = command.replace("/target-free-admin-template/", "");
+		} else if (command.contains(("widget"))) {
+			command = command.replace("/widget/","");
 		}
 		System.out.println(" CTRL 자른 로그 : command ["+command+"]");
 
@@ -46,6 +48,7 @@ public class FrontController extends HttpServlet {
     	}
     	
     	if(forward.isRedirect()){
+			System.out.println("sendRedirect 실행됨");
     		response.sendRedirect(forward.getPath());
     	}
     	else{

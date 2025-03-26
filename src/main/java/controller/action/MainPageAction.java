@@ -44,7 +44,25 @@ public class MainPageAction implements Action {
 		userDTO.setCondition("SELECTALL");
 		ArrayList<UserDTO> userDatas = userDAO.selectAll(userDTO);
 		session.setAttribute("userDatas", userDatas);
-	    forward.setPath("/Metronic-Shop-UI-master/theme/MainPage.jsp");
+
+		// 현재 로그인한 사용자의 정보를 가져옴
+		UserDTO currentUserDTO = new UserDTO();
+		currentUserDTO.setUserEmail(userEmail);
+		currentUserDTO.setCondition("SELECTONE_USERINFO");
+		UserDTO userData = userDAO.selectOne(currentUserDTO);
+
+		// 세션에 현재 사용자 정보 저장
+		session.setAttribute("userDTO", userData);
+
+		// 디버깅용 로그 출력
+		if (userData != null) {
+			System.out.println("사용자 이메일: " + userData.getUserEmail());
+			System.out.println("프리미엄 상태: " + userData.isUserPreminum());
+		} else {
+			System.out.println("사용자 정보를 가져오지 못했습니다.");
+		}
+
+		forward.setPath("/Metronic-Shop-UI-master/theme/MainPage.jsp");
 		forward.setRedirect(false);
 		return forward;
     }

@@ -312,6 +312,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </c:if>
                     <c:forEach var="data" items="${userDatas}">
                         <!-- PRODUCT ITEM START -->
+                        <!-- user_Role이 0인 회원만 표시(사용자인 경우) -->
+                        <c:if test="${data.userRole==0}">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="product-item">
                                 <div class="pi-img-wrapper">
@@ -326,25 +328,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                 <div class="description">${data.userDescription}</div>
                             </div>
                         </div>
+                        </c:if>
                         <!-- PRODUCT ITEM END -->
                     </c:forEach>
-
-                    <!-- Default Product Item -->
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <img src="TEST" class="img-responsive" alt="userImage">
-                                <div>
-                                    <button class="btn btn-default" type="submit">메시지 보내기</button>
-                                    <a href="userDetailPage.do?userEmail=test@test.com" class="btn btn-default">프로필 보기</a>
-                                </div>
-                            </div>
-                            <div class="age">나이: 22세</div>
-                            <div class="height">키: 222cm</div>
-                            <div class="자기소개">ㅎㅇ</div>
-                        </div>
-                    </div>
-                    <!-- PRODUCT ITEM END -->
                 </div>
                 <!-- END PRODUCT LIST -->
             </div>

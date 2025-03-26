@@ -49,7 +49,7 @@
 		</li>
 		<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
 		</li>
-		<li><a href="logout.do"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+		<li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 		</li>
 	</ul>
 	<ul id="dropdown2" class="dropdown-content w250">
@@ -218,10 +218,10 @@
 					<a class="active-menu waves-effect waves-dark" href="boardPage.do"><i class="fa fa-dashboard"></i> 게시글 페이지</a>
 				</li>
 				<li>
-					<a href="AdminPaymentListPage.jsp" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>
+					<a href="/mywebapp/target-free-admin-template/AdminPaymentListPage.jsp" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>
 				</li>
 				<li>
-					<a href="../Metronic-Shop-UI-master/theme/AdminReportPage.jsp" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 신고 회원 관리 페이지</a>
+					<a href="/mywebapp/theme/AdminReportPage.jsp" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 신고 회원 관리 페이지</a>
 				</li>
 				<li>
 					<a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> Tabs & Panels</a>

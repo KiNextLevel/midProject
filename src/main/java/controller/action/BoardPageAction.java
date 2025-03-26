@@ -14,7 +14,7 @@ public class BoardPageAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
 		ActionForward forward = new ActionForward();
-			System.out.println("baordPage 로그: 도착");
+			System.out.println("boardPage 로그: 도착");
 		
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();

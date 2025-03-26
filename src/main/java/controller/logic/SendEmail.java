@@ -14,7 +14,7 @@ public class SendEmail {
     private static final String user = "mquetest@gmail.com"; // gmail 계정
     private static final String password = "habaywbfkprzohor"; // gmail 패스워드
 
-    public static void sendMail() {
+    public static void sendMail(String toEmail, String subject, String content) {
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", "true");
@@ -32,14 +32,16 @@ public class SendEmail {
         MimeMessage message = new MimeMessage(session);
 
         try {
-            message.setFrom(new InternetAddress(user));
+            // 송신자 이메일 주소를 noreply로 설정
+            message.setFrom(new InternetAddress("noreply@nextLove.com")); // noreply@example.com으로 변경
 
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("mquetest@gmail.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 
-            message.setSubject("메일 제목 입력");
+            message.setSubject(subject);
 
-            message.setText("내용 입력");
+            message.setText(content);
 
+            // 이메일 송신
             Transport.send(message);
 
         } catch (AddressException e) {

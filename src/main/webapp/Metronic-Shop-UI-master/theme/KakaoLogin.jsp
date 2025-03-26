@@ -9,6 +9,17 @@
 </head>
 <body>
 
+<%--이메일 보내기 버튼--%>
+<%--<button id="email-btn" >이메일 보내기</button>--%>
+<form action="sendEmail.do" method="POST">
+  <input type="email" name="toEmail" placeholder="Recipient's Email" required />
+  <button type="submit">Send Email</button>
+</form>
+<%--http://localhost:8088/Metronic-Shop-UI-master/theme/sendEmail.do--%>
+<%--clientid = 946591518832-1mcia4a01goc994auf5tjjomo7updi0c.apps.googleusercontent.com--%>
+<%--clientPw = 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--%>
+
+
 <!-- 카카오 로그인 이미지 버튼 -->
 <img src="img/kakao_login_medium_wide.png" id="kakao-login-btn" alt="카카오 로그인 버튼" style="cursor: pointer;">
 
@@ -17,7 +28,7 @@
 
 <script type="text/javascript">
   // 카카오 SDK 초기화 (앱 키 설정)
-  Kakao.init('25a9dbf40f7886253bc52cd3038dab93'); // 실제 앱 키로 변경
+  Kakao.init('25a9dbf40f7886253bc52cd3038dab93');
 
   // 카카오 로그인 버튼 클릭 시 로그인 처리
   document.getElementById('kakao-login-btn').onclick = function() {

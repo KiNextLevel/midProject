@@ -164,7 +164,7 @@
                             </div>
                             <div class="col-xs-6">
                                 <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-blue btn-block">
-                                    ${userDTO.userName} 신고하기
+                                    ${userDTO.userNickname} 신고하기
                                 </a>
                             </div>
 

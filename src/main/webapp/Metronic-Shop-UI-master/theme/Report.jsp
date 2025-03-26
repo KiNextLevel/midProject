@@ -1,5 +1,5 @@
+<%@ page import="org.example.webapp.model.dto.UserDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="reportDTO" class="org.example.webapp.model.dto.ReportDTO" scope="page"/>
 <%@ page isELIgnored="false" %>
 
 <html>
@@ -258,14 +258,10 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="report-container">
-                                <%
-                                    // reportDTO 초기화
-                                    reportDTO.setReportReported(request.getParameter("userEmail"));
-                                %>
                                 <h2 class="report-title"><i class="fa fa-exclamation-triangle"></i> 사용자 신고</h2>
 
                                 <form action="report.do" method="post" id="reportForm">
-                                    <h3 class="report-subtitle"><%= reportDTO.getReportReported() %> 님에 대한 신고</h3>
+                                    <h3 class="report-subtitle">${reportedUserNickname} 님에 대한 신고</h3>
 
                                     <div class="checkbox-group">
                                         <h4><i class="fa fa-list-ul"></i> 신고 사유 선택 (하나 이상 선택)</h4>

@@ -3,7 +3,9 @@
 <%@ page import="org.example.webapp.model.dto.AlertDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <!--
 Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
@@ -264,24 +266,27 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </div>
                 </div>
 
-                <div class="sidebar-products clearfix">
-                    <h2>구글 광고</h2>
-                    <div class="item">
-                        <a href="shop-item.html"><img src="assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                        <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
-                        <div class="price">$31.00</div>
+                <c:if test="${not empty userDTO and !userDTO.userPreminum}">
+                    <div class="sidebar-products clearfix">
+                                <h2>구글 광고</h2>
+                                <div class="item">
+                                    <a href="shop-item.html"><img src="assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                                    <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
+                                    <div class="price">$31.00</div>
+                                </div>
+                                <div class="item">
+                                    <a href="shop-item.html"><img src="assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                                    <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
+                                    <div class="price">$23.00</div>
+                                </div>
+                                <div class="item">
+                                    <a href="shop-item.html"><img src="assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                                    <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
+                                    <div class="price">$86.00</div>
+                        </div>
                     </div>
-                    <div class="item">
-                        <a href="shop-item.html"><img src="assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                        <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
-                        <div class="price">$23.00</div>
-                    </div>
-                    <div class="item">
-                        <a href="shop-item.html"><img src="assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                        <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
-                        <div class="price">$86.00</div>
-                    </div>
-                </div>
+                </c:if>
+
             </div>
             <!-- END SIDEBAR -->
 

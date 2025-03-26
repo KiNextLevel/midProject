@@ -1,6 +1,6 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
+<%@ page import="org.example.webapp.model.dto.PreferenceDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="preferenceDTO" class="org.example.webapp.model.dto.PreferenceDTO" scope="page" />
 <%@ page isELIgnored="false" %>
 
 <html>
@@ -35,6 +35,7 @@
     <!-- Fonts END -->
 
     <!-- Global styles START -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Global styles END -->
@@ -86,13 +87,25 @@
         <div class="row">
             <!-- BEGIN TOP BAR LEFT PART -->
             <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
+                    <!-- BEGIN CURRENCIES -->
+                    <li class="shop-currencies">
+                        <a href="productPage.do">광고 제거</a>
+                    </li>
+                    <!-- END CURRENCIES -->
+                    <!-- BEGIN LANGS -->
+                    <li class="langs-block">
+                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                    </li>
+                    <!-- END LANGS -->
+                </ul>
             </div>
-            <!-- END TOP BAR LEFT PART -->
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
                     <li><a href="myPage.do">마이페이지</a></li>
-                    <li><a href="">로그아웃</a></li>
+                    <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
@@ -140,15 +153,24 @@
                                 <p>닉네임 : ${userDTO.userNickname}</p>
                             </div>
                             <div class="availability">
-                                지역 : <strong>${param.userRegion}</strong>
+                                지역 : <strong>${userDTO.userRegion}</strong>
                             </div>
                         </div>
                         <div class="description">
-                            <p>${param.userDescription}</p>
+                            <p>${userDTO.userDescription}</p>
                         </div>
-                        <div class="product-page-cart">
-                            <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button class="btn btn-primary btn-block" type="submit">1:1 채팅하기</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-info  btn-block">
+                                    ${userDTO.userNickname} 신고하기
+                                </a>
+                            </div>
+
                         </div>
+
                     </div>
 
                     <div class="product-page-content">
@@ -168,8 +190,24 @@
                                 <p>MBTI : <%= dto.getUserMbti() %></p><br>
                                 <p>학력 : <%= dto.getUserEducation() %></p><br>
                                 <p>종교 : <%= dto.getUserReligion() %></p><br>
-                                <p>음주 : <%= dto.getUserDrink() %></p><br>
-                                <p>흡연 : <%= dto.isUserSmoke() %></p><br>
+                                <p>음주 :
+                                    <%
+                                        int drinkStatus = dto.getUserDrink();
+                                        String drinkMessage = ""; // 출력할 메시지를 저장할 변수 선언
+
+                                        if (drinkStatus == 0) {
+                                            drinkMessage = "전혀 안 함";
+                                        } else if (drinkStatus == 1) {
+                                            drinkMessage = "가끔";
+                                        } else if (drinkStatus == 2) {
+                                            drinkMessage = "자주";
+                                        } else {
+                                            drinkMessage = "알 수 없음"; // 예외 처리
+                                        }
+                                    %>
+                                    <%= drinkMessage %>
+                                </p><br>
+                                <p>흡연 : <%= dto.isUserSmoke() ? "비흡연" : "흡연" %></p><br>
                                 <p>직업 : <%= dto.getUserJob() %></p><br>
                                 <%
                                 } else {
@@ -184,9 +222,22 @@
                                 <!-- 첫번째 취향 넣는 곳-->
                                 <div class="review-item clearfix">
                                     <div class="review-item-content">
-                                        <p>선호 키 : <%= preferenceDTO.getPreferenceHeight() %></p><br>
+                                        <%
+                                            PreferenceDTO preferenceDTO = (PreferenceDTO)request.getAttribute("preferenceDTO");
+                                            if(preferenceDTO != null) {
+                                        %>
+                                        <p>선호 키 : <%= preferenceDTO.getPreferenceHeight() %> cm</p><br>
                                         <p>선호 체형 : <%= preferenceDTO.getPreferenceBody() %></p><br>
                                         <p>선호 나이 : <%= preferenceDTO.getPreferenceAge() %></p><br>
+
+                                        <%
+                                        } else {
+                                        %>
+                                        <p>선호 정보를 찾을 수 없습니다.</p>
+                                        <%
+                                            }
+                                        %>
+
                                     </div>
                                 </div>
                             </div>
@@ -278,23 +329,8 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-3">
                 <div class="product-main-image">
-                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
+                    <img src="${userDTO.userProfile}" alt="User Profile" class="img-responsive">
                 </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-9">
-                <h2>Cool green dress with red bell</h2>
-                <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna
-                        aliquarm erat volutpat
-                        Nostrud duis molestie at dolore.</p>
-                </div>
-            </div>
-            <div class="product-page-cart">
-                <div class="product-quantity">
-                    <input id="product-quantity2" type="text" value="1" readonly class="form-control input-sm">
-                </div>
-                <button class="btn btn-primary" type="submit">Add to cart</button>
-                <a href="shop-item.html" class="btn btn-default">More details</a>
             </div>
         </div>
 

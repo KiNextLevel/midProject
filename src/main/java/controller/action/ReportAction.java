@@ -27,6 +27,21 @@ public class ReportAction implements Action {
         // getParameter()로 폼 데이터 가져오기
         String reportedUserEmail = request.getParameter("userEmail");
 
+        // 사용자 닉네임 조회 로직 추가
+        UserDTO userDTO = new UserDTO();
+        UserDAO userDAO = new UserDAO();
+        userDTO.setUserEmail(reportedUserEmail);
+        userDTO.setCondition("SELECTONE_USERINFO");
+        UserDTO userData = userDAO.selectOne(userDTO);
+
+        String userNickname = "알 수 없음";
+        if (userData != null && userData.getUserNickname() != null) {
+            userNickname = userData.getUserNickname();
+        }
+
+        // 닉네임을 request에 저장
+        request.setAttribute("reportedUserNickname", userNickname);
+
         // 체크박스 다중 선택 처리
         String[] reasons = request.getParameterValues("reason");
         String combinedReasons = "";

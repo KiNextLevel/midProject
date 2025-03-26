@@ -342,6 +342,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </c:if>
                     <c:forEach var="data" items="${userDatas}">
                         <!-- PRODUCT ITEM START -->
+                        <!-- user_Role이 0인 회원만 표시(사용자인 경우) -->
+                        <c:if test="${data.userRole==0}">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="product-item">
                                 <div class="pi-img-wrapper">
@@ -356,25 +358,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                 <div class="description">${data.userDescription}</div>
                             </div>
                         </div>
+                        </c:if>
                         <!-- PRODUCT ITEM END -->
                     </c:forEach>
-
-                    <!-- Default Product Item -->
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <img src="TEST" class="img-responsive" alt="userImage">
-                                <div>
-                                    <button class="btn btn-default" type="submit">메시지 보내기</button>
-                                    <a href="userDetailPage.do?userEmail=test@test.com" class="btn btn-default">프로필 보기</a>
-                                </div>
-                            </div>
-                            <div class="age">나이: 22세</div>
-                            <div class="height">키: 222cm</div>
-                            <div class="자기소개">ㅎㅇ</div>
-                        </div>
-                    </div>
-                    <!-- PRODUCT ITEM END -->
                 </div>
                 <!-- END PRODUCT LIST -->
             </div>
@@ -505,6 +491,52 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         Layout.initAgeSliderRange();
         Layout.initHeightSliderRange();
     });
+
+    // 페이지 레이아웃 스크립트에 추가
+    $(window).on('load', function() {
+        // 모든 이미지가 로드된 후 실행
+        equalizeCardHeights();
+    });
+
+    $(window).on('resize', function() {
+        // 창 크기 변경 시 실행
+        equalizeCardHeights();
+    });
+
+    function equalizeCardHeights() {
+        // 각 행별로 카드 높이 맞추기
+        var currentTallest = 0,
+            currentRowStart = 0,
+            rowDivs = [],
+            $el,
+            topPosition = 0;
+
+        $('.product-item').each(function() {
+            $el = $(this);
+            topPosition = $el.position().top;
+
+            if (currentRowStart != topPosition) {
+                // 새로운 행 시작
+                for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+                    rowDivs[currentDiv].height(currentTallest);
+                }
+                rowDivs.length = 0; // 배열 초기화
+                currentRowStart = topPosition;
+                currentTallest = $el.height();
+                rowDivs.push($el);
+            } else {
+                // 같은 행에 추가
+                rowDivs.push($el);
+                currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+            }
+
+            // 마지막 행 처리
+            for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+                rowDivs[currentDiv].height(currentTallest);
+            }
+        });
+    }
+
 </script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>

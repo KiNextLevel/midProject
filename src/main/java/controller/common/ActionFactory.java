@@ -42,6 +42,9 @@ public class ActionFactory {
 		factory.put("kakaoCallBack.do", new KakaoCallBackAction());
 		factory.put("adminPage.do", new AdminMainPageAction());
 		factory.put("tossPaymentPage.do", new TossPaymentPageAction());
+		factory.put("updateProfile.do", new UpdateProfileAction());
+		factory.put("updateProfilePage.do", new UpdateProfilePageAction());
+		factory.put("updateProfileImage.do", new UpdateProfileImageAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

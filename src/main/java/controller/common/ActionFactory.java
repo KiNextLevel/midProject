@@ -41,8 +41,7 @@ public class ActionFactory {
 		factory.put("naverCallback.do", new NaverCallBackAction());
 		factory.put("kakaoCallBack.do", new KakaoCallBackAction());
 		factory.put("adminPage.do", new AdminMainPageAction());
-		factory.put("updateProfile.do", new UpdateProfileAction());
-		factory.put("updateProfilePage.do", new UpdateProfilePageAction());
+		factory.put("tossPaymentPage.do", new TossPaymentPageAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

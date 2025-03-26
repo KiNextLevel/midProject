@@ -90,14 +90,12 @@ public class AlertDAO {
     public boolean update(AlertDTO alertDTO) {
         Connection conn = null;
         PreparedStatement pstmt = null;
-        System.out.println("Alert 로그: update 도착");
 
         try {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(UPDATE_ISWATCH);
             //pstmt.setBoolean(1, alertDTO.isAlertIsWatch()); // 0 (안 읽음) 또는 1 (읽음)
             pstmt.setInt(1, alertDTO.getAlertNumber()); //  ALERT_NUM (PK)로 특정 알림 지정
-            System.out.println(alertDTO.getAlertNumber());
 
             int result = pstmt.executeUpdate();
             return result > 0; // 1개 이상 업데이트되면 true

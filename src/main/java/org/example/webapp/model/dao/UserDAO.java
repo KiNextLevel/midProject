@@ -39,9 +39,9 @@ public class UserDAO {
     final String INSERT_DESCRIPTION = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
             "USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     // 회원 정보 수정
-    final String UPDATE = "UPDATE USER SET USER_NICKNAME = ?, USER_PHONE = ?, USER_GENDER = ?, USER_BIRTH = ?, USER_HEIGHT = ?, USER_BODY = ?, USER_MBTI = ?, " +
-            "USER_PROFILE = ?, USER_EDUCATION = ?, USER_RELIGEION = ?, USER_DRINK = ?, USER_SMOKE = ?, USER_JOB = ?, USER_REGION = ?, USER_DESCRIPTION = ?, USER_NAME = ? " +
-            "WHERE USER_EMAIL = ?";
+    final String UPDATE =
+            "UPDATE USER SET USER_DESCRIPTION = ?,USER_NICKNAME = ?, USER_HEIGHT = ?, USER_BODY = ?, USER_EDUCATION = ?, USER_JOB = ?, USER_RELIGEION = ?, " +
+                    "USER_REGION = ?, USER_MBTI = ?, USER_DRINK = ?, USER_SMOKE = ? WHERE USER_EMAIL = ?";
     // 회원 ROLE 변경
     final String UPDATE_ROLE = "UPDATE USER SET USER_ROLE = ? WHERE USER_EMAIL = ?";
 
@@ -302,23 +302,18 @@ public class UserDAO {
             // 회원정보 변경
             if (userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE")) {
                 pstmt = conn.prepareStatement(UPDATE);
-                pstmt.setString(1, userDTO.getUserNickname());
-                pstmt.setString(2, userDTO.getUserPhone());
-                pstmt.setBoolean(3, userDTO.getUserGender());
-                pstmt.setString(4, userDTO.getUserBirth());
-                pstmt.setInt(5, userDTO.getUserHeight());
-                pstmt.setString(6, userDTO.getUserBody());
-                pstmt.setString(7, userDTO.getUserMbti());
-                pstmt.setString(8, userDTO.getUserProfile());
-                pstmt.setString(9, userDTO.getUserEducation());
-                pstmt.setString(10, userDTO.getUserReligion());
-                pstmt.setInt(11, userDTO.getUserDrink());
-                pstmt.setBoolean(12, userDTO.isUserSmoke());
-                pstmt.setString(13, userDTO.getUserJob());
-                pstmt.setString(14, userDTO.getUserRegion());
-                pstmt.setString(15, userDTO.getUserDescription());
-                pstmt.setString(16, userDTO.getUserName());
-                pstmt.setString(17, userDTO.getUserEmail());
+                pstmt.setString(1, userDTO.getUserDescription());
+                pstmt.setString(2, userDTO.getUserNickname());
+                pstmt.setInt(3, userDTO.getUserHeight());
+                pstmt.setString(4, userDTO.getUserBody());
+                pstmt.setString(5, userDTO.getUserEducation());
+                pstmt.setString(6, userDTO.getUserJob());
+                pstmt.setString(7, userDTO.getUserReligion());
+                pstmt.setString(8, userDTO.getUserRegion());
+                pstmt.setString(9, userDTO.getUserMbti());
+                pstmt.setInt(10, userDTO.getUserDrink());
+                pstmt.setBoolean(11, userDTO.isUserSmoke());
+                pstmt.setString(12, userDTO.getUserEmail());
             }
             // ROLE 변경
             else if (userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_ROLE")) {

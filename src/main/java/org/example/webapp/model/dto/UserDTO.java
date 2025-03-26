@@ -56,6 +56,7 @@ public class UserDTO {
     // 키워드 검색
     private String searchKeyword;
 
+
     public String getSocialType() {
         return socialType;
     }

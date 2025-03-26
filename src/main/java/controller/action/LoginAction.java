@@ -3,6 +3,7 @@ package controller.action;
 
 import controller.common.Action;
 import controller.common.ActionForward;
+import controller.logic.SendEmail;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;

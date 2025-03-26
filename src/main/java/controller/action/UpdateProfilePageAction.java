@@ -9,20 +9,17 @@ import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.PreferenceDTO;
 import org.example.webapp.model.dto.UserDTO;
 
-import java.util.ArrayList;
-
-public class MyPageAction implements Action {
-
+public class UpdateProfilePageAction implements Action {
     @Override
     public ActionForward execute(HttpServletRequest request) {
-        System.out.println("CTRL 로그: MyPageAction");
+        System.out.println("CTRL 로그: UpdateProfilePageAction");
         ActionForward forward = new ActionForward();
         HttpSession session = request.getSession();
         String userEmail = (String) session.getAttribute("userEmail");
 
         if (userEmail == null) {
             // 로그인되지 않은 경우
-            System.out.println("Mypage Action Log: userEmail is null");
+            System.out.println("UpdateProfilePage Action Log: userEmail is null");
             forward.setPath("loginPage.do");
             forward.setRedirect(true);
             return forward;
@@ -44,7 +41,7 @@ public class MyPageAction implements Action {
         if (user != null) {
             request.setAttribute("userDTO", user); // 첫 번째 사용자 정보
             request.setAttribute("preferenceDTO", preference);
-            forward.setPath("/Metronic-Shop-UI-master/theme/MyPage.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/theme/MyPageEdit.jsp");
             forward.setRedirect(false);
         } else {
             System.out.println("마이페이지 로그[사용자 정보 없음]");

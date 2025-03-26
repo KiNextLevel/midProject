@@ -36,7 +36,7 @@ public class ParticipantBoardAction implements Action{
 		if((participantDAO.selectOne(participantDTO)).getParticipantBoardNumber() >= boardDTO.getBoardLimit()){  //인원수 다 차면
 			request.setAttribute("msg", "인원이 다 찼습니다");
 			request.setAttribute("flag", false);
-			forward.setPath("/mywebapp/theme/alert.jsp");	
+			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 			forward.setRedirect(false);
 			return forward;
 		}
@@ -50,7 +50,7 @@ public class ParticipantBoardAction implements Action{
 			request.setAttribute("msg", "참가 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/mywebapp/theme/alert.jsp");	
+		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

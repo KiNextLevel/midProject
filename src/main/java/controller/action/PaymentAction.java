@@ -66,11 +66,11 @@ public class PaymentAction implements Action {
 		//이메일, 가격, 결제방법, 상품번호
         //if (paymentDAO.insert(paymentDTO)) {
         	
-        //}
+        }
 
-        
+
 		//forward.setPath("alert.jsp");
 		//forward.setRedirect(false);
 		//return forward;
 	}
-}
+

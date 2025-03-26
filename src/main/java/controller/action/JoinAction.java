@@ -32,12 +32,12 @@ public class JoinAction implements Action {
 
 			request.setAttribute("msg", "회원가입 진행");
 			request.setAttribute("flag", true);
-			request.setAttribute("url", "JoinPage.jsp");
+			request.setAttribute("url", "/Metronic-Shop-UI-master/theme/JoinPage.jsp");
 		} else {
 			request.setAttribute("msg", "회원가입 실패!");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

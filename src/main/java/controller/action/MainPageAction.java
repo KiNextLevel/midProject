@@ -26,15 +26,15 @@ public class MainPageAction implements Action {
 	    AlertDAO alertDAO = new AlertDAO();
 	    AlertDTO alertDTO = new AlertDTO();
 	    alertDTO.setUserEmail(userEmail);
-	    ArrayList<AlertDTO> alertDatas = alertDAO.selectAll(alertDTO);
-	    if (alertDatas != null) {
-	    	//알람이 있음
-	    	for(AlertDTO data : alertDatas) {
-	    		if (!data.isAlertIsWatch()) { // 열람한적 없는 데이터가 있다면
-	    			request.setAttribute("unread", true);
-	    		}
-	    	}
-	    }
+//	    ArrayList<AlertDTO> alertDatas = alertDAO.selectAll(alertDTO);
+//	    if (alertDatas != null) {
+//	    	//알람이 있음
+//	    	for(AlertDTO data : alertDatas) {
+//	    		if (!data.isAlertIsWatch()) { // 열람한적 없는 데이터가 있다면
+//	    			request.setAttribute("unread", true);
+//	    		}
+//	    	}
+//	    }
 		UserDAO userDAO = new UserDAO();
 		UserDTO userDTO = new UserDTO();
 		userDTO.setUserEmail(userEmail);

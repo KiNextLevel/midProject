@@ -8,6 +8,13 @@ import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+
+
 public class LoginAction implements Action {
 
     @Override
@@ -26,6 +33,7 @@ public class LoginAction implements Action {
             // session에 userId, userName, role저장
             session.setAttribute("userEmail", userDTO.getUserEmail());
             session.setAttribute("userRole", userDTO.getUserRole());
+            System.out.println("userROle = "+userDTO.getUserRole());
 
             // url, flag, msg 요청단위 저장
             // alert.jsp에 url, true, msg 보내기

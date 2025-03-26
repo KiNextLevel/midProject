@@ -168,7 +168,28 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     </div>
 </div>
 <!-- Header END -->
+<!-- 문자 전송 요청-->
 
+<script>
+    // 메인 페이지 로드 시 /sendMessage 요청을 보내는 코드
+    window.onload = () => {
+        fetch("sendMessage.do")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('네트워크 응답이 잘못되었습니다.');
+                }
+                return response.json(); // JSON 응답을 반환받음
+            })
+            .then(data => {
+                console.log('받은 데이터:', data);
+                document.getElementById('message').textContent = data.message || '메시지가 없습니다.';
+            })
+            .catch(error => {
+                console.error('문제가 발생했습니다:', error);
+                document.getElementById('message').textContent = '데이터를 불러오는 데 문제가 발생했습니다.';
+            });
+    };
+</script>
 <div class="title-wrapper">
     <div class="container"><div class="container-inner">
         <a href="boardPage.do">

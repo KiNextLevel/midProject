@@ -528,3 +528,121 @@ button[type="submit"].btn-primary {
     font-size: 16px;
     margin-top: 5px;
 }
+
+/* ProductPage.css 파일에 추가하거나 기존 스타일을 수정하세요 */
+
+/* 제품 목록 컨테이너 */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px; /* 기존 부트스트랩 그리드와 맞추기 */
+}
+
+/* 제품 아이템 컨테이너 */
+.product-list .col-md-4 {
+    padding: 15px;
+    display: flex;
+}
+
+/* 제품 아이템 카드 */
+.product-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* 이미지 래퍼 - 모든 이미지를 동일한 크기로 */
+.pi-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 250px; /* 모든 이미지 높이 고정 */
+    overflow: hidden;
+}
+
+.pi-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지하면서 영역 채우기 */
+}
+
+/* 이미지 위에 오버레이 버튼 */
+.product-page-cart {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: space-around;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pi-img-wrapper:hover .product-page-cart {
+    opacity: 1;
+}
+
+/* 제품 정보 영역 */
+.product-item h3 {
+    margin: 15px 15px 5px;
+    font-size: 16px;
+    font-weight: 600;
+    height: 40px; /* 이름 영역 고정 높이 */
+    overflow: hidden;
+}
+
+.product-item .height {
+    margin: 5px 15px;
+    color: #e94d1c;
+    font-weight: 600;
+}
+
+.product-item .description {
+    margin: 5px 15px 15px;
+    color: #666;
+    font-size: 13px;
+    height: 40px; /* 설명 영역 고정 높이 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* 버튼 스타일 */
+.product-page-cart .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* 반응형 조정 */
+@media (max-width: 991px) {
+    .pi-img-wrapper {
+        height: 200px;
+    }
+}
+
+@media (max-width: 767px) {
+    .product-list .col-sm-6 {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-list .col-xs-12 {
+        width: 100%;
+    }
+}

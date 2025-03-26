@@ -76,39 +76,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
             </plugin>
-
-            <!-- Maven Cargo 플러그인 - 외부 Tomcat 연동 -->
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven3-plugin</artifactId>
-                <version>1.10.10</version>
-                <configuration>
-                    <container>
-                        <containerId>tomcat10x</containerId>
-                        <type>installed</type>
-                        <!-- Tomcat 설치 경로를 지정하세요 -->
-                        <home>${env.CATALINA_HOME}</home>
-                    </container>
-                    <configuration>
-                        <type>existing</type>
-                        <home>${env.CATALINA_HOME}</home>
-                        <properties>
-                            <cargo.servlet.port>8088</cargo.servlet.port>
-                            <cargo.tomcat.uriencoding>UTF-8</cargo.tomcat.uriencoding>
-                        </properties>
-                    </configuration>
-                    <deployables>
-                        <deployable>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <type>war</type>
-                            <properties>
-                                <context>/</context>
-                            </properties>
-                        </deployable>
-                    </deployables>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>

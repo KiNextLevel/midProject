@@ -446,6 +446,52 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         Layout.initAgeSliderRange();
         Layout.initHeightSliderRange();
     });
+
+    // 페이지 레이아웃 스크립트에 추가
+    $(window).on('load', function() {
+        // 모든 이미지가 로드된 후 실행
+        equalizeCardHeights();
+    });
+
+    $(window).on('resize', function() {
+        // 창 크기 변경 시 실행
+        equalizeCardHeights();
+    });
+
+    function equalizeCardHeights() {
+        // 각 행별로 카드 높이 맞추기
+        var currentTallest = 0,
+            currentRowStart = 0,
+            rowDivs = [],
+            $el,
+            topPosition = 0;
+
+        $('.product-item').each(function() {
+            $el = $(this);
+            topPosition = $el.position().top;
+
+            if (currentRowStart != topPosition) {
+                // 새로운 행 시작
+                for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+                    rowDivs[currentDiv].height(currentTallest);
+                }
+                rowDivs.length = 0; // 배열 초기화
+                currentRowStart = topPosition;
+                currentTallest = $el.height();
+                rowDivs.push($el);
+            } else {
+                // 같은 행에 추가
+                rowDivs.push($el);
+                currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+            }
+
+            // 마지막 행 처리
+            for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+                rowDivs[currentDiv].height(currentTallest);
+            }
+        });
+    }
+
 </script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>

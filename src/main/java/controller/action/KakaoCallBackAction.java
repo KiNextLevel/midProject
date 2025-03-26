@@ -35,9 +35,18 @@ public class KakaoCallBackAction implements Action {
             JSONParser parser = new JSONParser();
             JSONObject jsonResponse = (JSONObject) parser.parse(userInfo);
 
-            String email = (String) jsonResponse.get("email");
-//            JSONObject properties = (JSONObject) jsonResponse.get("properties");
-//            String name = (String) properties.get("name");
+            // kakao_account 객체 추출
+            JSONObject kakaoAccount = (JSONObject) jsonResponse.get("kakao_account");
+
+            // 이메일 추출
+            String email = (String) kakaoAccount.get("email");
+
+            // 이름 추출 (이름이 있을 경우만)
+            String name = (String) kakaoAccount.get("name");
+
+            // 로그에 이메일과 이름 출력
+            System.out.println("kakaologin log: email: [" + email + "], name: [" + name + "]");
+
 
             // DB에 사용자 정보 저장
             // UserDAO를 이용하여 회원 정보 조회
@@ -53,7 +62,7 @@ public class KakaoCallBackAction implements Action {
                 HttpSession session = request.getSession();
                 session.setAttribute("userEmail", email);
                 System.out.println("KakaoLogin Log: userEmail: [" + email+"]");
-//                session.setAttribute("userName", name);
+                session.setAttribute("userName", name);
                 // 비밀번호는 랜덤하게 생성 (소셜 로그인은 비밀번호가 필요 없지만 DB 구조상 필요할 수 있음)
                 String randomPassword = generateRandomPassword();
                 session.setAttribute("userPassword", randomPassword);
@@ -97,7 +106,7 @@ public class KakaoCallBackAction implements Action {
         String tokenUrl = "https://kauth.kakao.com/oauth/token";
         String redirectUri = "http://localhost:8088/Metronic-Shop-UI-master/theme/kakaoCallBack.do";  // 설정한 Redirect URI
 
-        String params = "grant_type=authorization_code&client_id=25a9dbf40f7886253bc52cd3038dab93&redirect_uri=" + redirectUri + "&code=" + code;
+        String params = "grant_type=authorization_code&client_id=cb9656ab4895e6ee319e89e74f28a308&redirect_uri=" + redirectUri + "&code=" + code;
 
         String accessToken = null;  // 액세스 토큰을 저장할 변수
 

@@ -236,7 +236,7 @@
                     <a href="boardPage.do" class="waves-effect waves-dark"><i class="fa fa-dashboard"></i> 게시글 페이지</a>
                 </li>
                 <li>
-                    <a href="AdminPaymentListPage.jsp"
+                    <a href="adminPaymentListPage.do"
                        class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>
                 </li>
                 <li>

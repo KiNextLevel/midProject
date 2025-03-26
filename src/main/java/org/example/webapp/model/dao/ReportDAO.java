@@ -35,10 +35,10 @@ public class ReportDAO {
 
             while (rs.next()) {
                 ReportDTO data = new ReportDTO();
-                data.setReportReported(rs.getString("REPORT_REPORTER"));
+                data.setReportReported(rs.getString("REPORT_REPORTED"));
                 data.setReportReason(rs.getString("REPORT_REASON"));
                 data.setReportDate(rs.getDate("REPORT_DATE"));
-                data.setReportReporter(rs.getString("REPORT_REPORTED"));
+                data.setReportReporter(rs.getString("REPORT_REPORTER"));
                 data.setReportDescription(rs.getString("REPORT_DESCRIPTION"));
                 datas.add(data);
             }

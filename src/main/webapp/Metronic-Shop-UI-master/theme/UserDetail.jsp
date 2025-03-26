@@ -35,6 +35,7 @@
     <!-- Fonts END -->
 
     <!-- Global styles START -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Global styles END -->
@@ -163,7 +164,7 @@
                                 <button class="btn btn-primary btn-block" type="submit">1:1 채팅하기</button>
                             </div>
                             <div class="col-xs-6">
-                                <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-blue btn-block">
+                                <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-info  btn-block">
                                     ${userDTO.userNickname} 신고하기
                                 </a>
                             </div>

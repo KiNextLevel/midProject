@@ -3,10 +3,18 @@ package controller.action;
 
 import controller.common.Action;
 import controller.common.ActionForward;
+import controller.logic.SendMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+
 
 public class LoginAction implements Action {
 
@@ -26,10 +34,14 @@ public class LoginAction implements Action {
             // session에 userId, userName, role저장
             session.setAttribute("userEmail", userDTO.getUserEmail());
             session.setAttribute("userRole", userDTO.getUserRole());
+            System.out.println("userROle = "+userDTO.getUserRole());
 
             // url, flag, msg 요청단위 저장
             // alert.jsp에 url, true, msg 보내기
             if (userDTO.getUserRole() == 1) { // 관리자
+                //메시지 추가 로직
+//                SendMessage sendMessage = new SendMessage();
+//                sendMessage.sendOne();
                 request.setAttribute("msg", "관리자 로그인 성공!");
                 request.setAttribute("url", "adminPage.do");
                 request.setAttribute("flag", true);

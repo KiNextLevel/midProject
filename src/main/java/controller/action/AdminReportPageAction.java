@@ -25,11 +25,13 @@ public class AdminReportPageAction implements Action{
 
 		ArrayList<ReportDTO> reported = reportDAO.selectAll(reportDTO);//신고회원 전체
 		System.out.println("AdminReportPageAction 로그: "+reported);
+		System.out.println("ReportPageAction log reported: "+reported);
 
 		userDTO.setCondition("SELECTALL_BLACK");	//블랙리스트 전체
 		ArrayList<UserDTO> blacks = userDAO.selectAll(userDTO);
+		System.out.println("ReportPageAction log blacks: "+blacks);
 
-		if(Integer.parseInt((String)session.getAttribute("userRole"))==1) {
+		if(((Integer)session.getAttribute("userRole"))==1) {
 			request.setAttribute("blacks", blacks);
 			request.setAttribute("reported", reported);
 			forward.setPath("/Metronic-Shop-UI-master/theme/AdminReportPage.jsp");

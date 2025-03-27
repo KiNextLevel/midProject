@@ -40,6 +40,8 @@ public class ActionFactory {
 		factory.put("userDetailPage.do",new UserDetailPageAction());
 		factory.put("naverCallback.do", new NaverCallBackAction());
 		factory.put("adminPage.do", new AdminMainPageAction());
+		factory.put("tossPaymentPage.do", new TossPaymentPageAction());
+		//factory.put("sendMessage.do", new SendMessageAction());
 		factory.put("updateProfile.do", new UpdateProfileAction());
 		factory.put("updateProfilePage.do", new UpdateProfilePageAction());
 		factory.put("updateProfileImage.do", new UpdateProfileImageAction());

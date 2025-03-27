@@ -31,7 +31,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand waves-effect waves-dark" href="/mywebapp/target-free-admin-template/AdminMainPage.jsp"><i class="large material-icons">track_changes</i> <strong>target</strong></a>
+			<a class="navbar-brand waves-effect waves-dark" href="/target-free-admin-template/AdminMainPage.jsp"><i class="large material-icons">track_changes</i> <strong>target</strong></a>
 
 			<div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
 		</div>
@@ -49,7 +49,7 @@
 		</li>
 		<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
 		</li>
-		<li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+		<li><a href="logout.do"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 		</li>
 	</ul>
 	<ul id="dropdown2" class="dropdown-content w250">
@@ -218,10 +218,10 @@
 					<a class="active-menu waves-effect waves-dark" href="boardPage.do"><i class="fa fa-dashboard"></i> 게시글 페이지</a>
 				</li>
 				<li>
-					<a href="/mywebapp/target-free-admin-template/AdminPaymentListPage.jsp" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>
+					<a href="adminPaymentListPage.do" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>
 				</li>
 				<li>
-					<a href="/mywebapp/theme/AdminReportPage.jsp" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 신고 회원 관리 페이지</a>
+					<a href="adminReportPage.do" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 신고 회원 관리 페이지</a>
 				</li>
 				<li>
 					<a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> Tabs & Panels</a>

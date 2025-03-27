@@ -339,9 +339,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <!-- END SIDEBAR & CONTENT -->
     </div>
 </div>
-
-<!-- BEGIN FOOTER -->
-<div class="footer">
+<!-- BEGIN PRE-FOOTER -->
+<div class="pre-footer">
     <div class="container">
         <div class="row">
             <!-- BEGIN BOTTOM ABOUT BLOCK -->

@@ -149,22 +149,42 @@
                         <div class="token-options">
                             <div class="option-box">
                                 <h5 class="option-title">토큰 패키지 선택</h5>
-                                <div class="option-select">
-                                    <select name="PRODUCT_NUM" class="form-control">
-                                        <option value="2">기본 패키지 - 1개 (₩1,100)</option>
-                                        <option value="3">인기 패키지 - 5개 (₩5,000)</option>
-                                        <option value="4">프리미엄 패키지 - 10개 (₩8,800)</option>
-                                    </select>
 
-                                </div>
-                                <div class="payment-action">
+                                <!-- 기본 패키지 -->
+                                <form action="tossPaymentPage.do" method="POST">
+                                    <input type="hidden" name="Product_Num" value="2">
+                                    <input type="hidden" name="Product_Name" value="기본 패키지">
+                                    <input type="hidden" name="Product_Price" value="1100">
                                     <input type="hidden" name="action" value="TOKENPAYMENT">
                                     <button type="submit" class="btn btn-primary btn-lg">
-                                        <i class="fa fa-credit-card"></i> 토큰 구매하기
+                                        <i class="fa fa-credit-card"></i> 기본 패키지 - 1개 (₩1,100)
                                     </button>
-                                </div>
+                                </form>
+
+                                <!-- 인기 패키지 -->
+                                <form action="tossPaymentPage.do" method="POST">
+                                    <input type="hidden" name="Product_Num" value="3">
+                                    <input type="hidden" name="Product_Name" value="인기 패키지">
+                                    <input type="hidden" name="Product_Price" value="5000">
+                                    <input type="hidden" name="action" value="TOKENPAYMENT">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fa fa-credit-card"></i> 인기 패키지 - 5개 (₩5,000)
+                                    </button>
+                                </form>
+
+                                <!-- 프리미엄 패키지 -->
+                                <form action="tossPaymentPage.do" method="POST">
+                                    <input type="hidden" name="Product_Num" value="4">
+                                    <input type="hidden" name="Product_Name" value="프리미엄 패키지">
+                                    <input type="hidden" name="Product_Price" value="8800">
+                                    <input type="hidden" name="action" value="TOKENPAYMENT">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fa fa-credit-card"></i> 프리미엄 패키지 - 10개 (₩8,800)
+                                    </button>
+                                </form>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- PREMIUM 섹션 -->
@@ -202,8 +222,10 @@
                                 </div>
                             </div>
                             <div class="premium-action">
-                                <form action="processPayment" method="post">
-                                    <input type="hidden" name="PRODUCT_NUM" value="1">
+                                <form action="tossPaymentPage.do" method="post">
+                                    <input type="hidden" name="Product_Num" value="1">
+                                    <input type="hidden" name="Product_Name" value="프리미엄 멤버쉽 결제">
+                                    <input type="hidden" name="Product_Price" value="9900">
                                     <input type="hidden" name="action" value="PREMIUM">
                                     <button type="submit" class="btn btn-primary btn-lg payment-button">
                                         <i class="fa fa-crown"></i> 프리미엄 멤버십 가입하기

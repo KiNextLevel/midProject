@@ -22,7 +22,7 @@
 
         .main {
             width: 350px;
-            height: 500px;
+            height: 500px; /* 기존 높이로 유지 */
             background: red;
             overflow: hidden;
             background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
@@ -30,56 +30,28 @@
             box-shadow: 5px 20px 50px #000;
         }
 
-        /* 소셜 로그인 버튼 스타일 */
-        .social-login-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+        /* 로그인 폼 영역 조정 */
+        .login {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
-        .naver-login-btn, .kakao-login-btn {
-            width: 38%; /* 버튼의 너비를 48%로 설정하여 두 버튼이 나란히 배치되도록 */
-            height: 40px;
-            color: #fff;
-            font-size: 1em;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: .2s ease-in;
-            cursor: pointer;
-        }
-
-        .naver-login-btn {
-            background-color: #1EC800; /* 네이버 색상 */
-        }
-
-        .naver-login-btn:hover {
-            background-color: #19A400; /* 호버 시 색상 */
-        }
-
-        .kakao-login-btn {
-            background-color: #fee500; /* 카카오 색상 */
-        }
-
-        .kakao-login-btn:hover {
-            background-color: #fddc00; /* 카카오 호버 시 색상 */
-        }
-
+        /* 소셜 로그인 섹션 */
         .social-login {
-            margin-top: 20px;
+            width: 80%;
+            margin: 0 auto;
             text-align: center;
-        }
-
-        .social-login p {
-            color: #fff;
-            margin-bottom: 10px;
+            padding-top: 5px;
         }
 
         .or-divider {
             display: flex;
             align-items: center;
             text-align: center;
-            margin: 15px 0;
+            margin: 10px 0;
             color: #fff;
+            font-size: 14px;
         }
 
         .or-divider::before, .or-divider::after {
@@ -94,6 +66,62 @@
 
         .or-divider::after {
             margin-left: 10px;
+        }
+
+        /* 소셜 로그인 버튼 컨테이너 */
+        .social-login-buttons {
+            display: flex;
+            justify-content: center; /* 중앙 정렬 */
+            gap: 20px; /* 버튼 사이 간격 */
+            margin: 10px auto;
+        }
+
+        /* 정사각형 소셜 로그인 버튼 스타일 */
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 24px; /* 아이콘 크기 */
+        }
+
+        /* 네이버 로그인 버튼 */
+        .naver-login-btn {
+            background-color: #1EC800;
+            color: #fff;
+        }
+
+        .naver-login-btn:hover {
+            background-color: #19A400;
+            transform: translateY(-3px);
+        }
+
+        /* 카카오 로그인 버튼 */
+        .kakao-login-btn {
+            background-color: #fee500;
+            color: #3c1e1e;
+        }
+
+        .kakao-login-btn:hover {
+            background-color: #fddc00;
+            transform: translateY(-3px);
+        }
+
+        /* 네이버 아이콘 (N 글자) */
+        .naver-icon {
+            font-weight: bold;
+            font-style: normal;
+            font-size: 22px;
+        }
+
+        /* 카카오 아이콘 (말풍선 모양) */
+        .kakao-icon {
+            font-size: 22px;
         }
     </style>
 </head>
@@ -121,17 +149,16 @@
 
         <!-- 소셜 로그인 섹션 -->
         <div class="social-login">
-            <div class="or-divider">또는</div>
-            <!-- 네이버 및 카카오 로그인 버튼을 나란히 배치 -->
+            <!-- 정사각형 소셜 로그인 버튼 -->
             <div class="social-login-buttons">
                 <!-- 네이버 로그인 버튼 -->
-                <button type="button" class="naver-login-btn" onclick="naverLogin()">
-                    네이버 로그인
+                <button type="button" class="social-btn naver-login-btn" onclick="naverLogin()">
+                    <span class="naver-icon">N</span>
                 </button>
 
                 <!-- 카카오 로그인 버튼 -->
-                <button type="button" class="kakao-login-btn" id="kakao-login-btn" onclick="kakaoLogin()">
-                    카카오 로그인
+                <button type="button" class="social-btn kakao-login-btn" id="kakao-login-btn" onclick="kakaoLogin()">
+                    <span class="kakao-icon"><i class="fas fa-comment"></i></span>
                 </button>
             </div>
         </div>
@@ -159,7 +186,7 @@
 
     function kakaoLogin() {
         // 카카오 SDK 초기화 (앱 키 설정)
-        Kakao.init('25a9dbf40f7886253bc52cd3038dab93');
+        Kakao.init('cb9656ab4895e6ee319e89e74f28a308');
 
         // 카카오 로그인 처리
         Kakao.Auth.authorize({

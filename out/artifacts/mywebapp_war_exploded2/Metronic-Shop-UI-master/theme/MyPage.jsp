@@ -364,6 +364,106 @@
         .preference-tag i {
             color: #e94d1c;
         }
+
+        /* 로딩 오버레이 스타일 */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 10;
+        }
+
+        .loading-overlay i {
+            font-size: 24px;
+        }
+
+
+        /* 프로필 그리드 스타일 */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-details {
+            padding: 15px;
+        }
+
+        .profile-details h4 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .profile-details p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .profile-details i {
+            color: #e94d1c;
+            margin-right: 5px;
+        }
+
+        .profile-description {
+            margin-top: 10px;
+            font-style: italic;
+            color: #777;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 반응형 디자인을 위한 미디어 쿼리 */
+        @media (max-width: 767px) {
+            .profile-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
     <!-- 메타 태그 -->
     <meta content="Next Level - 마이페이지" name="description" />
@@ -415,13 +515,18 @@
                         <div class="profile-header">
                             <div class="profile-left">
                                 <div class="profile-image-container">
+                                    <!-- 프로필 이미지 업로드를 위한 폼 수정 -->
+                                    <form id="profileForm" action="updateProfileImage.do" method="POST" enctype="multipart/form-data">
+                                        <input type="file" id="profileUpload" name="profileImage" accept="image/*" onchange="this.form.submit();" />
+                                    </form>
+
                                     <label for="profileUpload">
                                         <c:choose>
                                             <c:when test="${not empty userDTO.userProfile}">
                                                 <img id="profileImage" src="${userDTO.userProfile}" alt="프로필 이미지" />
                                             </c:when>
                                             <c:otherwise>
-                                                <img id="profileImage" src="assets/img/profile-default.png" alt="기본 프로필 이미지" />
+                                                <img id="profileImage" src="assets/corporate/img/logos/3.png" alt="기본 프로필 이미지" />
                                             </c:otherwise>
                                         </c:choose>
 
@@ -429,7 +534,6 @@
                                             <i class="fa fa-camera"></i> <span>사진 변경</span>
                                         </div>
                                     </label>
-                                    <input type="file" id="profileUpload" accept="image/*" />
                                 </div>
                                 <div class="profile-info">
                                     <h3 class="profile-name">
@@ -787,22 +891,13 @@
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        // 프로필 이미지 업로드 처리
-        document.getElementById('profileUpload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    document.getElementById('profileImage').src = event.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+        // 파일 선택 시 자동으로 폼 제출됨 (onchange="this.form.submit();")
 
-        // 사이드바 메뉴 활성화
-        $('.sidebar-menu .list-group-item').on('click', function() {
-            $('.sidebar-menu .list-group-item').removeClass('active');
-            $(this).addClass('active');
+        // 선택적: 파일 선택 전 확인 메시지 표시
+        $('.profile-image-container').click(function() {
+            if(confirm('프로필 이미지를 변경하시겠습니까?')) {
+                $('#profileUpload').click();
+            }
         });
     });
 </script>

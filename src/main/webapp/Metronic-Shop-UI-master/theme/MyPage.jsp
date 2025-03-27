@@ -363,6 +363,8 @@
 
         .preference-tag i {
             color: #e94d1c;
+
+
         }
     </style>
     <!-- 메타 태그 -->

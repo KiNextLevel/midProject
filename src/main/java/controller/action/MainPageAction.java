@@ -25,11 +25,16 @@ public class MainPageAction implements Action {
 	    AlertDTO alertDTO = new AlertDTO();
 	    alertDTO.setUserEmail(userEmail);
 	    ArrayList<AlertDTO> alertDatas = alertDAO.selectAll(alertDTO);
+		for(AlertDTO alertDTO1 : alertDatas) {
+			System.out.println(alertDTO1);
+		}
+		session.setAttribute("alertDatas", alertDatas);
 	    if (alertDatas != null) {
 	    	//알람이 있음
 	    	for(AlertDTO data : alertDatas) {
 	    		if (!data.isAlertIsWatch()) { // 열람한적 없는 데이터가 있다면
-	    			request.setAttribute("unread", true);
+	    			request.setAttribute("hasUnreadAlerts", true);
+					break;
 	    		}
 	    	}
 	    }

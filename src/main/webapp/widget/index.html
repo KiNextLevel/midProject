@@ -116,19 +116,16 @@
         // @docs https://docs.tosspayments.com/sdk/v2/js#widgetsrequestpayment
         button.addEventListener("click", async function () {
           const productName = getQueryParam("productName"); //url에서 가져온 상품 이름
-          const productNum = getQueryParam("productNum"); ////url에서 가져온 상품 번호
-          // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.
-          // 결제 과정에서 악의적으로 결제 금액이 바뀌는 것을 확인하는 용도입니다.
+          const productNum = getQueryParam("productNum"); //url에서 가져온 상품 번호
+          const userEmail = getQueryParam("userEmail"); //url에서 가져온 구매자 이메일
+          const userName = getQueryParam("userName"); //url에서 가져온 구매자 이름
           await widgets.requestPayment({
             orderId: generateRandomString(),
             orderName: productName,
             successUrl: currentURL+"success.jsp?productNum=" + productNum,
-            //successUrl: currentURL+"fail.jsp",
             failUrl: currentURL+"fail.jsp",
-            customerEmail: "customser123@gmail.com",
-            customerName: "김토스",
-            // 가상계좌 안내, 퀵계좌이체 휴대폰 번호 자동 완성에 사용되는 값입니다. 필요하다면 주석을 해제해 주세요.
-            // customerMobilePhone: "01012341234",
+            customerEmail: userEmail,
+            customerName: userName,
           });
         });
       }

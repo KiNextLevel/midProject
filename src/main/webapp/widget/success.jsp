@@ -73,21 +73,15 @@
         <% if (isSuccess) { %>
         <script>
             // 서버에 전송할 데이터 생성
-            // const urlParams = new URLSearchParams(window.location.search);
-            // console.log(urlParams.toString());
-            // console.log(urlParams.get("productNum"));
-            // const productNum = urlParams.get("productNum");
             function getQueryParam(name) {
                 const params = new URLSearchParams(window.location.search);
-                console.log("쿼리 파라미터들:", params.toString()); // 전체 파라미터 확인
+                console.log("쿼리 파라미터:", params.toString()); // 전체 파라미터 확인
                 return params.get(name) || "defaultValue";
             }
             console.log(window.location.search);
             const productNum = getQueryParam("productNum");
             const encodedProductNum = encodeURIComponent(productNum);  // 인코딩된 값
-            console.log("인코딩 전 값: "+productNum);
             console.log("전송할 데이터:", `productNum=`+encodedProductNum);
-            console.log("인코딩 된 값: "+encodedProductNum);
 
             fetch("payment.do", {
                 method: "POST",

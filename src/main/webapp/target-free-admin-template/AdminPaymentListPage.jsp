@@ -240,11 +240,11 @@
                        class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>
                 </li>
                 <li>
-                    <a href="../Metronic-Shop-UI-master/theme/AdminReportPage.jsp" class="waves-effect waves-dark"><i
+                    <a href="adminReportPage.do" class="waves-effect waves-dark"><i
                             class="fa fa-bar-chart-o"></i> 신고 회원 관리 페이지</a>
                 </li>
                 <li>
-                    <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> 게시글 관리 페이지</a>
+                    <a href="boardPage.do" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> 게시글 관리 페이지</a>
                 </li>
 
                 <li>
@@ -324,85 +324,20 @@
                                         <th>이메일</th>
                                         <th>결제 금액</th>
                                         <th>결제 상품</th>
-                                        <th>CSS grade</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach var="data" items="${datas}">
                                         <tr class="odd gradeX">
-                                            <td>data.paymentDate</td>
-                                            <td>data.paymentEmail</td>
-                                            <td>data.paymentPrice</td>
-                                            <td class="center">data.productNum</td>
-                                            <td class="center">X</td>
+                                            <td>${data.paymentDate}</td>
+                                            <td>${data.userEmail}</td>
+                                            <td>${data.paymentPrice}</td>
+                                            <td class="center">${data.productName}</td>
                                         </tr>
                                     </c:forEach>
-                                    <tr class="odd gradeX">
-                                        <td>이거 어디지</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>1</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>2</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="even gradeC">
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 5.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5</td>
-                                        <td class="center">C</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>여기 이름</td>
-                                        <td>Internet Explorer 5.5</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5.5</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="even gradeA">
-                                        <td>티모</td>
-                                        <td>Internet Explorer 6</td>
-                                        <td>Win 98+</td>
-                                        <td class="center">6</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>모르가나</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td class="center">7</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>ㄱ</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td class="center">7</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>ㄴ</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td class="center">7</td>
-                                        <td class="center">A</td>
-                                    </tr>
-
                                     </tbody>
                                 </table>
+
                             </div>
 
                         </div>

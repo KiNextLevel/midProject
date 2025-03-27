@@ -34,30 +34,30 @@
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css"
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css"
           rel="stylesheet">
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css"
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css"
           rel="stylesheet">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="assets/plugins/fancybox/source/jquery.fancybox.css"
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css"
           rel="stylesheet">
-    <link href="assets/plugins/owl.carousel/assets/owl.carousel.css"
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css"
           rel="stylesheet">
-    <link href="assets/plugins/uniform/css/uniform.default.css"
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css"
           rel="stylesheet" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="assets/pages/css/components.css" rel="stylesheet">
-    <link href="assets/corporate/css/style.css" rel="stylesheet">
-    <link href="assets/pages/css/style-shop.css" rel="stylesheet"
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet"
           type="text/css">
-    <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-    <link href="assets/corporate/css/themes/red.css" rel="stylesheet"
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet"
           id="style-color">
-    <link href="assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
 </head>
 <body class="ecommerce">
@@ -85,12 +85,29 @@
         <div class="row">
             <!-- BEGIN TOP BAR LEFT PART -->
             <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
+                    <!-- BEGIN CURRENCIES -->
+                    <li class="shop-currencies">
+                        <a href="productPage.do">광고 제거</a>
+                    </li>
+                    <!-- END CURRENCIES -->
+                    <!-- BEGIN LANGS -->
+                    <li class="langs-block">
+                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                    </li>
+                    <!-- END LANGS -->
+                </ul>
             </div>
             <!-- END TOP BAR LEFT PART -->
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
+                    <c:if test="${userDTO.userRole==1}">
+                        <li><a href="adminPage.do">관리자페이지</a></li>
+                    </c:if>
                     <li><a href="myPage.do">마이페이지</a></li>
+                    <li>메시지</li>
                     <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>
@@ -103,7 +120,7 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png"
+        <a class="site-logo" href="mainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
                                                      alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
@@ -345,16 +362,16 @@
         <hr>
         <div class="row">
             <!-- 자바스크립트 로드 부분 유지 -->
-            <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-            <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-            <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-            <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-            <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 
             <!-- 페이지 레벨 자바스크립트 -->
-            <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
-            <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
-            <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
 
             <script type="text/javascript">
                 jQuery(document).ready(function () {

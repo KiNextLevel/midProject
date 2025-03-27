@@ -60,7 +60,7 @@ public class FrontController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("로그 : GET 요청 호출됨");
 		doAction(request, response);
-	}
+    }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("로그 : POST 요청 호출됨");

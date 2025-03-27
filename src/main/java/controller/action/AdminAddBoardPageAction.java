@@ -9,12 +9,12 @@ public class AdminAddBoardPageAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
-		System.out.println("adminAddBoardPageAction 로그: 도착");
+		System.out.println("AdminAddBoardPageAction 로그: 도착");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 
-		if(Integer.parseInt((String)session.getAttribute("userRole"))==1) {
-			forward.setPath("adminAddBoardPage.do");
+		if((Integer)session.getAttribute("userRole")==1) {
+			forward.setPath("/Metronic-Shop-UI-master/theme/AdminAddBoardPage.jsp");
 			forward.setRedirect(true);
 		}
 		else {

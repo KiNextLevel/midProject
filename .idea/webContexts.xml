@@ -3,6 +3,8 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme/AccountDelete.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme/AdminAddBoardPage.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme/AdminReportPage.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme/MainPage.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme/MyPage.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Metronic-Shop-UI-master/theme" />

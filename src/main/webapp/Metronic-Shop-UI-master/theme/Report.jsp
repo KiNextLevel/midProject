@@ -1,4 +1,4 @@
-<%@ page import="org.example.webapp.model.dto.UserDTO" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 
@@ -48,157 +48,9 @@
     <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
 
-    <style>
-        .report-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .report-title {
-            color: #e84d1c;
-            margin-bottom: 25px;
-            font-weight: 600;
-            border-bottom: 2px solid #e84d1c;
-            padding-bottom: 10px;
-        }
-
-        .report-subtitle {
-            color: #3e4d5c;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .checkbox-group {
-            margin-bottom: 25px;
-        }
-
-        .checkbox-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 14px;
-            cursor: pointer;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .checkbox-group label:hover {
-            background-color: #f5f5f5;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            margin-right: 10px;
-        }
-
-        .description-area {
-            margin-bottom: 25px;
-        }
-
-        .description-area textarea {
-            width: 100%;
-            height: 150px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            resize: vertical;
-            font-size: 14px;
-            transition: border 0.3s;
-        }
-
-        .description-area textarea:focus {
-            border-color: #e84d1c;
-            outline: none;
-        }
-
-        .agreement-box {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            border-left: 4px solid #e84d1c;
-        }
-
-        .agreement-box p {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        .agreement-check {
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .agreement-check input {
-            margin-right: 10px;
-        }
-
-        .submit-btn {
-            background-color: #e84d1c;
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            background-color: #d13a0a;
-        }
-
-        .report-info {
-            background-color: #f5f7fa;
-            padding: 20px;
-            border-radius: 4px;
-            margin-top: 30px;
-        }
-
-        .report-info h4 {
-            color: #3e4d5c;
-            margin-bottom: 15px;
-        }
-
-        .report-info p {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #666;
-        }
-
-        /* 반응형 디자인 */
-        @media (max-width: 767px) {
-            .report-container {
-                padding: 20px;
-            }
-        }
-    </style>
 </head>
 
 <body class="ecommerce">
-<!-- BEGIN STYLE CUSTOMIZER -->
-<div class="color-panel hidden-sm">
-    <div class="color-mode-icons icon-color"></div>
-    <div class="color-mode-icons icon-color-close"></div>
-    <div class="color-mode">
-        <p>THEME COLOR</p>
-        <ul class="inline">
-            <li class="color-red current color-default" data-style="red"></li>
-            <li class="color-blue" data-style="blue"></li>
-            <li class="color-green" data-style="green"></li>
-            <li class="color-orange" data-style="orange"></li>
-            <li class="color-gray" data-style="gray"></li>
-            <li class="color-turquoise" data-style="turquoise"></li>
-        </ul>
-    </div>
-</div>
-<!-- END BEGIN STYLE CUSTOMIZER -->
-
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
     <div class="container">
@@ -219,10 +71,15 @@
                     <!-- END LANGS -->
                 </ul>
             </div>
+            <!-- END TOP BAR LEFT PART -->
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
+                    <c:if test="${userDTO.userRole==1}">
+                        <li><a href="adminPage.do">관리자페이지</a></li>
+                    </c:if>
                     <li><a href="myPage.do">마이페이지</a></li>
+                    <li>메시지</li>
                     <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>

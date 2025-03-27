@@ -1,9 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 
--->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <html lang="en">
@@ -101,6 +102,9 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
+                    <c:if test="${userDTO.userRole==1}">
+                        <li><a href="adminPage.do">관리자페이지</a></li>
+                    </c:if>
                     <li><a href="myPage.do">마이페이지</a></li>
                     <li>메시지</li>
                     <li><a href="logout.do">로그아웃</a></li>

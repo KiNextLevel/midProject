@@ -1,6 +1,7 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
 <%@ page import="org.example.webapp.model.dto.PreferenceDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 
 <html>
@@ -63,25 +64,6 @@
 <!-- Body BEGIN -->
 
 <body class="ecommerce">
-<!-- BEGIN STYLE CUSTOMIZER -->
-<div class="color-panel hidden-sm">
-    <div class="color-mode-icons icon-color"></div>
-    <div class="color-mode-icons icon-color-close"></div>
-    <div class="color-mode">
-        <p>THEME COLOR</p>
-        <ul class="inline">
-            <li class="color-red current color-default" data-style="red"></li>
-            <li class="color-blue" data-style="blue"></li>
-            <li class="color-green" data-style="green"></li>
-            <li class="color-orange" data-style="orange"></li>
-            <li class="color-gray" data-style="gray"></li>
-            <li class="color-turquoise" data-style="turquoise"></li>
-        </ul>
-    </div>
-</div>
-<!-- END BEGIN STYLE CUSTOMIZER -->
-
-<!-- BEGIN TOP BAR -->
 <div class="pre-header">
     <div class="container">
         <div class="row">
@@ -101,10 +83,15 @@
                     <!-- END LANGS -->
                 </ul>
             </div>
+            <!-- END TOP BAR LEFT PART -->
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
+                    <c:if test="${userDTO.userRole==1}">
+                        <li><a href="adminPage.do">관리자페이지</a></li>
+                    </c:if>
                     <li><a href="myPage.do">마이페이지</a></li>
+                    <li>메시지</li>
                     <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>

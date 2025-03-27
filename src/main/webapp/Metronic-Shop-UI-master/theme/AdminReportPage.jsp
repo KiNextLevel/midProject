@@ -132,7 +132,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="adminPage.do"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -471,10 +471,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                             </tr>
                                             <tr>
                                                 <td class="compare-info">
-                                                    신고 사유 [${data.reportReason}]
+                                                    신고 사유: [${data.reportReason}]
                                                 </td>
                                                 <td class="compare-item">
-                                                        ${data.reportReason}
+                                                        ${data.reportDescription}
                                                 </td>
                                                 <td class="compare-item">
                                                     <form id="sendAlert" method="POST">

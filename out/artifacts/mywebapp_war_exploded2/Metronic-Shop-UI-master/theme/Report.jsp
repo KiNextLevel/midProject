@@ -1,4 +1,4 @@
-<%@ page import="org.example.webapp.model.dto.UserDTO" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 
@@ -22,183 +22,35 @@
     <meta property="og:url" content="-CUSTOMER VALUE-">
 
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="css/Report.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/Report.css" rel="stylesheet">
 
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="assets/pages/css/components.css" rel="stylesheet">
-    <link href="assets/corporate/css/style.css" rel="stylesheet">
-    <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-    <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-    <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-    <link href="assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
 
-    <style>
-        .report-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .report-title {
-            color: #e84d1c;
-            margin-bottom: 25px;
-            font-weight: 600;
-            border-bottom: 2px solid #e84d1c;
-            padding-bottom: 10px;
-        }
-
-        .report-subtitle {
-            color: #3e4d5c;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .checkbox-group {
-            margin-bottom: 25px;
-        }
-
-        .checkbox-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 14px;
-            cursor: pointer;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .checkbox-group label:hover {
-            background-color: #f5f5f5;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            margin-right: 10px;
-        }
-
-        .description-area {
-            margin-bottom: 25px;
-        }
-
-        .description-area textarea {
-            width: 100%;
-            height: 150px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            resize: vertical;
-            font-size: 14px;
-            transition: border 0.3s;
-        }
-
-        .description-area textarea:focus {
-            border-color: #e84d1c;
-            outline: none;
-        }
-
-        .agreement-box {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            border-left: 4px solid #e84d1c;
-        }
-
-        .agreement-box p {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        .agreement-check {
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .agreement-check input {
-            margin-right: 10px;
-        }
-
-        .submit-btn {
-            background-color: #e84d1c;
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            background-color: #d13a0a;
-        }
-
-        .report-info {
-            background-color: #f5f7fa;
-            padding: 20px;
-            border-radius: 4px;
-            margin-top: 30px;
-        }
-
-        .report-info h4 {
-            color: #3e4d5c;
-            margin-bottom: 15px;
-        }
-
-        .report-info p {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #666;
-        }
-
-        /* 반응형 디자인 */
-        @media (max-width: 767px) {
-            .report-container {
-                padding: 20px;
-            }
-        }
-    </style>
 </head>
 
 <body class="ecommerce">
-<!-- BEGIN STYLE CUSTOMIZER -->
-<div class="color-panel hidden-sm">
-    <div class="color-mode-icons icon-color"></div>
-    <div class="color-mode-icons icon-color-close"></div>
-    <div class="color-mode">
-        <p>THEME COLOR</p>
-        <ul class="inline">
-            <li class="color-red current color-default" data-style="red"></li>
-            <li class="color-blue" data-style="blue"></li>
-            <li class="color-green" data-style="green"></li>
-            <li class="color-orange" data-style="orange"></li>
-            <li class="color-gray" data-style="gray"></li>
-            <li class="color-turquoise" data-style="turquoise"></li>
-        </ul>
-    </div>
-</div>
-<!-- END BEGIN STYLE CUSTOMIZER -->
-
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
     <div class="container">
@@ -219,10 +71,15 @@
                     <!-- END LANGS -->
                 </ul>
             </div>
+            <!-- END TOP BAR LEFT PART -->
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
+                    <c:if test="${userDTO.userRole==1}">
+                        <li><a href="adminPage.do">관리자페이지</a></li>
+                    </c:if>
                     <li><a href="myPage.do">마이페이지</a></li>
+                    <li>메시지</li>
                     <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>
@@ -234,7 +91,7 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png" alt="Next Level"></a>
+        <a class="site-logo" href="mainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png" alt="Next Level"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -389,19 +246,19 @@
 <!-- Load javascripts at bottom, this will reduce page load time -->
 <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
 <!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/respond.min.js"></script>
 <![endif]-->
-<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL JAVASCRIPTS -->
-<script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
-<script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
-<script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 
 <script>

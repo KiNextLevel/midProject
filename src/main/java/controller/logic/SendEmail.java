@@ -12,7 +12,7 @@ import java.util.Properties;
 
 public class SendEmail {
     private static final String user = "mquetest@gmail.com"; // gmail 계정
-    private static final String password = "TOBEADDED"; // gmail 패스워드
+    private static final String password = "habaywbfkprzohor"; // gmail 패스워드
 
     public static void sendMail(String toEmail, String subject, String content) {
         Properties prop = new Properties();

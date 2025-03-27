@@ -24,7 +24,7 @@ public class KakaoCallBackAction implements Action {
 
         String accessToken = null;
         try {
-            // 액세스 토큰을 얻기 위한 POST 요청
+            // 액세스 토큰을 얻기 위한 POST 요청D
             accessToken = getAccessToken(code);
 
             // 액세스 토큰으로 사용자 정보 가져오기
@@ -34,17 +34,12 @@ public class KakaoCallBackAction implements Action {
             // JSONParser를 사용하여 사용자 정보에서 이메일과 닉네임 추출
             JSONParser parser = new JSONParser();
             JSONObject jsonResponse = (JSONObject) parser.parse(userInfo);
-
             // kakao_account 객체 추출
             JSONObject kakaoAccount = (JSONObject) jsonResponse.get("kakao_account");
-
             // 이메일 추출
             String email = (String) kakaoAccount.get("email");
-
             // 이름 추출 (이름이 있을 경우만)
             String name = (String) kakaoAccount.get("name");
-
-            // 로그에 이메일과 이름 출력
             System.out.println("kakaologin log: email: [" + email + "], name: [" + name + "]");
 
 
@@ -58,7 +53,7 @@ public class KakaoCallBackAction implements Action {
             searchDTO.setCondition("SELECTONE_CHECK");
 
             UserDTO user = userDAO.selectOne(searchDTO);
-            if (user == null) {
+            if (user == null) { // 회원가입 진행
                 HttpSession session = request.getSession();
                 session.setAttribute("userEmail", email);
                 System.out.println("KakaoLogin Log: userEmail: [" + email+"]");
@@ -75,8 +70,7 @@ public class KakaoCallBackAction implements Action {
                 request.setAttribute("url", "JoinPage.jsp");
                 forward.setPath("alert.jsp");
                 forward.setRedirect(false);
-            } else {
-                // 기존 회원이면 로그인 처리
+            } else { // 기존 회원이면 로그인 처리
                 searchDTO.setCondition("SELECTONE_USERINFO");
                 user = userDAO.selectOne(searchDTO);
 

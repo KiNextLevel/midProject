@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand waves-effect waves-dark" href="adminMainPage.do"><i class="large material-icons">track_changes</i>
+            <a class="navbar-brand waves-effect waves-dark" href="adminPage.do"><i class="large material-icons">track_changes</i>
                 <strong>target</strong></a>
 
             <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
@@ -236,7 +236,7 @@
                     <a href="boardPage.do" class="waves-effect waves-dark"><i class="fa fa-dashboard"></i> 게시글 페이지</a>
                 </li>
                 <li>
-                    <a href="AdminPaymentListPage.jsp"
+                    <a href="adminPaymentListPage.do"
                        class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>
                 </li>
                 <li>

@@ -35,6 +35,7 @@
     <!-- Fonts END -->
 
     <!-- Global styles START -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Global styles END -->
@@ -86,13 +87,25 @@
         <div class="row">
             <!-- BEGIN TOP BAR LEFT PART -->
             <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
+                    <!-- BEGIN CURRENCIES -->
+                    <li class="shop-currencies">
+                        <a href="productPage.do">광고 제거</a>
+                    </li>
+                    <!-- END CURRENCIES -->
+                    <!-- BEGIN LANGS -->
+                    <li class="langs-block">
+                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                    </li>
+                    <!-- END LANGS -->
+                </ul>
             </div>
-            <!-- END TOP BAR LEFT PART -->
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
                     <li><a href="myPage.do">마이페이지</a></li>
-                    <li><a href="">로그아웃</a></li>
+                    <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
@@ -146,9 +159,18 @@
                         <div class="description">
                             <p>${userDTO.userDescription}</p>
                         </div>
-                        <div class="product-page-cart">
-                            <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button class="btn btn-primary btn-block" type="submit">1:1 채팅하기</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-info  btn-block">
+                                    ${userDTO.userNickname} 신고하기
+                                </a>
+                            </div>
+
                         </div>
+
                     </div>
 
                     <div class="product-page-content">

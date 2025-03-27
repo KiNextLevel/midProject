@@ -442,7 +442,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 </ul>
             </div>
             <!-- END SIDEBAR -->
-
             <!-- BEGIN CONTENT -->
             <div class="col-md-9 col-sm-7">
                 <h1>신고 회원 관리</h1>
@@ -450,7 +449,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <div class="goods-data compare-goods clearfix">
                         <div class="table-wrapper-responsive">
                             <table summary="Product Details">
-
                                 <c:choose>
                                     <c:when test="${empty reported}">
                                         <tr>
@@ -458,7 +456,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                         </tr>
                                     </c:when>
                                     <c:otherwise>
-                                        <c:forEach var="data" items="${reported }">
+                                        <c:forEach var="data" items="${reported}">
                                             <tr>
                                                 <th colspan="3">
                                                     <h2>신고 한 회원 [${data.reportReporter}]</h2>
@@ -489,7 +487,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                                 </td>
                                             </tr>
                                         </c:forEach>
-
                                     </c:otherwise>
                                 </c:choose>
 
@@ -502,40 +499,38 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                         form.submit(); // 폼 제출
                                     }
                                 </script>
+
                                 <tr>
                                     <th colspan="3">
-                                        <h2>블랙리스트 ${reportDTO.reportReported}</h2>
+                                        <h2>블랙리스트</h2>
                                     </th>
                                 </tr>
-                                <tr>
-                                    <td class="compare-info">
-                                        회원 정보
-                                    </td>
-                                    <td class="compare-item">
-                                        회원 이름
-                                        ${reportDTO.reportReason}
-                                    </td>
-                                    <td class="compare-item">
-                                        회원 아이디
-                                        ${reportDTO.reportReported}
-                                    </td>
-                                    <td class="compare-item">
-                                        <form id="DELETEBLACK" action="controller.jsp" method="POST">
-                                            <input type="hidden" name="REPORT_REPORTED" value="${reportDTO.reportReported}">
-                                            <input type="hidden" name="command" value="DELETEBLACK">
-                                            <input type="submit" class="btn btn-primary" value="블랙리스트에서 삭제">
-                                        </form>
-                                    </td>
-                                    </form>
-                                    </td>
-                                </tr>
-
+                                <!-- 블랙리스트 항목 반복 -->
+                                <c:forEach var="blacksItem" items="${blacks}">
+                                    <tr>
+                                        <td class="compare-info">
+                                            회원 정보
+                                        </td>
+                                        <td class="compare-item">
+                                            회원 이름 ${blacksItem.userName}
+                                        </td>
+                                        <td class="compare-item">
+                                            회원 아이디 ${blacksItem.userEmail}
+                                        </td>
+                                        <td class="compare-item">
+                                            <form id="DELETEBLACK" action="adminDeleteBlack.do" method="POST">
+                                                <input type="hidden" name="REPORT_REPORTED" value="${blacksItem.userEmail}">
+                                                <input type="submit" class="btn btn-primary" value="블랙리스트에서 삭제">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                             </table>
-
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- END CONTENT -->
         </div>

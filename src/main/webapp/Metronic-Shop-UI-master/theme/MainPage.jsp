@@ -73,8 +73,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 </head>
 <!-- Head END -->
 
-<!-- Body BEGIN -->
-<body class="ecommerce">
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="color-panel hidden-sm">
     <div class="color-mode-icons icon-color"></div>

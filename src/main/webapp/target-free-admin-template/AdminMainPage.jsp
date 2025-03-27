@@ -218,7 +218,7 @@
 					<a class="active-menu waves-effect waves-dark" href="boardPage.do"><i class="fa fa-dashboard"></i> 게시글 페이지</a>
 				</li>
 				<li>
-					<a href="AdminPaymentListPage.jsp" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>
+					<a href="adminPaymentListPage.do" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>
 				</li>
 				<li>
 					<a href="adminReportPage.do" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> 신고 회원 관리 페이지</a>

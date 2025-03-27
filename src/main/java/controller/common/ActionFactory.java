@@ -41,6 +41,7 @@ public class ActionFactory {
 		factory.put("naverCallback.do", new NaverCallBackAction());
 		factory.put("adminPage.do", new AdminMainPageAction());
 		factory.put("tossPaymentPage.do", new TossPaymentPageAction());
+		//factory.put("sendMessage.do", new SendMessageAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

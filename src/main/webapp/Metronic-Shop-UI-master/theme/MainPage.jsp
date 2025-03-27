@@ -173,9 +173,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- 문자 전송 요청-->
 
 <script>
-    // 메인 페이지 로드 시 /sendMessage 요청을 보내는 코드
+    // 메인 페이지 로드 시 /SendMessage 요청 보냄 - 일단 보류
     window.onload = () => {
-        fetch("sendMessage.do")
+        fetch("/SendMessage")
             .then(response => {
                 if (!response.ok) {
                     throw new Error('네트워크 응답이 잘못되었습니다.');

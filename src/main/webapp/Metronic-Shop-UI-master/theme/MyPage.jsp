@@ -9,462 +9,7 @@
     <title>마이페이지 | Next Level</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-    <style>
-        body {
-            background-color: #f9f9f9;
-        }
-
-        .main-content {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        /* 사이드바 스타일 */
-        .sidebar-menu {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .sidebar-menu .list-group-item {
-            border-left: none;
-            border-right: none;
-            padding: 12px 20px;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-menu .list-group-item:first-child {
-            border-top: none;
-        }
-
-        .sidebar-menu .list-group-item:last-child {
-            border-bottom: none;
-        }
-
-        .sidebar-menu .list-group-item i {
-            margin-right: 10px;
-            color: #e94d1c;
-        }
-
-        .sidebar-menu .list-group-item.active {
-            background-color: #e94d1c;
-            border-color: #e94d1c;
-        }
-
-        .sidebar-menu .list-group-item.active i {
-            color: #fff;
-        }
-
-        .sidebar-menu .list-group-item:hover {
-            background-color: #f5f5f5;
-        }
-
-        .sidebar-menu .list-group-item.active:hover {
-            background-color: #d43e0a;
-        }
-
-        /* 파일 업로드 input 숨기기 */
-        #profileUpload {
-            display: none;
-        }
-
-        /* 프로필 섹션 스타일 - 가로 배치로 수정 */
-        .profile-container {
-            background: linear-gradient(135deg, #f9f9f9, #f5f5f5);
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .profile-left {
-            display: flex;
-            align-items: center;
-        }
-
-        /* 프로필 이미지 컨테이너 스타일 수정 */
-        .profile-image-container {
-            position: relative;
-            margin-right: 20px;
-            cursor: pointer;
-        }
-
-        #profileImage {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        /* 오버레이 효과 추가 */
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .image-overlay i {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        .image-overlay span {
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        /* 호버 시 오버레이 표시 */
-        .profile-image-container:hover .image-overlay {
-            opacity: 1;
-        }
-
-        .profile-info {
-            text-align: left;
-        }
-
-        .profile-name {
-            font-size: 22px;
-            font-weight: 600;
-            margin: 0 0 8px;
-            color: #333;
-        }
-
-        .profile-role {
-            display: inline-block;
-            background-color: #e94d1c;
-            color: #fff;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .profile-actions {
-            margin-left: auto;
-        }
-
-        .profile-actions .btn {
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 반응형 디자인을 위한 미디어 쿼리 */
-        @media ( max-width : 767px) {
-            .profile-header {
-                flex-direction: column;
-                align-items: center;
-            }
-            .profile-left {
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 15px;
-            }
-            .profile-image-container {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-            .profile-info {
-                text-align: center;
-                margin-bottom: 15px;
-            }
-            .profile-actions {
-                margin-left: 0;
-            }
-        }
-
-        /* 정보 카드 스타일 */
-        .info-card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .info-card h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #333;
-            border-bottom: 2px solid #e94d1c;
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        .info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .info-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .info-icon {
-            color: #e94d1c;
-            font-size: 18px;
-            width: 30px;
-            text-align: center;
-            margin-right: 15px;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: #555;
-            width: 100px;
-        }
-
-        .info-value {
-            color: #333;
-            flex: 1;
-        }
-
-        /* 선호 취향 태그 스타일 */
-        .preference-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .preference-tag {
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            padding: 5px 15px;
-            font-size: 14px;
-            color: #333;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .preference-tag i {
-            color: #e94d1c;
-        }
-
-        /* 정보 카드 스타일 */
-        .info-card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .info-card h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #333;
-            border-bottom: 2px solid #e94d1c;
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        .info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .info-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .info-icon {
-            color: #e94d1c;
-            font-size: 18px;
-            width: 30px;
-            text-align: center;
-            margin-right: 15px;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: #555;
-            width: 100px;
-        }
-
-        .info-value {
-            color: #333;
-            flex: 1;
-        }
-
-        /* 선호 취향 태그 스타일 */
-        .preference-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .preference-tag {
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            padding: 5px 15px;
-            font-size: 14px;
-            color: #333;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .preference-tag i {
-            color: #e94d1c;
-        }
-
-        /* 로딩 오버레이 스타일 */
-        .loading-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            z-index: 10;
-        }
-
-        .loading-overlay i {
-            font-size: 24px;
-        }
-
-
-        /* 프로필 그리드 스타일 */
-        .profile-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .profile-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .profile-image {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-details {
-            padding: 15px;
-        }
-
-        .profile-details h4 {
-            margin: 0 0 10px;
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .profile-details p {
-            margin: 5px 0;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .profile-details i {
-            color: #e94d1c;
-            margin-right: 5px;
-        }
-
-        .profile-description {
-            margin-top: 10px;
-            font-style: italic;
-            color: #777;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* 반응형 디자인을 위한 미디어 쿼리 */
-        @media (max-width: 767px) {
-            .profile-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-    </style>
+    <link href="css/MyPage.css" rel="stylesheet">
     <!-- 메타 태그 -->
     <meta content="Next Level - 마이페이지" name="description" />
     <meta content="dating, social, next level" name="keywords" />
@@ -551,13 +96,14 @@
             <!-- 사이드바 메뉴 -->
             <div class="sidebar col-md-3 col-sm-3">
                 <ul class="list-group margin-bottom-25 sidebar-menu">
-                    <li class="list-group-item clearfix active"><a href="#"><i class="fa fa-user"></i> 내 정보</a></li>
-                    <li class="list-group-item clearfix"><a href="#"><i class="fa fa-heart"></i> 관심 목록</a></li>
-                    <li class="list-group-item clearfix"><a href="#"><i class="fa fa-calendar"></i> 이벤트 참가 내역</a></li>
-                    <li class="list-group-item clearfix"><a href="#"><i class="fa fa-coins"></i> 토큰 관리</a></li>
-                    <li class="list-group-item clearfix"><a href="#"><i class="fa fa-cog"></i> 계정 설정</a></li>
+                    <li class="list-group-item clearfix active"><a href="#basic-info"><i class="fas fa-user"></i> 기본 정보</a></li>
+                    <li class="list-group-item clearfix"><a href="#additional-info"><i class="fa fa-heart"></i> 추가 정보</a></li>
+                    <li class="list-group-item clearfix"><a href="#preference-info"><i class="fa fa-calendar"></i> 선호 취향</a></li>
+                    <li class="list-group-item clearfix"><a href="#event-info"><i class="fa fa-coins"></i> 참가 중인 이벤트</a></li>
+                    <li class="list-group-item clearfix"><a href="#token-info"><i class="fa fa-cog"></i> 토큰 잔액 및 구매 내역</a></li>
                 </ul>
             </div>
+
             <!-- 메인 콘텐츠 영역 -->
             <div class="col-md-9 col-sm-9">
                 <div class="main-content">
@@ -603,7 +149,7 @@
                         </div>
                     </div>
                     <!-- 기본 정보 카드 -->
-                    <div class="info-card">
+                    <div id="basic-info" class="info-card">
                         <h3>기본 정보</h3>
                         <div class="info-list">
                             <div class="info-item">
@@ -707,7 +253,7 @@
                     </div>
 
                     <!-- 추가 정보 카드 -->
-                    <div class="info-card">
+                    <div id="additional-info" class="info-card">
                         <h3>추가 정보</h3>
                         <div class="info-list">
                             <div class="info-item">
@@ -802,8 +348,9 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- 선호 취향 카드 -->
-                    <div class="info-card">
+                    <div id="preference-info" class="info-card">
                         <h3>선호 취향</h3>
                         <div class="preference-tags">
                             <span class="preference-tag">
@@ -841,8 +388,9 @@
                             </span>
                         </div>
                     </div>
+
                     <!-- 참가중인 이벤트 -->
-                    <div class="info-card">
+                    <div id="event-info" class="info-card">
                         <h3>참가 중인 이벤트</h3>
                         <table class="table table-striped">
                             <thead>
@@ -870,7 +418,7 @@
                     </div>
 
                     <!-- 토큰 잔액 및 구매 내역 -->
-                    <div class="info-card">
+                    <div id="token-info" class="info-card">
                         <h3>토큰 잔액 및 구매 내역</h3>
                         <p>
                             <strong>현재 보유 토큰:</strong>
@@ -953,6 +501,57 @@
             }
         });
     });
+
+    $(document).ready(function() {
+        // 파일 선택 시 자동으로 폼 제출됨 (onchange="this.form.submit();")
+
+        // 선택적: 파일 선택 전 확인 메시지 표시
+        $('.profile-image-container').click(function() {
+            if(confirm('프로필 이미지를 변경하시겠습니까?')) {
+                $('#profileUpload').click();
+            }
+        });
+
+        // 사이드바 메뉴 클릭 시 부드러운 스크롤 이동
+        $('.sidebar-menu a').click(function(e) {
+            e.preventDefault(); // 기본 링크 동작 방지
+
+            // 모든 메뉴 항목에서 active 클래스 제거
+            $('.sidebar-menu li').removeClass('active');
+
+            // 클릭한 메뉴 항목에 active 클래스 추가
+            $(this).parent('li').addClass('active');
+
+            // 대상 요소의 ID 가져오기
+            var targetId = $(this).attr('href');
+
+            // 대상 요소의 위치 계산 (상단에서 약간 여백 추가)
+            var targetPosition = $(targetId).offset().top - 20;
+
+            // 부드러운 스크롤 애니메이션
+            $('html, body').animate({
+                scrollTop: targetPosition
+            }, 800); // 800ms 동안 애니메이션 실행
+        });
+
+        // 스크롤 시 현재 보고 있는 섹션에 따라 사이드바 메뉴 활성화
+        $(window).scroll(function() {
+            var scrollPosition = $(window).scrollTop();
+
+            // 각 섹션을 확인하여 현재 보이는 섹션의 메뉴 활성화
+            $('.info-card').each(function() {
+                var currentSection = $(this);
+                var sectionTop = currentSection.offset().top - 100; // 약간의 오프셋 적용
+                var sectionId = '#' + currentSection.attr('id');
+
+                if (scrollPosition >= sectionTop) {
+                    $('.sidebar-menu li').removeClass('active');
+                    $('.sidebar-menu a[href="' + sectionId + '"]').parent('li').addClass('active');
+                }
+            });
+        });
+    });
+
 </script>
 </body>
 </html>

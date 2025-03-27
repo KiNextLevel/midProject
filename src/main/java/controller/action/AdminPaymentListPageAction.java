@@ -12,10 +12,13 @@ public class AdminPaymentListPageAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("[LOG] : AdminPaymentListPageAction");
 		ActionForward forward = new ActionForward();
 		PaymentDTO paymentDTO = new PaymentDTO();
-		PaymentDAO paymentDAO = new PaymentDAO();
 
+		paymentDTO.setCondition("SELECTALL_ADMIN_PAYMENTS");
+
+		PaymentDAO paymentDAO = new PaymentDAO();
 		ArrayList<PaymentDTO> datas = paymentDAO.selectAll(paymentDTO);
 
 		if(datas != null) {

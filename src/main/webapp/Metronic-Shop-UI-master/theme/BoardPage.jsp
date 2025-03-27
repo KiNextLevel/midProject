@@ -134,7 +134,14 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="adminMainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+        <c:choose>
+            <c:when test="${sessionScope.userRole=='1'}">
+                <a class="site-logo" href="adminPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+            </c:when>
+            <c:otherwise>
+                <a class="site-logo" href="mainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+            </c:otherwise>
+        </c:choose>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -443,8 +450,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <!-- 이벤트 있고 관리자이면 -->
                 <c:choose>
                     <c:when test="${sessionScope.userRole=='1'}">
+                        <a href="adminAddBoardPage.do" class="btn btn-primary" style="float: right; margin-top: -10px;">이벤트 추가</a>
                         <c:forEach var="data" items="${datas}">
-                            <a href="controller.jsp?command=ADMINADDBOARD" class="btn btn-primary" style="float: right; margin-top: -10px;">이벤트 추가</a>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">											<!-- href를 id랑 맞춰야 토글이 맞아 -->

@@ -446,7 +446,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="col-md-9 col-sm-7">
                 <h1>이벤트 추가</h1>
                 <div class="content-form-page">
-                    <form action="controller.jsp" method="POST" role="form" class="form-horizontal form-without-legend">
+                    <form action="adminAddBoard.do" method="POST" role="form" class="form-horizontal form-without-legend">
                         <input type="hidden" name="command" value="ADMINADDBOARD">
 
                         <div class="form-group">

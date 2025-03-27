@@ -17,14 +17,11 @@ public class AdminAddBoardAction implements Action{
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
 
+		boardDTO.setBoardTitle(request.getParameter("boardTitle"));
+		boardDTO.setBoardContent(request.getParameter("boardContent"));
+		boardDTO.setBoardLimit(Integer.parseInt((String)request.getParameter("boardLimit")));
 
-		boardDTO.setBoardTitle(request.getParameter("BOARDTITLE"));
-		boardDTO.setBoardContent(request.getParameter("BOARDCONTENT"));
-		boardDTO.setBoardLimit(Integer.parseInt((String)request.getParameter("BOARDLIMIT")));
-
-		boardDAO.update(boardDTO);
-
-		if(boardDAO.update(boardDTO)) {
+		if(boardDAO.insert(boardDTO)) {
 			request.setAttribute("msg", "이벤트 추가 성공");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "boardPage.do");

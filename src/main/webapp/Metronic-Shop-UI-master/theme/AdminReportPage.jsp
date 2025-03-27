@@ -44,24 +44,24 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"><!-- for slider-range -->
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="assets/pages/css/components.css" rel="stylesheet">
-    <link href="assets/corporate/css/style.css" rel="stylesheet">
-    <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-    <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-    <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-    <link href="assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -132,7 +132,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="adminPage.do"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -458,36 +458,33 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                         </tr>
                                     </c:when>
                                     <c:otherwise>
-
-                                        <c:forEach var="data" items="${datas }">
+                                        <c:forEach var="data" items="${reported }">
                                             <tr>
                                                 <th colspan="3">
-                                                    <h2>신고 한 회원 [이름:이메일${reportDTO.REPORTER_REPORTER}]</h2>
+                                                    <h2>신고 한 회원 [${data.reportReporter}]</h2>
                                                 </th>
                                             </tr>
-
-
                                             <tr>
                                                 <th colspan="3">
-                                                    <h2>신고 당한 회원 [이름:이메일${reportDTO.reportReported}]</h2>
+                                                    <h2>신고 당한 회원 [${data.reportReported}]</h2>
                                                 </th>
                                             </tr>
                                             <tr>
                                                 <td class="compare-info">
-                                                    신고 사유
+                                                    신고 사유: [${data.reportReason}]
                                                 </td>
                                                 <td class="compare-item">
-                                                        ${reportDTO.REPORT_REASON}
+                                                        ${data.reportDescription}
                                                 </td>
                                                 <td class="compare-item">
                                                     <form id="sendAlert" method="POST">
-                                                        <input type="hidden" name="reportedUser" value="${reportDTO.REPORTER_REPORTED}">
-                                                        <input type="hidden" name="reason" value="${reportDTO.REPORT_REASON}">
-                                                        <select id="WARNING" name="action">
-                                                            <option value="sendWarning.do">경고</option>
+                                                        <input type="hidden" name="reportedUser" value="${data.reportReported}">
+                                                        <input type="hidden" name="reason" value="${data.reportReason}">
+                                                        <select id="action" name="action">
+                                                            <option value="adminSendWarning.do">경고</option>
                                                             <option value="adminAddBlack.do">블랙리스트 추가</option>
                                                         </select>
-                                                        <input type="submit" value="보내기">
+                                                        <input type="submit" value="보내기" onclick="setFormAction(event, this)">
                                                     </form>
                                                 </td>
                                             </tr>
@@ -496,9 +493,18 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                     </c:otherwise>
                                 </c:choose>
 
+                                <script>
+                                    function setFormAction(event, button) {
+                                        event.preventDefault(); // 기본 폼 제출 방지
+                                        var form = button.closest("form"); // 현재 클릭된 버튼이 속한 form 찾기
+                                        var selectedAction = form.querySelector("#action").value; // 선택된 옵션 값 가져오기
+                                        form.action = selectedAction; // 폼의 action을 동적으로 설정
+                                        form.submit(); // 폼 제출
+                                    }
+                                </script>
                                 <tr>
                                     <th colspan="3">
-                                        <h2>블랙리스트 ${reportDTO.REPORT_REPORTED}</h2>
+                                        <h2>블랙리스트 ${reportDTO.reportReported}</h2>
                                     </th>
                                 </tr>
                                 <tr>
@@ -507,15 +513,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                     </td>
                                     <td class="compare-item">
                                         회원 이름
-                                        ${reportDTO.REPORT_REASON}
+                                        ${reportDTO.reportReason}
                                     </td>
                                     <td class="compare-item">
                                         회원 아이디
-                                        ${reportDTO.REPORT_REPORTED}
+                                        ${reportDTO.reportReported}
                                     </td>
                                     <td class="compare-item">
                                         <form id="DELETEBLACK" action="controller.jsp" method="POST">
-                                            <input type="hidden" name="REPORT_REPORTED" value="${reportDTO.REPORT_Reported}">
+                                            <input type="hidden" name="REPORT_REPORTED" value="${reportDTO.reportReported}">
                                             <input type="hidden" name="command" value="DELETEBLACK">
                                             <input type="submit" class="btn btn-primary" value="블랙리스트에서 삭제">
                                         </form>

@@ -40,5 +40,3 @@ build/
 ### IntelliJ project files ###
 .gradle
 build
-/out
-pom.xml

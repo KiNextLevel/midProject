@@ -26,8 +26,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- Head BEGIN -->
 <head>
     <meta charset="utf-8">
-    <title>Men category | Metronic Shop UI</title>
-    <link href="css/ProductPage.css" rel="stylesheet">
+    <title>메인 페이지</title>
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/ProductPage.css" rel="stylesheet">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -115,6 +115,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
+                    <c:if test="${userDTO.userRole==1}">
+                        <li><a href="adminPage.do">관리자페이지</a></li>
+                    </c:if>
                     <li><a href="myPage.do">마이페이지</a></li>
                     <li>메시지</li>
                     <li><a href="logout.do">로그아웃</a></li>
@@ -129,7 +132,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png" alt="mainPage"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -180,9 +183,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- 문자 전송 요청-->
 
 <script>
-    // 메인 페이지 로드 시 /sendMessage 요청을 보내는 코드
+    // 메인 페이지 로드 시 /SendMessage 요청 보냄 - 일단 보류
     window.onload = () => {
-        fetch("sendMessage.do")
+        fetch("/SendMessage")
             .then(response => {
                 if (!response.ok) {
                     throw new Error('네트워크 응답이 잘못되었습니다.');
@@ -264,7 +267,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         <label><input type="checkbox"> 힌두교</label>
                         <label><input type="checkbox"> 기타</label>
                     </div>
-
                     <!-- 흡연 -->
                     <h3>흡연</h3>
                     <div class="checkbox-list">
@@ -277,18 +279,18 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <div class="sidebar-products clearfix">
                                 <h2>구글 광고</h2>
                                 <div class="item">
-                                    <a href="shop-item.html"><img src="assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                                    <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
+                                    <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                                    <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
                                     <div class="price">$31.00</div>
                                 </div>
                                 <div class="item">
-                                    <a href="shop-item.html"><img src="assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                                    <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
+                                    <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                                    <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
                                     <div class="price">$23.00</div>
                                 </div>
                                 <div class="item">
-                                    <a href="shop-item.html"><img src="assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                                    <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
+                                    <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                                    <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
                                     <div class="price">$86.00</div>
                         </div>
                     </div>
@@ -340,8 +342,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </c:if>
                     <c:forEach var="data" items="${userDatas}">
                         <!-- PRODUCT ITEM START -->
-                        <!-- user_Role이 0인 회원만 표시(사용자인 경우) -->
-                        <c:if test="${data.userRole==0}">
+                        <!-- user_Role이 0인 회원만 표시(사용자인 경우), 자기 자신은 안 보이게 -->
+                        <c:if test="${data.userRole==0 && data.userEmail != sessionScope.userEmail}">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="product-item">
                                 <div class="pi-img-wrapper">
@@ -367,9 +369,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <!-- END SIDEBAR & CONTENT -->
     </div>
 </div>
-
-<!-- BEGIN FOOTER -->
-<div class="footer">
+<!-- BEGIN PRE-FOOTER -->
+<div class="pre-footer">
     <div class="container">
         <div class="row">
             <!-- BEGIN BOTTOM ABOUT BLOCK -->
@@ -461,23 +462,23 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!--[if lt IE 9]>
 <script src="assets/plugins/respond.min.js"></script>
 <![endif]-->
-<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-<script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-<script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
-<script src='assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
-<script src="assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
-<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+<script src='${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
 
-<script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         Layout.init();

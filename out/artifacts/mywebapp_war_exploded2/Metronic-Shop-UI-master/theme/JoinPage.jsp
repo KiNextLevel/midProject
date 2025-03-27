@@ -73,11 +73,22 @@
                         </div>
                     </div>
                     <div class="text-center mt-2">
-                        <small>기본 정보를 입력하셨습니다. 이제 추가 정보를 입력해 주세요.</small>
+                        <small>
+                            <% if (request.getAttribute("socialType") != null && request.getAttribute("socialType").equals("naver")) { %>
+                            네이버 계정으로 로그인하셨습니다. 추가 정보를 입력해 주세요.
+                            <% } else { %>
+                            기본 정보를 입력하셨습니다. 이제 추가 정보를 입력해 주세요.
+                            <% } %>
+                        </small>
                     </div>
                 </div>
 
                 <form action="joinPage.do" method="post" id="userInfoForm" enctype="multipart/form-data">
+                    <!-- 소셜 로그인 타입 히든 필드 -->
+                    <% if (request.getAttribute("socialType") != null) { %>
+                    <input type="hidden" name="socialType" value="${socialType}">
+                    <% } %>
+
                     <!-- 기본 정보 섹션 -->
                     <div class="form-section">
                         <h3><i class="fa fa-user"></i> 기본 정보</h3>
@@ -86,8 +97,28 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nickname" class="required-field">닉네임</label>
-                                    <input type="text" class="form-control" id="nickname" name="userNickname" required
-                                           maxlength="50">
+                                    <input type="text" class="form-control" id="nickname" name="userNickname"
+                                           value="${userNickname}" required maxlength="50">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">이메일</label>
+                                    <input type="email" class="form-control" id="email" name="userEmail"
+                                           value="${userEmail}" readonly>
+                                    <small class="form-text text-muted">소셜 로그인으로 가입 시 이메일은 변경할 수 없습니다.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">이름</label>
+                                    <input type="text" class="form-control" id="name" name="userName"
+                                           value="${userName}" readonly>
+                                    <small class="form-text text-muted">소셜 로그인으로 가입 시 이름은 변경할 수 없습니다.</small>
                                 </div>
                             </div>
 
@@ -295,9 +326,9 @@
 
                     <!-- 제출 버튼 -->
                     <div class="text-center mt-4 mb-5">
-                            <button type="submit" class="btn btn-primary btn-lg btn-next-step">
-                                <i class="fa fa-check-circle"></i> 회원가입 완료하기
-                            </button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-next-step">
+                            <i class="fa fa-check-circle"></i> 회원가입 완료하기
+                        </button>
                     </div>
                 </form>
             </div>

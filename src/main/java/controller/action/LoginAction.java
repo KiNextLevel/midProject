@@ -3,7 +3,7 @@ package controller.action;
 
 import controller.common.Action;
 import controller.common.ActionForward;
-import controller.logic.SendMessage;
+import controller.logic.SendEmail;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
@@ -39,9 +39,6 @@ public class LoginAction implements Action {
             // url, flag, msg 요청단위 저장
             // alert.jsp에 url, true, msg 보내기
             if (userDTO.getUserRole() == 1) { // 관리자
-                //메시지 추가 로직
-//                SendMessage sendMessage = new SendMessage();
-//                sendMessage.sendOne();
                 request.setAttribute("msg", "관리자 로그인 성공!");
                 request.setAttribute("url", "adminPage.do");
                 request.setAttribute("flag", true);

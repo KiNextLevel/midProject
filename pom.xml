@@ -67,12 +67,34 @@
             <version>2.16.1</version>
         </dependency>
 
-        <!-- coolsms 문자 전송 -->
+        <!-- Google API Client Libraries -->
         <dependency>
-            <groupId>net.nurigo</groupId>
-            <artifactId>sdk</artifactId>
-            <version>4.3.2</version>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-gmail</artifactId>
+            <version>v1-rev20240520-2.0.0</version>
         </dependency>
+
+        <!-- JavaMail API (API만 제공) -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <!-- JavaMail 구현체 (실제 메일 전송 구현체) -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <!-- Activation API (이메일 내용 전송에 필요) -->
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>

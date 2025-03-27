@@ -484,7 +484,60 @@
     <link href="assets/corporate/css/custom.css" rel="stylesheet" />
 </head>
 <body class="ecommerce">
+<!-- BEGIN TOP BAR -->
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
+                    <!-- BEGIN CURRENCIES -->
+                    <li class="shop-currencies">
+                        <a href="productPage.do">광고 제거</a>
+                    </li>
+                    <!-- END CURRENCIES -->
+                    <!-- BEGIN LANGS -->
+                    <li class="langs-block">
+                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                    </li>
+                    <!-- END LANGS -->
+                </ul>
+            </div>
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    <li><a href="myPage.do">마이페이지</a></li>
+                    <li>메시지</li>
+                    <li><a href="logout.do">로그아웃</a></li>
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
+        </div>
+    </div>
+</div>
+<!-- END TOP BAR -->
+
+<!-- BEGIN HEADER -->
+<div class="header">
+    <div class="container">
+        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png" alt="mainPage"></a>
+
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+        <!-- BEGIN TOP BAR MENU -->
+        <div class="top-bar-right">
+            <ul class="top-bar-list">
+            </ul>
+        </div>
+        <!-- END TOP BAR MENU -->
+    </div>
+</div>
+<!-- Header END -->
+
 <div class="main">
+
     <div class="container">
         <!-- 경로 표시 -->
         <ul class="breadcrumb">

@@ -312,8 +312,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </c:if>
                     <c:forEach var="data" items="${userDatas}">
                         <!-- PRODUCT ITEM START -->
-                        <!-- user_Role이 0인 회원만 표시(사용자인 경우) -->
-                        <c:if test="${data.userRole==0}">
+                        <!-- user_Role이 0인 회원만 표시(사용자인 경우), 자기 자신은 안 보이게 -->
+                        <c:if test="${data.userRole==0 && data.userEmail != sessionScope.userEmail}">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="product-item">
                                 <div class="pi-img-wrapper">

@@ -21,15 +21,17 @@ public class KakaoCallBackAction implements Action {
     public ActionForward execute(HttpServletRequest request) {
         ActionForward forward = new ActionForward();
         String code = request.getParameter("code");  // 카카오에서 전달한 인가 코드
+        System.out.println("kakaoCallBack log - code = [" + code+"]");
 
         String accessToken = null;
         try {
-            // 액세스 토큰을 얻기 위한 POST 요청D
+            // 액세스 토큰을 얻기 위한 POST 요청
             accessToken = getAccessToken(code);
+            System.out.println("kakaoCallBack log - accessToken = [" + accessToken+"]");
 
             // 액세스 토큰으로 사용자 정보 가져오기
             String userInfo = getUserInfo(accessToken);
-            System.out.println("kakaologin log: userInfo: ["+userInfo+"]");
+            System.out.println("kakaoCallBack log - userInfo: ["+userInfo+"]");
 
             // JSONParser를 사용하여 사용자 정보에서 이메일과 닉네임 추출
             JSONParser parser = new JSONParser();

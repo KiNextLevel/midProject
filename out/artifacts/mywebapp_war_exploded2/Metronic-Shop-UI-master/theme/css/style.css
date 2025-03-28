@@ -1,4 +1,4 @@
-body {
+body{
     margin: 0;
     padding: 0;
     display: flex;
@@ -8,8 +8,7 @@ body {
     font-family: 'Jost', sans-serif;
     background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }
-
-.main {
+.main{
     width: 350px;
     height: 500px;
     background: red;
@@ -18,18 +17,15 @@ body {
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
 }
-
-#chk {
+#chk{
     display: none;
 }
-
-.signup {
+.signup{
     position: relative;
-    width: 100%;
+    width:100%;
     height: 100%;
 }
-
-label {
+label{
     color: #fff;
     font-size: 2.3em;
     justify-content: center;
@@ -39,8 +35,7 @@ label {
     cursor: pointer;
     transition: .5s ease-in-out;
 }
-
-input {
+input{
     width: 60%;
     height: 20px;
     background: #e0dede;
@@ -52,8 +47,7 @@ input {
     outline: none;
     border-radius: 5px;
 }
-
-button {
+button{
     width: 60%;
     height: 40px;
     margin: 10px auto;
@@ -70,87 +64,27 @@ button {
     transition: .2s ease-in;
     cursor: pointer;
 }
-
-button:hover {
+button:hover{
     background: #6d44b8;
 }
-
-.login {
+.login{
     height: 460px;
     background: #eee;
     border-radius: 60% / 10%;
     transform: translateY(-180px);
     transition: .8s ease-in-out;
 }
-
-.login label {
+.login label{
     color: #573b8a;
     transform: scale(.6);
 }
 
-#chk:checked ~ .login {
+#chk:checked ~ .login{
     transform: translateY(-500px);
 }
-
-#chk:checked ~ .login label {
+#chk:checked ~ .login label{
     transform: scale(1);
 }
-
-#chk:checked ~ .signup label {
+#chk:checked ~ .signup label{
     transform: scale(.6);
-}
-
-/* 네이버 로그인 버튼 스타일 */
-.naver-login-btn {
-    width: 60%;
-    height: 40px;
-    margin: 10px auto;
-    justify-content: center;
-    display: block;
-    color: #fff;
-    background: #1EC800; /* 네이버 색상 */
-    font-size: 1em;
-    font-weight: bold;
-    margin-top: 10px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    transition: .2s ease-in;
-    cursor: pointer;
-}
-
-.naver-login-btn:hover {
-    background: #19A400; /* 호버 시 색상 */
-}
-
-.social-login {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.social-login p {
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.or-divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 15px 0;
-    color: #fff;
-}
-
-.or-divider::before, .or-divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #fff;
-}
-
-.or-divider::before {
-    margin-right: 10px;
-}
-
-.or-divider::after {
-    margin-left: 10px;
 }

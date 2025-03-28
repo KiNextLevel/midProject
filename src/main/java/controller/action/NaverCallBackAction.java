@@ -104,23 +104,25 @@ public class NaverCallBackAction implements Action {
                 request.setAttribute("msg", "네이버 계정으로 회원가입을 진행합니다.");
                 request.setAttribute("flag", true);
                 request.setAttribute("url", "JoinPage.jsp");
-                forward.setPath("alert.jsp");
-                forward.setRedirect(false);
             } else {
                 // 기존 회원이면 로그인 처리
                 searchDTO.setCondition("SELECTONE_USERINFO");
                 user = userDAO.selectOne(searchDTO);
+                if (user.getUserRole() == 0 || user.getUserRole() == 1) {
+                    // 세션에 로그인 정보 저장
+                    HttpSession session = request.getSession();
+                    session.setAttribute("userEmail", user.getUserEmail());
 
-                // 세션에 로그인 정보 저장
-                HttpSession session = request.getSession();
-                session.setAttribute("userEmail", user.getUserEmail());
-
-                // 로그인 성공 메시지 및 메인 페이지로 리다이렉트
-                request.setAttribute("msg", "네이버 계정으로 로그인되었습니다.");
-                request.setAttribute("flag", true);
-                request.setAttribute("url", "mainPage.do");
-                forward.setPath("alert.jsp");
-                forward.setRedirect(false);
+                    // 로그인 성공 메시지 및 메인 페이지로 리다이렉트
+                    request.setAttribute("msg", "네이버 계정으로 로그인되었습니다.");
+                    request.setAttribute("flag", true);
+                    request.setAttribute("url", "mainPage.do");
+                } else { //블랙 or 탈퇴한 회원이면 로그인 불가능
+                    // 로그인 페이지로 리다이렉트
+                    request.setAttribute("msg", "블랙 계정이나 탈퇴한 계정은 로그인 할 수 없습니다.");
+                    request.setAttribute("flag", true);
+                    request.setAttribute("url", "loginPage.do");
+                }
             }
 
         } catch (Exception e) {

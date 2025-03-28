@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <!--
@@ -38,30 +38,45 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <meta property="og:url" content="-CUSTOMER VALUE-">
 
     <link rel="shortcut icon" href="favicon.ico">
+    
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/AdminReportPage.css" rel="stylesheet">
 
     <!-- Fonts START -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
+          rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"><!-- for slider-range -->
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css"
+          rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <!-- for slider-range -->
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="assets/pages/css/components.css" rel="stylesheet">
-    <link href="assets/corporate/css/style.css" rel="stylesheet">
-    <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-    <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-    <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-    <link href="assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css"
+          rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css"
+          rel="stylesheet" id="style-color">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css"
+          rel="stylesheet">
     <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -93,22 +108,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <!-- BEGIN TOP BAR LEFT PART -->
             <div class="col-md-6 col-sm-6 additional-shop-info">
                 <ul class="list-unstyled list-inline">
-                    <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
+                    <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
                     <!-- BEGIN CURRENCIES -->
                     <li class="shop-currencies">
-                        <a href="javascript:void(0);">€</a>
-                        <a href="javascript:void(0);">£</a>
-                        <a href="javascript:void(0);" class="current">$</a>
+                        <a href="productPage.do">광고 제거</a>
                     </li>
                     <!-- END CURRENCIES -->
                     <!-- BEGIN LANGS -->
                     <li class="langs-block">
-                        <a href="javascript:void(0);" class="current">English </a>
-                        <div class="langs-block-others-wrapper"><div class="langs-block-others">
-                            <a href="javascript:void(0);">French</a>
-                            <a href="javascript:void(0);">Germany</a>
-                            <a href="javascript:void(0);">Turkish</a>
-                        </div></div>
+                        <a href="productPage.do" class="current"> 토큰 구매 </a>
                     </li>
                     <!-- END LANGS -->
                 </ul>
@@ -117,10 +125,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="shop-account.html">My Account</a></li>
-                    <li><a href="shop-wishlist.html">My Wishlist</a></li>
-                    <li><a href="shop-checkout.html">Checkout</a></li>
-                    <li><a href="page-login.html">Log In</a></li>
+                    <li><a href="myPage.do">마이페이지</a></li>
+                    <li>메시지</li>
+                    <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
@@ -132,408 +139,144 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="mainPage.do"><img
+                src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
+                alt="mainPage"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
-        <!-- BEGIN CART -->
-        <div class="top-cart-block">
-            <div class="top-cart-info">
-                <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
-                <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
-            </div>
-            <i class="fa fa-shopping-cart"></i>
-
-            <div class="top-cart-content-wrapper">
-                <div class="top-cart-content">
-                    <ul class="scroller" style="height: 250px;">
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                    </ul>
-                    <div class="text-right">
-                        <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
-                        <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--END CART -->
-
-        <!-- BEGIN NAVIGATION -->
-        <div class="header-navigation">
-            <ul>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        Woman
-
-                    </a>
-
-                    <!-- BEGIN DROPDOWN MENU -->
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
-                            <a href="shop-product-list.html">Hi Tops <i class="fa fa-angle-right"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="shop-product-list.html">Second Level Link</a></li>
-                                <li><a href="shop-product-list.html">Second Level Link</a></li>
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                                        Second Level Link
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="shop-product-list.html">Third Level Link</a></li>
-                                        <li><a href="shop-product-list.html">Third Level Link</a></li>
-                                        <li><a href="shop-product-list.html">Third Level Link</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="shop-product-list.html">Running Shoes</a></li>
-                        <li><a href="shop-product-list.html">Jackets and Coats</a></li>
-                    </ul>
-                    <!-- END DROPDOWN MENU -->
-                </li>
-                <li class="dropdown dropdown-megamenu">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        Man
-
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="header-navigation-content">
-                                <div class="row">
-                                    <div class="col-md-4 header-navigation-col">
-                                        <h4>Footwear</h4>
-                                        <ul>
-                                            <li><a href="shop-product-list.html">Astro Trainers</a></li>
-                                            <li><a href="shop-product-list.html">Basketball Shoes</a></li>
-                                            <li><a href="shop-product-list.html">Boots</a></li>
-                                            <li><a href="shop-product-list.html">Canvas Shoes</a></li>
-                                            <li><a href="shop-product-list.html">Football Boots</a></li>
-                                            <li><a href="shop-product-list.html">Golf Shoes</a></li>
-                                            <li><a href="shop-product-list.html">Hi Tops</a></li>
-                                            <li><a href="shop-product-list.html">Indoor and Court Trainers</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4 header-navigation-col">
-                                        <h4>Clothing</h4>
-                                        <ul>
-                                            <li><a href="shop-product-list.html">Base Layer</a></li>
-                                            <li><a href="shop-product-list.html">Character</a></li>
-                                            <li><a href="shop-product-list.html">Chinos</a></li>
-                                            <li><a href="shop-product-list.html">Combats</a></li>
-                                            <li><a href="shop-product-list.html">Cricket Clothing</a></li>
-                                            <li><a href="shop-product-list.html">Fleeces</a></li>
-                                            <li><a href="shop-product-list.html">Gilets</a></li>
-                                            <li><a href="shop-product-list.html">Golf Tops</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4 header-navigation-col">
-                                        <h4>Accessories</h4>
-                                        <ul>
-                                            <li><a href="shop-product-list.html">Belts</a></li>
-                                            <li><a href="shop-product-list.html">Caps</a></li>
-                                            <li><a href="shop-product-list.html">Gloves, Hats and Scarves</a></li>
-                                        </ul>
-
-                                        <h4>Clearance</h4>
-                                        <ul>
-                                            <li><a href="shop-product-list.html">Jackets</a></li>
-                                            <li><a href="shop-product-list.html">Bottoms</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-12 nav-brands">
-                                        <ul>
-                                            <li><a href="shop-product-list.html"><img title="esprit" alt="esprit" src="assets/pages/img/brands/esprit.jpg"></a></li>
-                                            <li><a href="shop-product-list.html"><img title="gap" alt="gap" src="assets/pages/img/brands/gap.jpg"></a></li>
-                                            <li><a href="shop-product-list.html"><img title="next" alt="next" src="assets/pages/img/brands/next.jpg"></a></li>
-                                            <li><a href="shop-product-list.html"><img title="puma" alt="puma" src="assets/pages/img/brands/puma.jpg"></a></li>
-                                            <li><a href="shop-product-list.html"><img title="zara" alt="zara" src="assets/pages/img/brands/zara.jpg"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="shop-item.html">Kids</a></li>
-                <li class="dropdown dropdown100 nav-catalogue">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        New
-
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="header-navigation-content">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-4 col-xs-6">
-                                        <div class="product-item">
-                                            <div class="pi-img-wrapper">
-                                                <a href="shop-item.html"><img src="assets/pages/img/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
-                                            </div>
-                                            <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                                            <div class="pi-price">$29.00</div>
-                                            <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-6">
-                                        <div class="product-item">
-                                            <div class="pi-img-wrapper">
-                                                <a href="shop-item.html"><img src="assets/pages/img/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
-                                            </div>
-                                            <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                                            <div class="pi-price">$29.00</div>
-                                            <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-6">
-                                        <div class="product-item">
-                                            <div class="pi-img-wrapper">
-                                                <a href="shop-item.html"><img src="assets/pages/img/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
-                                            </div>
-                                            <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                                            <div class="pi-price">$29.00</div>
-                                            <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-6">
-                                        <div class="product-item">
-                                            <div class="pi-img-wrapper">
-                                                <a href="shop-item.html"><img src="assets/pages/img/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
-                                            </div>
-                                            <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                                            <div class="pi-price">$29.00</div>
-                                            <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown active">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        Pages
-
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li><a href="shop-index.html">Home Default</a></li>
-                        <li><a href="shop-index-header-fix.html">Home Header Fixed</a></li>
-                        <li><a href="shop-index-light-footer.html">Home Light Footer</a></li>
-                        <li><a href="shop-product-list.html">Product List</a></li>
-                        <li><a href="shop-search-result.html">Search Result</a></li>
-                        <li><a href="shop-item.html">Product Page</a></li>
-                        <li><a href="shop-shopping-cart-null.html">Shopping Cart (Null Cart)</a></li>
-                        <li><a href="shop-shopping-cart.html">Shopping Cart</a></li>
-                        <li><a href="shop-checkout.html">Checkout</a></li>
-                        <li><a href="shop-about.html">About</a></li>
-                        <li><a href="shop-contacts.html">Contacts</a></li>
-                        <li><a href="shop-account.html">My account</a></li>
-                        <li><a href="shop-wishlist.html">My Wish List</a></li>
-                        <li class="active"><a href="shop-goods-compare.html">Product Comparison</a></li>
-                        <li><a href="shop-standart-forms.html">Standart Forms</a></li>
-                        <li><a href="shop-faq.html">FAQ</a></li>
-                        <li><a href="shop-privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="shop-terms-conditions-page.html">Terms &amp; Conditions</a></li>
-                    </ul>
-                </li>
-
-
-                <li><a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes&amp;utm_source=download&amp;utm_medium=banner&amp;utm_campaign=metronic_frontend_freebie" target="_blank">Admin theme</a></li>
-
-                <!-- BEGIN TOP SEARCH -->
-                <li class="menu-search">
-                    <span class="sep"></span>
-                    <i class="fa fa-search search-btn"></i>
-                    <div class="search-box">
-                        <form action="#">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search" class="form-control">
-                                <span class="input-group-btn">
-                      <button class="btn btn-primary" type="submit">Search</button>
-                    </span>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-                <!-- END TOP SEARCH -->
+        <!-- BEGIN TOP BAR MENU -->
+        <div class="top-bar-right">
+            <ul class="top-bar-list">
             </ul>
         </div>
-        <!-- END NAVIGATION -->
+        <!-- END TOP BAR MENU -->
     </div>
 </div>
 <!-- Header END -->
 
 <div class="main">
     <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="">Store</a></li>
-            <li class="active">My Wish List</li>
-        </ul>
-        <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
-            <!-- BEGIN SIDEBAR -->
-            <div class="sidebar col-md-3 col-sm-5">
-                <ul class="list-group margin-bottom-25 sidebar-menu">
-                    <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Ladies</a></li>
-                    <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Kids</a></li>
-                    <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Accessories</a></li>
-                    <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sports</a></li>
-                    <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Brands</a></li>
-                    <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Electronics</a></li>
-                    <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Home & Garden</a></li>
-                    <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Custom Link</a></li>
-                </ul>
-            </div>
-            <!-- END SIDEBAR -->
-
-            <!-- BEGIN CONTENT -->
-            <div class="col-md-9 col-sm-7">
-                <h1>신고 회원 관리</h1>
-                <div class="goods-page">
-                    <div class="goods-data compare-goods clearfix">
-                        <div class="table-wrapper-responsive">
-                            <table summary="Product Details">
-
-                                <c:choose>
-                                    <c:when test="${empty reported}">
-                                        <tr>
-                                            <td colspan="5">신고 목록이 없습니다</td>
-                                        </tr>
-                                    </c:when>
-                                    <c:otherwise>
-
-                                        <c:forEach var="data" items="${datas }">
-                                            <tr>
-                                                <th colspan="3">
-                                                    <h2>신고 한 회원 [이름:이메일${reportDTO.REPORTER_REPORTER}]</h2>
-                                                </th>
-                                            </tr>
-
-
-                                            <tr>
-                                                <th colspan="3">
-                                                    <h2>신고 당한 회원 [이름:이메일${reportDTO.reportReported}]</h2>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td class="compare-info">
-                                                    신고 사유
-                                                </td>
-                                                <td class="compare-item">
-                                                        ${reportDTO.REPORT_REASON}
-                                                </td>
-                                                <td class="compare-item">
-                                                    <form id="sendAlert" method="POST">
-                                                        <input type="hidden" name="reportedUser" value="${reportDTO.REPORTER_REPORTED}">
-                                                        <input type="hidden" name="reason" value="${reportDTO.REPORT_REASON}">
-                                                        <select id="WARNING" name="action">
-                                                            <option value="sendWarning.do">경고</option>
-                                                            <option value="adminAddBlack.do">블랙리스트 추가</option>
-                                                        </select>
-                                                        <input type="submit" value="보내기">
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-
-                                    </c:otherwise>
-                                </c:choose>
-
-                                <tr>
-                                    <th colspan="3">
-                                        <h2>블랙리스트 ${reportDTO.REPORT_REPORTED}</h2>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td class="compare-info">
-                                        회원 정보
-                                    </td>
-                                    <td class="compare-item">
-                                        회원 이름
-                                        ${reportDTO.REPORT_REASON}
-                                    </td>
-                                    <td class="compare-item">
-                                        회원 아이디
-                                        ${reportDTO.REPORT_REPORTED}
-                                    </td>
-                                    <td class="compare-item">
-                                        <form id="DELETEBLACK" action="controller.jsp" method="POST">
-                                            <input type="hidden" name="REPORT_REPORTED" value="${reportDTO.REPORT_Reported}">
-                                            <input type="hidden" name="command" value="DELETEBLACK">
-                                            <input type="submit" class="btn btn-primary" value="블랙리스트에서 삭제">
-                                        </form>
-                                    </td>
-                                    </form>
-                                    </td>
-                                </tr>
-
-                            </table>
-
-                        </div>
-                    </div>
+            <!-- 왼쪽 사이드바 추가 (관리자 메뉴) -->
+            <div class="col-md-3 col-sm-5">
+                <div class="sidebar">
+                    <ul class="list-group margin-bottom-25 sidebar-menu">
+                        <li class="list-group-item clearfix"><a href="adminPage.do"><i class="fa fa-home"></i> 관리자 대시보드</a>
+                        </li>
+                        <li class="list-group-item clearfix"><a href="boardPage.do"><i class="fa fa-file-text"></i> 게시글
+                            관리</a></li>
+                        <li class="list-group-item clearfix"><a href="adminPaymentListPage.do"><i
+                                class="fa fa-credit-card"></i> 결제 내역 관리</a></li>
+                        <li class="list-group-item clearfix active"><a href="adminReportPage.do"><i
+                                class="fa fa-warning"></i> 신고 회원 관리</a></li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- END CONTENT -->
+            <!-- 메인 컨텐츠 -->
+            <div class="col-md-9 col-sm-7">
+                <h1 class="page-title">신고 회원 관리</h1>
+
+                <!-- 신고 목록 섹션 -->
+                <div class="section-title">
+                    <i class="fa fa-flag"></i> 신고 목록
+                </div>
+
+                <c:choose>
+                    <c:when test="${empty reported}">
+                        <div class="empty-message">
+                            <i class="fa fa-info-circle fa-2x"></i>
+                            <p>현재 접수된 신고 내역이 없습니다.</p>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="data" items="${reported}">
+                            <div class="report-panel">
+                                <div class="report-header">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4><span class="user-badge">신고자</span> ${data.reportReporter}</h4>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <h4><span class="user-badge">피신고자</span> ${data.reportReported}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="report-content">
+                                    <h5><strong>신고 사유:</strong> ${data.reportReason}</h5>
+                                    <p>${data.reportReason}</p>
+                                </div>
+
+                                <div class="report-actions">
+                                    <form id="sendAlert-${data.reportReported}" method="POST" class="form-inline">
+                                        <input type="hidden" name="reportedUser" value="${data.reportReported}">
+                                        <input type="hidden" name="reason" value="${data.reportReason}">
+
+                                        <div class="form-group">
+                                            <select id="action-${data.reportReported}" name="action"
+                                                    class="form-control">
+                                                <option value="adminSendWarning.do">경고 메시지 발송</option>
+                                                <option value="adminAddBlack.do">블랙리스트에 추가</option>
+                                            </select>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary"
+                                                onclick="setFormAction(event, this)">
+                                            <i class="fa fa-send"></i> 조치 실행
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+
+                <!-- 블랙리스트 섹션 -->
+                <div class="section-title">
+                    <i class="fa fa-ban"></i> 블랙리스트
+                </div>
+
+                <table class="blacklist-table">
+                    <thead>
+                    <tr>
+                        <th width="10%">#</th>
+                        <th width="25%">회원 이름</th>
+                        <th width="40%">회원 이메일</th>
+                        <th width="25%">관리</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:choose>
+                        <c:when test="${empty blacks}">
+                            <tr>
+                                <td colspan="4" class="empty-message">블랙리스트에 등록된 회원이 없습니다.</td>
+                            </tr>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach var="blacksItem" items="${blacks}" varStatus="status">
+                                <tr>
+                                    <td class="text-center">${status.count}</td>
+                                    <td>${blacksItem.userName}</td>
+                                    <td>${blacksItem.userEmail}</td>
+                                    <td>
+                                        <form id="DELETEBLACK-${blacksItem.userEmail}" action="adminDeleteBlack.do"
+                                              method="POST">
+                                            <input type="hidden" name="REPORT_REPORTED" value="${blacksItem.userEmail}">
+                                            <button type="submit" class="btn btn-remove btn-sm">
+                                                <i class="fa fa-trash-o"></i> 블랙리스트에서 삭제
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <!-- END SIDEBAR & CONTENT -->
     </div>
 </div>
 
@@ -544,88 +287,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- BEGIN STEPS -->
 
 <!-- END STEPS -->
-
-<!-- BEGIN PRE-FOOTER -->
-<div class="pre-footer">
-    <div class="container">
-        <div class="row">
-            <!-- BEGIN BOTTOM ABOUT BLOCK -->
-            <div class="col-md-3 col-sm-6 pre-footer-col">
-                <h2>About us</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
-                <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
-            </div>
-            <!-- END BOTTOM ABOUT BLOCK -->
-            <!-- BEGIN BOTTOM INFO BLOCK -->
-            <div class="col-md-3 col-sm-6 pre-footer-col">
-                <h2>Information</h2>
-                <ul class="list-unstyled">
-                    <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Delivery Information</a></li>
-                    <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Customer Service</a></li>
-                    <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Order Tracking</a></li>
-                    <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Shipping &amp; Returns</a></li>
-                    <li><i class="fa fa-angle-right"></i> <a href="contacts.html">Contact Us</a></li>
-                    <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Careers</a></li>
-                    <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Payment Methods</a></li>
-                </ul>
-            </div>
-            <!-- END INFO BLOCK -->
-
-            <!-- BEGIN TWITTER BLOCK -->
-            <div class="col-md-3 col-sm-6 pre-footer-col">
-                <h2 class="margin-bottom-0">Latest Tweets</h2>
-                <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>
-            </div>
-            <!-- END TWITTER BLOCK -->
-
-            <!-- BEGIN BOTTOM CONTACTS -->
-            <div class="col-md-3 col-sm-6 pre-footer-col">
-                <h2>Our Contacts</h2>
-                <address class="margin-bottom-40">
-                    35, Lorem Lis Street, Park Ave<br>
-                    California, US<br>
-                    Phone: 300 323 3456<br>
-                    Fax: 300 323 1456<br>
-                    Email: <a href="mailto:info@metronic.com">info@metronic.com</a><br>
-                    Skype: <a href="skype:metronic">metronic</a>
-                </address>
-            </div>
-            <!-- END BOTTOM CONTACTS -->
-        </div>
-        <hr>
-        <div class="row">
-            <!-- BEGIN SOCIAL ICONS -->
-            <div class="col-md-6 col-sm-6">
-                <ul class="social-icons">
-                    <li><a class="rss" data-original-title="rss" href="javascript:;"></a></li>
-                    <li><a class="facebook" data-original-title="facebook" href="javascript:;"></a></li>
-                    <li><a class="twitter" data-original-title="twitter" href="javascript:;"></a></li>
-                    <li><a class="googleplus" data-original-title="googleplus" href="javascript:;"></a></li>
-                    <li><a class="linkedin" data-original-title="linkedin" href="javascript:;"></a></li>
-                    <li><a class="youtube" data-original-title="youtube" href="javascript:;"></a></li>
-                    <li><a class="vimeo" data-original-title="vimeo" href="javascript:;"></a></li>
-                    <li><a class="skype" data-original-title="skype" href="javascript:;"></a></li>
-                </ul>
-            </div>
-            <!-- END SOCIAL ICONS -->
-            <!-- BEGIN NEWLETTER -->
-            <div class="col-md-6 col-sm-6">
-                <div class="pre-footer-subscribe-box pull-right">
-                    <h2>Newsletter</h2>
-                    <form action="#">
-                        <div class="input-group">
-                            <input type="text" placeholder="youremail@mail.com" class="form-control">
-                            <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Subscribe</button>
-                  </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- END NEWLETTER -->
-        </div>
-    </div>
-</div>
 <!-- BEGIN PRE-FOOTER -->
 <div class="pre-footer">
     <div class="container">
@@ -659,7 +320,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <address class="margin-bottom-40">
                     서울 강남구 테헤란로26길 12<br>
                     (우) 06236 (지번) 역삼동 736-56<br>
-                    Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
+                    Notion: <a
+                        href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
                     Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
                 </address>
             </div>
@@ -670,27 +332,41 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <!-- Load javascripts at bottom, this will reduce page load time -->
             <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
             <!--[if lt IE 9]>
-            <script src="assets/plugins/respond.min.js"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/respond.min.js"></script>
             <![endif]-->
-            <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-            <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-            <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-            <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-            <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
             <!-- END CORE PLUGINS -->
 
             <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-            <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
             <!-- pop up -->
-            <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
             <!-- slider for products -->
 
-            <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
             <script type="text/javascript">
                 jQuery(document).ready(function () {
                     Layout.init();
                     Layout.initOWL();
                     Layout.initTwitter();
+                });
+
+                function setFormAction(event, button) {
+                    event.preventDefault(); // 기본 폼 제출 방지
+                    var form = button.closest("form"); // 현재 클릭된 버튼이 속한 form 찾기
+                    var selectId = form.querySelector("select").id; // 선택된 select 요소의 ID 가져오기
+                    var selectedAction = document.getElementById(selectId).value; // 선택된 옵션 값 가져오기
+                    form.action = selectedAction; // 폼의 action을 동적으로 설정
+                    form.submit(); // 폼 제출
+                }
+
+                // 페이지 로드 시 실행
+                document.addEventListener('DOMContentLoaded', function () {
+                    // 필요한 초기화 코드
                 });
             </script>
             <!-- END PAGE LEVEL JAVASCRIPTS -->

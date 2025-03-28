@@ -45,6 +45,11 @@ public class UserDAO {
     // 회원 ROLE 변경
     final String UPDATE_ROLE = "UPDATE USER SET USER_ROLE = ? WHERE USER_EMAIL = ?";
 
+    // 회원 프로필사진 변경
+    final String UPDATE_PROFILE_IMAGE = "UPDATE USER SET USER_PROFILE = ? WHERE USER_EMAIL = ?";
+    // 회원 프리미엄 변경
+    final String UPDATE_PREMIUM = "UPDATE USER SET USER_PREMIUM = 1 WHERE USER_EMAIL = ?";
+
     // 회원 탈퇴
     final String DELETE = "DELETE FROM USER WHERE USER_EMAIL = ?";
 
@@ -320,6 +325,17 @@ public class UserDAO {
                 pstmt = conn.prepareStatement(UPDATE_ROLE);
                 pstmt.setInt(1, userDTO.getUserRole());
                 pstmt.setString(2, userDTO.getUserEmail());
+            }
+            // 프로필사진 변경
+            else if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_PROFILE_IMAGE")) {
+                pstmt = conn.prepareStatement(UPDATE_PROFILE_IMAGE);
+                pstmt.setString(1, userDTO.getUserProfile());
+                pstmt.setString(2, userDTO.getUserEmail());
+            }
+            // 프리미엄 변경
+            else if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_PREMIUM")){
+                pstmt = conn.prepareStatement(UPDATE_PREMIUM);
+                pstmt.setString(1, userDTO.getUserEmail());
             }
             int result = pstmt.executeUpdate();
             return result > 0;

@@ -21,30 +21,27 @@ public class KakaoCallBackAction implements Action {
     public ActionForward execute(HttpServletRequest request) {
         ActionForward forward = new ActionForward();
         String code = request.getParameter("code");  // 카카오에서 전달한 인가 코드
+        System.out.println("kakaoCallBack log - code = [" + code+"]");
 
         String accessToken = null;
         try {
             // 액세스 토큰을 얻기 위한 POST 요청
             accessToken = getAccessToken(code);
+            System.out.println("kakaoCallBack log - accessToken = [" + accessToken+"]");
 
             // 액세스 토큰으로 사용자 정보 가져오기
             String userInfo = getUserInfo(accessToken);
-            System.out.println("kakaologin log: userInfo: ["+userInfo+"]");
+            System.out.println("kakaoCallBack log - userInfo: ["+userInfo+"]");
 
             // JSONParser를 사용하여 사용자 정보에서 이메일과 닉네임 추출
             JSONParser parser = new JSONParser();
             JSONObject jsonResponse = (JSONObject) parser.parse(userInfo);
-
             // kakao_account 객체 추출
             JSONObject kakaoAccount = (JSONObject) jsonResponse.get("kakao_account");
-
             // 이메일 추출
             String email = (String) kakaoAccount.get("email");
-
             // 이름 추출 (이름이 있을 경우만)
             String name = (String) kakaoAccount.get("name");
-
-            // 로그에 이메일과 이름 출력
             System.out.println("kakaologin log: email: [" + email + "], name: [" + name + "]");
 
 
@@ -58,7 +55,7 @@ public class KakaoCallBackAction implements Action {
             searchDTO.setCondition("SELECTONE_CHECK");
 
             UserDTO user = userDAO.selectOne(searchDTO);
-            if (user == null) {
+            if (user == null) { // 회원가입 진행
                 HttpSession session = request.getSession();
                 session.setAttribute("userEmail", email);
                 System.out.println("KakaoLogin Log: userEmail: [" + email+"]");
@@ -73,24 +70,28 @@ public class KakaoCallBackAction implements Action {
                 request.setAttribute("msg", "카카오 계정으로 회원가입을 진행합니다.");
                 request.setAttribute("flag", true);
                 request.setAttribute("url", "JoinPage.jsp");
-                forward.setPath("alert.jsp");
-                forward.setRedirect(false);
-            } else {
-                // 기존 회원이면 로그인 처리
+            } else { // 기존 회원이면 로그인 처리
                 searchDTO.setCondition("SELECTONE_USERINFO");
                 user = userDAO.selectOne(searchDTO);
+                // 회원이나 관리자일 경우만 로그인
+                if (user.getUserRole() == 0 || user.getUserRole() == 1) {
+                    // 세션에 로그인 정보 저장
+                    HttpSession session = request.getSession();
+                    session.setAttribute("userEmail", user.getUserEmail());
 
-                // 세션에 로그인 정보 저장
-                HttpSession session = request.getSession();
-                session.setAttribute("userEmail", user.getUserEmail());
-
-                // 로그인 성공 메시지 및 메인 페이지로 리다이렉트
-                request.setAttribute("msg", "카카오 계정으로 로그인되었습니다.");
-                request.setAttribute("flag", true);
-                request.setAttribute("url", "mainPage.do");
-                forward.setPath("alert.jsp");
-                forward.setRedirect(false);
+                    // 로그인 성공 메시지 및 메인 페이지로 리다이렉트
+                    request.setAttribute("msg", "카카오 계정으로 로그인되었습니다.");
+                    request.setAttribute("flag", true);
+                    request.setAttribute("url", "mainPage.do");
+                } else { //블랙 or 탈퇴한 회원이면 로그인 불가능
+                    // 로그인 페이지로 리다이렉트
+                    request.setAttribute("msg", "블랙 계정이나 탈퇴한 계정은 로그인 할 수 없습니다.");
+                    request.setAttribute("flag", true);
+                    request.setAttribute("url", "loginPage.do");
+                }
             }
+            forward.setPath("alert.jsp");
+            forward.setRedirect(false);
         } catch (IOException | org.json.simple.parser.ParseException e) {
             e.printStackTrace(); // 예외 로그
             request.setAttribute("msg", "카카오 로그인 중 오류가 발생했습니다.");
@@ -98,7 +99,6 @@ public class KakaoCallBackAction implements Action {
             forward.setPath("alert.jsp");
             forward.setRedirect(false);
         }
-
         return forward;
     }
 

@@ -429,15 +429,36 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 console.log("로그: 상태 업데이트 성공 [" + response + "]");
 
                 // 상태 업데이트 성공 시, UI에서 해당 알림의 상태를 '읽음'으로 변경
-                $(".alert-item[data-alert-number='" + alertNumber + "']")
+                $("#alert-" + alertNumber)
                     .find(".alert-status")
                     .css("background-color", "#4CAF50")  // '읽음' 색상으로 변경
                     .text("읽음");  // 텍스트를 '읽음'으로 변경
+
+                // 매번 알림을 읽음으로 표시할 때마다 호출
+                // 새 알림이 있습니다 숨기기 위한 함수
+                checkAllAlertsRead();
             },
             error: function() {
                 console.log("비동기 처리 실패");
             }
         });
+    }
+
+    // 알림 상태를 모두 확인하여 "새 알림이 있습니다" 메시지를 숨기기
+    function checkAllAlertsRead() {
+        // 모든 알림이 '읽음' 상태인지 확인
+        let allRead = true;
+
+        $(".alert-status").each(function() {
+            if ($(this).text() === '읽지 않음') {
+                allRead = false;
+            }
+        });
+
+        // 모든 알림이 읽음이면 "새 알림이 있습니다" 메시지 숨기기
+        if (allRead) {
+            $(".top-cart-info").hide();  // "새 알림이 있습니다" 메시지를 숨김
+        }
     }
 
     function updateAlertStatus(alertNumber, isRead) {

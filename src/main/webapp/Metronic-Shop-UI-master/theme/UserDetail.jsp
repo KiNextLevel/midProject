@@ -1,6 +1,6 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
+<%@ page import="org.example.webapp.model.dto.PreferenceDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="preferenceDTO" class="org.example.webapp.model.dto.PreferenceDTO" scope="page" />
 <%@ page isELIgnored="false" %>
 
 <html>
@@ -192,9 +192,20 @@
                                 <!-- 첫번째 취향 넣는 곳-->
                                 <div class="review-item clearfix">
                                     <div class="review-item-content">
+                                        <%
+                                            PreferenceDTO preferenceDTO = (PreferenceDTO) request.getAttribute("preferenceDTO");
+                                            if(preferenceDTO != null) {
+                                        %>
                                         <p>선호 키 : <%= preferenceDTO.getPreferenceHeight() %></p><br>
                                         <p>선호 체형 : <%= preferenceDTO.getPreferenceBody() %></p><br>
                                         <p>선호 나이 : <%= preferenceDTO.getPreferenceAge() %></p><br>
+                                        <%
+                                        } else {
+                                        %>
+                                        <p>사용자 정보를 찾을 수 없습니다.</p>
+                                        <%
+                                            }
+                                        %>
                                     </div>
                                 </div>
                             </div>

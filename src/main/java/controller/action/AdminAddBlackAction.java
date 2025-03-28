@@ -2,11 +2,14 @@ package controller.action;
 
 import controller.common.Action;
 import controller.common.ActionForward;
+import controller.logic.SendEmail;
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
 
 public class AdminAddBlackAction implements Action{
+	final static String subject = "[Next Love] 블랙리스트 처리 안내";
+	final static String content = "블랙리스트 처리되어 사이트를 더 이상 이용하실 수 없습니다.";
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
@@ -43,6 +46,8 @@ public class AdminAddBlackAction implements Action{
 		userDTO.setCondition("UPDATE_ROLE");
 		userDTO.setUserRole(2);
 		if(userDAO.update(userDTO)) {
+			SendEmail.sendMail(reportedUserEmail, subject, content);
+
 			request.setAttribute("msg", "사용자를 블랙 처리 했습니다");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "adminReportPage.do");

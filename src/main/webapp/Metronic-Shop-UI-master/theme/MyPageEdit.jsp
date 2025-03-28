@@ -376,7 +376,7 @@
             <script type="text/javascript">
                 jQuery(document).ready(function () {
                     Layout.init();
-                    Layout.initOWL();
+                    Layout.initOWL(); 
                     Layout.initTwitter();
                 });
 

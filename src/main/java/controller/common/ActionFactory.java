@@ -47,6 +47,7 @@ public class ActionFactory {
 		factory.put("updateProfileImage.do", new UpdateProfileImageAction());
 		factory.put("deleteUser.do", new DeleteUserAction());
 		factory.put("deleteUserAlert.do", new DeleteUserAlertAction());
+		factory.put("addToken.do", new AddTokenAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

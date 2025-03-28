@@ -36,13 +36,6 @@
                 <input type="password" id="login-password" name="userPassword" class="form-control" placeholder="비밀번호" required>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <label style="display: flex; align-items: center; cursor: pointer;">
-                    <input type="checkbox" style="margin-right: 8px;"> 로그인 상태 유지
-                </label>
-                <a href="#" style="color: #666; text-decoration: none; font-size: 14px;">비밀번호 찾기</a>
-            </div>
-
             <button type="submit" class="submit-btn">로그인</button>
 
             <div class="divider">

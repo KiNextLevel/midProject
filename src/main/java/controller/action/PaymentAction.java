@@ -48,29 +48,10 @@ public class PaymentAction implements Action {
 			paymentDTO.setProductName(productDTO.getProductName());
 			paymentDAO.insert(paymentDTO);
 		}
-        return null;
-        //유저가 상품을 결제
-        // 결제 api 사용후 결과 
-        // 결제 테이블에 결제금액, 이메일, 상품번호 저장
-        //paymentDTO.setProductNumber(productNum);
-        //paymentDTO.setPaymentPrice(productDTO.getProductPrice());
-        //paymentDTO.setUserEmail((String) session.getAttribute("userEamil"));
-//      //상품번호에 따라서 행동이 다름
-//      if (productNum == 1) { // 프리미엄 계정
-//          System.out.println(" -- 프리미엄 구매");
-//      } else { // 토큰 구매
-//      	System.out.println(" -- 토큰 구매");
-//      }
-
-        // 결제정보 insert위해 정보 넣기
-		//이메일, 가격, 결제방법, 상품번호
-        //if (paymentDAO.insert(paymentDTO)) {
-        	
+		request.setAttribute("productNum", productNum);
+		forward.setPath("addToken.do");
+		forward.setRedirect(false);
+        return forward;
         }
-
-
-		//forward.setPath("alert.jsp");
-		//forward.setRedirect(false);
-		//return forward;
 	}
 

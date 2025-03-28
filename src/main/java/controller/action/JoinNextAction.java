@@ -117,7 +117,6 @@ public class JoinNextAction implements Action {
 
             if (result) {
                 // 세션에서 기본 정보 제거
-                session.removeAttribute("userEmail");
                 session.removeAttribute("userPassword");
                 session.removeAttribute("userName");
                 session.removeAttribute("socialType");
@@ -126,14 +125,14 @@ public class JoinNextAction implements Action {
                 request.setAttribute("userDTO", userDTO);
                 request.setAttribute("msg", "회원가입 성공!");
                 request.setAttribute("flag", true);
-                request.setAttribute("url", "loginPage.do");
+                request.setAttribute("url", "userPreferencePage.do");
             } else {
                 // 회원가입 실패
                 request.setAttribute("msg", "회원가입 실패!");
                 request.setAttribute("flag", false);
             }
 
-            forward.setPath("alert.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
             forward.setRedirect(false);
 
         } catch (Exception e) {

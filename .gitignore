@@ -40,4 +40,4 @@ build/
 ### IntelliJ project files ###
 .gradle
 build
-/out
+out

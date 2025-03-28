@@ -9,9 +9,9 @@ import org.example.webapp.model.dto.AlertDTO;
 import org.example.webapp.model.dto.UserDTO;
 
 public class AdminSendWarningAction implements Action{
-
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("SendAlertWarningAction log");
 		ActionForward forward = new ActionForward();
 		UserDTO userDTO = new UserDTO();
 		UserDAO userDAO = new UserDAO();
@@ -19,7 +19,13 @@ public class AdminSendWarningAction implements Action{
 		AlertDAO alertDAO = new AlertDAO();
 
 		// userDTO.setUserEmail(request.getParameter("reportedUser"));
-		alertDTO.setUserEmail(request.getParameter("reportedUser"));	//신고당한 회원 이메일
+		//insert 할 때 유저 이메일, 신고사유
+		String reportedUser = request.getParameter("reportedUser");
+		String reason = request.getParameter("reason");
+		alertDTO.setUserEmail(reportedUser);	//신고당한 회원 이메일
+		alertDTO.setAlertContent(reason);		//신고 사유
+		System.out.println("reportedUser: "+reportedUser);
+		System.out.println("reason"+reason);
 
 		if(alertDAO.insert(alertDTO)) {
 			request.setAttribute("msg", "경고 보내기 완료");

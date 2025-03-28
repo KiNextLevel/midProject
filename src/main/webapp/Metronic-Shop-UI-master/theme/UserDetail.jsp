@@ -57,7 +57,7 @@
     <link href="assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
 
-<%--    <iframe src="/API/map.html" width="100%" height="400" style="border: none;"></iframe>--%>
+    <%--    <iframe src="/API/map.html" width="100%" height="400" style="border: none;"></iframe>--%>
 
 </head>
 <!-- Head END -->

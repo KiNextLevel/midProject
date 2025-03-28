@@ -1,125 +1,59 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
+<%@ page isELIgnored="false" %>
 
-<!-- 회원탈퇴 가운데로 정렬하기  -->
 <!DOCTYPE html>
-<!--
-Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-Version: 1.0.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
--->
+
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
 <html lang="en">
-<!--<![endif]-->
-
 <!-- Head BEGIN -->
 <head>
-  <meta charset="utf-8"
-  >
-  <title>Checkout | Metronic Shop UI</title>
+    <meta charset="utf-8">
+    <title>회원 탈퇴</title>
 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <meta content="Metronic Shop UI description" name="description">
-  <meta content="Metronic Shop UI keywords" name="keywords">
-  <meta content="keenthemes" name="author">
+    <meta content="Metronic Shop UI description" name="description">
+    <meta content="Metronic Shop UI keywords" name="keywords">
+    <meta content="keenthemes" name="author">
 
-  <meta property="og:site_name" content="-CUSTOMER VALUE-">
-  <meta property="og:title" content="-CUSTOMER VALUE-">
-  <meta property="og:description" content="-CUSTOMER VALUE-">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
-  <meta property="og:url" content="-CUSTOMER VALUE-">
+    <meta property="og:site_name" content="-CUSTOMER VALUE-">
+    <meta property="og:title" content="-CUSTOMER VALUE-">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
 
-  <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
 
-  <!-- Fonts START -->
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
-  <!-- Fonts END -->
+    <!-- Fonts START -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
+          rel="stylesheet" type="text/css">
+    <!-- Fonts END -->
 
-  <!-- Global styles START -->
-  <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Global styles END -->
+    <!-- Global styles START -->
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Global styles END -->
 
-  <!-- Page level plugin styles START -->
-  <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-  <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-  <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
-  <!-- Page level plugin styles END -->
+    <!-- Page level plugin styles START -->
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin styles END -->
 
-  <!-- Theme styles START -->
-  <link href="assets/pages/css/components.css" rel="stylesheet">
-  <link href="assets/corporate/css/style.css" rel="stylesheet">
-  <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-  <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-  <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-  <link href="assets/corporate/css/custom.css" rel="stylesheet">
-  <!-- Theme styles END -->
-
-  <style>
-    /* 회원탈퇴 안내 박스 스타일 */
-    .main {
-      display: flex;
-      justify-content: center; /* 중앙 정렬 */
-      align-items: center;
-      min-height: 100vh; /* 화면 전체 높이 확보 */
-      background-color: #f5f5f5; /* 배경색 변경 */
-      padding: 20px;
-    }
-
-    /* 회원탈퇴 안내 박스 스타일 */
-    .info-card {
-      width: 100%;
-      max-width: 600px; /* 박스 크기 조정 */
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    /* 약관 텍스트 박스 */
-    .form-group textarea {
-      width: 100%;
-      height: 150px;
-      resize: none;
-      overflow-y: auto;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-      font-size: 14px;
-      background-color: #f9f9f9;
-    }
-
-    /* 체크박스와 버튼 정렬 */
-    .form-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* 탈퇴하기 버튼 스타일 */
-    .btn-danger {
-      width: 100%;
-      max-width: 150px;
-      display: block;
-      margin: 10px auto;
-      font-size: 16px;
-      padding: 10px;
-      border-radius: 5px;
-
-
-    }
-
-  </style>
+    <!-- Theme styles START -->
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/AccountDelete.css" rel="stylesheet">
+    <!-- Theme styles END -->
 
 </head>
 <!-- Head END -->
@@ -128,327 +62,271 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <body class="ecommerce">
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="color-panel hidden-sm">
-  <div class="color-mode-icons icon-color"></div>
-  <div class="color-mode-icons icon-color-close"></div>
-  <div class="color-mode">
-    <p>THEME COLOR</p>
-    <ul class="inline">
-      <li class="color-red current color-default" data-style="red"></li>
-      <li class="color-blue" data-style="blue"></li>
-      <li class="color-green" data-style="green"></li>
-      <li class="color-orange" data-style="orange"></li>
-      <li class="color-gray" data-style="gray"></li>
-      <li class="color-turquoise" data-style="turquoise"></li>
-    </ul>
-  </div>
+    <div class="color-mode-icons icon-color"></div>
+    <div class="color-mode-icons icon-color-close"></div>
+    <div class="color-mode">
+        <p>THEME COLOR</p>
+        <ul class="inline">
+            <li class="color-red current color-default" data-style="red"></li>
+            <li class="color-blue" data-style="blue"></li>
+            <li class="color-green" data-style="green"></li>
+            <li class="color-orange" data-style="orange"></li>
+            <li class="color-gray" data-style="gray"></li>
+            <li class="color-turquoise" data-style="turquoise"></li>
+        </ul>
+    </div>
 </div>
 <!-- END BEGIN STYLE CUSTOMIZER -->
 
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
-  <div class="container">
-    <div class="row">
-      <!-- BEGIN TOP BAR LEFT PART -->
-      <div class="col-md-6 col-sm-6 additional-shop-info">
-        <ul class="list-unstyled list-inline">
-          <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
-          <!-- BEGIN CURRENCIES -->
-          <li class="shop-currencies">
-            <a href="javascript:void(0);">€</a>
-            <a href="javascript:void(0);">£</a>
-            <a href="javascript:void(0);" class="current">$</a>
-          </li>
-          <!-- END CURRENCIES -->
-
-        </ul>
-      </div>
-      <!-- END TOP BAR LEFT PART -->
-      <!-- BEGIN TOP BAR MENU -->
-      <div class="col-md-6 col-sm-6 additional-nav">
-        <ul class="list-unstyled list-inline pull-right">
-          <li><a href="shop-account.html">My Account</a></li>
-          <li><a href="shop-wishlist.html">My Wishlist</a></li>
-          <li><a href="shop-checkout.html">Checkout</a></li>
-          <li><a href="page-login.html">Log In</a></li>
-        </ul>
-      </div>
-      <!-- END TOP BAR MENU -->
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
+                    <!-- BEGIN CURRENCIES -->
+                    <li class="shop-currencies">
+                        <a href="productPage.do">광고 제거</a>
+                    </li>
+                    <!-- END CURRENCIES -->
+                    <!-- BEGIN LANGS -->
+                    <li class="langs-block">
+                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                    </li>
+                    <!-- END LANGS -->
+                </ul>
+            </div>
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    <c:if test="${userDTO.userRole==1}">
+                        <li><a href="adminPage.do">관리자페이지</a></li>
+                    </c:if>
+                    <li><a href="myPage.do">마이페이지</a></li>
+                    <li>메시지</li>
+                    <li><a href="logout.do">로그아웃</a></li>
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
+        </div>
     </div>
-  </div>
 </div>
 <!-- END TOP BAR -->
 
 <!-- BEGIN HEADER -->
 <div class="header">
-  <div class="container">
-    <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+    <div class="container">
+        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png" alt="mainPage"></a>
 
-    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
-
-
-    <!-- BEGIN NAVIGATION -->
-    <div class="header-navigation">
-      <ul>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-            Woman
-
-          </a>
-
-          <!-- BEGIN DROPDOWN MENU -->
-          <ul class="dropdown-menu">
-            <li class="dropdown-submenu">
-              <a href="shop-product-list.html">Hi Tops <i class="fa fa-angle-right"></i></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="shop-product-list.html">Second Level Link</a></li>
-                <li><a href="shop-product-list.html">Second Level Link</a></li>
-                <li class="dropdown-submenu">
-                  <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                    Second Level Link
-                    <i class="fa fa-angle-right"></i>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="shop-product-list.html">Third Level Link</a></li>
-                    <li><a href="shop-product-list.html">Third Level Link</a></li>
-                    <li><a href="shop-product-list.html">Third Level Link</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="shop-product-list.html">Running Shoes</a></li>
-            <li><a href="shop-product-list.html">Jackets and Coats</a></li>
-          </ul>
-          <!-- END DROPDOWN MENU -->
-        </li>
-
-
-        <li class="dropdown active">
-          <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-            Pages
-
-          </a>
-
-          <ul class="dropdown-menu">
-            <li><a href="shop-index.html">Home Default</a></li>
-            <li><a href="shop-index-header-fix.html">Home Header Fixed</a></li>
-            <li><a href="shop-index-light-footer.html">Home Light Footer</a></li>
-            <li><a href="shop-product-list.html">Product List</a></li>
-            <li><a href="shop-search-result.html">Search Result</a></li>
-            <li><a href="shop-item.html">Product Page</a></li>
-            <li><a href="shop-shopping-cart-null.html">Shopping Cart (Null Cart)</a></li>
-            <li><a href="shop-shopping-cart.html">Shopping Cart</a></li>
-            <li class="active"><a href="shop-checkout.html">Checkout</a></li>
-            <li><a href="shop-about.html">About</a></li>
-            <li><a href="shop-contacts.html">Contacts</a></li>
-            <li><a href="shop-account.html">My account</a></li>
-            <li><a href="shop-wishlist.html">My Wish List</a></li>
-            <li><a href="shop-goods-compare.html">Product Comparison</a></li>
-            <li><a href="shop-standart-forms.html">Standart Forms</a></li>
-            <li><a href="shop-faq.html">FAQ</a></li>
-            <li><a href="shop-privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="shop-terms-conditions-page.html">Terms &amp; Conditions</a></li>
-          </ul>
-        </li>
-
-
-        <li><a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes&amp;utm_source=download&amp;utm_medium=banner&amp;utm_campaign=metronic_frontend_freebie" target="_blank">Admin theme</a></li>
-
-        <!-- BEGIN TOP SEARCH -->
-        <li class="menu-search">
-          <span class="sep"></span>
-          <i class="fa fa-search search-btn"></i>
-          <div class="search-box">
-            <form action="#">
-              <div class="input-group">
-                <input type="text" placeholder="Search" class="form-control">
-                <span class="input-group-btn">
-                      <button class="btn btn-primary" type="submit">Search</button>
-                    </span>
-              </div>
-            </form>
-          </div>
-        </li>
-        <!-- END TOP SEARCH -->
-      </ul>
+        <!-- BEGIN TOP BAR MENU -->
+        <div class="top-bar-right">
+            <ul class="top-bar-list">
+            </ul>
+        </div>
+        <!-- END TOP BAR MENU -->
     </div>
-    <!-- END NAVIGATION -->
-  </div>
 </div>
 <!-- Header END -->
 
+<!-- 회원탈퇴 안내 -->
 <div class="main">
-  <div class="container">
+    <div class="container">
+        <div class="withdrawal-container">
+            <div class="withdrawal-card">
+                <!-- 헤더 부분 - 더 부드러운 색상으로 변경 -->
+                <div class="card-header">
+                    <i class="fa fa-info-circle header-icon"></i>
+                    <h2>회원탈퇴 안내</h2>
+                    <p>탈퇴 전 아래 내용을 반드시 확인해주세요.</p>
+                </div>
 
-    <!-- BEGIN SIDEBAR & CONTENT -->
-    <div class="row margin-bottom-40">
-      <!-- BEGIN CONTENT -->
-      <div class="col-md-12 col-sm-12">
-        <h1>회원탈퇴</h1>
-        <!-- BEGIN CHECKOUT PAGE -->
-        <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+                <!-- 유의사항 섹션 - 배경색 부드럽게 변경 -->
+                <div class="card-body">
+                    <div class="notice-section">
+                        <h3>탈퇴 시 유의사항</h3>
+                        <ul>
+                            <li>탈퇴 후에는 회원님의 모든 정보가 삭제되며 복구할 수 없습니다.</li>
+                            <li>작성한 신고 및 사유는 자동으로 삭제되지 않습니다.</li>
+                            <li>보유하신 토큰와 혜택은 모두 소멸됩니다.</li>
+                        </ul>
+                    </div>
 
-          <!-- BEGIN CHECKOUT -->
-          <!--  <div id="checkout" class="panel panel-default"> -->
-          <div class="panel-heading">
-            <h2 class="panel-title">
+                    <!-- 약관 섹션 -->
+                    <div class="terms-section">
+                        <h3>회원탈퇴 약관</h3>
+                        <div class="terms-box">
+                            <div class="terms-content">
+                                <strong>제1조 (목적)</strong><br>
+                                본 약관은 Next Level(이하 "회사"라 함)의 서비스 이용계약 해지(회원탈퇴)와 관련하여 회사와 회원 간의 권리, 의무 및 책임사항, 서비스 이용에 따른 정보 처리 등에 관한 사항을 규정함을 목적으로 합니다.<br><br>
 
-            </h2>
-          </div>
-          <!-- <div id="checkout-content" class="panel-collapse collapse in"> -->
-          <!-- 회원탈퇴 안내 -->
-          <div class="info-card">
-            <h3>회원탈퇴 안내</h3>
-            <p>회원탈퇴 약관</p>
-            <form id="deleteForm" action="processDeleteAccount.jsp" method="post">
-              <div class="form-group">
-            <textarea class="form-control" rows="6" readonly>
-                제1조
-                이 약관은 샘플 약관입니다.
-                ① 약관 내용 1
-                ② 약관 내용 2
-                ③ 약관 내용 3
-                ④ 약관 내용 4
+                                <strong>제2조 (회원탈퇴 및 서비스 이용계약 해지)</strong><br>
+                                ① 회원은 언제든지 회사에 대하여 회원탈퇴를 요청할 수 있으며, 회사는 관련법 등이 정하는 바에 따라 이를 즉시 처리합니다.<br>
+                                ② 회원이 회원탈퇴를 요청한 경우 회사는 회원 본인 여부를 확인할 수 있으며, 본인 확인이 되지 않은 경우 회원탈퇴 요청을 거부할 수 있습니다.<br>
+                                ③ 회원탈퇴로 인해 발생한 불이익에 대한 책임은 회원 본인에게 있으며, 회사는 회원에게 발생한 손해에 대해 책임을 지지 않습니다.<br><br>
 
-                제2조
-                이 약관은 샘플 약관입니다.
-                ① 약관 내용 1
-            </textarea>
-              </div>
-              <div class="form-group">
-                <input type="checkbox" id="agreeTerms" required>
-                <label for="agreeTerms">위 약관에 동의합니다.</label>
-              </div>
-              <div class="padding-top-20">
-                <button type="button" class="btn btn-danger" onclick="confirmDelete()">탈퇴하기</button>
-              </div>
-            </form>
-          </div>
+                                <strong>제3조 (회원정보의 보유 및 이용)</strong><br>
+                                ① 회원탈퇴 시 회원의 모든 개인정보는 즉시 삭제됩니다. 단, 관련법령에 의해 보존할 필요가 있는 경우 해당 정보는 법령에서 정한 기간 동안 보관됩니다.<br>
+                                ② 회원이 작성한 게시물, 신고 내역 등 공개적으로 작성한 콘텐츠는 삭제되지 않으며, 해당 콘텐츠의 삭제를 원하는 경우 회원탈퇴 전 직접 삭제해야 합니다.<br>
+                                ③ 회원탈퇴 후 재가입하더라도 이전에 보유한 토큰, 혜택 등은 복구되지 않습니다.<br><br>
 
-          <script>
-            function confirmDelete() {
-              if (confirm("정말로 회원 탈퇴를 진행하시겠습니까?\n탈퇴 후에는 계정을 복구할 수 없습니다.")) {
-                document.getElementById("deleteForm").submit();
-              }
-            }
-          </script>
+                                <strong>제4조 (미지급 서비스 이용료 등의 정산)</strong><br>
+                                ① 회원탈퇴 시 미사용 토큰, 혜택 등은 소멸되며 환불되지 않습니다.<br>
+                                ② 회원탈퇴 시 진행 중인 거래나 서비스가 있는 경우, 해당 거래나 서비스가 완료된 후에 탈퇴가 처리됩니다.<br><br>
 
-          <!--   <div class="panel-body row">
+                                <strong>제5조 (재가입 제한)</strong><br>
+                                ① 회사는 서비스의 건전한 운영과 질서 유지를 위해 회원탈퇴 후 일정 기간(30일) 동안 동일 계정으로의 재가입을 제한할 수 있습니다.<br>
+                                ② 서비스 운영정책 위반으로 강제 탈퇴된 회원의 경우, 재가입이 영구적으로 제한될 수 있습니다.<br><br>
 
-              <div class="col-md-6 col-sm-6">
-                <h3>회원탈퇴 안내</h3>
-                <p>회원탈퇴 약관</p>
-                <form role="form" action="#">
-                  <div class="form-group">
-                    <textarea class="form-control" rows="6" readonly>
-              제1조
-              이 약관은 샘플 약관입니다.
-              ① 약관 내용 1
-              ② 약관 내용 2
-              ③ 약관 내용 3
-              ④ 약관 내용 4
+                                <strong>제6조 (약관의 개정)</strong><br>
+                                본 약관은 관련법 개정이나 서비스 정책 변경 등의 사유로 개정될 수 있으며, 회사는 약관 개정 시 적용일자 및 개정사유를 명시하여 사전에 공지합니다.
+                            </div>
+                        </div>
 
-              제2조
-              이 약관은 샘플 약관입니다.
-              ① 약관 내용 1
-                    </textarea>
-                  </div>
-                  <div class="form-group">
-                    <input type="checkbox" id="agreeTerms">
-                    <label for="agreeTerms">위 약관에 동의합니다.</label>
-                  </div>
-                  <div class="padding-top-20">
-                    <button class="btn btn-danger" type="submit">탈퇴하기</button>
-                  </div>
-                </form>
-              </div>
+                        <div class="agree-checkbox">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <label for="agreeTerms">위 약관에 동의합니다.</label>
+                        </div>
+                    </div>
 
-        </div> -->
-          <!-- END CHECKOUT -->
 
-          <!--
-            </div> -->
-          <!-- END CHECKOUT PAGE -->
-          <!--  </div> -- -->
-          <!-- END CONTENT -->
+                    <!-- 버튼 섹션 -->
+                    <div class="buttons-section">
+                        <button type="button" class="btn btn-cancel"><a href="myPage.do">취소하기</a></button>
+                        <button type="button" class="btn btn-withdraw">회원탈퇴</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- END SIDEBAR & CONTENT -->
-      </div>
     </div>
+</div>
+
+<script>
+    // 페이지가 로드될 때 실행되는 코드
+    document.addEventListener('DOMContentLoaded', function() {
+        // 필요한 요소들을 변수에 저장
+        var agreeCheckbox = document.getElementById('agreeTerms');
+        var withdrawButton = document.querySelector('.btn-withdraw');
+
+        // 초기 상태에서 탈퇴 버튼 비활성화
+        withdrawButton.disabled = true;
+        withdrawButton.style.backgroundColor = '#cccccc';
+        withdrawButton.style.cursor = 'not-allowed';
+
+        // 체크박스 상태가 변경될 때마다 실행되는 함수
+        agreeCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                // 체크박스가 체크되면 버튼 활성화
+                withdrawButton.disabled = false;
+                withdrawButton.style.backgroundColor = '#e8834b';
+                withdrawButton.style.cursor = 'pointer';
+            } else {
+                // 체크박스가 해제되면 버튼 비활성화
+                withdrawButton.disabled = true;
+                withdrawButton.style.backgroundColor = '#cccccc';
+                withdrawButton.style.cursor = 'not-allowed';
+            }
+        });
+
+        // 탈퇴 버튼 클릭 시 최종 확인
+        withdrawButton.addEventListener('click', function(e) {
+            if (!agreeCheckbox.checked) {
+                e.preventDefault();
+                alert('약관에 동의해야 탈퇴가 가능합니다.');
+                return false;
+            }
+
+            // 최종 확인 메시지
+            if (confirm('정말로 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
+                // 확인을 클릭한 경우 deleteUser.do로 이동
+                window.location.href = 'deleteUser.do';
+            }
+        });
+    });
+</script>
 
 
 
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer">
-      <div class="container">
+
+<!-- BEGIN PRE-FOOTER -->
+<div class="pre-footer">
+    <div class="container">
         <div class="row">
-          <!-- BEGIN BOTTOM ABOUT BLOCK -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2>Next Level</h2>
-            <p>
-              우리는 인연과 연인인을 중시합니다.
-            </p>
-          </div>
-          <!-- END BOTTOM ABOUT BLOCK -->
-          <!-- BEGIN BOTTOM INFO BLOCK -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2>Information</h2>
-          </div>
-          <!-- END INFO BLOCK -->
+            <!-- BEGIN BOTTOM ABOUT BLOCK -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Next Level</h2>
+                <p>
+                    우리는 인연과 연인인을 중시합니다.
+                </p>
+            </div>
+            <!-- END BOTTOM ABOUT BLOCK -->
+            <!-- BEGIN BOTTOM INFO BLOCK -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Information</h2>
+            </div>
+            <!-- END INFO BLOCK -->
 
-          <!-- BEGIN TWITTER BLOCK -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2 class="margin-bottom-0">Github</h2>
-            <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2" data-theme="dark"
-               data-link-color="#57C8EB" data-widget-id="455411516829736961"
-               data-chrome="noheader nofooter noscrollbar noborders transparent">https://github.com/KiNextLevel</a>
-          </div>
-          <!-- END TWITTER BLOCK -->
+            <!-- BEGIN TWITTER BLOCK -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2 class="margin-bottom-0">Github</h2>
+                <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2"
+                   data-theme="dark"
+                   data-link-color="#57C8EB" data-widget-id="455411516829736961"
+                   data-chrome="noheader nofooter noscrollbar noborders transparent">https://github.com/KiNextLevel</a>
+            </div>
+            <!-- END TWITTER BLOCK -->
 
-          <!-- BEGIN BOTTOM CONTACTS -->
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2>Our Contacts</h2>
-            <address class="margin-bottom-40">
-              서울 강남구 테헤란로26길 12<br>
-              (우) 06236 (지번) 역삼동 736-56<br>
-              Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
-              Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
-            </address>
-          </div>
-          <!-- END BOTTOM CONTACTS -->
+            <!-- BEGIN BOTTOM CONTACTS -->
+            <div class="col-md-3 col-sm-6 pre-footer-col">
+                <h2>Our Contacts</h2>
+                <address class="margin-bottom-40">
+                    서울 강남구 테헤란로26길 12<br>
+                    (우) 06236 (지번) 역삼동 736-56<br>
+                    Notion: <a
+                        href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
+                    Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
+                </address>
+            </div>
+            <!-- END BOTTOM CONTACTS -->
         </div>
         <hr>
         <div class="row">
-          <!-- Load javascripts at bottom, this will reduce page load time -->
-          <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
-          <!--[if lt IE 9]>
-          <script src="assets/plugins/respond.min.js"></script>
-          <![endif]-->
-          <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-          <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-          <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-          <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-          <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-          <!-- END CORE PLUGINS -->
+            <!-- Load javascripts at bottom, this will reduce page load time -->
+            <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+            <!--[if lt IE 9]>
+            <script src="assets/plugins/respond.min.js"></script>
+            <![endif]-->
+            <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+            <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+            <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+                    type="text/javascript"></script>
+            <!-- END CORE PLUGINS -->
 
-          <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-          <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
-          <!-- pop up -->
-          <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
-          <!-- slider for products -->
+            <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+            <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js"
+                    type="text/javascript"></script>
+            <!-- pop up -->
+            <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+            <!-- slider for products -->
 
-          <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-          <script type="text/javascript">
-            jQuery(document).ready(function () {
-              Layout.init();
-              Layout.initOWL();
-              Layout.initTwitter();
-            });
-          </script>
-          <!-- END PAGE LEVEL JAVASCRIPTS -->
+            <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                jQuery(document).ready(function () {
+                    Layout.init();
+                    Layout.initOWL();
+                    Layout.initTwitter();
+                });
+            </script>
+            <!-- END PAGE LEVEL JAVASCRIPTS -->
         </div>
-      </div>
     </div>
+</div>
 </body>
 <!-- END BODY -->
 

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -12,9 +13,10 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tomcat.version>10.1.39</tomcat.version> <!-- 너의 톰캣 버전! -->
+        <tomcat.version>10.1.35</tomcat.version>
     </properties>
 
+    <!-- Maven 중앙 저장소 명시적 추가 -->
     <repositories>
         <repository>
             <id>central</id>
@@ -22,8 +24,15 @@
         </repository>
     </repositories>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <dependencies>
-        <!-- Servlet API -->
+        <!-- 서블릿 API -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -51,55 +60,61 @@
             <version>3.0.1</version>
         </dependency>
 
-        <!-- JSON 처리 -->
+        <!-- JSON 처리 (AJAX용) -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.16.1</version>
         </dependency>
+
+        <!-- Google API Client Libraries -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-gmail</artifactId>
+            <version>v1-rev20240520-2.0.0</version>
+        </dependency>
+
+        <!-- JavaMail API (API만 제공) -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <!-- JavaMail 구현체 (실제 메일 전송 구현체) -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <!-- Activation API (이메일 내용 전송에 필요) -->
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <!-- coolsms 문자 전송 -->
+        <dependency>
+            <groupId>net.nurigo</groupId>
+            <artifactId>sdk</artifactId>
+            <version>4.3.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <finalName>mywebapp</finalName>
         <plugins>
-            <!-- war 빌드용 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
             </plugin>
 
-            <!-- 외부 Tomcat 연동 (친구처럼) -->
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven3-plugin</artifactId>
-                <version>1.10.10</version>
-                <configuration>
-                    <container>
-                        <containerId>tomcat10x</containerId>
-                        <type>installed</type>
-                        <home>${env.CATALINA_HOME}</home> <!-- Tomcat 설치 경로 -->
-                    </container>
-                    <configuration>
-                        <type>existing</type>
-                        <home>${env.CATALINA_HOME}</home>
-                        <properties>
-                            <cargo.servlet.port>8080</cargo.servlet.port>
-                            <cargo.tomcat.uriencoding>UTF-8</cargo.tomcat.uriencoding>
-                        </properties>
-                    </configuration>
-                    <deployables>
-                        <deployable>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <type>war</type>
-                            <properties>
-                                <context>/</context>
-                            </properties>
-                        </deployable>
-                    </deployables>
-                </configuration>
-            </plugin>
+            <!-- Maven Cargo 플러그인 - 외부 Tomcat 연동 -->
+
         </plugins>
     </build>
 </project>

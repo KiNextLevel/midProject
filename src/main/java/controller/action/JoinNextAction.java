@@ -40,11 +40,6 @@ public class JoinNextAction implements Action {
                 userDTO.setSocialType(socialType);
             }
 
-            // 세션에서 기본 정보 제거
-            session.removeAttribute("userEmail");
-            session.removeAttribute("userPassword");
-            session.removeAttribute("userName");
-            session.removeAttribute("socialType");
             //
             userDTO.setUserNickname(request.getParameter("userNickname"));
             userDTO.setUserPhone(request.getParameter("userPhone"));
@@ -121,6 +116,12 @@ public class JoinNextAction implements Action {
             boolean result = userDAO.insert(userDTO);
 
             if (result) {
+                // 세션에서 기본 정보 제거
+                session.removeAttribute("userEmail");
+                session.removeAttribute("userPassword");
+                session.removeAttribute("userName");
+                session.removeAttribute("socialType");
+
                 // 회원가입 성공
                 request.setAttribute("userDTO", userDTO);
                 request.setAttribute("msg", "회원가입 성공!");

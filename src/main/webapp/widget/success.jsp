@@ -12,6 +12,7 @@
 <%@ page import="java.io.Reader" %>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.util.Set" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
     // ------ 결제 승인 API 호출 ------
@@ -56,6 +57,9 @@
     JSONParser parser = new JSONParser();
     JSONObject jsonObject = (JSONObject) parser.parse(reader);
     responseStream.close();
+
+    // 서버에서 처리한 값들
+    request.setAttribute("isSuccess", isSuccess);   // 결제 성공 여부
 %>
 
 <!DOCTYPE html>
@@ -70,53 +74,55 @@
 </head>
 <body>
     <section>
-        <% if (isSuccess) { %>
-        <script>
-            // 서버에 전송할 데이터 생성
-            function getQueryParam(name) {
-                const params = new URLSearchParams(window.location.search);
-                console.log("쿼리 파라미터:", params.toString()); // 전체 파라미터 확인
-                return params.get(name) || "defaultValue";
-            }
-            console.log(window.location.search);
-            const productNum = getQueryParam("productNum");
-            const encodedProductNum = encodeURIComponent(productNum);  // 인코딩된 값
-            console.log("전송할 데이터:", `productNum=`+encodedProductNum);
 
-            fetch("payment.do", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `productNum=`+encodedProductNum   //
-            })
-                .then(response => response.text())
-                .then(data => console.log("결제 성공 처리 완료:", data))
-                .catch(error => console.error("결제 처리 오류:", error));
-        </script>
-            <div class="box_section" style="width: 600px">
-                <img width="100px" src="https://static.toss.im/illusts/check-blue-spot-ending-frame.png" />
-                <h2>결제를 완료했어요</h2>
+        <c:choose>
+            <c:when test="${isSuccess}">
+                <script>
+                    // 서버에 전송할 데이터 생성
+                    function getQueryParam(name) {
+                        const params = new URLSearchParams(window.location.search);
+                        console.log("쿼리 파라미터:", params.toString()); // 전체 파라미터 확인
+                        return params.get(name) || "defaultValue";
+                    }
+                    console.log(window.location.search);
+                    const productNum = getQueryParam("productNum");
+                    const encodedProductNum = encodeURIComponent(productNum);  // 인코딩된 값
+                    console.log("전송할 데이터:", `productNum=`+encodedProductNum);
 
-                <div class="p-grid typography--p" style="margin-top: 50px">
-                    <div class="p-grid-col text--left"><b>결제금액</b></div>
-                    <div class="p-grid-col text--right" id="amount"><%= jsonObject.get("totalAmount") %></div>
-                </div>
-                <div class="p-grid typography--p" style="margin-top: 10px">
-                    <div class="p-grid-col text--left"><b>주문번호</b></div>
-                    <div class="p-grid-col text--right" id="orderId"><%= jsonObject.get("orderId") %></div>
-                </div>
-                <div class="p-grid typography--p" style="margin-top: 10px">
-                    <div class="p-grid-col text--left"><b>paymentKey</b></div>
-                    <div class="p-grid-col text--right" id="paymentKey" style="white-space: initial; width: 250px"><%= jsonObject.get("paymentKey") %></div>
-                </div>
-                <div class="p-grid" style="margin-top: 30px">
-                    <button class="button p-grid-col5" onclick="location.href='https://docs.tosspayments.com/guides/payment/integration';">연동 문서</button>
-                    <button class="button p-grid-col5" onclick="location.href='mainPage.do';" style="background-color: #e8f3ff; color: #1b64da">메인으로 돌아가기</button>
-                </div>
-            </div>
+                    fetch("payment.do", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body: `productNum=`+encodedProductNum   //
+                    })
+                        .then(response => response.text())
+                        .then(data => console.log("결제 성공 처리 완료:", data))
+                        .catch(error => console.error("결제 처리 오류:", error));
+                </script>
+                <div class="box_section" style="width: 600px">
+                    <img width="100px" src="https://static.toss.im/illusts/check-blue-spot-ending-frame.png" />
+                    <h2>결제를 완료했어요</h2>
 
-            <div class="box_section" style="width: 600px; text-align: left">
-                <b>Response Data :</b>
-                <div id="response">
+                    <div class="p-grid typography--p" style="margin-top: 50px">
+                        <div class="p-grid-col text--left"><b>결제금액</b></div>
+                        <div class="p-grid-col text--right" id="amount">${jsonObject.totalAmount}</div>
+                    </div>
+                    <div class="p-grid typography--p" style="margin-top: 10px">
+                        <div class="p-grid-col text--left"><b>주문번호</b></div>
+                        <div class="p-grid-col text--right" id="orderId">${jsonObject.orderId}</div>
+                    </div>
+                    <div class="p-grid typography--p" style="margin-top: 10px">
+                        <div class="p-grid-col text--left"><b>paymentKey</b></div>
+                        <div class="p-grid-col text--right" id="paymentKey" style="white-space: initial; width: 250px">${jsonObject.paymentKey}</div>
+                    </div>
+                    <div class="p-grid" style="margin-top: 30px">
+                        <button class="button p-grid-col5" onclick="location.href='https://docs.tosspayments.com/guides/payment/integration';">연동 문서</button>
+                        <button class="button p-grid-col5" onclick="location.href='mainPage.do';" style="background-color: #e8f3ff; color: #1b64da">메인으로 돌아가기</button>
+                    </div>
+                </div>
+
+                <div class="box_section" style="width: 600px; text-align: left">
+                    <b>Response Data :</b>
+                    <div id="response">
                     <pre>
                         <%
                             Set<String> keys = jsonObject.keySet();
@@ -127,28 +133,31 @@
                             }
                         %>
                     </pre>
+                    </div>
                 </div>
-            </div>
-        <% } else { %>
-            <div id="info" class="box_section" style="width: 600px">
-                <img width="100px" src="https://static.toss.im/lotties/error-spot-no-loop-space-apng.png" />
-                <h2>결제를 실패했어요</h2>
+            </c:when>
+            <c:otherwise>
+                <div id="info" class="box_section" style="width: 600px">
+                    <img width="100px" src="https://static.toss.im/lotties/error-spot-no-loop-space-apng.png" />
+                    <h2>결제를 실패했어요</h2>
 
-                <div class="p-grid typography--p" style="margin-top: 50px">
-                    <div class="p-grid-col text--left"><b>에러메시지</b></div>
-                    <div class="p-grid-col text--right" id="message"><%= jsonObject.get("message") %></div>
-                </div>
-                <div class="p-grid typography--p" style="margin-top: 10px">
-                    <div class="p-grid-col text--left"><b>에러코드</b></div>
-                    <div class="p-grid-col text--right" id="code"><%= jsonObject.get("code") %></div>
-                </div>
+                    <div class="p-grid typography--p" style="margin-top: 50px">
+                        <div class="p-grid-col text--left"><b>에러메시지</b></div>
+                        <div class="p-grid-col text--right" id="message">${jsonObject.message}</div>
+                    </div>
+                    <div class="p-grid typography--p" style="margin-top: 10px">
+                        <div class="p-grid-col text--left"><b>에러코드</b></div>
+                        <div class="p-grid-col text--right" id="code">${jsonObject.code}</div>
+                    </div>
 
-                <div class="p-grid">
-                    <button class="button p-grid-col5" onclick="location.href='https://docs.tosspayments.com/guides/payment/integration';">연동 문서</button>
-                    <button class="button p-grid-col5" onclick="location.href='https://discord.gg/A4fRFXQhRu';" style="background-color: #e8f3ff; color: #1b64da">실시간 문의</button>
+                    <div class="p-grid">
+                        <button class="button p-grid-col5" onclick="location.href='https://docs.tosspayments.com/guides/payment/integration';">연동 문서</button>
+                        <button class="button p-grid-col5" onclick="location.href='https://discord.gg/A4fRFXQhRu';" style="background-color: #e8f3ff; color: #1b64da">실시간 문의</button>
+                    </div>
                 </div>
-            </div>
-        <% } %>
+            </c:otherwise>
+        </c:choose>
+
     </section>
 </body>
 </html>

@@ -95,7 +95,9 @@
                                         <th>이메일</th>
                                         <th>결제 금액</th>
                                         <th>결제 상품</th>
+                                        <!--
                                         <th>CSS grade</th>
+                                        -->
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -107,69 +109,7 @@
                                             <td class="center">${data.productName}</td>
                                         </tr>
                                     </c:forEach>
-                                    <tr class="odd gradeX">
-                                        <td>이거 어디지</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>1</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>2</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="even gradeC">
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 5.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5</td>
-                                        <td class="center">C</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>여기 이름</td>
-                                        <td>Internet Explorer 5.5</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5.5</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="even gradeA">
-                                        <td>티모</td>
-                                        <td>Internet Explorer 6</td>
-                                        <td>Win 98+</td>
-                                        <td class="center">6</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>모르가나</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td class="center">7</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>ㄱ</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td class="center">7</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>ㄴ</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td class="center">7</td>
-                                        <td class="center">A</td>
-                                    </tr>
+
 
                                     </tbody>
                                 </table>
@@ -191,34 +131,51 @@
 
 
     <!-- jQuery Js -->
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/jquery-1.10.2.js"></script>
+    <script src="assets/js/jquery-1.10.2.js"></script>
 
     <!-- Bootstrap Js -->
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/materialize/js/materialize.min.js"></script>
+    <script src="assets/materialize/js/materialize.min.js"></script>
 
     <!-- Metis Menu Js -->
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/jquery.metisMenu.js"></script>
+    <script src="assets/js/jquery.metisMenu.js"></script>
     <!-- Morris Chart Js -->
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/morris/morris.js"></script>
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
 
 
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/easypiechart.js"></script>
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/easypiechart-data.js"></script>
+    <script src="assets/js/easypiechart.js"></script>
+    <script src="assets/js/easypiechart-data.js"></script>
 
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/Lightweight-Chart/jquery.chart.js"></script>
+    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
     <!-- DATA TABLE SCRIPTS -->
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
     <script>
         $(document).ready(function () {
-            $('#dataTables-example').dataTable();
+            $('#dataTables-example').dataTable({
+                "order": [[0, "desc"]], // 첫 번째 열(결제 날짜) 내림차순
+                "language": {
+                    "zeroRecords": "일치하는 검색 결과가 없습니다.",  // 필터링 후 데이터가 없을 때 메시지
+                    "emptyTable": "테이블에 데이터가 없습니다.",   // 테이블이 완전히 비어 있을 때 메시지
+                    "info": "총 _TOTAL_건 중 _START_ - _END_건 표시", // 페이지 정보
+                    "infoEmpty": "데이터 없음",
+                    "infoFiltered": "(총 _MAX_건 중 필터링됨)",
+                    "search": "검색:",
+                    "lengthMenu": "_MENU_ 개씩 보기",
+                    "paginate": {
+                        "first": "처음",
+                        "last": "마지막",
+                        "next": "다음",
+                        "previous": "이전"
+                    }
+                }
+            });
         });
     </script>
     <!-- Custom Js -->
-    <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/custom-scripts.js"></script>
+    <script src="assets/js/custom-scripts.js"></script>
 
 </div>
 </body>

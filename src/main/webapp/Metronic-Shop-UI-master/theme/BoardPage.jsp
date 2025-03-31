@@ -188,7 +188,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                         <c:when test="${sessionScope.userRole=='1'}">
                                             <!-- 관리자용 버튼 -->
                                             <div class="admin-actions">
-                                                <a href="controller.jsp?command=ADMINMODIFYBOARDPAGE&boardNumber=${data.boardNumber}"
+                                                <a href="adminModifyBoardPage.do?boardNum=${data.boardNumber}"
                                                    class="btn btn-edit">
                                                     <i class="fa fa-pencil"></i> 수정
                                                 </a>

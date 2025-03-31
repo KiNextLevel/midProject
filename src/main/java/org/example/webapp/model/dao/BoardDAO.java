@@ -59,6 +59,7 @@ public class BoardDAO {
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 datas = new BoardDTO();  // 이제 올바른 타입으로 객체 생성
+                datas.setBoardNumber(rs.getInt("BOARD_NUM"));
                 datas.setBoardTitle(rs.getString("BOARD_TITLE"));
                 datas.setBoardContent(rs.getString("BOARD_CONTENT"));
                 datas.setBoardLimit(rs.getInt("BOARD_LIMIT"));

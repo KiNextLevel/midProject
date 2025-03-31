@@ -448,7 +448,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <div class="content-form-page">
                     <form action="adminModifyBoard.do" method="POST" role="form" class="form-horizontal form-without-legend">
                         <input type="hidden" name="boardNum" value="${data.boardNumber}">
-                        <p>boardNum: ${data.boardNumber}</p> <!-- boardNum 값이 제대로 출력되는지 확인 -->
                         <div class="form-group">
                             <label class="col-lg-2 control-label" for="first-name">제목<span class="require">*</span></label>
                             <div class="col-lg-8">

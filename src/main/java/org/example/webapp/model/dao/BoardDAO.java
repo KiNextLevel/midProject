@@ -15,6 +15,7 @@ public class BoardDAO {
             "ON B.BOARD_NUM = P.PARTICIPANT_BOARD_NUM GROUP BY B.BOARD_NUM ORDER BY BOARD_NUM DESC";
     private String SELECTONE = "SELECT * FROM BOARD WHERE BOARD_NUM = ?";
     private String INSERT = "INSERT INTO BOARD (BOARD_TITLE, BOARD_CONTENT, BOARD_LIMIT) VALUES (?, ?, ?)";
+    private String UPDATE_BOARD = "UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT = ?, BOARD_LIMIT = ? WHERE BOARD_NUM = ?";
     private String UPDATE_TITLE = "UPDATE BOARD SET BOARD_TITLE = ? WHERE BOARD_NUM = ?";
     private String UPDATE_CONTENT = "UPDATE BOARD SET BOARD_CONTENT = ? WHERE BOARD_NUM = ?";
     private String UPDATE_LIMIT = "UPDATE BOARD SET BOARD_LIMIT = ? WHERE BOARD_NUM = ?";
@@ -123,6 +124,15 @@ public class BoardDAO {
                 pstmt = conn.prepareStatement(UPDATE_LIMIT);
                 pstmt.setInt(1, boardDTO.getBoardLimit());
                 pstmt.setInt(2, boardDTO.getBoardNumber());
+                pstmt.executeUpdate();
+                pstmt.close();
+            }
+            if(boardDTO.getCondition().equals("UPDATE_BOARD")){
+                pstmt = conn.prepareStatement(UPDATE_BOARD);
+                pstmt.setString(1, boardDTO.getBoardTitle());
+                pstmt.setString(2, boardDTO.getBoardContent());
+                pstmt.setInt(3, boardDTO.getBoardLimit());
+                pstmt.setInt(4, boardDTO.getBoardNumber());
                 pstmt.executeUpdate();
                 pstmt.close();
             }

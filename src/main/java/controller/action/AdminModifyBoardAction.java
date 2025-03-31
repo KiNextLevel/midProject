@@ -23,7 +23,9 @@ public class AdminModifyBoardAction implements Action{
 		System.out.println("boardDTO = "+boardDTO);
 		boardDTO.setBoardTitle((String)request.getParameter("boardTitle"));
 		boardDTO.setBoardContent((String)request.getParameter("boardContent"));
+		System.out.println("boardLimit: ["+request.getParameter("boardLimit")+"]");
 		boardDTO.setBoardLimit(Integer.parseInt((String)request.getParameter("boardLimit")));
+		boardDTO.setCondition("UPDATE_BOARD");
 
 		if(boardDAO.update(boardDTO)) {
 			request.setAttribute("msg", "수정 완료");

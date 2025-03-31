@@ -38,26 +38,26 @@
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
     <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
     <!-- for slider-range -->
-    <link href="assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="assets/pages/css/components.css" rel="stylesheet">
-    <link href="assets/corporate/css/style.css" rel="stylesheet">
-    <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-    <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-    <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-    <link href="assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
 
 
@@ -109,7 +109,7 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png"
+        <a class="site-logo" href="mainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
                                                      alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
@@ -153,6 +153,11 @@
                         </div>
                         <div class="product-page-cart">
                             <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-info  btn-block">
+                                ${userDTO.userNickname} 신고하기
+                            </a>
                         </div>
                         <!-- 지도 iframe 추가 -->
                         <div style="margin-top: 20px;">
@@ -287,22 +292,22 @@
             <!-- Load javascripts at bottom, this will reduce page load time -->
             <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
             <!--[if lt IE 9]>
-            <script src="assets/plugins/respond.min.js"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/respond.min.js"></script>
             <![endif]-->
-            <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-            <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-            <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-            <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-            <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
             <!-- END CORE PLUGINS -->
 
             <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-            <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
             <!-- pop up -->
-            <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
             <!-- slider for products -->
 
-            <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
             <script type="text/javascript">
                 jQuery(document).ready(function () {
                     Layout.init();
@@ -321,7 +326,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-3">
                 <div class="product-main-image">
-                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell"
+                    <img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell"
                          class="img-responsive">
                 </div>
             </div>
@@ -352,26 +357,26 @@
 <!-- Load javascripts at bottom, this will reduce page load time -->
 <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
 <!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/respond.min.js"></script>
 <![endif]-->
-<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-<script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-<script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
 <!-- slider for products -->
-<script src='assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
-<script src="assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
+<script src='${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
 <!-- Quantity -->
-<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
 
-<script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 
 

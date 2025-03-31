@@ -19,7 +19,10 @@ public class AdminPaymentListPageAction implements Action{
 		paymentDTO.setCondition("SELECTALL_ADMIN_PAYMENTS");
 
 		PaymentDAO paymentDAO = new PaymentDAO();
+
+		paymentDTO.setCondition("SELECTALL_ADMIN_PAYMENTS");
 		ArrayList<PaymentDTO> datas = paymentDAO.selectAll(paymentDTO);
+		System.out.println("PaymentListPage log datas: "+datas);
 
 		if(datas != null) {
 			request.setAttribute("datas", datas);
@@ -28,6 +31,7 @@ public class AdminPaymentListPageAction implements Action{
 		}
 		else {
 			System.out.println("매출페이지 에러["+datas+"]");
+			request.setAttribute("datas", datas);
 			request.setAttribute("msg", "매출 페이지 이동 실패");
 			request.setAttribute("flag", false);
 			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");

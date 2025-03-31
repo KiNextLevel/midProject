@@ -31,7 +31,6 @@ public class ReadAlert extends HttpServlet {
     private boolean updateAlertStatusInDatabase(String alertNumber, boolean alertIsWatch) {
         System.out.println(" -- updateAlertStatusInDatabase -- 로그: [updateAlertStatusInDatabase] ");
         // DB 연결 후, 알림 상태를 업데이트하는 코드 작성
-        // 예: AlertDAO.updateAlertStatus(alertNumber, alertIsWatch);
         AlertDAO alertDAO = new AlertDAO();
         AlertDTO alertDTO = new AlertDTO();
         System.out.println(" -- updateAlertStatusInDatabase -- alertDTO: " + alertNumber);

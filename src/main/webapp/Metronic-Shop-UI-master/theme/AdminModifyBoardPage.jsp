@@ -447,18 +447,19 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <h1>이벤트 수정</h1>
                 <div class="content-form-page">
                     <form action="adminModifyBoard.do" method="POST" role="form" class="form-horizontal form-without-legend">
-
+                        <input type="hidden" name="boardNum" value="${data.boardNumber}">
+                        <p>boardNum: ${data.boardNumber}</p> <!-- boardNum 값이 제대로 출력되는지 확인 -->
                         <div class="form-group">
                             <label class="col-lg-2 control-label" for="first-name">제목<span class="require">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" id="first-name" name="boardTitle" class="form-control" value="${data.boardTitle }ㅎㅇㅎㅇㅎㅇㅎㅇㅎ">
+                                <input type="text" id="first-name" name="boardTitle" class="form-control" value="${data.boardTitle }">
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="col-lg-2 control-label" for="message">내용 및 날짜<span class="require">*</span></label>
                             <div class="col-lg-8">
-                                <textarea class="form-control" rows="10" name="boardContent" value="${data.boardContent }"></textarea>
+                                <!--<textarea class="form-control" rows="10" name="boardContent" value="${data.boardContent }"></textarea>-->
+                                <input type="text" id="first-name" name="boardContent" class="form-control" value="${data.boardContent}"${data.boardNumber}>
                             </div>
                         </div>
 

@@ -10,13 +10,19 @@ public class AdminModifyBoardPageAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("adminModifyBoardPage log");
 		ActionForward forward = new ActionForward();
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
 
-		int boardNum = Integer.parseInt((String)request.getAttribute("boardNum"));
+		int boardNum = Integer.parseInt((String)request.getParameter("boardNum"));
+		System.out.println("boardNum["+boardNum+"]");
 		boardDTO.setBoardNumber(boardNum);
 		boardDTO = boardDAO.selectOne(boardDTO);
+//		String boardTitle = boardDTO.getBoardTitle();
+//		String boardContent = boardDTO.getBoardContent();
+//		int boardLimit = boardDTO.getBoardLimit();
+		System.out.println("boardDTO ="+boardDTO);
 
 		if(boardDTO == null) {
 			request.setAttribute("msg", "이벤트를 찾을 수 없습니다");

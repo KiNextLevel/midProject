@@ -14,11 +14,16 @@ public class AdminModifyBoardAction implements Action{
 		ActionForward forward = new ActionForward();
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
-
-		boardDTO.setBoardNumber(Integer.parseInt((String)request.getAttribute("boardNum")));
-		boardDTO.setBoardTitle((String)request.getAttribute("boardTitle"));
-		boardDTO.setBoardContent((String)request.getAttribute("boardContent"));
-		boardDTO.setBoardLimit(Integer.parseInt((String)request.getAttribute("boardLimit")));
+		System.out.println("boardNum: "+request.getParameter("boardNum"));
+		System.out.println("boardTitle: "+request.getParameter("boardTitle"));
+		String boardNum = (String)request.getParameter("boardNum");
+		System.out.println("boardNum: ["+boardNum+"]");
+		boardDTO.setBoardNumber((Integer.parseInt((String)request.getParameter("boardNum"))));
+		boardDTO = boardDAO.selectOne(boardDTO);
+		System.out.println("boardDTO = "+boardDTO);
+		boardDTO.setBoardTitle((String)request.getParameter("boardTitle"));
+		boardDTO.setBoardContent((String)request.getParameter("boardContent"));
+		boardDTO.setBoardLimit(Integer.parseInt((String)request.getParameter("boardLimit")));
 
 		if(boardDAO.update(boardDTO)) {
 			request.setAttribute("msg", "수정 완료");

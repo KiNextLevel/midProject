@@ -154,12 +154,18 @@
                         <div class="product-page-cart">
                             <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
                         </div>
+
+                        <div class="col-xs-6">
+                            <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-info  btn-block">
+                                ${userDTO.userNickname} 신고하기
+                            </a>
+                        </div>
                         <!-- 지도 iframe 추가 -->
                         <div style="margin-top: 20px;">
 
 
                             <%-- 지도 iframe에 사용자 위도/경도 넘기기 --%>
-                            <%--                                 여기에다가 지도 나오게 하고 싶은데 어떻게 하면 되지..????????임포트..?--%>
+                            <%--  여기에다가 지도 나오게 하고 싶은데 어떻게 하면 되지..--%>
                             <iframe
                                     src="${pageContext.request.contextPath}locationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
                                     width="100%" height="400"

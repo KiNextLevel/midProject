@@ -24,19 +24,26 @@ public class AddTokenAction implements Action {
         userDTO = userDAO.selectOne(userDTO);
         System.out.println("userDTO: "+userDTO);
         int userToken = userDTO.getUserToken();
-        if(productNum == 2){
+        if(productNum == 1){
+            userDTO.setCondition("UPDATE_PREMIUM");
+            userDAO.update(userDTO);
+        }
+        else if(productNum == 2){
         userToken += 1;
         userDTO.setUserToken(userToken);
+        userDTO.setCondition("UPDATE_ADD_TOKEN");
         userDAO.update(userDTO);
         }
         else if(productNum == 3){
             userToken += 5;
             userDTO.setUserToken(userToken);
+            userDTO.setCondition("UPDATE_ADD_TOKEN");
             userDAO.update(userDTO);
         }
         else if(productNum == 4){
             userToken += 10;
             userDTO.setUserToken(userToken);
+            userDTO.setCondition("UPDATE_ADD_TOKEN");
             userDAO.update(userDTO);
         }
         return null;

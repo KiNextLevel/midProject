@@ -56,7 +56,6 @@ public class UserDTO {
     // 키워드 검색
     private String searchKeyword;
 
-
     public String getSocialType() {
         return socialType;
     }
@@ -67,7 +66,14 @@ public class UserDTO {
 
     private String socialType;
 
+    //위도 추가
+    private double userLatitude;
+
+    //경도 추가
+    private double userLongitude;
+
     // Getter, Setter 메서드
+
     public String getUserPhone() {
         return userPhone;
     }
@@ -279,6 +285,23 @@ public class UserDTO {
         this.searchKeyword = searchKeyword;
     }
 
+    //위도 경도 추가
+    public double getUserLatitude() {
+        return userLatitude;
+    }
+
+    public void setUserLatitude(double userLatitude) {
+        this.userLatitude = userLatitude;
+    }
+
+    public double getUserLongitude() {
+        return userLongitude;
+    }
+
+    public void setUserLongitude(double userLongitude) {
+        this.userLongitude = userLongitude;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -309,6 +332,8 @@ public class UserDTO {
                 ", condition='" + condition + '\'' +
                 ", searchKeyword='" + searchKeyword + '\'' +
                 ", socialType='" + socialType + '\'' +
+                ", userLatitude=" + userLatitude + '\'' +    //위도 추가
+                ", userLongitude=" + userLongitude + '\'' + //경도 추가
                 '}';
     }
 }

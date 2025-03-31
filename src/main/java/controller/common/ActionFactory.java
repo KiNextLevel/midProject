@@ -49,6 +49,7 @@ public class ActionFactory {
 		factory.put("deleteUserAlert.do", new DeleteUserAlertAction());
 		factory.put("userPreferencePage.do", new UserPreferencePageAction());
 		factory.put("userPreference.do", new UserPreferenceAction());
+		factory.put("addToken.do", new AddTokenAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

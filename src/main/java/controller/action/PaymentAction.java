@@ -2,6 +2,7 @@ package controller.action;
 
 import controller.common.Action;
 import controller.common.ActionForward;
+import controller.logic.SendMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.PaymentDAO;
@@ -24,16 +25,28 @@ public class PaymentAction implements Action {
 		ProductDTO productDTO = new ProductDTO();
 		PaymentDAO paymentDAO = new PaymentDAO();
 		PaymentDTO paymentDTO = new PaymentDTO();
+		SendMessage send = new SendMessage();
+
         int productNum = Integer.parseInt((String)request.getParameter("productNum"));
-		String productPrice = (String)request.getParameter("productPrice");
+		//String productPrice = (String)request.getParameter("productPrice");
 		System.out.println("productNum = "+productNum);
-		System.out.println("productPrice = "+productPrice);
 		System.out.println("CONT 로그: PAYMENT ACTION 도착2");
-		System.out.println("userEmail: "+session.getAttribute("userEmail"));
+		userDTO.setUserEmail((String)session.getAttribute("userEmail"));
+		userDTO.setCondition("SELECTONE_USERINFO");
+		userDTO = userDAO.selectOne(userDTO);
+		String userName = userDTO.getUserName();
+		System.out.println("userName: ["+userName+"]");
+		String phone = userDTO.getUserPhone();
+		System.out.println("phone: ["+phone+"]");
+
         // 상품에 해당하는 정보 가져오기
         productDTO.setProductNumber(productNum);
         productDTO = productDAO.selectOne(productDTO);
-		System.out.println("productDTO: "+productDTO);
+		int productPrice = productDTO.getProductPrice();
+		String productName = productDTO.getProductName();
+		System.out.println("productPrice: ["+productPrice+"]");
+		System.out.println("productName:["+productName+"]");
+		System.out.println("productDTO: ["+productDTO+"]");
 		if(productDTO == null){	//상품을 못 찾으면
 			request.setAttribute("msg", "상품을 찾을 수 없습니다");
 			request.setAttribute("flag", false);
@@ -47,6 +60,7 @@ public class PaymentAction implements Action {
 			paymentDTO.setPaymentPrice(productDTO.getProductPrice());
 			paymentDTO.setProductName(productDTO.getProductName());
 			paymentDAO.insert(paymentDTO);
+			//send.sendPay(phone, userName, productPrice, productName);
 		}
 		request.setAttribute("productNum", productNum);
 		forward.setPath("addToken.do");

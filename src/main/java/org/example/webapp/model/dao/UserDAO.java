@@ -12,7 +12,7 @@ public class UserDAO {
     // 아이디 중복 검사
     final String SELECTONE_CHECK = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ?";
     // 로그인
-    final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
+    final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE , USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
     // 유저 전체 정보 불러오기
     final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
     // 유저 전체 정보 불러오기
@@ -44,6 +44,8 @@ public class UserDAO {
                     "USER_REGION = ?, USER_MBTI = ?, USER_DRINK = ?, USER_SMOKE = ? WHERE USER_EMAIL = ?";
     // 회원 ROLE 변경
     final String UPDATE_ROLE = "UPDATE USER SET USER_ROLE = ? WHERE USER_EMAIL = ?";
+    //토큰 추가
+    final String UPDATE_ADD_TOKEN = "UPDATE USER SET USER_TOKEN = ? WHERE USER_EMAIL =?";
 
     // 회원 프로필사진 변경
     final String UPDATE_PROFILE_IMAGE = "UPDATE USER SET USER_PROFILE = ? WHERE USER_EMAIL = ?";
@@ -167,6 +169,7 @@ public class UserDAO {
                     if (userDTO.getCondition().equals("SELECTONE")) {
                         data.setUserPassword(rs.getString("USER_PASSWORD"));
                         data.setUserRole(rs.getInt("USER_ROLE"));
+                        data.setUserPreminum(rs.getInt("USER_PREMIUM")==1);
                     } else if (userDTO.getCondition().equals("SELECTONE_USERINFO")) {
                         data.setUserPassword(rs.getString("USER_PASSWORD"));
                         data.setUserName(rs.getString("USER_NAME"));
@@ -336,6 +339,11 @@ public class UserDAO {
             else if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_PREMIUM")){
                 pstmt = conn.prepareStatement(UPDATE_PREMIUM);
                 pstmt.setString(1, userDTO.getUserEmail());
+            }
+            else if(userDTO.getCondition().equals("UPDATE_ADD_TOKEN")){
+                pstmt = conn.prepareStatement(UPDATE_ADD_TOKEN);
+                pstmt.setInt(1, userDTO.getUserToken());
+                pstmt.setString(2, userDTO.getUserEmail());
             }
             int result = pstmt.executeUpdate();
             return result > 0;

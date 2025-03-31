@@ -4,6 +4,7 @@ package controller.action;
 import controller.common.Action;
 import controller.common.ActionForward;
 import controller.logic.SendEmail;
+import controller.logic.SendMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
@@ -30,10 +31,12 @@ public class LoginAction implements Action {
         // 컨디션"로그인"
         userDTO.setCondition("SELECTONE");
         userDTO = userDAO.selectOne(userDTO);
+        System.out.println("userPremium: ["+userDTO.isUserPreminum()+"]");
         if (userDTO != null) {
             // session에 userId, userName, role저장
             session.setAttribute("userEmail", userDTO.getUserEmail());
             session.setAttribute("userRole", userDTO.getUserRole());
+            session.setAttribute("userPremium", userDTO.isUserPreminum());
             System.out.println("userROle = "+userDTO.getUserRole());
 
             // url, flag, msg 요청단위 저장

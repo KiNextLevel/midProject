@@ -80,9 +80,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <ul class="list-unstyled list-inline">
                     <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
                     <!-- BEGIN CURRENCIES -->
+                    <c:if test="${sessionScope.userPremium == false}">
                     <li class="shop-currencies">
                         <a href="productPage.do">광고 제거</a>
                     </li>
+                    </c:if>
                     <!-- END CURRENCIES -->
                     <!-- BEGIN LANGS -->
                     <li class="langs-block">
@@ -188,7 +190,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                         <c:when test="${sessionScope.userRole=='1'}">
                                             <!-- 관리자용 버튼 -->
                                             <div class="admin-actions">
-                                                <a href="controller.jsp?command=ADMINMODIFYBOARDPAGE&boardNumber=${data.boardNumber}"
+                                                <a href="adminModifyBoardPage.do?boardNum=${data.boardNumber}"
                                                    class="btn btn-edit">
                                                     <i class="fa fa-pencil"></i> 수정
                                                 </a>

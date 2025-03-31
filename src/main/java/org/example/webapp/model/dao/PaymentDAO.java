@@ -18,7 +18,7 @@ public class PaymentDAO {
             + "p.PAYMENT_PRICE, " // 결제 가격
             + "p.PAYMENT_DATE " // 결제 날짜
             + "FROM PAYMENT p " + "JOIN USER u ON p.PAYMENT_USER_EMAIL = u.USER_EMAIL "
-            + "JOIN PRODUCT pr ON p.PRODUCT_NUM = pr.PRODUCT_NUM";
+            + "JOIN PRODUCT pr ON p.PRODUCT_NUM = pr.PRODUCT_NUM ORDER BY p.PAYMENT_DATE DESC";
     // 추가하기(일별, 월별, 연도별 매출 조회
 
     final String SELECTONE = "";

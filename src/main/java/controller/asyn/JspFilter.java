@@ -38,7 +38,7 @@ public class JspFilter implements Filter {
             httpResponse.sendRedirect(url);
             return;
         }
-        if (userEmail != null) {
+        if (userEmail != null && !pageName.equals("JoinPage.jsp")) {
             if (pageName.equals("Index.jsp") || pageName.equals("Login.jsp")) {
                 System.out.println("response:" + response);
                 String msg = "이미 로그인 한 상태입니다";

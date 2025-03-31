@@ -6,7 +6,7 @@ public class JDBCUtil {
     static final String driverName = "com.mysql.cj.jdbc.Driver";
     static final String url = "jdbc:mysql://localhost:3306/midProject";
     static final String userName = "root";
-    // db pw desktop은 030414, ki는 1234
+    // db pw desktop은 030414, ki는 12345678
     static final String password = "1234";
 
     public static Connection connect(){

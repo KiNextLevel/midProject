@@ -1,6 +1,9 @@
 <%@ page import="org.example.webapp.model.dto.UserDTO" %>
 <%@ page import="org.example.webapp.model.dto.PreferenceDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!-- 날짜 등 포맷용 -->
 <%@ page isELIgnored="false" %>
 
 <html>
@@ -57,7 +60,6 @@
     <link href="assets/corporate/css/custom.css" rel="stylesheet">
     <!-- Theme styles END -->
 
-    <%--    <iframe src="/API/map.html" width="100%" height="400" style="border: none;"></iframe>--%>
 
 </head>
 <!-- Head END -->
@@ -152,10 +154,19 @@
                         <div class="product-page-cart">
                             <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
                         </div>
-                        <!-- ✅ 지도 iframe 추가 -->
+                        <!-- 지도 iframe 추가 -->
                         <div style="margin-top: 20px;">
-                            <iframe src="<%= request.getContextPath() %>/API/map.html"
-                                    width="100%" height="400" style="border: none; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);"></iframe>
+
+
+                            <%-- 지도 iframe에 사용자 위도/경도 넘기기 --%>
+                            <%--                                 여기에다가 지도 나오게 하고 싶은데 어떻게 하면 되지..????????임포트..?--%>
+                            <iframe
+                                    src="${pageContext.request.contextPath}locationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
+                                    width="100%" height="400"
+                                    style="border: none; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+                            </iframe>
+
+
                         </div>
                     </div>
 
@@ -166,39 +177,51 @@
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade" id="Information">
-                                <%
-                                    UserDTO dto = (UserDTO)request.getAttribute("userDTO");
-                                    if(dto != null) {
-                                %>
-                                <p>생년월일 : <%= dto.getUserBirth() %></p><br>
-                                <p>키 : <%= dto.getUserHeight() %></p><br>
-                                <p>체형 : <%= dto.getUserBody() %></p><br>
-                                <p>MBTI : <%= dto.getUserMbti() %></p><br>
-                                <p>학력 : <%= dto.getUserEducation() %></p><br>
-                                <p>종교 : <%= dto.getUserReligion() %></p><br>
-                                <p>음주 : <%= dto.getUserDrink() %></p><br>
-                                <p>흡연 : <%= dto.isUserSmoke() %></p><br>
-                                <p>직업 : <%= dto.getUserJob() %></p><br>
-                                <%
-                                } else {
-                                %>
-                                <p>사용자 정보를 찾을 수 없습니다.</p>
-                                <%
-                                    }
-                                %>
-                            </div>
+                                <c:if test="${not empty userDTO}">
+                                    <p>생년월일 : ${userDTO.userBirth}</p><br>
+                                    <p>키 : ${userDTO.userHeight}</p><br>
+                                    <p>체형 : ${userDTO.userBody}</p><br>
+                                    <p>MBTI : ${userDTO.userMbti}</p><br>
+                                    <p>학력 : ${userDTO.userEducation}</p><br>
+                                    <p>종교 : ${userDTO.userReligion}</p><br>
 
+                                    <p>
+                                        음주 :
+                                        <c:choose>
+                                            <c:when test="${userDTO.userDrink == 0}">전혀 안함</c:when>
+                                            <c:when test="${userDTO.userDrink == 1}">가끔</c:when>
+                                            <c:when test="${userDTO.userDrink == 2}">자주</c:when>
+                                            <c:otherwise>입력 안됨</c:otherwise>
+                                        </c:choose>
+                                    </p><br>
+                                    <p>
+                                        흡연 :
+                                        <c:choose>
+                                            <c:when test="${userDTO.userSmoke}">흡연</c:when>
+                                            <c:otherwise>비흡연</c:otherwise>
+                                        </c:choose>
+                                    </p><br>
+                                    <p>직업 : ${userDTO.userJob}</p><br>
+                                </c:if>
+
+                                <c:if test="${empty userDTO}">
+                                    <p>사용자 정보를 찾을 수 없습니다.</p>
+                                </c:if>
+                            </div>
                             <div class="tab-pane fade in active" id="favorite">
                                 <!-- 첫번째 취향 넣는 곳-->
                                 <div class="review-item clearfix">
                                     <div class="review-item-content">
                                         <%
                                             PreferenceDTO preferenceDTO = (PreferenceDTO) request.getAttribute("preferenceDTO");
-                                            if(preferenceDTO != null) {
+                                            if (preferenceDTO != null) {
                                         %>
-                                        <p>선호 키 : <%= preferenceDTO.getPreferenceHeight() %></p><br>
-                                        <p>선호 체형 : <%= preferenceDTO.getPreferenceBody() %></p><br>
-                                        <p>선호 나이 : <%= preferenceDTO.getPreferenceAge() %></p><br>
+                                        <p>선호 키 : ${ preferenceDTO.preferenceHeight}
+                                        </p><br>
+                                        <p>선호 체형 : ${preferenceDTO.preferenceBody}
+                                        </p><br>
+                                        <p>선호 나이 : ${ preferenceDTO.preferenceAge}
+                                        </p><br>
                                         <%
                                         } else {
                                         %>
@@ -252,7 +275,8 @@
                 <address class="margin-bottom-40">
                     서울 강남구 테헤란로26길 12<br>
                     (우) 06236 (지번) 역삼동 736-56<br>
-                    Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
+                    Notion: <a
+                        href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
                     Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
                 </address>
             </div>
@@ -297,13 +321,15 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-3">
                 <div class="product-main-image">
-                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
+                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell"
+                         class="img-responsive">
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-9">
                 <h2>Cool green dress with red bell</h2>
                 <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna
+                    <p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed nonumy nibh sed euismod laoreet dolore
+                        magna
                         aliquarm erat volutpat
                         Nostrud duis molestie at dolore.</p>
                 </div>
@@ -348,9 +374,7 @@
 <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 
-<%--<iframe src="<%= request.getContextPath() %>/API/map.html" width="100%" height="400" style="border: none;"></iframe>--%>
 
-<%--<iframe src="/API/map.html" width="100%" height="400" style="border: none;"></iframe>--%>
 </body>
 <!-- END BODY -->
 

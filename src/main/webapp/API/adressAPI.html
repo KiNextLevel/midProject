@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>주소 API</title>
+  <meta charset="UTF-8">
+  <title>주소 API</title>
 </head>
 
 <title>개인정보 입력</title>
@@ -15,8 +15,11 @@
 <script src="adressAPI.js"></script>
 
 
-<!-- ✅ Kakao 주소 API -->
+<!-- ✅ Kakao 주소 API , daum.Postcode()라는 기능을 쓸 수 있음-->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<!-- ✅ Kakao 지도 API -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=16e5b4c908303629d0e034ffce98abc8&libraries=services"></script>
 
 <!-- ✅ Custom 스타일 (선택사항) -->
 <style>
@@ -55,15 +58,6 @@
         <input type="text" id="sample6_address" class="form-control" placeholder="주소" readonly>
       </div>
 
-      <!-- 상세주소 -->
-      <div class="mb-3">
-        <input type="text" id="sample6_detailAddress" class="form-control" placeholder="상세주소">
-      </div>
-
-      <!-- 참고항목 -->
-      <div class="mb-3">
-        <input type="text" id="sample6_extraAddress" class="form-control" placeholder="참고항목" readonly>
-      </div>
     </div>
   </div>
 </div>

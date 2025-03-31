@@ -12,7 +12,7 @@ public class UserDAO {
     // 아이디 중복 검사
     final String SELECTONE_CHECK = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ?";
     // 로그인
-    final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
+    final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
     // 유저 전체 정보 불러오기
     final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
     // 유저 전체 정보 불러오기
@@ -164,6 +164,7 @@ public class UserDAO {
                 if (rs.next()) {
                     data = new UserDTO();
                     data.setUserEmail(rs.getString("USER_EMAIL"));
+                    data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
                     if (userDTO.getCondition().equals("SELECTONE")) {
                         data.setUserPassword(rs.getString("USER_PASSWORD"));
                         data.setUserRole(rs.getInt("USER_ROLE"));
@@ -185,7 +186,6 @@ public class UserDAO {
                         data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
                         data.setUserJob(rs.getString("USER_JOB"));
                         data.setUserRole(rs.getInt("USER_ROLE"));
-                        data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
                         data.setUserToken(rs.getInt("USER_TOKEN"));
                         data.setUserRegion(rs.getString("USER_REGION"));
                         data.setUserDescription(rs.getString("USER_DESCRIPTION"));

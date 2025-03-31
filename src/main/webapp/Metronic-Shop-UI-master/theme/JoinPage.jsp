@@ -35,6 +35,13 @@
     <!-- Theme styles END -->
 </head>
 
+<script>
+    function openAddressPopup() {
+        window.open('/Metronic-Shop-UI-master/theme/addressPopup.html', '주소 찾기', 'width=600,height=600');
+    }
+</script>
+
+
 <body class="ecommerce">
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
@@ -150,31 +157,48 @@
                                 </div>
                             </div>
 
+<%--                            <div class="col-md-4">--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label for="region" class="required-field">지역</label>--%>
+<%--                                    <input type="text" class="form-control" id="region" name="userRegion" readonly required>--%>
+<%--                                    <input type="hidden" id="latitude" name="userLatitude">--%>
+<%--                                    <input type="hidden" id="longitude" name="userLongitude">--%>
+<%--                                    <button type="button" class="btn btn-secondary mt-2" onclick="openAddressPopup()">주소 찾기</button>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            위도/경도는 Java 서버 코드에서 GeoCodingUtil로 처리, input 2군데 제거  --%>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="region" class="required-field">지역</label>
-                                    <select class="form-control" id="region" name="userRegion" required>
-                                        <option value="">선택하세요</option>
-                                        <option value="서울">서울</option>
-                                        <option value="경기">경기</option>
-                                        <option value="인천">인천</option>
-                                        <option value="부산">부산</option>
-                                        <option value="대구">대구</option>
-                                        <option value="광주">광주</option>
-                                        <option value="대전">대전</option>
-                                        <option value="울산">울산</option>
-                                        <option value="세종">세종</option>
-                                        <option value="강원">강원</option>
-                                        <option value="충북">충북</option>
-                                        <option value="충남">충남</option>
-                                        <option value="전북">전북</option>
-                                        <option value="전남">전남</option>
-                                        <option value="경북">경북</option>
-                                        <option value="경남">경남</option>
-                                        <option value="제주">제주</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="region" name="userRegion" readonly required>
+                                    <button type="button" class="btn btn-secondary mt-2" onclick="openAddressPopup()">주소 찾기</button>
                                 </div>
                             </div>
+
+
+
+                        <%--                                    <select class="form-control" id="region" name="userRegion" required>--%>
+<%--                                        <option value="">선택하세요</option>--%>
+<%--                                        <option value="서울">서울</option>--%>
+<%--                                        <option value="경기">경기</option>--%>
+<%--                                        <option value="인천">인천</option>--%>
+<%--                                        <option value="부산">부산</option>--%>
+<%--                                        <option value="대구">대구</option>--%>
+<%--                                        <option value="광주">광주</option>--%>
+<%--                                        <option value="대전">대전</option>--%>
+<%--                                        <option value="울산">울산</option>--%>
+<%--                                        <option value="세종">세종</option>--%>
+<%--                                        <option value="강원">강원</option>--%>
+<%--                                        <option value="충북">충북</option>--%>
+<%--                                        <option value="충남">충남</option>--%>
+<%--                                        <option value="전북">전북</option>--%>
+<%--                                        <option value="전남">전남</option>--%>
+<%--                                        <option value="경북">경북</option>--%>
+<%--                                        <option value="경남">경남</option>--%>
+<%--                                        <option value="제주">제주</option>--%>
+<%--                                    </select>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
                         </div>
                     </div>
 
@@ -401,6 +425,13 @@
             const region = $('#region').val();
             const profile = $('#profile').val();
 
+            console.log('닉네임: ' + nickname);
+            console.log('성별: ' + gender);
+            console.log('생일: ' + birth);
+            console.log('지역: ' + region);
+            console.log('프로필: ' + profile);
+
+
             if (!nickname || !gender || !birth || !region || !profile) {
                 alert('필수 항목을 모두 입력해주세요.');
                 e.preventDefault();
@@ -410,6 +441,13 @@
             return true;
         });
     });
+   //
+   // 주소 찾기 버튼 눌렀을 때 팝업 띄우기 함수
+    function openAddressPopup() {
+        window.open("/API/adressAPI.html", "주소찾기", "width=600,height=500,scrollbars=yes");
+    }
+
+
 </script>
 </body>
 </html>

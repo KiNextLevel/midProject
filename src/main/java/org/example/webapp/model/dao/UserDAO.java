@@ -15,6 +15,10 @@ public class UserDAO {
     final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
     // 유저 전체 정보 불러오기
     final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
+
+    // 유저 위도, 경도 정보 불러오기
+    final String SELECTONE_LOCATION = "SELECT USER_EMAIL, USER_LATITUDE, USER_LONGITUDE FROM USER WHERE USER_EMAIL = ?";
+
     // 유저 전체 정보 불러오기
     final String SELECTALL = "SELECT * FROM USER";
     // 유저 선호 취향 정보 불러오기
@@ -27,23 +31,25 @@ public class UserDAO {
     final String SELECTALL_PRODUCT = "SELECT * FROM PAYMENT P LEFT JOIN USER U ON P.PAYMENT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
     // 블랙리스트 유저 불러오기
     final String SELECTALL_BLACK = "SELECT * FROM USER WHERE USER_ROLE = 2";
-    // 회원가입(정보 다 입력) - social_type 컬럼 추가
+    // 회원가입(정보 다 입력) - social_type 컬럼 추가, USER_LATITUDE, USER_LONGITUDE 컬럼 추가
     final String INSERT = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
-            "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_LATITUDE, USER_LONGITUDE, USER_DESCRIPTION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // 회원가입(소개 뺴고, 프로필만 입력) - social_type 컬럼 추가
+    // 회원가입(소개 뺴고, 프로필만 입력) - social_type 컬럼 추가, USER_LATITUDE, USER_LONGITUDE 컬럼 추가
     final String INSERT_PROFILE = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
-            "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_LATITUDE, USER_LONGITUDE, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
     // 회원가입(프로필 빼고, 소개만 입력) - social_type 컬럼 추가
     final String INSERT_DESCRIPTION = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
-            "USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    // 회원 정보 수정
+            "USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // 회원 정보 수정 - USER_LATITUDE, USER_LONGITUDE 컬럼 추가
     final String UPDATE =
             "UPDATE USER SET USER_DESCRIPTION = ?,USER_NICKNAME = ?, USER_HEIGHT = ?, USER_BODY = ?, USER_EDUCATION = ?, USER_JOB = ?, USER_RELIGEION = ?, " +
-                    "USER_REGION = ?, USER_MBTI = ?, USER_DRINK = ?, USER_SMOKE = ? WHERE USER_EMAIL = ?";
+                    "USER_REGION = ?, USER_LATITUDE = ?, USER_LONGITUDE = ?, USER_MBTI = ?, USER_DRINK = ?, USER_SMOKE = ? WHERE USER_EMAIL = ?";
     // 회원 ROLE 변경
     final String UPDATE_ROLE = "UPDATE USER SET USER_ROLE = ? WHERE USER_EMAIL = ?";
+    //토큰 추가
+    final String UPDATE_ADD_TOKEN = "UPDATE USER SET USER_TOKEN = ? WHERE USER_EMAIL =?";
 
     // 회원 프로필사진 변경
     final String UPDATE_PROFILE_IMAGE = "UPDATE USER SET USER_PROFILE = ? WHERE USER_EMAIL = ?";
@@ -97,6 +103,8 @@ public class UserDAO {
             else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_BLACK")) {
                 pstmt = conn.prepareStatement(SELECTALL_BLACK);
             }
+
+
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 UserDTO data = new UserDTO();
@@ -113,6 +121,8 @@ public class UserDAO {
                 data.setUserProfile(rs.getString("USER_PROFILE"));
                 data.setUserEducation(rs.getString("USER_EDUCATION"));
                 data.setUserReligion(rs.getString("USER_RELIGEION"));
+                data.setUserLatitude(rs.getDouble("USER_LATITUDE"));  // 위도 추가
+                data.setUserLongitude(rs.getDouble("USER_LONGITUDE")); //경도 추가
                 data.setUserDrink(rs.getInt("USER_DRINK"));
                 data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
                 data.setUserJob(rs.getString("USER_JOB"));
@@ -153,7 +163,13 @@ public class UserDAO {
                 } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE_USERINFO")) {
                     pstmt = conn.prepareStatement(SELECTONE_USERINFO);
                     pstmt.setString(1, userDTO.getUserEmail());
-                } else {
+                }
+                // 유저 위치 정보(위도, 경도) 불러오기 추가!!!!
+                else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE_LOCATION")) {
+                    pstmt = conn.prepareStatement(SELECTONE_LOCATION);
+                    pstmt.setString(1, userDTO.getUserEmail());
+                }
+                else {
                     // 알 수 없는 조건인 경우 로그 출력 및 null 반환
                     System.out.println("알 수 없는 조건: " + userDTO.getCondition());
                     return null;
@@ -182,13 +198,22 @@ public class UserDAO {
                         data.setUserProfile(rs.getString("USER_PROFILE"));
                         data.setUserEducation(rs.getString("USER_EDUCATION"));
                         data.setUserReligion(rs.getString("USER_RELIGEION"));
+                        data.setUserLatitude(rs.getDouble("USER_LATITUDE"));   // 위도 추가
+                        data.setUserLongitude(rs.getDouble("USER_LONGITUDE")); // 경도 추가
                         data.setUserDrink(rs.getInt("USER_DRINK"));
                         data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
                         data.setUserJob(rs.getString("USER_JOB"));
                         data.setUserRole(rs.getInt("USER_ROLE"));
+                        data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
                         data.setUserToken(rs.getInt("USER_TOKEN"));
                         data.setUserRegion(rs.getString("USER_REGION"));
                         data.setUserDescription(rs.getString("USER_DESCRIPTION"));
+                        // 사용자 위치 정보 추가
+                    } else if (userDTO.getCondition().equals("SELECTONE_LOCATION")) {
+                        data.setUserEmail(rs.getString("USER_EMAIL"));
+                        data.setUserLatitude(rs.getDouble("USER_LATITUDE"));
+                        data.setUserLongitude(rs.getDouble("USER_LONGITUDE"));
+                    }
 
                         // social_type 필드 추가
                         try {
@@ -245,9 +270,12 @@ public class UserDAO {
                 pstmt.setInt(14, userDTO.isUserSmoke() ? 1 : 0);
                 pstmt.setString(15, userDTO.getUserJob());
                 pstmt.setString(16, userDTO.getUserRegion());
-                pstmt.setString(17, userDTO.getUserDescription());
-                pstmt.setString(18, userDTO.getUserName());
-                pstmt.setString(19, userDTO.getSocialType());
+                pstmt.setDouble(17, userDTO.getUserLatitude()); // 위도 추가
+                pstmt.setDouble(18, userDTO.getUserLongitude()); // 경도 추가
+                pstmt.setString(19, userDTO.getUserDescription());
+                pstmt.setString(20, userDTO.getUserName());
+                pstmt.setString(21, userDTO.getSocialType());
+
             } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("INSERT_PROFILE")) {
                 pstmt = conn.prepareStatement(INSERT_PROFILE);
                 pstmt.setString(1, userDTO.getUserEmail());
@@ -266,8 +294,10 @@ public class UserDAO {
                 pstmt.setInt(14, userDTO.isUserSmoke() ? 1 : 0);
                 pstmt.setString(15, userDTO.getUserJob());
                 pstmt.setString(16, userDTO.getUserRegion());
-                pstmt.setString(17, userDTO.getUserName());
-                pstmt.setString(18, userDTO.getSocialType());
+                pstmt.setDouble(17, userDTO.getUserLatitude()); // 위도 추가
+                pstmt.setDouble(18, userDTO.getUserLongitude()); // 경도 추가
+                pstmt.setString(19, userDTO.getUserName());
+                pstmt.setString(20, userDTO.getSocialType());
             } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("INSERT_DESCRIPTION")) {
                 pstmt = conn.prepareStatement(INSERT_DESCRIPTION);
                 pstmt.setString(1, userDTO.getUserEmail());
@@ -285,9 +315,11 @@ public class UserDAO {
                 pstmt.setInt(13, userDTO.isUserSmoke() ? 1 : 0);
                 pstmt.setString(14, userDTO.getUserJob());
                 pstmt.setString(15, userDTO.getUserRegion());
-                pstmt.setString(16, userDTO.getUserDescription());
-                pstmt.setString(17, userDTO.getUserName());
-                pstmt.setString(18, userDTO.getSocialType());
+                pstmt.setDouble(16, userDTO.getUserLatitude()); // 위도 추가
+                pstmt.setDouble(17, userDTO.getUserLongitude()); // 경도 추가
+                pstmt.setString(18, userDTO.getUserDescription());
+                pstmt.setString(19, userDTO.getUserName());
+                pstmt.setString(20, userDTO.getSocialType());
             }
             int result = pstmt.executeUpdate();
             System.out.println("insert 로그:" + result);
@@ -315,10 +347,12 @@ public class UserDAO {
                 pstmt.setString(6, userDTO.getUserJob());
                 pstmt.setString(7, userDTO.getUserReligion());
                 pstmt.setString(8, userDTO.getUserRegion());
-                pstmt.setString(9, userDTO.getUserMbti());
-                pstmt.setInt(10, userDTO.getUserDrink());
-                pstmt.setBoolean(11, userDTO.isUserSmoke());
-                pstmt.setString(12, userDTO.getUserEmail());
+                pstmt.setDouble(9, userDTO.getUserLatitude()); // 위도 추가
+                pstmt.setDouble(10, userDTO.getUserLongitude()); // 경도 추가
+                pstmt.setString(11, userDTO.getUserMbti());
+                pstmt.setInt(12, userDTO.getUserDrink());
+                pstmt.setBoolean(13, userDTO.isUserSmoke());
+                pstmt.setString(14, userDTO.getUserEmail());
             }
             // ROLE 변경
             else if (userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_ROLE")) {
@@ -336,6 +370,11 @@ public class UserDAO {
             else if(userDTO.getCondition() != null && userDTO.getCondition().equals("UPDATE_PREMIUM")){
                 pstmt = conn.prepareStatement(UPDATE_PREMIUM);
                 pstmt.setString(1, userDTO.getUserEmail());
+            }
+            else if(userDTO.getCondition().equals("UPDATE_ADD_TOKEN")){
+                pstmt = conn.prepareStatement(UPDATE_ADD_TOKEN);
+                pstmt.setInt(1, userDTO.getUserToken());
+                pstmt.setString(2, userDTO.getUserEmail());
             }
             int result = pstmt.executeUpdate();
             return result > 0;

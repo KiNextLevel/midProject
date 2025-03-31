@@ -4,6 +4,7 @@ package controller.action;
 import controller.common.Action;
 import controller.common.ActionForward;
 import controller.logic.SendEmail;
+import controller.logic.SendMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
@@ -26,10 +27,17 @@ public class LoginAction implements Action {
         userDTO.setUserEmail(request.getParameter("userEmail"));
         userDTO.setUserPassword(request.getParameter("userPassword"));
         UserDAO userDAO = new UserDAO();
+        HttpSession session = request.getSession();
         // 컨디션"로그인"
         userDTO.setCondition("SELECTONE");
         userDTO = userDAO.selectOne(userDTO);
+        System.out.println("userPremium: ["+userDTO.isUserPreminum()+"]");
         if (userDTO != null) {
+            // session에 userId, userName, role저장
+            session.setAttribute("userEmail", userDTO.getUserEmail());
+            session.setAttribute("userRole", userDTO.getUserRole());
+            System.out.println("userROle = "+userDTO.getUserRole());
+
             // url, flag, msg 요청단위 저장
             // alert.jsp에 url, true, msg 보내기
             if (userDTO.getUserRole() == 0) { //유저
@@ -48,6 +56,10 @@ public class LoginAction implements Action {
             } else if (userDTO.getUserRole() == 3) { // 탈퇴
                 request.setAttribute("msg", "탈퇴한 계정입니다");
                 request.setAttribute("flag", false);
+            } else { //유저
+                request.setAttribute("msg", "로그인 성공!");
+                request.setAttribute("url", "mainPage.do");
+                request.setAttribute("flag", true);
             }
         } else {
             // url, flag, msg 요청단위 저장

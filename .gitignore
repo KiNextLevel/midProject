@@ -41,3 +41,4 @@ build/
 .gradle
 build
 out
+src/main/java/org/example/webapp/model/common/JDBCUtil.java

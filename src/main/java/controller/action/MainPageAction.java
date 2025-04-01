@@ -51,31 +51,21 @@ public class MainPageAction implements Action {
 		JSONArray userDatasJsonArray = new JSONArray();
 		for (UserDTO user : userDatas) {
 			JSONObject userJson = new JSONObject();
-			userJson.put("userPhone", user.getUserPhone());
 			userJson.put("userEmail", user.getUserEmail());
-			userJson.put("userPassword", user.getUserPassword());
 			userJson.put("userNickname", user.getUserNickname());
 			userJson.put("userRegdate", user.getUserRegdate() != null ? user.getUserRegdate().toString() : null);
 			userJson.put("userGender", user.getUserGender()); // boolean
 			userJson.put("userBirth", user.getUserBirth()); // String
 			userJson.put("userHeight", user.getUserHeight()); // int
-			userJson.put("userBody", user.getUserBody());
-			userJson.put("userMbti", user.getUserMbti());
 			userJson.put("userProfile", user.getUserProfile());
-			userJson.put("userEducation", user.getUserEducation());
 			userJson.put("userReligion", user.getUserReligion());
-			userJson.put("userDrink", user.getUserDrink()); // int
 			userJson.put("userSmoke", user.isUserSmoke()); // boolean
-			userJson.put("userJob", user.getUserJob());
 			userJson.put("userRole", user.getUserRole());
-			userJson.put("userPreminum", user.isUserPreminum()); // boolean
-			userJson.put("userToken", user.getUserToken()); // int
 			userJson.put("userRegion", user.getUserRegion());
 			userJson.put("userDescription", user.getUserDescription());
 			userJson.put("userName", user.getUserName());
 			userJson.put("userLatitude", user.getUserLatitude()); // double
 			userJson.put("userLongitude", user.getUserLongitude()); // double
-
 			userDatasJsonArray.add(userJson);
 		}
 

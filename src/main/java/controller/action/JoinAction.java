@@ -21,7 +21,7 @@ public class JoinAction implements Action {
 		userDTO.setUserEmail(request.getParameter("userEmail"));
 		userDTO.setUserPassword(request.getParameter("userPassword"));
 		userDTO.setUserName(request.getParameter("userName"));
-		userDTO.setCondition("SELECTONE_CHECK");  // 이메일 중복 확인을 위한 조건 설정
+		userDTO.setCondition("SELECTONE_NONSOCIAL");  // 이메일 중복 확인을 위한 조건 설정
 
 		System.out.println("JOIN 로그 가져온 ID[" + userDTO.getUserEmail() + "]");
 		System.out.println("JOIN 로그 가져온 pass[" + userDTO.getUserPassword() + "]");

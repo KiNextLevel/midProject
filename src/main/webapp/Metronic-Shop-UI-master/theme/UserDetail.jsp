@@ -3,6 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 날짜 등 포맷용 -->
 <%@ page isELIgnored="false" %>
 
@@ -38,17 +39,17 @@
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
     <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
     <!-- for slider-range -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
@@ -99,6 +100,7 @@
         </div>
     </div>
 </div>
+<!-- END TOP BAR -->
 
 <!-- BEGIN HEADER -->
 <div class="header">
@@ -139,20 +141,26 @@
                                 <p>닉네임 : ${userDTO.userNickname}</p>
                             </div>
                             <div class="availability">
-                                지역 : <strong>${param.userRegion}</strong>
+                                지역 : <strong>${fn:split(userDTO.userRegion, ' ')[0]}</strong>
                             </div>
+
                         </div>
                         <div class="description">
-                            <p>${param.userDescription}</p>
+                            <p>${userDTO.userDescription}</p>
                         </div>
                         <div class="product-page-cart">
-                            <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-primary btn-block" type="submit">1:1 채팅하기</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-danger btn-block">
+                                        ${userDTO.userNickname} 신고하기
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-xs-6">
-                            <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-info  btn-block">
-                                ${userDTO.userNickname} 신고하기
-                            </a>
-                        </div>
+
                         <!-- 지도 iframe 추가 -->
                         <div style="margin-top: 20px;">
 

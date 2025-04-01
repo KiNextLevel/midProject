@@ -2,7 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="org.example.webapp.model.dto.AlertDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -46,50 +46,47 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <link rel="shortcut icon" href="favicon.ico">
 
     <!-- Fonts START -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
+          rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
-    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"><!-- for slider-range -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css"
+          rel="stylesheet" type="text/css">
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+    <!-- for slider-range -->
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/rateit.css"
+          rel="stylesheet" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css"
+          rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css"
+          rel="stylesheet" id="style-color">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css"
+          rel="stylesheet">
     <!-- Theme styles END -->
 </head>
 <!-- Head END -->
 
-<!-- BEGIN STYLE CUSTOMIZER -->
-<div class="color-panel hidden-sm">
-    <div class="color-mode-icons icon-color"></div>
-    <div class="color-mode-icons icon-color-close"></div>
-    <div class="color-mode">
-        <p>THEME COLOR</p>
-        <ul class="inline">
-            <li class="color-red current color-default" data-style="red"></li>
-            <li class="color-blue" data-style="blue"></li>
-            <li class="color-green" data-style="green"></li>
-            <li class="color-orange" data-style="orange"></li>
-            <li class="color-gray" data-style="gray"></li>
-            <li class="color-turquoise" data-style="turquoise"></li>
-        </ul>
-    </div>
-</div>
-<!-- END BEGIN STYLE CUSTOMIZER -->
 
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
@@ -127,7 +124,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="mainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png" alt="mainPage"></a>
+        <a class="site-logo" href="mainPage.do"><img
+                src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
+                alt="mainPage"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -162,7 +161,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                 <em>${data.alertDate}</em>
 
                                 <!-- 상태를 표시 (읽음/읽지 않음) -->
-                                <span class="alert-status" style="background-color: ${data.alertIsWatch ? '#4CAF50' : '#F44336'};">
+                                <span class="alert-status"
+                                      style="background-color: ${data.alertIsWatch ? '#4CAF50' : '#F44336'};">
                                         ${data.alertIsWatch ? '읽음' : '읽지 않음'}
                                 </span>
                             </li>
@@ -197,14 +197,18 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             });
     };
 </script>
-<div class="title-wrapper">
-    <div class="container"><div class="container-inner">
-        <a href="boardPage.do">
-            <h1><span>이벤트!</span></h1>
-            <em>온/오프라인 이벤트 참여하기</em>
-        </a>
-    </div></div>
+<div class="title-wrapper"
+     style="margin: -23px 0 23px; position: relative; overflow: hidden; background: #72c2ff url('${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/123.png') no-repeat 100% 100%; min-height: 280px; padding-top: 79px; width: 100%;">
+    <div class="container">
+        <div class="container-inner">
+            <a href="boardPage.do">
+                <h1><span>이벤트!</span></h1>
+                <em>온/오프라인 이벤트 참여하기</em>
+            </a>
+        </div>
+    </div>
 </div>
+
 
 <div class="main">
     <div class="container">
@@ -269,17 +273,23 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <div class="sidebar-products clearfix">
                         <h2>구글 광고</h2>
                         <div class="item">
-                            <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                            <a href="productPage.do"><img
+                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k1.jpg"
+                                    alt="Some Shoes in Animal with Cut Out"></a>
                             <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
                             <div class="price">$31.00</div>
                         </div>
                         <div class="item">
-                            <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                            <a href="productPage.do"><img
+                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k4.jpg"
+                                    alt="Some Shoes in Animal with Cut Out"></a>
                             <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
                             <div class="price">$23.00</div>
                         </div>
                         <div class="item">
-                            <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                            <a href="productPage.do"><img
+                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k3.jpg"
+                                    alt="Some Shoes in Animal with Cut Out"></a>
                             <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
                             <div class="price">$86.00</div>
                         </div>
@@ -296,6 +306,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         <a href="javascript:;"><i class="fa fa-th-large"></i></a>
                         <a href="javascript:;"><i class="fa fa-th-list"></i></a>
                     </div>
+                    <!--
                     <div class="col-md-10 col-sm-10">
                         <div class="pull-right">
                             <label class="control-label">Show:</label>
@@ -322,6 +333,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                             </select>
                         </div>
                     </div>
+                    -->
                 </div>
                 <!-- BEGIN PRODUCT LIST -->
                 <div class="row product-list" id="product-list">
@@ -372,7 +384,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <address class="margin-bottom-40">
                     서울 강남구 테헤란로26길 12<br>
                     (우) 06236 (지번) 역삼동 736-56<br>
-                    Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
+                    Notion: <a
+                        href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
                     Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
                 </address>
             </div>
@@ -384,7 +397,50 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 <!-- Load javascripts at bottom, this will reduce page load time -->
 <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
-<script>
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<![endif]-->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+        type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js"
+        type="text/javascript"></script><!-- pop up -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js"
+        type="text/javascript"></script><!-- slider for products -->
+<script src='${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/zoom/jquery.zoom.min.js'
+        type="text/javascript"></script><!-- product zoom -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"
+        type="text/javascript"></script><!-- Quantity -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/jquery.uniform.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/jquery.rateit.js"
+        type="text/javascript"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
+
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        Layout.init();
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initImageZoom();
+        Layout.initTouchspin();
+        Layout.initUniform();
+        Layout.initAgeSliderRange();
+        Layout.initHeightSliderRange();
+    });
+
     function markAsRead(alertNumber) {
         // 클릭된 알림 번호를 로그에 출력
         console.log("로그: 알림 번호 [" + alertNumber + "]");
@@ -393,9 +449,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         $.ajax({
             url: "/updateAlertStatus",  // 상태를 업데이트할 URL
             type: "POST",
-            data: { alertNumber: alertNumber },  // alertNumber만 쿼리 문자열로 보내기
+            data: {alertNumber: alertNumber},  // alertNumber만 쿼리 문자열로 보내기
             dataType: 'json',  // 서버에서 응답으로 받는 데이터 타입
-            success: function(response) {
+            success: function (response) {
                 console.log("로그: 상태 업데이트 성공 [" + response + "]");
 
                 // 상태 업데이트 성공 시, UI에서 해당 알림의 상태를 '읽음'으로 변경
@@ -408,7 +464,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 // 새 알림이 있습니다 숨기기 위한 함수
                 checkAllAlertsRead();
             },
-            error: function() {
+            error: function () {
                 console.log("비동기 처리 실패");
             }
         });
@@ -419,7 +475,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         // 모든 알림이 '읽음' 상태인지 확인
         let allRead = true;
 
-        $(".alert-status").each(function() {
+        $(".alert-status").each(function () {
             if ($(this).text() === '읽지 않음') {
                 allRead = false;
             }
@@ -430,96 +486,61 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             $(".top-cart-info").hide();  // "새 알림이 있습니다" 메시지를 숨김
         }
     }
-</script>
-<!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
-<![endif]-->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
-
-<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
-<script src='${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
-
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        Layout.init();
-        Layout.initOWL();
-        Layout.initTwitter();
-        Layout.initImageZoom();
-        Layout.initTouchspin();
-        Layout.initUniform();
-        Layout.initAgeSliderRange();
-        Layout.initHeightSliderRange();
-    });
 
     // 페이지 레이아웃 스크립트에 추가
-    $(window).on('load', function() {
+    $(window).on('load', function () {
         // 모든 이미지가 로드된 후 실행
         equalizeCardHeights();
     });
 
-    $(window).on('resize', function() {
+    $(window).on('resize', function () {
         // 창 크기 변경 시 실행
         equalizeCardHeights();
     });
 
     function equalizeCardHeights() {
-        // 각 행별로 카드 높이 맞추기
-        var currentTallest = 0,
-            currentRowStart = 0,
-            rowDivs = [],
-            $el,
-            topPosition = 0;
+        // 먼저 모든 카드의 높이를 초기화합니다
+        $('.product-item').css('height', 'auto');
 
-        $('.product-item').each(function() {
-            $el = $(this);
-            topPosition = $el.position().top;
-            if (currentRowStart != topPosition) {
-                // 새로운 행 시작
-                for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-                    rowDivs[currentDiv].height(currentTallest);
+        // 화면 너비에 따라 한 행에 몇 개의 카드가 들어가는지 확인
+        const cardsPerRow = $(window).width() > 992 ? 3 : ($(window).width() > 768 ? 2 : 1);
+
+        // 각 행별로 처리
+        for (let i = 0; i < $('.product-item').length; i += cardsPerRow) {
+            let maxHeight = 0;
+
+            // 현재 행에서 가장 높은 카드 찾기
+            for (let j = 0; j < cardsPerRow; j++) {
+                if (i + j < $('.product-item').length) {
+                    const cardHeight = $('.product-item').eq(i + j).outerHeight();
+                    maxHeight = Math.max(maxHeight, cardHeight);
                 }
-                rowDivs.length = 0; // 배열 초기화
-                currentRowStart = topPosition;
-                currentTallest = $el.height();
-                rowDivs.push($el);
-            } else {
-                // 같은 행에 추가
-                rowDivs.push($el);
-                currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
             }
 
-            // 마지막 행 처리
-            for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-                rowDivs[currentDiv].height(currentTallest);
+            // 현재 행의 모든 카드 높이를 최대 높이로 설정
+            for (let j = 0; j < cardsPerRow; j++) {
+                if (i + j < $('.product-item').length) {
+                    $('.product-item').eq(i + j).css('height', maxHeight + 'px');
+                }
             }
-        });
+        }
     }
+
 
     const allUsers = ${userDatas};
     let filteredUsers = [];
     let start = 0;
     const limit = 9;
     const currentUserEmail = "${sessionScope.userEmail}";
+    const currentYear = new Date().getFullYear();
 
     console.log("Raw userDatas:", ${userDatas});
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         initSliders();
         applyFilters();
 
-        $('#load-more-btn').on('click', function() {
+        $('#load-more-btn').on('click', function () {
             loadMoreUsers();
         });
 
@@ -532,10 +553,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             min: 0,
             max: 100,
             values: [0, 100],
-            slide: function(event, ui) {
+            slide: function (event, ui) {
                 $('#ageAmount').val(ui.values[0] + ' - ' + ui.values[1]);
             },
-            change: function(event, ui) {
+            change: function (event, ui) {
                 applyFilters();
             }
         });
@@ -546,10 +567,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             min: 130,
             max: 220,
             values: [130, 220],
-            slide: function(event, ui) {
+            slide: function (event, ui) {
                 $('#heightAmount').val(ui.values[0] + ' - ' + ui.values[1]);
             },
-            change: function(event, ui) {
+            change: function (event, ui) {
                 applyFilters();
             }
         });
@@ -557,12 +578,18 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     }
 
     function applyFilters() {
-        const selectedGenders = $('input[name="gender"]:checked').map(function() { return $(this).val(); }).get();
+        const selectedGenders = $('input[name="gender"]:checked').map(function () {
+            return $(this).val();
+        }).get();
         const selectedDistance = $('input[name="distance"]:checked').val();
         const ageRange = $('#age-slider-range').slider('values');
         const heightRange = $('#height-slider-range').slider('values');
-        const selectedReligions = $('input[name="religion"]:checked').map(function() { return $(this).val(); }).get();
-        const selectedSmoking = $('input[name="smoking"]:checked').map(function() { return $(this).val(); }).get();
+        const selectedReligions = $('input[name="religion"]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        const selectedSmoking = $('input[name="smoking"]:checked').map(function () {
+            return $(this).val();
+        }).get();
 
         console.log("Selected Genders:", selectedGenders);
         console.log("Selected Distance:", selectedDistance);
@@ -571,13 +598,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         console.log("Selected Religions:", selectedReligions);
         console.log("Selected Smoking:", selectedSmoking);
 
-        const currentYear = new Date().getFullYear();
-
         filteredUsers = allUsers.filter(user => {
             console.log("User Data:", user);
 
             const birthYear = parseInt(user.userBirth) || 0;
             const userAge = birthYear ? currentYear - birthYear : 0;
+            console.log(userAge)
             const userGenderStr = user.userGender ? "남" : "여";
             const userSmokeStr = user.userSmoke ? "흡연" : "비흡연";
             const userDistance = parseInt(user.userRegion) || 0;
@@ -643,13 +669,14 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         }
 
         let productListHtml = '';
-        users.forEach(function(data) {
+        users.forEach(function (data) {
             if (!data.userEmail || !data.userNickname) {
                 console.log("Invalid user data:", data);
                 return;
             }
             console.log("Rendering user:", data.userEmail, data.userNickname, data.userHeight, data.userDescription);
-
+            let year = currentYear - parseInt(data.userBirth);
+            console.log("나이 출력" + year);
             productListHtml += `
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="product-item">
@@ -660,9 +687,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                             <a href="userDetailPage.do?userEmail=\${data.userEmail}" class="btn btn-default">프로필 보기</a>
                         </div>
                     </div>
-                    <h3><a href="userDetailPage.do?userEmail=\${data.userEmail}">닉네임: \${data.userNickname}</a></h3>
-                    <div class="height">키: \${data.userHeight || 'N/A'}cm</div>
-                    <div class="description"> \${data.userDescription || '설명 없음'}</div>
+                    <h3><a href="userDetailPage.do?userEmail=\${data.userEmail}">닉네임: <strong>\${data.userNickname}</strong></a></h3>
+                    <div class="region">지역: \${data.userRegion ? data.userRegion.split(' ')[0] : 'N/A'}</div>
+                    <div class="age">나이: \${year}세</div>
+                    <div class="description">소개: \${data.userDescription || '설명 없음'}</div>
                 </div>
             </div>
         `;

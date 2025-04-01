@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class ParticipantDAO {
-    final String SELECTALL = "SELECT B.* FROM BOARD B JOIN PARTICIPANT P ON B.BOARD_NUM = P.PARTICIPANT_BOARD_NUM WHERE P.PARTICIPANT_USER_EMAIL = ? ORDER BY B.BOARD_NUM DESC";
+    final String SELECTALL = "SELECT B.* , P.PARTICIPANT_USER_EMAIL FROM BOARD B JOIN PARTICIPANT P ON B.BOARD_NUM = P.PARTICIPANT_BOARD_NUM WHERE P.PARTICIPANT_USER_EMAIL = ? ORDER BY B.BOARD_NUM DESC";
     final String SELECTONE = "SELECT COUNT(P.PARTICIPANT_USER_EMAIL) FROM PARTICIPANT P JOIN BOARD B ON P.PARTICIPANT_BOARD_NUM = B.BOARD_NUM WHERE B.BOARD_NUM = ?";
     final String INSERT = "INSERT INTO PARTICIPANT (PARTICIPANT_BOARD_NUM, PARTICIPANT_USER_EMAIL) VALUES (?, ?)";
     final String DELETE = "DELETE FROM PARTICIPANT WHERE PARTICIPANT_BOARD_NUM = ? AND PARTICIPANT_USER_EMAIL = ?";
@@ -27,7 +27,7 @@ public class ParticipantDAO {
             rs = pstmt.executeQuery();
             while(rs.next()){
                 ParticipantDTO dto = new ParticipantDTO();
-                dto.setParticipantBoardNumber(rs.getInt("PARTICIPANT_BOARD_NUM"));
+                dto.setParticipantBoardNumber(rs.getInt("BOARD_NUM"));
                 dto.setParticipantUserEmail(rs.getString("PARTICIPANT_USER_EMAIL"));
                 list.add(dto);
             }
@@ -49,8 +49,8 @@ public class ParticipantDAO {
             pstmt.setInt(1, participantDTO.getParticipantBoardNumber());
             rs = pstmt.executeQuery();
             if(rs.next()){
-                // COUNT 결과를 ParticipantBoardNumber에 저장
-                list.setParticipantBoardNumber(rs.getInt("participant_count"));
+                // COUNT 결과를 ParticipantBoardNumber에 저장, 참가한 USER_EMAIL도 저장
+                list.setParticipantBoardNumber(rs.getInt(1));
             } else {
                 // 결과가 없으면 0으로 설정
                 list.setParticipantBoardNumber(0);

@@ -16,6 +16,14 @@ public class BoardDTO {
     private String condition;
     private String searchKeyword;
     private int boardParticipant;
+    private int Participant;
+
+    public int getParticipant() {
+        return Participant;
+    }
+    public void setParticipant(int participant) {
+        Participant = participant;
+    }
 
     public String getSearchKeyword() {
         return searchKeyword;

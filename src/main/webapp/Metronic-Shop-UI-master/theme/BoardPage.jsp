@@ -197,15 +197,30 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                             </div>
                                         </c:when>
                                         <c:otherwise>
-                                            <!-- 일반 사용자용 참가 버튼 -->
-                                            <form action="participantBoard.do" method="POST">
-                                                <input type="hidden" name="boardNumber" value="${data.boardNumber}">
-                                                <button type="submit" class="btn-participate"
-                                                    ${data.boardParticipant >= data.boardLimit ? 'disabled' : ''}>
-                                                    <i class="fa fa-check-circle"></i>
-                                                        ${data.boardParticipant >= data.boardLimit ? '마감되었습니다' : '참가하기'}
-                                                </button>
-                                            </form>
+                                            <c:choose>
+                                                <c:when test="${data.participant == 1}">
+                                                    <!-- 일반 사용자용 참가 버튼 -->
+                                                    <form action="participantBoard.do" method="POST">
+                                                        <input type="hidden" name="boardNumber" value="${data.boardNumber}">
+                                                        <button type="submit" class="btn-participate"
+                                                            ${data.boardParticipant >= data.boardLimit ? 'disabled' : ''}>
+                                                            <i class="fa fa-check-circle"></i>
+                                                                ${data.boardParticipant >= data.boardLimit ? '마감되었습니다' : '참가 취소하기'}
+                                                        </button>
+                                                    </form>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <!-- 일반 사용자용 참가 버튼 -->
+                                                    <form action="participantBoard.do" method="POST">
+                                                        <input type="hidden" name="boardNumber" value="${data.boardNumber}">
+                                                        <button type="submit" class="btn-participate"
+                                                            ${data.boardParticipant >= data.boardLimit ? 'disabled' : ''}>
+                                                            <i class="fa fa-check-circle"></i>
+                                                                ${data.boardParticipant >= data.boardLimit ? '마감되었습니다' : '참가하기'}
+                                                        </button>
+                                                    </form>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>

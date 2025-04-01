@@ -79,16 +79,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="col-md-6 col-sm-6 additional-shop-info">
                 <ul class="list-unstyled list-inline">
                     <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
-                    <!-- BEGIN CURRENCIES -->
-                    <c:if test="${sessionScope.userPremium == false}">
-                    <li class="shop-currencies">
-                        <a href="productPage.do">광고 제거</a>
-                    </li>
-                    </c:if>
-                    <!-- END CURRENCIES -->
                     <!-- BEGIN LANGS -->
                     <li class="langs-block">
-                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                        <a href="productPage.do" class="current"> 플러스샵 </a>
                     </li>
                     <!-- END LANGS -->
                 </ul>
@@ -97,7 +90,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <c:if test="${userDTO.userRole==1}">
+                    <c:if test="${userRole==1}">
                         <li><a href="adminPage.do">관리자페이지</a></li>
                     </c:if>
                     <li><a href="myPage.do">마이페이지</a></li>

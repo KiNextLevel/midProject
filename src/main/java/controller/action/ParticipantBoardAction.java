@@ -15,6 +15,7 @@ public class ParticipantBoardAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
+		System.out.println("ParticipantBoardAction!");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		BoardDTO boardDTO = new BoardDTO();
@@ -24,16 +25,20 @@ public class ParticipantBoardAction implements Action{
 		ParticipantDTO participantDTO = new ParticipantDTO();
 		ParticipantDAO participantDAO = new ParticipantDAO();
 
-		int boardNum = Integer.parseInt(request.getParameter("boardNum"));	//이벤트 번호 받음
+		int boardNum = Integer.parseInt(request.getParameter("boardNumber"));	//이벤트 번호 받음
 		boardDTO.setBoardNumber(boardNum);
+		System.out.println("boardNumber: ["+boardNum+"]");
 		String userEmail = (String)session.getAttribute("userEmail");	//로그인 한 사용자 이메일
-
-		boardDTO = boardDAO.selectOne(boardDTO);
+		System.out.println("userEmail: ["+userEmail+"]");
 
 		participantDTO.setParticipantBoardNumber(boardNum);
 		participantDTO.setParticipantUserEmail(userEmail);
+		System.out.println("participantDTO: ["+participantDTO+"]");
 
-		if((participantDAO.selectOne(participantDTO)).getParticipantBoardNumber() >= boardDTO.getBoardLimit()){  //인원수 다 차면
+		System.out.println("participantDAO.selectOne(participantDTO)).getParticipantBoardNumber(): ["+participantDAO.selectOne(participantDTO).getParticipantBoardNumber()+"]");
+		System.out.println("boardDTO.getBoardLimit(): ["+boardDTO.getBoardLimit()+"]");
+
+		if((participantDAO.selectOne(participantDTO)).getParticipantBoardNumber() >= boardDAO.selectOne(boardDTO).getBoardLimit()){  //인원수 다 차면
 			request.setAttribute("msg", "인원이 다 찼습니다");
 			request.setAttribute("flag", false);
 			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");

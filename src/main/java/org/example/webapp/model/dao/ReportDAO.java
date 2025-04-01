@@ -20,7 +20,9 @@ public class ReportDAO {
 
 
     final String UPDATE = "";
-    final String DELETE = "";
+
+    // (관리자용) 블랙리스트된 00 유저 삭제하기
+    final String DELETE = "DELETE FROM REPORT WHERE REPORT_REPORTED = ?";
 
     public ArrayList<ReportDTO> selectAll(ReportDTO reportDTO) {
         ArrayList<ReportDTO> datas = new ArrayList<>();
@@ -91,7 +93,24 @@ public class ReportDAO {
     }
 
     public boolean delete(ReportDTO reportDTO) {
-        return false;
-    }
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn = JDBCUtil.connect();
+            pstmt = conn.prepareStatement(DELETE);
 
+            pstmt.setString(1, reportDTO.getReportReported());
+
+            int result = pstmt.executeUpdate();
+            return result > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            JDBCUtil.disconnect(conn, pstmt);
+        }
+
+    }
 }
+

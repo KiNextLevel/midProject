@@ -155,36 +155,40 @@ public class UserDAO {
                 if (userDTO.getCondition().equals("SELECTONE_CHECK")) {
                     pstmt = conn.prepareStatement(SELECTONE_CHECK);
                     pstmt.setString(1, userDTO.getUserEmail());
+                    // 쿼리 실행 및 결과 처리
+                    rs = pstmt.executeQuery();
+                    if (rs.next()) {
+                        // 이메일이 존재하는 경우
+                        data = new UserDTO();
+                        data.setUserEmail(rs.getString("USER_EMAIL"));
+                        System.out.println("이메일 중복 확인: 이미 존재하는 이메일입니다 - " + rs.getString("USER_EMAIL"));
+                    } else {
+                        // 이메일이 존재하지 않는 경우
+                        System.out.println("이메일 중복 확인: 사용 가능한 이메일입니다.");
+                        return null; // 중복된 이메일이 없으면 null 반환
+                    }
                 } else if (userDTO.getCondition().equals("SELECTONE")) {
                     pstmt = conn.prepareStatement(SELECTONE);
                     pstmt.setString(1, userDTO.getUserEmail());
                     pstmt.setString(2, userDTO.getUserPassword());
 
-                } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE_USERINFO")) {
-                    pstmt = conn.prepareStatement(SELECTONE_USERINFO);
-                    pstmt.setString(1, userDTO.getUserEmail());
-                }
-                // 유저 위치 정보(위도, 경도) 불러오기 추가!!!!
-                else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTONE_LOCATION")) {
-                    pstmt = conn.prepareStatement(SELECTONE_LOCATION);
-                    pstmt.setString(1, userDTO.getUserEmail());
-                }
-                else {
-                    // 알 수 없는 조건인 경우 로그 출력 및 null 반환
-                    System.out.println("알 수 없는 조건: " + userDTO.getCondition());
-                    return null;
-                }
-
-                // 쿼리 실행 및 결과 처리
-                rs = pstmt.executeQuery();
-                if (rs.next()) {
-                    data = new UserDTO();
-                    data.setUserEmail(rs.getString("USER_EMAIL"));
-                    data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
-                    if (userDTO.getCondition().equals("SELECTONE")) {
+                    // 쿼리 실행
+                    rs = pstmt.executeQuery();
+                    if (rs.next()) {
+                        data = new UserDTO();
+                        data.setUserEmail(rs.getString("USER_EMAIL"));
                         data.setUserPassword(rs.getString("USER_PASSWORD"));
                         data.setUserRole(rs.getInt("USER_ROLE"));
-                    } else if (userDTO.getCondition().equals("SELECTONE_USERINFO")) {
+                        data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                    }
+                } else if (userDTO.getCondition().equals("SELECTONE_USERINFO")) {
+                    pstmt = conn.prepareStatement(SELECTONE_USERINFO);
+                    pstmt.setString(1, userDTO.getUserEmail());
+                    // 쿼리 실행
+                    rs = pstmt.executeQuery();
+                    if (rs.next()) {
+                        data = new UserDTO();
+                        data.setUserEmail(rs.getString("USER_EMAIL"));
                         data.setUserPassword(rs.getString("USER_PASSWORD"));
                         data.setUserName(rs.getString("USER_NAME"));
                         data.setUserNickname(rs.getString("USER_NICKNAME"));
@@ -198,8 +202,8 @@ public class UserDAO {
                         data.setUserProfile(rs.getString("USER_PROFILE"));
                         data.setUserEducation(rs.getString("USER_EDUCATION"));
                         data.setUserReligion(rs.getString("USER_RELIGEION"));
-                        data.setUserLatitude(rs.getDouble("USER_LATITUDE"));   // 위도 추가
-                        data.setUserLongitude(rs.getDouble("USER_LONGITUDE")); // 경도 추가
+                        data.setUserLatitude(rs.getDouble("USER_LATITUDE"));
+                        data.setUserLongitude(rs.getDouble("USER_LONGITUDE"));
                         data.setUserDrink(rs.getInt("USER_DRINK"));
                         data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
                         data.setUserJob(rs.getString("USER_JOB"));
@@ -208,20 +212,31 @@ public class UserDAO {
                         data.setUserToken(rs.getInt("USER_TOKEN"));
                         data.setUserRegion(rs.getString("USER_REGION"));
                         data.setUserDescription(rs.getString("USER_DESCRIPTION"));
-                        // 사용자 위치 정보 추가
-                    } else if (userDTO.getCondition().equals("SELECTONE_LOCATION")) {
+
+                        // social_type 필드 추가
+                        try {
+                            data.setSocialType(rs.getString("SOCIAL_TYPE"));
+                        } catch (Exception e) {
+                            // SOCIAL_TYPE 컬럼이 없는 경우 예외 처리
+                            data.setSocialType(null);
+                        }
+                    }
+                } else if (userDTO.getCondition().equals("SELECTONE_LOCATION")) {
+                    pstmt = conn.prepareStatement(SELECTONE_LOCATION);
+                    pstmt.setString(1, userDTO.getUserEmail());
+
+                    // 쿼리 실행
+                    rs = pstmt.executeQuery();
+                    if (rs.next()) {
+                        data = new UserDTO();
                         data.setUserEmail(rs.getString("USER_EMAIL"));
                         data.setUserLatitude(rs.getDouble("USER_LATITUDE"));
                         data.setUserLongitude(rs.getDouble("USER_LONGITUDE"));
                     }
-
-                    // social_type 필드 추가
-                    try {
-                        data.setSocialType(rs.getString("SOCIAL_TYPE"));
-                    } catch (Exception e) {
-                        // SOCIAL_TYPE 컬럼이 없는 경우 예외 처리
-                        data.setSocialType(null);
-                    }
+                } else {
+                    // 알 수 없는 조건인 경우 로그 출력 및 null 반환
+                    System.out.println("알 수 없는 조건: " + userDTO.getCondition());
+                    return null;
                 }
             } else {
                 // 조건이 null인 경우 로그 출력
@@ -230,6 +245,7 @@ public class UserDAO {
             return data;
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("selectOne 메소드 예외 발생: " + e.getMessage());
             return null;
         } finally {
             // 리소스 정리
@@ -243,6 +259,7 @@ public class UserDAO {
             JDBCUtil.disconnect(conn, pstmt);
         }
     }
+
 
 
     // 회원가입

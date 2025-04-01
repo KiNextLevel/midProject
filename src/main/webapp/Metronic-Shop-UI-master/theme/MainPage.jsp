@@ -99,16 +99,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="col-md-6 col-sm-6 additional-shop-info">
                 <ul class="list-unstyled list-inline">
                     <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
-                    <!-- BEGIN CURRENCIES -->
-                    <c:if test="${sessionScope.userPremium == false}">
-                    <li class="shop-currencies">
-                        <a href="productPage.do">광고 제거</a>
-                    </li>
-                    </c:if>
-                    <!-- END CURRENCIES -->
                     <!-- BEGIN LANGS -->
                     <li class="langs-block">
-                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                        <a href="productPage.do" class="current"> 플러스샵 </a>
                     </li>
                     <!-- END LANGS -->
                 </ul>
@@ -117,7 +110,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <c:if test="${userDTO.userRole==1}">
+                    <c:if test="${userRole==1}">
                         <li><a href="adminPage.do">관리자페이지</a></li>
                     </c:if>
                     <li><a href="myPage.do">마이페이지</a></li>
@@ -134,7 +127,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="mainPage.do"><img src="assets/corporate/img/logos/3.png" alt="mainPage"></a>
+        <a class="site-logo" href="mainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png" alt="mainPage"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -148,9 +141,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             </c:if>
 
             <!-- 클릭 시 JS 함수 호출하도록 수정 -->
-<%--            <a href="javascript:void(0);" class="top-cart-toggle" onclick="toggleCartContent()">--%>
-                <i class="fa fa-bell"></i>
-<%--            </a>--%>
+            <%--            <a href="javascript:void(0);" class="top-cart-toggle" onclick="toggleCartContent()">--%>
+            <i class="fa fa-bell"></i>
+            <%--            </a>--%>
 
             <div class="top-cart-content-wrapper">
                 <div class="top-cart-content">
@@ -226,11 +219,18 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <h2>Filter</h2>
                     <!-- 성별 필터 -->
                     <h3>성별</h3>
-                    <div class="checkbox-list">
-                        <label><input type="checkbox"> 남</label>
-                        <label><input type="checkbox"> 여</label>
+                    <div class="checkbox-list" id="gender-filters">
+                        <label><input type="checkbox" name="gender" value="남" checked="checked"> 남</label>
+                        <label><input type="checkbox" name="gender" value="여" checked="checked"> 여</label>
                     </div>
 
+                    <!-- 거리 필터 -->
+                    <h3>거주지역</h3>
+                    <div class="checkbox-list" id="distance-filters">
+                        <label><input type="radio" name="distance" value="10" checked="checked"> 10km 이내</label>
+                        <label><input type="radio" name="distance" value="50"> 50km</label>
+                        <label><input type="radio" name="distance" value="100"> 100km 이상</label>
+                    </div>
                     <!-- 나이 슬라이더 -->
                     <h3>나이</h3>
                     <p>
@@ -238,12 +238,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         <input type="text" id="ageAmount" style="border:0; color:#f6931f; font-weight:bold;">
                     </p>
                     <div id="age-slider-range" class="age"></div>
-
-                    <!-- 거주지역 -->
-                    <h3>거주지역</h3>
-                    <div class="checkbox-list">
-                        <label><input type="checkbox"> 내 주위 0~100km</label>
-                    </div>
 
                     <!-- 키 슬라이더 -->
                     <h3>키</h3>
@@ -253,47 +247,41 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </p>
                     <div id="height-slider-range" class="height"></div>
 
-                    <!-- 학력 -->
-                    <h3>학력</h3>
-                    <div class="checkbox-list">
-                        <label><input type="checkbox"> 범위 지정</label>
-                    </div>
-
                     <!-- 종교 -->
                     <h3>종교</h3>
-                    <div class="checkbox-list">
-                        <label><input type="checkbox"> 무교</label>
-                        <label><input type="checkbox"> 기독교</label>
-                        <label><input type="checkbox"> 불교</label>
-                        <label><input type="checkbox"> 천주교</label>
-                        <label><input type="checkbox"> 힌두교</label>
-                        <label><input type="checkbox"> 기타</label>
+                    <div class="checkbox-list" id="religion-filters">
+                        <label><input type="checkbox" name="religion" value="무교"> 무교</label>
+                        <label><input type="checkbox" name="religion" value="기독교"> 기독교</label>
+                        <label><input type="checkbox" name="religion" value="불교"> 불교</label>
+                        <label><input type="checkbox" name="religion" value="천주교"> 천주교</label>
+                        <label><input type="checkbox" name="religion" value="힌두교"> 힌두교</label>
+                        <label><input type="checkbox" name="religion" value="기타"> 기타</label>
                     </div>
                     <!-- 흡연 -->
                     <h3>흡연</h3>
-                    <div class="checkbox-list">
-                        <label><input type="checkbox"> 흡연</label>
-                        <label><input type="checkbox"> 비흡연</label>
+                    <div class="checkbox-list" id="smoking-filters">
+                        <label><input type="checkbox" name="smoking" value="흡연"> 흡연</label>
+                        <label><input type="checkbox" name="smoking" value="비흡연"> 비흡연</label>
                     </div>
                 </div>
 
-                <c:if test="${not empty userDTO and !userDTO.userPreminum}">
+                <c:if test="${not empty userEmail and !userPremium}">
                     <div class="sidebar-products clearfix">
-                                <h2>구글 광고</h2>
-                                <div class="item">
-                                    <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                                    <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
-                                    <div class="price">$31.00</div>
-                                </div>
-                                <div class="item">
-                                    <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                                    <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
-                                    <div class="price">$23.00</div>
-                                </div>
-                                <div class="item">
-                                    <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                                    <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
-                                    <div class="price">$86.00</div>
+                        <h2>구글 광고</h2>
+                        <div class="item">
+                            <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                            <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
+                            <div class="price">$31.00</div>
+                        </div>
+                        <div class="item">
+                            <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                            <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
+                            <div class="price">$23.00</div>
+                        </div>
+                        <div class="item">
+                            <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                            <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
+                            <div class="price">$86.00</div>
                         </div>
                     </div>
                 </c:if>
@@ -336,35 +324,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </div>
                 </div>
                 <!-- BEGIN PRODUCT LIST -->
-                <div class="row product-list">
-                    <c:if test="${empty userDatas}">
-                        <li>
-                            <p>회원이 없습니다</p>
-                        </li>
-                    </c:if>
-                    <c:forEach var="data" items="${userDatas}">
-                        <!-- PRODUCT ITEM START -->
-                        <!-- user_Role이 0인 회원만 표시(사용자인 경우), 자기 자신은 안 보이게 -->
-                        <c:if test="${data.userRole==0 && data.userEmail != sessionScope.userEmail}">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="product-item">
-                                <div class="pi-img-wrapper">
-                                    <img src="${data.userProfile}" class="img-responsive" alt="userImage">
-                                    <div class="product-page-cart">
-                                        <button class="btn btn-primary" type="submit">메시지 보내기</button>
-                                        <a href="userDetailPage.do?userEmail=${data.userEmail}" class="btn btn-default">프로필 보기</a>
-                                    </div>
-                                </div>
-                                <h3><a href="userDetailPage.do?userEmail=${data.userEmail}">${data.userNickname}</a></h3>
-                                <div class="height">키: ${data.userHeight}cm</div>
-                                <div class="description">${data.userDescription}</div>
-                            </div>
-                        </div>
-                        </c:if>
-                        <!-- PRODUCT ITEM END -->
-                    </c:forEach>
+                <div class="row product-list" id="product-list">
+                    <!-- 여기에 초기 데이터가 렌더링 됩니다. -->
                 </div>
                 <!-- END PRODUCT LIST -->
+
+                <!-- 더 보기 버튼 -->
+                <div id="load-more-container">
+                    <button id="load-more-btn" class="btn btn-primary">더 보기</button>
+                </div>
             </div>
             <!-- END CONTENT -->
         </div>
@@ -517,7 +485,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         $('.product-item').each(function() {
             $el = $(this);
             topPosition = $el.position().top;
-
             if (currentRowStart != topPosition) {
                 // 새로운 행 시작
                 for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
@@ -540,7 +507,176 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         });
     }
 
+    const allUsers = ${userDatas};
+    let filteredUsers = [];
+    let start = 0;
+    const limit = 9;
+    const currentUserEmail = "${sessionScope.userEmail}";
+
+    console.log("Raw userDatas:", ${userDatas});
+
+    $(document).ready(function() {
+        initSliders();
+        applyFilters();
+
+        $('#load-more-btn').on('click', function() {
+            loadMoreUsers();
+        });
+
+        $('input[name="gender"], input[name="distance"], input[name="religion"], input[name="smoking"]').on('change', applyFilters);
+    });
+
+    function initSliders() {
+        $('#age-slider-range').slider({
+            range: true,
+            min: 0,
+            max: 100,
+            values: [0, 100],
+            slide: function(event, ui) {
+                $('#ageAmount').val(ui.values[0] + ' - ' + ui.values[1]);
+            },
+            change: function(event, ui) {
+                applyFilters();
+            }
+        });
+        $('#ageAmount').val($('#age-slider-range').slider('values', 0) + ' - ' + $('#age-slider-range').slider('values', 1));
+
+        $('#height-slider-range').slider({
+            range: true,
+            min: 130,
+            max: 220,
+            values: [130, 220],
+            slide: function(event, ui) {
+                $('#heightAmount').val(ui.values[0] + ' - ' + ui.values[1]);
+            },
+            change: function(event, ui) {
+                applyFilters();
+            }
+        });
+        $('#heightAmount').val($('#height-slider-range').slider('values', 0) + ' - ' + $('#height-slider-range').slider('values', 1));
+    }
+
+    function applyFilters() {
+        const selectedGenders = $('input[name="gender"]:checked').map(function() { return $(this).val(); }).get();
+        const selectedDistance = $('input[name="distance"]:checked').val();
+        const ageRange = $('#age-slider-range').slider('values');
+        const heightRange = $('#height-slider-range').slider('values');
+        const selectedReligions = $('input[name="religion"]:checked').map(function() { return $(this).val(); }).get();
+        const selectedSmoking = $('input[name="smoking"]:checked').map(function() { return $(this).val(); }).get();
+
+        console.log("Selected Genders:", selectedGenders);
+        console.log("Selected Distance:", selectedDistance);
+        console.log("Age Range:", ageRange);
+        console.log("Height Range:", heightRange);
+        console.log("Selected Religions:", selectedReligions);
+        console.log("Selected Smoking:", selectedSmoking);
+
+        const currentYear = new Date().getFullYear();
+
+        filteredUsers = allUsers.filter(user => {
+            console.log("User Data:", user);
+
+            const birthYear = parseInt(user.userBirth) || 0;
+            const userAge = birthYear ? currentYear - birthYear : 0;
+            const userGenderStr = user.userGender ? "남" : "여";
+            const userSmokeStr = user.userSmoke ? "흡연" : "비흡연";
+            const userDistance = parseInt(user.userRegion) || 0;
+
+            const passesRole = user.userRole === 0;
+            const passesEmail = user.userEmail !== currentUserEmail;
+            const passesGender = selectedGenders.length === 0 || selectedGenders.includes(userGenderStr);
+            const passesDistance = userDistance <= parseInt(selectedDistance) || selectedDistance === '100';
+            const passesAge = userAge >= ageRange[0] && userAge <= ageRange[1];
+            const passesHeight = user.userHeight >= heightRange[0] && user.userHeight <= heightRange[1];
+            const passesReligion = selectedReligions.length === 0 || selectedReligions.includes(user.userReligion);
+            const passesSmoking = selectedSmoking.length === 0 || selectedSmoking.includes(userSmokeStr);
+
+            console.log("Filter Conditions:", {
+                passesRole, passesEmail, passesGender, passesDistance,
+                passesAge, passesHeight, passesReligion, passesSmoking
+            });
+
+            return (
+                passesRole &&
+                passesEmail &&
+                passesGender &&
+                passesDistance &&
+                passesAge &&
+                passesHeight &&
+                passesReligion &&
+                passesSmoking
+            );
+        });
+
+        console.log("Filtered Users:", filteredUsers);
+        start = 0;
+        $('#product-list').empty();
+        loadInitialUsers();
+    }
+
+    function loadInitialUsers() {
+        const usersToDisplay = filteredUsers.slice(start, start + limit);
+        updateProductList(usersToDisplay, false);
+        start += limit;
+        updateLoadMoreButton();
+    }
+
+    function loadMoreUsers() {
+        const usersToDisplay = filteredUsers.slice(start, start + limit);
+        updateProductList(usersToDisplay, true);
+        start += limit;
+        updateLoadMoreButton();
+    }
+
+    function updateLoadMoreButton() {
+        if (start >= filteredUsers.length) {
+            $('#load-more-btn').text('더 이상 없습니다').prop('disabled', true);
+        } else {
+            $('#load-more-btn').text('더 보기').prop('disabled', false).show();
+        }
+    }
+
+    function updateProductList(users, append) {
+        if (!users || users.length === 0) {
+            $('#product-list').html('<p>회원이 없습니다</p>');
+            return;
+        }
+
+        let productListHtml = '';
+        users.forEach(function(data) {
+            if (!data.userEmail || !data.userNickname) {
+                console.log("Invalid user data:", data);
+                return;
+            }
+            console.log("Rendering user:", data.userEmail, data.userNickname, data.userHeight, data.userDescription);
+
+            productListHtml += `
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="product-item">
+                    <div class="pi-img-wrapper">
+                        <img src="\${data.userProfile || 'default.jpg'}" class="img-responsive" alt="userImage">
+                        <div class="product-page-cart">
+                            <button class="btn btn-primary" type="submit">메시지 보내기</button>
+                            <a href="userDetailPage.do?userEmail=\${data.userEmail}" class="btn btn-default">프로필 보기</a>
+                        </div>
+                    </div>
+                    <h3><a href="userDetailPage.do?userEmail=\${data.userEmail}">닉네임: \${data.userNickname}</a></h3>
+                    <div class="height">키: \${data.userHeight || 'N/A'}cm</div>
+                    <div class="description"> \${data.userDescription || '설명 없음'}</div>
+                </div>
+            </div>
+        `;
+        });
+
+        if (append) {
+            $('#product-list').append(productListHtml);
+        } else {
+            $('#product-list').html(productListHtml);
+        }
+        equalizeCardHeights();
+    }
 </script>
+
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

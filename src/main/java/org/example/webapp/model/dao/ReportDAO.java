@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class ReportDAO {
+
     // (관리자용) 00유저 신고자, 신고사유, 신고날짜, 00유저 피신고자, 신고 설명 전체 출력하기
     final String SELECTALL = "SELECT REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION "
             + "FROM REPORT";
@@ -114,5 +115,5 @@ public class ReportDAO {
         }
 
     }
-    }
+}
 

@@ -1,5 +1,7 @@
 package controller.action;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,62 +10,80 @@ import org.example.webapp.model.dao.AlertDAO;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.AlertDTO;
 import org.example.webapp.model.dto.UserDTO;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 
 public class MainPageAction implements Action {
-    @Override
-    public ActionForward execute(HttpServletRequest request) {
+	@Override
+	public ActionForward execute(HttpServletRequest request) {
 		System.out.println("CONT 로그: MAINPAGE ACTION 도착");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		String userEmail = (String) session.getAttribute("userEmail");
-        //넘어가야하는 정보: 비동기로 처리할듯
-        //1. 알람
-	    //2. 메시지(최프)
-	    AlertDAO alertDAO = new AlertDAO();
-	    AlertDTO alertDTO = new AlertDTO();
-	    alertDTO.setUserEmail(userEmail);
-	    ArrayList<AlertDTO> alertDatas = alertDAO.selectAll(alertDTO);
+		//넘어가야하는 정보: 비동기로 처리할듯
+		//1. 알람
+		//2. 메시지(최프)
+		AlertDAO alertDAO = new AlertDAO();
+		AlertDTO alertDTO = new AlertDTO();
+		alertDTO.setUserEmail(userEmail);
+		ArrayList<AlertDTO> alertDatas = alertDAO.selectAll(alertDTO);
 		for(AlertDTO alertDTO1 : alertDatas) {
 			System.out.println(alertDTO1);
 		}
 		session.setAttribute("alertDatas", alertDatas);
-	    if (alertDatas != null) {
-	    	//알람이 있음
-	    	for(AlertDTO data : alertDatas) {
-	    		if (!data.isAlertIsWatch()) { // 열람한적 없는 데이터가 있다면
-	    			request.setAttribute("hasUnreadAlerts", true);
+		if (alertDatas != null) {
+			//알람이 있음
+			for(AlertDTO data : alertDatas) {
+				if (!data.isAlertIsWatch()) { // 열람한적 없는 데이터가 있다면
+					request.setAttribute("hasUnreadAlerts", true);
 					break;
-	    		}
-	    	}
-	    }
+				}
+			}
+		}
 		UserDAO userDAO = new UserDAO();
 		UserDTO userDTO = new UserDTO();
 		userDTO.setUserEmail(userEmail);
 		userDTO.setCondition("SELECTALL");
 		ArrayList<UserDTO> userDatas = userDAO.selectAll(userDTO);
-		session.setAttribute("userDatas", userDatas);
 
-		// 현재 로그인한 사용자의 정보를 가져옴
-		UserDTO currentUserDTO = new UserDTO();
-		currentUserDTO.setUserEmail(userEmail);
-		currentUserDTO.setCondition("SELECTONE_USERINFO");
-		UserDTO userData = userDAO.selectOne(currentUserDTO);
+		JSONArray userDatasJsonArray = new JSONArray();
+		for (UserDTO user : userDatas) {
+			JSONObject userJson = new JSONObject();
+			userJson.put("userPhone", user.getUserPhone());
+			userJson.put("userEmail", user.getUserEmail());
+			userJson.put("userPassword", user.getUserPassword());
+			userJson.put("userNickname", user.getUserNickname());
+			userJson.put("userRegdate", user.getUserRegdate() != null ? user.getUserRegdate().toString() : null);
+			userJson.put("userGender", user.getUserGender()); // boolean
+			userJson.put("userBirth", user.getUserBirth()); // String
+			userJson.put("userHeight", user.getUserHeight()); // int
+			userJson.put("userBody", user.getUserBody());
+			userJson.put("userMbti", user.getUserMbti());
+			userJson.put("userProfile", user.getUserProfile());
+			userJson.put("userEducation", user.getUserEducation());
+			userJson.put("userReligion", user.getUserReligion());
+			userJson.put("userDrink", user.getUserDrink()); // int
+			userJson.put("userSmoke", user.isUserSmoke()); // boolean
+			userJson.put("userJob", user.getUserJob());
+			userJson.put("userRole", user.getUserRole());
+			userJson.put("userPreminum", user.isUserPreminum()); // boolean
+			userJson.put("userToken", user.getUserToken()); // int
+			userJson.put("userRegion", user.getUserRegion());
+			userJson.put("userDescription", user.getUserDescription());
+			userJson.put("userName", user.getUserName());
+			userJson.put("userLatitude", user.getUserLatitude()); // double
+			userJson.put("userLongitude", user.getUserLongitude()); // double
 
-		// 세션에 현재 사용자 정보 저장
-		session.setAttribute("userDTO", userData);
-
-		// 디버깅용 로그 출력
-		if (userData != null) {
-			System.out.println("사용자 이메일: " + userData.getUserEmail());
-			System.out.println("프리미엄 상태: " + userData.isUserPreminum());
-		} else {
-			System.out.println("사용자 정보를 가져오지 못했습니다.");
+			userDatasJsonArray.add(userJson);
 		}
+
+		String jsonUserDatas = userDatasJsonArray.toJSONString();
+		request.setAttribute("userDatas", jsonUserDatas);
 
 		forward.setPath("/Metronic-Shop-UI-master/theme/MainPage.jsp");
 		forward.setRedirect(false);
 		return forward;
-    }
+	}
 }

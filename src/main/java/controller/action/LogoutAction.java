@@ -11,9 +11,7 @@ public class LogoutAction implements Action {
 		System.out.println("CONT 로그: LOGOUT ACTION 도착");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
-		// session에서 id,닉네임, role remove
-	    session.removeAttribute("userEmail");
-	    session.removeAttribute("userRole");
+		session.invalidate();
 
 	    // url, flag, msg 요청단위 저장
 	    // alert.jsp에 url, true, msg 보내기

@@ -10,9 +10,11 @@ import java.util.ArrayList;
 
 public class UserDAO {
     // 아이디 중복 검사
-    final String SELECTONE_CHECK = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ?";
-    // 로그인
-    final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
+    final String SELECTONE_CHECK = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ? AND SOCIAL_TYPE = ?";
+    // 소셜 로그인
+    final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ? AND SOCIAL_TYPE = ?";
+    // 일반 로그인
+    final String SELECTONE_NONSOCIAL = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
     // 유저 전체 정보 불러오기
     final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
 
@@ -20,7 +22,7 @@ public class UserDAO {
     final String SELECTONE_LOCATION = "SELECT USER_EMAIL, USER_LATITUDE, USER_LONGITUDE FROM USER WHERE USER_EMAIL = ?";
 
     // 유저 전체 정보 불러오기
-    final String SELECTALL = "SELECT * FROM USER";
+    final String SELECTALL = "SELECT * FROM USER ORDER BY USER_REGDATE DESC";
     // 유저 선호 취향 정보 불러오기
     final String SELCETALL_FAVORITE = "SELECT * FROM PREFERENCE P LEFT JOIN USER U ON P.PREFERENCE_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
     // 참가 중인 이벤트 목록 불러오기
@@ -155,6 +157,7 @@ public class UserDAO {
                 if (userDTO.getCondition().equals("SELECTONE_CHECK")) {
                     pstmt = conn.prepareStatement(SELECTONE_CHECK);
                     pstmt.setString(1, userDTO.getUserEmail());
+                    pstmt.setString(2, userDTO.getSocialType());
                     // 쿼리 실행 및 결과 처리
                     rs = pstmt.executeQuery();
                     if (rs.next()) {
@@ -169,6 +172,21 @@ public class UserDAO {
                     }
                 } else if (userDTO.getCondition().equals("SELECTONE")) {
                     pstmt = conn.prepareStatement(SELECTONE);
+                    pstmt.setString(1, userDTO.getUserEmail());
+                    pstmt.setString(2, userDTO.getUserPassword());
+                    pstmt.setString(3, userDTO.getSocialType());
+
+                    // 쿼리 실행
+                    rs = pstmt.executeQuery();
+                    if (rs.next()) {
+                        data = new UserDTO();
+                        data.setUserEmail(rs.getString("USER_EMAIL"));
+                        data.setUserPassword(rs.getString("USER_PASSWORD"));
+                        data.setUserRole(rs.getInt("USER_ROLE"));
+                        data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                    }
+                } else if (userDTO.getCondition().equals("SELECTONE_NONSOCIAL")) {
+                    pstmt = conn.prepareStatement(SELECTONE_NONSOCIAL);
                     pstmt.setString(1, userDTO.getUserEmail());
                     pstmt.setString(2, userDTO.getUserPassword());
 

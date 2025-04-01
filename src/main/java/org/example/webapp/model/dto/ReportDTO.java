@@ -3,6 +3,7 @@ package org.example.webapp.model.dto;
 import java.util.Date;
 
 public class ReportDTO {
+
     private int reportNumber; // 신고 번호 (PK)
     private String reportReported; // 피신고자 (FK)
     private String reportReporter; // 신고자 (FK)
@@ -11,6 +12,7 @@ public class ReportDTO {
     private Date reportDate; // 신고 날짜
     private String condition; // 컨디션
     private String searchKeyword; // SearchKeyword
+
 
     public int getReportNumber() {
         return reportNumber;
@@ -79,9 +81,15 @@ public class ReportDTO {
 
     @Override
     public String toString() {
-        return "ReportDTO [reportNumber=" + reportNumber + ", reportReported=" + reportReported + ", reportReporter="
-                + reportReporter + ", reportReason=" + reportReason + ", reportDescription=" + reportDescription
-                + ", reportDate=" + reportDate + ", condition=" + condition + ", searchKeyword=" + searchKeyword + "]";
+        return "ReportDTO{" +
+                ", reportNumber=" + reportNumber +
+                ", reportReported='" + reportReported + '\'' +
+                ", reportReporter='" + reportReporter + '\'' +
+                ", reportReason='" + reportReason + '\'' +
+                ", reportDescription='" + reportDescription + '\'' +
+                ", reportDate=" + reportDate +
+                ", condition='" + condition + '\'' +
+                ", searchKeyword='" + searchKeyword + '\'' +
+                '}';
     }
-
 }

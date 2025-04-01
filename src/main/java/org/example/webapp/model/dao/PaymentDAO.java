@@ -21,7 +21,17 @@ public class PaymentDAO {
             + "JOIN PRODUCT pr ON p.PRODUCT_NUM = pr.PRODUCT_NUM ORDER BY p.PAYMENT_DATE DESC";
     // 추가하기(일별, 월별, 연도별 매출 조회
 
-    final String SELECTONE = "";
+    // 유저 마이페이지 - 결제한 상품명, 결제일, 결제 날짜
+    final String SELECTONE =
+            "SELECT " +
+                    "    P.PRODUCT_NAME, " +
+                    "    P.PRODUCT_PRICE, " +
+                    "    M.PAYMENT_PRICE, " +
+                    "    M.PAYMENT_DATE " +
+                    "FROM PAYMENT M " +
+                    "JOIN PRODUCT P ON M.PRODUCT_NUM = P.PRODUCT_NUM " +
+                    "WHERE M.PAYMENT_USER_EMAIL = ?";
+
 
     // 사용자 결제 내역 저장하기
     // 유저 이메일, 금액, 결제 날짜, 결제 방법, 상품 번호
@@ -63,10 +73,35 @@ public class PaymentDAO {
 
     }
 
-    public PaymentDTO selectOne(PaymentDTO paymentDTO) {
-        return null;
+    public ArrayList<PaymentDTO> selectByUserEmailList(PaymentDTO paymentDTO) {
+        ArrayList<PaymentDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
+        try {
+            conn = JDBCUtil.connect();
+            pstmt = conn.prepareStatement(SELECTONE);
+            pstmt.setString(1, paymentDTO.getUserEmail());
+
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                PaymentDTO data = new PaymentDTO();
+                data.setProductName(rs.getString("PRODUCT_NAME"));
+                data.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+                data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));
+                data.setPaymentDate(rs.getDate("PAYMENT_DATE"));
+                list.add(data);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.disconnect(conn, pstmt);
+        }
+
+        return list;
     }
+
 
     public boolean insert(PaymentDTO paymentDTO) {
         Connection conn = null;

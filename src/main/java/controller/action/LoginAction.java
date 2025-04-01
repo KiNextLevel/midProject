@@ -36,7 +36,7 @@ public class LoginAction implements Action {
             // session에 userId, userName, role저장
             session.setAttribute("userEmail", userDTO.getUserEmail());
             session.setAttribute("userRole", userDTO.getUserRole());
-            System.out.println("userROle = "+userDTO.getUserRole());
+            System.out.println("userRole = "+userDTO.getUserRole());
 
             // url, flag, msg 요청단위 저장
             // alert.jsp에 url, true, msg 보내기
@@ -78,6 +78,6 @@ public class LoginAction implements Action {
         session.setAttribute("userEmail", userDTO.getUserEmail());
         session.setAttribute("userRole", userDTO.getUserRole());
         session.setAttribute("userPremium", userDTO.isUserPreminum());
-        System.out.println("userROle = "+userDTO.getUserRole());
+        System.out.println("userRole = "+userDTO.getUserRole());
     }
 }

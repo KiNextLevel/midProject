@@ -97,7 +97,7 @@
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
                     <li><a href="myPage.do">마이페이지</a></li>
-                    <li><a href="">로그아웃</a></li>
+                    <li><a href="logout.do">로그아웃</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->

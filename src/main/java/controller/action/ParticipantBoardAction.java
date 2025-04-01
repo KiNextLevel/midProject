@@ -24,22 +24,51 @@ public class ParticipantBoardAction implements Action{
 		ParticipantDTO participantDTO = new ParticipantDTO();
 		ParticipantDAO participantDAO = new ParticipantDAO();
 
-		int boardNum = Integer.parseInt(request.getParameter("boardNum"));	//이벤트 번호 받음
+		// boardNum 파라미터 확인
+		String boardNumStr = request.getParameter("boardNumber");
+		if (boardNumStr == null || boardNumStr.isEmpty()) {
+			request.setAttribute("msg", "이벤트 번호가 제공되지 않았습니다.");
+			request.setAttribute("flag", false);
+			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+			forward.setRedirect(false);
+			return forward;
+		}
+
+		int boardNum = Integer.parseInt(boardNumStr);
 		boardDTO.setBoardNumber(boardNum);
-		String userEmail = (String)session.getAttribute("userEmail");	//로그인 한 사용자 이메일
+
+		String userEmail = (String)session.getAttribute("userEmail");
+		if (userEmail == null) {
+			request.setAttribute("msg", "로그인이 필요합니다.");
+			request.setAttribute("flag", false);
+			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+			forward.setRedirect(false);
+			return forward;
+		}
 
 		boardDTO = boardDAO.selectOne(boardDTO);
+		if (boardDTO == null) {
+			request.setAttribute("msg", "존재하지 않는 이벤트입니다.");
+			request.setAttribute("flag", false);
+			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+			forward.setRedirect(false);
+			return forward;
+		}
 
 		participantDTO.setParticipantBoardNumber(boardNum);
 		participantDTO.setParticipantUserEmail(userEmail);
 
-		if((participantDAO.selectOne(participantDTO)).getParticipantBoardNumber() >= boardDTO.getBoardLimit()){  //인원수 다 차면
+		// 현재 참가자 수 확인
+		ParticipantDTO participantCount = participantDAO.selectOne(participantDTO);
+		if (participantCount != null && participantCount.getParticipantBoardNumber() >= boardDTO.getBoardLimit()) {
 			request.setAttribute("msg", "인원이 다 찼습니다");
 			request.setAttribute("flag", false);
 			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 			forward.setRedirect(false);
 			return forward;
 		}
+
+
 
 		if(participantDAO.insert(participantDTO)) {
 			request.setAttribute("msg", "이벤트 참가 성공");
@@ -54,5 +83,6 @@ public class ParticipantBoardAction implements Action{
 		forward.setRedirect(false);
 		return forward;
 	}
+
 }
 

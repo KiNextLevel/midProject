@@ -438,8 +438,8 @@
                         <p>
                             <strong>현재 보유 토큰:</strong>
                             <span style="color: #e94d1c; font-size: 18px;">
-                                <c:out value="${userDTO.userToken}" default="0"/> 개
-                            </span>
+            <c:out value="${userDTO.userToken}" default="0"/> 개
+        </span>
                         </p>
 
                         <table class="table table-striped">
@@ -447,13 +447,21 @@
                             <tr>
                                 <th>상품명</th>
                                 <th>결제일</th>
+                                <th>결제금액</th> <!-- 옵션으로 금액도 보여줄 수 있어요 -->
                             </tr>
                             </thead>
                             <tbody>
-                            <!-- 결제 내역 불러와야 함 -->
+                            <c:forEach var="payment" items="${paymentList}">
+                                <tr>
+                                    <td><c:out value="${payment.productName}"/></td>
+                                    <td><fmt:formatDate value="${payment.paymentDate}" pattern="yyyy-MM-dd"/></td>
+                                    <td><c:out value="${payment.paymentPrice}"/>원</td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
+
 
                     <div id="delete-info" class="info-card">
                         <h3>계정 설정</h3>

@@ -15,7 +15,8 @@ public class SendMessage {
     }
     public void sendOne() {
         Message message = new Message();
-        // 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.
+        // 발신번호 및 수신번호는 반드시 010
+        // 12345678 형태로 입력되어야 합니다.
         message.setFrom("01095534998");
         message.setTo("01095534998");
         message.setText("테스트");

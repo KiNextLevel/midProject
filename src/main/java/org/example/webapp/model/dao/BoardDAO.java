@@ -10,9 +10,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class BoardDAO {
-    private String SELECTALL = "SELECT B.BOARD_NUM, B.BOARD_TITLE,B.BOARD_CONTENT, B.BOARD_DATE, B.BOARD_LIMIT, COUNT(P.PARTICIPANT_USER_EMAIL) AS CNT " +
-            "FROM BOARD B LEFT JOIN PARTICIPANT P " +
-            "ON B.BOARD_NUM = P.PARTICIPANT_BOARD_NUM GROUP BY B.BOARD_NUM ORDER BY BOARD_NUM DESC";
+    private String SELECTALL = "SELECT B.BOARD_NUM, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE, B.BOARD_LIMIT,\n" +
+            "       COUNT(P.PARTICIPANT_USER_EMAIL) AS CNT,\n" +
+            "       (CASE WHEN MAX(P.PARTICIPANT_USER_EMAIL = ?) THEN 1 ELSE 0 END) AS IS_PARTICIPANT\n" +
+            "FROM BOARD B\n" +
+            "LEFT JOIN PARTICIPANT P ON B.BOARD_NUM = P.PARTICIPANT_BOARD_NUM\n" +
+            "GROUP BY B.BOARD_NUM\n" +
+            "ORDER BY B.BOARD_NUM DESC;";
     private String SELECTONE = "SELECT * FROM BOARD WHERE BOARD_NUM = ?";
     private String INSERT = "INSERT INTO BOARD (BOARD_TITLE, BOARD_CONTENT, BOARD_LIMIT) VALUES (?, ?, ?)";
     private String UPDATE_BOARD = "UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT = ?, BOARD_LIMIT = ? WHERE BOARD_NUM = ?";
@@ -31,6 +35,7 @@ public class BoardDAO {
         try {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(SELECTALL);
+            pstmt.setString(1, boardDTO.getSearchKeyword());
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 BoardDTO data = new BoardDTO();
@@ -39,6 +44,7 @@ public class BoardDAO {
                 data.setBoardContent(rs.getString("BOARD_CONTENT"));
                 data.setBoardLimit(rs.getInt("BOARD_LIMIT"));
                 data.setBoardParticipant(rs.getInt("CNT"));
+                data.setParticipant(rs.getInt("IS_PARTICIPANT"));
                 datas.add(data);
             }
             return datas;

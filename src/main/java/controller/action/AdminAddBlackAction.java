@@ -4,7 +4,9 @@ import controller.common.Action;
 import controller.common.ActionForward;
 import controller.logic.SendEmail;
 import jakarta.servlet.http.HttpServletRequest;
+import org.example.webapp.model.dao.ReportDAO;
 import org.example.webapp.model.dao.UserDAO;
+import org.example.webapp.model.dto.ReportDTO;
 import org.example.webapp.model.dto.UserDTO;
 
 public class AdminAddBlackAction implements Action{
@@ -20,6 +22,9 @@ public class AdminAddBlackAction implements Action{
 		UserDAO userDAO = new UserDAO();
 
 		String reportedUserEmail = request.getParameter("reportedUser");	//요청으로 신고받은사람 이메일 받음
+		ReportDTO reportDTO = new ReportDTO();
+		ReportDAO reportDAO = new ReportDAO();
+		reportDTO.setReportReported(reportedUserEmail);
 		System.out.println("AddBlackAction 로그["+reportedUserEmail+"]");
 		userDTO.setCondition("SELECTONE_USERINFO");
 		userDTO.setUserEmail(reportedUserEmail);
@@ -45,7 +50,7 @@ public class AdminAddBlackAction implements Action{
 		}
 		userDTO.setCondition("UPDATE_ROLE");
 		userDTO.setUserRole(2);
-		if(userDAO.update(userDTO)) {
+		if(userDAO.update(userDTO) && reportDAO.delete(reportDTO)) {
 			SendEmail.sendMail(reportedUserEmail, subject, content);
 			//여기서 블랙리스트 넣은 사람 신고 리스트에서 삭제
 			request.setAttribute("msg", "사용자를 블랙 처리 했습니다");

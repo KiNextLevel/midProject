@@ -12,13 +12,14 @@ public class AdminDeleteBlackAction implements Action{
 	public ActionForward execute(HttpServletRequest request) {
 		System.out.println("adminDeleteBlackAcion 로그: 도착");
 		ActionForward forward = new ActionForward();
-		String reportedUserEmail = request.getParameter("reportedUser");
+		String reportedUserEmail = request.getParameter("REPORT_REPORTED");
+		System.out.println("REPORT_REPORTED: ["+reportedUserEmail+"+]");
 		UserDTO userDTO = new UserDTO();
 		UserDAO userDAO = new UserDAO();
 
 		userDTO.setUserEmail(reportedUserEmail);
+		userDTO.setCondition("UPDATE_ROLE");
 		userDTO.setUserRole(0);
-
 		if(userDAO.update(userDTO)) {
 			request.setAttribute("msg", "사용자를 블랙 해제했습니다");
 			request.setAttribute("flag", true);

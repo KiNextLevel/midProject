@@ -42,20 +42,26 @@ public class ParticipantDAO {
 
     // 현재 참여중인 회원 수(COUNT)
     public ParticipantDTO selectOne(ParticipantDTO participantDTO){
-        ParticipantDTO list = null;
+        ParticipantDTO list = new ParticipantDTO(); // null이 아닌 새 객체 생성
         try {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(SELECTONE);
             pstmt.setInt(1, participantDTO.getParticipantBoardNumber());
             rs = pstmt.executeQuery();
             if(rs.next()){
-                list = new ParticipantDTO();
-                list.setParticipantBoardNumber(rs.getInt("PARTICIPANT_BOARD_NUM"));
+                // COUNT 결과를 ParticipantBoardNumber에 저장
+                list.setParticipantBoardNumber(rs.getInt("participant_count"));
+            } else {
+                // 결과가 없으면 0으로 설정
+                list.setParticipantBoardNumber(0);
             }
             return list;
         } catch (Exception e){
             e.printStackTrace();
-            return null;
+            // 오류 발생 시에도 기본값을 가진 객체 반환
+            ParticipantDTO errorDto = new ParticipantDTO();
+            errorDto.setParticipantBoardNumber(0);
+            return errorDto;
         } finally {
             JDBCUtil.disconnect(conn, pstmt);
         }

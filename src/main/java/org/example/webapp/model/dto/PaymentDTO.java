@@ -11,10 +11,17 @@ public class PaymentDTO {
     private String userName; //유저 이름
     private int productNumber; // 구매한 상품 번호 (FK)
     private String productName; // 상품명
+    private int productPrice; // 상품 가격
     private String condition; // 컨디션
     private String searchKeyword; // SearchKeyword
 
+    public int getProductPrice() {
+        return productPrice;
+    }
 
+    public void setProductPrice(int productPrice) {
+        this.productPrice = productPrice;
+    }
 
     public String getUserName() {
         return userName;
@@ -98,9 +105,18 @@ public class PaymentDTO {
 
     @Override
     public String toString() {
-        return "PaymentDTO [paymentNumber=" + paymentNumber + ", paymentPrice=" + paymentPrice + ", paymentDate="
-                + paymentDate + ", paymentType=" + paymentType + ", userEmail=" + userEmail + ", userName=" + userName
-                + ", productNumber=" + productNumber + ", productName=" + productName + ", condition=" + condition
-                + ", searchKeyword=" + searchKeyword + "]";
+        return "PaymentDTO{" +
+                "paymentNumber=" + paymentNumber +
+                ", paymentPrice=" + paymentPrice +
+                ", paymentDate=" + paymentDate +
+                ", paymentType='" + paymentType + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userName='" + userName + '\'' +
+                ", productNumber=" + productNumber +
+                ", productName='" + productName + '\'' +
+                ", productPrice=" + productPrice +
+                ", condition='" + condition + '\'' +
+                ", searchKeyword='" + searchKeyword + '\'' +
+                '}';
     }
 }

@@ -52,6 +52,11 @@ function sample6_execDaumPostcode() {
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('sample6_postcode').value = data.zonecode;
             document.getElementById("sample6_address").value = addr;
+            // 부모창 input[id="address"]에 값 전달(추가)
+            // selectAddress(addr);
+
+            // 커서를 상세주소 필드로 이동한다.
+           // document.getElementById("sample6_detailAddress").focus();
 
             // 여기에 좌표 변환 기능 추가 - 위도, 경도
             var geocoder = new kakao.maps.services.Geocoder();

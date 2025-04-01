@@ -146,13 +146,18 @@
                             <p>${param.userDescription}</p>
                         </div>
                         <div class="product-page-cart">
-                            <button class="btn btn-primary" type="submit">1:1 채팅하기</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-primary btn-block" type="submit">1:1 채팅하기</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-danger btn-block">
+                                        ${userDTO.userNickname} 신고하기
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-xs-6">
-                            <a href="reportPage.do?userEmail=${userDTO.userEmail}" class="btn btn-info  btn-block">
-                                ${userDTO.userNickname} 신고하기
-                            </a>
-                        </div>
+
                         <!-- 지도 iframe 추가 -->
                         <div style="margin-top: 20px;">
 

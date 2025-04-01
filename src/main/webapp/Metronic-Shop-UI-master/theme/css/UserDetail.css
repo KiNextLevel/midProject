@@ -114,3 +114,20 @@
 .button-group .btn:last-child {
     margin-right: 0;
 }
+
+/* 버튼 스타일링 */
+.product-page-cart {
+    margin: 20px 0;
+}
+
+.product-page-cart .btn {
+    padding: 10px 15px;
+    font-weight: 600;
+}
+
+/* 모바일 환경에서 버튼 스타일 */
+@media (max-width: 767px) {
+    .product-page-cart .row .col-md-6 {
+        margin-bottom: 10px;
+    }
+}

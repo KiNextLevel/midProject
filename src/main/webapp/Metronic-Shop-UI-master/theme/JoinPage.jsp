@@ -145,7 +145,7 @@
                                     <select class="form-control" id="gender" name="userGender" required>
                                         <option value="">선택하세요</option>
                                         <option value="1">남성</option>
-                                        <option value="2">여성</option>
+                                        <option value="0">여성</option>
                                     </select>
                                 </div>
                             </div>

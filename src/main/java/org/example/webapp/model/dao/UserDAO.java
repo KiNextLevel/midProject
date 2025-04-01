@@ -22,7 +22,7 @@ public class UserDAO {
     final String SELECTONE_LOCATION = "SELECT USER_EMAIL, USER_LATITUDE, USER_LONGITUDE FROM USER WHERE USER_EMAIL = ?";
 
     // 유저 전체 정보 불러오기
-    final String SELECTALL = "SELECT * FROM USER";
+    final String SELECTALL = "SELECT * FROM USER ORDER BY USER_REGDATE DESC";
     // 유저 선호 취향 정보 불러오기
     final String SELCETALL_FAVORITE = "SELECT * FROM PREFERENCE P LEFT JOIN USER U ON P.PREFERENCE_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
     // 참가 중인 이벤트 목록 불러오기

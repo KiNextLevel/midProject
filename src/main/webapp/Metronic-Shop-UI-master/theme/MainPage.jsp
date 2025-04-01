@@ -101,7 +101,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
                     <!-- BEGIN LANGS -->
                     <li class="langs-block">
-                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                        <a href="productPage.do" class="current"> 플러스샵 </a>
                     </li>
                     <!-- END LANGS -->
                 </ul>
@@ -476,37 +476,33 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     });
 
     function equalizeCardHeights() {
-        // 각 행별로 카드 높이 맞추기
-        var currentTallest = 0,
-            currentRowStart = 0,
-            rowDivs = [],
-            $el,
-            topPosition = 0;
+        // 먼저 모든 카드의 높이를 초기화합니다
+        $('.product-item').css('height', 'auto');
 
-        $('.product-item').each(function() {
-            $el = $(this);
-            topPosition = $el.position().top;
-            if (currentRowStart != topPosition) {
-                // 새로운 행 시작
-                for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-                    rowDivs[currentDiv].height(currentTallest);
+        // 화면 너비에 따라 한 행에 몇 개의 카드가 들어가는지 확인
+        const cardsPerRow = $(window).width() > 992 ? 3 : ($(window).width() > 768 ? 2 : 1);
+
+        // 각 행별로 처리
+        for (let i = 0; i < $('.product-item').length; i += cardsPerRow) {
+            let maxHeight = 0;
+
+            // 현재 행에서 가장 높은 카드 찾기
+            for (let j = 0; j < cardsPerRow; j++) {
+                if (i + j < $('.product-item').length) {
+                    const cardHeight = $('.product-item').eq(i + j).outerHeight();
+                    maxHeight = Math.max(maxHeight, cardHeight);
                 }
-                rowDivs.length = 0; // 배열 초기화
-                currentRowStart = topPosition;
-                currentTallest = $el.height();
-                rowDivs.push($el);
-            } else {
-                // 같은 행에 추가
-                rowDivs.push($el);
-                currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
             }
 
-            // 마지막 행 처리
-            for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-                rowDivs[currentDiv].height(currentTallest);
+            // 현재 행의 모든 카드 높이를 최대 높이로 설정
+            for (let j = 0; j < cardsPerRow; j++) {
+                if (i + j < $('.product-item').length) {
+                    $('.product-item').eq(i + j).css('height', maxHeight + 'px');
+                }
             }
-        });
+        }
     }
+
 
     const allUsers = ${userDatas};
     let filteredUsers = [];

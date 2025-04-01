@@ -1101,17 +1101,6 @@ steps block and steps block elements
 	font-size: 84px;
 }
 
-/* title wrapper */
-.title-wrapper {
-	margin: -23px 0 23px;
-	position: relative;
-	overflow: hidden;
-	background: #72c2ff url(../../pages/img/title-bg/man.jpg) no-repeat 100% 100%;
-	min-height: 280px;
-	padding-top: 79px;
-	width: 100%;
-	overflow: hidden;
-}
 .title-wrapper .container-inner {
 	float: left;
 }

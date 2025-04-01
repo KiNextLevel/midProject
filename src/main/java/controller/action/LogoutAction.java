@@ -11,6 +11,7 @@ public class LogoutAction implements Action {
 		System.out.println("CONT 로그: LOGOUT ACTION 도착");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
+		// session 비우기
 		session.invalidate();
 
 	    // url, flag, msg 요청단위 저장

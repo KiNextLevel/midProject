@@ -101,7 +101,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
                     <!-- BEGIN LANGS -->
                     <li class="langs-block">
-                        <a href="productPage.do" class="current"> 플러스샵 </a>
+                        <a href="productPage.do" class="current"> 토큰 구매 </a>
                     </li>
                     <!-- END LANGS -->
                 </ul>
@@ -197,7 +197,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             });
     };
 </script>
-<div class="title-wrapper">
+<div class="title-wrapper" style="margin: -23px 0 23px; position: relative; overflow: hidden; background: #72c2ff url('${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/123.png') no-repeat 100% 100%; min-height: 280px; padding-top: 79px; width: 100%;">
     <div class="container"><div class="container-inner">
         <a href="boardPage.do">
             <h1><span>이벤트!</span></h1>
@@ -205,6 +205,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </a>
     </div></div>
 </div>
+
 
 <div class="main">
     <div class="container">

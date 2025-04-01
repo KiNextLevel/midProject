@@ -93,14 +93,9 @@
             <div class="col-md-6 col-sm-6 additional-shop-info">
                 <ul class="list-unstyled list-inline">
                     <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
-                    <!-- BEGIN CURRENCIES -->
-                    <li class="shop-currencies">
-                        <a href="productPage.do">광고 제거</a>
-                    </li>
-                    <!-- END CURRENCIES -->
                     <!-- BEGIN LANGS -->
                     <li class="langs-block">
-                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                        <a href="productPage.do" class="current"> 플러스샵 </a>
                     </li>
                     <!-- END LANGS -->
                 </ul>
@@ -109,7 +104,7 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <c:if test="${userDTO.userRole==1}">
+                    <c:if test="${userRole==1}">
                         <li><a href="adminPage.do">관리자페이지</a></li>
                     </c:if>
                     <li><a href="myPage.do">마이페이지</a></li>
@@ -204,7 +199,6 @@
                                         <i class="fa fa-credit-card"></i> 인기 패키지 - 5개 (₩5,000)
                                     </button>
                                 </form>
-
                                 <!-- 프리미엄 패키지 -->
                                 <form action="tossPaymentPage.do" method="POST">
                                     <input type="hidden" name="Product_Num" value="4">
@@ -251,6 +245,7 @@
                                     <div class="feature-text">
                                         <h5>프리미엄 뱃지</h5>
                                         <p>프로필에 특별한 프리미엄 뱃지로 더 많은 관심 유도</p>
+                                        <p>프리미엄 여부: ${sessionScope.userPremium}</p>
                                     </div>
                                 </div>
                             </div>
@@ -271,8 +266,6 @@
 
                         </div>
                     </div>
-
-
                 </div>
             </div>
             <!-- END CONTENT -->

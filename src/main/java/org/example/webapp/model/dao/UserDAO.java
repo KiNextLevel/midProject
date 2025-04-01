@@ -215,20 +215,18 @@ public class UserDAO {
                         data.setUserLongitude(rs.getDouble("USER_LONGITUDE"));
                     }
 
-                        // social_type 필드 추가
-                        try {
-                            data.setSocialType(rs.getString("SOCIAL_TYPE"));
-                        } catch (Exception e) {
-                            // SOCIAL_TYPE 컬럼이 없는 경우 예외 처리
-                            data.setSocialType(null);
-                        }
+                    // social_type 필드 추가
+                    try {
+                        data.setSocialType(rs.getString("SOCIAL_TYPE"));
+                    } catch (Exception e) {
+                        // SOCIAL_TYPE 컬럼이 없는 경우 예외 처리
+                        data.setSocialType(null);
                     }
                 }
             } else {
                 // 조건이 null인 경우 로그 출력
                 System.out.println("조건이 null입니다.");
             }
-
             return data;
         } catch (Exception e) {
             e.printStackTrace();

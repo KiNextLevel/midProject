@@ -11,8 +11,10 @@ import java.util.ArrayList;
 public class UserDAO {
     // 아이디 중복 검사
     final String SELECTONE_CHECK = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ? AND SOCIAL_TYPE = ?";
-    // 로그인
+    // 소셜 로그인
     final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ? AND SOCIAL_TYPE = ?";
+    // 일반 로그인
+    final String SELECTONE_NONSOCIAL = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
     // 유저 전체 정보 불러오기
     final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
 
@@ -173,6 +175,20 @@ public class UserDAO {
                     pstmt.setString(1, userDTO.getUserEmail());
                     pstmt.setString(2, userDTO.getUserPassword());
                     pstmt.setString(3, userDTO.getSocialType());
+
+                    // 쿼리 실행
+                    rs = pstmt.executeQuery();
+                    if (rs.next()) {
+                        data = new UserDTO();
+                        data.setUserEmail(rs.getString("USER_EMAIL"));
+                        data.setUserPassword(rs.getString("USER_PASSWORD"));
+                        data.setUserRole(rs.getInt("USER_ROLE"));
+                        data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                    }
+                } else if (userDTO.getCondition().equals("SELECTONE_NONSOCIAL")) {
+                    pstmt = conn.prepareStatement(SELECTONE_NONSOCIAL);
+                    pstmt.setString(1, userDTO.getUserEmail());
+                    pstmt.setString(2, userDTO.getUserPassword());
 
                     // 쿼리 실행
                     rs = pstmt.executeQuery();

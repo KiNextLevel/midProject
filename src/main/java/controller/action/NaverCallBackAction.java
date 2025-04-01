@@ -1,5 +1,6 @@
 package controller.action;
 
+import controller.asyn.RandomPassword;
 import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
@@ -95,7 +96,7 @@ public class NaverCallBackAction implements Action {
                 session.setAttribute("userEmail", email);
                 session.setAttribute("userName", name);
                 // 비밀번호는 랜덤하게 생성 (소셜 로그인은 비밀번호가 필요 없지만 DB 구조상 필요할 수 있음)
-                String randomPassword = generateRandomPassword();
+                String randomPassword = RandomPassword.generateRandomPassword();
                 session.setAttribute("userPassword", randomPassword);
                 // 소셜 로그인 타입 저장
                 session.setAttribute("socialType", "naver");
@@ -140,10 +141,5 @@ public class NaverCallBackAction implements Action {
         }
 
         return forward;
-    }
-
-    // 랜덤 비밀번호 생성 메서드
-    private String generateRandomPassword() {
-        return UUID.randomUUID().toString().substring(0, 10);
     }
 }

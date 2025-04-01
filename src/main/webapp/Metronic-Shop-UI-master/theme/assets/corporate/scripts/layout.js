@@ -522,7 +522,6 @@ var Layout = function () {
             $(function(){
                 $('.grid-v1').mixitup();
             });
-        }
-
+        },
     };
 }();

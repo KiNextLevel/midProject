@@ -4,6 +4,7 @@ package controller.action;
 import controller.common.Action;
 import controller.common.ActionForward;
 import controller.logic.SendEmail;
+import controller.logic.SendMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
@@ -30,6 +31,7 @@ public class LoginAction implements Action {
         // 컨디션"로그인"
         userDTO.setCondition("SELECTONE");
         userDTO = userDAO.selectOne(userDTO);
+        System.out.println("userPremium: ["+userDTO.isUserPreminum()+"]");
         if (userDTO != null) {
             // session에 userId, userName, role저장
             session.setAttribute("userEmail", userDTO.getUserEmail());
@@ -38,10 +40,16 @@ public class LoginAction implements Action {
 
             // url, flag, msg 요청단위 저장
             // alert.jsp에 url, true, msg 보내기
-            if (userDTO.getUserRole() == 1) { // 관리자
+            if (userDTO.getUserRole() == 0) { //유저
+                request.setAttribute("msg", "로그인 성공!");
+                request.setAttribute("url", "mainPage.do");
+                request.setAttribute("flag", true);
+                setSession(userDTO, request); // 세션에 정보 저장
+            } else if (userDTO.getUserRole() == 1) { // 관리자
                 request.setAttribute("msg", "관리자 로그인 성공!");
                 request.setAttribute("url", "adminPage.do");
                 request.setAttribute("flag", true);
+                setSession(userDTO, request); // 세션에 정보 저장
             } else if (userDTO.getUserRole() == 2) { // 블랙
                 request.setAttribute("msg", "블랙당한 계정입니다");
                 request.setAttribute("flag", false);
@@ -62,5 +70,14 @@ public class LoginAction implements Action {
         actionForward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
         actionForward.setRedirect(false);
         return actionForward;
+    }
+
+    public void setSession(UserDTO userDTO, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        // session에 userId, userName, role저장
+        session.setAttribute("userEmail", userDTO.getUserEmail());
+        session.setAttribute("userRole", userDTO.getUserRole());
+        session.setAttribute("userPremium", userDTO.isUserPreminum());
+        System.out.println("userROle = "+userDTO.getUserRole());
     }
 }

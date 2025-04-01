@@ -10,18 +10,18 @@
     <title>결제 확인 페이지</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/target-free-admin-template/assets/materialize/css/materialize.min.css" media="screen,projection"/>
+    <link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection"/>
     <!-- Bootstrap Styles-->
-    <link href="${pageContext.request.contextPath}/target-free-admin-template/assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- FontAwesome Styles-->
-    <link href="${pageContext.request.contextPath}/target-free-admin-template/assets/css/font-awesome.css" rel="stylesheet"/>
+    <link href="assets/css/font-awesome.css" rel="stylesheet"/>
     <!-- Morris Chart Styles-->
-    <link href="${pageContext.request.contextPath}/target-free-admin-template/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
     <!-- Custom Styles-->
-    <link href="${pageContext.request.contextPath}/target-free-admin-template/assets/css/custom-styles.css" rel="stylesheet"/>
+    <link href="assets/css/custom-styles.css" rel="stylesheet"/>
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/target-free-admin-template/assets/js/Lightweight-Chart/cssCharts.css">
+    <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css">
 </head>
 <body>
 <div id="wrapper">
@@ -61,6 +61,7 @@
             </ul>
 
         </div>
+
     </nav>
     <!-- /. NAV SIDE  -->
     <div id="page-wrapper">
@@ -94,82 +95,21 @@
                                         <th>이메일</th>
                                         <th>결제 금액</th>
                                         <th>결제 상품</th>
+                                        <!--
                                         <th>CSS grade</th>
+                                        -->
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach var="data" items="${datas}">
                                         <tr class="odd gradeX">
-                                            <td>data.paymentDate</td>
-                                            <td>data.paymentEmail</td>
-                                            <td>data.paymentPrice</td>
-                                            <td class="center">data.productNum</td>
-                                            <td class="center">X</td>
+                                            <td>${data.paymentDate}</td>
+                                            <td>${data.userEmail}</td>
+                                            <td>${data.paymentPrice}</td>
+                                            <td class="center">${data.productName}</td>
                                         </tr>
                                     </c:forEach>
-                                    <tr class="odd gradeX">
-                                        <td>이거 어디지</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>1</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>2</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="even gradeC">
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 5.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5</td>
-                                        <td class="center">C</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>여기 이름</td>
-                                        <td>Internet Explorer 5.5</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5.5</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="even gradeA">
-                                        <td>티모</td>
-                                        <td>Internet Explorer 6</td>
-                                        <td>Win 98+</td>
-                                        <td class="center">6</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>모르가나</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td class="center">7</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>ㄱ</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td class="center">7</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>ㄴ</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td class="center">7</td>
-                                        <td class="center">A</td>
-                                    </tr>
+
 
                                     </tbody>
                                 </table>
@@ -214,7 +154,24 @@
     <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/dataTables/dataTables.bootstrap.js"></script>
     <script>
         $(document).ready(function () {
-            $('#dataTables-example').dataTable();
+            $('#dataTables-example').dataTable({
+                "order": [[0, "desc"]], // 첫 번째 열(결제 날짜) 내림차순
+                "language": {
+                    "zeroRecords": "일치하는 검색 결과가 없습니다.",  // 필터링 후 데이터가 없을 때 메시지
+                    "emptyTable": "테이블에 데이터가 없습니다.",   // 테이블이 완전히 비어 있을 때 메시지
+                    "info": "총 _TOTAL_건 중 _START_ - _END_건 표시", // 페이지 정보
+                    "infoEmpty": "데이터 없음",
+                    "infoFiltered": "(총 _MAX_건 중 필터링됨)",
+                    "search": "검색:",
+                    "lengthMenu": "_MENU_ 개씩 보기",
+                    "paginate": {
+                        "first": "처음",
+                        "last": "마지막",
+                        "next": "다음",
+                        "previous": "이전"
+                    }
+                }
+            });
         });
     </script>
     <!-- Custom Js -->

@@ -85,6 +85,7 @@ public class NaverCallBackAction implements Action {
             // 이메일로 사용자 조회
             UserDTO searchDTO = new UserDTO();
             searchDTO.setUserEmail(email);
+            searchDTO.setSocialType("naver");
             searchDTO.setCondition("SELECTONE_CHECK");
 
             UserDTO user = userDAO.selectOne(searchDTO);

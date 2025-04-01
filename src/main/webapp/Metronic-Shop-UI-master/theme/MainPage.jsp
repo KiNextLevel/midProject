@@ -108,7 +108,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <!-- END CURRENCIES -->
                     <!-- BEGIN LANGS -->
                     <li class="langs-block">
-                        <a href="productPage.do" class="current"> 토큰 구매 </a>
+                        <a href="productPage.do" class="current"> 토큰 구매, 광고 제거 </a>
                     </li>
                     <!-- END LANGS -->
                 </ul>

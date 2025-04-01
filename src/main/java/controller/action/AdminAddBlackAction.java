@@ -48,6 +48,7 @@ public class AdminAddBlackAction implements Action{
 		if(userDAO.update(userDTO)) {
 			SendEmail.sendMail(reportedUserEmail, subject, content);
 			//여기서 블랙리스트 넣은 사람 신고 리스트에서 삭제
+
 			request.setAttribute("msg", "사용자를 블랙 처리 했습니다");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "adminReportPage.do");

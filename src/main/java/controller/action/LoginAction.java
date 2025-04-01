@@ -29,7 +29,7 @@ public class LoginAction implements Action {
         UserDAO userDAO = new UserDAO();
         HttpSession session = request.getSession();
         // 컨디션"로그인"
-        userDTO.setCondition("SELECTONE");
+        userDTO.setCondition("SELECTONE_NONSOCIAL");
         userDTO = userDAO.selectOne(userDTO);
         if (userDTO != null) {
             // session에 userId, userName, role저장

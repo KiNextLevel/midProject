@@ -49,47 +49,38 @@ public class MainPageAction implements Action {
 		ArrayList<UserDTO> userDatas = userDAO.selectAll(userDTO);
 
 		JSONArray userDatasJsonArray = new JSONArray();
-
-		// userDatas 리스트를 순회하며 JSON 객체로 변환합니다.
 		for (UserDTO user : userDatas) {
 			JSONObject userJson = new JSONObject();
-
-			// UserDTO의 각 필드를 JSON 객체에 추가합니다.
-			userJson.put("socialType", user.getSocialType());
 			userJson.put("userPhone", user.getUserPhone());
 			userJson.put("userEmail", user.getUserEmail());
 			userJson.put("userPassword", user.getUserPassword());
 			userJson.put("userNickname", user.getUserNickname());
-			userJson.put("userRegdate", user.getUserRegdate());
-			userJson.put("userGender", user.getUserGender());
-			userJson.put("userBirth", user.getUserBirth());
-			userJson.put("userHeight", user.getUserHeight());
+			userJson.put("userRegdate", user.getUserRegdate() != null ? user.getUserRegdate().toString() : null);
+			userJson.put("userGender", user.getUserGender()); // boolean
+			userJson.put("userBirth", user.getUserBirth()); // String
+			userJson.put("userHeight", user.getUserHeight()); // int
 			userJson.put("userBody", user.getUserBody());
 			userJson.put("userMbti", user.getUserMbti());
 			userJson.put("userProfile", user.getUserProfile());
 			userJson.put("userEducation", user.getUserEducation());
 			userJson.put("userReligion", user.getUserReligion());
-			userJson.put("userDrink", user.getUserDrink());
-			userJson.put("userSmoke", user.isUserSmoke());
+			userJson.put("userDrink", user.getUserDrink()); // int
+			userJson.put("userSmoke", user.isUserSmoke()); // boolean
 			userJson.put("userJob", user.getUserJob());
 			userJson.put("userRole", user.getUserRole());
-			userJson.put("userPreminum", user.isUserPreminum());
-			userJson.put("userToken", user.getUserToken());
+			userJson.put("userPreminum", user.isUserPreminum()); // boolean
+			userJson.put("userToken", user.getUserToken()); // int
 			userJson.put("userRegion", user.getUserRegion());
 			userJson.put("userDescription", user.getUserDescription());
 			userJson.put("userName", user.getUserName());
+			userJson.put("userLatitude", user.getUserLatitude()); // double
+			userJson.put("userLongitude", user.getUserLongitude()); // double
 
-			// JSON 배열에 추가합니다.
 			userDatasJsonArray.add(userJson);
 		}
 
-		// JSON 배열을 문자열로 변환해서 리턴합니다.
-		userDatasJsonArray.toJSONString();
-
-		// 전체 사용자 데이터 배열을 JSON 문자열로 변환
 		String jsonUserDatas = userDatasJsonArray.toJSONString();
 		request.setAttribute("userDatas", jsonUserDatas);
-//        request.setAttribute("userDatas", jsonUserDatas);
 
 		forward.setPath("/Metronic-Shop-UI-master/theme/MainPage.jsp");
 		forward.setRedirect(false);

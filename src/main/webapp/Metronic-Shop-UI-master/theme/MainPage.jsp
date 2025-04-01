@@ -589,22 +589,30 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             return $(this).val();
         }).get();
 
-        console.log("Selected Genders:", selectedGenders);
-        console.log("Selected Distance:", selectedDistance);
-        console.log("Age Range:", ageRange);
-        console.log("Height Range:", heightRange);
-        console.log("Selected Religions:", selectedReligions);
-        console.log("Selected Smoking:", selectedSmoking);
+        // 현재 사용자의 위도/경도 (세션에서 가져왔다고 가정)
+        const currentUserLatitude = parseFloat("${sessionScope.userLatitude}");
+        const currentUserLongitude = parseFloat("${sessionScope.userLongitude}");
+
+        console.log(currentUserLatitude)
+        console.log(currentUserLongitude)
 
         filteredUsers = allUsers.filter(user => {
-            console.log("User Data:", user);
-
             const birthYear = parseInt(user.userBirth) || 0;
             const userAge = birthYear ? currentYear - birthYear : 0;
-            console.log(userAge)
             const userGenderStr = user.userGender ? "남" : "여";
             const userSmokeStr = user.userSmoke ? "흡연" : "비흡연";
-            const userDistance = parseInt(user.userRegion) || 0;
+
+            // 위도/경도 가져오기
+            const userLatitude = parseFloat(user.userLatitude);
+            const userLongitude = parseFloat(user.userLongitude);
+
+            // 거리 계산
+            const userDistance = calculateDistance(
+                currentUserLatitude,
+                currentUserLongitude,
+                userLatitude,
+                userLongitude
+            );
 
             const passesRole = user.userRole === 0;
             const passesEmail = user.userEmail !== currentUserEmail;
@@ -614,11 +622,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             const passesHeight = user.userHeight >= heightRange[0] && user.userHeight <= heightRange[1];
             const passesReligion = selectedReligions.length === 0 || selectedReligions.includes(user.userReligion);
             const passesSmoking = selectedSmoking.length === 0 || selectedSmoking.includes(userSmokeStr);
-
-            console.log("Filter Conditions:", {
-                passesRole, passesEmail, passesGender, passesDistance,
-                passesAge, passesHeight, passesReligion, passesSmoking
-            });
 
             return (
                 passesRole &&
@@ -636,6 +639,19 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         start = 0;
         $('#product-list').empty();
         loadInitialUsers();
+    }
+
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // 지구 반지름 (단위: km)
+        const dLat = (lat2 - lat1) * Math.PI / 180; // 위도 차이를 라디안으로 변환
+        const dLon = (lon2 - lon1) * Math.PI / 180; // 경도 차이를 라디안으로 변환
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c; // 최종 거리 (단위: km)
+        return distance;
     }
 
     function loadInitialUsers() {

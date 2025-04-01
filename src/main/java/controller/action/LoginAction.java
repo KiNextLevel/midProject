@@ -32,12 +32,6 @@ public class LoginAction implements Action {
         userDTO.setCondition("SELECTONE_NONSOCIAL");
         userDTO = userDAO.selectOne(userDTO);
         if (userDTO != null) {
-            // session에 userId, userName, role저장
-            session.setAttribute("userEmail", userDTO.getUserEmail());
-            session.setAttribute("userRole", userDTO.getUserRole());
-            session.setAttribute("userPremium", userDTO.isUserPreminum());
-            System.out.println("userROle = "+userDTO.getUserRole());
-
             // url, flag, msg 요청단위 저장
             // alert.jsp에 url, true, msg 보내기
             if (userDTO.getUserRole() == 0) { //유저
@@ -56,10 +50,6 @@ public class LoginAction implements Action {
             } else if (userDTO.getUserRole() == 3) { // 탈퇴
                 request.setAttribute("msg", "탈퇴한 계정입니다");
                 request.setAttribute("flag", false);
-            } else { //유저
-                request.setAttribute("msg", "로그인 성공!");
-                request.setAttribute("url", "mainPage.do");
-                request.setAttribute("flag", true);
             }
         } else {
             // url, flag, msg 요청단위 저장
@@ -79,5 +69,13 @@ public class LoginAction implements Action {
         session.setAttribute("userRole", userDTO.getUserRole());
         session.setAttribute("userPremium", userDTO.isUserPreminum());
         System.out.println("userRole = "+userDTO.getUserRole());
+        UserDAO userDAO = new UserDAO();
+        // 컨디션 "위치 정보 가져옴"
+        userDTO.setCondition("SELECTONE_LOCATION");
+        userDTO = userDAO.selectOne(userDTO);
+        session.setAttribute("userLatitude", userDTO.getUserLatitude());
+        session.setAttribute("userLongitude", userDTO.getUserLongitude());
+
+        request.setAttribute("userEmail", userDTO.getUserEmail());
     }
 }

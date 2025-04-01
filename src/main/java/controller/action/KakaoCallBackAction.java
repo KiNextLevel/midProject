@@ -83,6 +83,12 @@ public class KakaoCallBackAction implements Action {
                     session.setAttribute("userRole", user.getUserRole());
                     session.setAttribute("userPremium", user.isUserPreminum());
 
+                    // 컨디션 "위치 정보 가져옴"
+                    user.setCondition("SELECTONE_LOCATION");
+                    user = userDAO.selectOne(user);
+                    session.setAttribute("userLatitude", user.getUserLatitude());
+                    session.setAttribute("userLongitude", user.getUserLongitude());
+
                     // 로그인 성공 메시지 및 메인 페이지로 리다이렉트
                     request.setAttribute("msg", "카카오 계정으로 로그인되었습니다.");
                     request.setAttribute("flag", true);

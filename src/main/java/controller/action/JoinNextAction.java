@@ -48,7 +48,7 @@ public class JoinNextAction implements Action {
             // 성별 설정
             String genderStr = request.getParameter("userGender");
             if (genderStr != null && !genderStr.isEmpty()) {
-                userDTO.setUserGender(Integer.parseInt(genderStr) == 0); // 0이면 true, 1이면 false
+                userDTO.setUserGender(Integer.parseInt(genderStr) == 1); // 0이면 true, 1이면 false
             }
 
             // 생년월일 설정

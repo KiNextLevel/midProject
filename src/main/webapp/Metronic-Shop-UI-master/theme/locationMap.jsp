@@ -67,7 +67,7 @@
         /* 지도를 표시할 div의 크기를 전체 화면으로 설정 */
         #map { width: 100%; height: 100%; }
         /* body와 html 태그에 여백 없이 100% 높이 설정 */
-        body, html { margin: 0; padding: 0; height: 100%; }
+        body, html { margin: 0; padding: 0; height: 100%; } 
     </style>
 </head>
 <body>

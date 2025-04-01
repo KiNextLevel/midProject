@@ -31,7 +31,6 @@ public class LoginAction implements Action {
         // 컨디션"로그인"
         userDTO.setCondition("SELECTONE");
         userDTO = userDAO.selectOne(userDTO);
-        System.out.println("userPremium: ["+userDTO.isUserPreminum()+"]");
         if (userDTO != null) {
             // session에 userId, userName, role저장
             session.setAttribute("userEmail", userDTO.getUserEmail());

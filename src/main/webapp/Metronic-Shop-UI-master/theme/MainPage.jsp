@@ -101,9 +101,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
                     <!-- BEGIN CURRENCIES -->
                     <c:if test="${sessionScope.userPremium == false}">
-                    <li class="shop-currencies">
-                        <a href="productPage.do">광고 제거</a>
-                    </li>
+                        <li class="shop-currencies">
+                            <a href="productPage.do">광고 제거</a>
+                        </li>
                     </c:if>
                     <!-- END CURRENCIES -->
                     <!-- BEGIN LANGS -->
@@ -148,9 +148,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             </c:if>
 
             <!-- 클릭 시 JS 함수 호출하도록 수정 -->
-<%--            <a href="javascript:void(0);" class="top-cart-toggle" onclick="toggleCartContent()">--%>
-                <i class="fa fa-bell"></i>
-<%--            </a>--%>
+            <%--            <a href="javascript:void(0);" class="top-cart-toggle" onclick="toggleCartContent()">--%>
+            <i class="fa fa-bell"></i>
+            <%--            </a>--%>
 
             <div class="top-cart-content-wrapper">
                 <div class="top-cart-content">
@@ -227,8 +227,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <!-- 성별 필터 -->
                     <h3>성별</h3>
                     <div class="checkbox-list" id="gender-filters">
-                        <label><input type="checkbox" name="gender" value="male" checked="checked"> 남</label>
-                        <label><input type="checkbox" name="gender" value="female" checked="checked"> 여</label>
+                        <label><input type="checkbox" name="gender" value="남" checked="checked"> 남</label>
+                        <label><input type="checkbox" name="gender" value="여" checked="checked"> 여</label>
                     </div>
 
                     <!-- 거리 필터 -->
@@ -257,38 +257,38 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <!-- 종교 -->
                     <h3>종교</h3>
                     <div class="checkbox-list" id="religion-filters">
-                        <label><input type="checkbox" name="religion" value="non"> 무교</label>
-                        <label><input type="checkbox" name="religion" value="christianity"> 기독교</label>
-                        <label><input type="checkbox" name="religion" value="buddhism"> 불교</label>
-                        <label><input type="checkbox" name="religion" value="catholicism"> 천주교</label>
-                        <label><input type="checkbox" name="religion" value="hinduism"> 힌두교</label>
-                        <label><input type="checkbox" name="religion" value="others"> 기타</label>
+                        <label><input type="checkbox" name="religion" value="무교"> 무교</label>
+                        <label><input type="checkbox" name="religion" value="기독교"> 기독교</label>
+                        <label><input type="checkbox" name="religion" value="불교"> 불교</label>
+                        <label><input type="checkbox" name="religion" value="천주교"> 천주교</label>
+                        <label><input type="checkbox" name="religion" value="힌두교"> 힌두교</label>
+                        <label><input type="checkbox" name="religion" value="기타"> 기타</label>
                     </div>
                     <!-- 흡연 -->
                     <h3>흡연</h3>
                     <div class="checkbox-list" id="smoking-filters">
-                        <label><input type="checkbox" name="smoking" value="smoke"> 흡연</label>
-                        <label><input type="checkbox" name="smoking" value="non"> 비흡연</label>
+                        <label><input type="checkbox" name="smoking" value="흡연"> 흡연</label>
+                        <label><input type="checkbox" name="smoking" value="비흡연"> 비흡연</label>
                     </div>
                 </div>
 
                 <c:if test="${not empty userEmail and !userPremium}">
                     <div class="sidebar-products clearfix">
-                                <h2>구글 광고</h2>
-                                <div class="item">
-                                    <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                                    <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
-                                    <div class="price">$31.00</div>
-                                </div>
-                                <div class="item">
-                                    <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                                    <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
-                                    <div class="price">$23.00</div>
-                                </div>
-                                <div class="item">
-                                    <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
-                                    <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
-                                    <div class="price">$86.00</div>
+                        <h2>구글 광고</h2>
+                        <div class="item">
+                            <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k1.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                            <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
+                            <div class="price">$31.00</div>
+                        </div>
+                        <div class="item">
+                            <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k4.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                            <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
+                            <div class="price">$23.00</div>
+                        </div>
+                        <div class="item">
+                            <a href="productPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/img/products/k3.jpg" alt="Some Shoes in Animal with Cut Out"></a>
+                            <h3><a href="productPage.do">Some Shoes in Animal with Cut Out</a></h3>
+                            <div class="price">$86.00</div>
                         </div>
                     </div>
                 </c:if>
@@ -332,7 +332,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 </div>
                 <!-- BEGIN PRODUCT LIST -->
                 <div class="row product-list" id="product-list">
-                    <!-- 여기에 초기 데이터가 렌더링 됩니다. -->
+                    <!-- JavaScript로 동적 렌더링 -->
                 </div>
                 <!-- END PRODUCT LIST -->
 
@@ -466,146 +466,222 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         Layout.initImageZoom();
         Layout.initTouchspin();
         Layout.initUniform();
-        // Layout.initAgeSliderRange();
-        // Layout.initHeightSliderRange();
-        // Layout.testFunction();
+        Layout.initAgeSliderRange();
+        Layout.initHeightSliderRange();
+    });
 
-        // 페이지 레이아웃 스크립트에 추가
-        $(window).on('load', function() {
-            // 모든 이미지가 로드된 후 실행
-            equalizeCardHeights();
-        });
+    // 페이지 레이아웃 스크립트에 추가
+    $(window).on('load', function() {
+        // 모든 이미지가 로드된 후 실행
+        equalizeCardHeights();
+    });
 
-        $(window).on('resize', function() {
-            // 창 크기 변경 시 실행
-            equalizeCardHeights();
-        });
+    $(window).on('resize', function() {
+        // 창 크기 변경 시 실행
+        equalizeCardHeights();
+    });
 
-        function equalizeCardHeights() {
-            // 각 행별로 카드 높이 맞추기
-            var currentTallest = 0,
-                currentRowStart = 0,
-                rowDivs = [],
-                $el,
-                topPosition = 0;
+    function equalizeCardHeights() {
+        // 각 행별로 카드 높이 맞추기
+        var currentTallest = 0,
+            currentRowStart = 0,
+            rowDivs = [],
+            $el,
+            topPosition = 0;
 
-            $('.product-item').each(function() {
-                $el = $(this);
-                topPosition = $el.position().top;
-
-                if (currentRowStart != topPosition) {
-                    // 새로운 행 시작
-                    for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-                        rowDivs[currentDiv].height(currentTallest);
-                    }
-                    rowDivs.length = 0; // 배열 초기화
-                    currentRowStart = topPosition;
-                    currentTallest = $el.height();
-                    rowDivs.push($el);
-                } else {
-                    // 같은 행에 추가
-                    rowDivs.push($el);
-                    currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
-                }
-
-                // 마지막 행 처리
+        $('.product-item').each(function() {
+            $el = $(this);
+            topPosition = $el.position().top;
+            if (currentRowStart != topPosition) {
+                // 새로운 행 시작
                 for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
                     rowDivs[currentDiv].height(currentTallest);
                 }
-            });
-        }
+                rowDivs.length = 0; // 배열 초기화
+                currentRowStart = topPosition;
+                currentTallest = $el.height();
+                rowDivs.push($el);
+            } else {
+                // 같은 행에 추가
+                rowDivs.push($el);
+                currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+            }
 
-        // 기존 코드와 새로운 "더 보기" 및 필터 기능을 통합
+            // 마지막 행 처리
+            for (var currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+                rowDivs[currentDiv].height(currentTallest);
+            }
+        });
+    }
 
-        // Java에서 전달된 userDatas를 JavaScript로 가져오기
-        var userDatas = ${userDatas};  // 대신 EL로 값을 사용하면 됩니다.
-        var displayedUsers = [];
-        var limit = 9; // 한 번에 더 불러올 사용자 수
-        var start = 0; // 현재 표시된 사용자 수
+    const allUsers = ${userDatas};
+    let filteredUsers = [];
+    let start = 0;
+    const limit = 9;
+    const currentUserEmail = "${sessionScope.userEmail}";
 
-        // 초기 로딩 (첫 9명만)
-        function loadInitialUsers() {
-            var usersToDisplay = userDatas.slice(start, start + limit);
-            updateProductList(usersToDisplay);
-            start += limit; // 다음 9명으로 업데이트
-        }
+    console.log("Raw userDatas:", ${userDatas});
 
-        // 더 보기 버튼 클릭 시 호출
-        $('#load-more-btn').click(function() {
+    $(document).ready(function() {
+        initSliders();
+        applyFilters();
+
+        $('#load-more-btn').on('click', function() {
             loadMoreUsers();
         });
 
-        // 더 많은 사용자 로드
-        function loadMoreUsers() {
-            var usersToDisplay = userDatas.slice(start, start + limit);
-            updateProductList(usersToDisplay);
-            start += limit;
-            if (start >= userDatas.length) {
-                $('#load-more-btn').text('더 이상 없습니다.');
+        $('input[name="gender"], input[name="distance"], input[name="religion"], input[name="smoking"]').on('change', applyFilters);
+    });
+
+    function initSliders() {
+        $('#age-slider-range').slider({
+            range: true,
+            min: 0,
+            max: 100,
+            values: [0, 100],
+            slide: function(event, ui) {
+                $('#ageAmount').val(ui.values[0] + ' - ' + ui.values[1]);
+            },
+            change: function(event, ui) {
+                applyFilters();
             }
+        });
+        $('#ageAmount').val($('#age-slider-range').slider('values', 0) + ' - ' + $('#age-slider-range').slider('values', 1));
+
+        $('#height-slider-range').slider({
+            range: true,
+            min: 130,
+            max: 220,
+            values: [130, 220],
+            slide: function(event, ui) {
+                $('#heightAmount').val(ui.values[0] + ' - ' + ui.values[1]);
+            },
+            change: function(event, ui) {
+                applyFilters();
+            }
+        });
+        $('#heightAmount').val($('#height-slider-range').slider('values', 0) + ' - ' + $('#height-slider-range').slider('values', 1));
+    }
+
+    function applyFilters() {
+        const selectedGenders = $('input[name="gender"]:checked').map(function() { return $(this).val(); }).get();
+        const selectedDistance = $('input[name="distance"]:checked').val();
+        const ageRange = $('#age-slider-range').slider('values');
+        const heightRange = $('#height-slider-range').slider('values');
+        const selectedReligions = $('input[name="religion"]:checked').map(function() { return $(this).val(); }).get();
+        const selectedSmoking = $('input[name="smoking"]:checked').map(function() { return $(this).val(); }).get();
+
+        console.log("Selected Genders:", selectedGenders);
+        console.log("Selected Distance:", selectedDistance);
+        console.log("Age Range:", ageRange);
+        console.log("Height Range:", heightRange);
+        console.log("Selected Religions:", selectedReligions);
+        console.log("Selected Smoking:", selectedSmoking);
+
+        const currentYear = new Date().getFullYear();
+
+        filteredUsers = allUsers.filter(user => {
+            console.log("User Data:", user);
+
+            const birthYear = parseInt(user.userBirth) || 0;
+            const userAge = birthYear ? currentYear - birthYear : 0;
+            const userGenderStr = user.userGender ? "남" : "여";
+            const userSmokeStr = user.userSmoke ? "흡연" : "비흡연";
+            const userDistance = parseInt(user.userRegion) || 0;
+
+            const passesRole = user.userRole === 0;
+            const passesEmail = user.userEmail !== currentUserEmail;
+            const passesGender = selectedGenders.length === 0 || selectedGenders.includes(userGenderStr);
+            const passesDistance = userDistance <= parseInt(selectedDistance) || selectedDistance === '100';
+            const passesAge = userAge >= ageRange[0] && userAge <= ageRange[1];
+            const passesHeight = user.userHeight >= heightRange[0] && user.userHeight <= heightRange[1];
+            const passesReligion = selectedReligions.length === 0 || selectedReligions.includes(user.userReligion);
+            const passesSmoking = selectedSmoking.length === 0 || selectedSmoking.includes(userSmokeStr);
+
+            console.log("Filter Conditions:", {
+                passesRole, passesEmail, passesGender, passesDistance,
+                passesAge, passesHeight, passesReligion, passesSmoking
+            });
+
+            return (
+                passesRole &&
+                passesEmail &&
+                passesGender &&
+                passesDistance &&
+                passesAge &&
+                passesHeight &&
+                passesReligion &&
+                passesSmoking
+            );
+        });
+
+        console.log("Filtered Users:", filteredUsers);
+        start = 0;
+        $('#product-list').empty();
+        loadInitialUsers();
+    }
+
+    function loadInitialUsers() {
+        const usersToDisplay = filteredUsers.slice(start, start + limit);
+        updateProductList(usersToDisplay, false);
+        start += limit;
+        updateLoadMoreButton();
+    }
+
+    function loadMoreUsers() {
+        const usersToDisplay = filteredUsers.slice(start, start + limit);
+        updateProductList(usersToDisplay, true);
+        start += limit;
+        updateLoadMoreButton();
+    }
+
+    function updateLoadMoreButton() {
+        if (start >= filteredUsers.length) {
+            $('#load-more-btn').text('더 이상 없습니다').prop('disabled', true);
+        } else {
+            $('#load-more-btn').text('더 보기').prop('disabled', false).show();
+        }
+    }
+
+    function updateProductList(users, append) {
+        if (!users || users.length === 0) {
+            $('#product-list').html('<p>회원이 없습니다</p>');
+            return;
         }
 
-        // 응답 받은 데이터를 이용해 HTML을 동적으로 업데이트
-        function updateProductList(users) {
-            var productListHtml = '';
-            users.forEach(function(data) {
-                productListHtml += `
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <img src="${data.userProfile}" class="img-responsive" alt="userImage">
-                                <div class="product-page-cart">
-                                    <button class="btn btn-primary" type="submit">메시지 보내기</button>
-                                    <a href="userDetailPage.do?userEmail=${data.userEmail}" class="btn btn-default">프로필 보기</a>
-                                </div>
-                            </div>
-                            <h3><a href="userDetailPage.do?userEmail=${data.userEmail}">${data.userNickname}</a></h3>
-                            <div class="height">키: ${data.userHeight}cm</div>
-                            <div class="description">${data.userDescription}</div>
+        let productListHtml = '';
+        users.forEach(function(data) {
+            if (!data.userEmail || !data.userNickname) {
+                console.log("Invalid user data:", data);
+                return;
+            }
+            console.log("Rendering user:", data.userEmail, data.userNickname, data.userHeight, data.userDescription);
+
+            productListHtml += `
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="product-item">
+                    <div class="pi-img-wrapper">
+                        <img src="\${data.userProfile || 'default.jpg'}" class="img-responsive" alt="userImage">
+                        <div class="product-page-cart">
+                            <button class="btn btn-primary" type="submit">메시지 보내기</button>
+                            <a href="userDetailPage.do?userEmail=\${data.userEmail}" class="btn btn-default">프로필 보기</a>
                         </div>
                     </div>
-                `;
-            });
-            $('#product-list').html(productListHtml);  // 기존 목록에 덮어쓰기
-        }
-
-        // 필터 적용 함수
-        function applyFilters() {
-            var filteredUsers = userDatas.filter(function(user) {
-                var matchesGender = true;
-                var genderFilters = $('#gender-filters input:checked').map(function() {
-                    return $(this).val();
-                }).get();
-                if (genderFilters.length > 0) {
-                    matchesGender = genderFilters.includes(user.userGender);
-                }
-
-                // 나이 필터
-                var selectedAge = $('#ageRange').val();
-                var matchesAge = (user.userAge >= selectedAge);
-
-                // 필터가 적용된 유저만 반환
-                return matchesGender && matchesAge;
-            });
-
-            // 필터링된 사용자만 표시
-            displayedUsers = filteredUsers;
-            start = 0;  // 필터 후 처음부터 시작
-            loadInitialUsers();  // 필터링된 첫 9명만 로드
-        }
-
-        // 필터 변경 시마다 적용
-        $('#gender-filters input').change(function() {
-            applyFilters();
+                    <h3><a href="userDetailPage.do?userEmail=\${data.userEmail}">닉네임: \${data.userNickname}</a></h3>
+                    <div class="height">키: \${data.userHeight || 'N/A'}cm</div>
+                    <div class="description"> \${data.userDescription || '설명 없음'}</div>
+                </div>
+            </div>
+        `;
         });
 
-        $('#ageRange').on('input', function() {
-            applyFilters();
-        });
-
-        // 초기 로딩
-        loadInitialUsers();
-    });
+        if (append) {
+            $('#product-list').append(productListHtml);
+        } else {
+            $('#product-list').html(productListHtml);
+        }
+        equalizeCardHeights();
+    }
 </script>
 
 <!-- END PAGE LEVEL JAVASCRIPTS -->

@@ -100,6 +100,7 @@
         </div>
     </div>
 </div>
+<!-- END TOP BAR -->
 
 <!-- BEGIN HEADER -->
 <div class="header">

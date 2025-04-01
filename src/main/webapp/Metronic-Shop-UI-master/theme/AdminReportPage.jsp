@@ -357,24 +357,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     Layout.initTwitter();
                 });
 
-                function setFormAction(event, button) {
-                    event.preventDefault(); // 기본 폼 제출 방지
-                    var form = button.closest("form"); // 현재 클릭된 버튼이 속한 form 찾기
-                    var selectId = form.querySelector("select").id; // 선택된 select 요소의 ID 가져오기
-                    var selectedAction = document.getElementById(selectId).value; // 선택된 옵션 값 가져오기
-                    form.action = selectedAction; // 폼의 action을 동적으로 설정
-                    form.submit(); // 폼 제출
-                }
-
-                // 페이지 로드 시 실행
-                document.addEventListener('DOMContentLoaded', function () {
-                    // 필요한 초기화 코드
-                });
             </script>
-            <!-- END PAGE LEVEL JAVASCRIPTS -->
         </div>
     </div>
 </div>
+<script src="${pageContext.request.contextPath}js/AdminReportPage.js"></script>
+
 </body>
 <!-- END BODY -->
 

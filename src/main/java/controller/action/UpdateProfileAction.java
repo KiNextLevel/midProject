@@ -73,7 +73,7 @@ public class UpdateProfileAction implements Action {
             if (newNickname != null && !newNickname.trim().isEmpty()) {
                 userDTO.setUserNickname(newNickname);
             }
-            
+
             // 숫자형 데이터 변환 처리 (키)
             if (userHeightStr != null && !userHeightStr.isEmpty()) {
                 try {

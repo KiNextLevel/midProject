@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -259,11 +260,15 @@
                                     <input type="hidden" name="Product_Name" value="프리미엄 멤버쉽 결제">
                                     <input type="hidden" name="Product_Price" value="9900">
                                     <input type="hidden" name="action" value="PREMIUM">
-                                    <button type="submit" class="btn btn-primary btn-lg payment-button">
-                                        <i class="fa fa-crown"></i> 프리미엄 멤버십 가입하기
+
+                                    <button type="submit" class="btn btn-primary btn-lg payment-button"
+                                    ${sessionScope.userPremium ? 'disabled' : ''}>
+                                        <i class="fa fa-crown"></i>
+                                        ${sessionScope.userPremium ? '이미 프리미엄 회원입니다' : '프리미엄 멤버십 가입하기'}
                                     </button>
                                 </form>
                             </div>
+
                         </div>
                     </div>
 

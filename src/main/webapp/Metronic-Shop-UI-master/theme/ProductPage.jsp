@@ -204,7 +204,6 @@
                                         <i class="fa fa-credit-card"></i> 인기 패키지 - 5개 (₩5,000)
                                     </button>
                                 </form>
-
                                 <!-- 프리미엄 패키지 -->
                                 <form action="tossPaymentPage.do" method="POST">
                                     <input type="hidden" name="Product_Num" value="4">
@@ -221,6 +220,7 @@
                     </div>
 
                     <!-- PREMIUM 섹션 -->
+                    <c:if test="${sessionScope.userPremium == false}">
                     <h3 class="section-title"><i class="fa fa-star"></i> 프리미엄 멤버십</h3>
                     <div class="payment-section premium-section">
                         <div class="premium-content">
@@ -251,10 +251,12 @@
                                     <div class="feature-text">
                                         <h5>프리미엄 뱃지</h5>
                                         <p>프로필에 특별한 프리미엄 뱃지로 더 많은 관심 유도</p>
+                                        <p>프리미엄 여부: ${sessionScope.userPremium}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="premium-action">
+
                                 <form action="tossPaymentPage.do" method="post">
                                     <input type="hidden" name="Product_Num" value="1">
                                     <input type="hidden" name="Product_Name" value="프리미엄 멤버쉽 결제">
@@ -267,6 +269,7 @@
                                         ${sessionScope.userPremium ? '이미 프리미엄 회원입니다' : '프리미엄 멤버십 가입하기'}
                                     </button>
                                 </form>
+                                </c:if>
                             </div>
 
                         </div>

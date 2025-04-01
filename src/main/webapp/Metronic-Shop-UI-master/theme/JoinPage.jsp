@@ -35,6 +35,13 @@
     <!-- Theme styles END -->
 </head>
 
+<script>
+    function openAddressPopup() {
+        window.open('/Metronic-Shop-UI-master/theme/addressPopup.html', '주소 찾기', 'width=600,height=600');
+    }
+</script>
+
+
 <body class="ecommerce">
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
@@ -42,7 +49,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="Index.jsp">로그인 화면으로</a></li>
+                    <li><a href="indexPage.do">로그인 화면으로</a></li>
                 </ul>
             </div>
         </div>
@@ -150,18 +157,27 @@
                                 </div>
                             </div>
 
+<%--                            <div class="col-md-4">--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label for="region" class="required-field">지역</label>--%>
+<%--                                    <input type="text" class="form-control" id="region" name="userRegion" readonly required>--%>
+<%--                                    <input type="hidden" id="latitude" name="userLatitude">--%>
+<%--                                    <input type="hidden" id="longitude" name="userLongitude">--%>
+<%--                                    <button type="button" class="btn btn-secondary mt-2" onclick="openAddressPopup()">주소 찾기</button>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            위도/경도는 Java 서버 코드에서 GeoCodingUtil로 처리, input 2군데 제거  --%>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="region" class="required-field">지역</label>
                                     <input type="text" class="form-control" id="region" name="userRegion" readonly required>
                                     <button type="button" class="btn btn-secondary mt-2" onclick="openAddressPopup()">주소 찾기</button>
-<%--                                    <button class="btn btn-success mt-3" onclick="sendAllAddress()">입력 완료</button>--%>
-
                                 </div>
                             </div>
 
 
-<%--                                    <select class="form-control" id="region" name="userRegion" required>--%>
+
+                        <%--                                    <select class="form-control" id="region" name="userRegion" required>--%>
 <%--                                        <option value="">선택하세요</option>--%>
 <%--                                        <option value="서울">서울</option>--%>
 <%--                                        <option value="경기">경기</option>--%>

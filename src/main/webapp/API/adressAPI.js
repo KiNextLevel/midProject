@@ -5,13 +5,19 @@
 
 function sendAllAddress(addr) {
     const main = document.getElementById("sample6_address").value;
-    const detail = document.getElementById("sample6_detailAddress").value;
+   // const detail = document.getElementById("sample6_detailAddress").value;
     const extra = document.getElementById("sample6_extraAddress").value;
 
-    const fullAddress = main + ' ' + detail + (extra ? ' ' + extra : '');
+    //const fullAddress = main + ' ' + detail + (extra ? ' ' + extra : '');
+   // 상세 주소 빼기
+    const fullAddress = main + (extra ? ' ' + extra : '');
 
     // 부모창의 #address input에 값 넣기
     window.opener.document.getElementById("region").value = fullAddress;
+
+    //console.log(" 부모창에 위도:", window.opener.document.getElementById("latitude").value);
+    //console.log(" 부모창에 경도:", window.opener.document.getElementById("longitude").value);
+
 
     // 팝업 닫기
     window.close();
@@ -60,10 +66,35 @@ function sample6_execDaumPostcode() {
             document.getElementById('sample6_postcode').value = data.zonecode;
             document.getElementById("sample6_address").value = addr;
             // 부모창 input[id="address"]에 값 전달(추가)
-            selectAddress(addr);
+            // selectAddress(addr);
 
             // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("sample6_detailAddress").focus();
+           // document.getElementById("sample6_detailAddress").focus();
+
+            // 여기에 좌표 변환 기능 추가 - 위도, 경도
+            var geocoder = new kakao.maps.services.Geocoder();
+
+            geocoder.addressSearch(addr, function(result, status) {
+                if (status === kakao.maps.services.Status.OK) {
+                    var lat = result[0].y;
+                    var lng = result[0].x;
+                    console.log(" 위도:", lat, "경도:", lng);
+
+                    // input 태그에 좌표값을 넣고 싶다면 이렇게 하면 됨
+                    //  document.getElementById("latitude").value = lat;
+                    //  document.getElementById("longitude").value = lng;
+                    //window.opener.document.getElementById("latitude").value = lat;
+                    //window.opener.document.getElementById("longitude").value = lng;
+
+                    // console.log(" 최종 위도:", document.getElementById("latitude").value);
+                    // console.log(" 최종 경도:", document.getElementById("longitude").value);
+                    //console.log("부모창 위도:", window.opener.document.getElementById("latitude").value);
+                    //console.log("부모창 경도:", window.opener.document.getElementById("longitude").value);
+                } else {
+                    console.error("주소 → 좌표 변환 실패");
+                }
+            }
+            );
         }
     }).open();
 }

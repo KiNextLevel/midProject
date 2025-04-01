@@ -87,9 +87,11 @@
                 <ul class="list-unstyled list-inline">
                     <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
                     <!-- BEGIN CURRENCIES -->
+                    <c:if test="${sessionScope.userPremium == false}">
                     <li class="shop-currencies">
                         <a href="productPage.do">광고 제거</a>
                     </li>
+                    </c:if>
                     <!-- END CURRENCIES -->
                     <!-- BEGIN LANGS -->
                     <li class="langs-block">

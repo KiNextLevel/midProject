@@ -29,6 +29,11 @@ public class JoinAction implements Action {
 			session.setAttribute("userEmail", request.getParameter("userEmail"));
 			session.setAttribute("userPassword", request.getParameter("userPassword"));
 			session.setAttribute("userName", request.getParameter("userName"));
+			session.setAttribute("condition", "join");
+
+			request.setAttribute("userEmail", request.getParameter("userEmail"));
+			request.setAttribute("userPassword", request.getParameter("userPassword"));
+			request.setAttribute("userName", request.getParameter("userName"));
 
 			request.setAttribute("msg", "회원가입 진행");
 			request.setAttribute("flag", true);

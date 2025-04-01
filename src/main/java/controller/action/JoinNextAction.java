@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
+import org.example.webapp.model.common.GeoCodingUtil;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
 
@@ -95,6 +96,47 @@ public class JoinNextAction implements Action {
 
             // 지역 설정
             userDTO.setUserRegion(request.getParameter("userRegion"));
+
+            // 위도, 경도 추가
+//            try {
+//                userDTO.setUserLatitude(Double.parseDouble(request.getParameter("userLatitude")));
+//                userDTO.setUserLongitude(Double.parseDouble(request.getParameter("userLongitude")));
+//                System.out.println(" 위도: " + userDTO.getUserLatitude() + ", 경도: " + userDTO.getUserLongitude());
+//            } catch (Exception e) {
+//                System.out.println("위도/경도 파싱 실패! 기본값 0.0으로 저장됨");
+//                userDTO.setUserLatitude(0.0);
+//                userDTO.setUserLongitude(0.0);
+//            }
+
+            //서버(Java)에서 직접 주소 → 위도/경도 변환
+            // GeoCodingUtil을 통해 위도/경도 변환
+            try {
+                // 회원가입 시 입력된 주소를 가져옴
+                String address = userDTO.getUserRegion();
+
+                // GeoCodingUtil을 사용해서 해당 주소를 위도/경도로 변환
+                double[] coords = GeoCodingUtil.getCoordinatesFromAddress(address);
+
+                // 소수점 4자리까지만 저장되게 하기 (반올림 처리)
+                double lat = Math.round(coords[0] * 10000) / 10000.0;
+                double lng = Math.round(coords[1] * 10000) / 10000.0;
+
+                // 변환된 위도, 경도 값을 userDTO에 저장
+                userDTO.setUserLatitude(lat);
+                userDTO.setUserLongitude(lng);
+
+                System.out.println("위도/경도 설정됨: " + lat + ", " + lng);
+                System.out.println("JOIN Next Action 로그 userDTO[" + userDTO + "]");
+
+            } catch (Exception e) {
+                System.out.println(" 주소 → 위경도 변환 실패! 기본값 0.0으로 저장됨");
+                // 변환 실패 시 기본값 저장
+                userDTO.setUserLatitude(0.0);
+                userDTO.setUserLongitude(0.0);
+            }
+
+
+
 
             // 자기소개 설정
             userDTO.setUserDescription(request.getParameter("userDescription"));

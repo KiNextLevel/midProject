@@ -3,6 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 날짜 등 포맷용 -->
 <%@ page isELIgnored="false" %>
 
@@ -139,11 +140,12 @@
                                 <p>닉네임 : ${userDTO.userNickname}</p>
                             </div>
                             <div class="availability">
-                                지역 : <strong>${param.userRegion}</strong>
+                                지역 : <strong>${fn:split(userDTO.userRegion, ' ')[0]}</strong>
                             </div>
+
                         </div>
                         <div class="description">
-                            <p>${param.userDescription}</p>
+                            <p>${userDTO.userDescription}</p>
                         </div>
                         <div class="product-page-cart">
                             <div class="row">

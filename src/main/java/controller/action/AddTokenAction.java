@@ -24,9 +24,20 @@ public class AddTokenAction implements Action {
         userDTO = userDAO.selectOne(userDTO);
         System.out.println("userDTO: "+userDTO);
         int userToken = userDTO.getUserToken();
+        System.out.println("userPremium: ["+userDTO.isUserPreminum()+"]");
         if(productNum == 1){
             userDTO.setCondition("UPDATE_PREMIUM");
-            userDAO.update(userDTO);
+            if(userDAO.update(userDTO)) {
+                System.out.println("update successs");
+                userDTO.setCondition("SELECTONE_USERINFO");
+                userDTO = userDAO.selectOne(userDTO);   //db에서 다시 가져와야 함
+                session.setAttribute("userPremium", userDTO.isUserPreminum());
+            }
+            else{
+                System.out.println("update fail");
+            }
+            System.out.println("userPremium: ["+userDTO.isUserPreminum()+"]");
+            session.setAttribute("userPremium", userDTO.isUserPreminum());
         }
         else if(productNum == 2){
         userToken += 1;

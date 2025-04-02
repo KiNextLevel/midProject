@@ -73,7 +73,7 @@ public class PaymentDAO {
 
     }
 
-    public ArrayList<PaymentDTO> selectByUserEmailList(PaymentDTO paymentDTO) {
+    public ArrayList<PaymentDTO> selectOne(PaymentDTO paymentDTO) {
         ArrayList<PaymentDTO> list = new ArrayList<>();
         Connection conn = null;
         PreparedStatement pstmt = null;

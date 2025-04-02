@@ -17,8 +17,9 @@ import java.io.PrintWriter;
 public class CheckEmailAction implements Action, AjaxAction {
     @Override
     public ActionForward execute(HttpServletRequest request) {
-        System.out.println("CheckEmailAction의 execute 메소드 호출됨 - 이 메소드는 사용되지 않습니다.");
-        return null; // 이 메소드는 실제로 사용되지 않음
+        // 사용 XXXX, Override위해 있는 메소드
+        System.out.println("CheckEmailAction의 execute 메소드 호출됨");
+        return null;
     }
 
     @Override
@@ -45,6 +46,7 @@ public class CheckEmailAction implements Action, AjaxAction {
 
         UserDTO result = userDAO.selectOne(userDTO);
         boolean isAvailable = (result == null); // result가 null이면 중복되지 않은 이메일
+        // 아이디가 없으면 사용가능 OK, 있으면 사용불가능 USE
         System.out.println("checkEmail Duplicate: " + (isAvailable ? "OK" : "USE"));
 
         // JSON 응답 생성
@@ -57,7 +59,7 @@ public class CheckEmailAction implements Action, AjaxAction {
             jsonResponse.put("message", "이미 사용 중인 이메일입니다.");
         }
         System.out.println("응답 JSON: " + jsonResponse.toJSONString());
-
+    
         // JSON 응답 전송
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();

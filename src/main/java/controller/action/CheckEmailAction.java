@@ -41,7 +41,7 @@ public class CheckEmailAction implements Action, AjaxAction {
         UserDTO userDTO = new UserDTO();
         userDTO.setUserEmail(userEmail);
         userDTO.setSocialType(socialType);
-        userDTO.setCondition("SELECTONE_CHECKAJAX");
+        userDTO.setCondition("SELECTONE_CHECK");
 
         UserDTO result = userDAO.selectOne(userDTO);
         boolean isAvailable = (result == null); // result가 null이면 중복되지 않은 이메일

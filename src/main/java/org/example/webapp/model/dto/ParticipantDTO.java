@@ -5,6 +5,7 @@ public class ParticipantDTO {
     private int participantBoardNumber;
     // 참가한 유저의 이메일
     private String participantUserEmail;
+    // 다양한 메서드를 위한 condition
     private String condition;
 
     // getter, setter 메서드

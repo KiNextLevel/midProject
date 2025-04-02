@@ -494,6 +494,6 @@
 
 <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
 
-<script src="${pageContext.request.contextPath}js/MyPage.js"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/MyPage.js"></script>
 </body>
 </html>

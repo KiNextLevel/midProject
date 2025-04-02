@@ -215,7 +215,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                     <form id="sendAlert-${data.reportReported}" method="POST" class="form-inline">
                                         <input type="hidden" name="reportedUser" value="${data.reportReported}">
                                         <input type="hidden" name="reason" value="${data.reportReason}">
-
+                                        <input type="hidden" name="reportNum" value="${data.reportNumber}">
                                         <div class="form-group">
                                             <select id="action-${data.reportReported}" name="action"
                                                     class="form-control">

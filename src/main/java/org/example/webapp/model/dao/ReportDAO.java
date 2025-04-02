@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ReportDAO {
 
     // (관리자용) 00유저 신고자, 신고사유, 신고날짜, 00유저 피신고자, 신고 설명 전체 출력하기
-    final String SELECTALL = "SELECT REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION "
+    final String SELECTALL = "SELECT REPORT_NUM, REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION "
             + "FROM REPORT";
 
     // (유저용) - 마이페이지 상품명, 결제일, 결제 금액
@@ -26,6 +26,8 @@ public class ReportDAO {
 
     // (관리자용) 블랙리스트된 00 유저 삭제하기
     final String DELETE = "DELETE FROM REPORT WHERE REPORT_REPORTED = ?";
+    //(관리자용) 경고 보내면 그 신고건 하나만 삭제하기
+    final String DELETE_ONE = "DELETE FROM REPORT WHERE REPORT_NUM = ?";
 
     public ArrayList<ReportDTO> selectAll(ReportDTO reportDTO) {
         ArrayList<ReportDTO> datas = new ArrayList<>();
@@ -40,6 +42,7 @@ public class ReportDAO {
 
             while (rs.next()) {
                 ReportDTO data = new ReportDTO();
+                data.setReportNumber(rs.getInt("REPORT_NUM"));
                 data.setReportReported(rs.getString("REPORT_REPORTED"));
                 data.setReportReason(rs.getString("REPORT_REASON"));
                 data.setReportDate(rs.getDate("REPORT_DATE"));
@@ -118,10 +121,14 @@ public class ReportDAO {
         PreparedStatement pstmt = null;
         try {
             conn = JDBCUtil.connect();
-            pstmt = conn.prepareStatement(DELETE);
-
-            pstmt.setString(1, reportDTO.getReportReported());
-
+            if(reportDTO.getCondition().equals("DELETE")) {
+                pstmt = conn.prepareStatement(DELETE);
+                pstmt.setString(1, reportDTO.getReportReported());
+            }
+            if(reportDTO.getCondition().equals("DELETE_ONE")){
+                pstmt = conn.prepareStatement(DELETE_ONE);
+                pstmt.setInt(1, reportDTO.getReportNumber());
+            }
             int result = pstmt.executeUpdate();
             return result > 0;
 

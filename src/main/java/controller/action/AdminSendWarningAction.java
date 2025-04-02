@@ -26,13 +26,14 @@ public class AdminSendWarningAction implements Action{
 		String reason = request.getParameter("reason");
 		alertDTO.setUserEmail(reportedUser);	//신고당한 회원 이메일
 		alertDTO.setAlertContent(reason);		//신고 사유
-		reportDTO.setReportReported(reportedUser);	//신고 당한 회원 이메일
+		System.out.println("reportNum: ["+request.getParameter("reportNum")+"]");
+		reportDTO.setReportNumber(Integer.parseInt(request.getParameter("reportNum")));	//해당 신고 번호
+		reportDTO.setCondition("DELETE_ONE");
 		System.out.println("reportedUser: "+reportedUser);
 		System.out.println("reason"+reason);
 
 		if(alertDAO.insert(alertDTO) && reportDAO.delete(reportDTO)) {
 			//여기서 경고 보낸 사람 신고 리스트에서 삭제
-
 			request.setAttribute("msg", "경고 보내기 완료");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "adminReportPage.do");

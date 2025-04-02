@@ -9,7 +9,7 @@ public class JDBCUtil {
 
     static final String userName = "root";
     // db pw desktop은 030414, ki는 1234
-    static final String password = "1234";
+    static final String password = "12345678";
 
     public static Connection connect(){
         Connection conn = null;

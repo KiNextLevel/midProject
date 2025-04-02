@@ -40,8 +40,9 @@ public class ParticipantBoardAction implements Action{
 		System.out.println("participantDAO.selectOne(participantDTO)).getParticipantBoardNumber(): ["+participantDAO.selectOne(participantDTO).getParticipantBoardNumber()+"]");
 		System.out.println("boardDTO.getBoardLimit(): ["+boardDAO.selectOne(boardDTO).getBoardLimit()+"]");
 
-		for(ParticipantDTO v: datas){	//이벤트에 이미 참가 했으면 참가 취소
+		for(ParticipantDTO v: datas){	//이미 참가 신청한 이벤트 버튼 다시 누르면 참가 취소
 			if (v.getParticipantBoardNumber() == boardNum) {
+				participantDTO.setCondition("DELETE");
 				participantDAO.delete(participantDTO);
 				System.out.println("v.getParticipantBoardNumber: ["+v.getParticipantBoardNumber()+"]");
 				System.out.println("v.getParticipantUserEmail: "+v.getParticipantUserEmail()+"]");

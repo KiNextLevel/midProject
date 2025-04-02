@@ -5,8 +5,18 @@ public class ParticipantDTO {
     private int participantBoardNumber;
     // 참가한 유저의 이메일
     private String participantUserEmail;
+    private String condition;
 
     // getter, setter 메서드
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
     public int getParticipantBoardNumber() {
         return participantBoardNumber;
     }
@@ -27,8 +37,9 @@ public class ParticipantDTO {
     @Override
     public String toString() {
         return "ParticipantDTO{" +
-                "PARTICIPANT_BOARD_NUM=" + participantBoardNumber +
-                ", PARTICIPANT_USER_EMAIL='" + participantUserEmail + '\'' +
+                "participantBoardNumber=" + participantBoardNumber +
+                ", participantUserEmail='" + participantUserEmail + '\'' +
+                ", condition='" + condition + '\'' +
                 '}';
     }
 }

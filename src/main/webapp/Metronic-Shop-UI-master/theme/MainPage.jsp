@@ -132,41 +132,17 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
         <!-- BEGIN CART 읽지 않은 알림이 있으면 비동기로 "새 알림이 있습니다", 없으면 그냥 없음-->
         <div class="top-cart-block">
-            <!-- 여기가 새 알림이 있습니다 칸 -->
-            <c:if test="${hasUnreadAlerts}">
-                <div class="top-cart-info">
-                    <p>새 알림이 있습니다</p>
-                </div>
-            </c:if>
+            <!-- 새 알림이 있습니다 칸 (기본 숨김) -->
+            <div class="top-cart-info" style="display: none;">
+                <p>새 알림이 있습니다</p>
+            </div>
 
-            <!-- 클릭 시 JS 함수 호출하도록 수정 -->
-            <%--            <a href="javascript:void(0);" class="top-cart-toggle" onclick="toggleCartContent()">--%>
             <i class="fa fa-bell"></i>
-            <%--            </a>--%>
 
             <div class="top-cart-content-wrapper">
                 <div class="top-cart-content">
                     <ul class="scroller" style="height: 250px;">
-                        <c:if test="${empty alertDatas}">
-                            <li>
-                                <p>받은 알림이 아직 없습니다</p>
-                            </li>
-                        </c:if>
-
-                        <c:forEach var="data" items="${alertDatas}">
-                            <li id="alert-${data.alertNumber}" onclick="markAsRead(${data.alertNumber})">
-                                <span class="cart-content-count">${data.alertNumber}</span>
-                                <a href="javascript:void(0);" class="alert-content">${data.alertContent}</a>
-
-                                <em>${data.alertDate}</em>
-
-                                <!-- 상태를 표시 (읽음/읽지 않음) -->
-                                <span class="alert-status"
-                                      style="background-color: ${data.alertIsWatch ? '#4CAF50' : '#F44336'};">
-                                        ${data.alertIsWatch ? '읽음' : '읽지 않음'}
-                                </span>
-                            </li>
-                        </c:forEach>
+                        <!-- 알림 목록은 JavaScript로 동적 생성 -->
                     </ul>
                 </div>
             </div>
@@ -437,31 +413,31 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         Layout.initImageZoom();
         Layout.initTouchspin();
         Layout.initUniform();
-        Layout.initAgeSliderRange();
-        Layout.initHeightSliderRange();
     });
 
-    function markAsRead(alertNumber) {
-        // 클릭된 알림 번호를 로그에 출력
-        console.log("로그: 알림 번호 [" + alertNumber + "]");
+    const alertDatas = JSON.parse('${sessionScope.alertDatasJson}' || '[]');
+    console.log("알람" + alertDatas);
 
-        // AJAX 요청을 통해 알림 상태를 "읽음"으로 변경
+    function markAsRead(alertNumber) {
+        console.log("로그: 알림 번호 [" + alertNumber + "]");
         $.ajax({
-            url: "/updateAlertStatus",  // 상태를 업데이트할 URL
+            url: "/updateAlertStatus",
             type: "POST",
-            data: {alertNumber: alertNumber},  // alertNumber만 쿼리 문자열로 보내기
-            dataType: 'json',  // 서버에서 응답으로 받는 데이터 타입
+            data: {alertNumber: alertNumber},
+            dataType: 'json',
             success: function (response) {
                 console.log("로그: 상태 업데이트 성공 [" + response + "]");
-
-                // 상태 업데이트 성공 시, UI에서 해당 알림의 상태를 '읽음'으로 변경
                 $("#alert-" + alertNumber)
                     .find(".alert-status")
-                    .css("background-color", "#4CAF50")  // '읽음' 색상으로 변경
-                    .text("읽음");  // 텍스트를 '읽음'으로 변경
+                    .css("background-color", "#4CAF50")
+                    .text("읽음");
 
-                // 매번 알림을 읽음으로 표시할 때마다 호출
-                // 새 알림이 있습니다 숨기기 위한 함수
+                // alertDatas 업데이트
+                const alert = alertDatas.find(a => a.alertNumber === alertNumber);
+                if (alert) {
+                    alert.alertIsWatch = true;
+                }
+
                 checkAllAlertsRead();
             },
             error: function () {
@@ -470,22 +446,48 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         });
     }
 
-    // 알림 상태를 모두 확인하여 "새 알림이 있습니다" 메시지를 숨기기
     function checkAllAlertsRead() {
-        // 모든 알림이 '읽음' 상태인지 확인
         let allRead = true;
-
-        $(".alert-status").each(function () {
-            if ($(this).text() === '읽지 않음') {
+        alertDatas.forEach(function (alert) {
+            if (!alert.alertIsWatch) {
                 allRead = false;
             }
         });
-
-        // 모든 알림이 읽음이면 "새 알림이 있습니다" 메시지 숨기기
         if (allRead) {
-            $(".top-cart-info").hide();  // "새 알림이 있습니다" 메시지를 숨김
+            $(".top-cart-info").hide();
+        } else {
+            $(".top-cart-info").show();
         }
     }
+
+    function renderAlerts() {
+        const $scroller = $(".scroller");
+        $scroller.empty(); // 기존 내용 지우기
+
+        if (alertDatas.length === 0) {
+            $scroller.append('<li><p>받은 알림이 아직 없습니다</p></li>');
+        } else {
+            alertDatas.forEach(function (data) {
+                const alertHtml = `
+                <li id="alert-\${data.alertNumber}" onclick="markAsRead(\${data.alertNumber})">
+                    <span class="cart-content-count">\${data.alertNumber}</span>
+                    <a href="javascript:void(0);" class="alert-content">\${data.alertContent}</a>
+                    <em>\${data.alertDate}</em>
+                    <span class="alert-status" style="background-color: \${data.alertIsWatch ? '#4CAF50' : '#F44336'};">
+                        \${data.alertIsWatch ? '읽음' : '읽지 않음'}
+                    </span>
+                </li>
+            `;
+                $scroller.append(alertHtml);
+            });
+        }
+    }
+
+    // 페이지 로드 시 실행
+    $(document).ready(function () {
+        renderAlerts(); // 알림 목록 렌더링
+        checkAllAlertsRead(); // 초기 상태 체크
+    });
 
     // 페이지 레이아웃 스크립트에 추가
     $(window).on('load', function () {
@@ -591,22 +593,30 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             return $(this).val();
         }).get();
 
-        console.log("Selected Genders:", selectedGenders);
-        console.log("Selected Distance:", selectedDistance);
-        console.log("Age Range:", ageRange);
-        console.log("Height Range:", heightRange);
-        console.log("Selected Religions:", selectedReligions);
-        console.log("Selected Smoking:", selectedSmoking);
+        // 현재 사용자의 위도/경도 (세션에서 가져왔다고 가정)
+        const currentUserLatitude = parseFloat("${sessionScope.userLatitude}");
+        const currentUserLongitude = parseFloat("${sessionScope.userLongitude}");
+
+        console.log(currentUserLatitude)
+        console.log(currentUserLongitude)
 
         filteredUsers = allUsers.filter(user => {
-            console.log("User Data:", user);
-
             const birthYear = parseInt(user.userBirth) || 0;
             const userAge = birthYear ? currentYear - birthYear : 0;
-            console.log(userAge)
             const userGenderStr = user.userGender ? "남" : "여";
             const userSmokeStr = user.userSmoke ? "흡연" : "비흡연";
-            const userDistance = parseInt(user.userRegion) || 0;
+
+            // 위도/경도 가져오기
+            const userLatitude = parseFloat(user.userLatitude);
+            const userLongitude = parseFloat(user.userLongitude);
+
+            // 거리 계산
+            const userDistance = calculateDistance(
+                currentUserLatitude,
+                currentUserLongitude,
+                userLatitude,
+                userLongitude
+            );
 
             const passesRole = user.userRole === 0;
             const passesEmail = user.userEmail !== currentUserEmail;
@@ -616,11 +626,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             const passesHeight = user.userHeight >= heightRange[0] && user.userHeight <= heightRange[1];
             const passesReligion = selectedReligions.length === 0 || selectedReligions.includes(user.userReligion);
             const passesSmoking = selectedSmoking.length === 0 || selectedSmoking.includes(userSmokeStr);
-
-            console.log("Filter Conditions:", {
-                passesRole, passesEmail, passesGender, passesDistance,
-                passesAge, passesHeight, passesReligion, passesSmoking
-            });
 
             return (
                 passesRole &&
@@ -638,6 +643,19 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         start = 0;
         $('#product-list').empty();
         loadInitialUsers();
+    }
+
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // 지구 반지름 (단위: km)
+        const dLat = (lat2 - lat1) * Math.PI / 180; // 위도 차이를 라디안으로 변환
+        const dLon = (lon2 - lon1) * Math.PI / 180; // 경도 차이를 라디안으로 변환
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c; // 최종 거리 (단위: km)
+        return distance;
     }
 
     function loadInitialUsers() {

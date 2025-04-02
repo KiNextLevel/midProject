@@ -17,6 +17,8 @@ public class UserDAO {
     final String SELECTONE_NONSOCIAL = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
     // 유저 전체 정보 불러오기
     final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
+    // 비동기용 중복 검사
+    final String SELECTONE_CHECKAJAX = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ?";
 
     // 유저 위도, 경도 정보 불러오기
     final String SELECTONE_LOCATION = "SELECT USER_EMAIL, USER_LATITUDE, USER_LONGITUDE FROM USER WHERE USER_EMAIL = ?";
@@ -251,7 +253,16 @@ public class UserDAO {
                         data.setUserLatitude(rs.getDouble("USER_LATITUDE"));
                         data.setUserLongitude(rs.getDouble("USER_LONGITUDE"));
                     }
-                } else {
+                } else if(userDTO.getCondition().equals("SELECTONE_CHECKAJAX")) {
+                    pstmt = conn.prepareStatement(SELECTONE_CHECKAJAX);
+                    pstmt.setString(1, userDTO.getUserEmail());
+                    rs = pstmt.executeQuery();
+                    if (rs.next()) {
+                        data = new UserDTO();
+                        data.setUserEmail(rs.getString("USER_EMAIL"));
+                    }
+                }
+                else {
                     // 알 수 없는 조건인 경우 로그 출력 및 null 반환
                     System.out.println("알 수 없는 조건: " + userDTO.getCondition());
                     return null;

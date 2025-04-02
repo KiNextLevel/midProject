@@ -94,5 +94,52 @@
 </div>
 
 <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/SignInUp.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#signup-email").blur(function() {
+            var email = $(this).val();
+
+            if(email != "") {
+                console.log("이메일 중복 확인 요청: " + email);  // 디버깅용 로그
+
+                $.ajax({
+                    url: "checkEmailDuplicate.do",
+                    type: "POST",
+                    data: {
+                        userEmail: email,
+                        socialType: "normal"
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        console.log("서버 응답:", response);  // 디버깅용 로그
+
+                        // 기존 메시지 제거
+                        $("#emailCheck").remove();
+
+                        // 새 메시지 추가
+                        if(response.available) {
+                            $("#signup-email").after('<div id="emailCheck" style="color: green; margin-top: 5px;">' + response.message + '</div>');
+                        } else {
+                            $("#signup-email").after('<div id="emailCheck" style="color: red; margin-top: 5px;">' + response.message + '</div>');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("이메일 중복 확인 중 오류 발생:", error);
+                        console.error("상태 코드:", xhr.status);
+                        console.error("응답 텍스트:", xhr.responseText);
+
+                        // 기존 메시지 제거
+                        $("#emailCheck").remove();
+
+                        // 오류 메시지 추가
+                        $("#signup-email").after('<div id="emailCheck" style="color: red; margin-top: 5px;">서버 오류가 발생했습니다. 다시 시도해주세요.</div>');
+                    }
+                });
+            }
+        });
+    });
+
+</script>
 </body>
 </html>

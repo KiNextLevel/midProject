@@ -404,6 +404,8 @@
                             <thead>
                             <tr>
                                 <th>이벤트 이름</th>
+                                <th>이벤트 내용</th>
+                                <th>이벤트 날짜</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -429,31 +431,32 @@
                     <div id="token-info" class="info-card">
                         <h3>토큰 잔액 및 구매 내역</h3>
                         <table class="table table-striped">
-                            <p>
-                                <strong>현재 보유 토큰:</strong>
-                                <span style="color: #e94d1c; font-size: 18px;">
+                        <p>
+                            <strong>현재 보유 토큰:</strong>
+                            <span style="color: #e94d1c; font-size: 18px;">
                                 <c:out value="${userDTO.userToken}" default="0"/> 개
                             </span>
-                            </p>
+                        </p>
 
-                            <thead>
+                        <thead>
+                        <tr>
+                            <th>상품명</th>
+                            <th>결제일</th>
+                            <th>결제금액</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="payment" items="${paymentList}">
                             <tr>
-                                <th>상품명</th>
-                                <th>결제일</th>
-                                <th>결제금액</th>
+                                <td><c:out value="${payment.productName}"/></td>
+                                <td><fmt:formatDate value="${payment.paymentDate}" pattern="yyyy-MM-dd"/></td>
+                                <td><c:out value="${payment.paymentPrice}"/> 원</td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="payment" items="${paymentList}">
-                                <tr>
-                                    <td><c:out value="${payment.productName}"/></td>
-                                    <td><fmt:formatDate value="${payment.paymentDate}" pattern="yyyy-MM-dd"/></td>
-                                    <td><c:out value="${payment.paymentPrice}"/> 원</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+                        </c:forEach>
+                        </tbody>
+                    </table>
                     </div>
+
 
                     <div id="delete-info" class="info-card">
                         <h3>계정 설정</h3>

@@ -4,8 +4,10 @@ import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.example.webapp.model.dao.BoardDAO;
 import org.example.webapp.model.dao.PreferenceDAO;
 import org.example.webapp.model.dao.UserDAO;
+import org.example.webapp.model.dto.BoardDTO;
 import org.example.webapp.model.dto.PreferenceDTO;
 import org.example.webapp.model.dto.UserDTO;
 import org.example.webapp.model.dto.PaymentDTO;
@@ -48,12 +50,19 @@ public class MyPageAction implements Action {
         paymentDTO.setUserEmail(userEmail);
         paymentDTO.setCondition("SELECTONE");
 
+        BoardDTO boardDTO = new BoardDTO();
+        BoardDAO boardDAO = new BoardDAO();
+        boardDTO.setUserEmail(userEmail);
+        boardDTO.setCondition("SELECTONE_EVENTLISTPRINT");
+
 
         UserDTO user = userDAO.selectOne(userDTO);
         PreferenceDTO preference = preferenceDAO.selectOne(preferenceDTO);
-        ArrayList<PaymentDTO> paymentList = paymentDAO.selectByUserEmailList(paymentDTO);
+        ArrayList<PaymentDTO> paymentList = paymentDAO.selectOne(paymentDTO);
+        BoardDTO eventList = boardDAO.selectOne(boardDTO);
 
         if (user != null) {
+            request.setAttribute("eventList", eventList);
             request.setAttribute("paymentList", paymentList);
             request.setAttribute("userDTO", user); // 첫 번째 사용자 정보
             request.setAttribute("preferenceDTO", preference);

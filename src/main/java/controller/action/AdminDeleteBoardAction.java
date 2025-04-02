@@ -36,7 +36,7 @@ public class AdminDeleteBoardAction implements Action{
 			request.setAttribute("msg", "이벤트 삭제 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 		forward.setRedirect(false);
 		System.out.println("apple 4");
 		return forward;

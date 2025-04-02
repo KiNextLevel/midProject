@@ -36,7 +36,7 @@ public class UserPreferenceAction implements Action {
             if (userEmail == null || preferenceHeightStr == null || preferenceBody == null || preferenceAge == null) {
                 request.setAttribute("msg", "필수 정보가 누락되었습니다!");
                 request.setAttribute("flag", false);
-                forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+                forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
                 forward.setRedirect(false);
                 return forward;
             }
@@ -48,7 +48,7 @@ public class UserPreferenceAction implements Action {
             } catch (NumberFormatException e) {
                 request.setAttribute("msg", "키 값은 숫자여야 합니다!");
                 request.setAttribute("flag", false);
-                forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+                forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
                 forward.setRedirect(false);
                 return forward;
             }
@@ -92,14 +92,14 @@ public class UserPreferenceAction implements Action {
                 request.setAttribute("msg", "선호 내용 입력 실패!");
                 request.setAttribute("flag", false);
             }
-            forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
             forward.setRedirect(false);
 
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("msg", "선호 입력 중 오류가 발생했습니다!");
             request.setAttribute("flag", false);
-            forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
             forward.setRedirect(false);
         }
 

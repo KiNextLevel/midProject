@@ -22,7 +22,7 @@ public class DeleteUserAction implements Action {
             request.setAttribute("msg", "로그인이 필요한 서비스입니다.");
             request.setAttribute("flag", false);
             request.setAttribute("url", "/Metronic-Shop-UI-master/theme/LoginPage.jsp");
-            forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
             forward.setRedirect(false);
             return forward;
         }
@@ -52,7 +52,7 @@ public class DeleteUserAction implements Action {
             request.setAttribute("url", "/Metronic-Shop-UI-master/theme/AccountDelete.jsp");
         }
 
-        forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+        forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
         forward.setRedirect(false);
         return forward;
     }

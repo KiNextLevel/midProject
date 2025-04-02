@@ -21,13 +21,13 @@ public class AdminMainPageAction implements Action {
             else{
                 request.setAttribute("msg", "관리자만 접근 가능합니다");
                 request.setAttribute("flag", false);
-                forward.setPath("alert.jsp");
+                forward.setPath("Alert.jsp");
                 forward.setRedirect(false);
             }
         }catch(Exception e) {		//session이 null인거 막기위해서
             request.setAttribute("msg", "예외 발생");
             request.setAttribute("flag", false);
-            forward.setPath("/Metronic-Shop-UI-master/alert.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/Alert.jsp");
             forward.setRedirect(false);
             System.out.println(e);
         }

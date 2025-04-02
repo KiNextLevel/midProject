@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class AlertDAO {
     // 00유저의 알림번호, 알림내용, 알림 날짜, 알림여부 불러오기
     // 사용자의 알림이 여러개가 있을 수 있으니까 SELECTALL
-    final String SELECTALL = "SELECT ALERT_NUM, ALERT_CONTENT, ALERT_DATE, ALERT_ISWATCH FROM ALERT WHERE ALERT_USER_EMAIL = ?";
+    final String SELECTALL = "SELECT ALERT_NUM, ALERT_CONTENT, ALERT_DATE, ALERT_ISWATCH FROM ALERT WHERE ALERT_USER_EMAIL = ? ORDER BY ALERT_NUM DESC";
 
     final String SELECTONE = ""; // 기능 없음
 

@@ -172,14 +172,14 @@ public class JoinNextAction implements Action {
                 request.setAttribute("flag", false);
             }
 
-            forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
             forward.setRedirect(false);
 
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("msg", "회원가입 중 오류가 발생했습니다!");
             request.setAttribute("flag", false);
-            forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
             forward.setRedirect(false);
         }
 

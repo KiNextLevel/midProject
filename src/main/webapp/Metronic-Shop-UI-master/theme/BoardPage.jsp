@@ -263,7 +263,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Next Level</h2>
                 <p>
-                    우리는 인연과 연인인을 중시합니다.
+                    우리는 인연과 연인을 중시합니다.
                 </p>
             </div>
             <!-- END BOTTOM ABOUT BLOCK -->

@@ -42,7 +42,7 @@ public class AdminSendWarningAction implements Action{
 			request.setAttribute("msg", "경고 보내기 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

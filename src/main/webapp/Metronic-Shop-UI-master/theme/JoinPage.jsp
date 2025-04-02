@@ -35,11 +35,11 @@
     <!-- Theme styles END -->
 </head>
 
-<script>
-    function openAddressPopup() {
-        window.open('/Metronic-Shop-UI-master/theme/addressPopup.html', '주소 찾기', 'width=600,height=600');
-    }
-</script>
+<%--<script>--%>
+<%--    function openAddressPopup() {--%>
+<%--        window.open('/Metronic-Shop-UI-master/theme/addressPopup.html', '주소 찾기', 'width=600,height=600');--%>
+<%--    }--%>
+<%--</script>--%>
 
 
 <body class="ecommerce">
@@ -177,7 +177,7 @@
 
 
 
-                        <%--                                    <select class="form-control" id="region" name="userRegion" required>--%>
+                        <%--  <select class="form-control" id="region" name="userRegion" required>--%>
 <%--                                        <option value="">선택하세요</option>--%>
 <%--                                        <option value="서울">서울</option>--%>
 <%--                                        <option value="경기">경기</option>--%>

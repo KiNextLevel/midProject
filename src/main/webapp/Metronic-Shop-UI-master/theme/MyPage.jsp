@@ -428,6 +428,7 @@
                     <!-- 토큰 잔액 및 구매 내역 -->
                     <div id="token-info" class="info-card">
                         <h3>토큰 잔액 및 구매 내역</h3>
+                        <table class="table table-striped">
                         <p>
                             <strong>현재 보유 토큰:</strong>
                             <span style="color: #e94d1c; font-size: 18px;">
@@ -435,18 +436,38 @@
                             </span>
                         </p>
 
-                        <table class="table table-striped">
-                            <thead>
+<%--                        <table class="table table-striped">--%>
+<%--                            <thead>--%>
+<%--                            <tr>--%>
+<%--                                <th>상품명</th>--%>
+<%--                                <th>결제일</th>--%>
+<%--                            </tr>--%>
+<%--                            </thead>--%>
+<%--                            <tbody>--%>
+<%--                            <!-- 결제 내역 불러와야 함 -->--%>
+<%--                            </tbody>--%>
+<%--                        </table>--%>
+<%--                    </div>--%>
+
+                        <thead>
+                        <tr>
+                            <th>상품명</th>
+                            <th>결제일</th>
+                            <th>결제금액</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="payment" items="${paymentList}">
                             <tr>
-                                <th>상품명</th>
-                                <th>결제일</th>
+                                <td><c:out value="${payment.productName}"/></td>
+                                <td><fmt:formatDate value="${payment.paymentDate}" pattern="yyyy-MM-dd"/></td>
+                                <td><c:out value="${payment.paymentPrice}"/> 원</td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <!-- 결제 내역 불러와야 함 -->
-                            </tbody>
-                        </table>
+                        </c:forEach>
+                        </tbody>
+                    </table>
                     </div>
+
 
                     <div id="delete-info" class="info-card">
                         <h3>계정 설정</h3>

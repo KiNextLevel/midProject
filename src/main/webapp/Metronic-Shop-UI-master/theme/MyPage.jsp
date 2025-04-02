@@ -404,14 +404,18 @@
                             <thead>
                             <tr>
                                 <th>이벤트 이름</th>
+                                <th>이벤트 내용</th>
+                                <th>이벤트 날짜</th>
                             </tr>
                             </thead>
                             <tbody>
                             <c:choose>
-                                <c:when test="${not empty BoardDTO.boardList}">
-                                    <c:forEach var="event" items="${BoardDTO.boardList}">
+                                <c:when test="${not empty BoardDTO.boardeventListList}">
+                                    <c:forEach var="event" items="${BoardDTO.eventList}">
                                         <tr>
-                                            <td><c:out value="${event.boardTitle}"/></td>
+                                            <td><c:out value="${eventList.boardTitle}"/></td>
+                                            <td><c:out value="${eventList.boardContent}"/></td>
+                                            <td><c:out value="${eventList.boardDate}"/></td>
                                         </tr>
                                     </c:forEach>
                                 </c:when>
@@ -435,19 +439,6 @@
                                 <c:out value="${userDTO.userToken}" default="0"/> 개
                             </span>
                         </p>
-
-<%--                        <table class="table table-striped">--%>
-<%--                            <thead>--%>
-<%--                            <tr>--%>
-<%--                                <th>상품명</th>--%>
-<%--                                <th>결제일</th>--%>
-<%--                            </tr>--%>
-<%--                            </thead>--%>
-<%--                            <tbody>--%>
-<%--                            <!-- 결제 내역 불러와야 함 -->--%>
-<%--                            </tbody>--%>
-<%--                        </table>--%>
-<%--                    </div>--%>
 
                         <thead>
                         <tr>

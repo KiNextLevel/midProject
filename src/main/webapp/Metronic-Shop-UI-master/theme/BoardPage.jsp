@@ -142,6 +142,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <h2>현재 진행 중인 이벤트가 없습니다.</h2>
                     <p>새로운 이벤트가 등록되면 이곳에서 확인하실 수 있습니다.</p>
                 </div>
+                <c:if test="${sessionScope.userRole=='1'}">
+                    <div class="admin-add-btn text-right">
+                        <a href="adminAddBoardPage.do" class="btn-add-event">
+                            <i class="fa fa-plus-circle"></i> 새 이벤트 추가
+                        </a>
+                    </div>
+                </c:if>
             </c:when>
             <c:otherwise>
                 <!-- 관리자인 경우 이벤트 추가 버튼 표시 -->

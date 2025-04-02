@@ -16,6 +16,16 @@ public class BoardDTO {
     private String condition;
     private String searchKeyword;
     private int boardParticipant;
+    private int participant;
+
+    public int getParticipant() {
+        return participant;
+    }
+
+    public void setParticipant(int participant) {
+        this.participant = participant;
+    }
+
 
     public String getSearchKeyword() {
         return searchKeyword;
@@ -87,14 +97,19 @@ public class BoardDTO {
     }
 
     // toString 메서드
+
     @Override
     public String toString() {
         return "BoardDTO{" +
-                "BOARD_NUM=" + boardNumber +
-                ", BOARD_TITLE='" + boardTitle + '\'' +
-                ", BOARD_CONTENT='" + boardContent + '\'' +
-                ", BOARD_DATE=" + boardDate +
-                ", BOARD_LIMIT=" + boardLimit +
+                "boardNumber=" + boardNumber +
+                ", boardTitle='" + boardTitle + '\'' +
+                ", boardContent='" + boardContent + '\'' +
+                ", boardDate=" + boardDate +
+                ", boardLimit=" + boardLimit +
+                ", condition='" + condition + '\'' +
+                ", searchKeyword='" + searchKeyword + '\'' +
+                ", boardParticipant=" + boardParticipant +
+                ", participant=" + participant +
                 '}';
     }
 }

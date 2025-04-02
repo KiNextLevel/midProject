@@ -35,24 +35,36 @@
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/assets/owl.carousel.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/css/uniform.default.css"
+          rel="stylesheet" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/AccountDelete.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css"
+          rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css"
+          rel="stylesheet" id="style-color">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/AccountDelete.css"
+          rel="stylesheet">
     <!-- Theme styles END -->
 
 </head>
@@ -88,9 +100,9 @@
                     <li><i class="fa fa-phone"></i><span>010 - 1234 - 1234</span></li>
                     <!-- BEGIN CURRENCIES -->
                     <c:if test="${sessionScope.userPremium == false}">
-                    <li class="shop-currencies">
-                        <a href="productPage.do">광고 제거</a>
-                    </li>
+                        <li class="shop-currencies">
+                            <a href="productPage.do">광고 제거</a>
+                        </li>
                     </c:if>
                     <!-- END CURRENCIES -->
                     <!-- BEGIN LANGS -->
@@ -164,7 +176,8 @@
                         <div class="terms-box">
                             <div class="terms-content">
                                 <strong>제1조 (목적)</strong><br>
-                                본 약관은 Next Level(이하 "회사"라 함)의 서비스 이용계약 해지(회원탈퇴)와 관련하여 회사와 회원 간의 권리, 의무 및 책임사항, 서비스 이용에 따른 정보 처리 등에 관한 사항을 규정함을 목적으로 합니다.<br><br>
+                                본 약관은 Next Level(이하 "회사"라 함)의 서비스 이용계약 해지(회원탈퇴)와 관련하여 회사와 회원 간의 권리, 의무 및 책임사항, 서비스 이용에
+                                따른 정보 처리 등에 관한 사항을 규정함을 목적으로 합니다.<br><br>
 
                                 <strong>제2조 (회원탈퇴 및 서비스 이용계약 해지)</strong><br>
                                 ① 회원은 언제든지 회사에 대하여 회원탈퇴를 요청할 수 있으며, 회사는 관련법 등이 정하는 바에 따라 이를 즉시 처리합니다.<br>
@@ -172,8 +185,10 @@
                                 ③ 회원탈퇴로 인해 발생한 불이익에 대한 책임은 회원 본인에게 있으며, 회사는 회원에게 발생한 손해에 대해 책임을 지지 않습니다.<br><br>
 
                                 <strong>제3조 (회원정보의 보유 및 이용)</strong><br>
-                                ① 회원탈퇴 시 회원의 모든 개인정보는 즉시 삭제됩니다. 단, 관련법령에 의해 보존할 필요가 있는 경우 해당 정보는 법령에서 정한 기간 동안 보관됩니다.<br>
-                                ② 회원이 작성한 게시물, 신고 내역 등 공개적으로 작성한 콘텐츠는 삭제되지 않으며, 해당 콘텐츠의 삭제를 원하는 경우 회원탈퇴 전 직접 삭제해야 합니다.<br>
+                                ① 회원탈퇴 시 회원의 모든 개인정보는 즉시 삭제됩니다. 단, 관련법령에 의해 보존할 필요가 있는 경우 해당 정보는 법령에서 정한 기간 동안
+                                보관됩니다.<br>
+                                ② 회원이 작성한 게시물, 신고 내역 등 공개적으로 작성한 콘텐츠는 삭제되지 않으며, 해당 콘텐츠의 삭제를 원하는 경우 회원탈퇴 전 직접 삭제해야
+                                합니다.<br>
                                 ③ 회원탈퇴 후 재가입하더라도 이전에 보유한 토큰, 혜택 등은 복구되지 않습니다.<br><br>
 
                                 <strong>제4조 (미지급 서비스 이용료 등의 정산)</strong><br>
@@ -206,53 +221,6 @@
         </div>
     </div>
 </div>
-
-<script>
-    // 페이지가 로드될 때 실행되는 코드
-    document.addEventListener('DOMContentLoaded', function() {
-        // 필요한 요소들을 변수에 저장
-        var agreeCheckbox = document.getElementById('agreeTerms');
-        var withdrawButton = document.querySelector('.btn-withdraw');
-
-        // 초기 상태에서 탈퇴 버튼 비활성화
-        withdrawButton.disabled = true;
-        withdrawButton.style.backgroundColor = '#cccccc';
-        withdrawButton.style.cursor = 'not-allowed';
-
-        // 체크박스 상태가 변경될 때마다 실행되는 함수
-        agreeCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                // 체크박스가 체크되면 버튼 활성화
-                withdrawButton.disabled = false;
-                withdrawButton.style.backgroundColor = '#e8834b';
-                withdrawButton.style.cursor = 'pointer';
-            } else {
-                // 체크박스가 해제되면 버튼 비활성화
-                withdrawButton.disabled = true;
-                withdrawButton.style.backgroundColor = '#cccccc';
-                withdrawButton.style.cursor = 'not-allowed';
-            }
-        });
-
-        // 탈퇴 버튼 클릭 시 최종 확인
-        withdrawButton.addEventListener('click', function(e) {
-            if (!agreeCheckbox.checked) {
-                e.preventDefault();
-                alert('약관에 동의해야 탈퇴가 가능합니다.');
-                return false;
-            }
-
-            // 최종 확인 메시지
-            if (confirm('정말로 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
-                // 확인을 클릭한 경우 deleteUser.do로 이동
-                window.location.href = 'deleteUser.do';
-            }
-        });
-    });
-</script>
-
-
-
 
 <!-- BEGIN PRE-FOOTER -->
 <div class="pre-footer">
@@ -329,7 +297,8 @@
         </div>
     </div>
 </div>
+<script src="${pageContext.request.contextPath}js/AccountDelete.js"></script>
+
 </body>
-<!-- END BODY -->
 
 </html>

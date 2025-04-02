@@ -212,3 +212,19 @@
     color: white;
     text-decoration: none;
 }
+.event-titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.participant-badges {
+    background-color: #28a745; /* 녹색 배경 */
+    color: yellow; /* 글씨 색상 변경 */
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 5px;
+    white-space: nowrap; /* 줄바꿈 방지 */
+}

@@ -14,16 +14,17 @@ public class BoardPageAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
 		ActionForward forward = new ActionForward();
+		HttpSession session = request.getSession();
 			System.out.println("boardPage 로그: 도착");
 		
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
+		boardDTO.setSearchKeyword((String)session.getAttribute("userEmail"));
 		ArrayList<BoardDTO> datas = boardDAO.selectAll(boardDTO);
 		System.out.println("board SELECTALL 로그:"+datas);
 		
 		request.setAttribute("datas", datas);
 		forward.setPath("/Metronic-Shop-UI-master/theme/BoardPage.jsp");
-					//	webapp/Metronic-Shop-UI-master/theme/BoardPage.jsp
 		forward.setRedirect(false);
 		return forward;
 

@@ -31,15 +31,16 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand waves-effect waves-dark" href="adminPage.do"><i class="large material-icons">track_changes</i> <strong>Next Love</strong></a>
+			<a class="navbar-brand waves-effect waves-dark" href="/mywebapp/target-free-admin-template/AdminMainPage.jsp"><i class="large material-icons">track_changes</i> <strong>target</strong></a>
 
 			<div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
 		</div>
 
 		<ul class="nav navbar-top-links navbar-right">
-			<li><a class="dropdown-button waves-effect waves-dark" href="mainPage.do"> <b>메인 페이지</b></a></li>
-			<li><a class="dropdown-button waves-effect waves-dark" href="logout.do"><i class="fa fa-user fa-fw"></i> <b>Log out</b></a></li>
-			<li></li>
+			<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+			<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+			<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+			<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
 		</ul>
 	</nav>
 	<!--/. NAV TOP  -->

@@ -17,6 +17,13 @@ public class BoardDTO {
     private String searchKeyword;
     private int boardParticipant;
     private int participant;
+    private String userEmail;   // 사용자 이메일 추가
+
+    public String getUserEmail() {
+        return userEmail;}
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;}
 
     public int getParticipant() {
         return participant;
@@ -97,7 +104,6 @@ public class BoardDTO {
     }
 
     // toString 메서드
-
     @Override
     public String toString() {
         return "BoardDTO{" +
@@ -110,6 +116,7 @@ public class BoardDTO {
                 ", searchKeyword='" + searchKeyword + '\'' +
                 ", boardParticipant=" + boardParticipant +
                 ", participant=" + participant +
+                ", userEmail='" + userEmail + '\'' +
                 '}';
     }
 }

@@ -18,6 +18,13 @@ public class BoardDAO {
             "GROUP BY B.BOARD_NUM\n" +
             "ORDER BY B.BOARD_NUM DESC;";
     private String SELECTONE = "SELECT * FROM BOARD WHERE BOARD_NUM = ?";
+
+    // 유저용 마이페이지 - 이벤트 제목, 내용, 날짜
+    private String SELECTONE_EVENTLISTPRINT =
+                    "SELECT BOARD_TITLE, BOARD_CONTENT, BOARD_DATE " +
+                    "FROM BOARD " +
+                    "WHERE USER_EMAIL = ?";
+
     private String INSERT = "INSERT INTO BOARD (BOARD_TITLE, BOARD_CONTENT, BOARD_LIMIT) VALUES (?, ?, ?)";
     private String UPDATE_BOARD = "UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT = ?, BOARD_LIMIT = ? WHERE BOARD_NUM = ?";
     private String UPDATE_TITLE = "UPDATE BOARD SET BOARD_TITLE = ? WHERE BOARD_NUM = ?";
@@ -64,13 +71,28 @@ public class BoardDAO {
             pstmt = conn.prepareStatement(SELECTONE);
             pstmt.setInt(1, boardDTO.getBoardNumber());
             rs = pstmt.executeQuery();
-            if (rs.next()) {
-                datas = new BoardDTO();  // 이제 올바른 타입으로 객체 생성
-                datas.setBoardNumber(rs.getInt("BOARD_NUM"));
-                datas.setBoardTitle(rs.getString("BOARD_TITLE"));
-                datas.setBoardContent(rs.getString("BOARD_CONTENT"));
-                datas.setBoardLimit(rs.getInt("BOARD_LIMIT"));
+            if (boardDTO.getCondition().equals("SELECTONE")) {
+                if (rs.next()) {
+                    datas = new BoardDTO();  // 이제 올바른 타입으로 객체 생성
+                    datas.setBoardNumber(rs.getInt("BOARD_NUM"));
+                    datas.setBoardTitle(rs.getString("BOARD_TITLE"));
+                    datas.setBoardContent(rs.getString("BOARD_CONTENT"));
+                    datas.setBoardLimit(rs.getInt("BOARD_LIMIT"));
+                }
             }
+            else if(boardDTO.getCondition().equals("SELECTONE_EVENTLISTPRINT")) {
+                pstmt = conn.prepareStatement(SELECTONE_EVENTLISTPRINT);
+                pstmt.setString(1, boardDTO.getUserEmail());
+                rs = pstmt.executeQuery();
+
+                if (rs.next()) { // 💡 rs.next()는 ResultSet에서 반드시 필요!
+                    datas = new BoardDTO();
+                    datas.setBoardTitle(rs.getString("BOARD_TITLE"));
+                    datas.setBoardContent(rs.getString("BOARD_CONTENT"));
+                    datas.setBoardDate(rs.getDate("BOARD_DATE")); // 💡 또는 getDate()로도 가능
+                }
+            }
+
             return datas;
         } catch (Exception e) {
             e.printStackTrace();

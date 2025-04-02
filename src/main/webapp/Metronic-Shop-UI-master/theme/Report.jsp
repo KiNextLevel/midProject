@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 
@@ -70,6 +70,7 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
+                    <!-- 관리자만 보이는 버튼 -->
                     <c:if test="${userRole==1}">
                         <li><a href="adminPage.do">관리자페이지</a></li>
                     </c:if>
@@ -192,11 +193,6 @@
             <!-- BEGIN BOTTOM INFO BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Information</h2>
-                <ul class="list-unstyled">
-                    <li><i class="fa fa-angle-right"></i> <a href="#">이용약관</a></li>
-                    <li><i class="fa fa-angle-right"></i> <a href="#">개인정보처리방침</a></li>
-                    <li><i class="fa fa-angle-right"></i> <a href="#">고객센터</a></li>
-                </ul>
             </div>
             <!-- END INFO BLOCK -->
 

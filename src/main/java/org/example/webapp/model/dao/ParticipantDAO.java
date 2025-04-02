@@ -13,6 +13,7 @@ public class ParticipantDAO {
     final String SELECTONE = "SELECT COUNT(P.PARTICIPANT_USER_EMAIL) FROM PARTICIPANT P JOIN BOARD B ON P.PARTICIPANT_BOARD_NUM = B.BOARD_NUM WHERE B.BOARD_NUM = ?";
     final String INSERT = "INSERT INTO PARTICIPANT (PARTICIPANT_BOARD_NUM, PARTICIPANT_USER_EMAIL) VALUES (?, ?)";
     final String DELETE = "DELETE FROM PARTICIPANT WHERE PARTICIPANT_BOARD_NUM = ? AND PARTICIPANT_USER_EMAIL = ?";
+    final String DELETE_BOARD_NUM = "DELETE FROM PARTICIPANT WHERE PARTICIPANT_BOARD_NUM = ?";
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
@@ -94,9 +95,17 @@ public class ParticipantDAO {
     public boolean delete(ParticipantDTO participantDTO){
         try {
             conn = JDBCUtil.connect();
-            pstmt = conn.prepareStatement(DELETE);
-            pstmt.setInt(1, participantDTO.getParticipantBoardNumber());
-            pstmt.setString(2, participantDTO.getParticipantUserEmail());
+            //이벤트 삭제했을 때
+            if(participantDTO.getCondition().equals("DELETE_BOARD_NUM")) {
+                pstmt = conn.prepareStatement(DELETE_BOARD_NUM);
+                pstmt.setInt(1, participantDTO.getParticipantBoardNumber());
+            }
+            //참가 취소했을 때
+            if(participantDTO.getCondition().equals("DELETE")){
+                pstmt = conn.prepareStatement(DELETE);
+                pstmt.setInt(1, participantDTO.getParticipantBoardNumber());
+                pstmt.setString(2, participantDTO.getParticipantUserEmail());
+            }
             int result = pstmt.executeUpdate();
             return result > 0;
         } catch (Exception e){

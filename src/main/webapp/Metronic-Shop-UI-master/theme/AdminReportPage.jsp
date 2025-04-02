@@ -361,7 +361,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}js/AdminReportPage.js"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/AdminReportPage.js"></script>
 
 </body>
 <!-- END BODY -->

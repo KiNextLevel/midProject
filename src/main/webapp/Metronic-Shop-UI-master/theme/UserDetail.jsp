@@ -168,7 +168,7 @@
                             <%-- 지도 iframe에 사용자 위도/경도 넘기기 --%>
                             <%--                                 여기에다가 지도 나오게 하고 싶은데 어떻게 하면 되지..????????임포트..?--%>
                             <iframe
-                                    src="${pageContext.request.contextPath}locationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
+                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/locationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
                                     width="100%" height="400"
                                     style="border: none; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
                             </iframe>

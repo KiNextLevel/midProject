@@ -29,19 +29,39 @@ public class MainPageAction implements Action {
 		AlertDTO alertDTO = new AlertDTO();
 		alertDTO.setUserEmail(userEmail);
 		ArrayList<AlertDTO> alertDatas = alertDAO.selectAll(alertDTO);
-		for(AlertDTO alertDTO1 : alertDatas) {
+
+		// 디버깅용 출력
+		for (AlertDTO alertDTO1 : alertDatas) {
 			System.out.println(alertDTO1);
 		}
-		session.setAttribute("alertDatas", alertDatas);
+
+		// JSON 변환
+		JSONArray jsonArray = new JSONArray();
+		boolean hasUnreadAlerts = false;
+
 		if (alertDatas != null) {
-			//알람이 있음
-			for(AlertDTO data : alertDatas) {
-				if (!data.isAlertIsWatch()) { // 열람한적 없는 데이터가 있다면
-					request.setAttribute("hasUnreadAlerts", true);
-					break;
+			for (AlertDTO data : alertDatas) {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("alertNumber", data.getAlertNumber());
+				jsonObject.put("userEmail", data.getUserEmail());
+				jsonObject.put("alertContent", data.getAlertContent());
+				jsonObject.put("alertDate", data.getAlertDate().toString()); // Date를 문자열로 변환
+				jsonObject.put("alertIsWatch", data.isAlertIsWatch());
+				jsonArray.add(jsonObject);
+
+				// 읽지 않은 알림 체크
+				if (!data.isAlertIsWatch()) {
+					hasUnreadAlerts = true;
 				}
 			}
 		}
+		// 세션에 JSON 문자열 저장
+		session.setAttribute("alertDatasJson", jsonArray.toJSONString());
+		request.setAttribute("hasUnreadAlerts", hasUnreadAlerts);
+
+		// 기존 alertDatas도 유지 (임시)
+		session.setAttribute("alertDatas", alertDatas);
+		
 		UserDAO userDAO = new UserDAO();
 		UserDTO userDTO = new UserDTO();
 		userDTO.setUserEmail(userEmail);

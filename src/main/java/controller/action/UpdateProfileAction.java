@@ -4,6 +4,7 @@ import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.example.webapp.model.common.GeoCodingUtil;
 import org.example.webapp.model.dao.PreferenceDAO;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.PreferenceDTO;
@@ -90,6 +91,23 @@ public class UpdateProfileAction implements Action {
             userDTO.setUserReligion(userReligion);
             userDTO.setUserRegion(userRegion);
             userDTO.setUserMbti(userMbti);
+
+            // 위도,경도 변환 코드 삽입
+            try {
+                String address = userDTO.getUserRegion(); // 이제 null 아님
+                double[] coords = GeoCodingUtil.getCoordinatesFromAddress(address);
+                double lat = Math.round(coords[0] * 10000) / 10000.0;
+                double lng = Math.round(coords[1] * 10000) / 10000.0;
+                userDTO.setUserLatitude(lat);
+                userDTO.setUserLongitude(lng);
+                System.out.println("위도/경도 설정됨: " + lat + ", " + lng);
+            } catch (Exception e) {
+                System.out.println("주소 → 위경도 변환 실패! 기본값 0.0으로 저장됨");
+                userDTO.setUserLatitude(0.0);
+                userDTO.setUserLongitude(0.0);
+            }
+
+
 
             // 음주 정보 처리
             if (userDrinkStr != null) {

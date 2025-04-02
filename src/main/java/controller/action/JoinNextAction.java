@@ -136,8 +136,6 @@ public class JoinNextAction implements Action {
             }
 
 
-
-
             // 자기소개 설정
             userDTO.setUserDescription(request.getParameter("userDescription"));
 

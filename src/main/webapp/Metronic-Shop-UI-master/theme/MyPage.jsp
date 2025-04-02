@@ -404,18 +404,19 @@
                             <thead>
                             <tr>
                                 <th>이벤트 이름</th>
-                                <th>이벤트 내용</th>
-                                <th>이벤트 날짜</th>
+<%--                                <th>이벤트 내용</th>--%>
+<%--                                <th>이벤트 날짜</th>--%>
                             </tr>
                             </thead>
                             <tbody>
                             <c:choose>
-                                <c:when test="${not empty BoardDTO.boardeventListList}">
-                                    <c:forEach var="event" items="${BoardDTO.eventList}">
+                                <c:when test="${not empty participantList}">
+                                    <c:forEach var="event" items="${participantList}">
                                         <tr>
-                                            <td><c:out value="${eventList.boardTitle}"/></td>
-                                            <td><c:out value="${eventList.boardContent}"/></td>
-                                            <td><c:out value="${eventList.boardDate}"/></td>
+<%--                                            이벤트 참가는 제목만 출력되게 했음--%>
+                                            <td><c:out value="${event.boardTitle}"/></td>
+<%--                                            <td><c:out value="${event.boardContent}"/></td>--%>
+<%--                                            <td><c:out value="${event.boardDate}"/></td>--%>
                                         </tr>
                                     </c:forEach>
                                 </c:when>
@@ -443,16 +444,16 @@
                         <thead>
                         <tr>
                             <th>상품명</th>
-                            <th>결제일</th>
                             <th>결제금액</th>
+                            <th>결제일</th>
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach var="payment" items="${paymentList}">
                             <tr>
                                 <td><c:out value="${payment.productName}"/></td>
+                                <td><c:out value="${payment.productPrice}"/> 원</td>
                                 <td><fmt:formatDate value="${payment.paymentDate}" pattern="yyyy-MM-dd"/></td>
-                                <td><c:out value="${payment.paymentPrice}"/> 원</td>
                             </tr>
                         </c:forEach>
                         </tbody>

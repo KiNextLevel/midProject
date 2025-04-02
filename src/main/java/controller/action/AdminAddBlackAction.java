@@ -25,6 +25,7 @@ public class AdminAddBlackAction implements Action{
 		ReportDTO reportDTO = new ReportDTO();
 		ReportDAO reportDAO = new ReportDAO();
 		reportDTO.setReportReported(reportedUserEmail);
+		reportDTO.setCondition("DELETE");
 		System.out.println("AddBlackAction 로그["+reportedUserEmail+"]");
 		userDTO.setCondition("SELECTONE_USERINFO");
 		userDTO.setUserEmail(reportedUserEmail);

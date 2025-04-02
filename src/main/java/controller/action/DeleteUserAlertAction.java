@@ -19,7 +19,7 @@ public class DeleteUserAlertAction implements Action {
         // alert.jsp에 url, true, msg 보내기
         request.setAttribute("flag", true);
         request.setAttribute("url", "loginPage.do");
-        forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+        forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
         forward.setRedirect(false);
         return forward;
     }

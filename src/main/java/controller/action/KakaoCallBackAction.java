@@ -100,13 +100,13 @@ public class KakaoCallBackAction implements Action {
                     request.setAttribute("url", "loginPage.do");
                 }
             }
-            forward.setPath("alert.jsp");
+            forward.setPath("Alert.jsp");
             forward.setRedirect(false);
         } catch (IOException | org.json.simple.parser.ParseException e) {
             e.printStackTrace(); // 예외 로그
             request.setAttribute("msg", "카카오 로그인 중 오류가 발생했습니다.");
             request.setAttribute("flag", false);
-            forward.setPath("alert.jsp");
+            forward.setPath("Alert.jsp");
             forward.setRedirect(false);
         }
         return forward;

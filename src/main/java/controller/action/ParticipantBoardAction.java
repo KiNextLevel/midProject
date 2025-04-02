@@ -49,7 +49,7 @@ public class ParticipantBoardAction implements Action{
 				request.setAttribute("msg", "참가 취소 되었습니다");
 				request.setAttribute("url", "boardPage.do");
 				request.setAttribute("flag", true);
-				forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+				forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 				forward.setRedirect(false);
 				return forward;
 			}
@@ -58,7 +58,7 @@ public class ParticipantBoardAction implements Action{
 		if((participantDAO.selectOne(participantDTO)).getParticipantBoardNumber() >= boardDAO.selectOne(boardDTO).getBoardLimit()){  //인원수 다 차면
 			request.setAttribute("msg", "인원이 다 찼습니다");
 			request.setAttribute("flag", false);
-			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 			forward.setRedirect(false);
 			return forward;
 		}
@@ -71,7 +71,7 @@ public class ParticipantBoardAction implements Action{
 			request.setAttribute("msg", "참가 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

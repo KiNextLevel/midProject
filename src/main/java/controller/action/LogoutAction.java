@@ -19,7 +19,7 @@ public class LogoutAction implements Action {
 	    request.setAttribute("msg", "로그아웃 성공!");
 	    request.setAttribute("flag", true);
 	    request.setAttribute("url", "loginPage.do");
-	    forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+	    forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

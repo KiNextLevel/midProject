@@ -34,7 +34,7 @@ public class AdminPaymentListPageAction implements Action{
 			request.setAttribute("datas", datas);
 			request.setAttribute("msg", "매출 페이지 이동 실패");
 			request.setAttribute("flag", false);
-			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 			forward.setRedirect(false);
 		}
 		return forward;

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -50,34 +50,23 @@
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet"
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css"
+          rel="stylesheet"
           type="text/css">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet"
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css"
+          rel="stylesheet"
           id="style-color">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css"
+          rel="stylesheet">
     <!-- Theme styles END -->
 </head>
 <body class="ecommerce">
-<!-- BEGIN STYLE CUSTOMIZER -->
-<div class="color-panel hidden-sm">
-    <div class="color-mode-icons icon-color"></div>
-    <div class="color-mode-icons icon-color-close"></div>
-    <div class="color-mode">
-        <p>THEME COLOR</p>
-        <ul class="inline">
-            <li class="color-red current color-default" data-style="red"></li>
-            <li class="color-blue" data-style="blue"></li>
-            <li class="color-green" data-style="green"></li>
-            <li class="color-orange" data-style="orange"></li>
-            <li class="color-gray" data-style="gray"></li>
-            <li class="color-turquoise" data-style="turquoise"></li>
-        </ul>
-    </div>
-</div>
-<!-- END BEGIN STYLE CUSTOMIZER -->
 
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
@@ -115,8 +104,9 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="mainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
-                                                     alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="mainPage.do"><img
+                src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
+                alt="Metronic Shop UI"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -138,7 +128,8 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="userDescription">자기소개</label>
             <div class="col-md-8">
-                <textarea class="form-control" id="userDescription" name="userDescription" rows="6" maxlength="200"><c:out value="${userDTO.userDescription}"/></textarea>
+                <textarea class="form-control" id="userDescription" name="userDescription" rows="6"
+                          maxlength="200"><c:out value="${userDTO.userDescription}"/></textarea>
                 <small id="charCount">0 / 200</small>
             </div>
         </div>
@@ -157,7 +148,8 @@
             <label class="col-md-2 control-label" for="height">키 <span class="require">*</span></label>
             <div class="col-md-8">
                 <input type="number" id="height" name="userHeight" class="form-control"
-                       value="<c:out value="${userDTO.userHeight}"/>" placeholder="cm 단위로 입력하세요" step="0.01" min="100" max="200">
+                       value="<c:out value="${userDTO.userHeight}"/>" placeholder="cm 단위로 입력하세요" step="0.01" min="100"
+                       max="200">
             </div>
         </div>
 
@@ -168,7 +160,8 @@
                 <select id="bodyType" name="userBody" class="form-control">
                     <option value="">선택하세요</option>
                     <c:forEach var="bodyType" items="${['마른', '보통', '근육질', '통통', '건장']}">
-                        <option value="${bodyType}" <c:if test="${userDTO.userBody == bodyType}">selected</c:if>>${bodyType}</option>
+                        <option value="${bodyType}"
+                                <c:if test="${userDTO.userBody == bodyType}">selected</c:if>>${bodyType}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -180,7 +173,8 @@
                 <select name="userEducation" class="form-control">
                     <option value="">선택하세요</option>
                     <c:forEach var="education" items="${['고등학교 졸업', '전문대', '대학교 재학', '대학교 졸업', '대학원 재학', '대학원 졸업']}">
-                        <option value="${education}" <c:if test="${userDTO.userEducation == education}">selected</c:if>>${education}</option>
+                        <option value="${education}"
+                                <c:if test="${userDTO.userEducation == education}">selected</c:if>>${education}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -213,48 +207,48 @@
 
 
         <!-- 지역 선택 -->
-
-            <div class="form-group">
-                <label class="col-md-2 control-label">지역 <span class="require">*</span></label>
-                <div class="col-md-8">
-                <input type="text" class="form-control" id="region" name="userRegion">
+        <div class="form-group">
+            <label class="col-md-2 control-label">지역 <span class="require">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="form-control"  id="region" name="userRegion" value="<c:out value="${userDTO.userRegion}"/>" readonly>
                 <button type="button" class="btn btn-success mt-4 " onclick="openAddressPopup()">주소 찾기</button>
             </div>
         </div>
 
-<%--        <script>--%>
-<%--            // 주소찾기 팝업 함수--%>
-<%--            function openAddressPopup() {--%>
-<%--                window.open("/API/addressAPI.html", "주소찾기", "width=600,height=500,scrollbars=yes");--%>
-<%--            }--%>
-<%--            </script>--%>
+
+    <%--        <script>--%>
+        <%--            // 주소찾기 팝업 함수--%>
+        <%--            function openAddressPopup() {--%>
+        <%--                window.open("/API/addressAPI.html", "주소찾기", "width=600,height=500,scrollbars=yes");--%>
+        <%--            }--%>
+        <%--            </script>--%>
 
         <!-- 지역 선택 -->
-<%--        <div class="form-group">--%>
-<%--            <label class="col-md-2 control-label">지역 <span class="require">*</span></label>--%>
-<%--            <div class="col-md-8">--%>
-<%--                <select class="form-control" name="userRegion">--%>
-<%--                    <option value="">선택하세요</option>--%>
-<%--                    <option value="서울" ${userDTO.userRegion=='서울' ? 'selected' : ''}>서울</option>--%>
-<%--                    <option value="경기" ${userDTO.userRegion=='경기' ? 'selected' : ''}>경기도</option>--%>
-<%--                    <option value="인천" ${userDTO.userRegion=='인천' ? 'selected' : ''}>인천</option>--%>
-<%--                    <option value="부산" ${userDTO.userRegion=='부산' ? 'selected' : ''}>부산</option>--%>
-<%--                    <option value="대구" ${userDTO.userRegion=='대구' ? 'selected' : ''}>대구</option>--%>
-<%--                    <option value="광주" ${userDTO.userRegion=='광주' ? 'selected' : ''}>광주</option>--%>
-<%--                    <option value="대전" ${userDTO.userRegion=='대전' ? 'selected' : ''}>대전</option>--%>
-<%--                    <option value="울산" ${userDTO.userRegion=='울산' ? 'selected' : ''}>울산</option>--%>
-<%--                    <option value="세종" ${userDTO.userRegion=='세종' ? 'selected' : ''}>세종</option>--%>
-<%--                    <option value="강원" ${userDTO.userRegion=='강원' ? 'selected' : ''}>강원</option>--%>
-<%--                    <option value="충북" ${userDTO.userRegion=='충북' ? 'selected' : ''}>충북</option>--%>
-<%--                    <option value="충남" ${userDTO.userRegion=='충남' ? 'selected' : ''}>충남</option>--%>
-<%--                    <option value="전북" ${userDTO.userRegion=='전북' ? 'selected' : ''}>전북</option>--%>
-<%--                    <option value="전남" ${userDTO.userRegion=='전남' ? 'selected' : ''}>전남</option>--%>
-<%--                    <option value="경북" ${userDTO.userRegion=='경북' ? 'selected' : ''}>경북</option>--%>
-<%--                    <option value="경남" ${userDTO.userRegion=='경남' ? 'selected' : ''}>경남</option>--%>
-<%--                    <option value="제주" ${userDTO.userRegion=='제주' ? 'selected' : ''}>제주</option>--%>
-<%--                </select>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <%--        <div class="form-group">--%>
+        <%--            <label class="col-md-2 control-label">지역 <span class="require">*</span></label>--%>
+        <%--            <div class="col-md-8">--%>
+        <%--                <select class="form-control" name="userRegion">--%>
+        <%--                    <option value="">선택하세요</option>--%>
+        <%--                    <option value="서울" ${userDTO.userRegion=='서울' ? 'selected' : ''}>서울</option>--%>
+        <%--                    <option value="경기" ${userDTO.userRegion=='경기' ? 'selected' : ''}>경기도</option>--%>
+        <%--                    <option value="인천" ${userDTO.userRegion=='인천' ? 'selected' : ''}>인천</option>--%>
+        <%--                    <option value="부산" ${userDTO.userRegion=='부산' ? 'selected' : ''}>부산</option>--%>
+        <%--                    <option value="대구" ${userDTO.userRegion=='대구' ? 'selected' : ''}>대구</option>--%>
+        <%--                    <option value="광주" ${userDTO.userRegion=='광주' ? 'selected' : ''}>광주</option>--%>
+        <%--                    <option value="대전" ${userDTO.userRegion=='대전' ? 'selected' : ''}>대전</option>--%>
+        <%--                    <option value="울산" ${userDTO.userRegion=='울산' ? 'selected' : ''}>울산</option>--%>
+        <%--                    <option value="세종" ${userDTO.userRegion=='세종' ? 'selected' : ''}>세종</option>--%>
+        <%--                    <option value="강원" ${userDTO.userRegion=='강원' ? 'selected' : ''}>강원</option>--%>
+        <%--                    <option value="충북" ${userDTO.userRegion=='충북' ? 'selected' : ''}>충북</option>--%>
+        <%--                    <option value="충남" ${userDTO.userRegion=='충남' ? 'selected' : ''}>충남</option>--%>
+        <%--                    <option value="전북" ${userDTO.userRegion=='전북' ? 'selected' : ''}>전북</option>--%>
+        <%--                    <option value="전남" ${userDTO.userRegion=='전남' ? 'selected' : ''}>전남</option>--%>
+        <%--                    <option value="경북" ${userDTO.userRegion=='경북' ? 'selected' : ''}>경북</option>--%>
+        <%--                    <option value="경남" ${userDTO.userRegion=='경남' ? 'selected' : ''}>경남</option>--%>
+        <%--                    <option value="제주" ${userDTO.userRegion=='제주' ? 'selected' : ''}>제주</option>--%>
+        <%--                </select>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
 
         <!-- MBTI 선택 -->
         <div class="form-group">
@@ -262,7 +256,8 @@
             <div class="col-md-8">
                 <select class="form-control" name="userMbti">
                     <option value="">선택하세요</option>
-                    <c:forEach var="mbti" items="${['ISTJ', 'ISFJ', 'INFJ', 'INTJ', 'ISTP', 'ISFP', 'INFP', 'INTP', 'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ']}">
+                    <c:forEach var="mbti"
+                               items="${['ISTJ', 'ISFJ', 'INFJ', 'INTJ', 'ISTP', 'ISFP', 'INFP', 'INTP', 'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ']}">
                         <option value="${mbti}" ${userDTO.userMbti == mbti ? 'selected' : ''}>${mbti}</option>
                     </c:forEach>
                 </select>
@@ -298,10 +293,10 @@
         <!-- 선호 키 -->
         <div class="form-group">
             <label class="col-md-2 control-label" for="preferenceHeight">선호 키 <span class="require">*</span></label>
-                <div class="col-md-8">
-                    <input type="text" id="preferenceHeight" name="preferenceHeight" class="form-control"
-                           value="<c:out value="${preferenceDTO.preferenceHeight}"/>" placeholder="선호 키를 입력하세요">
-                </div>
+            <div class="col-md-8">
+                <input type="text" id="preferenceHeight" name="preferenceHeight" class="form-control"
+                       value="<c:out value="${preferenceDTO.preferenceHeight}"/>" placeholder="선호 키를 입력하세요">
+            </div>
         </div>
 
         <!-- 선호 체형 -->
@@ -366,7 +361,8 @@
                 <address class="margin-bottom-40">
                     서울 강남구 테헤란로26길 12<br>
                     (우) 06236 (지번) 역삼동 736-56<br>
-                    Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
+                    Notion: <a
+                        href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
                     Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
                 </address>
             </div>
@@ -375,16 +371,24 @@
         <hr>
         <div class="row">
             <!-- 자바스크립트 로드 부분 유지 -->
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js"
+                    type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js"
+                    type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js"
+                    type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js"
+                    type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+                    type="text/javascript"></script>
 
             <!-- 페이지 레벨 자바스크립트 -->
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js"
+                    type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js"
+                    type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
+                    type="text/javascript"></script>
 
             <script type="text/javascript">
                 jQuery(document).ready(function () {

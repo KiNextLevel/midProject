@@ -97,7 +97,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $("#signup-email").blur(function() {
+        $("#signup-email").keyup(function() {
             var email = $(this).val();
 
             if(email != "") {

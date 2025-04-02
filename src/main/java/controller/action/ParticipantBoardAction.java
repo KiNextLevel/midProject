@@ -11,6 +11,8 @@ import org.example.webapp.model.dto.BoardDTO;
 import org.example.webapp.model.dto.ParticipantDTO;
 import org.example.webapp.model.dto.UserDTO;
 
+import java.util.ArrayList;
+
 public class ParticipantBoardAction implements Action{
 
 	@Override
@@ -31,13 +33,27 @@ public class ParticipantBoardAction implements Action{
 		String userEmail = (String)session.getAttribute("userEmail");	//로그인 한 사용자 이메일
 		System.out.println("userEmail: ["+userEmail+"]");
 
-		participantDTO.setParticipantBoardNumber(boardNum);
 		participantDTO.setParticipantUserEmail(userEmail);
+		ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);
+		participantDTO.setParticipantBoardNumber(boardNum);
 		System.out.println("participantDTO: ["+participantDTO+"]");
-
 		System.out.println("participantDAO.selectOne(participantDTO)).getParticipantBoardNumber(): ["+participantDAO.selectOne(participantDTO).getParticipantBoardNumber()+"]");
-		System.out.println("boardDTO.getBoardLimit(): ["+boardDTO.getBoardLimit()+"]");
+		System.out.println("boardDTO.getBoardLimit(): ["+boardDAO.selectOne(boardDTO).getBoardLimit()+"]");
 
+		for(ParticipantDTO v: datas){	//이벤트에 이미 참가 했으면 참가 취소
+			if (v.getParticipantBoardNumber() == boardNum) {
+				participantDAO.delete(participantDTO);
+				System.out.println("v.getParticipantBoardNumber: ["+v.getParticipantBoardNumber()+"]");
+				System.out.println("v.getParticipantUserEmail: "+v.getParticipantUserEmail()+"]");
+				request.setAttribute("msg", "참가 취소 되었습니다");
+				request.setAttribute("url", "boardPage.do");
+				request.setAttribute("flag", true);
+				forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+				forward.setRedirect(false);
+				return forward;
+			}
+		}
+		//인원 다 찼으면 참가 못함
 		if((participantDAO.selectOne(participantDTO)).getParticipantBoardNumber() >= boardDAO.selectOne(boardDTO).getBoardLimit()){  //인원수 다 차면
 			request.setAttribute("msg", "인원이 다 찼습니다");
 			request.setAttribute("flag", false);
@@ -45,13 +61,12 @@ public class ParticipantBoardAction implements Action{
 			forward.setRedirect(false);
 			return forward;
 		}
-
-		if(participantDAO.insert(participantDTO)) {
+		if(participantDAO.insert(participantDTO)) {	//참가 성공
 			request.setAttribute("msg", "이벤트 참가 성공");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "boardPage.do");
 		}
-		else {
+		else {										//참가 실패
 			request.setAttribute("msg", "참가 실패");
 			request.setAttribute("flag", false);
 		}

@@ -15,7 +15,6 @@ public class BoardDTO {
     private int boardLimit;
     private String condition;
     private String searchKeyword;
-    // 참가자
     private int boardParticipant;
     private int participant;
 

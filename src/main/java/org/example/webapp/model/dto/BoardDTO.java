@@ -13,56 +13,17 @@ public class BoardDTO {
     private Date boardDate;
     // 최대 참여인원
     private int boardLimit;
+    // 다양한 메서드를 위한 컨디션
     private String condition;
+    // 검색키워드
     private String searchKeyword;
+    // 이벤트 참여자
     private int boardParticipant;
+    // 참여자 목록
     private int participant;
-    private String userEmail;   // 사용자 이메일 추가
+    // 사용자 이메일 추가
+    private String userEmail;
 
-    public String getUserEmail() {
-        return userEmail;}
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;}
-
-    public int getParticipant() {
-        return participant;
-    }
-
-    public void setParticipant(int participant) {
-        this.participant = participant;
-    }
-
-
-    public String getSearchKeyword() {
-        return searchKeyword;
-    }
-
-    public int getBoardParticipant() {
-        return boardParticipant;
-    }
-
-    public void setBoardParticipant(int boardParticipant) {
-        this.boardParticipant = boardParticipant;
-    }
-
-    public String getCondition() {
-        return condition;
-    }
-
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public String getSearchKeyword(int cnt) {
-        return searchKeyword;
-    }
-
-    public void setSearchKeyword(String searchKeyword) {
-        this.searchKeyword = searchKeyword;
-    }
-
-    // getter, setter 메서드
     public int getBoardNumber() {
         return boardNumber;
     }
@@ -103,7 +64,46 @@ public class BoardDTO {
         this.boardLimit = boardLimit;
     }
 
-    // toString 메서드
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public String getSearchKeyword() {
+        return searchKeyword;
+    }
+
+    public void setSearchKeyword(String searchKeyword) {
+        this.searchKeyword = searchKeyword;
+    }
+
+    public int getBoardParticipant() {
+        return boardParticipant;
+    }
+
+    public void setBoardParticipant(int boardParticipant) {
+        this.boardParticipant = boardParticipant;
+    }
+
+    public int getParticipant() {
+        return participant;
+    }
+
+    public void setParticipant(int participant) {
+        this.participant = participant;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
     @Override
     public String toString() {
         return "BoardDTO{" +

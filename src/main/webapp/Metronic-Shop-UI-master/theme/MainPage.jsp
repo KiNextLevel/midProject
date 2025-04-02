@@ -207,9 +207,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <!-- 거리 필터 -->
                     <h3>거주지역</h3>
                     <div class="checkbox-list" id="distance-filters">
-                        <label><input type="radio" name="distance" value="10" checked="checked"> 10km 이내</label>
+                        <label><input type="radio" name="distance" value="10"> 10km 이내</label>
                         <label><input type="radio" name="distance" value="50"> 50km</label>
-                        <label><input type="radio" name="distance" value="100"> 100km 이상</label>
+                        <label><input type="radio" name="distance" value="100" checked="checked"> 100km 이상</label>
                     </div>
                     <!-- 나이 슬라이더 -->
                     <h3>나이</h3>

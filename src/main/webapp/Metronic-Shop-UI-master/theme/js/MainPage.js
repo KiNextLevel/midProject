@@ -3,7 +3,7 @@ let allUsers = window.allUsers;
 let filteredUsers = [];
 let start = 0;
 const limit = 9;
-let currentUserEmail = "";
+let currentUserEmail = window.currentUserEmail;
 const currentYear = new Date().getFullYear();
 
 jQuery(document).ready(function () {

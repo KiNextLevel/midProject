@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class BoardDAO {
+    // 이벤트 내용 전부 다 불러오기
     private String SELECTALL = "SELECT B.BOARD_NUM, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_DATE, B.BOARD_LIMIT,\n" +
             "       COUNT(P.PARTICIPANT_USER_EMAIL) AS CNT,\n" +
             "       (CASE WHEN MAX(P.PARTICIPANT_USER_EMAIL = ?) THEN 1 ELSE 0 END) AS IS_PARTICIPANT\n" +
@@ -17,12 +18,23 @@ public class BoardDAO {
             "LEFT JOIN PARTICIPANT P ON B.BOARD_NUM = P.PARTICIPANT_BOARD_NUM\n" +
             "GROUP BY B.BOARD_NUM\n" +
             "ORDER BY B.BOARD_NUM DESC;";
+
+    // 이벤트 게시판 들어가기
     private String SELECTONE = "SELECT * FROM BOARD WHERE BOARD_NUM = ?";
+
+    // 이벤트 추가하기
     private String INSERT = "INSERT INTO BOARD (BOARD_TITLE, BOARD_CONTENT, BOARD_LIMIT) VALUES (?, ?, ?)";
+
+    // 이벤트 수정
     private String UPDATE_BOARD = "UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT = ?, BOARD_LIMIT = ? WHERE BOARD_NUM = ?";
+
+    // 쓰일지 안 쓰일지 몰라 일단 추가
+    // 이벤트 수정 경우의 수 3가지
     private String UPDATE_TITLE = "UPDATE BOARD SET BOARD_TITLE = ? WHERE BOARD_NUM = ?";
     private String UPDATE_CONTENT = "UPDATE BOARD SET BOARD_CONTENT = ? WHERE BOARD_NUM = ?";
     private String UPDATE_LIMIT = "UPDATE BOARD SET BOARD_LIMIT = ? WHERE BOARD_NUM = ?";
+
+    // 이벤트 삭제하기
     private String DELETE = "DELETE FROM BOARD WHERE BOARD_NUM = ?";
 
     Connection conn = null;

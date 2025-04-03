@@ -125,8 +125,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <div class="header">
     <div class="container">
         <a class="site-logo" href="mainPage.do"><img
-                src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
-                alt="mainPage"></a>
+                src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/nextlove_logo.png"
+                alt="mainPage"/></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 

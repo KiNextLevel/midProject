@@ -165,7 +165,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         </div>
 
                         <div class="form-group">
-                            <label class="col-lg-3 control-label" for="event-content">이벤트 내용<span
+                            <label class="co
+                            l-lg-3 control-label" for="event-content">이벤트 내용<span
                                     class="require">*</span></label>
                             <div class="col-lg-9">
                                 <textarea id="event-content" class="form-control" rows="10" name="boardContent"

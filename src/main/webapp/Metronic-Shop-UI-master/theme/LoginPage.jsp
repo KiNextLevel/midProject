@@ -8,6 +8,14 @@
     <!-- 카카오 SDK 추가 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/SignInUp.css" rel="stylesheet">
+    <style>
+        /* 비활성화된 버튼 스타일 */
+        .submit-btn:disabled {
+            background-color: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
 <div class="auth-container">
@@ -64,21 +72,21 @@
 
             <div class="form-group">
                 <label for="signup-email"><i class="fa fa-envelope"></i> 이메일</label>
-                <div class="input-group">
+                <div class="email-input-group">
                     <input type="email" id="signup-email" name="userEmail" class="form-control" placeholder="이메일 주소" required>
-                    <button type="button" class="btn-check-email" onclick="checkEmailDuplicate()">중복 확인</button>
+                    <button type="button" class="email-check-btn" onclick="checkEmailDuplicate()">중복 확인</button>
                 </div>
-                <div id="emailCheckResult" class="mt-1"></div>
+                <div id="emailCheckResult"></div>
                 <input type="hidden" id="emailVerified" name="emailVerified" value="false">
             </div>
-
 
             <div class="form-group">
                 <label for="signup-password"><i class="fa fa-lock"></i> 비밀번호</label>
                 <input type="password" id="signup-password" name="userPassword" class="form-control" placeholder="비밀번호" required>
             </div>
 
-            <button type="submit" class="submit-btn">회원가입</button>
+            <!-- 회원가입 버튼 - 초기에 비활성화 상태로 설정 -->
+            <button type="submit" id="signup-submit-btn" class="submit-btn" disabled>회원가입</button>
 
             <div class="divider">
                 <span class="divider-text">또는</span>
@@ -102,6 +110,17 @@
 <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/SignInUp.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    // 페이지 로드 시 실행
+    $(document).ready(function() {
+        // 이메일 입력란에 변경 이벤트 리스너 추가
+        $('#signup-email').on('input', function() {
+            // 이메일이 변경되면 버튼 비활성화 및 확인 결과 초기화
+            $('#signup-submit-btn').prop('disabled', true);
+            $('#emailVerified').val('false');
+            $('#emailCheckResult').html('');
+        });
+    });
+
     function checkEmailDuplicate() {
         // 이메일 입력 필드의 ID를 HTML과 일치시킴
         const userEmail = document.getElementById('signup-email').value;
@@ -141,12 +160,16 @@
                     document.getElementById('emailCheckResult').innerHTML =
                         '<span style="color: red;">이미 사용 중인 이메일입니다.</span>';
                     document.getElementById('emailVerified').value = 'false';
+                    // 회원가입 버튼 비활성화
+                    document.getElementById('signup-submit-btn').disabled = true;
                 } else {
                     // 사용 가능한 이메일인 경우
                     alert(response.message);
                     document.getElementById('emailCheckResult').innerHTML =
                         '<span style="color: green;">사용 가능한 이메일입니다.</span>';
                     document.getElementById('emailVerified').value = 'true';
+                    // 회원가입 버튼 활성화
+                    document.getElementById('signup-submit-btn').disabled = false;
                 }
             },
             error: function(xhr, status, error) {
@@ -154,6 +177,8 @@
                 console.error('상태 코드:', xhr.status);
                 console.error('응답 텍스트:', xhr.responseText);
                 alert('서버 오류가 발생했습니다. 나중에 다시 시도해주세요.');
+                // 오류 발생 시 버튼 비활성화
+                document.getElementById('signup-submit-btn').disabled = true;
             }
         });
     }

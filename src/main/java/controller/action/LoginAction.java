@@ -3,18 +3,10 @@ package controller.action;
 
 import controller.common.Action;
 import controller.common.ActionForward;
-import controller.logic.SendEmail;
-import controller.logic.SendMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
-
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
 
 public class LoginAction implements Action {
@@ -67,7 +59,7 @@ public class LoginAction implements Action {
         // session에 userId, userName, role저장
         session.setAttribute("userEmail", userDTO.getUserEmail());
         session.setAttribute("userRole", userDTO.getUserRole());
-        session.setAttribute("userPremium", userDTO.isUserPreminum());
+        session.setAttribute("userPremium", userDTO.isUserPremium());
         System.out.println("userRole = "+userDTO.getUserRole());
         UserDAO userDAO = new UserDAO();
         // 컨디션 "위치 정보 가져옴"

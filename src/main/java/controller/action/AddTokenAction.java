@@ -32,7 +32,7 @@ public class AddTokenAction implements Action {
                 System.out.println("update successs");
                 userDTO.setCondition("SELECTONE_USERINFO");
                 userDTO = userDAO.selectOne(userDTO);   //DB에서 업데이트 된 프리미엄 여부 가져옴
-                session.setAttribute("userPremium", userDTO.isUserPreminum());//세션에 다시 저장
+                session.setAttribute("userPremium", userDTO.isUserPremium());//세션에 다시 저장
             }
             else{
                 System.out.println("update fail");

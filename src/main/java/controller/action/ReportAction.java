@@ -69,10 +69,13 @@ public class ReportAction implements Action {
         reportDTO.setReportReason(combinedReasons);     // 신고 이유
         reportDTO.setReportDescription(description);    // 신고 상세 설명
 
-        // 신고 데이터 삽입 시도
-        boolean insertResult = reportDAO.insert(reportDTO);
+        if (reportDAO.selectOne(reportDTO) != null) { // 신고자가 이미 피 신고자를 신고한 적이 있으며, 처리 대기중이다
+            //신고 못하게 함
+            request.setAttribute("msg", "해당 유저는 이미 신고하셨습니다.");
+            request.setAttribute("flag", false);
+            request.setAttribute("url", "mainPage.do");
 
-        if (insertResult) {
+        } else if (reportDAO.insert(reportDTO)) {// 신고 데이터 삽입 시도
             // 신고 성공
             request.setAttribute("msg", "신고가 완료되었습니다. 직원이 검토 후 처리됩니다.");
             request.setAttribute("flag", true);

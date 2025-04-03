@@ -67,24 +67,6 @@
 <!-- Body BEGIN -->
 
 <body class="ecommerce">
-<!-- BEGIN STYLE CUSTOMIZER -->
-<div class="color-panel hidden-sm">
-    <div class="color-mode-icons icon-color"></div>
-    <div class="color-mode-icons icon-color-close"></div>
-    <div class="color-mode">
-        <p>THEME COLOR</p>
-        <ul class="inline">
-            <li class="color-red current color-default" data-style="red"></li>
-            <li class="color-blue" data-style="blue"></li>
-            <li class="color-green" data-style="green"></li>
-            <li class="color-orange" data-style="orange"></li>
-            <li class="color-gray" data-style="gray"></li>
-            <li class="color-turquoise" data-style="turquoise"></li>
-        </ul>
-    </div>
-</div>
-<!-- END BEGIN STYLE CUSTOMIZER -->
-
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
     <div class="container">
@@ -177,7 +159,6 @@
                         <div class="token-options">
                             <div class="option-box">
                                 <h5 class="option-title">토큰 패키지 선택</h5>
-
                                 <!-- 기본 패키지 -->
                                 <form action="tossPaymentPage.do" method="POST">
                                     <input type="hidden" name="Product_Num" value="2">
@@ -245,11 +226,11 @@
                                     <div class="feature-text">
                                         <h5>프리미엄 뱃지</h5>
                                         <p>프로필에 특별한 프리미엄 뱃지로 더 많은 관심 유도</p>
-                                        <p>프리미엄 여부: ${sessionScope.userPremium}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="premium-action">
+                                <!-- 프리미엄 멤버십 소유한 상태라면 버튼 비활성화 -->
                                 <form action="tossPaymentPage.do" method="post">
                                     <input type="hidden" name="Product_Num" value="1">
                                     <input type="hidden" name="Product_Name" value="프리미엄 멤버쉽 결제">
@@ -282,7 +263,7 @@
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Next Level</h2>
                 <p>
-                    우리는 인연과 연인인을 중시합니다.
+                    우리는 인연과 연인을 중시합니다.
                 </p>
             </div>
             <!-- END BOTTOM ABOUT BLOCK -->

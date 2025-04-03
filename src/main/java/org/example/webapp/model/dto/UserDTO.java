@@ -55,6 +55,14 @@ public class UserDTO {
     private String condition;
     // 키워드 검색
     private String searchKeyword;
+    // 위도
+    private double userLatitude;
+    // 경도
+    private double userLongitude;
+    // 회원가입 타입
+    private String socialType;
+
+    // Getter, Setter 메서드
 
     public String getSocialType() {
         return socialType;
@@ -64,15 +72,7 @@ public class UserDTO {
         this.socialType = socialType;
     }
 
-    private String socialType;
 
-    //위도 추가
-    private double userLatitude;
-
-    //경도 추가
-    private double userLongitude;
-
-    // Getter, Setter 메서드
 
     public String getUserPhone() {
         return userPhone;
@@ -114,8 +114,6 @@ public class UserDTO {
         this.userRegdate = userRegdate;
     }
 
-    // boolean 타입의 getter는 'is'로 시작하는 것이 일관성 있습니다.
-    // 하지만 기존 코드와의 호환성을 위해 getUserGender()도 유지합니다.
     public boolean getUserGender() {
         return userGender;
     }
@@ -130,7 +128,6 @@ public class UserDTO {
         this.userGenderChanged = true;
     }
 
-    // 성별 변경 여부 확인 메소드
     public boolean isUserGenderChanged() {
         return userGenderChanged;
     }
@@ -208,7 +205,6 @@ public class UserDTO {
         this.userSmokeChanged = true;  // 변경 플래그 설정
     }
 
-    // 추가: 흡연 변경 여부 확인 메소드
     public boolean isUserSmokeChanged() {
         return userSmokeChanged;
     }
@@ -285,7 +281,6 @@ public class UserDTO {
         this.searchKeyword = searchKeyword;
     }
 
-    //위도 경도 추가
     public double getUserLatitude() {
         return userLatitude;
     }

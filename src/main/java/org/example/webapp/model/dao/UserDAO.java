@@ -9,57 +9,72 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class UserDAO {
-    // 아이디 중복 검사
-    final String SELECTONE_CHECK = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ? AND SOCIAL_TYPE = ?";
+    // 아이디 중복 검사(네이버, 카카오 등 같은 이메일이더라도 소셜 타입 다르면 회원가입 가능)
+    private final String SELECTONE_CHECK = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ? AND SOCIAL_TYPE = ?";
+    
     // 소셜 로그인
-    final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ? AND SOCIAL_TYPE = ?";
+    private final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ? AND SOCIAL_TYPE = ?";
+
     // 일반 로그인
-    final String SELECTONE_NONSOCIAL = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
-    // 유저 전체 정보 불러오기
-    final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
+    private final String SELECTONE_NONSOCIAL = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
+
+    // 해당 유저 전체 정보 불러오기
+    private final String SELECTONE_USERINFO = "SELECT * FROM USER WHERE USER_EMAIL = ?";
 
     // 유저 위도, 경도 정보 불러오기
-    final String SELECTONE_LOCATION = "SELECT USER_EMAIL, USER_LATITUDE, USER_LONGITUDE FROM USER WHERE USER_EMAIL = ?";
+    private final String SELECTONE_LOCATION = "SELECT USER_EMAIL, USER_LATITUDE, USER_LONGITUDE FROM USER WHERE USER_EMAIL = ?";
 
     // 유저 전체 정보 불러오기
-    final String SELECTALL = "SELECT * FROM USER ORDER BY USER_REGDATE DESC";
+    private final String SELECTALL = "SELECT * FROM USER ORDER BY USER_REGDATE DESC";
+
     // 유저 선호 취향 정보 불러오기
-    final String SELCETALL_FAVORITE = "SELECT * FROM PREFERENCE P LEFT JOIN USER U ON P.PREFERENCE_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
-    // 참가 중인 이벤트 목록 불러오기
-    final String SELECTALL_EVENT = "SELECT * FROM PARTICIPANT P LEFT JOIN USER U ON P.PARTICIPANT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
-    // 토큰 잔액 정보 불러오기
-    final String SELECTALL_TOKEN = "SELECT USER_TOEKN FROM USER WHERE USER_EMAIL = ?";
-    // 결제한 상품 목록 불러오기
-    final String SELECTALL_PRODUCT = "SELECT * FROM PAYMENT P LEFT JOIN USER U ON P.PAYMENT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
-    // 블랙리스트 유저 불러오기
-    final String SELECTALL_BLACK = "SELECT * FROM USER WHERE USER_ROLE = 2";
+    private final String SELCETALL_FAVORITE = "SELECT * FROM PREFERENCE P LEFT JOIN USER U ON P.PREFERENCE_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
+
+    // 사용자가 참가 중인 이벤트 목록 불러오기
+    private final String SELECTALL_EVENT = "SELECT * FROM PARTICIPANT P LEFT JOIN USER U ON P.PARTICIPANT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
+
+    // 유저의 토큰 잔액 정보 불러오기
+    private final String SELECTALL_TOKEN = "SELECT USER_TOEKN FROM USER WHERE USER_EMAIL = ?";
+
+    // 유저의 결제한 상품 목록 불러오기
+    private final String SELECTALL_PRODUCT = "SELECT * FROM PAYMENT P LEFT JOIN USER U ON P.PAYMENT_USER_EMAIL = U.USER_EMAIL WHERE U.USER_EMAIL = ?";
+
+    // 블랙리스트 유저 불러오기(관리자용)
+    private final String SELECTALL_BLACK = "SELECT * FROM USER WHERE USER_ROLE = 2";
+
     // 회원가입(정보 다 입력) - social_type 컬럼 추가, USER_LATITUDE, USER_LONGITUDE 컬럼 추가
-    final String INSERT = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
+    private final String INSERT = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
             "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_LATITUDE, USER_LONGITUDE, USER_DESCRIPTION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+
     // 회원가입(소개 뺴고, 프로필만 입력) - social_type 컬럼 추가, USER_LATITUDE, USER_LONGITUDE 컬럼 추가
-    final String INSERT_PROFILE = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
+    private final String INSERT_PROFILE = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
             "USER_PROFILE, USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_LATITUDE, USER_LONGITUDE, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
+
     // 회원가입(프로필 빼고, 소개만 입력) - social_type 컬럼 추가
-    final String INSERT_DESCRIPTION = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
+    private final String INSERT_DESCRIPTION = "INSERT INTO USER (USER_EMAIL, USER_PASSWORD, USER_NICKNAME, USER_PHONE, USER_GENDER, USER_BIRTH, USER_HEIGHT, USER_BODY, USER_MBTI," +
             "USER_EDUCATION, USER_RELIGEION, USER_DRINK, USER_SMOKE, USER_JOB, USER_REGION, USER_DESCRIPTION, USER_NAME, SOCIAL_TYPE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
     // 회원 정보 수정 - USER_LATITUDE, USER_LONGITUDE 컬럼 추가
-    final String UPDATE =
+    private final String UPDATE =
             "UPDATE USER SET USER_DESCRIPTION = ?,USER_NICKNAME = ?, USER_HEIGHT = ?, USER_BODY = ?, USER_EDUCATION = ?, USER_JOB = ?, USER_RELIGEION = ?, " +
                     "USER_REGION = ?, USER_LATITUDE = ?, USER_LONGITUDE = ?, USER_MBTI = ?, USER_DRINK = ?, USER_SMOKE = ? WHERE USER_EMAIL = ?";
-    // 회원 ROLE 변경
-    final String UPDATE_ROLE = "UPDATE USER SET USER_ROLE = ? WHERE USER_EMAIL = ?";
+
+    // 회원 ROLE 변경(사용자, 블랙, 탈퇴 등)
+    private final String UPDATE_ROLE = "UPDATE USER SET USER_ROLE = ? WHERE USER_EMAIL = ?";
+
     //토큰 추가
-    final String UPDATE_ADD_TOKEN = "UPDATE USER SET USER_TOKEN = ? WHERE USER_EMAIL =?";
+    private final String UPDATE_ADD_TOKEN = "UPDATE USER SET USER_TOKEN = ? WHERE USER_EMAIL =?";
 
     // 회원 프로필사진 변경
-    final String UPDATE_PROFILE_IMAGE = "UPDATE USER SET USER_PROFILE = ? WHERE USER_EMAIL = ?";
-    // 회원 프리미엄 변경
-    final String UPDATE_PREMIUM = "UPDATE USER SET USER_PREMIUM = 1 WHERE USER_EMAIL = ?";
+    private final String UPDATE_PROFILE_IMAGE = "UPDATE USER SET USER_PROFILE = ? WHERE USER_EMAIL = ?";
 
-    // 회원 탈퇴
-    final String DELETE = "DELETE FROM USER WHERE USER_EMAIL = ?";
+    // 회원 프리미엄 변경
+    private final String UPDATE_PREMIUM = "UPDATE USER SET USER_PREMIUM = 1 WHERE USER_EMAIL = ?";
+
+    // 회원 탈퇴(유저 role 변경으로 바꿨지만 추후 유지보수 혹은 기능 추가를 위해 남겨둠)
+    private final String DELETE = "DELETE FROM USER WHERE USER_EMAIL = ?";
 
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -75,18 +90,16 @@ public class UserDAO {
         ArrayList<UserDTO> datas = new ArrayList<>();
         try {
             conn = JDBCUtil.connect();
-//            if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL")) {
-//                pstmt = conn.prepareStatement(SELCETALL);
-//                pstmt.setString(1, userDTO.getUserEmail());
-//            }
             // 유저 선호 취향 정보 불러오기
             if (userDTO.getCondition().equals("SELECTALL")) {
                 pstmt = conn.prepareStatement(SELECTALL);
-            } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
+            }
+            // 유저 선호 취향 정보 불러오기
+            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_FAVORITE")) {
                 pstmt = conn.prepareStatement(SELCETALL_FAVORITE);
                 pstmt.setString(1, userDTO.getUserEmail());
             }
-            // 참가 중인 이벤트 목록 불러오기
+            // 사용자가 참가 중인 이벤트 목록 불러오기
             else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_EVENT")) {
                 pstmt = conn.prepareStatement(SELECTALL_EVENT);
                 pstmt.setString(1, userDTO.getUserEmail());
@@ -105,7 +118,6 @@ public class UserDAO {
             else if (userDTO.getCondition() != null && userDTO.getCondition().equals("SELECTALL_BLACK")) {
                 pstmt = conn.prepareStatement(SELECTALL_BLACK);
             }
-
 
             rs = pstmt.executeQuery();
                 while (rs.next()) {
@@ -137,7 +149,6 @@ public class UserDAO {
                 datas.add(data);
             }
             return datas;
-
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -154,11 +165,11 @@ public class UserDAO {
 
             // 조건 확인 및 적절한 쿼리 준비
             if (userDTO.getCondition() != null) {
+                // 아이디 중복 검사(네이버, 카카오 등 같은 이메일이더라도 소셜 타입 다르면 회원가입 가능)
                 if (userDTO.getCondition().equals("SELECTONE_CHECK")) {
                     pstmt = conn.prepareStatement(SELECTONE_CHECK);
                     pstmt.setString(1, userDTO.getUserEmail());
                     pstmt.setString(2, userDTO.getSocialType());
-                    // 쿼리 실행 및 결과 처리
                     rs = pstmt.executeQuery();
                     if (rs.next()) {
                         // 이메일이 존재하는 경우
@@ -170,13 +181,14 @@ public class UserDAO {
                         System.out.println("이메일 중복 확인: 사용 가능한 이메일입니다.");
                         return null; // 중복된 이메일이 없으면 null 반환
                     }
-                } else if (userDTO.getCondition().equals("SELECTONE")) {
+                }
+                // 소셜 로그인
+                else if (userDTO.getCondition().equals("SELECTONE")) {
                     pstmt = conn.prepareStatement(SELECTONE);
                     pstmt.setString(1, userDTO.getUserEmail());
                     pstmt.setString(2, userDTO.getUserPassword());
                     pstmt.setString(3, userDTO.getSocialType());
 
-                    // 쿼리 실행
                     rs = pstmt.executeQuery();
                     if (rs.next()) {
                         data = new UserDTO();
@@ -185,12 +197,13 @@ public class UserDAO {
                         data.setUserRole(rs.getInt("USER_ROLE"));
                         data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
                     }
-                } else if (userDTO.getCondition().equals("SELECTONE_NONSOCIAL")) {
+                }
+                // 일반 로그인
+                else if (userDTO.getCondition().equals("SELECTONE_NONSOCIAL")) {
                     pstmt = conn.prepareStatement(SELECTONE_NONSOCIAL);
                     pstmt.setString(1, userDTO.getUserEmail());
                     pstmt.setString(2, userDTO.getUserPassword());
 
-                    // 쿼리 실행
                     rs = pstmt.executeQuery();
                     if (rs.next()) {
                         data = new UserDTO();
@@ -199,10 +212,12 @@ public class UserDAO {
                         data.setUserRole(rs.getInt("USER_ROLE"));
                         data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
                     }
-                } else if (userDTO.getCondition().equals("SELECTONE_USERINFO")) {
+                }
+                // 해당 유저 전체 정보 불러오기
+                else if (userDTO.getCondition().equals("SELECTONE_USERINFO")) {
                     pstmt = conn.prepareStatement(SELECTONE_USERINFO);
                     pstmt.setString(1, userDTO.getUserEmail());
-                    // 쿼리 실행
+
                     rs = pstmt.executeQuery();
                     if (rs.next()) {
                         data = new UserDTO();
@@ -239,11 +254,12 @@ public class UserDAO {
                             data.setSocialType(null);
                         }
                     }
-                } else if (userDTO.getCondition().equals("SELECTONE_LOCATION")) {
+                }
+                // 유저 위도, 경도 정보 불러오기
+                else if (userDTO.getCondition().equals("SELECTONE_LOCATION")) {
                     pstmt = conn.prepareStatement(SELECTONE_LOCATION);
                     pstmt.setString(1, userDTO.getUserEmail());
 
-                    // 쿼리 실행
                     rs = pstmt.executeQuery();
                     if (rs.next()) {
                         data = new UserDTO();
@@ -251,13 +267,15 @@ public class UserDAO {
                         data.setUserLatitude(rs.getDouble("USER_LATITUDE"));
                         data.setUserLongitude(rs.getDouble("USER_LONGITUDE"));
                     }
-                } else {
-                    // 알 수 없는 조건인 경우 로그 출력 및 null 반환
+                }
+                // 알 수 없는 조건인 경우 로그 출력 및 null 반환
+                else {
                     System.out.println("알 수 없는 조건: " + userDTO.getCondition());
                     return null;
                 }
-            } else {
-                // 조건이 null인 경우 로그 출력
+            }
+            // 조건이 null인 경우 로그 출력
+            else {
                 System.out.println("조건이 null입니다.");
             }
             return data;
@@ -303,13 +321,15 @@ public class UserDAO {
                 pstmt.setInt(14, userDTO.isUserSmoke() ? 1 : 0);
                 pstmt.setString(15, userDTO.getUserJob());
                 pstmt.setString(16, userDTO.getUserRegion());
-                pstmt.setDouble(17, userDTO.getUserLatitude()); // 위도 추가
-                pstmt.setDouble(18, userDTO.getUserLongitude()); // 경도 추가
+                pstmt.setDouble(17, userDTO.getUserLatitude());
+                pstmt.setDouble(18, userDTO.getUserLongitude());
                 pstmt.setString(19, userDTO.getUserDescription());
                 pstmt.setString(20, userDTO.getUserName());
                 pstmt.setString(21, userDTO.getSocialType());
 
-            } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("INSERT_PROFILE")) {
+            }
+            // 나머지 정보와 선택사항에서 프로필사진만 입력한 경우
+            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("INSERT_PROFILE")) {
                 pstmt = conn.prepareStatement(INSERT_PROFILE);
                 pstmt.setString(1, userDTO.getUserEmail());
                 pstmt.setString(2, userDTO.getUserPassword());
@@ -327,11 +347,13 @@ public class UserDAO {
                 pstmt.setInt(14, userDTO.isUserSmoke() ? 1 : 0);
                 pstmt.setString(15, userDTO.getUserJob());
                 pstmt.setString(16, userDTO.getUserRegion());
-                pstmt.setDouble(17, userDTO.getUserLatitude()); // 위도 추가
-                pstmt.setDouble(18, userDTO.getUserLongitude()); // 경도 추가
+                pstmt.setDouble(17, userDTO.getUserLatitude());
+                pstmt.setDouble(18, userDTO.getUserLongitude());
                 pstmt.setString(19, userDTO.getUserName());
                 pstmt.setString(20, userDTO.getSocialType());
-            } else if (userDTO.getCondition() != null && userDTO.getCondition().equals("INSERT_DESCRIPTION")) {
+            }
+            // 나머지 정보와 선택사항에서 설명만 입력한 경우
+            else if (userDTO.getCondition() != null && userDTO.getCondition().equals("INSERT_DESCRIPTION")) {
                 pstmt = conn.prepareStatement(INSERT_DESCRIPTION);
                 pstmt.setString(1, userDTO.getUserEmail());
                 pstmt.setString(2, userDTO.getUserPassword());
@@ -348,8 +370,8 @@ public class UserDAO {
                 pstmt.setInt(13, userDTO.isUserSmoke() ? 1 : 0);
                 pstmt.setString(14, userDTO.getUserJob());
                 pstmt.setString(15, userDTO.getUserRegion());
-                pstmt.setDouble(16, userDTO.getUserLatitude()); // 위도 추가
-                pstmt.setDouble(17, userDTO.getUserLongitude()); // 경도 추가
+                pstmt.setDouble(16, userDTO.getUserLatitude());
+                pstmt.setDouble(17, userDTO.getUserLongitude());
                 pstmt.setString(18, userDTO.getUserDescription());
                 pstmt.setString(19, userDTO.getUserName());
                 pstmt.setString(20, userDTO.getSocialType());
@@ -380,8 +402,8 @@ public class UserDAO {
                 pstmt.setString(6, userDTO.getUserJob());
                 pstmt.setString(7, userDTO.getUserReligion());
                 pstmt.setString(8, userDTO.getUserRegion());
-                pstmt.setDouble(9, userDTO.getUserLatitude()); // 위도 추가
-                pstmt.setDouble(10, userDTO.getUserLongitude()); // 경도 추가
+                pstmt.setDouble(9, userDTO.getUserLatitude());
+                pstmt.setDouble(10, userDTO.getUserLongitude());
                 pstmt.setString(11, userDTO.getUserMbti());
                 pstmt.setInt(12, userDTO.getUserDrink());
                 pstmt.setBoolean(13, userDTO.isUserSmoke());
@@ -404,6 +426,7 @@ public class UserDAO {
                 pstmt = conn.prepareStatement(UPDATE_PREMIUM);
                 pstmt.setString(1, userDTO.getUserEmail());
             }
+            // 토큰 결제시 토큰 수 변경
             else if(userDTO.getCondition().equals("UPDATE_ADD_TOKEN")){
                 pstmt = conn.prepareStatement(UPDATE_ADD_TOKEN);
                 pstmt.setInt(1, userDTO.getUserToken());

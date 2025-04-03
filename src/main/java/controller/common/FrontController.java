@@ -29,9 +29,9 @@ public class FrontController extends HttpServlet {
         factory = new ActionFactory();
     }
 
-    private void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String command = request.getRequestURI();
-    	System.out.println(" CTRL 로그 : command ["+command+"]");
+	private void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String command = request.getRequestURI();
+		System.out.println(" CTRL 로그 : command ["+command+"]");
 		command = command.replace("/Metronic-Shop-UI-master/theme/", "");
 		if(command.contains(("target"))){
 			command = command.replace("/target-free-admin-template/", "");
@@ -40,23 +40,27 @@ public class FrontController extends HttpServlet {
 		}
 		System.out.println(" CTRL 자른 로그 : command ["+command+"]");
 
-    	Action action = factory.getAction(command); // 팩토리 패턴
-    	ActionForward forward = action.execute(request);
-    	
-    	if(forward == null){
-    		// 에러페이지로 이동
-    	}
-    	
-    	if(forward.isRedirect()){
+		Action action = factory.getAction(command); // 팩토리 패턴
+
+		// 기존 방식
+		ActionForward forward = action.execute(request);
+
+		if(forward == null){
+			// 에러페이지로 이동 또는 처리 중단
+			return;
+		}
+
+		if(forward.isRedirect()){
 			System.out.println("sendRedirect 실행됨");
-    		response.sendRedirect(forward.getPath());
-    	}
-    	else{
-    		RequestDispatcher dispatcher= request.getRequestDispatcher(forward.getPath());
-    		dispatcher.forward(request, response);
-    	}
-    }
-    
+			response.sendRedirect(forward.getPath());
+		}
+		else{
+			RequestDispatcher dispatcher= request.getRequestDispatcher(forward.getPath());
+			dispatcher.forward(request, response);
+		}
+	}
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("로그 : GET 요청 호출됨");
 		doAction(request, response);
@@ -66,5 +70,7 @@ public class FrontController extends HttpServlet {
 		System.out.println("로그 : POST 요청 호출됨");
 		doAction(request, response);
 	}
+
+
 }
 

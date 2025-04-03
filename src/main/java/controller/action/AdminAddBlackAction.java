@@ -25,6 +25,7 @@ public class AdminAddBlackAction implements Action{
 		ReportDTO reportDTO = new ReportDTO();
 		ReportDAO reportDAO = new ReportDAO();
 		reportDTO.setReportReported(reportedUserEmail);
+		reportDTO.setCondition("DELETE");	//블랙 처리되면 신고 리스트에선 삭제
 		System.out.println("AddBlackAction 로그["+reportedUserEmail+"]");
 		userDTO.setCondition("SELECTONE_USERINFO");
 		userDTO.setUserEmail(reportedUserEmail);
@@ -50,9 +51,8 @@ public class AdminAddBlackAction implements Action{
 		}
 		userDTO.setCondition("UPDATE_ROLE");
 		userDTO.setUserRole(2);
-		if(userDAO.update(userDTO) && reportDAO.delete(reportDTO)) {
+		if(userDAO.update(userDTO) && reportDAO.delete(reportDTO)) {	//userRole 2로 바꾸고 신고 리스트에서 삭제
 			SendEmail.sendMail(reportedUserEmail, subject, content);
-			//여기서 블랙리스트 넣은 사람 신고 리스트에서 삭제
 			request.setAttribute("msg", "사용자를 블랙 처리 했습니다");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "adminReportPage.do");

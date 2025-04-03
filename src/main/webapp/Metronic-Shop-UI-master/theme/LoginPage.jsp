@@ -72,14 +72,13 @@
 
             <div class="form-group">
                 <label for="signup-email"><i class="fa fa-envelope"></i> 이메일</label>
-                <div class="input-group">
+                <div class="email-input-group">
                     <input type="email" id="signup-email" name="userEmail" class="form-control" placeholder="이메일 주소" required>
-                    <button type="button" class="btn-check-email" onclick="checkEmailDuplicate()">중복 확인</button>
+                    <button type="button" class="email-check-btn" onclick="checkEmailDuplicate()">중복 확인</button>
                 </div>
-                <div id="emailCheckResult" class="mt-1"></div>
+                <div id="emailCheckResult"></div>
                 <input type="hidden" id="emailVerified" name="emailVerified" value="false">
             </div>
-
 
             <div class="form-group">
                 <label for="signup-password"><i class="fa fa-lock"></i> 비밀번호</label>

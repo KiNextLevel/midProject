@@ -37,6 +37,7 @@ public class ParticipantBoardAction implements Action{
 		participantDTO.setCondition("SELECTALL");
 		ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);
 		//ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);//로그인 한 사용자가 참가한 이벤트
+		System.out.println("datas: ["+datas+"]");
 		participantDTO.setParticipantBoardNumber(boardNum);
 		System.out.println("participantDTO: ["+participantDTO+"]");
 		System.out.println("participantDAO.selectOne(participantDTO)).getParticipantBoardNumber(): ["+participantDAO.selectOne(participantDTO).getParticipantBoardNumber()+"]");

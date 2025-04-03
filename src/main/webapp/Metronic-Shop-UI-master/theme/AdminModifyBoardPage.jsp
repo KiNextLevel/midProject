@@ -330,6 +330,10 @@
             <!-- BEGIN BOTTOM INFO BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Information</h2>
+                <p>
+                    진정한 인연을 찾아주는 플랫폼, 2025년부터 여러분의 특별한 만남을 응원합니다. 인연을 만드는 새로운 방식으로,
+                    모든 만남이 소중한 인연으로 이어지길 바랍니다.
+                </p>
             </div>
             <!-- END INFO BLOCK -->
 

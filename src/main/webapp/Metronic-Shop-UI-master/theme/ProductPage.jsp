@@ -67,24 +67,6 @@
 <!-- Body BEGIN -->
 
 <body class="ecommerce">
-<!-- BEGIN STYLE CUSTOMIZER -->
-<div class="color-panel hidden-sm">
-    <div class="color-mode-icons icon-color"></div>
-    <div class="color-mode-icons icon-color-close"></div>
-    <div class="color-mode">
-        <p>THEME COLOR</p>
-        <ul class="inline">
-            <li class="color-red current color-default" data-style="red"></li>
-            <li class="color-blue" data-style="blue"></li>
-            <li class="color-green" data-style="green"></li>
-            <li class="color-orange" data-style="orange"></li>
-            <li class="color-gray" data-style="gray"></li>
-            <li class="color-turquoise" data-style="turquoise"></li>
-        </ul>
-    </div>
-</div>
-<!-- END BEGIN STYLE CUSTOMIZER -->
-
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
     <div class="container">
@@ -177,7 +159,6 @@
                         <div class="token-options">
                             <div class="option-box">
                                 <h5 class="option-title">토큰 패키지 선택</h5>
-
                                 <!-- 기본 패키지 -->
                                 <form action="tossPaymentPage.do" method="POST">
                                     <input type="hidden" name="Product_Num" value="2">
@@ -245,11 +226,11 @@
                                     <div class="feature-text">
                                         <h5>프리미엄 뱃지</h5>
                                         <p>프로필에 특별한 프리미엄 뱃지로 더 많은 관심 유도</p>
-                                        <p>프리미엄 여부: ${sessionScope.userPremium}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="premium-action">
+                                <!-- 프리미엄 멤버십 소유한 상태라면 버튼 비활성화 -->
                                 <form action="tossPaymentPage.do" method="post">
                                     <input type="hidden" name="Product_Num" value="1">
                                     <input type="hidden" name="Product_Name" value="프리미엄 멤버쉽 결제">
@@ -282,13 +263,17 @@
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Next Level</h2>
                 <p>
-                    우리는 인연과 연인인을 중시합니다.
+                    우리는 인연과 연인을 중시합니다.
                 </p>
             </div>
             <!-- END BOTTOM ABOUT BLOCK -->
             <!-- BEGIN BOTTOM INFO BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Information</h2>
+                <p>
+                    진정한 인연을 찾아주는 플랫폼, 2025년부터 여러분의 특별한 만남을 응원합니다. 인연을 만드는 새로운 방식으로,
+                    모든 만남이 소중한 인연으로 이어지길 바랍니다.
+                </p>
             </div>
             <!-- END INFO BLOCK -->
 
@@ -316,43 +301,53 @@
         </div>
         <hr>
         <div class="row">
-            <!-- Load javascripts at bottom, this will reduce page load time -->
-            <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
-            <!--[if lt IE 9]>
+            <!-- BEGIN COPYRIGHT -->
+            <div class="col-md-12 col-sm-12 padding-top-10">
+                2025 © Next Level. ALL Rights Reserved.
+            </div>
+            <!-- END COPYRIGHT -->
+        </div>
+        <!-- END BOTTOM CONTACTS -->
+    </div>
+    <hr>
+    <div class="row">
+        <!-- Load javascripts at bottom, this will reduce page load time -->
+        <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+        <!--[if lt IE 9]>
             <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/respond.min.js"></script>
             <![endif]-->
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js"
-                    type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js"
-                    type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js"
-                    type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js"
-                    type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
-                    type="text/javascript"></script>
-            <!-- END CORE PLUGINS -->
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js"
+                type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js"
+                type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js"
+                type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js"
+                type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+                type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
 
-            <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js"
-                    type="text/javascript"></script>
-            <!-- pop up -->
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js"
-                    type="text/javascript"></script>
-            <!-- slider for products -->
+        <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js"
+                type="text/javascript"></script>
+        <!-- pop up -->
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js"
+                type="text/javascript"></script>
+        <!-- slider for products -->
 
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
-                    type="text/javascript"></script>
-            <script type="text/javascript">
-                jQuery(document).ready(function () {
-                    Layout.init();
-                    Layout.initOWL();
-                    Layout.initTwitter();
-                });
-            </script>
-            <!-- END PAGE LEVEL JAVASCRIPTS -->
-        </div>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
+                type="text/javascript"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                Layout.init();
+                Layout.initOWL();
+                Layout.initTwitter();
+            });
+        </script>
+        <!-- END PAGE LEVEL JAVASCRIPTS -->
     </div>
+</div>
 </div>
 </body>
 <!-- END BODY -->

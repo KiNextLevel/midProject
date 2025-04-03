@@ -4,15 +4,8 @@ import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.example.webapp.model.dao.BoardDAO;
-import org.example.webapp.model.dao.PreferenceDAO;
-import org.example.webapp.model.dao.UserDAO;
-import org.example.webapp.model.dto.BoardDTO;
-import org.example.webapp.model.dto.PreferenceDTO;
-import org.example.webapp.model.dto.UserDTO;
-import org.example.webapp.model.dto.PaymentDTO;
-import org.example.webapp.model.dao.PaymentDAO;
-
+import org.example.webapp.model.dao.*;
+import org.example.webapp.model.dto.*;
 
 
 import java.util.ArrayList;
@@ -48,24 +41,26 @@ public class MyPageAction implements Action {
         PaymentDTO paymentDTO = new PaymentDTO();
         PaymentDAO paymentDAO = new PaymentDAO();
         paymentDTO.setUserEmail(userEmail);
-        paymentDTO.setCondition("SELECTONE");
+        paymentDTO.setCondition("SELECTALL_PRODUCTLIST");
 
-        BoardDTO boardDTO = new BoardDTO();
-        BoardDAO boardDAO = new BoardDAO();
-        boardDTO.setUserEmail(userEmail);
-        boardDTO.setCondition("SELECTONE_EVENTLISTPRINT");
-
+        ParticipantDTO participantDTO = new ParticipantDTO();
+        ParticipantDAO participantDAO = new ParticipantDAO();
+        participantDTO.setParticipantUserEmail(userEmail);
+        participantDTO.setCondition("SELECTALL_EVENTPRINT");
 
         UserDTO user = userDAO.selectOne(userDTO);
         PreferenceDTO preference = preferenceDAO.selectOne(preferenceDTO);
-        ArrayList<PaymentDTO> paymentList = paymentDAO.selectOne(paymentDTO);
-        BoardDTO eventList = boardDAO.selectOne(boardDTO);
+        ArrayList<PaymentDTO> paymentList = paymentDAO.selectAll(paymentDTO);
+        ArrayList<ParticipantDTO> participantList = participantDAO.selectAll(participantDTO);
+        for(ParticipantDTO p : participantList) {
+            System.out.println(p);
+        }
 
         if (user != null) {
-            request.setAttribute("eventList", eventList);
             request.setAttribute("paymentList", paymentList);
             request.setAttribute("userDTO", user); // 첫 번째 사용자 정보
             request.setAttribute("preferenceDTO", preference);
+            request.setAttribute("participantList", participantList);
             forward.setPath("/Metronic-Shop-UI-master/theme/MyPage.jsp");
             forward.setRedirect(false);
         } else {

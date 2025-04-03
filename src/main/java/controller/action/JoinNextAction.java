@@ -38,7 +38,9 @@ public class JoinNextAction implements Action {
             // 소셜 로그인 타입 설정
             String socialType = (String)session.getAttribute("socialType");
             if (socialType != null && !socialType.isEmpty()) {
-                userDTO.setSocialType(socialType);
+                userDTO.setSocialType(socialType); // 소셜 로그인인 경우
+            } else {
+                userDTO.setSocialType("normal"); // 일반 회원가입인 경우 'normal'로 설정
             }
 
             //

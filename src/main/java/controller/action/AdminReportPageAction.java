@@ -27,11 +27,11 @@ public class AdminReportPageAction implements Action{
 		System.out.println("AdminReportPageAction 로그: "+reported);
 		System.out.println("ReportPageAction log reported: "+reported);
 
-		userDTO.setCondition("SELECTALL_BLACK");	//블랙리스트 전체
-		ArrayList<UserDTO> blacks = userDAO.selectAll(userDTO);
+		userDTO.setCondition("SELECTALL_BLACK");
+		ArrayList<UserDTO> blacks = userDAO.selectAll(userDTO);	//블랙리스트 전체
 		System.out.println("ReportPageAction log blacks: "+blacks);
 
-		if(((Integer)session.getAttribute("userRole"))==1) {
+		if(((Integer)session.getAttribute("userRole"))==1) {	//관리자만 이동 가능
 			request.setAttribute("blacks", blacks);
 			request.setAttribute("reported", reported);
 			forward.setPath("/Metronic-Shop-UI-master/theme/AdminReportPage.jsp");

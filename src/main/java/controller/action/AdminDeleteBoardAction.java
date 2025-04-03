@@ -13,7 +13,6 @@ public class AdminDeleteBoardAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) {
-		System.out.println("apple 3");
 		ActionForward forward = new ActionForward();
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
@@ -21,9 +20,9 @@ public class AdminDeleteBoardAction implements Action{
 		ParticipantDAO participantDAO = new ParticipantDAO();
 		System.out.println("adminDeleteBoardAcion 로그: 도착");
 
-		System.out.println(Integer.parseInt(request.getParameter("boardNum")));	//삭제할 이벤트 번호
-		boardDTO.setBoardNumber(Integer.parseInt(request.getParameter("boardNum")));
-		participantDTO.setParticipantBoardNumber(Integer.parseInt(request.getParameter("boardNum")));
+		System.out.println(Integer.parseInt(request.getParameter("boardNum")));
+		boardDTO.setBoardNumber(Integer.parseInt(request.getParameter("boardNum")));//삭제할 이벤트 번호
+		participantDTO.setParticipantBoardNumber(Integer.parseInt(request.getParameter("boardNum")));//삭제할 이벤트 번호
 		participantDTO.setCondition("DELETE_BOARD_NUM");
 
 		if(boardDAO.delete(boardDTO) && participantDAO.delete(participantDTO)) {	//이벤트 삭제하면
@@ -38,7 +37,6 @@ public class AdminDeleteBoardAction implements Action{
 		}
 		forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 		forward.setRedirect(false);
-		System.out.println("apple 4");
 		return forward;
 	}
 }

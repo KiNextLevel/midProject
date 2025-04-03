@@ -42,12 +42,6 @@ public class FrontController extends HttpServlet {
 
 		Action action = factory.getAction(command); // 팩토리 패턴
 
-		// AJAX 요청 처리 (특정 액션에 대해서만)
-		if (action instanceof AjaxAction) {
-			((AjaxAction) action).executeAjax(request, response);
-			return; // AJAX 요청은 여기서 처리 완료
-		}
-
 		// 기존 방식
 		ActionForward forward = action.execute(request);
 

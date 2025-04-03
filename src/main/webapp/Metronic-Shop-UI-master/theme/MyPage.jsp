@@ -358,23 +358,15 @@
                             <div class="preference-tags">
                             <span class="preference-tag">
                                 <i class="fas fa-ruler"></i>
-
                                         ${preferenceDTO.preferenceHeight}
-
-
                             </span>
                                 <span class="preference-tag">
                                 <i class="fas fa-weight"></i>
-
                                         ${preferenceDTO.preferenceBody}
-
-                                </c:choose>
                             </span>
                                 <span class="preference-tag">
                                 <i class="fas fa-birthday-cake"></i>
-
                                         ${preferenceDTO.preferenceAge}
-
                             </span>
                             </div>
                         </div>

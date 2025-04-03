@@ -141,7 +141,7 @@ public class UserDAO {
                 data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
                 data.setUserJob(rs.getString("USER_JOB"));
                 data.setUserRole(rs.getInt("USER_ROLE"));
-                data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                data.setUserPremium(rs.getInt("USER_PREMIUM") == 1);
                 data.setUserToken(rs.getInt("USER_TOKEN"));
                 data.setUserRegion(rs.getString("USER_REGION"));
                 data.setUserDescription(rs.getString("USER_DESCRIPTION"));
@@ -195,7 +195,7 @@ public class UserDAO {
                         data.setUserEmail(rs.getString("USER_EMAIL"));
                         data.setUserPassword(rs.getString("USER_PASSWORD"));
                         data.setUserRole(rs.getInt("USER_ROLE"));
-                        data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                        data.setUserPremium(rs.getInt("USER_PREMIUM") == 1);
                     }
                 }
                 // 일반 로그인
@@ -210,7 +210,7 @@ public class UserDAO {
                         data.setUserEmail(rs.getString("USER_EMAIL"));
                         data.setUserPassword(rs.getString("USER_PASSWORD"));
                         data.setUserRole(rs.getInt("USER_ROLE"));
-                        data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                        data.setUserPremium(rs.getInt("USER_PREMIUM") == 1);
                     }
                 }
                 // 해당 유저 전체 정보 불러오기
@@ -241,7 +241,7 @@ public class UserDAO {
                         data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
                         data.setUserJob(rs.getString("USER_JOB"));
                         data.setUserRole(rs.getInt("USER_ROLE"));
-                        data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                        data.setUserPremium(rs.getInt("USER_PREMIUM") == 1);
                         data.setUserToken(rs.getInt("USER_TOKEN"));
                         data.setUserRegion(rs.getString("USER_REGION"));
                         data.setUserDescription(rs.getString("USER_DESCRIPTION"));

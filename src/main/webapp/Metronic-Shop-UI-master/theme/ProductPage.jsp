@@ -270,6 +270,10 @@
             <!-- BEGIN BOTTOM INFO BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Information</h2>
+                <p>
+                    진정한 인연을 찾아주는 플랫폼, 2025년부터 여러분의 특별한 만남을 응원합니다. 인연을 만드는 새로운 방식으로,
+                    모든 만남이 소중한 인연으로 이어지길 바랍니다.
+                </p>
             </div>
             <!-- END INFO BLOCK -->
 
@@ -297,43 +301,53 @@
         </div>
         <hr>
         <div class="row">
-            <!-- Load javascripts at bottom, this will reduce page load time -->
-            <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
-            <!--[if lt IE 9]>
+            <!-- BEGIN COPYRIGHT -->
+            <div class="col-md-12 col-sm-12 padding-top-10">
+                2025 © Next Level. ALL Rights Reserved.
+            </div>
+            <!-- END COPYRIGHT -->  
+        </div>
+        <!-- END BOTTOM CONTACTS -->
+    </div>
+    <hr>
+    <div class="row">
+        <!-- Load javascripts at bottom, this will reduce page load time -->
+        <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+        <!--[if lt IE 9]>
             <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/respond.min.js"></script>
             <![endif]-->
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js"
-                    type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js"
-                    type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js"
-                    type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js"
-                    type="text/javascript"></script>
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
-                    type="text/javascript"></script>
-            <!-- END CORE PLUGINS -->
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js"
+                type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js"
+                type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js"
+                type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js"
+                type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+                type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
 
-            <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js"
-                    type="text/javascript"></script>
-            <!-- pop up -->
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js"
-                    type="text/javascript"></script>
-            <!-- slider for products -->
+        <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js"
+                type="text/javascript"></script>
+        <!-- pop up -->
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js"
+                type="text/javascript"></script>
+        <!-- slider for products -->
 
-            <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
-                    type="text/javascript"></script>
-            <script type="text/javascript">
-                jQuery(document).ready(function () {
-                    Layout.init();
-                    Layout.initOWL();
-                    Layout.initTwitter();
-                });
-            </script>
-            <!-- END PAGE LEVEL JAVASCRIPTS -->
-        </div>
+        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
+                type="text/javascript"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                Layout.init();
+                Layout.initOWL();
+                Layout.initTwitter();
+            });
+        </script>
+        <!-- END PAGE LEVEL JAVASCRIPTS -->
     </div>
+</div>
 </div>
 </body>
 <!-- END BODY -->

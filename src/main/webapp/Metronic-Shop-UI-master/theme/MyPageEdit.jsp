@@ -333,45 +333,7 @@
             </div>
         </div>
     </form>
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN BOTTOM ABOUT BLOCK -->
-                <div class="col-md-3 col-sm-6 pre-footer-col">
-                    <h2>Next Level</h2>
-                    <p>우리는 인연과 연인인을 중시합니다.</p>
-                </div>
-                <!-- END BOTTOM ABOUT BLOCK -->
-
-                <!-- BEGIN BOTTOM INFO BLOCK -->
-                <div class="col-md-3 col-sm-6 pre-footer-col">
-                    <h2>Information</h2>
-                </div>
-                <!-- END INFO BLOCK -->
-
-                <!-- BEGIN TWITTER BLOCK -->
-                <div class="col-md-3 col-sm-6 pre-footer-col">
-                    <h2 class="margin-bottom-0">Github</h2>
-                    <a class="twitter-timeline" href="https://github.com/KiNextLevel" data-tweet-limit="2" data-theme="dark"
-                       data-link-color="#57C8EB" data-widget-id="455411516829736961"
-                       data-chrome="noheader nofooter noscrollbar noborders transparent">https://github.com/KiNextLevel</a>
-                </div>
-                <!-- END TWITTER BLOCK -->
-
-                <!-- BEGIN BOTTOM CONTACTS -->
-                <div class="col-md-3 col-sm-6 pre-footer-col">
-                    <h2>Our Contacts</h2>
-                    <address class="margin-bottom-40">
-                        서울 강남구 테헤란로26길 12<br>
-                        (우) 06236 (지번) 역삼동 736-56<br>
-                        Notion: <a href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
-                        Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
-                    </address>
-                </div>
-                <!-- END BOTTOM CONTACTS -->
-            </div>
-            <hr>
+    
             <div class="row">
                 <!-- 자바스크립트 로드 부분 유지 -->
                 <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>

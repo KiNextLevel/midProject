@@ -43,6 +43,7 @@ public class AlertDAO {
                 data.setAlertNumber(rs.getInt("ALERT_NUM")); // 알림 번호
                 data.setAlertContent(rs.getString("ALERT_CONTENT"));  //알림 내용
                 data.setAlertIsWatch(rs.getBoolean("ALERT_ISWATCH"));  //알림 읽음 여부
+                data.setAlertDate(rs.getDate("ALERT_DATE"));
                 datas.add(data);
             }
             return datas;

@@ -16,15 +16,13 @@ public class AdminModifyBoardAction implements Action{
 		BoardDAO boardDAO = new BoardDAO();
 		System.out.println("boardNum: "+request.getParameter("boardNum"));
 		System.out.println("boardTitle: "+request.getParameter("boardTitle"));
-		String boardNum = (String)request.getParameter("boardNum");
-		System.out.println("boardNum: ["+boardNum+"]");
-		boardDTO.setBoardNumber((Integer.parseInt((String)request.getParameter("boardNum"))));
+		boardDTO.setBoardNumber((Integer.parseInt(request.getParameter("boardNum"))));//수정할 이벤트 번호
 		boardDTO = boardDAO.selectOne(boardDTO);
 		System.out.println("boardDTO = "+boardDTO);
-		boardDTO.setBoardTitle((String)request.getParameter("boardTitle"));
-		boardDTO.setBoardContent((String)request.getParameter("boardContent"));
+		boardDTO.setBoardTitle(request.getParameter("boardTitle"));	//수정할 이벤트 제목
+		boardDTO.setBoardContent(request.getParameter("boardContent"));	//수정할 이벤트 내용
 		System.out.println("boardLimit: ["+request.getParameter("boardLimit")+"]");
-		boardDTO.setBoardLimit(Integer.parseInt((String)request.getParameter("boardLimit")));
+		boardDTO.setBoardLimit(Integer.parseInt(request.getParameter("boardLimit")));	////수정할 이벤트 제한인원
 		boardDTO.setCondition("UPDATE_BOARD");
 
 		if(boardDAO.update(boardDTO)) {

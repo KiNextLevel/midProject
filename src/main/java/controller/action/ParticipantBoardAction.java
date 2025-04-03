@@ -27,14 +27,14 @@ public class ParticipantBoardAction implements Action{
 		ParticipantDTO participantDTO = new ParticipantDTO();
 		ParticipantDAO participantDAO = new ParticipantDAO();
 
-		int boardNum = Integer.parseInt(request.getParameter("boardNumber"));	//이벤트 번호 받음
+		int boardNum = Integer.parseInt(request.getParameter("boardNumber"));	//참가하려는 이벤트 번호
 		boardDTO.setBoardNumber(boardNum);
 		System.out.println("boardNumber: ["+boardNum+"]");
 		String userEmail = (String)session.getAttribute("userEmail");	//로그인 한 사용자 이메일
 		System.out.println("userEmail: ["+userEmail+"]");
 
 		participantDTO.setParticipantUserEmail(userEmail);
-		ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);
+		ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);//로그인 한 사용자가 참가한 이벤트
 		participantDTO.setParticipantBoardNumber(boardNum);
 		System.out.println("participantDTO: ["+participantDTO+"]");
 		System.out.println("participantDAO.selectOne(participantDTO)).getParticipantBoardNumber(): ["+participantDAO.selectOne(participantDTO).getParticipantBoardNumber()+"]");
@@ -43,7 +43,7 @@ public class ParticipantBoardAction implements Action{
 		for(ParticipantDTO v: datas){	//이미 참가 신청한 이벤트 버튼 다시 누르면 참가 취소
 			if (v.getParticipantBoardNumber() == boardNum) {
 				participantDTO.setCondition("DELETE");
-				participantDAO.delete(participantDTO);
+				participantDAO.delete(participantDTO);	//참가 취소
 				System.out.println("v.getParticipantBoardNumber: ["+v.getParticipantBoardNumber()+"]");
 				System.out.println("v.getParticipantUserEmail: "+v.getParticipantUserEmail()+"]");
 				request.setAttribute("msg", "참가 취소 되었습니다");

@@ -20,7 +20,7 @@ public class TossPaymentPageAction implements Action {
         UserDAO userDAO = new UserDAO();
         userDTO.setUserEmail((String)session.getAttribute("userEmail"));
         userDTO.setCondition("SELECTONE_USERINFO");
-        userDTO = userDAO.selectOne(userDTO);
+        userDTO = userDAO.selectOne(userDTO);   //사용자 정보 가져오기
         String userEmail = userDTO.getUserEmail();
         String userName = userDTO.getUserName();
         System.out.println("TossPaymentPage 로그: 도착");
@@ -34,7 +34,7 @@ public class TossPaymentPageAction implements Action {
         // 한글을 URL 인코딩
         String encodedProductName = URLEncoder.encode(productName, StandardCharsets.UTF_8);
         String encodedUserName = URLEncoder.encode(userName, StandardCharsets.UTF_8);
-        System.out.println("TossPaymentPageAction 로그: encodedProductName = " + encodedProductName);
+        System.out.println("TossPaymentPageAction 로그: encodedProductName = [" + encodedProductName + "]");
 
         // .html로 갈거라 url에 담아서  Query parameter로 전달보냄
         forward.setPath("/widget/index.html?productName=" + encodedProductName +

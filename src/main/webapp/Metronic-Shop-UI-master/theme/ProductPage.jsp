@@ -245,7 +245,6 @@
                                     <div class="feature-text">
                                         <h5>프리미엄 뱃지</h5>
                                         <p>프로필에 특별한 프리미엄 뱃지로 더 많은 관심 유도</p>
-                                        <p>프리미엄 여부: ${sessionScope.userPremium}</p>
                                     </div>
                                 </div>
                             </div>

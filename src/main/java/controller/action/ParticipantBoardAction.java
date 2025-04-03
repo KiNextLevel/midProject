@@ -34,16 +34,18 @@ public class ParticipantBoardAction implements Action{
 		System.out.println("userEmail: ["+userEmail+"]");
 
 		participantDTO.setParticipantUserEmail(userEmail);
-		ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);//로그인 한 사용자가 참가한 이벤트
+		participantDTO.setCondition("SELECTALL");
+		ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);
+		//ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);//로그인 한 사용자가 참가한 이벤트
 		participantDTO.setParticipantBoardNumber(boardNum);
 		System.out.println("participantDTO: ["+participantDTO+"]");
 		System.out.println("participantDAO.selectOne(participantDTO)).getParticipantBoardNumber(): ["+participantDAO.selectOne(participantDTO).getParticipantBoardNumber()+"]");
 		System.out.println("boardDTO.getBoardLimit(): ["+boardDAO.selectOne(boardDTO).getBoardLimit()+"]");
 
-		for(ParticipantDTO v: datas){	//이미 참가 신청한 이벤트 버튼 다시 누르면 참가 취소
+		for(ParticipantDTO v: datas){   //이미 참가 신청한 이벤트 버튼 다시 누르면 참가 취소
 			if (v.getParticipantBoardNumber() == boardNum) {
 				participantDTO.setCondition("DELETE");
-				participantDAO.delete(participantDTO);	//참가 취소
+				participantDAO.delete(participantDTO);
 				System.out.println("v.getParticipantBoardNumber: ["+v.getParticipantBoardNumber()+"]");
 				System.out.println("v.getParticipantUserEmail: "+v.getParticipantUserEmail()+"]");
 				request.setAttribute("msg", "참가 취소 되었습니다");
@@ -62,12 +64,12 @@ public class ParticipantBoardAction implements Action{
 			forward.setRedirect(false);
 			return forward;
 		}
-		if(participantDAO.insert(participantDTO)) {	//참가 성공
+		if(participantDAO.insert(participantDTO)) {   //참가 성공
 			request.setAttribute("msg", "이벤트 참가 성공");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "boardPage.do");
 		}
-		else {										//참가 실패
+		else {                              //참가 실패
 			request.setAttribute("msg", "참가 실패");
 			request.setAttribute("flag", false);
 		}

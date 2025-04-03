@@ -22,12 +22,12 @@ public class PaymentDAO {
     // 추가하기(일별, 월별, 연도별 매출 조회
 
     // 유저 마이페이지 - 결제한 상품명, 결제일, 결제 날짜
-    final String SELECTONE =
+    final String SELECTALL_PRODUCTLIST =
             "SELECT " +
-                    "    P.PRODUCT_NAME, " +
-                    "    P.PRODUCT_PRICE, " +
-                    "    M.PAYMENT_PRICE, " +
-                    "    M.PAYMENT_DATE " +
+                    "    P.PRODUCT_NAME, " +  // 상품 이름
+                    "    P.PRODUCT_PRICE, " +  // 상품 가격
+                  //  "    P.PAYMENT_PRICE, " +  // 상품 가격
+                    "    M.PAYMENT_DATE " +  // 결제 날짜
                     "FROM PAYMENT M " +
                     "JOIN PRODUCT P ON M.PRODUCT_NUM = P.PRODUCT_NUM " +
                     "WHERE M.PAYMENT_USER_EMAIL = ?";
@@ -46,61 +46,117 @@ public class PaymentDAO {
         ArrayList<PaymentDTO> datas = new ArrayList<>();
         Connection conn = null;
         PreparedStatement pstmt = null;
-        try {
-            conn = JDBCUtil.connect();
-            if (paymentDTO.getCondition().equals("SELECTALL_ADMIN_PAYMENTS"))
-                pstmt = conn.prepareStatement(SELECTALL_ADMIN_PAYMENTS);
-
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                PaymentDTO data = new PaymentDTO();
-
-                data.setPaymentNumber(rs.getInt("PAYMENT_NUM"));
-                data.setUserEmail(rs.getString("USER_EMAIL"));
-                data.setUserName(rs.getString("USER_NAME"));
-                data.setProductName(rs.getString("PRODUCT_NAME"));
-                data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));
-                data.setPaymentDate(rs.getDate("PAYMENT_DATE"));
-                datas.add(data);
-            }
-            return datas;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            JDBCUtil.disconnect(conn, pstmt);
-        }
-
-    }
-
-    public ArrayList<PaymentDTO> selectOne(PaymentDTO paymentDTO) {
-        ArrayList<PaymentDTO> list = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         try {
             conn = JDBCUtil.connect();
-            pstmt = conn.prepareStatement(SELECTONE);
-            pstmt.setString(1, paymentDTO.getUserEmail());
+
+            // 조건 분기
+            if ("SELECTALL_ADMIN_PAYMENTS".equals(paymentDTO.getCondition())) {
+                pstmt = conn.prepareStatement(SELECTALL_ADMIN_PAYMENTS);
+            } else if ("SELECTALL_PRODUCTLIST".equals(paymentDTO.getCondition())) {
+                pstmt = conn.prepareStatement(SELECTALL_PRODUCTLIST);
+                pstmt.setString(1, paymentDTO.getUserEmail());
+            } else {
+                throw new IllegalArgumentException("알 수 없는 condition입니다: " + paymentDTO.getCondition());
+            }
 
             rs = pstmt.executeQuery();
+
             while (rs.next()) {
                 PaymentDTO data = new PaymentDTO();
-                data.setProductName(rs.getString("PRODUCT_NAME"));
-                data.setProductPrice(rs.getInt("PRODUCT_PRICE"));
-                data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));
-                data.setPaymentDate(rs.getDate("PAYMENT_DATE"));
-                list.add(data);
+
+                // 관리자 전용 데이터 컬럼들
+                if ("SELECTALL_ADMIN_PAYMENTS".equals(paymentDTO.getCondition())) {
+                    data.setPaymentNumber(rs.getInt("PAYMENT_NUM"));
+                    data.setUserEmail(rs.getString("USER_EMAIL"));
+                    data.setUserName(rs.getString("USER_NAME"));
+                    data.setProductName(rs.getString("PRODUCT_NAME"));
+                    data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));
+                    data.setPaymentDate(rs.getDate("PAYMENT_DATE"));
+                }
+                if ("SELECTALL_PRODUCTLIST".equals(paymentDTO.getCondition())) {
+                    data.setProductName(rs.getString("PRODUCT_NAME"));
+                    data.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+                 //   data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));
+                    data.setPaymentDate(rs.getDate("PAYMENT_DATE"));
+                }
+
+                datas.add(data);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtil.disconnect(conn, pstmt);
         }
 
-        return list;
+        return datas;
     }
+
+//    public ArrayList<PaymentDTO> selectAll(PaymentDTO paymentDTO) {
+//        ArrayList<PaymentDTO> datas = new ArrayList<>();
+//        Connection conn = null;
+//        PreparedStatement pstmt = null;
+//        try {
+//            conn = JDBCUtil.connect();
+//            if (paymentDTO.getCondition().equals("SELECTALL_ADMIN_PAYMENTS"))
+//                pstmt = conn.prepareStatement(SELECTALL_ADMIN_PAYMENTS);
+//            else if(paymentDTO.getCondition().equals("SELECTONE_CHECK")){
+//                pstmt = conn.prepareStatement(SELECTALL_PRODUCTLIST);
+//                pstmt.setString(1, paymentDTO.getUserEmail());
+//            }
+//
+//            ResultSet rs = pstmt.executeQuery();
+//            while (rs.next()) {
+//                PaymentDTO data = new PaymentDTO();
+//
+//                data.setPaymentNumber(rs.getInt("PAYMENT_NUM"));
+//                data.setUserEmail(rs.getString("USER_EMAIL"));
+//                data.setUserName(rs.getString("USER_NAME"));
+//                data.setProductName(rs.getString("PRODUCT_NAME"));
+//                data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));
+//                data.setPaymentDate(rs.getDate("PAYMENT_DATE"));
+//                datas.add(data);
+//            }
+//            return datas;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        } finally {
+//            JDBCUtil.disconnect(conn, pstmt);
+//        }
+//
+//    }
+
+//    public ArrayList<PaymentDTO> selectOne(PaymentDTO paymentDTO) {
+//        ArrayList<PaymentDTO> list = new ArrayList<>();
+//        Connection conn = null;
+//        PreparedStatement pstmt = null;
+//        ResultSet rs = null;
+//
+//        try {
+//            conn = JDBCUtil.connect();
+//            pstmt = conn.prepareStatement(SELECTONE);
+//            pstmt.setString(1, paymentDTO.getUserEmail());
+//
+//            rs = pstmt.executeQuery();
+//            while (rs.next()) {
+//                PaymentDTO data = new PaymentDTO();
+//                data.setProductName(rs.getString("PRODUCT_NAME"));
+//                data.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+//                data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));
+//                data.setPaymentDate(rs.getDate("PAYMENT_DATE"));
+//                list.add(data);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            JDBCUtil.disconnect(conn, pstmt);
+//        }
+//
+//        return list;
+//    }
 
 
     public boolean insert(PaymentDTO paymentDTO) {

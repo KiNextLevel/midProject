@@ -143,7 +143,7 @@ body {
 
 .profile-role {
     display: inline-block;
-    background-color: #e94d1c;
+    background-color: #f1be77;
     color: #fff;
     padding: 3px 10px;
     border-radius: 20px;
@@ -152,7 +152,7 @@ body {
 }
 
 .profile-actions {
-    margin-left: auto;
+    margin-right: auto;
 }
 
 .profile-actions .btn {

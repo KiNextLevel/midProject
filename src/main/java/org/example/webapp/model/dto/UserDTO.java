@@ -42,7 +42,7 @@ public class UserDTO {
     // 역할
     private Integer userRole;
     // 구독 여부
-    private boolean userPreminum;
+    private boolean userPremium;
     // 토큰 개수
     private int userToken;
     // 지역
@@ -225,12 +225,12 @@ public class UserDTO {
         this.userRole = userRole;
     }
 
-    public boolean isUserPreminum() {
-        return userPreminum;
+    public boolean isUserPremium() {
+        return userPremium;
     }
 
-    public void setUserPreminum(boolean userPreminum) {
-        this.userPreminum = userPreminum;
+    public void setUserPremium(boolean userPremium) {
+        this.userPremium = userPremium;
     }
 
     public int getUserToken() {
@@ -319,7 +319,7 @@ public class UserDTO {
                 ", userSmokeChanged=" + userSmokeChanged +
                 ", userJob='" + userJob + '\'' +
                 ", userRole=" + userRole +
-                ", userPreminum=" + userPreminum +
+                ", userPreminum=" + userPremium +
                 ", userToken=" + userToken +
                 ", userRegion='" + userRegion + '\'' +
                 ", userDescription='" + userDescription + '\'' +

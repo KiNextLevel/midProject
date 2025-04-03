@@ -19,7 +19,7 @@ public class ReportDAO {
 
     // (유저용) 사용자가 또 다른 사용자를 신고하는 쿼리문(신고자, 신고이유, 신고날짜, 피신고자, 신고설명)
     final String INSERT = "INSERT INTO REPORT (REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION) " +
-            "VALUES (?, ?, CURRENT_DATE, ?, ?)";
+            "VALUES (?, ?, NOW(), ?, ?)";
 
 
     final String UPDATE = "";

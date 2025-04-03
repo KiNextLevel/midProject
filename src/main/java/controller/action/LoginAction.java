@@ -27,7 +27,6 @@ public class LoginAction implements Action {
         userDTO.setUserEmail(request.getParameter("userEmail"));
         userDTO.setUserPassword(request.getParameter("userPassword"));
         UserDAO userDAO = new UserDAO();
-        HttpSession session = request.getSession();
         // 컨디션"로그인"
         userDTO.setCondition("SELECTONE_NONSOCIAL");
         userDTO = userDAO.selectOne(userDTO);
@@ -57,11 +56,12 @@ public class LoginAction implements Action {
             request.setAttribute("msg", "로그인정보가 틀렸습니다");
             request.setAttribute("flag", false);
         }
-        actionForward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+        actionForward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
         actionForward.setRedirect(false);
         return actionForward;
     }
 
+    // 세션 저장 모듈화
     public void setSession(UserDTO userDTO, HttpServletRequest request) {
         HttpSession session = request.getSession();
         // session에 userId, userName, role저장

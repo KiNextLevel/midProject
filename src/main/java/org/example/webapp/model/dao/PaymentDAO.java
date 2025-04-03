@@ -37,7 +37,7 @@ public class PaymentDAO {
     // 유저 이메일, 금액, 결제 날짜, 결제 방법, 상품 번호
     final String INSERT = "INSERT INTO PAYMENT "
             + "(PAYMENT_USER_EMAIL, PAYMENT_PRICE, PAYMENT_DATE, PAYMENT_TYPE, PRODUCT_NUM)"
-            + "VALUES (?, ?, CURRENT_DATE, ?, ?)";
+            + "VALUES (?, ?, NOW(), ?, ?)";
 
     final String UPDATE = "";
     final String DELETE = "";

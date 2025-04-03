@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class ParticipantDAO {
     // 사용자가 참여한 이벤트 목록
     final String SELECTALL = "SELECT B.* , P.PARTICIPANT_USER_EMAIL FROM BOARD B JOIN PARTICIPANT P ON B.BOARD_NUM = P.PARTICIPANT_BOARD_NUM WHERE P.PARTICIPANT_USER_EMAIL = ? ORDER BY B.BOARD_NUM DESC";
+    // 유저 마이페이지 - 참가한 이벤트 목록 출력하기
     final String SELECTALL_EVENTPRINT =
             "SELECT B.BOARD_TITLE " +
                     "FROM PARTICIPANT P " +

@@ -126,6 +126,7 @@
                     <h1>마이 페이지</h1>
 
                     <!-- 프로필 섹션 -->
+                    <!-- 프로필 섹션 -->
                     <div class="profile-container">
                         <div class="profile-header">
                             <div class="profile-left">
@@ -142,10 +143,10 @@
                                             <c:when test="${not empty userDTO.userProfile}">
                                                 <img id="profileImage" src="${userDTO.userProfile}" alt="프로필 이미지"/>
                                             </c:when>
-                                            <%--   <c:otherwise>--%>
-                                            <%--  <img id="profileImage" src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"--%>
-                                            <%--       alt="기본 프로필 이미지"/>--%>
-                                            <%--       </c:otherwise>--%>
+                                            <c:otherwise>
+                                                <img id="profileImage" src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
+                                                     alt="기본 프로필 이미지"/>
+                                            </c:otherwise>
                                         </c:choose>
 
                                         <div class="image-overlay">
@@ -153,29 +154,20 @@
                                         </div>
                                     </label>
                                 </div>
-                            </div>
-                            <%-- 일반회원, 프리미엄 회원 표시하기 --%>
 
-                            <%--                                <div class="profile-info">--%>
-                            <%--                                    <h3 class="profile-name">--%>
-                            <%--                                        <c:out value="${userDTO.userName}" default="닉네임"/>--%>
-                            <%--                                    </h3>--%>
-                            <%--                                    <span class="profile-role">일반 회원</span>--%>
-                            <%--                                </div>--%>
-                            <%--                            </div>--%>
-
-                            <div class="profile-info">
-                                <h3 class="profile-name">
-                                    <c:out value="${userDTO.userName}" default="닉네임"/>
-                                </h3>
-                                <c:choose>
-                                    <c:when test="${userDTO.userPremium}">
-                                        <span class="profile-role">프리미엄 회원</span>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <span class="profile-role">일반 회원</span>
-                                    </c:otherwise>
-                                </c:choose>
+                                <div class="profile-info">
+                                    <h3 class="profile-name">
+                                        <c:out value="${userDTO.userName}" default="닉네임"/>
+                                    </h3>
+                                    <c:choose>
+                                        <c:when test="${userDTO.userPremium}">
+                                            <span class="profile-role">프리미엄 회원</span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span class="profile-role">일반 회원</span>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
                             </div>
 
                             <div class="profile-actions">
@@ -183,7 +175,6 @@
                                     <i class="fa fa-edit"></i> 정보 수정
                                 </a>
                             </div>
-
                         </div>
                         <!-- 기본 정보 카드 -->
                         <div id="basic-info" class="info-card">
@@ -221,6 +212,19 @@
                                         </c:choose>
                                     </div>
                                 </div>
+
+                                <%-- 이메일 --%>
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="info-label">이메일</div>
+                                    <div class="info-value">
+                                        <c:out value="${userDTO.userEmail}"/>
+                                    </div>
+                                </div>
+
+
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-phone"></i>
@@ -529,7 +533,7 @@
     <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"
             type="text/javascript"></script>
     <!-- Quantity -->
-    <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme//plugins/uniform/jquery.uniform.min.js"
+    <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/uniform/jquery.uniform.min.js"
             type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/jquery.rateit.js"
             type="text/javascript"></script>
@@ -539,7 +543,7 @@
     <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
             type="text/javascript"></script>
 
-    <script src="${pageContext.request.contextPath}js/MyPage.js"></script>
+    <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/Mypage.js"></script>
     <%--페이지네이션 추가--%>
     <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/dataTables/jquery.dataTables.js"></script>
     <%--페이지네이션 css 추가--%>

@@ -41,6 +41,7 @@ public class AlertDAO {
             while (rs.next()) {
                 AlertDTO data = new AlertDTO();
                 data.setAlertNumber(rs.getInt("ALERT_NUM")); // 알림 번호
+                data.setAlertDate(rs.getDate("ALERT_DATE"));  //알림 날짜 추가
                 data.setAlertContent(rs.getString("ALERT_CONTENT"));  //알림 내용
                 data.setAlertIsWatch(rs.getBoolean("ALERT_ISWATCH"));  //알림 읽음 여부
                 datas.add(data);

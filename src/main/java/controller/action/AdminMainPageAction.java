@@ -14,7 +14,7 @@ public class AdminMainPageAction implements Action {
         System.out.println("AdminMainPageAction 로그 userRole:["+session.getAttribute("userRole")+"]");
 
         try {
-            if(((Integer)session.getAttribute("userRole")) == 1) {
+            if(((Integer)session.getAttribute("userRole")) == 1) {  //관리자만 이동 가능
                 forward.setPath("/target-free-admin-template/AdminMainPage.jsp");
                 forward.setRedirect(true);
             }

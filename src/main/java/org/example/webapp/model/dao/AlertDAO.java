@@ -15,15 +15,14 @@ public class AlertDAO {
 
     final String SELECTONE = ""; // 기능 없음
 
-    // (관리자) 유저에게 경고 알림 보내기
+    // (관리자) - 유저에게 경고 알림 보내기
     // 유저 이메일, 내용, 알림보낸날짜, 읽음 여부
     final String INSERT = "INSERT INTO ALERT (ALERT_USER_EMAIL, ALERT_CONTENT, ALERT_DATE, ALERT_ISWATCH) "
             + "VALUES (?, ?, NOW(), false)";
 
     // 유저 알림 열람여부(읽음, 안읽음) 0 == 안읽음, 1 == 읽음
     // 한 알림만 읽음 처리해야 하기 때문에, WHERE ALERT_NUM
-    final String UPDATE_ISWATCH = "UPDATE ALERT SET ALERT_ISWATCH = 1 WHERE ALERT_NUM = ?"; //1(읽음)으로 바꾸기
-
+    final String UPDATE_ISWATCH = "UPDATE ALERT SET ALERT_ISWATCH = 1 WHERE ALERT_NUM = ? "; //1(읽음)으로 바꾸기
 
     final String UPDATE = ""; // 기능 없음
 
@@ -41,10 +40,10 @@ public class AlertDAO {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 AlertDTO data = new AlertDTO();
-                data.setAlertNumber(rs.getInt("ALERT_NUM")); //추가
-                data.setAlertContent(rs.getString("ALERT_CONTENT"));
-                data.setAlertDate(rs.getDate("ALERT_DATE"));
-                data.setAlertIsWatch(rs.getBoolean("ALERT_ISWATCH"));
+                data.setAlertNumber(rs.getInt("ALERT_NUM")); // 알림 번호
+                data.setAlertContent(rs.getString("ALERT_CONTENT"));  //알림 내용
+                data.setAlertIsWatch(rs.getBoolean("ALERT_ISWATCH"));  //알림 읽음 여부
+                data.setAlertDate(rs.getDate("ALERT_DATE"));    //알림 날짜
                 datas.add(data);
             }
             return datas;
@@ -61,7 +60,7 @@ public class AlertDAO {
             JDBCUtil.disconnect(conn, pstmt);
         }
     }
-
+    // 기능 없음
     public AlertDTO selectOne(AlertDTO alertDTO) {
         throw new UnsupportedOperationException("단일 알림 조회는 제공되지 않습니다.");
     }

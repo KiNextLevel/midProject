@@ -14,24 +14,31 @@
     <link rel="shortcut icon" href="favicon.ico">
 
     <!-- Fonts START -->
-    <link
-            href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
-            rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
+          rel="stylesheet" type="text/css">
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
     <!-- Global styles END -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme styles START -->
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css"
+          rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css"
+          rel="stylesheet" id="style-color">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css"
+          rel="stylesheet">
     <!-- Theme styles END -->
 </head>
 
@@ -53,8 +60,9 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="Index.jsp"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
-                                                   alt="Next Love"></a>
+        <a class="site-logo" href="Index.jsp"><img
+                src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
+                alt="Next Love"></a>
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
     </div>
 </div>
@@ -91,7 +99,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="preferenceHeight" class="required-field">선호 키 (cm)</label>
-                                    <input type="number" class="form-control" id="preferenceHeight" name="preferenceHeight"
+                                    <input type="number" class="form-control" id="preferenceHeight"
+                                           name="preferenceHeight"
                                            min="140" max="220" value="${preferenceDTO.preferenceHeight}"
                                            placeholder="선호하는 키를 입력하세요" required>
                                     <small class="form-text text-muted">예: 170 (단위: cm)</small>
@@ -105,11 +114,21 @@
                                     <label for="preferenceBody" class="required-field">선호 체형</label>
                                     <select class="form-control" id="preferenceBody" name="preferenceBody" required>
                                         <option value="">선택하세요</option>
-                                        <option value="마른" ${preferenceDTO.preferenceBody == '마른' ? 'selected' : ''}>마른</option>
-                                        <option value="보통" ${preferenceDTO.preferenceBody == '보통' ? 'selected' : ''}>보통</option>
-                                        <option value="근육질" ${preferenceDTO.preferenceBody == '근육질' ? 'selected' : ''}>근육질</option>
-                                        <option value="통통" ${preferenceDTO.preferenceBody == '통통' ? 'selected' : ''}>통통</option>
-                                        <option value="건장" ${preferenceDTO.preferenceBody == '건장' ? 'selected' : ''}>건장</option>
+                                        <option value="마른" ${preferenceDTO.preferenceBody == '마른' ? 'selected' : ''}>
+                                            마른
+                                        </option>
+                                        <option value="보통" ${preferenceDTO.preferenceBody == '보통' ? 'selected' : ''}>
+                                            보통
+                                        </option>
+                                        <option value="근육질" ${preferenceDTO.preferenceBody == '근육질' ? 'selected' : ''}>
+                                            근육질
+                                        </option>
+                                        <option value="통통" ${preferenceDTO.preferenceBody == '통통' ? 'selected' : ''}>
+                                            통통
+                                        </option>
+                                        <option value="건장" ${preferenceDTO.preferenceBody == '건장' ? 'selected' : ''}>
+                                            건장
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -120,7 +139,8 @@
                                 <div class="form-group">
                                     <label for="preferenceAge" class="required-field">선호 나이</label>
                                     <input type="text" class="form-control" id="preferenceAge" name="preferenceAge"
-                                           value="${preferenceDTO.preferenceAge}" placeholder="선호하는 나이 범위를 입력하세요" required>
+                                           value="${preferenceDTO.preferenceAge}" placeholder="선호하는 나이 범위를 입력하세요"
+                                           required>
                                     <small class="form-text text-muted">예: 25-35 (범위로 입력)</small>
                                 </div>
                             </div>
@@ -146,7 +166,7 @@
         <div class="row">
             <!-- BEGIN BOTTOM ABOUT BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
-                <h2>Next Love</h2>
+                <h2>Next Level</h2>
                 <p>
                     우리는 인연과 연인을 중시합니다.
                 </p>
@@ -155,6 +175,10 @@
             <!-- BEGIN BOTTOM INFO BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Information</h2>
+                <p>
+                    진정한 인연을 찾아주는 플랫폼, 2025년부터 여러분의 특별한 만남을 응원합니다. 인연을 만드는 새로운 방식으로,
+                    모든 만남이 소중한 인연으로 이어지길 바랍니다.
+                </p>
             </div>
             <!-- END INFO BLOCK -->
 
@@ -175,23 +199,38 @@
                     (우) 06236 (지번) 역삼동 736-56<br>
                     Notion: <a
                         href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
-                    Email: <a href="mailto:0414minyoung@naver.com">0414minyoung@naver.com</a>
+                    Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
                 </address>
             </div>
             <!-- END BOTTOM CONTACTS -->
         </div>
+        <hr>
+        <div class="row">
+            <!-- BEGIN COPYRIGHT -->
+            <div class="col-md-12 col-sm-12 padding-top-10">
+                2025 © Next Level. ALL Rights Reserved.
+            </div>
+            <!-- END COPYRIGHT -->
+        </div>
+        <!-- END BOTTOM CONTACTS -->
     </div>
 </div>
 <!-- END PRE-FOOTER -->
 
 <!-- Load javascripts at bottom -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+        type="text/javascript"></script>
 
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
+        type="text/javascript"></script>
 <script type="text/javascript">
     jQuery(document).ready(function () {
         Layout.init();

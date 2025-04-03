@@ -13,7 +13,7 @@ public class AdminAddBoardPageAction implements Action{
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 
-		if((Integer)session.getAttribute("userRole")==1) {
+		if((Integer)session.getAttribute("userRole")==1) {	//관리자만 이동 가능
 			forward.setPath("/Metronic-Shop-UI-master/theme/AdminAddBoardPage.jsp");
 			forward.setRedirect(true);
 		}

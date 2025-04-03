@@ -21,11 +21,11 @@ public class AdminPaymentListPageAction implements Action{
 		PaymentDAO paymentDAO = new PaymentDAO();
 
 		paymentDTO.setCondition("SELECTALL_ADMIN_PAYMENTS");
-		ArrayList<PaymentDTO> datas = paymentDAO.selectAll(paymentDTO);
+		ArrayList<PaymentDTO> datas = paymentDAO.selectAll(paymentDTO);	//결제 내역
 		System.out.println("PaymentListPage log datas: "+datas);
 
 		if(datas != null) {
-			request.setAttribute("datas", datas);
+			request.setAttribute("datas", datas);	//결제 내역 가지고 페이지 이동
 			forward.setPath("/target-free-admin-template/AdminPaymentListPage.jsp");
 			forward.setRedirect(false);
 		}

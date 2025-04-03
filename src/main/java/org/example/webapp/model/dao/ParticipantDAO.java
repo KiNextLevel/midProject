@@ -8,38 +8,61 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+// 이벤트 참여 관련 기능
 public class ParticipantDAO {
+    // 사용자가 참여한 이벤트 목록
     final String SELECTALL = "SELECT B.* , P.PARTICIPANT_USER_EMAIL FROM BOARD B JOIN PARTICIPANT P ON B.BOARD_NUM = P.PARTICIPANT_BOARD_NUM WHERE P.PARTICIPANT_USER_EMAIL = ? ORDER BY B.BOARD_NUM DESC";
+    final String SELECTALL_EVENTPRINT =
+            "SELECT B.BOARD_TITLE " +
+                    "FROM PARTICIPANT P " +
+                    "JOIN BOARD B ON P.PARTICIPANT_BOARD_NUM = B.BOARD_NUM " +
+                    "WHERE P.PARTICIPANT_USER_EMAIL = ?";
+    // 이벤트에 참여중인 사용자 수
     final String SELECTONE = "SELECT COUNT(P.PARTICIPANT_USER_EMAIL) FROM PARTICIPANT P JOIN BOARD B ON P.PARTICIPANT_BOARD_NUM = B.BOARD_NUM WHERE B.BOARD_NUM = ?";
+    // 이벤트 참여하기
     final String INSERT = "INSERT INTO PARTICIPANT (PARTICIPANT_BOARD_NUM, PARTICIPANT_USER_EMAIL) VALUES (?, ?)";
+    // 참여한 이벤트 취소하기
     final String DELETE = "DELETE FROM PARTICIPANT WHERE PARTICIPANT_BOARD_NUM = ? AND PARTICIPANT_USER_EMAIL = ?";
+    // 이벤트 삭제
     final String DELETE_BOARD_NUM = "DELETE FROM PARTICIPANT WHERE PARTICIPANT_BOARD_NUM = ?";
+
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
 
     // 사용자가 참여한 이벤트 목록
-    public ArrayList<ParticipantDTO> selectAll(ParticipantDTO participantDTO){
+    public ArrayList<ParticipantDTO> selectAll(ParticipantDTO participantDTO) {
         ArrayList<ParticipantDTO> list = new ArrayList<>();
         try {
             conn = JDBCUtil.connect();
-            pstmt = conn.prepareStatement(SELECTALL);
-            pstmt.setString(1, participantDTO.getParticipantUserEmail());
-            rs = pstmt.executeQuery();
-            while(rs.next()){
-                ParticipantDTO dto = new ParticipantDTO();
-                dto.setParticipantBoardNumber(rs.getInt("BOARD_NUM"));
-                dto.setParticipantUserEmail(rs.getString("PARTICIPANT_USER_EMAIL"));
-                list.add(dto);
+
+            if (participantDTO.getCondition().equals("SELECTALL")) {
+                pstmt = conn.prepareStatement(SELECTALL);
+                pstmt.setString(1, participantDTO.getParticipantUserEmail());
+            } else if (participantDTO.getCondition().equals("SELECTALL_EVENTPRINT")) {
+                pstmt = conn.prepareStatement(SELECTALL_EVENTPRINT);
+                pstmt.setString(1, participantDTO.getParticipantUserEmail());
             }
-            return list;
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
-        } finally {
-            JDBCUtil.disconnect(conn, pstmt);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                ParticipantDTO dto = new ParticipantDTO();
+                if ("SELECTALL".equals(participantDTO.getCondition())) {
+                    dto.setParticipantBoardNumber(rs.getInt("BOARD_NUM"));
+                    dto.setParticipantUserEmail(rs.getString("PARTICIPANT_USER_EMAIL"));
+                }   if ("SELECTALL_EVENTPRINT".equals(participantDTO.getCondition())) {
+                        dto.setBoardTitle(rs.getString("BOARD_TITLE"));
+                    }
+                list.add(dto);
+                }
+
+                return list;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            } finally {
+                JDBCUtil.disconnect(conn, pstmt);
+            }
         }
-    }
 
     // 현재 참여중인 회원 수(COUNT)
     public ParticipantDTO selectOne(ParticipantDTO participantDTO){

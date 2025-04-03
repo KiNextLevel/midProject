@@ -215,7 +215,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                     <form id="sendAlert-${data.reportReported}" method="POST" class="form-inline">
                                         <input type="hidden" name="reportedUser" value="${data.reportReported}">
                                         <input type="hidden" name="reason" value="${data.reportReason}">
-
+                                        <input type="hidden" name="reportNum" value="${data.reportNumber}">
                                         <div class="form-group">
                                             <select id="action-${data.reportReported}" name="action"
                                                     class="form-control">
@@ -265,7 +265,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                     <td>
                                         <form id="DELETEBLACK-${blacksItem.userEmail}" action="adminDeleteBlack.do"
                                               method="POST">
-                                            <input type="hidden" name="REPORT_REPORTED" value="${blacksItem.userEmail}">
+                                            <input type="hidden" name="blackEmail" value="${blacksItem.userEmail}">
                                             <button type="submit" class="btn btn-remove btn-sm">
                                                 <i class="fa fa-trash-o"></i> 블랙리스트에서 삭제
                                             </button>
@@ -361,7 +361,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}js/AdminReportPage.js"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/AdminReportPage.js"></script>
 
 </body>
 <!-- END BODY -->

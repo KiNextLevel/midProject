@@ -15,7 +15,7 @@
         </jsp-property-group>
     </jsp-config>
 
-    
+
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
@@ -41,4 +41,6 @@
         <filter-name>JspFilter</filter-name>
         <url-pattern>*.jsp</url-pattern> <!-- 모든 JSP에 필터 적용 -->
     </filter-mapping>
+
+    
 </web-app>

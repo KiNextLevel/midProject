@@ -17,11 +17,20 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
-
 <!-- Head BEGIN -->
 <head>
     <meta charset="utf-8">
     <title>이벤트 페이지</title>
+    <style>
+        .participant-badges {
+            color: #6ecb1a; /* 글씨 색상 */
+            font-size: 12px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 5px;
+            white-space: nowrap; /* 줄바꿈 방지 */
+        }
+    </style>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -142,6 +151,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <h2>현재 진행 중인 이벤트가 없습니다.</h2>
                     <p>새로운 이벤트가 등록되면 이곳에서 확인하실 수 있습니다.</p>
                 </div>
+                <!-- 관리자인 경우 이벤트 추가 버튼 표시 -->
                 <c:if test="${sessionScope.userRole=='1'}">
                     <div class="admin-add-btn text-right">
                         <a href="adminAddBoardPage.do" class="btn-add-event">
@@ -165,7 +175,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <c:forEach var="data" items="${datas}">
                         <div class="event-card">
                             <div class="event-header" onclick="toggleEvent(${data.boardNumber})">
-                                <h4><span class="event-number">#${data.boardNumber}</span> ${data.boardTitle}</h4>
+                                <h4><span class="event-number">#${data.boardNumber}</span> ${data.boardTitle}
+                                    <c:if test="${data.participant == 1}">
+                                        <span class="participant-badges">참가중</span>
+                                    </c:if>
+                                </h4>
                             </div>
                             <div id="event-content-${data.boardNumber}" class="event-content">
                                 <div class="event-body">

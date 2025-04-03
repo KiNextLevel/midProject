@@ -213,10 +213,9 @@
 
 
         <!-- 지역 선택 -->
-
-            <div class="form-group">
-                <label class="col-md-2 control-label">지역 <span class="require">*</span></label>
-                <div class="col-md-8">
+        <div class="form-group">
+            <label class="col-md-2 control-label">지역 <span class="require">*</span></label>
+            <div class="col-md-8">
                 <input type="text" class="form-control"  id="region" name="userRegion" value="<c:out value="${userDTO.userRegion}"/>" readonly>
                 <button type="button" class="btn btn-success mt-4 " onclick="openAddressPopup()">주소 찾기</button>
             </div>

@@ -66,7 +66,6 @@
 <!-- Head END -->
 
 <!-- Body BEGIN -->
-
 <body class="ecommerce">
 
 <!-- BEGIN TOP BAR -->
@@ -128,8 +127,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="product-main-image">
-                            <!-- 여기에 userDTO.getUserProfile() 넣으면 됨. -->
-                            <img src="${userDTO.userProfile}" alt="Cool green dress with red bell"
+                            <img src="${userDTO.userProfile}" alt="User Profile"
                                  class="img-responsive" data-BigImgsrc="${userDTO.userProfile}">
                         </div>
                     </div>
@@ -141,6 +139,7 @@
                                 <p>닉네임 : ${userDTO.userNickname}</p>
                             </div>
                             <div class="availability">
+                                <!-- 앞에 2글자만 자르기 -->
                                 지역 : <strong>${fn:split(userDTO.userRegion, ' ')[0]}</strong>
                             </div>
 
@@ -151,6 +150,7 @@
                         <div class="product-page-cart">
                             <div class="row">
                                 <div class="col-md-6">
+                                    <!-- 채팅 구현은 NOT YET -->
                                     <button class="btn btn-primary btn-block" type="submit">1:1 채팅하기</button>
                                 </div>
                                 <div class="col-md-6">
@@ -163,17 +163,11 @@
 
                         <!-- 지도 iframe 추가 -->
                         <div style="margin-top: 20px;">
-
-
-                            <%-- 지도 iframe에 사용자 위도/경도 넘기기 --%>
-                            <%--                                 여기에다가 지도 나오게 하고 싶은데 어떻게 하면 되지..????????임포트..?--%>
                             <iframe
-                                    src="${pageContext.request.contextPath}locationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
+                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/locationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
                                     width="100%" height="400"
                                     style="border: none; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
                             </iframe>
-
-
                         </div>
                     </div>
 

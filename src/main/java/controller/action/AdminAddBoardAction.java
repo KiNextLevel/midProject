@@ -17,16 +17,16 @@ public class AdminAddBoardAction implements Action{
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
 
-		boardDTO.setBoardTitle(request.getParameter("boardTitle"));
-		boardDTO.setBoardContent(request.getParameter("boardContent"));
-		boardDTO.setBoardLimit(Integer.parseInt((String)request.getParameter("boardLimit")));
+		boardDTO.setBoardTitle(request.getParameter("boardTitle"));	//입력한 제목
+		boardDTO.setBoardContent(request.getParameter("boardContent"));	//입력한 내용
+		boardDTO.setBoardLimit(Integer.parseInt((String)request.getParameter("boardLimit")));	//입력한 제한인원
 
-		if(boardDAO.insert(boardDTO)) {
+		if(boardDAO.insert(boardDTO)) {	//추가 성공
 			request.setAttribute("msg", "이벤트 추가 성공");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "boardPage.do");
 		}
-		else {
+		else {	//추가 실패
 			request.setAttribute("msg", "이벤트 추가 실패");
 			request.setAttribute("flag", false);
 		}

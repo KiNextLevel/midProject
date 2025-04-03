@@ -27,15 +27,16 @@ public class ParticipantBoardAction implements Action{
 		ParticipantDTO participantDTO = new ParticipantDTO();
 		ParticipantDAO participantDAO = new ParticipantDAO();
 
-		int boardNum = Integer.parseInt(request.getParameter("boardNumber"));   //이벤트 번호 받음
+		int boardNum = Integer.parseInt(request.getParameter("boardNumber"));	//참가하려는 이벤트 번호
 		boardDTO.setBoardNumber(boardNum);
 		System.out.println("boardNumber: ["+boardNum+"]");
-		String userEmail = (String)session.getAttribute("userEmail");   //로그인 한 사용자 이메일
+		String userEmail = (String)session.getAttribute("userEmail");	//로그인 한 사용자 이메일
 		System.out.println("userEmail: ["+userEmail+"]");
 
 		participantDTO.setParticipantUserEmail(userEmail);
 		participantDTO.setCondition("SELECTALL");
 		ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);
+		//ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);//로그인 한 사용자가 참가한 이벤트
 		participantDTO.setParticipantBoardNumber(boardNum);
 		System.out.println("participantDTO: ["+participantDTO+"]");
 		System.out.println("participantDAO.selectOne(participantDTO)).getParticipantBoardNumber(): ["+participantDAO.selectOne(participantDTO).getParticipantBoardNumber()+"]");

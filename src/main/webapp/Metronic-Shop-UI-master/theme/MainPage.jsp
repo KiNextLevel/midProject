@@ -132,41 +132,17 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
         <!-- BEGIN CART 읽지 않은 알림이 있으면 비동기로 "새 알림이 있습니다", 없으면 그냥 없음-->
         <div class="top-cart-block">
-            <!-- 여기가 새 알림이 있습니다 칸 -->
-            <c:if test="${hasUnreadAlerts}">
-                <div class="top-cart-info">
-                    <p>새 알림이 있습니다</p>
-                </div>
-            </c:if>
+            <!-- 새 알림이 있습니다 칸 (기본 숨김) -->
+            <div class="top-cart-info" style="display: none;">
+                <p>새 알림이 있습니다</p>
+            </div>
 
-            <!-- 클릭 시 JS 함수 호출하도록 수정 -->
-            <%--            <a href="javascript:void(0);" class="top-cart-toggle" onclick="toggleCartContent()">--%>
             <i class="fa fa-bell"></i>
-            <%--            </a>--%>
 
             <div class="top-cart-content-wrapper">
                 <div class="top-cart-content">
                     <ul class="scroller" style="height: 250px;">
-                        <c:if test="${empty alertDatas}">
-                            <li>
-                                <p>받은 알림이 아직 없습니다</p>
-                            </li>
-                        </c:if>
-
-                        <c:forEach var="data" items="${alertDatas}">
-                            <li id="alert-${data.alertNumber}" onclick="markAsRead(${data.alertNumber})">
-                                <span class="cart-content-count">${data.alertNumber}</span>
-                                <a href="javascript:void(0);" class="alert-content">${data.alertContent}</a>
-
-                                <em>${data.alertDate}</em>
-
-                                <!-- 상태를 표시 (읽음/읽지 않음) -->
-                                <span class="alert-status"
-                                      style="background-color: ${data.alertIsWatch ? '#4CAF50' : '#F44336'};">
-                                        ${data.alertIsWatch ? '읽음' : '읽지 않음'}
-                                </span>
-                            </li>
-                        </c:forEach>
+                        <!-- 알림 목록은 JavaScript로 동적 생성 -->
                     </ul>
                 </div>
             </div>
@@ -224,16 +200,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <!-- 성별 필터 -->
                     <h3>성별</h3>
                     <div class="checkbox-list" id="gender-filters">
-                        <label><input type="checkbox" name="gender" value="남" checked="checked"> 남</label>
-                        <label><input type="checkbox" name="gender" value="여" checked="checked"> 여</label>
+                        <label><input type="checkbox" name="gender" value="남" > 남</label>
+                        <label><input type="checkbox" name="gender" value="여" > 여</label>
                     </div>
 
                     <!-- 거리 필터 -->
                     <h3>거주지역</h3>
                     <div class="checkbox-list" id="distance-filters">
-                        <label><input type="radio" name="distance" value="10" checked="checked"> 10km 이내</label>
+                        <label><input type="radio" name="distance" value="10"> 10km 이내</label>
                         <label><input type="radio" name="distance" value="50"> 50km</label>
-                        <label><input type="radio" name="distance" value="100"> 100km 이상</label>
+                        <label><input type="radio" name="distance" value="100" checked="checked"> 100km 이상</label>
                     </div>
                     <!-- 나이 슬라이더 -->
                     <h3>나이</h3>
@@ -430,281 +406,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
         type="text/javascript"></script>
 <script type="text/javascript">
-    jQuery(document).ready(function () {
-        Layout.init();
-        Layout.initOWL();
-        Layout.initTwitter();
-        Layout.initImageZoom();
-        Layout.initTouchspin();
-        Layout.initUniform();
-        Layout.initAgeSliderRange();
-        Layout.initHeightSliderRange();
-    });
+    // 전역 변수 설정 (JSP에서 JavaScript로 데이터 전달)
+    window.allUsers = ${userDatas};
+    window.currentUserEmail = "${sessionScope.userEmail}";
+    window.currentUserLatitude = "${sessionScope.userLatitude}";
+    window.currentUserLongitude = "${sessionScope.userLongitude}";
+    window.alertDatasJson = '${sessionScope.alertDatasJson}';
 
-    function markAsRead(alertNumber) {
-        // 클릭된 알림 번호를 로그에 출력
-        console.log("로그: 알림 번호 [" + alertNumber + "]");
-
-        // AJAX 요청을 통해 알림 상태를 "읽음"으로 변경
-        $.ajax({
-            url: "/updateAlertStatus",  // 상태를 업데이트할 URL
-            type: "POST",
-            data: {alertNumber: alertNumber},  // alertNumber만 쿼리 문자열로 보내기
-            dataType: 'json',  // 서버에서 응답으로 받는 데이터 타입
-            success: function (response) {
-                console.log("로그: 상태 업데이트 성공 [" + response + "]");
-
-                // 상태 업데이트 성공 시, UI에서 해당 알림의 상태를 '읽음'으로 변경
-                $("#alert-" + alertNumber)
-                    .find(".alert-status")
-                    .css("background-color", "#4CAF50")  // '읽음' 색상으로 변경
-                    .text("읽음");  // 텍스트를 '읽음'으로 변경
-
-                // 매번 알림을 읽음으로 표시할 때마다 호출
-                // 새 알림이 있습니다 숨기기 위한 함수
-                checkAllAlertsRead();
-            },
-            error: function () {
-                console.log("비동기 처리 실패");
-            }
-        });
-    }
-
-    // 알림 상태를 모두 확인하여 "새 알림이 있습니다" 메시지를 숨기기
-    function checkAllAlertsRead() {
-        // 모든 알림이 '읽음' 상태인지 확인
-        let allRead = true;
-
-        $(".alert-status").each(function () {
-            if ($(this).text() === '읽지 않음') {
-                allRead = false;
-            }
-        });
-
-        // 모든 알림이 읽음이면 "새 알림이 있습니다" 메시지 숨기기
-        if (allRead) {
-            $(".top-cart-info").hide();  // "새 알림이 있습니다" 메시지를 숨김
-        }
-    }
-
-    // 페이지 레이아웃 스크립트에 추가
-    $(window).on('load', function () {
-        // 모든 이미지가 로드된 후 실행
-        equalizeCardHeights();
-    });
-
-    $(window).on('resize', function () {
-        // 창 크기 변경 시 실행
-        equalizeCardHeights();
-    });
-
-    function equalizeCardHeights() {
-        // 먼저 모든 카드의 높이를 초기화합니다
-        $('.product-item').css('height', 'auto');
-
-        // 화면 너비에 따라 한 행에 몇 개의 카드가 들어가는지 확인
-        const cardsPerRow = $(window).width() > 992 ? 3 : ($(window).width() > 768 ? 2 : 1);
-
-        // 각 행별로 처리
-        for (let i = 0; i < $('.product-item').length; i += cardsPerRow) {
-            let maxHeight = 0;
-
-            // 현재 행에서 가장 높은 카드 찾기
-            for (let j = 0; j < cardsPerRow; j++) {
-                if (i + j < $('.product-item').length) {
-                    const cardHeight = $('.product-item').eq(i + j).outerHeight();
-                    maxHeight = Math.max(maxHeight, cardHeight);
-                }
-            }
-
-            // 현재 행의 모든 카드 높이를 최대 높이로 설정
-            for (let j = 0; j < cardsPerRow; j++) {
-                if (i + j < $('.product-item').length) {
-                    $('.product-item').eq(i + j).css('height', maxHeight + 'px');
-                }
-            }
-        }
-    }
-
-
-    const allUsers = ${userDatas};
-    let filteredUsers = [];
-    let start = 0;
-    const limit = 9;
-    const currentUserEmail = "${sessionScope.userEmail}";
-    const currentYear = new Date().getFullYear();
-
-    console.log("Raw userDatas:", ${userDatas});
-
-    $(document).ready(function () {
-        initSliders();
-        applyFilters();
-
-        $('#load-more-btn').on('click', function () {
-            loadMoreUsers();
-        });
-
-        $('input[name="gender"], input[name="distance"], input[name="religion"], input[name="smoking"]').on('change', applyFilters);
-    });
-
-    function initSliders() {
-        $('#age-slider-range').slider({
-            range: true,
-            min: 0,
-            max: 100,
-            values: [0, 100],
-            slide: function (event, ui) {
-                $('#ageAmount').val(ui.values[0] + ' - ' + ui.values[1]);
-            },
-            change: function (event, ui) {
-                applyFilters();
-            }
-        });
-        $('#ageAmount').val($('#age-slider-range').slider('values', 0) + ' - ' + $('#age-slider-range').slider('values', 1));
-
-        $('#height-slider-range').slider({
-            range: true,
-            min: 130,
-            max: 220,
-            values: [130, 220],
-            slide: function (event, ui) {
-                $('#heightAmount').val(ui.values[0] + ' - ' + ui.values[1]);
-            },
-            change: function (event, ui) {
-                applyFilters();
-            }
-        });
-        $('#heightAmount').val($('#height-slider-range').slider('values', 0) + ' - ' + $('#height-slider-range').slider('values', 1));
-    }
-
-    function applyFilters() {
-        const selectedGenders = $('input[name="gender"]:checked').map(function () {
-            return $(this).val();
-        }).get();
-        const selectedDistance = $('input[name="distance"]:checked').val();
-        const ageRange = $('#age-slider-range').slider('values');
-        const heightRange = $('#height-slider-range').slider('values');
-        const selectedReligions = $('input[name="religion"]:checked').map(function () {
-            return $(this).val();
-        }).get();
-        const selectedSmoking = $('input[name="smoking"]:checked').map(function () {
-            return $(this).val();
-        }).get();
-
-        console.log("Selected Genders:", selectedGenders);
-        console.log("Selected Distance:", selectedDistance);
-        console.log("Age Range:", ageRange);
-        console.log("Height Range:", heightRange);
-        console.log("Selected Religions:", selectedReligions);
-        console.log("Selected Smoking:", selectedSmoking);
-
-        filteredUsers = allUsers.filter(user => {
-            console.log("User Data:", user);
-
-            const birthYear = parseInt(user.userBirth) || 0;
-            const userAge = birthYear ? currentYear - birthYear : 0;
-            console.log(userAge)
-            const userGenderStr = user.userGender ? "남" : "여";
-            const userSmokeStr = user.userSmoke ? "흡연" : "비흡연";
-            const userDistance = parseInt(user.userRegion) || 0;
-
-            const passesRole = user.userRole === 0;
-            const passesEmail = user.userEmail !== currentUserEmail;
-            const passesGender = selectedGenders.length === 0 || selectedGenders.includes(userGenderStr);
-            const passesDistance = userDistance <= parseInt(selectedDistance) || selectedDistance === '100';
-            const passesAge = userAge >= ageRange[0] && userAge <= ageRange[1];
-            const passesHeight = user.userHeight >= heightRange[0] && user.userHeight <= heightRange[1];
-            const passesReligion = selectedReligions.length === 0 || selectedReligions.includes(user.userReligion);
-            const passesSmoking = selectedSmoking.length === 0 || selectedSmoking.includes(userSmokeStr);
-
-            console.log("Filter Conditions:", {
-                passesRole, passesEmail, passesGender, passesDistance,
-                passesAge, passesHeight, passesReligion, passesSmoking
-            });
-
-            return (
-                passesRole &&
-                passesEmail &&
-                passesGender &&
-                passesDistance &&
-                passesAge &&
-                passesHeight &&
-                passesReligion &&
-                passesSmoking
-            );
-        });
-
-        console.log("Filtered Users:", filteredUsers);
-        start = 0;
-        $('#product-list').empty();
-        loadInitialUsers();
-    }
-
-    function loadInitialUsers() {
-        const usersToDisplay = filteredUsers.slice(start, start + limit);
-        updateProductList(usersToDisplay, false);
-        start += limit;
-        updateLoadMoreButton();
-    }
-
-    function loadMoreUsers() {
-        const usersToDisplay = filteredUsers.slice(start, start + limit);
-        updateProductList(usersToDisplay, true);
-        start += limit;
-        updateLoadMoreButton();
-    }
-
-    function updateLoadMoreButton() {
-        if (start >= filteredUsers.length) {
-            $('#load-more-btn').text('더 이상 없습니다').prop('disabled', true);
-        } else {
-            $('#load-more-btn').text('더 보기').prop('disabled', false).show();
-        }
-    }
-
-    function updateProductList(users, append) {
-        if (!users || users.length === 0) {
-            $('#product-list').html('<p>회원이 없습니다</p>');
-            return;
-        }
-
-        let productListHtml = '';
-        users.forEach(function (data) {
-            if (!data.userEmail || !data.userNickname) {
-                console.log("Invalid user data:", data);
-                return;
-            }
-            console.log("Rendering user:", data.userEmail, data.userNickname, data.userHeight, data.userDescription);
-            let year = currentYear - parseInt(data.userBirth);
-            console.log("나이 출력" + year);
-            productListHtml += `
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="product-item">
-                    <div class="pi-img-wrapper">
-                        <img src="\${data.userProfile || 'default.jpg'}" class="img-responsive" alt="userImage">
-                        <div class="product-page-cart">
-                            <button class="btn btn-primary" type="submit">메시지 보내기</button>
-                            <a href="userDetailPage.do?userEmail=\${data.userEmail}" class="btn btn-default">프로필 보기</a>
-                        </div>
-                    </div>
-                    <h3><a href="userDetailPage.do?userEmail=\${data.userEmail}">닉네임: <strong>\${data.userNickname}</strong></a></h3>
-                    <div class="region">지역: \${data.userRegion ? data.userRegion.split(' ')[0] : 'N/A'}</div>
-                    <div class="age">나이: \${year}세</div>
-                    <div class="description">소개: \${data.userDescription || '설명 없음'}</div>
-                </div>
-            </div>
-        `;
-        });
-
-        if (append) {
-            $('#product-list').append(productListHtml);
-        } else {
-            $('#product-list').html(productListHtml);
-        }
-        equalizeCardHeights();
-    }
+    console.log("Raw userDatas:", window.allUsers);
 </script>
-
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/MainPage.js"></script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

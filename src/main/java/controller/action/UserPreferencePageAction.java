@@ -5,6 +5,7 @@ import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
+// 페이지 전환 Action
 public class UserPreferencePageAction implements Action {
     @Override
     public ActionForward execute(HttpServletRequest request) {
@@ -18,6 +19,7 @@ public class UserPreferencePageAction implements Action {
         // request에 사용자 이메일 저장
         request.setAttribute("userEmail", userEmail);
 
+        // UserPreference.jsp로 보냄.
         forward.setPath("/Metronic-Shop-UI-master/theme/UserPreference.jsp");
         forward.setRedirect(false); // 리다이렉트 대신 포워드 사용
         return forward;

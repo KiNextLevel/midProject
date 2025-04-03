@@ -233,7 +233,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         <label><input type="checkbox" name="religion" value="기독교"> 기독교</label>
                         <label><input type="checkbox" name="religion" value="불교"> 불교</label>
                         <label><input type="checkbox" name="religion" value="천주교"> 천주교</label>
-                        <label><input type="checkbox" name="religion" value="힌두교"> 힌두교</label>
+                        <label><input type="checkbox" name="religion" value="이슬람교"> 이슬람교</label>
                         <label><input type="checkbox" name="religion" value="기타"> 기타</label>
                     </div>
                     <!-- 흡연 -->

@@ -27,21 +27,20 @@ public class PaymentAction implements Action {
 		PaymentDTO paymentDTO = new PaymentDTO();
 		SendMessage send = new SendMessage();
 
-        int productNum = Integer.parseInt((String)request.getParameter("productNum"));
-		//String productPrice = (String)request.getParameter("productPrice");
+        int productNum = Integer.parseInt(request.getParameter("productNum")); //구매하려는 상품 번호
 		System.out.println("productNum = "+productNum);
 		System.out.println("CONT 로그: PAYMENT ACTION 도착2");
 		userDTO.setUserEmail((String)session.getAttribute("userEmail"));
 		userDTO.setCondition("SELECTONE_USERINFO");
 		userDTO = userDAO.selectOne(userDTO);
-		String userName = userDTO.getUserName();
+		String userName = userDTO.getUserName();	//구매자 이름
 		System.out.println("userName: ["+userName+"]");
-		String phone = userDTO.getUserPhone();
+		String phone = userDTO.getUserPhone();	//구매자 핸드폰 번호
 		System.out.println("phone: ["+phone+"]");
 
         // 상품에 해당하는 정보 가져오기
         productDTO.setProductNumber(productNum);
-        productDTO = productDAO.selectOne(productDTO);
+        productDTO = productDAO.selectOne(productDTO);	//상품 정보
 		int productPrice = productDTO.getProductPrice();
 		String productName = productDTO.getProductName();
 		System.out.println("productPrice: ["+productPrice+"]");
@@ -53,14 +52,13 @@ public class PaymentAction implements Action {
 			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
 			forward.setRedirect(false);
 		}
-		//이메일, 가격, 결제방법, 상품번호
 		else{
 			paymentDTO.setProductNumber(productDTO.getProductNumber());
 			paymentDTO.setUserEmail((String)session.getAttribute("userEmail"));
 			paymentDTO.setPaymentPrice(productDTO.getProductPrice());
 			paymentDTO.setProductName(productDTO.getProductName());
-			paymentDAO.insert(paymentDTO);
-			//send.sendPay(phone, userName, productPrice, productName);
+			paymentDAO.insert(paymentDTO);	//payment 테이블에 구매정보 추가
+			//send.sendPay(phone, userName, productPrice, productName);	//구매자에게 구매정보 문자 전송
 		}
 		request.setAttribute("productNum", productNum);
 		forward.setPath("addToken.do");

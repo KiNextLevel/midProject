@@ -4,7 +4,6 @@ import controller.asyn.RandomPassword;
 import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.UserDTO;
@@ -16,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.UUID;
 
 public class KakaoCallBackAction implements Action {
     public ActionForward execute(HttpServletRequest request) {
@@ -81,7 +79,7 @@ public class KakaoCallBackAction implements Action {
                     HttpSession session = request.getSession();
                     session.setAttribute("userEmail", user.getUserEmail());
                     session.setAttribute("userRole", user.getUserRole());
-                    session.setAttribute("userPremium", user.isUserPreminum());
+                    session.setAttribute("userPremium", user.isUserPremium());
 
                     // 컨디션 "위치 정보 가져옴"
                     user.setCondition("SELECTONE_LOCATION");

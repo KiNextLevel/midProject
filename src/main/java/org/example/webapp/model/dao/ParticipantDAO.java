@@ -51,8 +51,8 @@ public class ParticipantDAO {
                     dto.setParticipantUserEmail(rs.getString("PARTICIPANT_USER_EMAIL"));
                 }   if ("SELECTALL_EVENTPRINT".equals(participantDTO.getCondition())) {
                         dto.setBoardTitle(rs.getString("BOARD_TITLE"));
-                        list.add(dto);
                     }
+                list.add(dto);
                 }
 
                 return list;

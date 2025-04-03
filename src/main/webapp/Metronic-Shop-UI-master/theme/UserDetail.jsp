@@ -164,7 +164,7 @@
                         <!-- 지도 iframe 추가 -->
                         <div style="margin-top: 20px;">
                             <iframe
-                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/locationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
+                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/LocationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
                                     width="100%" height="400"
                                     style="border: none; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
                             </iframe>

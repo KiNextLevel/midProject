@@ -10,21 +10,23 @@ import java.util.ArrayList;
 
 public class ProductDAO {
 
-    // 상품 구매 페이지에서 상품 출력(상품명, 상품 설명, 상품 가격)
+    // 상품 구매 페이지에서 상품 출력 - 상품명, 상품 설명, 상품 가격
     final String SELECTALL_PRODUCTS_BUY = "SELECT PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE FROM PRODUCT";
 
-    // 00유저 마이페이지에서 상품결제 내역 보기(상품명, 결제 내역, 가격)
-    final String SELECTALL_PAYMENT_HISTORY = "SELECT p.PRODUCT_NAME, pm.PAYMENT_DATE, pm.PAYMENT_PRICE "
-            + "FROM PAYMENT pm" + "JOIN PRODUCT p ON pm.PRODUCT_NUM = p.PRODUCT_NUM"
-            + "WHERE pm.PAYMENT_USER_EMAIL = ?";
+    // 00유저 마이페이지에서 상품결제 내역 보기 - 상품명, 결제 내역, 가격
+    final String SELECTALL_PAYMENT_HISTORY = "SELECT p.PRODUCT_NAME, pm.PAYMENT_DATE, pm.PAYMENT_PRICE " +
+                                             "FROM PAYMENT pm " +
+                                             "JOIN PRODUCT p ON pm.PRODUCT_NUM = p.PRODUCT_NUM " +
+                                             "WHERE pm.PAYMENT_USER_EMAIL = ?";
+
 
     // 상품번호로 상품명, 상품 설명, 상품 가격 가져오기(추가)
     final String SELECTONE = "SELECT PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE FROM PRODUCT WHERE PRODUCT_NUM = ?";
 
-    // 관리자용 상품 추가하기 쿼리문 (상품 이름, 설명, 가격 추가하기(상품번호는 AUTO))
+    // 관리자용 상품 추가하기 쿼리문 - 상품 이름, 설명, 가격 추가하기(상품번호는 AUTO)
     final String INSERT = "INSERT INTO PRODUCT (PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE) VALUES (?, ?, ?)";
 
-    // 관리자용 상품 정보 업데이트 (상품명, 설명, 가격 변경 하기)
+    // 관리자용 상품 정보 업데이트 - 상품명, 설명, 가격 변경 하기
     final String UPDATE = "UPDATE PRODUCT SET PRODUCT_NAME = ?, PRODUCT_DESCRIPTION = ?, PRODUCT_PRICE = ? WHERE PRODUCT_NUM = ?";
 
     // 관리자용 상품 삭제하기 (상품명, 설명, 가격 삭제 하기)
@@ -52,21 +54,17 @@ public class ProductDAO {
                 ProductDTO data = new ProductDTO();
                 // 상품 구매 페이지에서 상품 출력(상품명, 상품 설명, 상품 가격)
                 if (productDTO.getCondition().equals("SELECTALL_PRODUCTS_BUY")) {
-                    data.setProductName(rs.getString("PRODUCT_NAME"));
-                    data.setProductDescription(rs.getString("PRODUCT_DESCRIPTION"));
-                    data.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+                    data.setProductName(rs.getString("PRODUCT_NAME"));   // 상품 이름
+                    data.setProductDescription(rs.getString("PRODUCT_DESCRIPTION"));  //상품 설명
+                    data.setProductPrice(rs.getInt("PRODUCT_PRICE"));   // 상품 가격
+                    datas.add(data);
                     // 유저 마이페이지에서 상품결제 내역 보기(상품명, 결제 내역, 가격)
                 } else if (productDTO.getCondition().equals("SELECTALL_PAYMENT_HISTORY")) {
-                    data.setProductName(rs.getString("PRODUCT_NAME"));
-                    data.setPaymentDate(rs.getDate("PAYMENT_DATE"));
-                    data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));
+                    data.setProductName(rs.getString("PRODUCT_NAME"));   // 상품 이름
+                    data.setPaymentDate(rs.getDate("PAYMENT_DATE"));     // 결제 날짜
+                    data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));    // 결제한 금액
+                    datas.add(data);
                 }
-
-//                data.setProductName(rs.getString("PRODUCT_NAME"));
-//                data.setProductDescription(rs.getString("PRODUCT_DESCRIPTION"));
-//                data.setProductPrice(rs.getInt("PRODUCT_PRICE"));
-//                datas.add(data);
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,9 +89,9 @@ public class ProductDAO {
 
             if (rs.next()) {
                 data = new ProductDTO();
-                data.setProductName(rs.getString("PRODUCT_NAME"));
-                data.setProductDescription(rs.getString("PRODUCT_DESCRIPTION"));
-                data.setProductPrice(rs.getInt("PRODUCT_PRICE"));
+                data.setProductName(rs.getString("PRODUCT_NAME"));  // 상품 이름
+                data.setProductDescription(rs.getString("PRODUCT_DESCRIPTION"));  // 상품 설명
+                data.setProductPrice(rs.getInt("PRODUCT_PRICE"));  // 상품 가격
                 data.setProductNumber(productDTO.getProductNumber()); // 요청한 상품번호도 설정
             }
         } catch (Exception e) {
@@ -114,9 +112,9 @@ public class ProductDAO {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(INSERT);
 
-            pstmt.setString(1, productDTO.getProductName());
-            pstmt.setString(2, productDTO.getProductDescription());
-            pstmt.setInt(3, productDTO.getProductPrice());
+            pstmt.setString(1, productDTO.getProductName());  // 상품 이름
+            pstmt.setString(2, productDTO.getProductDescription());  // 상품 설명
+            pstmt.setInt(3, productDTO.getProductPrice());   //상품 가격
 
             int result = pstmt.executeUpdate(); // 실행 후 적용된 행 개수 반환
             return result > 0; // 1개 이상 변경되었으면 true 반환
@@ -137,9 +135,9 @@ public class ProductDAO {
             conn = JDBCUtil.connect();
             pstmt = conn.prepareStatement(UPDATE);
 
-            pstmt.setString(1, productDTO.getProductName());
-            pstmt.setString(2, productDTO.getProductDescription());
-            pstmt.setInt(3, productDTO.getProductPrice());
+            pstmt.setString(1, productDTO.getProductName());    // 상품 이름
+            pstmt.setString(2, productDTO.getProductDescription());  // 상품 설명
+            pstmt.setInt(3, productDTO.getProductPrice());    // 상품 가격
             pstmt.setInt(4, productDTO.getProductNumber()); // WHERE 조건 - 특정 상품 수정
 
             int result = pstmt.executeUpdate(); // 실행 후 적용된 행 개수 반환

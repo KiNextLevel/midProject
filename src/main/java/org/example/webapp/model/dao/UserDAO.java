@@ -108,32 +108,32 @@ public class UserDAO {
 
 
             rs = pstmt.executeQuery();
-            while (rs.next()) {
-                UserDTO data = new UserDTO();
-                data.setUserEmail(rs.getString("USER_EMAIL"));
-                data.setUserPassword(rs.getString("USER_PASSWORD"));
-                data.setUserNickname(rs.getString("USER_NICKNAME"));
-                data.setUserPhone(rs.getString("USER_PHONE"));
-                data.setUserRegdate(rs.getDate("USER_REGDATE"));
-                data.setUserGender(rs.getInt("USER_GENDER") == 1);
-                data.setUserBirth(rs.getString("USER_BIRTH"));
-                data.setUserHeight(rs.getInt("USER_HEIGHT"));
-                data.setUserBody(rs.getString("USER_BODY"));
-                data.setUserMbti(rs.getString("USER_MBTI"));
-                data.setUserProfile(rs.getString("USER_PROFILE"));
-                data.setUserEducation(rs.getString("USER_EDUCATION"));
-                data.setUserReligion(rs.getString("USER_RELIGEION"));
-                data.setUserLatitude(rs.getDouble("USER_LATITUDE"));  // 위도 추가
-                data.setUserLongitude(rs.getDouble("USER_LONGITUDE")); //경도 추가
-                data.setUserDrink(rs.getInt("USER_DRINK"));
-                data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
-                data.setUserJob(rs.getString("USER_JOB"));
-                data.setUserRole(rs.getInt("USER_ROLE"));
-                data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
-                data.setUserToken(rs.getInt("USER_TOKEN"));
-                data.setUserRegion(rs.getString("USER_REGION"));
-                data.setUserDescription(rs.getString("USER_DESCRIPTION"));
-                data.setUserName(rs.getString("USER_NAME"));
+                while (rs.next()) {
+                    UserDTO data = new UserDTO();
+                    data.setUserEmail(rs.getString("USER_EMAIL"));
+                    data.setUserPassword(rs.getString("USER_PASSWORD"));
+                    data.setUserNickname(rs.getString("USER_NICKNAME"));
+                    data.setUserPhone(rs.getString("USER_PHONE"));
+                    data.setUserRegdate(rs.getDate("USER_REGDATE"));
+                    data.setUserGender(rs.getInt("USER_GENDER") == 1);
+                    data.setUserBirth(rs.getString("USER_BIRTH"));
+                    data.setUserHeight(rs.getInt("USER_HEIGHT"));
+                    data.setUserBody(rs.getString("USER_BODY"));
+                    data.setUserMbti(rs.getString("USER_MBTI"));
+                    data.setUserProfile(rs.getString("USER_PROFILE"));
+                    data.setUserEducation(rs.getString("USER_EDUCATION"));
+                    data.setUserReligion(rs.getString("USER_RELIGEION"));
+                    data.setUserLatitude(rs.getDouble("USER_LATITUDE"));  // 위도 추가
+                    data.setUserLongitude(rs.getDouble("USER_LONGITUDE")); //경도 추가
+                    data.setUserDrink(rs.getInt("USER_DRINK"));
+                    data.setUserSmoke(rs.getInt("USER_SMOKE") == 1);
+                    data.setUserJob(rs.getString("USER_JOB"));
+                    data.setUserRole(rs.getInt("USER_ROLE"));
+                    data.setUserPreminum(rs.getInt("USER_PREMIUM") == 1);
+                    data.setUserToken(rs.getInt("USER_TOKEN"));
+                    data.setUserRegion(rs.getString("USER_REGION"));
+                    data.setUserDescription(rs.getString("USER_DESCRIPTION"));
+                    data.setUserName(rs.getString("USER_NAME"));
                 datas.add(data);
             }
             return datas;

@@ -95,9 +95,6 @@
                                         <th>이메일</th>
                                         <th>결제 금액</th>
                                         <th>결제 상품</th>
-                                        <!--
-                                        <th>CSS grade</th>
-                                        -->
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -109,8 +106,6 @@
                                             <td class="center">${data.productName}</td>
                                         </tr>
                                     </c:forEach>
-
-
                                     </tbody>
                                 </table>
                             </div>

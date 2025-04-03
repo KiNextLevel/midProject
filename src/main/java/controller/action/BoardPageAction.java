@@ -20,7 +20,7 @@ public class BoardPageAction implements Action{
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
 		boardDTO.setSearchKeyword((String)session.getAttribute("userEmail"));
-		ArrayList<BoardDTO> datas = boardDAO.selectAll(boardDTO);
+		ArrayList<BoardDTO> datas = boardDAO.selectAll(boardDTO);	//이벤트 리스트
 		System.out.println("board SELECTALL 로그:"+datas);
 		
 		request.setAttribute("datas", datas);

@@ -15,13 +15,10 @@ public class AdminModifyBoardPageAction implements Action{
 		BoardDTO boardDTO = new BoardDTO();
 		BoardDAO boardDAO = new BoardDAO();
 
-		int boardNum = Integer.parseInt((String)request.getParameter("boardNum"));
+		int boardNum = Integer.parseInt(request.getParameter("boardNum"));//수정하려는 이벤트 번호
 		System.out.println("boardNum["+boardNum+"]");
 		boardDTO.setBoardNumber(boardNum);
 		boardDTO = boardDAO.selectOne(boardDTO);
-//		String boardTitle = boardDTO.getBoardTitle();
-//		String boardContent = boardDTO.getBoardContent();
-//		int boardLimit = boardDTO.getBoardLimit();
 		System.out.println("boardDTO ="+boardDTO);
 
 		if(boardDTO == null) {
@@ -31,7 +28,7 @@ public class AdminModifyBoardPageAction implements Action{
 			forward.setRedirect(false);
 		}
 		else {
-			request.setAttribute("data", boardDTO);
+			request.setAttribute("data", boardDTO);//수정하려는 이벤트 정보 가지고 감
 			forward.setPath("/Metronic-Shop-UI-master/theme/AdminModifyBoardPage.jsp");
 			forward.setRedirect(false);
 		}

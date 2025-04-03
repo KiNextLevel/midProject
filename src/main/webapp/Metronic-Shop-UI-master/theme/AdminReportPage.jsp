@@ -265,7 +265,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                     <td>
                                         <form id="DELETEBLACK-${blacksItem.userEmail}" action="adminDeleteBlack.do"
                                               method="POST">
-                                            <input type="hidden" name="REPORT_REPORTED" value="${blacksItem.userEmail}">
+                                            <input type="hidden" name="blackEmail" value="${blacksItem.userEmail}">
                                             <button type="submit" class="btn btn-remove btn-sm">
                                                 <i class="fa fa-trash-o"></i> 블랙리스트에서 삭제
                                             </button>

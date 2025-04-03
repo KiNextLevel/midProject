@@ -64,8 +64,14 @@
 
             <div class="form-group">
                 <label for="signup-email"><i class="fa fa-envelope"></i> 이메일</label>
-                <input type="email" id="signup-email" name="userEmail" class="form-control" placeholder="이메일 주소" required>
+                <div class="input-group">
+                    <input type="email" id="signup-email" name="userEmail" class="form-control" placeholder="이메일 주소" required>
+                    <button type="button" class="btn-check-email" onclick="checkEmailDuplicate()">중복 확인</button>
+                </div>
+                <div id="emailCheckResult" class="mt-1"></div>
+                <input type="hidden" id="emailVerified" name="emailVerified" value="false">
             </div>
+
 
             <div class="form-group">
                 <label for="signup-password"><i class="fa fa-lock"></i> 비밀번호</label>
@@ -96,50 +102,62 @@
 <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/SignInUp.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $("#signup-email").keyup(function() {
-            var email = $(this).val();
+    function checkEmailDuplicate() {
+        // 이메일 입력 필드의 ID를 HTML과 일치시킴
+        const userEmail = document.getElementById('signup-email').value;
 
-            if(email != "") {
-                console.log("이메일 중복 확인 요청: " + email);  // 디버깅용 로그
+        // 이메일이 비어있는지 확인
+        if (!userEmail) {
+            alert('이메일을 입력해주세요.');
+            return;
+        }
 
-                $.ajax({
-                    url: "checkEmailDuplicate.do",
-                    type: "POST",
-                    data: {
-                        userEmail: email,
-                        socialType: "normal"
-                    },
-                    dataType: "json",
-                    success: function(response) {
-                        console.log("서버 응답:", response);  // 디버깅용 로그
+        // 이메일 형식 검증
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailRegex.test(userEmail)) {
+            alert('올바른 이메일 형식이 아닙니다.');
+            return;
+        }
 
-                        // 기존 메시지 제거
-                        $("#emailCheck").remove();
+        // 소셜 타입 가져오기 (소셜 로그인 여부에 따라 다르게 설정)
+        const socialType = 'normal'; // 기본값으로 normal 설정
 
-                        // 새 메시지 추가
-                        if(response.available) {
-                            $("#signup-email").after('<div id="emailCheck" style="color: green; margin-top: 5px;">' + response.message + '</div>');
-                        } else {
-                            $("#signup-email").after('<div id="emailCheck" style="color: red; margin-top: 5px;">' + response.message + '</div>');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("이메일 중복 확인 중 오류 발생:", error);
-                        console.error("상태 코드:", xhr.status);
-                        console.error("응답 텍스트:", xhr.responseText);
+        console.log("이메일 중복 체크 요청:", userEmail);
 
-                        // 기존 메시지 제거
-                        $("#emailCheck").remove();
+        // AJAX 요청
+        $.ajax({
+            url: '/checkEmailDuplicate.do', // 서블릿 URL
+            type: 'POST',
+            data: {
+                userEmail: userEmail,
+                socialType: socialType
+            },
+            success: function(response) {
+                console.log("서버 응답:", response);
 
-                        // 오류 메시지 추가
-                        $("#signup-email").after('<div id="emailCheck" style="color: red; margin-top: 5px;">서버 오류가 발생했습니다. 다시 시도해주세요.</div>');
-                    }
-                });
+                if (response.isDuplicate) {
+                    // 중복된 이메일인 경우
+                    alert(response.message);
+                    document.getElementById('emailCheckResult').innerHTML =
+                        '<span style="color: red;">이미 사용 중인 이메일입니다.</span>';
+                    document.getElementById('emailVerified').value = 'false';
+                } else {
+                    // 사용 가능한 이메일인 경우
+                    alert(response.message);
+                    document.getElementById('emailCheckResult').innerHTML =
+                        '<span style="color: green;">사용 가능한 이메일입니다.</span>';
+                    document.getElementById('emailVerified').value = 'true';
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('이메일 중복 체크 중 오류 발생:', error);
+                console.error('상태 코드:', xhr.status);
+                console.error('응답 텍스트:', xhr.responseText);
+                alert('서버 오류가 발생했습니다. 나중에 다시 시도해주세요.');
             }
         });
-    });
-
+    }
 </script>
+
 </body>
 </html>

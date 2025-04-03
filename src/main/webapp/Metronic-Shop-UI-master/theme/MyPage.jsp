@@ -20,14 +20,22 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
           rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css"/>
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color"/>
-    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/components.css"
+          rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style.css"
+          rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/pages/css/style-shop.css"
+          rel="stylesheet" type="text/css"/>
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/style-responsive.css"
+          rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/themes/red.css"
+          rel="stylesheet" id="style-color"/>
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css"
+          rel="stylesheet"/>
 </head>
 <body class="ecommerce">
 <!-- BEGIN TOP BAR -->
@@ -66,7 +74,9 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="mainPage.do"><img src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png" alt="mainPage"></a>
+        <a class="site-logo" href="mainPage.do"><img
+                src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
+                alt="mainPage"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -103,7 +113,8 @@
                     </li>
                     <li class="list-group-item clearfix"><a href="#event-info"><i class="fa fa-coins"></i> 참가 중인 이벤트</a>
                     </li>
-                    <li class="list-group-item clearfix"><a href="#token-info"><i class="fa fa-cog"></i> 토큰 잔액 및 구매 내역</a></li>
+                    <li class="list-group-item clearfix"><a href="#token-info"><i class="fa fa-cog"></i> 토큰 잔액 및 구매
+                        내역</a></li>
                     <li class="list-group-item clearfix"><a href="#delete-info"><i class="fa fa-cog"></i> 회원 탈퇴</a></li>
 
                 </ul>
@@ -131,10 +142,10 @@
                                             <c:when test="${not empty userDTO.userProfile}">
                                                 <img id="profileImage" src="${userDTO.userProfile}" alt="프로필 이미지"/>
                                             </c:when>
-<%--                                            <c:otherwise>--%>
-<%--                                                <img id="profileImage" src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"--%>
-<%--                                                     alt="기본 프로필 이미지"/>--%>
-<%--                                            </c:otherwise>--%>
+                                            <%--                                            <c:otherwise>--%>
+                                            <%--                                                <img id="profileImage" src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"--%>
+                                            <%--                                                     alt="기본 프로필 이미지"/>--%>
+                                            <%--                                            </c:otherwise>--%>
                                         </c:choose>
 
                                         <div class="image-overlay">
@@ -400,12 +411,12 @@
                     <!-- 참가중인 이벤트 -->
                     <div id="event-info" class="info-card">
                         <h3>참가 중인 이벤트</h3>
-                        <table class="table table-striped">
+                        <table id="event-table" class="table table-striped">
                             <thead>
                             <tr>
                                 <th>이벤트 이름</th>
-<%--                                <th>이벤트 내용</th>--%>
-<%--                                <th>이벤트 날짜</th>--%>
+                                <%--                                <th>이벤트 내용</th>--%>
+                                <%--                                <th>이벤트 날짜</th>--%>
                             </tr>
                             </thead>
                             <tbody>
@@ -413,10 +424,10 @@
                                 <c:when test="${not empty participantList}">
                                     <c:forEach var="event" items="${participantList}">
                                         <tr>
-<%--                                            이벤트 참가는 제목만 출력되게 했음--%>
+                                                <%--                                            이벤트 참가는 제목만 출력되게 했음--%>
                                             <td><c:out value="${event.boardTitle}"/></td>
-<%--                                            <td><c:out value="${event.boardContent}"/></td>--%>
-<%--                                            <td><c:out value="${event.boardDate}"/></td>--%>
+                                                <%--                                            <td><c:out value="${event.boardContent}"/></td>--%>
+                                                <%--                                            <td><c:out value="${event.boardDate}"/></td>--%>
                                         </tr>
                                     </c:forEach>
                                 </c:when>
@@ -433,31 +444,31 @@
                     <!-- 토큰 잔액 및 구매 내역 -->
                     <div id="token-info" class="info-card">
                         <h3>토큰 잔액 및 구매 내역</h3>
-                        <table class="table table-striped">
-                        <p>
-                            <strong>현재 보유 토큰:</strong>
-                            <span style="color: #e94d1c; font-size: 18px;">
+                        <table id="payment-table" class="table table-striped">
+                            <p>
+                                <strong>현재 보유 토큰:</strong>
+                                <span style="color: #e94d1c; font-size: 18px;">
                                 <c:out value="${userDTO.userToken}" default="0"/> 개
                             </span>
-                        </p>
+                            </p>
 
-                        <thead>
-                        <tr>
-                            <th>상품명</th>
-                            <th>결제금액</th>
-                            <th>결제일</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="payment" items="${paymentList}">
+                            <thead>
                             <tr>
-                                <td><c:out value="${payment.productName}"/></td>
-                                <td><c:out value="${payment.productPrice}"/> 원</td>
-                                <td><fmt:formatDate value="${payment.paymentDate}" pattern="yyyy-MM-dd"/></td>
+                                <th>상품명</th>
+                                <th>결제금액</th>
+                                <th>결제일</th>
                             </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="payment" items="${paymentList}">
+                                <tr>
+                                    <td><c:out value="${payment.productName}"/></td>
+                                    <td><c:out value="${payment.productPrice}"/> 원</td>
+                                    <td><fmt:formatDate value="${payment.paymentDate}" pattern="yyyy-MM-dd"/></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
 
 
@@ -475,28 +486,95 @@
     </div>
 </div>
 
+
 <!-- 자바스크립트 -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-migrate.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+        type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js"
+        type="text/javascript"></script><!-- pop up -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/owl.carousel/owl.carousel.min.js"
+        type="text/javascript"></script>
 <!-- slider for products -->
-<script src='${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
+<script src='${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/zoom/jquery.zoom.min.js'
+        type="text/javascript"></script><!-- product zoom -->
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"
+        type="text/javascript"></script>
 <!-- Quantity -->
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme//plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme//plugins/uniform/jquery.uniform.min.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/rateit/src/jquery.rateit.js"
+        type="text/javascript"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
 <!-- for slider-range -->
 
-<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/layout.js"
+        type="text/javascript"></script>
 
 <script src="${pageContext.request.contextPath}js/MyPage.js"></script>
+<%--페이지네이션 추가--%>
+<script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/dataTables/jquery.dataTables.js"></script>
+<%--페이지네이션 css 추가--%>
+<script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/dataTables/dataTables.bootstrap.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // 결제 내역 페이지네이션 설정
+        $('#payment-table').dataTable({
+            "order": [[0, "desc"]],
+            "searching": false,  // 검색기능 없애기
+            "lengthChange": false,  // 단위 목록 출력 없애기
+            "language": {
+                "zeroRecords": "일치하는 검색 결과가 없습니다.",
+                "emptyTable": "테이블에 데이터가 없습니다.",
+                "info": "총 _TOTAL_건 중 _START_ - _END_건 표시",
+                "infoEmpty": "데이터 없음",
+                "infoFiltered": "(총 _MAX_건 중 필터링됨)",
+                "search": "검색:",
+                "lengthMenu": "_MENU_ 개씩 보기",
+                "paginate": {
+                    "first": "처음",
+                    "last": "마지막",
+                    "next": "다음",
+                    "previous": "이전"
+                }
+            }
+        });
+        // 이벤트 목록 페이지네이션 설정
+        $('#event-table').dataTable({
+            "order": [[0, "desc"]],
+            "lengthChange": false,  // 단위 목록 출력 없애기
+            "language": {
+                "zeroRecords": "일치하는 검색 결과가 없습니다.",
+                "emptyTable": "테이블에 데이터가 없습니다.",
+                "info": "총 _TOTAL_건 중 _START_ - _END_건 표시",
+                "infoEmpty": "데이터 없음",
+                "infoFiltered": "(총 _MAX_건 중 필터링됨)",
+                "search": "검색:",
+                "lengthMenu": "_MENU_ 개씩 보기",
+                "paginate": {
+                    "first": "처음",
+                    "last": "마지막",
+                    "next": "다음",
+                    "previous": "이전"
+                }
+            }
+        });
+    });
+
+
+
+</script>
+
 </body>
 </html>

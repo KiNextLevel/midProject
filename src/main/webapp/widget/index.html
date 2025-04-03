@@ -117,12 +117,13 @@
         button.addEventListener("click", async function () {
           const productName = getQueryParam("productName"); //url에서 가져온 상품 이름
           const productNum = getQueryParam("productNum"); //url에서 가져온 상품 번호
+          console.log("index.html에서 productName: "+productName);
           const userEmail = getQueryParam("userEmail"); //url에서 가져온 구매자 이메일
           const userName = getQueryParam("userName"); //url에서 가져온 구매자 이름
           await widgets.requestPayment({
             orderId: generateRandomString(),
             orderName: productName,
-            successUrl: currentURL+"success.jsp?productNum=" + productNum,
+            successUrl: currentURL+"success.jsp?productNum=" + productNum + "&productName=" + productName,
             failUrl: currentURL+"fail.jsp",
             customerEmail: userEmail,
             customerName: userName,

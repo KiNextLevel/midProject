@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class UserDAO {
     // 아이디 중복 검사(네이버, 카카오 등 같은 이메일이더라도 소셜 타입 다르면 회원가입 가능)
     private final String SELECTONE_CHECK = "SELECT USER_EMAIL FROM USER WHERE USER_EMAIL = ? AND SOCIAL_TYPE = ?";
-
+    
     // 소셜 로그인
     private final String SELECTONE = "SELECT USER_EMAIL, USER_PASSWORD, USER_ROLE, USER_PREMIUM FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ? AND SOCIAL_TYPE = ?";
 

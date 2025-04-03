@@ -15,7 +15,7 @@
         </jsp-property-group>
     </jsp-config>
 
-    
+
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

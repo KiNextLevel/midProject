@@ -1,12 +1,12 @@
 $(document).ready(function () {
     // 파일 선택 시 자동으로 폼 제출됨 (onchange="this.form.submit();")
 
-    // 선택적: 파일 선택 전 확인 메시지 표시
-    $('.profile-image-container').click(function () {
-        if (confirm('프로필 이미지를 변경하시겠습니까?')) {
-            $('#profileUpload').click();
-        }
-    });
+    // // 선택적: 파일 선택 전 확인 메시지 표시
+    // $('.profile-image-container').click(function () {
+    //     if (confirm('프로필 이미지를 변경하시겠습니까?')) {
+    //         $('#profileUpload').click();
+    //     }
+    // });
 
     // 사이드바 메뉴 클릭 시 부드러운 스크롤 이동
     $('.sidebar-menu a').click(function (e) {

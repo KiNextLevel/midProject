@@ -14,7 +14,7 @@ public class ReportDAO {
     private final String SELECTALL = "SELECT REPORT_NUM, REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION "
             + "FROM REPORT";
 
-    // (유저용) - 마이페이지 상품명, 결제일, 결제 금액
+    // (관리자용) - 신고자가 특정 피신고자를 이미 신고했는지 확인하는 용도
     private final String SELECTONE = "SELECT REPORT_REPORTER FROM REPORT WHERE REPORT_REPORTER = ? AND REPORT_REPORTED = ?";
 
     // (유저용) 사용자가 또 다른 사용자를 신고하는 쿼리문(신고자, 신고이유, 신고날짜, 피신고자, 신고설명)

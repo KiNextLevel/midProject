@@ -92,10 +92,7 @@ public class UserPreferenceAction implements Action {
             // 저장 성공 시
             if (result) {
                 // 세션에서 기존에 받았던 기본 정보 제거
-                session.removeAttribute("userEmail");
-                session.removeAttribute("preferenceHeight");
-                session.removeAttribute("preferenceBody");
-                session.removeAttribute("preferenceAge");
+                session.invalidate();
 
                 // 선호 입력 성공
                 request.setAttribute("preferenceDTO", preferenceDTO);

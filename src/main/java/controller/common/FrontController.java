@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import controller.common.Action;
 import controller.common.ActionFactory;
 import controller.common.ActionForward;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("*.do")
 @MultipartConfig(
@@ -41,7 +42,6 @@ public class FrontController extends HttpServlet {
 		System.out.println(" CTRL 자른 로그 : command ["+command+"]");
 
 		Action action = factory.getAction(command); // 팩토리 패턴
-
 		// 기존 방식
 		ActionForward forward = action.execute(request);
 

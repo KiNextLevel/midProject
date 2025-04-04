@@ -49,7 +49,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="Index.jsp">로그인 화면으로</a></li>
+                    <li><a href="indexPage.do">로그인 화면으로</a></li>
                 </ul>
             </div>
         </div>
@@ -60,7 +60,7 @@
 <!-- BEGIN HEADER -->
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="Index.jsp"><img
+        <a class="site-logo" href="indexPage.do"><img
                 src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
                 alt="Next Love"></a>
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>

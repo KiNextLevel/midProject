@@ -137,7 +137,7 @@
                                         <input type="file" id="profileUpload" name="profileImage" accept="image/*"
                                                onchange="this.form.submit();"/>
                                     </form>
-<%--                                  깃오류  확인용--%>
+
                                     <label for="profileUpload">
                                         <c:choose>
                                             <c:when test="${not empty userDTO.userProfile}">
@@ -426,7 +426,7 @@
                             <h3>계정 설정</h3>
                             <!-- 계정 설정 -->
                             <p>회원 탈퇴를 원하시면 아래 버튼을 클릭하세요.</p>
-                            <a href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/AccountDelete.jsp"
+                            <a href="accountDelete.do"
                                class="btn btn-danger">
                                 <i class="fa fa-user-times"></i> 회원 탈퇴하기
                             </a>

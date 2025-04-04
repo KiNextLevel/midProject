@@ -7,8 +7,10 @@ import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.AlertDAO;
+import org.example.webapp.model.dao.PreferenceDAO;
 import org.example.webapp.model.dao.UserDAO;
 import org.example.webapp.model.dto.AlertDTO;
+import org.example.webapp.model.dto.PreferenceDTO;
 import org.example.webapp.model.dto.UserDTO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,6 +24,22 @@ public class MainPageAction implements Action {
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		String userEmail = (String) session.getAttribute("userEmail");
+
+		// 선호취향 입력 안한 상태라면
+		PreferenceDAO preferenceDAO = new PreferenceDAO();
+		PreferenceDTO preferenceDTO = new PreferenceDTO();
+		preferenceDTO.setUserEmail(userEmail);
+		preferenceDTO = preferenceDAO.selectOne(preferenceDTO);
+		System.out.println("preferenceDTO = " + preferenceDTO);
+		if (preferenceDTO == null) {
+			request.setAttribute("msg", "먼저 선호 취향을 입력하시길 바랍니다.");
+			request.setAttribute("url", "userPreferencePage.do");
+			request.setAttribute("flag", true);
+			forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
+			forward.setRedirect(false);
+			return forward;
+		}
+
 		// 알림 목록 mainpage로
 		AlertDAO alertDAO = new AlertDAO();
 		AlertDTO alertDTO = new AlertDTO();

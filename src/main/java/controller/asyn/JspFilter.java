@@ -29,19 +29,17 @@ public class JspFilter implements Filter {
 
         if (userEmail == null && !pageName.equals("Index.jsp") && !pageName.equals("Login.jsp") && !pageName.equals("JoinPage.jsp")) {
             System.out.println("User not logged in");
-            String msg = "로그인 후 이용해주세요";
             String url = "Index.jsp";
             httpResponse.sendRedirect(url);
             return;
         } else if (userEmail != null && !pageName.equals("JoinPage.jsp")) {
             if (pageName.equals("Index.jsp") || pageName.equals("Login.jsp")) {
-                System.out.println("response:" + response);
-                String msg = "이미 로그인 한 상태입니다";
+                System.out.println("이미 로그인 한 상태");
                 String url = "mainPage.do";
                 httpResponse.sendRedirect(url);
                 return;
             } else if (userRole == 0 && pageName.contains("Admin")) {
-                request.setAttribute("msg", "관리자 전용 페이지 입니다");
+                System.out.println("관리자 전용 페이지 일반유저가 접근시도");
                 String url = "mainPage.do";
                 httpResponse.sendRedirect(url);
                 return;

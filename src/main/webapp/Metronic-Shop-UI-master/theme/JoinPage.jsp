@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -81,20 +82,24 @@
                     </div>
                     <div class="text-center mt-2">
                         <small>
-                            <% if (request.getAttribute("socialType") != null && request.getAttribute("socialType").equals("naver")) { %>
-                            네이버 계정으로 로그인하셨습니다. 추가 정보를 입력해 주세요.
-                            <% } else { %>
-                            기본 정보를 입력하셨습니다. 이제 추가 정보를 입력해 주세요.
-                            <% } %>
+                            <c:choose>
+                                <c:when test="${socialType eq 'naver'}">
+                                    네이버 계정으로 로그인하셨습니다. 추가 정보를 입력해 주세요.
+                                </c:when>
+                                <c:otherwise>
+                                    기본 정보를 입력하셨습니다. 이제 추가 정보를 입력해 주세요.
+                                </c:otherwise>
+                            </c:choose>
                         </small>
                     </div>
                 </div>
 
                 <form action="joinPage.do" method="post" id="userInfoForm" enctype="multipart/form-data">
                     <!-- 소셜 로그인 타입 히든 필드 -->
-                    <% if (request.getAttribute("socialType") != null) { %>
-                    <input type="hidden" name="socialType" value="${socialType}">
-                    <% } %>
+                    <c:if test="${not empty socialType}">
+                        <input type="hidden" name="socialType" value="${socialType}">
+                    </c:if>
+
 
                     <!-- 기본 정보 섹션 -->
                     <div class="form-section">
@@ -157,16 +162,7 @@
                                 </div>
                             </div>
 
-<%--                            <div class="col-md-4">--%>
-<%--                                <div class="form-group">--%>
-<%--                                    <label for="region" class="required-field">지역</label>--%>
-<%--                                    <input type="text" class="form-control" id="region" name="userRegion" readonly required>--%>
-<%--                                    <input type="hidden" id="latitude" name="userLatitude">--%>
-<%--                                    <input type="hidden" id="longitude" name="userLongitude">--%>
-<%--                                    <button type="button" class="btn btn-secondary mt-2" onclick="openAddressPopup()">주소 찾기</button>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            위도/경도는 Java 서버 코드에서 GeoCodingUtil로 처리, input 2군데 제거  --%>
+                            <%-- 위도/경도는 Java 서버 코드에서 GeoCodingUtil로 처리--%>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="region" class="required-field">지역</label>
@@ -174,31 +170,6 @@
                                     <button type="button" class="btn btn-secondary mt-2" onclick="openAddressPopup()">주소 찾기</button>
                                 </div>
                             </div>
-
-
-
-                        <%--  <select class="form-control" id="region" name="userRegion" required>--%>
-<%--                                        <option value="">선택하세요</option>--%>
-<%--                                        <option value="서울">서울</option>--%>
-<%--                                        <option value="경기">경기</option>--%>
-<%--                                        <option value="인천">인천</option>--%>
-<%--                                        <option value="부산">부산</option>--%>
-<%--                                        <option value="대구">대구</option>--%>
-<%--                                        <option value="광주">광주</option>--%>
-<%--                                        <option value="대전">대전</option>--%>
-<%--                                        <option value="울산">울산</option>--%>
-<%--                                        <option value="세종">세종</option>--%>
-<%--                                        <option value="강원">강원</option>--%>
-<%--                                        <option value="충북">충북</option>--%>
-<%--                                        <option value="충남">충남</option>--%>
-<%--                                        <option value="전북">전북</option>--%>
-<%--                                        <option value="전남">전남</option>--%>
-<%--                                        <option value="경북">경북</option>--%>
-<%--                                        <option value="경남">경남</option>--%>
-<%--                                        <option value="제주">제주</option>--%>
-<%--                                    </select>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
                         </div>
                     </div>
 
@@ -269,7 +240,7 @@
                                         <option value="천주교">천주교</option>
                                         <option value="불교">불교</option>
                                         <option value="이슬람교">이슬람교</option>
-                                        <option value="이슬람교">이슬람교</option>
+                                        <option value="힌두교">힌두교</option>
                                         <option value="기타">기타</option>
                                     </select>
                                 </div>
@@ -367,7 +338,7 @@
         <div class="row">
             <!-- BEGIN BOTTOM ABOUT BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
-                <h2>Next Love</h2>
+                <h2>Next Level</h2>
                 <p>
                     우리는 인연과 연인을 중시합니다.
                 </p>
@@ -376,6 +347,10 @@
             <!-- BEGIN BOTTOM INFO BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>Information</h2>
+                <p>
+                    진정한 인연을 찾아주는 플랫폼, 2025년부터 여러분의 특별한 만남을 응원합니다. 인연을 만드는 새로운 방식으로,
+                    모든 만남이 소중한 인연으로 이어지길 바랍니다.
+                </p>
             </div>
             <!-- END INFO BLOCK -->
 
@@ -396,7 +371,7 @@
                     (우) 06236 (지번) 역삼동 736-56<br>
                     Notion: <a
                         href="https://sheer-sundial-325.notion.site/1b5c9677015480c4a9ebfba7bbc63185">Notion</a><br>
-                    Email: <a href="mailto:0414minyoung@naver.com">0414minyoung@naver.com</a>
+                    Email: <a href="0414minyoung@naver.com">0414minyoung@naver.com</a>
                 </address>
             </div>
             <!-- END BOTTOM CONTACTS -->

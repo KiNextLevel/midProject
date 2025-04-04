@@ -19,7 +19,6 @@ public class ActionFactory {
 		factory.put("adminDeleteBlack.do", new AdminDeleteBlackAction());
 		factory.put("adminReportPage.do", new AdminReportPageAction());
 		factory.put("boardPage.do", new BoardPageAction());
-		factory.put("modifyMyPage.do", new ModifyMyPageAction());
 		factory.put("myPage.do", new MyPageAction());
 		factory.put("participantBoard.do", new ParticipantBoardAction());
 		factory.put("adminModifyBoardPage.do", new AdminModifyBoardPageAction());
@@ -46,11 +45,11 @@ public class ActionFactory {
 		factory.put("updateProfilePage.do", new UpdateProfilePageAction());
 		factory.put("updateProfileImage.do", new UpdateProfileImageAction());
 		factory.put("deleteUser.do", new DeleteUserAction());
-		factory.put("deleteUserAlert.do", new DeleteUserAlertAction());
 		factory.put("userPreferencePage.do", new UserPreferencePageAction());
 		factory.put("userPreference.do", new UserPreferenceAction());
 		factory.put("addToken.do", new AddTokenAction());
 		factory.put("indexPage.do", new IndexPageAction());
+		factory.put("accountDelete.do", new DeleteUserPageAction());
 	}
 	public Action getAction(String command) {
 		System.out.println("팩토리 로그"+this.factory.get(command));

@@ -443,7 +443,7 @@ public class UserDAO {
     }
 
     // x
-    public boolean delete(UserDTO userDTO) {
+    private boolean delete(UserDTO userDTO) {
         return false;
     }
 }

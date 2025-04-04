@@ -267,7 +267,7 @@ function loadInitialUsers() {
     updateLoadMoreButton(); // 더 보기 버튼 상태 업데이트
 }
 
-// 더 많은 사용자를 로드하는 함수 (페이지네이션)
+//페이지네이션
 function loadMoreUsers() {
     const usersToDisplay = filteredUsers.slice(start, start + limit); // 다음 페이지 사용자
     updateProductList(usersToDisplay, true); // 사용자 목록 렌더링 (덧붙임)
@@ -296,7 +296,7 @@ function updateProductList(users, append) {
     let productListHtml = '';
     users.forEach(function (data) {
         if (!data.userEmail || !data.userNickname) {
-            console.log("Invalid user data:", data); // 필수 데이터가 없으면 로그 출력 후 스킵
+            console.log("Invalid user data:", data); // 데이터가 없으면 스킵
             return;
         }
         console.log("Rendering user:", data.userEmail, data.userNickname, data.userHeight, data.userDescription);

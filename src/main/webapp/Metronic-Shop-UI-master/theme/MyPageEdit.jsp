@@ -204,9 +204,9 @@
                         <option value="무교" <c:if test="${userDTO.userReligion == '무교'}">selected</c:if>>무교</option>
                         <option value="기독교" <c:if test="${userDTO.userReligion == '기독교'}">selected</c:if>>기독교</option>
                         <option value="천주교" <c:if test="${userDTO.userReligion == '천주교'}">selected</c:if>>천주교</option>
-                        <option value="힌두교" <c:if test="${userDTO.userReligion == '힌두교'}">selected</c:if>>힌두교</option>
                         <option value="불교" <c:if test="${userDTO.userReligion == '불교'}">selected</c:if>>불교</option>
                         <option value="이슬람교" <c:if test="${userDTO.userReligion == '이슬람교'}">selected</c:if>>이슬람교</option>
+                        <option value="힌두교" <c:if test="${userDTO.userReligion == '힌두교'}">selected</c:if>>힌두교</option>
                         <option value="기타" <c:if test="${userDTO.userReligion == '기타'}">selected</c:if>>기타</option>
                     </select>
                 </div>

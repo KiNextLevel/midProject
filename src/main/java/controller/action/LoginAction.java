@@ -5,7 +5,9 @@ import controller.common.Action;
 import controller.common.ActionForward;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.example.webapp.model.dao.PreferenceDAO;
 import org.example.webapp.model.dao.UserDAO;
+import org.example.webapp.model.dto.PreferenceDTO;
 import org.example.webapp.model.dto.UserDTO;
 
 
@@ -15,10 +17,12 @@ public class LoginAction implements Action {
     public ActionForward execute(HttpServletRequest request) {
 		System.out.println("CONT 로그: LOGIN ACTION 도착");
         ActionForward actionForward = new ActionForward();
+
+        UserDAO userDAO = new UserDAO();
         UserDTO userDTO = new UserDTO();
         userDTO.setUserEmail(request.getParameter("userEmail"));
         userDTO.setUserPassword(request.getParameter("userPassword"));
-        UserDAO userDAO = new UserDAO();
+
         // 컨디션"로그인"
         userDTO.setCondition("SELECTONE_NONSOCIAL");
         userDTO = userDAO.selectOne(userDTO);

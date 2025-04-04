@@ -20,7 +20,7 @@ public class AdminAddBoardPageAction implements Action{
 		else {
 			request.setAttribute("msg", "관리자만 가능합니다");
 			request.setAttribute("flag", false);
-			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 			forward.setRedirect(false);
 		}
 		return forward;

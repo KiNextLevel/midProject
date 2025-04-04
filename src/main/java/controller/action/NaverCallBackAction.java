@@ -121,7 +121,7 @@ public class NaverCallBackAction implements Action {
                 request.setAttribute("msg", "네이버 계정으로 회원가입을 진행합니다.");
                 request.setAttribute("flag", true);
                 request.setAttribute("url", "/Metronic-Shop-UI-master/theme/JoinPage.jsp");
-                forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+                forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
                 forward.setRedirect(false);
             } else {
                 // 기존 회원이면 로그인 처리
@@ -146,7 +146,7 @@ public class NaverCallBackAction implements Action {
                     request.setAttribute("msg", "네이버 계정으로 로그인되었습니다.");
                     request.setAttribute("flag", true);
                     request.setAttribute("url", "mainPage.do");
-                    forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+                    forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
                     forward.setRedirect(false);
                 } else { //블랙 or 탈퇴한 회원이면 로그인 불가능
                     // 로그인 페이지로 리다이렉트
@@ -160,7 +160,7 @@ public class NaverCallBackAction implements Action {
             e.printStackTrace();
             request.setAttribute("msg", "네이버 로그인 중 오류가 발생했습니다.");
             request.setAttribute("flag", false);
-            forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+            forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
             forward.setRedirect(false);
         }
 

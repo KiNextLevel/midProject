@@ -94,7 +94,7 @@ public class ReportAction implements Action {
             System.out.println("description: " + description);
         }
 
-        forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+        forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
         forward.setRedirect(false);
         return forward;
     }

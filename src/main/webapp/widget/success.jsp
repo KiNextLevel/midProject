@@ -146,14 +146,9 @@
                     <b>Response Data :</b>
                     <div id="response">
                     <pre>
-                        <%
-                            Set<String> keys = jsonObject.keySet();
-                            for (String key : keys) {
-                        %>
-                        <%= key %>: <%= jsonObject.get(key) %>
-                        <%
-                            }
-                        %>
+                <c:forEach var="key" items="${keyList}">
+                    ${key}: ${jsonObject[key]}
+                </c:forEach>
                     </pre>
                     </div>
                 </div>

@@ -269,7 +269,7 @@
                                         <option value="천주교">천주교</option>
                                         <option value="불교">불교</option>
                                         <option value="이슬람교">이슬람교</option>
-                                        <option value="이슬람교">이슬람교</option>
+                                        <option value="힌두교">힌두교</option>
                                         <option value="기타">기타</option>
                                     </select>
                                 </div>

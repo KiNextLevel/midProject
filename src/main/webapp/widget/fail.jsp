@@ -28,15 +28,17 @@
       <h2>결제를 실패했어요</h2>
       <div class="p-grid typography--p" style="margin-top: 50px">
         <div class="p-grid-col text--left"><b>에러메시지</b></div>
-        <div class="p-grid-col text--right" id="message"><%= message %></div>
+        <div class="p-grid-col text--right" id="message">${message}</div>
       </div>
       <div class="p-grid typography--p" style="margin-top: 10px">
         <div class="p-grid-col text--left"><b>에러코드</b></div>
-        <div class="p-grid-col text--right" id="code"><%= code %></div>
+        <div class="p-grid-col text--right" id="code">${code}</div>
       </div>
       <div class="p-grid">
+        <!--
         <button class="button p-grid-col5" onclick="location.href='https://docs.tosspayments.com/guides/payment/integration';">연동 문서</button>
-        <button class="button p-grid-col5" onclick="location.href='https://discord.gg/A4fRFXQhRu';" style="background-color: #e8f3ff; color: #1b64da">실시간 문의</button>
+        -->
+        <button class="button p-grid-col5" onclick="location.href='mainPage.do';" style="background-color: #e8f3ff; color: #1b64da">메인으로 돌아가기</button>
       </div>
     </div>
   </body>

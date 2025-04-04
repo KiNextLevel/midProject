@@ -56,7 +56,7 @@ public class JoinAction implements Action {
 			request.setAttribute("flag", false);
 		}
 
-		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

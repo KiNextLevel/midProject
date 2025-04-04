@@ -11,22 +11,22 @@ import java.util.ArrayList;
 public class AlertDAO {
     // 00유저의 알림번호, 알림내용, 알림 날짜, 알림여부 불러오기
     // 사용자의 알림이 여러개가 있을 수 있으니까 SELECTALL
-    final String SELECTALL = "SELECT ALERT_NUM, ALERT_CONTENT, ALERT_DATE, ALERT_ISWATCH FROM ALERT WHERE ALERT_USER_EMAIL = ? ORDER BY ALERT_NUM DESC";
+    private final String SELECTALL = "SELECT ALERT_NUM, ALERT_CONTENT, ALERT_DATE, ALERT_ISWATCH FROM ALERT WHERE ALERT_USER_EMAIL = ? ORDER BY ALERT_NUM DESC";
 
-    final String SELECTONE = ""; // 기능 없음
+    private final String SELECTONE = ""; // 기능 없음
 
     // (관리자) - 유저에게 경고 알림 보내기
     // 유저 이메일, 내용, 알림보낸날짜, 읽음 여부
-    final String INSERT = "INSERT INTO ALERT (ALERT_USER_EMAIL, ALERT_CONTENT, ALERT_DATE, ALERT_ISWATCH) "
+    private final String INSERT = "INSERT INTO ALERT (ALERT_USER_EMAIL, ALERT_CONTENT, ALERT_DATE, ALERT_ISWATCH) "
             + "VALUES (?, ?, NOW(), false)";
 
     // 유저 알림 열람여부(읽음, 안읽음) 0 == 안읽음, 1 == 읽음
     // 한 알림만 읽음 처리해야 하기 때문에, WHERE ALERT_NUM
-    final String UPDATE_ISWATCH = "UPDATE ALERT SET ALERT_ISWATCH = 1 WHERE ALERT_NUM = ? "; //1(읽음)으로 바꾸기
+    private final String UPDATE_ISWATCH = "UPDATE ALERT SET ALERT_ISWATCH = 1 WHERE ALERT_NUM = ? "; //1(읽음)으로 바꾸기
 
-    final String UPDATE = ""; // 기능 없음
+    private final String UPDATE = ""; // 기능 없음
 
-    final String DELETE = ""; // 기능 없음
+    private final String DELETE = ""; // 기능 없음
 
     public ArrayList<AlertDTO> selectAll(AlertDTO alertDTO) {
         ArrayList<AlertDTO> datas = new ArrayList<>();
@@ -62,7 +62,8 @@ public class AlertDAO {
         }
     }
     // 기능 없음
-    public AlertDTO selectOne(AlertDTO alertDTO) {
+    private
+    AlertDTO selectOne(AlertDTO alertDTO) {
         throw new UnsupportedOperationException("단일 알림 조회는 제공되지 않습니다.");
     }
 
@@ -108,7 +109,7 @@ public class AlertDAO {
         }
     }
 
-    public boolean delete(AlertDTO alertDTO) {
+    private boolean delete(AlertDTO alertDTO) {
         throw new UnsupportedOperationException("삭제 기능은 제공되지 않습니다.");
     }
 }

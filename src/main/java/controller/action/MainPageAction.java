@@ -22,9 +22,7 @@ public class MainPageAction implements Action {
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		String userEmail = (String) session.getAttribute("userEmail");
-		//넘어가야하는 정보: 비동기로 처리할듯
-		//1. 알람
-		//2. 메시지(최프)
+		// 알림 목록 mainpage로
 		AlertDAO alertDAO = new AlertDAO();
 		AlertDTO alertDTO = new AlertDTO();
 		alertDTO.setUserEmail(userEmail);
@@ -37,7 +35,6 @@ public class MainPageAction implements Action {
 
 		// JSON 변환
 		JSONArray jsonArray = new JSONArray();
-		boolean hasUnreadAlerts = false;
 
 		if (alertDatas != null) {
 			for (AlertDTO data : alertDatas) {
@@ -48,16 +45,10 @@ public class MainPageAction implements Action {
 				jsonObject.put("alertDate", data.getAlertDate().toString()); // Date를 문자열로 변환
 				jsonObject.put("alertIsWatch", data.isAlertIsWatch());
 				jsonArray.add(jsonObject);
-
-				// 읽지 않은 알림 체크
-				if (!data.isAlertIsWatch()) {
-					hasUnreadAlerts = true;
-				}
 			}
 		}
 		// 세션에 JSON 문자열 저장
 		session.setAttribute("alertDatasJson", jsonArray.toJSONString());
-		request.setAttribute("hasUnreadAlerts", hasUnreadAlerts);
 
 		// 기존 alertDatas도 유지 (임시)
 		session.setAttribute("alertDatas", alertDatas);

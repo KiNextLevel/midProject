@@ -29,7 +29,7 @@ public class AdminDeleteBlackAction implements Action{
 			request.setAttribute("msg", "블랙 해제 실패");
 			request.setAttribute("flag", false);
 		}
-		forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+		forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 		forward.setRedirect(false);
 		return forward;
 

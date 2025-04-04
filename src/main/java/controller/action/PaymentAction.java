@@ -49,7 +49,7 @@ public class PaymentAction implements Action {
 		if(productDTO == null){	//상품을 못 찾으면
 			request.setAttribute("msg", "상품을 찾을 수 없습니다");
 			request.setAttribute("flag", false);
-			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 			forward.setRedirect(false);
 		}
 		else{

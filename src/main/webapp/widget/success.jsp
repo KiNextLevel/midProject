@@ -26,6 +26,9 @@
     String orderId = request.getParameter("orderId");
     String paymentKey = request.getParameter("paymentKey");
     String amount = request.getParameter("amount");
+    String productName = request.getParameter("productName");
+    String orderName = request.getParameter("orderName");
+    System.out.println("Patameter orderName: ["+productName+"]");
 
     paymentKey = URLEncoder.encode(paymentKey, "UTF-8");
 
@@ -42,6 +45,14 @@
     obj.put("paymentKey", paymentKey);
     obj.put("orderId", orderId);
     obj.put("amount", amount);
+    obj.put("productName", productName);
+    obj.put("orderName", orderName);
+
+    //값 설정
+    request.setAttribute("orderId", obj.get("orderId"));
+    request.setAttribute("amount", obj.get("amount"));
+    request.setAttribute("productName", obj.get("productName"));
+    request.setAttribute("orderName", obj.get("orderName"));
 
     // 요청 데이터 전송
     OutputStream outputStream = connection.getOutputStream();
@@ -60,6 +71,9 @@
 
     // 서버에서 처리한 값들
     request.setAttribute("isSuccess", isSuccess);   // 결제 성공 여부
+    //로그
+    System.out.println("orderId: ["+orderId+"]");
+    System.out.println("productName: ["+productName+"]");
 %>
 
 <!DOCTYPE html>
@@ -103,23 +117,31 @@
                     <h2>결제를 완료했어요</h2>
 
                     <div class="p-grid typography--p" style="margin-top: 50px">
-                        <div class="p-grid-col text--left"><b>결제금액</b></div>
-                        <div class="p-grid-col text--right" id="amount">${jsonObject.totalAmount}</div>
+                        <div class="p-grid-col text--left"><b>결제금액: ${amount}</b></div>
+                        <div class="p-grid-col text--right" id="amount">${jsonObject.amount}</div>
                     </div>
                     <div class="p-grid typography--p" style="margin-top: 10px">
-                        <div class="p-grid-col text--left"><b>주문번호</b></div>
+                        <div class="p-grid-col text--left"><b>결제 상품: ${orderName}</b></div>
+                        <div class="p-grid-col text--right" id="productName" style="white-space: initial; width: 250px">${jsonObject.paymentKey}</div>
+                    </div>
+                    <div class="p-grid typography--p" style="margin-top: 10px">
+                        <div class="p-grid-col text--left"><b>주문번호: ${orderId}</b></div>
                         <div class="p-grid-col text--right" id="orderId">${jsonObject.orderId}</div>
                     </div>
+                    <!--
                     <div class="p-grid typography--p" style="margin-top: 10px">
                         <div class="p-grid-col text--left"><b>paymentKey</b></div>
                         <div class="p-grid-col text--right" id="paymentKey" style="white-space: initial; width: 250px">${jsonObject.paymentKey}</div>
                     </div>
+                    -->
                     <div class="p-grid" style="margin-top: 30px">
+                        <!--
                         <button class="button p-grid-col5" onclick="location.href='https://docs.tosspayments.com/guides/payment/integration';">연동 문서</button>
+                        -->
                         <button class="button p-grid-col5" onclick="location.href='mainPage.do';" style="background-color: #e8f3ff; color: #1b64da">메인으로 돌아가기</button>
                     </div>
                 </div>
-
+<!--
                 <div class="box_section" style="width: 600px; text-align: left">
                     <b>Response Data :</b>
                     <div id="response">
@@ -135,6 +157,7 @@
                     </pre>
                     </div>
                 </div>
+                -->
             </c:when>
             <c:otherwise>
                 <div id="info" class="box_section" style="width: 600px">
@@ -151,8 +174,10 @@
                     </div>
 
                     <div class="p-grid">
+                        <!--
                         <button class="button p-grid-col5" onclick="location.href='https://docs.tosspayments.com/guides/payment/integration';">연동 문서</button>
-                        <button class="button p-grid-col5" onclick="location.href='https://discord.gg/A4fRFXQhRu';" style="background-color: #e8f3ff; color: #1b64da">실시간 문의</button>
+                        -->
+                        <button class="button p-grid-col5" onclick="location.href='mainPage.do';" style="background-color: #e8f3ff; color: #1b64da">메인으로</button>
                     </div>
                 </div>
             </c:otherwise>

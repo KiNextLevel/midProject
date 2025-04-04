@@ -538,7 +538,7 @@
         $(document).ready(function () {
             // 결제 내역 페이지네이션 설정
             $('#payment-table').dataTable({
-                "order": [[0, "desc"]],
+                "order": [[2, "desc"]],
                 "searching": false,  // 검색기능 없애기
                 "lengthChange": false,  // 단위 목록 출력 없애기
                 "language": {

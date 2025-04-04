@@ -144,7 +144,8 @@
                                                 <img id="profileImage" src="${userDTO.userProfile}" alt="프로필 이미지"/>
                                             </c:when>
                                             <c:otherwise>
-                                                <img id="profileImage" src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
+                                                <img id="profileImage"
+                                                     src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
                                                      alt="기본 프로필 이미지"/>
                                             </c:otherwise>
                                         </c:choose>
@@ -157,7 +158,7 @@
 
                                 <div class="profile-info">
                                     <h3 class="profile-name">
-                                        <c:out value="${userDTO.userName}" default="닉네임"/>
+                                        ${userDTO.userName}
                                     </h3>
                                     <c:choose>
                                         <c:when test="${userDTO.userPremium}">
@@ -188,7 +189,7 @@
                                     <div class="info-value">
                                         <c:choose>
                                             <c:when test="${not empty userDTO.userDescription}">
-                                                <c:out value="${userDTO.userDescription}"/>
+                                                ${userDTO.userDescription}
                                             </c:when>
                                             <c:otherwise>
                                                 자기소개를 입력해주세요.
@@ -196,38 +197,38 @@
                                         </c:choose>
                                     </div>
                                 </div>
+                                <%--  이름--%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-user"></i>
                                     </div>
                                     <div class="info-label">이름</div>
                                     <div class="info-value">
-                                        <c:choose>
-                                            <c:when test="${not empty userDTO.userName}">
-                                                <c:out value="${userDTO.userName}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                이름을 입력해주세요.
-                                            </c:otherwise>
-                                        </c:choose>
+                                        ${userDTO.userName}
                                     </div>
                                 </div>
+
+                                <%-- 이메일 --%>
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="info-label">이메일</div>
+                                    <div class="info-value">
+                                        ${userDTO.userEmail}
+                                    </div>
+                                </div>
+                                <%-- 전화번호 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-phone"></i>
                                     </div>
                                     <div class="info-label">전화번호</div>
                                     <div class="info-value">
-                                        <c:choose>
-                                            <c:when test="${not empty userDTO.userPhone}">
-                                                <c:out value="${userDTO.userPhone}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                전화번호를 입력해주세요.
-                                            </c:otherwise>
-                                        </c:choose>
+                                        ${userDTO.userPhone}
                                     </div>
                                 </div>
+                                <%-- 성별 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-venus-mars"></i>
@@ -244,37 +245,24 @@
                                         </c:choose>
                                     </div>
                                 </div>
+                                <%-- 생년월일 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-birthday-cake"></i>
                                     </div>
                                     <div class="info-label">생년월일</div>
                                     <div class="info-value">
-                                        <c:choose>
-                                            <c:when test="${not empty userDTO.userBirth}">
-                                                <c:out value="${userDTO.userBirth}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                생년월일을 입력해주세요.
-                                            </c:otherwise>
-                                        </c:choose>
+                                        ${userDTO.userBirth}
                                     </div>
                                 </div>
-
+                                <%-- 키 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-ruler"></i>
                                     </div>
                                     <div class="info-label">키</div>
                                     <div class="info-value">
-                                        <c:choose>
-                                            <c:when test="${not empty userDTO.userHeight}">
-                                                <c:out value="${userDTO.userHeight}"/> cm
-                                            </c:when>
-                                            <c:otherwise>
-                                                0 cm
-                                            </c:otherwise>
-                                        </c:choose>
+                                        ${userDTO.userHeight}cm
                                     </div>
                                 </div>
                             </div>
@@ -284,70 +272,47 @@
                         <div id="additional-info" class="info-card">
                             <h3>추가 정보</h3>
                             <div class="info-list">
+                                <%-- 체형 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-weight"></i>
                                     </div>
                                     <div class="info-label">체형</div>
                                     <div class="info-value">
-                                        <c:choose>
-                                            <c:when test="${not empty userDTO.userBody}">
-                                                <c:out value="${userDTO.userBody}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                체형을 입력해주세요.
-                                            </c:otherwise>
-                                        </c:choose>
+                                        ${userDTO.userBody}
                                     </div>
                                 </div>
+                                <%-- 학력 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-graduation-cap"></i>
                                     </div>
                                     <div class="info-label">학력</div>
                                     <div class="info-value">
-                                        <c:choose>
-                                            <c:when test="${not empty userDTO.userEducation}">
-                                                <c:out value="${userDTO.userEducation}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                학력을 입력해주세요.
-                                            </c:otherwise>
-                                        </c:choose>
+                                        ${userDTO.userEducation}
                                     </div>
                                 </div>
+                                    <%-- 지역 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-map-marker"></i>
                                     </div>
                                     <div class="info-label">지역</div>
                                     <div class="info-value">
-                                        <c:choose>
-                                            <c:when test="${not empty userDTO.userRegion}">
-                                                <c:out value="${userDTO.userRegion}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                지역을 입력해주세요.
-                                            </c:otherwise>
-                                        </c:choose>
+                                        ${userDTO.userRegion}
                                     </div>
                                 </div>
+                                    <%-- MBTI --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-theater-masks"></i>
                                     </div>
                                     <div class="info-label">MBTI</div>
                                     <div class="info-value">
-                                        <c:choose>
-                                            <c:when test="${not empty userDTO.userMbti}">
-                                                <c:out value="${userDTO.userMbti}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                MBTI를 입력해주세요.
-                                            </c:otherwise>
-                                        </c:choose>
+                                        ${userDTO.userMbti}
                                     </div>
                                 </div>
+                                    <%-- 음주 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-wine-glass"></i>
@@ -362,6 +327,7 @@
                                         </c:choose>
                                     </div>
                                 </div>
+                                    <%-- 흡연 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-smoking"></i>
@@ -383,36 +349,15 @@
                             <div class="preference-tags">
                             <span class="preference-tag">
                                 <i class="fas fa-ruler"></i>
-                                <c:choose>
-                                    <c:when test="${not empty preferenceDTO.preferenceHeight}">
-                                        <c:out value="${preferenceDTO.preferenceHeight}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        키 선호도 미설정
-                                    </c:otherwise>
-                                </c:choose>
+                                        ${preferenceDTO.preferenceHeight}
                             </span>
                                 <span class="preference-tag">
                                 <i class="fas fa-weight"></i>
-                                <c:choose>
-                                    <c:when test="${not empty preferenceDTO.preferenceBody}">
-                                        <c:out value="${preferenceDTO.preferenceBody}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        체형 선호도 미설정
-                                    </c:otherwise>
-                                </c:choose>
+                                        ${preferenceDTO.preferenceBody}
                             </span>
                                 <span class="preference-tag">
                                 <i class="fas fa-birthday-cake"></i>
-                                <c:choose>
-                                    <c:when test="${not empty preferenceDTO.preferenceAge}">
-                                        <c:out value="${preferenceDTO.preferenceAge}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        나이 선호도 미설정
-                                    </c:otherwise>
-                                </c:choose>
+                                        ${preferenceDTO.preferenceAge}
                             </span>
                             </div>
                         </div>
@@ -424,8 +369,6 @@
                                 <thead>
                                 <tr>
                                     <th>이벤트 이름</th>
-                                    <%--                                <th>이벤트 내용</th>--%>
-                                    <%--                                <th>이벤트 날짜</th>--%>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -433,10 +376,8 @@
                                     <c:when test="${not empty participantList}">
                                         <c:forEach var="event" items="${participantList}">
                                             <tr>
-                                                    <%--                                            이벤트 참가는 제목만 출력되게 했음--%>
-                                                <td><c:out value="${event.boardTitle}"/></td>
-                                                    <%--                                            <td><c:out value="${event.boardContent}"/></td>--%>
-                                                    <%--                                            <td><c:out value="${event.boardDate}"/></td>--%>
+                                                    <%-- 이벤트 참가는 제목만 출력되게 했음--%>
+                                                <td>${event.boardTitle}</td>
                                             </tr>
                                         </c:forEach>
                                     </c:when>
@@ -457,7 +398,7 @@
                                 <p>
                                     <strong>현재 보유 토큰:</strong>
                                     <span style="color: #e94d1c; font-size: 18px;">
-                                <c:out value="${userDTO.userToken}" default="0"/> 개
+                                ${userDTO.userToken} 개
                             </span>
                                 </p>
 
@@ -471,8 +412,8 @@
                                 <tbody>
                                 <c:forEach var="payment" items="${paymentList}">
                                     <tr>
-                                        <td><c:out value="${payment.productName}"/></td>
-                                        <td><c:out value="${payment.productPrice}"/> 원</td>
+                                        <td>${payment.productName}</td>
+                                        <td>${payment.productPrice}</td>
                                         <td><fmt:formatDate value="${payment.paymentDate}" pattern="yyyy-MM-dd"/></td>
                                     </tr>
                                 </c:forEach>
@@ -485,7 +426,8 @@
                             <h3>계정 설정</h3>
                             <!-- 계정 설정 -->
                             <p>회원 탈퇴를 원하시면 아래 버튼을 클릭하세요.</p>
-                            <a href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/AccountDelete.jsp" class="btn btn-danger">
+                            <a href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/AccountDelete.jsp"
+                               class="btn btn-danger">
                                 <i class="fa fa-user-times"></i> 회원 탈퇴하기
                             </a>
                         </div>
@@ -578,8 +520,6 @@
                 }
             });
         });
-
-
     </script>
 
 </body>

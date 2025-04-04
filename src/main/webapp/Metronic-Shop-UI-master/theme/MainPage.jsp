@@ -151,27 +151,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     </div>
 </div>
 <!-- Header END -->
-<!-- 문자 전송 요청-->
-<%--<script>--%>
-<%--    // 메인 페이지 로드 시 /SendMessage 요청 보냄 - 일단 보류--%>
-<%--    window.onload = () => {--%>
-<%--        fetch("/SendMessage")--%>
-<%--            .then(response => {--%>
-<%--                if (!response.ok) {--%>
-<%--                    throw new Error('네트워크 응답이 잘못되었습니다.');--%>
-<%--                }--%>
-<%--                return response.json(); // JSON 응답을 반환받음--%>
-<%--            })--%>
-<%--            .then(data => {--%>
-<%--                console.log('받은 데이터:', data);--%>
-<%--                document.getElementById('message').textContent = data.message || '메시지가 없습니다.';--%>
-<%--            })--%>
-<%--            .catch(error => {--%>
-<%--                console.error('문제가 발생했습니다:', error);--%>
-<%--                document.getElementById('message').textContent = '데이터를 불러오는 데 문제가 발생했습니다.';--%>
-<%--            });--%>
-<%--    };--%>
-<%--</script>--%>
 <div class="title-wrapper"
      style="margin: -23px 0 23px; position: relative; overflow: hidden; background: #72c2ff url('${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/123.png') no-repeat 100% 100%; min-height: 280px; padding-top: 79px; width: 100%;">
     <div class="container">
@@ -283,6 +262,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         <a href="javascript:;"><i class="fa fa-th-list"></i></a>
                     </div>
                     <!--
+                    최프때 추후 사용 가능
                     <div class="col-md-10 col-sm-10">
                         <div class="pull-right">
                             <label class="control-label">Show:</label>

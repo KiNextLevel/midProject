@@ -61,24 +61,6 @@
         <!-- Theme styles END -->
     </head>
     <body class="ecommerce">
-    <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel hidden-sm">
-        <div class="color-mode-icons icon-color"></div>
-        <div class="color-mode-icons icon-color-close"></div>
-        <div class="color-mode">
-            <p>THEME COLOR</p>
-            <ul class="inline">
-                <li class="color-red current color-default" data-style="red"></li>
-                <li class="color-blue" data-style="blue"></li>
-                <li class="color-green" data-style="green"></li>
-                <li class="color-orange" data-style="orange"></li>
-                <li class="color-gray" data-style="gray"></li>
-                <li class="color-turquoise" data-style="turquoise"></li>
-            </ul>
-        </div>
-    </div>
-    <!-- END BEGIN STYLE CUSTOMIZER -->
-
     <!-- BEGIN TOP BAR -->
     <div class="pre-header">
         <div class="container">
@@ -138,7 +120,7 @@
             <div class="form-group">
                 <label class="col-md-2 control-label" for="userDescription">자기소개</label>
                 <div class="col-md-8">
-                    <textarea class="form-control" id="userDescription" name="userDescription" rows="6" maxlength="200"><c:out value="${userDTO.userDescription}"/></textarea>
+                    <textarea class="form-control" id="userDescription" name="userDescription" rows="6" maxlength="200">${userDTO.userDescription}</textarea>
                     <small id="charCount">0 / 200</small>
                 </div>
             </div>
@@ -148,7 +130,7 @@
                 <label class="col-md-2 control-label" for="userNickname">닉네임 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="text" id="userNickname" name="userNickname" class="form-control"
-                           value="<c:out value="${userDTO.userNickname}"/>" placeholder="닉네임을 입력하세요">
+                           value= "${userDTO.userNickname}" placeholder="닉네임을 입력하세요">
                 </div>
             </div>
 
@@ -157,7 +139,7 @@
                 <label class="col-md-2 control-label" for="height">키 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="number" id="height" name="userHeight" class="form-control"
-                           value="<c:out value="${userDTO.userHeight}"/>" placeholder="cm 단위로 입력하세요" step="0.01" min="100" max="200">
+                           value="${userDTO.userHeight}" placeholder="cm 단위로 입력하세요" step="0.01" min="100" max="200">
                 </div>
             </div>
 
@@ -168,7 +150,7 @@
                     <select id="bodyType" name="userBody" class="form-control">
                         <option value="">선택하세요</option>
                         <c:forEach var="bodyType" items="${['마른', '보통', '근육질', '통통', '건장']}">
-                            <option value="${bodyType}" <c:if test="${userDTO.userBody == bodyType}">selected</c:if>>${bodyType}</option>
+                            <option value="${bodyType}" <c:if test="${userDTO.userBody == bodyType}">selected</c:if>> ${bodyType}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -191,7 +173,7 @@
                 <label class="col-md-2 control-label" for="job">직업 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="text" id="job" name="userJob" class="form-control"
-                           value="<c:out value="${userDTO.userJob}"/>" placeholder="직업을 입력하세요">
+                           value= "${userDTO.userJob}" placeholder="직업을 입력하세요">
                 </div>
             </div>
 
@@ -204,9 +186,9 @@
                         <option value="무교" <c:if test="${userDTO.userReligion == '무교'}">selected</c:if>>무교</option>
                         <option value="기독교" <c:if test="${userDTO.userReligion == '기독교'}">selected</c:if>>기독교</option>
                         <option value="천주교" <c:if test="${userDTO.userReligion == '천주교'}">selected</c:if>>천주교</option>
-                        <option value="힌두교" <c:if test="${userDTO.userReligion == '힌두교'}">selected</c:if>>힌두교</option>
                         <option value="불교" <c:if test="${userDTO.userReligion == '불교'}">selected</c:if>>불교</option>
                         <option value="이슬람교" <c:if test="${userDTO.userReligion == '이슬람교'}">selected</c:if>>이슬람교</option>
+                        <option value="힌두교" <c:if test="${userDTO.userReligion == '힌두교'}">selected</c:if>>힌두교</option>
                         <option value="기타" <c:if test="${userDTO.userReligion == '기타'}">selected</c:if>>기타</option>
                     </select>
                 </div>
@@ -217,44 +199,10 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">지역 <span class="require">*</span></label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control"  id="region" name="userRegion" value="<c:out value="${userDTO.userRegion}"/>" readonly>
+                    <input type="text" class="form-control"  id="region" name="userRegion" value="${userDTO.userRegion}" readonly>
                     <button type="button" class="btn btn-success mt-4 " onclick="openAddressPopup()">주소 찾기</button>
                 </div>
             </div>
-
-    <%--        <script>--%>
-    <%--            // 주소찾기 팝업 함수--%>
-    <%--            function openAddressPopup() {--%>
-    <%--                window.open("/API/addressAPI.html", "주소찾기", "width=600,height=500,scrollbars=yes");--%>
-    <%--            }--%>
-    <%--            </script>--%>
-
-            <!-- 지역 선택 -->
-    <%--        <div class="form-group">--%>
-    <%--            <label class="col-md-2 control-label">지역 <span class="require">*</span></label>--%>
-    <%--            <div class="col-md-8">--%>
-    <%--                <select class="form-control" name="userRegion">--%>
-    <%--                    <option value="">선택하세요</option>--%>
-    <%--                    <option value="서울" ${userDTO.userRegion=='서울' ? 'selected' : ''}>서울</option>--%>
-    <%--                    <option value="경기" ${userDTO.userRegion=='경기' ? 'selected' : ''}>경기도</option>--%>
-    <%--                    <option value="인천" ${userDTO.userRegion=='인천' ? 'selected' : ''}>인천</option>--%>
-    <%--                    <option value="부산" ${userDTO.userRegion=='부산' ? 'selected' : ''}>부산</option>--%>
-    <%--                    <option value="대구" ${userDTO.userRegion=='대구' ? 'selected' : ''}>대구</option>--%>
-    <%--                    <option value="광주" ${userDTO.userRegion=='광주' ? 'selected' : ''}>광주</option>--%>
-    <%--                    <option value="대전" ${userDTO.userRegion=='대전' ? 'selected' : ''}>대전</option>--%>
-    <%--                    <option value="울산" ${userDTO.userRegion=='울산' ? 'selected' : ''}>울산</option>--%>
-    <%--                    <option value="세종" ${userDTO.userRegion=='세종' ? 'selected' : ''}>세종</option>--%>
-    <%--                    <option value="강원" ${userDTO.userRegion=='강원' ? 'selected' : ''}>강원</option>--%>
-    <%--                    <option value="충북" ${userDTO.userRegion=='충북' ? 'selected' : ''}>충북</option>--%>
-    <%--                    <option value="충남" ${userDTO.userRegion=='충남' ? 'selected' : ''}>충남</option>--%>
-    <%--                    <option value="전북" ${userDTO.userRegion=='전북' ? 'selected' : ''}>전북</option>--%>
-    <%--                    <option value="전남" ${userDTO.userRegion=='전남' ? 'selected' : ''}>전남</option>--%>
-    <%--                    <option value="경북" ${userDTO.userRegion=='경북' ? 'selected' : ''}>경북</option>--%>
-    <%--                    <option value="경남" ${userDTO.userRegion=='경남' ? 'selected' : ''}>경남</option>--%>
-    <%--                    <option value="제주" ${userDTO.userRegion=='제주' ? 'selected' : ''}>제주</option>--%>
-    <%--                </select>--%>
-    <%--            </div>--%>
-    <%--        </div>--%>
 
             <!-- MBTI 선택 -->
             <div class="form-group">
@@ -300,7 +248,7 @@
                 <label class="col-md-2 control-label" for="preferenceHeight">선호 키 <span class="require">*</span></label>
                     <div class="col-md-8">
                         <input type="text" id="preferenceHeight" name="preferenceHeight" class="form-control"
-                               value="<c:out value="${preferenceDTO.preferenceHeight}"/>" placeholder="선호 키를 입력하세요">
+                               value= "${preferenceDTO.preferenceHeight}" placeholder="선호 키를 입력하세요">
                     </div>
             </div>
 
@@ -322,7 +270,7 @@
                 <label class="col-md-2 control-label" for="preferenceAge">선호 나이 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="text" id="preferenceAge" name="preferenceAge" class="form-control"
-                           value="<c:out value="${preferenceDTO.preferenceAge}"/>" placeholder="선호 나이를 입력하세요">
+                           value= "${preferenceDTO.preferenceAge}" placeholder="선호 나이를 입력하세요">
                 </div>
             </div>
 

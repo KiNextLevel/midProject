@@ -137,7 +137,7 @@
                                         <input type="file" id="profileUpload" name="profileImage" accept="image/*"
                                                onchange="this.form.submit();"/>
                                     </form>
-
+<%--                                  깃오류  확인용--%>
                                     <label for="profileUpload">
                                         <c:choose>
                                             <c:when test="${not empty userDTO.userProfile}">

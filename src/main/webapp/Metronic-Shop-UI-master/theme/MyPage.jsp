@@ -445,8 +445,6 @@
             type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/bootstrap/js/bootstrap.min.js"
             type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/scripts/back-to-top.js"
-            type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
             type="text/javascript"></script>
     <!-- END CORE PLUGINS -->

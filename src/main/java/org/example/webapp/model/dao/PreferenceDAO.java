@@ -10,22 +10,22 @@ import java.util.ArrayList;
 
 public class PreferenceDAO {
     // 모든 사용자의 선호키, 체형, 나이 전체 출력
-    final String SELECTALL =
+    private final String SELECTALL =
             "SELECT U.USER_EMAIL, U.USER_NAME, P.PREFERENCE_HEIGHT, P.PREFERENCE_BODY, P.PREFERENCE_AGE " +
                     "FROM PREFERENCE P " +
                     "JOIN USER U ON P.PREFERENCE_USER_EMAIL = U.USER_EMAIL";
 
     // 유저 마이페이지 - 00 유저의 선호 키, 체형, 나이 출력
-    final String SELECTONE = "SELECT PREFERENCE_HEIGHT, PREFERENCE_BODY, PREFERENCE_AGE FROM PREFERENCE WHERE PREFERENCE_USER_EMAIL = ?";
+    private final String SELECTONE = "SELECT PREFERENCE_HEIGHT, PREFERENCE_BODY, PREFERENCE_AGE FROM PREFERENCE WHERE PREFERENCE_USER_EMAIL = ?";
 
     // 선호키, 체형, 나이 추가해줘(이메일 필수)
-    final String INSERT = "INSERT INTO PREFERENCE (PREFERENCE_USER_EMAIL, PREFERENCE_HEIGHT, PREFERENCE_BODY, PREFERENCE_AGE) VALUES (?, ?, ?, ?)";
+    private final String INSERT = "INSERT INTO PREFERENCE (PREFERENCE_USER_EMAIL, PREFERENCE_HEIGHT, PREFERENCE_BODY, PREFERENCE_AGE) VALUES (?, ?, ?, ?)";
 
     // 00 유저의 선호키, 체형, 나이 수정
-    final String UPDATE = "UPDATE PREFERENCE SET PREFERENCE_HEIGHT = ?, PREFERENCE_BODY = ?, PREFERENCE_AGE = ? WHERE PREFERENCE_USER_EMAIL = ?";
+    private final String UPDATE = "UPDATE PREFERENCE SET PREFERENCE_HEIGHT = ?, PREFERENCE_BODY = ?, PREFERENCE_AGE = ? WHERE PREFERENCE_USER_EMAIL = ?";
 
     // 삭제 기능은 사용자의 선호 선택이 필수이기 때문에 제공하지 않음
-    final String DELETE = "";
+    private final String DELETE = "";
 
     public ArrayList<PreferenceDTO> selectAll(PreferenceDTO preferenceDTO) {
         ArrayList<PreferenceDTO> datas = new ArrayList<>();
@@ -141,7 +141,7 @@ public class PreferenceDAO {
         }
     }
     // 삭제 기능은 필요하지 않기 때문에 구현하지 않음
-    public boolean delete(PreferenceDTO preferenceDTO) {
+    private boolean delete(PreferenceDTO preferenceDTO) {
         throw new UnsupportedOperationException("삭제 기능은 제공되지 않습니다.");
     }
 

@@ -39,7 +39,7 @@ public class UserDetailPageAction implements Action {
 		if (userDTO == null) {
 			request.setAttribute("msg", "존재하지 않는 회원입니다");
 			request.setAttribute("flag", false);
-			forward.setPath("/Metronic-Shop-UI-master/theme/alert.jsp");
+			forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 			forward.setRedirect(true);
 		} else {
 			System.out.println(userDTO);

@@ -11,23 +11,23 @@ import java.util.ArrayList;
 public class ReportDAO {
 
     // (관리자용) 00유저 신고자, 신고사유, 신고날짜, 00유저 피신고자, 신고 설명 전체 출력하기
-    final String SELECTALL = "SELECT REPORT_NUM, REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION "
+    private final String SELECTALL = "SELECT REPORT_NUM, REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION "
             + "FROM REPORT";
 
     // (유저용) - 마이페이지 상품명, 결제일, 결제 금액
-    final String SELECTONE = "SELECT REPORT_REPORTER FROM REPORT WHERE REPORT_REPORTER = ? AND REPORT_REPORTED = ?";
+    private final String SELECTONE = "SELECT REPORT_REPORTER FROM REPORT WHERE REPORT_REPORTER = ? AND REPORT_REPORTED = ?";
 
     // (유저용) 사용자가 또 다른 사용자를 신고하는 쿼리문(신고자, 신고이유, 신고날짜, 피신고자, 신고설명)
-    final String INSERT = "INSERT INTO REPORT (REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION) " +
-            "VALUES (?, ?, NOW(), ?, ?)";
+    private final String INSERT = "INSERT INTO REPORT (REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION) " +
+            "VALUES (?, ?, CURRENT_DATE, ?, ?)";
 
 
-    final String UPDATE = "";
+    private final String UPDATE = "";
 
     // (관리자용) 블랙리스트된 00 유저 삭제하기
-    final String DELETE = "DELETE FROM REPORT WHERE REPORT_REPORTED = ?";
+    private final String DELETE = "DELETE FROM REPORT WHERE REPORT_REPORTED = ?";
     //(관리자용) 경고 보내면 그 신고건 하나만 삭제하기
-    final String DELETE_ONE = "DELETE FROM REPORT WHERE REPORT_NUM = ?";
+    private final String DELETE_ONE = "DELETE FROM REPORT WHERE REPORT_NUM = ?";
 
     public ArrayList<ReportDTO> selectAll(ReportDTO reportDTO) {
         ArrayList<ReportDTO> datas = new ArrayList<>();
@@ -112,7 +112,7 @@ public class ReportDAO {
     }
 
 
-    public boolean update(ReportDTO reportDTO) {
+    private boolean update(ReportDTO reportDTO) {
         return false;
     }
 

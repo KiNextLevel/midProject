@@ -44,12 +44,11 @@ public class DeleteUserAction implements Action {
 
             request.setAttribute("msg", "회원 탈퇴가 완료되었습니다. 그동안 서비스를 이용해주셔서 감사합니다.");
             request.setAttribute("flag", true);
-            request.setAttribute("url", "deleteUserAlert.do");
+            request.setAttribute("url", "indexPage.do");
         } else {
             // 탈퇴 실패
             request.setAttribute("msg", "회원 탈퇴 처리 중 오류가 발생했습니다. 다시 시도해주세요.");
             request.setAttribute("flag", false);
-            request.setAttribute("url", "/Metronic-Shop-UI-master/theme/AccountDelete.jsp");
         }
 
         forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PaymentDAO {
     // 결제 번호, 유저 이메일, 이름 , 상품명, 결제금액, 결제 날짜 조회하기
-    final String SELECTALL_ADMIN_PAYMENTS = "SELECT "
+    private final String SELECTALL_ADMIN_PAYMENTS = "SELECT "
             + "p.PAYMENT_NUM, " // 결제 번호
             + "u.USER_EMAIL, " // 유저 이메일
             + "u.USER_NAME, " // 유저 이름
@@ -22,7 +22,7 @@ public class PaymentDAO {
     // 추가하기(일별, 월별, 연도별 매출 조회
 
     // 유저 마이페이지 - 결제한 상품명, 결제일, 결제 날짜
-    final String SELECTALL_PRODUCTLIST =
+    private final String SELECTALL_PRODUCTLIST =
             "SELECT " +
                     "    P.PRODUCT_NAME, " +  // 상품 이름
                     "    P.PRODUCT_PRICE, " +  // 상품 가격
@@ -35,12 +35,12 @@ public class PaymentDAO {
 
     // 사용자 결제 내역 저장하기
     // 유저 이메일, 금액, 결제 날짜, 결제 방법, 상품 번호
-    final String INSERT = "INSERT INTO PAYMENT "
+    private final String INSERT = "INSERT INTO PAYMENT "
             + "(PAYMENT_USER_EMAIL, PAYMENT_PRICE, PAYMENT_DATE, PAYMENT_TYPE, PRODUCT_NUM)"
             + "VALUES (?, ?, NOW(), ?, ?)";
 
-    final String UPDATE = "";
-    final String DELETE = "";
+    private final String UPDATE = "";
+    private final String DELETE = "";
 
     public ArrayList<PaymentDTO> selectAll(PaymentDTO paymentDTO) {
         ArrayList<PaymentDTO> datas = new ArrayList<>();
@@ -184,11 +184,11 @@ public class PaymentDAO {
         }
     }
 
-    public boolean update(PaymentDTO paymentDTO) {
+    private boolean update(PaymentDTO paymentDTO) {
         return false;
     }
 
-    public boolean delete(PaymentDTO paymentDTO) {
+    private boolean delete(PaymentDTO paymentDTO) {
         return false;
     }
 }

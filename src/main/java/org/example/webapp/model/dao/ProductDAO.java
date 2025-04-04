@@ -11,27 +11,27 @@ import java.util.ArrayList;
 public class ProductDAO {
 
     // 상품 구매 페이지에서 상품 출력 - 상품명, 상품 설명, 상품 가격
-    final String SELECTALL_PRODUCTS_BUY = "SELECT PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE FROM PRODUCT";
+    private final String SELECTALL_PRODUCTS_BUY = "SELECT PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE FROM PRODUCT";
 
     // 00유저 마이페이지에서 상품결제 내역 보기 - 상품명, 결제 내역, 가격
-    final String SELECTALL_PAYMENT_HISTORY = "SELECT p.PRODUCT_NAME, pm.PAYMENT_DATE, pm.PAYMENT_PRICE " +
+    private final String SELECTALL_PAYMENT_HISTORY = "SELECT p.PRODUCT_NAME, pm.PAYMENT_DATE, pm.PAYMENT_PRICE " +
                                              "FROM PAYMENT pm " +
                                              "JOIN PRODUCT p ON pm.PRODUCT_NUM = p.PRODUCT_NUM " +
                                              "WHERE pm.PAYMENT_USER_EMAIL = ?";
 
 
     // 상품번호로 상품명, 상품 설명, 상품 가격 가져오기(추가)
-    final String SELECTONE = "SELECT PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE FROM PRODUCT WHERE PRODUCT_NUM = ?";
+    private final String SELECTONE = "SELECT PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE FROM PRODUCT WHERE PRODUCT_NUM = ?";
 
     // 관리자용 상품 추가하기 쿼리문 - 상품 이름, 설명, 가격 추가하기(상품번호는 AUTO)
-    final String INSERT = "INSERT INTO PRODUCT (PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE) VALUES (?, ?, ?)";
+    private final String INSERT = "INSERT INTO PRODUCT (PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE) VALUES (?, ?, ?)";
 
     // 관리자용 상품 정보 업데이트 - 상품명, 설명, 가격 변경 하기
-    final String UPDATE = "UPDATE PRODUCT SET PRODUCT_NAME = ?, PRODUCT_DESCRIPTION = ?, PRODUCT_PRICE = ? WHERE PRODUCT_NUM = ?";
+    private final String UPDATE = "UPDATE PRODUCT SET PRODUCT_NAME = ?, PRODUCT_DESCRIPTION = ?, PRODUCT_PRICE = ? WHERE PRODUCT_NUM = ?";
 
     // 관리자용 상품 삭제하기 (상품명, 설명, 가격 삭제 하기)
     // final String DELETE="DELETE FROM PRODUCT WHERE PRODUCT_NUM = ?;"
-    final String DELETE = "UPDATE PRODUCT SET PRODUCT_STATUS = 'INACTIVE' WHERE PRODUCT_NUM = ?";
+    private final String DELETE = "UPDATE PRODUCT SET PRODUCT_STATUS = 'INACTIVE' WHERE PRODUCT_NUM = ?";
 
     public ArrayList<ProductDTO> selectAll(ProductDTO productDTO) {
         ArrayList<ProductDTO> datas = new ArrayList<>();

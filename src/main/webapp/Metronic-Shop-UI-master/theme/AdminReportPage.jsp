@@ -97,7 +97,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <li class="langs-block">
                         <a href="productPage.do" class="current"> 플러스샵 </a>
                     </li>
-                    <!-- END LANGS -->f
+                    <!-- END LANGS -->
                 </ul>
             </div>
             <!-- END TOP BAR LEFT PART -->

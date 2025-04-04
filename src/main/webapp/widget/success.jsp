@@ -121,7 +121,7 @@
                         <div class="p-grid-col text--right" id="amount">${jsonObject.amount}</div>
                     </div>
                     <div class="p-grid typography--p" style="margin-top: 10px">
-                        <div class="p-grid-col text--left"><b>결제 상품: ${orderName}</b></div>
+                        <div class="p-grid-col text--left"><b>결제 상품: ${productName}</b></div>
                         <div class="p-grid-col text--right" id="productName" style="white-space: initial; width: 250px">${jsonObject.paymentKey}</div>
                     </div>
                     <div class="p-grid typography--p" style="margin-top: 10px">

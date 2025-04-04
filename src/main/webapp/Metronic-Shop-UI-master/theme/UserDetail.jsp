@@ -227,25 +227,19 @@
                                 <!-- 첫번째 취향 넣는 곳-->
                                 <div class="review-item clearfix">
                                     <div class="review-item-content">
-                                        <%
-                                            PreferenceDTO preferenceDTO = (PreferenceDTO) request.getAttribute("preferenceDTO");
-                                            if (preferenceDTO != null) {
-                                        %>
-                                        <p>선호 키 : ${ preferenceDTO.preferenceHeight}
-                                        </p><br>
-                                        <p>선호 체형 : ${preferenceDTO.preferenceBody}
-                                        </p><br>
-                                        <p>선호 나이 : ${ preferenceDTO.preferenceAge}
-                                        </p><br>
-                                        <%
-                                        } else {
-                                        %>
-                                        <p>사용자 정보를 찾을 수 없습니다.</p>
-                                        <%
-                                            }
-                                        %>
+                                        <c:choose>
+                                            <c:when test="${not empty preferenceDTO}">
+                                                <p>선호 키 : ${preferenceDTO.preferenceHeight}</p><br>
+                                                <p>선호 체형 : ${preferenceDTO.preferenceBody}</p><br>
+                                                <p>선호 나이 : ${preferenceDTO.preferenceAge}</p><br>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <p>사용자 정보를 찾을 수 없습니다.</p>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

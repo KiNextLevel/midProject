@@ -61,24 +61,6 @@
         <!-- Theme styles END -->
     </head>
     <body class="ecommerce">
-    <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel hidden-sm">
-        <div class="color-mode-icons icon-color"></div>
-        <div class="color-mode-icons icon-color-close"></div>
-        <div class="color-mode">
-            <p>THEME COLOR</p>
-            <ul class="inline">
-                <li class="color-red current color-default" data-style="red"></li>
-                <li class="color-blue" data-style="blue"></li>
-                <li class="color-green" data-style="green"></li>
-                <li class="color-orange" data-style="orange"></li>
-                <li class="color-gray" data-style="gray"></li>
-                <li class="color-turquoise" data-style="turquoise"></li>
-            </ul>
-        </div>
-    </div>
-    <!-- END BEGIN STYLE CUSTOMIZER -->
-
     <!-- BEGIN TOP BAR -->
     <div class="pre-header">
         <div class="container">
@@ -221,40 +203,6 @@
                     <button type="button" class="btn btn-success mt-4 " onclick="openAddressPopup()">주소 찾기</button>
                 </div>
             </div>
-
-    <%--        <script>--%>
-    <%--            // 주소찾기 팝업 함수--%>
-    <%--            function openAddressPopup() {--%>
-    <%--                window.open("/API/addressAPI.html", "주소찾기", "width=600,height=500,scrollbars=yes");--%>
-    <%--            }--%>
-    <%--            </script>--%>
-
-            <!-- 지역 선택 -->
-    <%--        <div class="form-group">--%>
-    <%--            <label class="col-md-2 control-label">지역 <span class="require">*</span></label>--%>
-    <%--            <div class="col-md-8">--%>
-    <%--                <select class="form-control" name="userRegion">--%>
-    <%--                    <option value="">선택하세요</option>--%>
-    <%--                    <option value="서울" ${userDTO.userRegion=='서울' ? 'selected' : ''}>서울</option>--%>
-    <%--                    <option value="경기" ${userDTO.userRegion=='경기' ? 'selected' : ''}>경기도</option>--%>
-    <%--                    <option value="인천" ${userDTO.userRegion=='인천' ? 'selected' : ''}>인천</option>--%>
-    <%--                    <option value="부산" ${userDTO.userRegion=='부산' ? 'selected' : ''}>부산</option>--%>
-    <%--                    <option value="대구" ${userDTO.userRegion=='대구' ? 'selected' : ''}>대구</option>--%>
-    <%--                    <option value="광주" ${userDTO.userRegion=='광주' ? 'selected' : ''}>광주</option>--%>
-    <%--                    <option value="대전" ${userDTO.userRegion=='대전' ? 'selected' : ''}>대전</option>--%>
-    <%--                    <option value="울산" ${userDTO.userRegion=='울산' ? 'selected' : ''}>울산</option>--%>
-    <%--                    <option value="세종" ${userDTO.userRegion=='세종' ? 'selected' : ''}>세종</option>--%>
-    <%--                    <option value="강원" ${userDTO.userRegion=='강원' ? 'selected' : ''}>강원</option>--%>
-    <%--                    <option value="충북" ${userDTO.userRegion=='충북' ? 'selected' : ''}>충북</option>--%>
-    <%--                    <option value="충남" ${userDTO.userRegion=='충남' ? 'selected' : ''}>충남</option>--%>
-    <%--                    <option value="전북" ${userDTO.userRegion=='전북' ? 'selected' : ''}>전북</option>--%>
-    <%--                    <option value="전남" ${userDTO.userRegion=='전남' ? 'selected' : ''}>전남</option>--%>
-    <%--                    <option value="경북" ${userDTO.userRegion=='경북' ? 'selected' : ''}>경북</option>--%>
-    <%--                    <option value="경남" ${userDTO.userRegion=='경남' ? 'selected' : ''}>경남</option>--%>
-    <%--                    <option value="제주" ${userDTO.userRegion=='제주' ? 'selected' : ''}>제주</option>--%>
-    <%--                </select>--%>
-    <%--            </div>--%>
-    <%--        </div>--%>
 
             <!-- MBTI 선택 -->
             <div class="form-group">

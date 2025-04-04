@@ -138,7 +138,7 @@
             <div class="form-group">
                 <label class="col-md-2 control-label" for="userDescription">자기소개</label>
                 <div class="col-md-8">
-                    <textarea class="form-control" id="userDescription" name="userDescription" rows="6" maxlength="200"><c:out value="${userDTO.userDescription}"/></textarea>
+                    <textarea class="form-control" id="userDescription" name="userDescription" rows="6" maxlength="200">${userDTO.userDescription}</textarea>
                     <small id="charCount">0 / 200</small>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                 <label class="col-md-2 control-label" for="userNickname">닉네임 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="text" id="userNickname" name="userNickname" class="form-control"
-                           value="<c:out value="${userDTO.userNickname}"/>" placeholder="닉네임을 입력하세요">
+                           value= "${userDTO.userNickname}" placeholder="닉네임을 입력하세요">
                 </div>
             </div>
 
@@ -157,7 +157,7 @@
                 <label class="col-md-2 control-label" for="height">키 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="number" id="height" name="userHeight" class="form-control"
-                           value="<c:out value="${userDTO.userHeight}"/>" placeholder="cm 단위로 입력하세요" step="0.01" min="100" max="200">
+                           value="${userDTO.userHeight}" placeholder="cm 단위로 입력하세요" step="0.01" min="100" max="200">
                 </div>
             </div>
 
@@ -168,7 +168,7 @@
                     <select id="bodyType" name="userBody" class="form-control">
                         <option value="">선택하세요</option>
                         <c:forEach var="bodyType" items="${['마른', '보통', '근육질', '통통', '건장']}">
-                            <option value="${bodyType}" <c:if test="${userDTO.userBody == bodyType}">selected</c:if>>${bodyType}</option>
+                            <option value="${bodyType}" <c:if test="${userDTO.userBody == bodyType}">selected</c:if>> ${bodyType}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -191,7 +191,7 @@
                 <label class="col-md-2 control-label" for="job">직업 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="text" id="job" name="userJob" class="form-control"
-                           value="<c:out value="${userDTO.userJob}"/>" placeholder="직업을 입력하세요">
+                           value= "${userDTO.userJob}" placeholder="직업을 입력하세요">
                 </div>
             </div>
 
@@ -217,7 +217,7 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">지역 <span class="require">*</span></label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control"  id="region" name="userRegion" value="<c:out value="${userDTO.userRegion}"/>" readonly>
+                    <input type="text" class="form-control"  id="region" name="userRegion" value="${userDTO.userRegion}" readonly>
                     <button type="button" class="btn btn-success mt-4 " onclick="openAddressPopup()">주소 찾기</button>
                 </div>
             </div>
@@ -300,7 +300,7 @@
                 <label class="col-md-2 control-label" for="preferenceHeight">선호 키 <span class="require">*</span></label>
                     <div class="col-md-8">
                         <input type="text" id="preferenceHeight" name="preferenceHeight" class="form-control"
-                               value="<c:out value="${preferenceDTO.preferenceHeight}"/>" placeholder="선호 키를 입력하세요">
+                               value= "${preferenceDTO.preferenceHeight}" placeholder="선호 키를 입력하세요">
                     </div>
             </div>
 
@@ -322,7 +322,7 @@
                 <label class="col-md-2 control-label" for="preferenceAge">선호 나이 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="text" id="preferenceAge" name="preferenceAge" class="form-control"
-                           value="<c:out value="${preferenceDTO.preferenceAge}"/>" placeholder="선호 나이를 입력하세요">
+                           value= "${preferenceDTO.preferenceAge}" placeholder="선호 나이를 입력하세요">
                 </div>
             </div>
 

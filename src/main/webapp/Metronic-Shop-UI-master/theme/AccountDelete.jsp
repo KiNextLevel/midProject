@@ -261,7 +261,6 @@
         <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
         <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
         <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
                 type="text/javascript"></script>
         <!-- END CORE PLUGINS -->

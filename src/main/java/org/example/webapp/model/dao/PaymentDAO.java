@@ -30,7 +30,7 @@ public class PaymentDAO {
                     "    M.PAYMENT_DATE " +  // 결제 날짜
                     "FROM PAYMENT M " +
                     "JOIN PRODUCT P ON M.PRODUCT_NUM = P.PRODUCT_NUM " +
-                    "WHERE M.PAYMENT_USER_EMAIL = ?";
+                    "WHERE M.PAYMENT_USER_EMAIL = ? ORDER BY M.PAYMENT_DATE DESC;";
 
 
     // 사용자 결제 내역 저장하기
@@ -79,7 +79,7 @@ public class PaymentDAO {
                     data.setProductName(rs.getString("PRODUCT_NAME"));
                     data.setProductPrice(rs.getInt("PRODUCT_PRICE"));
                  //   data.setPaymentPrice(rs.getInt("PAYMENT_PRICE"));
-                    data.setPaymentDate(rs.getDate("PAYMENT_DATE"));
+                    data.setPaymentDate(rs.getTimestamp("PAYMENT_DATE"));
                 }
 
                 datas.add(data);

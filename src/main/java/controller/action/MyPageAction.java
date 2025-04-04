@@ -51,6 +51,7 @@ public class MyPageAction implements Action {
         UserDTO user = userDAO.selectOne(userDTO);
         PreferenceDTO preference = preferenceDAO.selectOne(preferenceDTO);
         ArrayList<PaymentDTO> paymentList = paymentDAO.selectAll(paymentDTO);
+        System.out.println("paymentList: ["+paymentList+"]");
         ArrayList<ParticipantDTO> participantList = participantDAO.selectAll(participantDTO);
         for(ParticipantDTO p : participantList) {
             System.out.println(p);

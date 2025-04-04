@@ -197,15 +197,14 @@
                                         </c:choose>
                                     </div>
                                 </div>
+                                <%--  이름--%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-user"></i>
                                     </div>
                                     <div class="info-label">이름</div>
                                     <div class="info-value">
-
                                         ${userDTO.userName}
-
                                     </div>
                                 </div>
 
@@ -219,20 +218,17 @@
                                         ${userDTO.userEmail}
                                     </div>
                                 </div>
-
-
+                                <%-- 전화번호 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-phone"></i>
                                     </div>
                                     <div class="info-label">전화번호</div>
                                     <div class="info-value">
-
-
                                         ${userDTO.userPhone}
-
                                     </div>
                                 </div>
+                                <%-- 성별 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-venus-mars"></i>
@@ -249,27 +245,24 @@
                                         </c:choose>
                                     </div>
                                 </div>
+                                <%-- 생년월일 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-birthday-cake"></i>
                                     </div>
                                     <div class="info-label">생년월일</div>
                                     <div class="info-value">
-
                                         ${userDTO.userBirth}
-
                                     </div>
                                 </div>
-
+                                <%-- 키 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-ruler"></i>
                                     </div>
                                     <div class="info-label">키</div>
                                     <div class="info-value">
-
                                         ${userDTO.userHeight}cm
-
                                     </div>
                                 </div>
                             </div>
@@ -279,50 +272,47 @@
                         <div id="additional-info" class="info-card">
                             <h3>추가 정보</h3>
                             <div class="info-list">
+                                <%-- 체형 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-weight"></i>
                                     </div>
                                     <div class="info-label">체형</div>
                                     <div class="info-value">
-
                                         ${userDTO.userBody}
-
                                     </div>
                                 </div>
+                                <%-- 학력 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-graduation-cap"></i>
                                     </div>
                                     <div class="info-label">학력</div>
                                     <div class="info-value">
-
                                         ${userDTO.userEducation}
-
                                     </div>
                                 </div>
+                                    <%-- 지역 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fa fa-map-marker"></i>
                                     </div>
                                     <div class="info-label">지역</div>
                                     <div class="info-value">
-
-                                        지역을 입력해주세요.
-
+                                        ${userDTO.userRegion}
                                     </div>
                                 </div>
+                                    <%-- MBTI --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-theater-masks"></i>
                                     </div>
                                     <div class="info-label">MBTI</div>
                                     <div class="info-value">
-
-                                        MBTI를 입력해주세요.
-
+                                        ${userDTO.userMbti}
                                     </div>
                                 </div>
+                                    <%-- 음주 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-wine-glass"></i>
@@ -337,6 +327,7 @@
                                         </c:choose>
                                     </div>
                                 </div>
+                                    <%-- 흡연 --%>
                                 <div class="info-item">
                                     <div class="info-icon">
                                         <i class="fas fa-smoking"></i>
@@ -378,7 +369,6 @@
                                 <thead>
                                 <tr>
                                     <th>이벤트 이름</th>
-
                                 </tr>
                                 </thead>
                                 <tbody>

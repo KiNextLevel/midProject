@@ -38,10 +38,15 @@ public class ParticipantDAO {
         try {
             conn = JDBCUtil.connect();
 
+            // 이벤트 페이지에서 보여지는 참가중인 이벤트 목록
+            // 이벤트의 제목, 내용, 작성일 전부 다 가져옴
             if (participantDTO.getCondition().equals("SELECTALL")) {
                 pstmt = conn.prepareStatement(SELECTALL);
                 pstmt.setString(1, participantDTO.getParticipantUserEmail());
-            } else if (participantDTO.getCondition().equals("SELECTALL_EVENTPRINT")) {
+            }
+            // 마이페이지에서 보여지는 사용자가 참가중인 이벤트 목록
+            // 이벤트의 제목만 가져옴
+            else if (participantDTO.getCondition().equals("SELECTALL_EVENTPRINT")) {
                 pstmt = conn.prepareStatement(SELECTALL_EVENTPRINT);
                 pstmt.setString(1, participantDTO.getParticipantUserEmail());
             }

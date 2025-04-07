@@ -22,6 +22,7 @@ public class BoardDAO {
     // 이벤트 게시판 들어가기
     private String SELECTONE = "SELECT * FROM BOARD WHERE BOARD_NUM = ?";
 
+    // 유저용 마이페이지 - 이벤트 제목, 이벤트 내용, 이벤트 날짜
     private String SELECTONE_EVENTLISTPRINT = "SELECT BOARD_TITLE, BOARD_CONTENT, BOARD_DATE " +
             "FROM BOARD WHERE USER_EMAIL = ?";
 

@@ -48,10 +48,10 @@ public class ParticipantDAO {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 ParticipantDTO dto = new ParticipantDTO();
-                if ("SELECTALL".equals(participantDTO.getCondition())) {
+                if (participantDTO.getCondition().equals("SELECTALL")) {
                     dto.setParticipantBoardNumber(rs.getInt("BOARD_NUM"));
                     dto.setParticipantUserEmail(rs.getString("PARTICIPANT_USER_EMAIL"));
-                }   if ("SELECTALL_EVENTPRINT".equals(participantDTO.getCondition())) {
+                }   if (participantDTO.getCondition().equals("SELECTALL_EVENTPRINT")) {
                         dto.setBoardTitle(rs.getString("BOARD_TITLE"));
                     }
                 list.add(dto);

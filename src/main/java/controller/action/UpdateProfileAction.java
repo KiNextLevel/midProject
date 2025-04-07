@@ -68,7 +68,7 @@ public class UpdateProfileAction implements Action {
             UserDTO userDTO = new UserDTO();
             userDTO.setUserEmail(userEmail);
             userDTO.setUserDescription(userDescription); // 자기소개 설정
-            userDTO.setUserNickname(userNickname); // 기존 닉네임 유지
+            userDTO.setUserNickname(userNickname); // 닉네임
 
             String newNickname = request.getParameter("userNickName");
             if (newNickname != null && !newNickname.trim().isEmpty()) {
@@ -85,12 +85,12 @@ public class UpdateProfileAction implements Action {
                 }
             }
 
-            userDTO.setUserBody(userBody);
-            userDTO.setUserEducation(userEducation);
-            userDTO.setUserJob(userJob);
-            userDTO.setUserReligion(userReligion);
-            userDTO.setUserRegion(userRegion);
-            userDTO.setUserMbti(userMbti);
+            userDTO.setUserBody(userBody); // 체형
+            userDTO.setUserEducation(userEducation); // 학력
+            userDTO.setUserJob(userJob); // 직업
+            userDTO.setUserReligion(userReligion); // 종교
+            userDTO.setUserRegion(userRegion); // 지역
+            userDTO.setUserMbti(userMbti); // MBTI
 
             // 위도,경도 변환 코드 삽입
             try {
@@ -130,10 +130,10 @@ public class UpdateProfileAction implements Action {
 
             // PreferenceDTO 객체 생성 및 설정
             PreferenceDTO preferenceDTO = new PreferenceDTO();
-            preferenceDTO.setUserEmail(userEmail);
-            preferenceDTO.setPreferenceHeight(preferenceHeight);
-            preferenceDTO.setPreferenceBody(preferenceBody);
-            preferenceDTO.setPreferenceAge(preferenceAge);
+            preferenceDTO.setUserEmail(userEmail); // 사용자 이메일
+            preferenceDTO.setPreferenceHeight(preferenceHeight); // 선호 키
+            preferenceDTO.setPreferenceBody(preferenceBody); // 선호 체형
+            preferenceDTO.setPreferenceAge(preferenceAge); // 선호 나이
             preferenceDTO.setCondition("UPDATE");
 
             // DAO 객체 생성

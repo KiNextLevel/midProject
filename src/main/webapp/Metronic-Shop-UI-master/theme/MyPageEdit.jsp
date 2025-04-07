@@ -60,7 +60,7 @@
         <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
         <!-- Theme styles END -->
     </head>
-    <body class="ecommerce">
+    <body class="ecommerce">    
     <!-- BEGIN TOP BAR -->
     <div class="pre-header">
         <div class="container">

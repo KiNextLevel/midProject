@@ -22,6 +22,9 @@ public class BoardDAO {
     // 이벤트 게시판 들어가기
     private String SELECTONE = "SELECT * FROM BOARD WHERE BOARD_NUM = ?";
 
+    private String SELECTONE_EVENTLISTPRINT = "SELECT BOARD_TITLE, BOARD_CONTENT, BOARD_DATE " +
+            "FROM BOARD WHERE USER_EMAIL = ?";
+
     // 이벤트 추가하기
     private String INSERT = "INSERT INTO BOARD (BOARD_TITLE, BOARD_CONTENT, BOARD_LIMIT) VALUES (?, ?, ?)";
 
@@ -73,7 +76,7 @@ public class BoardDAO {
         BoardDTO datas = null;
         try {
             conn = JDBCUtil.connect();
-            pstmt = conn.prepareStatement(SELECTONE);
+            pstmt = conn.prepareStatement(SELECTONE_EVENTLISTPRINT);
             pstmt.setInt(1, boardDTO.getBoardNumber());
             rs = pstmt.executeQuery();
             if (rs.next()) {

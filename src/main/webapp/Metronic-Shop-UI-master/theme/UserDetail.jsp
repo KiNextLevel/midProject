@@ -175,17 +175,68 @@
                             </div>
                         </div>
 
-                        <!-- 지도 iframe 추가 -->
-                        <div style="margin-top: 20px;">
-                            <iframe
-                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/LocationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
-                                    width="100%" height="400"
-                                    style="border: none; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
-                            </iframe>
-                        </div>
-                    </div>
+<%--                        <!-- 지도 iframe 추가 -->--%>
+<%--                        <div style="margin-top: 20px;">--%>
+<%--                            <iframe--%>
+<%--                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/LocationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"--%>
+<%--                                  width="100%" height="400"--%>
+<%--                                   style="border: none; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">--%>
+<%--                            </iframe>--%>
+<%--                       </div>--%>
+<%--                  </div>--%>
 
-                    <div class="product-page-content">
+<%--                        <!-- 지도 표시 영역 -->--%>
+<%--                        <!-- 지도 UI가 표시될 div 요소, 스타일로 너비/높이/테두리 둥글기/그림자/마진 설정 -->--%>
+<%--                        <div id="map" style="width: 100%; height: 400px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1); margin-top: 20px;"></div>--%>
+
+<%--                       <!-- Kakao 지도 JavaScript SDK를 불러오는 스크립트 -->--%>
+<%--                        <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=16e5b4c908303629d0e034ffce98abc8&libraries=services"></script>--%>
+<%--                        <script>--%>
+<%--                            // JSP에서 전달받은 사용자의 위도와 경도 정보를 자바스크립트 변수로 저장 =======&ndash;%&gt;--%>
+<%--                            // userDTO 객체에서 위도와 경도 정보를 꺼내서 자바스크립트 변수에 할당&ndash;%&gt;--%>
+<%--                            const lat = ${userDTO.userLatitude};   // 사용자의 위도&ndash;%&gt;--%>
+<%--                            const lng = ${userDTO.userLongitude};  // 사용자의 경도&ndash;%&gt;--%>
+<%--                            console.log("위도:", ${userDTO.userLatitude});--%>
+<%--                            console.log("경도:", ${userDTO.userLongitude});--%>
+<%--                            //  Kakao 지도 생성--%>
+<%--                            // 'map'이라는 id를 가진 div에 지도를 표시하고 중심좌표는 위에서 받은 위도/경도로 설정&ndash;%&gt;--%>
+<%--                            const map = new kakao.maps.Map(document.getElementById('map'), {--%>
+<%--                                center: new kakao.maps.LatLng(lat, lng),  // 지도 중심 좌표 설정--%>
+<%--                               level: 7  // 지도 확대 수준 (1~14 정도로 조절 가능)--%>
+<%--                            });--%>
+
+<%--                            // 지도에 반경 원(circle) 표시하기&ndash;%&gt;--%>
+<%--                            // 사용자의 위치를 중심으로 특정 거리만큼의 반경을 시각적으로 표시&ndash;%&gt;--%>
+<%--                           const circle = new kakao.maps.Circle({--%>
+<%--                                center: new kakao.maps.LatLng(lat, lng),  // 원의 중심 좌표&ndash;%&gt;--%>
+<%--                                radius: 3000,  // 반지름: 미터 단위 (3,000m → 약 3km) ★30km로 수정하려면 30000으로!&ndash;%&gt;--%>
+<%--                                strokeWeight: 2,         // 원 테두리 두께&ndash;%&gt;--%>
+<%--                                strokeColor: '#FF5A5A',  // 원 테두리 색상 (붉은색)&ndash;%&gt;--%>
+<%--                                fillColor: '#FFCCCC',    // 원 내부 색상 (연분홍색)&ndash;%&gt;--%>
+<%--                                fillOpacity: 0.3         // 원 내부 색상 투명도 (0.0 ~ 1.0)&ndash;%&gt;--%>
+<%--                             });--%>
+
+<%--                            // 생성한 원을 지도 위에 표시--%>
+<%--                            circle.setMap(map);--%>
+<%--                       </script>--%>
+
+                       <!-- 지도 div -->
+                        <div id="map" style="width: 100%; height: 400px;"></div>
+
+                        <!-- 스크립트 파일 불러오기 -->
+                        <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=16e5b4c908303629d0e034ffce98abc8&libraries=services"></script>
+                        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/MapView.js"></script>
+
+                        <script>
+                            initUserMap(${userDTO.userLatitude}, ${userDTO.userLongitude});
+                            console.log("위도:", ${userDTO.userLatitude});
+                            console.log("경도:", ${userDTO.userLongitude});
+                        </script>
+
+
+
+
+                        <div class="product-page-content">
                         <ul id="myTab" class="nav nav-tabs">
                             <li><a href="#Information" data-toggle="tab">Information</a></li>
                             <li class="active"><a href="#favorite" data-toggle="tab">Favorite</a></li>

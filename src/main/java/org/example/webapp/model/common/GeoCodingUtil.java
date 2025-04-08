@@ -49,10 +49,8 @@ public class GeoCodingUtil {
                 while ((line = reader.readLine()) != null) {
                     responseBuilder.append(line);
                 }
-
                 // 스트림 닫기
                 reader.close();
-
                 // JSON 응답 문자열로 변환
                 String response = responseBuilder.toString();
 

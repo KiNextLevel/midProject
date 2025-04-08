@@ -59,17 +59,17 @@ function sample6_execDaumPostcode() {
            // document.getElementById("sample6_detailAddress").focus();
 
             // 여기에 좌표 변환 기능 추가 - 위도, 경도
-            var geocoder = new kakao.maps.services.Geocoder();
-
-            geocoder.addressSearch(addr, function(result, status) {
-                if (status === kakao.maps.services.Status.OK) {
-                    var lat = result[0].y;
-                    var lng = result[0].x;
-                    console.log(" 위도:", lat, "경도:", lng);
-                } else {
-                    console.error("주소 → 좌표 변환 실패");
-                }
-            });
+            // var geocoder = new kakao.maps.services.Geocoder();
+            //
+            // geocoder.addressSearch(addr, function(result, status) {
+            //     if (status === kakao.maps.services.Status.OK) {
+            //         var lat = result[0].y;
+            //         var lng = result[0].x;
+            //         console.log(" 위도:", lat, "경도:", lng);
+            //     } else {
+            //         console.error("주소 → 좌표 변환 실패");
+            //     }
+            // });
         }
     }).open();
 }

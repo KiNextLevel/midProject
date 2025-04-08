@@ -17,10 +17,12 @@
         body, html { margin: 0; padding: 0; height: 100%; }
     </style>
 </head>
+
 <body>
 <div id="map"></div>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=16e5b4c908303629d0e034ffce98abc8&libraries=services"></script>
 <script>
+
     // JSP에서 받은 위도와 경도 값을 JavaScript 변수로 설정
     const lat = ${lat};
     const lng = ${lng};

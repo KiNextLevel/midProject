@@ -19,11 +19,15 @@ public class UserDetailPageAction implements Action {
 		userDTO.setCondition("SELECTONE_USERINFO");
 		userDTO.setUserEmail(request.getParameter("userEmail"));
 		userDTO = userDAO.selectOne(userDTO);
+		System.out.println(" 위도: " + userDTO.getUserLatitude());
+		System.out.println(" 경도: " + userDTO.getUserLongitude());
+		System.out.println(" 주소: " + userDTO.getUserRegion());
 
 		PreferenceDTO preferenceDTO = new PreferenceDTO();
 		PreferenceDAO preferenceDAO = new PreferenceDAO();
 		preferenceDTO.setCondition("SELECTONE");
 		preferenceDTO.setUserEmail(request.getParameter("userEmail"));
+
 
 		System.out.println("CONT 로그: 선호 정보 조회 시작 - " + request.getParameter("userEmail"));
 		preferenceDTO = preferenceDAO.selectOne(preferenceDTO);

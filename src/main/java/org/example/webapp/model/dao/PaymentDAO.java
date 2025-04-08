@@ -26,7 +26,6 @@ public class PaymentDAO {
             "SELECT " +
                     "    P.PRODUCT_NAME, " +  // 상품 이름
                     "    P.PRODUCT_PRICE, " +  // 상품 가격
-                  //  "    P.PAYMENT_PRICE, " +  // 상품 가격
                     "    M.PAYMENT_DATE " +  // 결제 날짜
                     "FROM PAYMENT M " +
                     "JOIN PRODUCT P ON M.PRODUCT_NUM = P.PRODUCT_NUM " +

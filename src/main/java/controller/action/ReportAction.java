@@ -27,7 +27,7 @@ public class ReportAction implements Action {
         // getParameter()로 폼 데이터 가져오기
         String reportedUserEmail = request.getParameter("userEmail");
 
-        // 사용자 닉네임 조회 로직 추가
+        // 사용자 닉네임 조회
         UserDTO userDTO = new UserDTO();
         UserDAO userDAO = new UserDAO();
         userDTO.setUserEmail(reportedUserEmail);

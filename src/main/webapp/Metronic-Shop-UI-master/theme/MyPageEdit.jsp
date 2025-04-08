@@ -139,7 +139,8 @@
                 <label class="col-md-2 control-label" for="height">키 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="number" id="height" name="userHeight" class="form-control"
-                           value="${userDTO.userHeight}" placeholder="cm 단위로 입력하세요" step="0.01" min="100" max="200">
+                           value="${userDTO.userHeight}" placeholder="cm 단위로 입력하세요"
+                           step="1" min="100" max="200" onkeydown="return event.keyCode !== 190">
                 </div>
             </div>
 
@@ -246,10 +247,11 @@
             <!-- 선호 키 -->
             <div class="form-group">
                 <label class="col-md-2 control-label" for="preferenceHeight">선호 키 <span class="require">*</span></label>
-                    <div class="col-md-8">
-                        <input type="text" id="preferenceHeight" name="preferenceHeight" class="form-control"
-                               value= "${preferenceDTO.preferenceHeight}" placeholder="선호 키를 입력하세요">
-                    </div>
+                <div class="col-md-8">
+                    <input type="number" id="preferenceHeight" name="preferenceHeight" class="form-control"
+                           value="${preferenceDTO.preferenceHeight}" placeholder="선호 키를 입력하세요"
+                           step="1" min="100" max="200" onkeydown="return event.keyCode !== 190">
+                </div>
             </div>
 
             <!-- 선호 체형 -->

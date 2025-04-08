@@ -188,7 +188,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
                                 <div class="report-content">
                                     <h5><strong>신고 사유:</strong> ${data.reportReason}</h5>
-                                    <p>${data.reportReason}</p>
+                                    <p>${data.reportDescription}</p>
                                 </div>
 
                                 <div class="report-actions">

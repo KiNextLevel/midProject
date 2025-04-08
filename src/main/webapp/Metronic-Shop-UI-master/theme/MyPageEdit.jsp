@@ -179,44 +179,17 @@
 
             <!-- 종교 선택 -->
             <div class="form-group">
-                <label class="col-md-2 control-label">지역 <span class="require">*</span></label>
+                <label class="col-md-2 control-label">종교 <span class="require">*</span></label>
                 <div class="col-md-8">
-                    <select class="form-control" name="userRegion">
+                    <select name="userReligion" class="form-control">
                         <option value="">선택하세요</option>
-                        <c:if test="${userDTO.userRegion=='서울' || userDTO.userRegion==null}"><option value="서울" selected>서울</option></c:if>
-                        <c:if test="${userDTO.userRegion!='서울'}"><option value="서울">서울</option></c:if>
-                        <c:if test="${userDTO.userRegion=='경기'}"><option value="경기" selected>경기도</option></c:if>
-                        <c:if test="${userDTO.userRegion!='경기'}"><option value="경기">경기도</option></c:if>
-                        <c:if test="${userDTO.userRegion=='인천'}"><option value="인천" selected>인천</option></c:if>
-                        <c:if test="${userDTO.userRegion!='인천'}"><option value="인천">인천</option></c:if>
-                        <c:if test="${userDTO.userRegion=='부산'}"><option value="부산" selected>부산</option></c:if>
-                        <c:if test="${userDTO.userRegion!='부산'}"><option value="부산">부산</option></c:if>
-                        <c:if test="${userDTO.userRegion=='대구'}"><option value="대구" selected>대구</option></c:if>
-                        <c:if test="${userDTO.userRegion!='대구'}"><option value="대구">대구</option></c:if>
-                        <c:if test="${userDTO.userRegion=='광주'}"><option value="광주" selected>광주</option></c:if>
-                        <c:if test="${userDTO.userRegion!='광주'}"><option value="광주">광주</option></c:if>
-                        <c:if test="${userDTO.userRegion=='대전'}"><option value="대전" selected>대전</option></c:if>
-                        <c:if test="${userDTO.userRegion!='대전'}"><option value="대전">대전</option></c:if>
-                        <c:if test="${userDTO.userRegion=='울산'}"><option value="울산" selected>울산</option></c:if>
-                        <c:if test="${userDTO.userRegion!='울산'}"><option value="울산">울산</option></c:if>
-                        <c:if test="${userDTO.userRegion=='세종'}"><option value="세종" selected>세종</option></c:if>
-                        <c:if test="${userDTO.userRegion!='세종'}"><option value="세종">세종</option></c:if>
-                        <c:if test="${userDTO.userRegion=='강원'}"><option value="강원" selected>강원</option></c:if>
-                        <c:if test="${userDTO.userRegion!='강원'}"><option value="강원">강원</option></c:if>
-                        <c:if test="${userDTO.userRegion=='충북'}"><option value="충북" selected>충북</option></c:if>
-                        <c:if test="${userDTO.userRegion!='충북'}"><option value="충북">충북</option></c:if>
-                        <c:if test="${userDTO.userRegion=='충남'}"><option value="충남" selected>충남</option></c:if>
-                        <c:if test="${userDTO.userRegion!='충남'}"><option value="충남">충남</option></c:if>
-                        <c:if test="${userDTO.userRegion=='전북'}"><option value="전북" selected>전북</option></c:if>
-                        <c:if test="${userDTO.userRegion!='전북'}"><option value="전북">전북</option></c:if>
-                        <c:if test="${userDTO.userRegion=='전남'}"><option value="전남" selected>전남</option></c:if>
-                        <c:if test="${userDTO.userRegion!='전남'}"><option value="전남">전남</option></c:if>
-                        <c:if test="${userDTO.userRegion=='경북'}"><option value="경북" selected>경북</option></c:if>
-                        <c:if test="${userDTO.userRegion!='경북'}"><option value="경북">경북</option></c:if>
-                        <c:if test="${userDTO.userRegion=='경남'}"><option value="경남" selected>경남</option></c:if>
-                        <c:if test="${userDTO.userRegion!='경남'}"><option value="경남">경남</option></c:if>
-                        <c:if test="${userDTO.userRegion=='제주'}"><option value="제주" selected>제주</option></c:if>
-                        <c:if test="${userDTO.userRegion!='제주'}"><option value="제주">제주</option></c:if>
+                        <option value="무교" <c:if test="${userDTO.userReligion == '무교'}">selected</c:if>>무교</option>
+                        <option value="기독교" <c:if test="${userDTO.userReligion == '기독교'}">selected</c:if>>기독교</option>
+                        <option value="천주교" <c:if test="${userDTO.userReligion == '천주교'}">selected</c:if>>천주교</option>
+                        <option value="불교" <c:if test="${userDTO.userReligion == '불교'}">selected</c:if>>불교</option>
+                        <option value="이슬람교" <c:if test="${userDTO.userReligion == '이슬람교'}">selected</c:if>>이슬람교</option>
+                        <option value="힌두교" <c:if test="${userDTO.userReligion == '힌두교'}">selected</c:if>>힌두교</option>
+                        <option value="기타" <c:if test="${userDTO.userReligion == '기타'}">selected</c:if>>기타</option>
                     </select>
                 </div>
             </div>
@@ -226,8 +199,26 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">지역 <span class="require">*</span></label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control"  id="region" name="userRegion" value="${userDTO.userRegion}" readonly>
-                    <button type="button" class="btn btn-success mt-4 " onclick="openAddressPopup()">주소 찾기</button>
+                    <select class="form-control" name="userRegion">
+                        <option value="">선택하세요</option>
+                        <option value="서울" ${userDTO.userRegion=='서울' ? 'selected' : ''}>서울</option>
+                        <option value="경기" ${userDTO.userRegion=='경기' ? 'selected' : ''}>경기도</option>
+                        <option value="인천" ${userDTO.userRegion=='인천' ? 'selected' : ''}>인천</option>
+                        <option value="부산" ${userDTO.userRegion=='부산' ? 'selected' : ''}>부산</option>
+                        <option value="대구" ${userDTO.userRegion=='대구' ? 'selected' : ''}>대구</option>
+                        <option value="광주" ${userDTO.userRegion=='광주' ? 'selected' : ''}>광주</option>
+                        <option value="대전" ${userDTO.userRegion=='대전' ? 'selected' : ''}>대전</option>
+                        <option value="울산" ${userDTO.userRegion=='울산' ? 'selected' : ''}>울산</option>
+                        <option value="세종" ${userDTO.userRegion=='세종' ? 'selected' : ''}>세종</option>
+                        <option value="강원" ${userDTO.userRegion=='강원' ? 'selected' : ''}>강원</option>
+                        <option value="충북" ${userDTO.userRegion=='충북' ? 'selected' : ''}>충북</option>
+                        <option value="충남" ${userDTO.userRegion=='충남' ? 'selected' : ''}>충남</option>
+                        <option value="전북" ${userDTO.userRegion=='전북' ? 'selected' : ''}>전북</option>
+                        <option value="전남" ${userDTO.userRegion=='전남' ? 'selected' : ''}>전남</option>
+                        <option value="경북" ${userDTO.userRegion=='경북' ? 'selected' : ''}>경북</option>
+                        <option value="경남" ${userDTO.userRegion=='경남' ? 'selected' : ''}>경남</option>
+                        <option value="제주" ${userDTO.userRegion=='제주' ? 'selected' : ''}>제주</option>
+                    </select>
                 </div>
             </div>
 

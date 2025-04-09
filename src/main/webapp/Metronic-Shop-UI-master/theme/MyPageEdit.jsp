@@ -60,7 +60,7 @@
         <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/css/custom.css" rel="stylesheet">
         <!-- Theme styles END -->
     </head>
-    <body class="ecommerce">    
+    <body class="ecommerce">
     <!-- BEGIN TOP BAR -->
     <div class="pre-header">
         <div class="container">
@@ -130,7 +130,7 @@
                 <label class="col-md-2 control-label" for="userNickname">닉네임 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="text" id="userNickname" name="userNickname" class="form-control"
-                           value= "${userDTO.userNickname}" placeholder="닉네임을 입력하세요">
+                           value= "${userDTO.userNickname}" placeholder="닉네임을 입력하세요" required>
                 </div>
             </div>
 
@@ -140,7 +140,7 @@
                 <div class="col-md-8">
                     <input type="number" id="height" name="userHeight" class="form-control"
                            value="${userDTO.userHeight}" placeholder="cm 단위로 입력하세요"
-                           step="1" min="100" max="200" onkeydown="return event.keyCode !== 190">
+                           step="1" min="100" max="200" onkeydown="return event.keyCode !== 190" required>
                 </div>
             </div>
 
@@ -174,7 +174,7 @@
                 <label class="col-md-2 control-label" for="job">직업 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="text" id="job" name="userJob" class="form-control"
-                           value= "${userDTO.userJob}" placeholder="직업을 입력하세요">
+                           value= "${userDTO.userJob}" placeholder="직업을 입력하세요" required>
                 </div>
             </div>
 
@@ -250,7 +250,7 @@
                 <div class="col-md-8">
                     <input type="number" id="preferenceHeight" name="preferenceHeight" class="form-control"
                            value="${preferenceDTO.preferenceHeight}" placeholder="선호 키를 입력하세요"
-                           step="1" min="100" max="200" onkeydown="return event.keyCode !== 190">
+                           step="1" min="100" max="200" onkeydown="return event.keyCode !== 190" required>
                 </div>
             </div>
 
@@ -272,7 +272,7 @@
                 <label class="col-md-2 control-label" for="preferenceAge">선호 나이 <span class="require">*</span></label>
                 <div class="col-md-8">
                     <input type="text" id="preferenceAge" name="preferenceAge" class="form-control"
-                           value= "${preferenceDTO.preferenceAge}" placeholder="선호 나이를 입력하세요">
+                           value= "${preferenceDTO.preferenceAge}" placeholder="선호 나이를 입력하세요" required>
                 </div>
             </div>
 
@@ -284,7 +284,7 @@
             </div>
         </div>
     </form>
-    
+
             <div class="row">
                 <!-- 자바스크립트 로드 부분 유지 -->
                 <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/plugins/jquery.min.js" type="text/javascript"></script>
@@ -308,99 +308,75 @@
                     // 폼 제출 전에 모든 필수 필드가 채워졌는지 확인하는 함수
                     document.addEventListener('DOMContentLoaded', function() {
                         // 폼 요소 가져오기
-                        const form = document.querySelector('form[action="updateProfile.do"]');
+                        const form = document.querySelector('form');
 
-                        // 폼 제출 이벤트 리스너 추가
-                        form.addEventListener('submit', function(event) {
-                            // 필수 입력 필드들 직접 선택
-                            const requiredFields = [
-                                document.getElementById('userNickname'),           // 닉네임
-                                document.getElementById('height'),                 // 키
-                                document.getElementById('bodyType'),               // 체형
-                                document.querySelector('select[name="userEducation"]'),  // 학력
-                                document.getElementById('job'),                    // 직업
-                                document.querySelector('select[name="userReligion"]'),   // 종교
-                                document.getElementById('region'),                 // 지역
-                                document.querySelector('select[name="userMbti"]'),       // MBTI
-                                document.querySelector('select[name="userDrink"]'),      // 음주
-                                document.querySelector('select[name="userSmoke"]'),      // 흡연
-                                document.getElementById('preferenceHeight'),       // 선호 키
-                                document.querySelector('select[name="preferenceBody"]'), // 선호 체형
-                                document.getElementById('preferenceAge')           // 선호 나이
-                            ];
+                        if (form) {
+                            // 폼 제출 이벤트 리스너 추가
+                            form.addEventListener('submit', function(event) {
+                                // 모든 필수 입력 필드 선택 (별표 표시가 있는 필드)
+                                const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required], [name="preferenceHeight"], [name="preferenceAge"]');
 
-                            // 빈 필드 확인
-                            let isValid = true;
-                            let firstEmptyField = null;
+                                // 또는 명시적으로 필드 선택
+                                const specificFields = [
+                                    document.querySelector('[name="preferenceHeight"]'),
+                                    document.querySelector('[name="preferenceAge"]')
+                                ];
 
-                            // 각 필수 필드 검사
-                            for (let i = 0; i < requiredFields.length; i++) {
-                                const field = requiredFields[i];
+                                let allFieldsValid = true;
+                                let firstInvalidField = null;
 
-                                // 필드가 존재하는지 확인
-                                if (field) {
-                                    // 값이 비어있는지 확인
-                                    if (field.value === '' || field.value === null || field.value.trim() === '') {
-                                        isValid = false;
+                                // 모든 필수 필드 검사
+                                requiredFields.forEach(function(field) {
+                                    if (!field.value || field.value.trim() === '') {
+                                        allFieldsValid = false;
 
-                                        // 첫 번째 빈 필드 저장 (나중에 포커스 주기 위함)
-                                        if (!firstEmptyField) {
-                                            firstEmptyField = field;
+                                        // 빨간 테두리 스타일 적용 (인라인 스타일로 우선순위 높임)
+                                        field.setAttribute('style', 'border: 2px solid red !important; box-shadow: 0 0 5px red !important;');
+
+                                        if (!firstInvalidField) {
+                                            firstInvalidField = field;
                                         }
+                                    }
+                                });
 
-                                        // 빈 필드 표시 (빨간 테두리 추가)
-                                        field.style.border = '2px solid red';
-                                    } else {
-                                        // 유효한 필드는 테두리 원래대로
-                                        field.style.border = '';
+                                // 특정 필드 명시적 검사 (위의 선택자가 작동하지 않을 경우)
+                                specificFields.forEach(function(field) {
+                                    if (field && (!field.value || field.value.trim() === '')) {
+                                        allFieldsValid = false;
+
+                                        // 빨간 테두리 스타일 적용 (인라인 스타일로 우선순위 높임)
+                                        field.setAttribute('style', 'border: 2px solid red !important; box-shadow: 0 0 5px red !important;');
+
+                                        if (!firstInvalidField) {
+                                            firstInvalidField = field;
+                                        }
+                                    }
+                                });
+
+                                // 유효성 검사 실패 시 폼 제출 방지
+                                if (!allFieldsValid) {
+                                    event.preventDefault();
+                                    alert('모든 필수 항목을 입력해주세요.');
+
+                                    // 첫 번째 오류 필드로 포커스 이동
+                                    if (firstInvalidField) {
+                                        firstInvalidField.focus();
                                     }
                                 }
-                            }
-
-                            // 폼이 유효하지 않으면 제출 취소
-                            if (!isValid) {
-                                event.preventDefault();
-
-                                // 알림 메시지 표시
-                                alert('모든 필수 항목(*)을 입력해주세요.');
-
-                                // 첫 번째 빈 필드로 포커스 이동
-                                if (firstEmptyField) {
-                                    firstEmptyField.focus();
-                                }
-                            }
-                        });
-
-                        // 입력 필드에 포커스가 갈 때 빨간 테두리 제거
-                        const allFields = document.querySelectorAll('input, select, textarea');
-                        allFields.forEach(function(field) {
-                            field.addEventListener('focus', function() {
-                                this.style.border = '';
                             });
-                        });
 
-                        // 자기소개 글자 수 카운트 기능은 그대로 유지
-                        const descriptionField = document.querySelector('#userDescription');
-                        const charCountDisplay = document.querySelector('#charCount');
+                            // 입력 필드에 포커스가 갈 때 빨간 테두리 제거
+                            const allFields = document.querySelectorAll('input, select, textarea');
+                            allFields.forEach(function(field) {
+                                field.addEventListener('focus', function() {
+                                    this.removeAttribute('style');
+                                });
 
-                        if (descriptionField && charCountDisplay) {
-                            // 초기 글자 수 표시
-                            updateCharCount();
-
-                            // 입력할 때마다 글자 수 업데이트
-                            descriptionField.addEventListener('input', updateCharCount);
-
-                            function updateCharCount() {
-                                const length = descriptionField.value.length;
-                                charCountDisplay.textContent = length + ' / 200';
-
-                                // 글자 수 초과시 경고
-                                if (length > 200) {
-                                    charCountDisplay.style.color = 'red';
-                                } else {
-                                    charCountDisplay.style.color = '';
-                                }
-                            }
+                                // 입력 시에도 테두리 제거
+                                field.addEventListener('input', function() {
+                                    this.removeAttribute('style');
+                                });
+                            });
                         }
                     });
 

@@ -116,7 +116,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="email">이메일</label>
+                                    <label for="email" class="required-field">이메일</label>
                                     <input type="email" class="form-control" id="email" name="userEmail"
                                            value="${userEmail}" readonly>
                                     <small class="form-text text-muted">소셜 로그인으로 가입 시 이메일은 변경할 수 없습니다.</small>
@@ -127,7 +127,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">이름</label>
+                                    <label for="name" class="required-field">이름</label>
                                     <input type="text" class="form-control" id="name" name="userName"
                                            value="${userName}" readonly>
                                     <small class="form-text text-muted">소셜 로그인으로 가입 시 이름은 변경할 수 없습니다.</small>
@@ -136,7 +136,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phone">전화번호</label>
+                                    <label for="phone" class="required-field">전화번호</label>
                                     <input type="tel" class="form-control" id="phone" name="userPhone"
                                            placeholder="010-0000-0000" maxlength="50">
                                 </div>
@@ -180,7 +180,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="height">키 (cm)</label>
+                                    <label for="height" class="required-field">키 (cm)</label>
                                     <input type="number" class="form-control" id="height" name="userHeight" min="140"
                                            max="220">
                                 </div>
@@ -188,7 +188,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="body">체형</label>
+                                    <label for="body" class="required-field">체형</label>
                                     <select class="form-control" id="body" name="userBody">
                                         <option value="">선택하세요</option>
                                         <option value="마른">마른</option>
@@ -209,7 +209,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="drink">음주</label>
+                                    <label for="drink" class="required-field">음주</label>
                                     <select class="form-control" id="drink" name="userDrink">
                                         <option value="">선택하세요</option>
                                         <option value="0">전혀 안 함</option>
@@ -221,7 +221,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="smoke">흡연</label>
+                                    <label for="smoke" class="required-field">흡연</label>
                                     <select class="form-control" id="smoke" name="userSmoke">
                                         <option value="">선택하세요</option>
                                         <option value="0">비흡연</option>
@@ -232,7 +232,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="religion">종교</label>
+                                    <label for="religion" class="required-field">종교</label>
                                     <select class="form-control" id="religion" name="userReligion">
                                         <option value="">선택하세요</option>
                                         <option value="무교">무교</option>
@@ -255,7 +255,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="mbti">MBTI</label>
+                                    <label for="mbti" class="required-field">MBTI</label>
                                     <select class="form-control" id="mbti" name="userMbti">
                                         <option value="">선택하세요</option>
                                         <option value="ISTJ">ISTJ</option>
@@ -280,7 +280,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="education">학력</label>
+                                    <label for="education" class="required-field">학력</label>
                                     <select class="form-control" id="education" name="userEducation">
                                         <option value="">선택하세요</option>
                                         <option value="고등학교 졸업">고등학교 졸업</option>
@@ -295,7 +295,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="job">직업</label>
+                                    <label for="job" class="required-field">직업</label>
                                     <input type="text" class="form-control" id="job" name="userJob"
                                            placeholder="직업을 입력하세요" maxlength="30">
                                 </div>
@@ -308,7 +308,7 @@
                         <h3><i class="fa fa-image"></i> 프로필 사진 및 자기소개</h3>
 
                         <div class="form-group">
-                            <label for="profile" class="required-field">프로필 사진</label>
+                            <label for="profile">프로필 사진</label>
                             <input type="file" class="form-control" id="profile" name="userProfile" required>
                             <small class="form-text text-muted">JPG, PNG 형식의 파일만 가능합니다. 최대 5MB.</small>
                         </div>

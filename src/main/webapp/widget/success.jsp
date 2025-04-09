@@ -45,8 +45,13 @@
     obj.put("paymentKey", paymentKey);
     obj.put("orderId", orderId);
     obj.put("amount", amount);
+
     obj.put("productName", productName);
     obj.put("orderName", orderName);
+
+    // 요청 데이터 전송
+    OutputStream outputStream = connection.getOutputStream();
+    outputStream.write(obj.toString().getBytes("UTF-8"));
 
     //값 설정
     request.setAttribute("orderId", obj.get("orderId"));
@@ -54,9 +59,6 @@
     request.setAttribute("productName", obj.get("productName"));
     request.setAttribute("orderName", obj.get("orderName"));
 
-    // 요청 데이터 전송
-    OutputStream outputStream = connection.getOutputStream();
-    outputStream.write(obj.toString().getBytes("UTF-8"));
 
     // 응답 코드 확인
     int code = connection.getResponseCode();
@@ -101,12 +103,14 @@
                     console.log(window.location.search);
                     const productNum = getQueryParam("productNum");
                     const encodedProductNum = encodeURIComponent(productNum);  // 인코딩된 값
+                    const orderId = getQueryParam("orderId");
+                    const encodedOrderId = encodeURIComponent(orderId);
                     console.log("전송할 데이터:", `productNum=`+encodedProductNum);
 
                     fetch("payment.do", {
                         method: "POST",
                         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                        body: `productNum=`+encodedProductNum   //
+                        body: `productNum=`+encodedProductNum+`&orderId=`+encodedOrderId
                     })
                         .then(response => response.text())
                         .then(data => console.log("결제 성공 처리 완료:", data))
@@ -118,15 +122,12 @@
 
                     <div class="p-grid typography--p" style="margin-top: 50px">
                         <div class="p-grid-col text--left"><b>결제금액: ${amount}</b></div>
-                        <div class="p-grid-col text--right" id="amount">${jsonObject.amount}</div>
                     </div>
                     <div class="p-grid typography--p" style="margin-top: 10px">
                         <div class="p-grid-col text--left"><b>결제 상품: ${productName}</b></div>
-                        <div class="p-grid-col text--right" id="productName" style="white-space: initial; width: 250px">${jsonObject.paymentKey}</div>
                     </div>
                     <div class="p-grid typography--p" style="margin-top: 10px">
                         <div class="p-grid-col text--left"><b>주문번호: ${orderId}</b></div>
-                        <div class="p-grid-col text--right" id="orderId">${jsonObject.orderId}</div>
                     </div>
                     <!--
                     <div class="p-grid typography--p" style="margin-top: 10px">

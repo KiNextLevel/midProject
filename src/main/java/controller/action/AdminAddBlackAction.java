@@ -21,7 +21,8 @@ public class AdminAddBlackAction implements Action{
 		UserDTO userDTO = new UserDTO();
 		UserDAO userDAO = new UserDAO();
 
-		String reportedUserEmail = request.getParameter("reportedUser");	//요청으로 신고받은사람 이메일 받음
+		//요청으로 신고받은사람 이메일 받음
+		String reportedUserEmail = request.getParameter("reportedUser");
 		ReportDTO reportDTO = new ReportDTO();
 		ReportDAO reportDAO = new ReportDAO();
 		reportDTO.setReportReported(reportedUserEmail);

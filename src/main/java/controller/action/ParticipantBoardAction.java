@@ -35,20 +35,24 @@ public class ParticipantBoardAction implements Action{
 
 		participantDTO.setParticipantUserEmail(userEmail);
 		participantDTO.setCondition("SELECTALL");
-		ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);
-		//ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);//로그인 한 사용자가 참가한 이벤트
-		System.out.println("datas: ["+datas+"]");
-		participantDTO.setParticipantBoardNumber(boardNum);
 		System.out.println("participantDTO: ["+participantDTO+"]");
 		System.out.println("participantDAO.selectOne(participantDTO)).getParticipantBoardNumber(): ["+participantDAO.selectOne(participantDTO).getParticipantBoardNumber()+"]");
 		System.out.println("boardDTO.getBoardLimit(): ["+boardDAO.selectOne(boardDTO).getBoardLimit()+"]");
 
-		for(ParticipantDTO v: datas){   //이미 참가 신청한 이벤트 버튼 다시 누르면 참가 취소
+		//로그인한 사용자의 참가 정보
+		ArrayList<ParticipantDTO> datas = participantDAO.selectAll(participantDTO);
+		System.out.println("datas: ["+datas+"]");
+
+		//해당 이벤트 번호
+		participantDTO.setParticipantBoardNumber(boardNum);
+
+		//이미 참가했으면 참가 취소
+		for(ParticipantDTO v: datas){
 			if (v.getParticipantBoardNumber() == boardNum) {
 				participantDTO.setCondition("DELETE");
 				participantDAO.delete(participantDTO);
 				System.out.println("v.getParticipantBoardNumber: ["+v.getParticipantBoardNumber()+"]");
-				System.out.println("v.getParticipantUserEmail: "+v.getParticipantUserEmail()+"]");
+				System.out.println("v.getParticipantUserEmail: ["+v.getParticipantUserEmail()+"]");
 				request.setAttribute("msg", "참가 취소 되었습니다");
 				request.setAttribute("url", "boardPage.do");
 				request.setAttribute("flag", true);
@@ -58,19 +62,22 @@ public class ParticipantBoardAction implements Action{
 			}
 		}
 		//인원 다 찼으면 참가 못함
-		if((participantDAO.selectOne(participantDTO)).getParticipantBoardNumber() >= boardDAO.selectOne(boardDTO).getBoardLimit()){  //인원수 다 차면
+		if((participantDAO.selectOne(participantDTO)).getParticipantBoardNumber() >=
+				boardDAO.selectOne(boardDTO).getBoardLimit()){
 			request.setAttribute("msg", "인원이 다 찼습니다");
 			request.setAttribute("flag", false);
 			forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
 			forward.setRedirect(false);
 			return forward;
 		}
-		if(participantDAO.insert(participantDTO)) {   //참가 성공
+		//참가 성공
+		if(participantDAO.insert(participantDTO)) {
 			request.setAttribute("msg", "이벤트 참가 성공");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "boardPage.do");
 		}
-		else {                              //참가 실패
+		//참가 실패
+		else {
 			request.setAttribute("msg", "참가 실패");
 			request.setAttribute("flag", false);
 		}

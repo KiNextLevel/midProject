@@ -14,20 +14,26 @@ import java.nio.charset.StandardCharsets;
 public class TossPaymentPageAction implements Action {
     @Override
     public ActionForward execute(HttpServletRequest request) {
+        System.out.println("TossPaymentPage 로그: 도착");
         ActionForward forward = new ActionForward();
         HttpSession session = request.getSession();;
         UserDTO userDTO = new UserDTO();
         UserDAO userDAO = new UserDAO();
+
+        //사용자 정보 가져오기
         userDTO.setUserEmail((String)session.getAttribute("userEmail"));
         userDTO.setCondition("SELECTONE_USERINFO");
-        userDTO = userDAO.selectOne(userDTO);   //사용자 정보 가져오기
+        userDTO = userDAO.selectOne(userDTO);
         String userEmail = userDTO.getUserEmail();
         String userName = userDTO.getUserName();
-        System.out.println("TossPaymentPage 로그: 도착");
+
+        //상품 번호
         String productNum = request.getParameter("Product_Num");
         System.out.println("TossPaymentPageAction 로그: productNum = " + productNum);
+        //상품 이름
         String productName = request.getParameter("Product_Name");
         System.out.println("TossPaymentPageAction 로그: productName = " + productName);
+        //상품 가격
         String productPrice = request.getParameter("Product_Price");
         System.out.println("TossPaymentPageAction 로그: productPrice = "+productPrice);
 
@@ -36,7 +42,7 @@ public class TossPaymentPageAction implements Action {
         String encodedUserName = URLEncoder.encode(userName, StandardCharsets.UTF_8);
         System.out.println("TossPaymentPageAction 로그: encodedProductName = [" + encodedProductName + "]");
 
-        // .html로 갈거라 url에 담아서  Query parameter로 전달보냄
+        // url에 담아서  Query parameter로 전송
         forward.setPath("/widget/index.html?productName=" + encodedProductName +
                 "&productPrice=" + productPrice + "&productNum=" +
                 productNum +"&userEmail=" + userEmail + "&userName=" + encodedUserName);

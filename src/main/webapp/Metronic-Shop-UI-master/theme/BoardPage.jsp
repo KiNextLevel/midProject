@@ -214,23 +214,23 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                     </div>
 
                                     <c:choose>
-                                        <c:when test="${sessionScope.userRole=='1'}">
-                                            <!-- 관리자용 버튼 -->
-                                            <div class="admin-actions">
-                                                <a href="adminModifyBoardPage.do?boardNum=${data.boardNumber}"
-                                                   class="btn btn-edit">
-                                                    <i class="fa fa-pencil"></i> 수정
-                                                </a>
-                                                <form action="adminDeleteBoard.do" method="POST"
-                                                      style="display: inline;">
-                                                    <input type="hidden" name="boardNum" value="${data.boardNumber}">
-                                                    <button type="submit" class="btn btn-delete"
-                                                            onclick="return confirm('정말로 이 이벤트를 삭제하시겠습니까?');">
-                                                        <i class="fa fa-trash-o"></i> 삭제
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </c:when>
+<c:when test="${sessionScope.userRole=='1'}">
+    <!-- 관리자용 버튼 -->
+    <div class="admin-actions">
+        <a href="adminModifyBoardPage.do?boardNum=${data.boardNumber}"
+            class="btn btn-edit">
+            <i class="fa fa-pencil"></i> 수정
+        </a>
+        <form action="adminDeleteBoard.do" method="POST"
+            style="display: inline;">
+            <input type="hidden" name="boardNum" value="${data.boardNumber}">
+            <button type="submit" class="btn btn-delete"
+                onclick="return confirm('정말로 이 이벤트를 삭제하시겠습니까?');">
+                <i class="fa fa-trash-o"></i> 삭제
+            </button>
+        </form>
+    </div>
+</c:when>
                                         <c:otherwise>
                                             <c:choose>
                                                 <c:when test="${data.participant == 1}">
@@ -247,15 +247,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                                 </c:when>
                                                 <c:otherwise>
                                                     <!-- 일반 사용자용 참가 버튼 -->
-                                                    <form action="participantBoard.do" method="POST">
-                                                        <input type="hidden" name="boardNumber"
-                                                               value="${data.boardNumber}">
-                                                        <button type="submit" class="btn-participate"
-                                                            ${data.boardParticipant >= data.boardLimit ? 'disabled' : ''}>
-                                                            <i class="fa fa-check-circle"></i>
-                                                                ${data.boardParticipant >= data.boardLimit ? '마감되었습니다' : '참가하기'}
-                                                        </button>
-                                                    </form>
+    <form action="participantBoard.do" method="POST">
+        <input type="hidden" name="boardNumber"
+            value="${data.boardNumber}">
+        <button type="submit" class="btn-participate"
+            ${data.boardParticipant >= data.boardLimit ? 'disabled' : ''}>
+            <i class="fa fa-check-circle"></i>
+            ${data.boardParticipant >= data.boardLimit ? '마감되었습니다' : '참가하기'}
+        </button>
+    </form>
                                                 </c:otherwise>
                                             </c:choose>
                                         </c:otherwise>

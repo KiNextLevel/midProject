@@ -27,12 +27,13 @@ public class PaymentAction implements Action {
 		PaymentDTO paymentDTO = new PaymentDTO();
 		SendMessage send = new SendMessage();
 
-        int productNum = Integer.parseInt(request.getParameter("productNum")); //구매하려는 상품 번호
-		System.out.println("productNum = "+productNum);
 		System.out.println("CONT 로그: PAYMENT ACTION 도착2");
 		userDTO.setUserEmail((String)session.getAttribute("userEmail"));
 		userDTO.setCondition("SELECTONE_USERINFO");
-		userDTO = userDAO.selectOne(userDTO);
+		userDTO = userDAO.selectOne(userDTO);	//구매자 정보 조회
+		int productNum = Integer.parseInt(request.getParameter("productNum")); //구매하려는 상품 번호
+		String orderId = (request.getParameter("orderId"));	//주문 번호
+		System.out.println("productNum = "+productNum);
 		String userName = userDTO.getUserName();	//구매자 이름
 		System.out.println("userName: ["+userName+"]");
 		String phone = userDTO.getUserPhone();	//구매자 핸드폰 번호
@@ -57,8 +58,12 @@ public class PaymentAction implements Action {
 			paymentDTO.setUserEmail((String)session.getAttribute("userEmail"));
 			paymentDTO.setPaymentPrice(productDTO.getProductPrice());
 			paymentDTO.setProductName(productDTO.getProductName());
-			paymentDAO.insert(paymentDTO);	//payment 테이블에 구매정보 추가
-			//send.sendPay(phone, userName, productPrice, productName);	//구매자에게 구매정보 문자 전송
+			//payment 테이블에 구매정보 추가
+			if(paymentDAO.insert(paymentDTO)){
+				//구매자에게 구매정보 문자 전송
+				//send.sendPay(phone, userName, productPrice, productName, orderId);
+			}
+
 		}
 		request.setAttribute("productNum", productNum);
 		forward.setPath("addToken.do");

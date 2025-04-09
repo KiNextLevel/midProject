@@ -17,20 +17,21 @@ public class SendMessage {
         Message message = new Message();
         // 발신번호 및 수신번호는 반드시 010
         // 12345678 형태로 입력되어야 합니다.
-        message.setFrom("01095534998");
-        message.setTo("01095534998");
+        message.setFrom("098");
+        message.setTo("01");
         message.setText("테스트");
         SingleMessageSentResponse response =
                 this.messageService.sendOne(new SingleMessageSendingRequest(message));
         System.out.println(response);
     }
-    public void sendPay(String phoneNumber, String userName, int price, String productName) {
+    public void sendPay(String phoneNumber, String userName, int price, String productName, String orderId) {
         Message message = new Message();
         // 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.
         message.setFrom(phoneNumber);
         message.setTo(phoneNumber);
-        message.setText(userName+"님 " +productName+ "을 구매해주셔서 감사합니다.\n" +
-                "주문 금액: "+price+"원");
+        message.setText(userName + "님, " + productName + "을(를) 구매해 주셔서 감사합니다.\n" +
+                "결제 금액: " + price + "원\n" +
+                "주문 번호: \n" + orderId);
         SingleMessageSentResponse response =
                 this.messageService.sendOne(new SingleMessageSendingRequest(message));
         System.out.println(response);

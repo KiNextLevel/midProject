@@ -30,7 +30,8 @@ public class AdminSendWarningAction implements Action{
 		System.out.println("reportedUser: "+reportedUser);
 		System.out.println("reason"+reason);
 
-		if(alertDAO.insert(alertDTO) && reportDAO.delete(reportDTO)) {	//알림 추가하고 신고리스트에서 삭제
+		//알림 추가하고 신고리스트에서 삭제
+		if(alertDAO.insert(alertDTO) && reportDAO.delete(reportDTO)) {
 			request.setAttribute("msg", "경고 보내기 완료");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "adminReportPage.do");

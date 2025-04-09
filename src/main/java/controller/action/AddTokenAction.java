@@ -26,13 +26,13 @@ public class AddTokenAction implements Action {
         int userToken = userDTO.getUserToken(); //로그인 한 사용자의 토큰 개수
         System.out.println("userToken: ["+userToken+"]");
 
-        if(productNum == 1){    //프리미엄 결제
+        //프리미엄 결제
+        if(productNum == 1){
             userDTO.setCondition("UPDATE_PREMIUM");
             if(userDAO.update(userDTO)) {
                 System.out.println("update successs");
-                userDTO.setCondition("SELECTONE_USERINFO");
-                userDTO = userDAO.selectOne(userDTO);   //DB에서 업데이트 된 프리미엄 여부 가져옴
-                session.setAttribute("userPremium", userDTO.isUserPremium());//세션에 다시 저장
+                session.setAttribute("userPremium", userDTO.isUserPremium());
+                System.out.println("userPremium: ["+session.getAttribute("userPremium")+"]");
             }
             else{
                 System.out.println("update fail");

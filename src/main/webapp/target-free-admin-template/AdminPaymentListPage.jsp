@@ -84,7 +84,7 @@
                     <!-- Advanced Tables -->
                     <div class="card">
                         <div class="card-action">
-                            Advanced Tables
+                            결제 내역
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">                                            <!-- 이게 정렬 -->
@@ -147,13 +147,14 @@
     <!-- DATA TABLE SCRIPTS -->
     <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="${pageContext.request.contextPath}/target-free-admin-template/assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <!--데이터 정렬-->
     <script>
         $(document).ready(function () {
             $('#dataTables-example').dataTable({
                 "order": [[0, "desc"]], // 첫 번째 열(결제 날짜) 내림차순
                 "language": {
-                    "zeroRecords": "일치하는 검색 결과가 없습니다.",  // 필터링 후 데이터가 없을 때 메시지
-                    "emptyTable": "테이블에 데이터가 없습니다.",   // 테이블이 완전히 비어 있을 때 메시지
+                    "zeroRecords": "일치하는 검색 결과가 없습니다.",  // 필터링 후 데이터가 없을 때
+                    "emptyTable": "테이블에 데이터가 없습니다.",   // 테이블이 비어 있을 때
                     "info": "총 _TOTAL_건 중 _START_ - _END_건 표시", // 페이지 정보
                     "infoEmpty": "데이터 없음",
                     "infoFiltered": "(총 _MAX_건 중 필터링됨)",

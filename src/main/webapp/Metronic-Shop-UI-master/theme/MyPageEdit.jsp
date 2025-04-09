@@ -312,21 +312,21 @@
 
                         // 폼 제출 이벤트 리스너 추가
                         form.addEventListener('submit', function(event) {
-                            // 필수 입력 필드 선택자들
+                            // 필수 입력 필드들 직접 선택
                             const requiredFields = [
-                                '#userNickname',           // 닉네임
-                                '#height',                 // 키
-                                '#bodyType',               // 체형
-                                'select[name="userEducation"]',  // 학력
-                                '#job',                    // 직업
-                                'select[name="userReligion"]',   // 종교
-                                '#region',                 // 지역
-                                'select[name="userMbti"]',       // MBTI
-                                'select[name="userDrink"]',      // 음주
-                                'select[name="userSmoke"]',      // 흡연
-                                '#preferenceHeight',       // 선호 키
-                                'select[name="preferenceBody"]', // 선호 체형
-                                '#preferenceAge'           // 선호 나이
+                                document.getElementById('userNickname'),           // 닉네임
+                                document.getElementById('height'),                 // 키
+                                document.getElementById('bodyType'),               // 체형
+                                document.querySelector('select[name="userEducation"]'),  // 학력
+                                document.getElementById('job'),                    // 직업
+                                document.querySelector('select[name="userReligion"]'),   // 종교
+                                document.getElementById('region'),                 // 지역
+                                document.querySelector('select[name="userMbti"]'),       // MBTI
+                                document.querySelector('select[name="userDrink"]'),      // 음주
+                                document.querySelector('select[name="userSmoke"]'),      // 흡연
+                                document.getElementById('preferenceHeight'),       // 선호 키
+                                document.querySelector('select[name="preferenceBody"]'), // 선호 체형
+                                document.getElementById('preferenceAge')           // 선호 나이
                             ];
 
                             // 빈 필드 확인
@@ -334,23 +334,26 @@
                             let firstEmptyField = null;
 
                             // 각 필수 필드 검사
-                            for (const selector of requiredFields) {
-                                const field = document.querySelector(selector);
+                            for (let i = 0; i < requiredFields.length; i++) {
+                                const field = requiredFields[i];
 
-                                // 필드가 존재하고 값이 비어있는지 확인
-                                if (field && (field.value.trim() === '' || field.value === null)) {
-                                    isValid = false;
+                                // 필드가 존재하는지 확인
+                                if (field) {
+                                    // 값이 비어있는지 확인
+                                    if (field.value === '' || field.value === null || field.value.trim() === '') {
+                                        isValid = false;
 
-                                    // 첫 번째 빈 필드 저장 (나중에 포커스 주기 위함)
-                                    if (!firstEmptyField) {
-                                        firstEmptyField = field;
+                                        // 첫 번째 빈 필드 저장 (나중에 포커스 주기 위함)
+                                        if (!firstEmptyField) {
+                                            firstEmptyField = field;
+                                        }
+
+                                        // 빈 필드 표시 (빨간 테두리 추가)
+                                        field.style.border = '2px solid red';
+                                    } else {
+                                        // 유효한 필드는 테두리 원래대로
+                                        field.style.border = '';
                                     }
-
-                                    // 빈 필드 표시 (빨간 테두리 추가)
-                                    field.style.border = '1px solid red';
-                                } else if (field) {
-                                    // 유효한 필드는 테두리 원래대로
-                                    field.style.border = '';
                                 }
                             }
 
@@ -376,7 +379,7 @@
                             });
                         });
 
-                        // 자기소개 글자 수 카운트 기능
+                        // 자기소개 글자 수 카운트 기능은 그대로 유지
                         const descriptionField = document.querySelector('#userDescription');
                         const charCountDisplay = document.querySelector('#charCount');
 

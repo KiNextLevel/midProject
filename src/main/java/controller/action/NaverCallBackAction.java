@@ -153,6 +153,8 @@ public class NaverCallBackAction implements Action {
                     request.setAttribute("msg", "블랙 계정이나 탈퇴한 계정은 로그인 할 수 없습니다.");
                     request.setAttribute("flag", true);
                     request.setAttribute("url", "loginPage.do");
+                    forward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
+                    forward.setRedirect(false);
                 }
             }
 

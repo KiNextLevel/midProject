@@ -12,7 +12,7 @@ public class ReportDAO {
 
     // (관리자용) 00유저 신고자, 신고사유, 신고날짜, 00유저 피신고자, 신고 설명 전체 출력하기
     private final String SELECTALL = "SELECT REPORT_NUM, REPORT_REPORTER, REPORT_REASON, REPORT_DATE, REPORT_REPORTED, REPORT_DESCRIPTION "
-            + "FROM REPORT";
+            + "FROM REPORT ORDER BY REPORT_NUM DESC";
 
     // (유저용) - 마이페이지 상품명, 결제일, 결제 금액
     private final String SELECTONE = "SELECT REPORT_REPORTER FROM REPORT WHERE REPORT_REPORTER = ? AND REPORT_REPORTED = ?";

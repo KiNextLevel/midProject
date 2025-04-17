@@ -9,9 +9,10 @@
 
 <html>
 <head>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png">
     <meta charset="utf-8">
     <title>사용자 상세 페이지${param.userEmail}</title>
-    <link href="css/UserDetail.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/UserDetail.css" rel="stylesheet">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -28,7 +29,136 @@
     <meta property="og:url" content="-CUSTOMER VALUE-">
 
     <link rel="shortcut icon" href="favicon.ico">
+    <!-- Font Awesome 5 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <style>
+        /* Information 탭 스타일 */
+        .user-info-container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .user-info-row {
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item i {
+            margin-right: 10px;
+            color: #e84d1c;
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #555;
+            margin-right: 8px;
+        }
+
+        .info-value {
+            color: #333;
+        }
+
+        /* Favorite 탭 스타일 */
+        .user-preference-container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .preference-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .preference-header h3 {
+            color: #e84d1c;
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .preference-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .preference-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .preference-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .preference-icon {
+            background-color: #f5f5f5;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .preference-icon i {
+            font-size: 24px;
+            color: #e84d1c;
+        }
+
+        .preference-content h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .preference-content p {
+            margin: 0;
+            font-size: 18px;
+            color: #e84d1c;
+            font-weight: 600;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 767px) {
+            .preference-row .col-md-4 {
+                width: 100%;
+            }
+
+            .preference-item {
+                margin-bottom: 15px;
+            }
+        }
 
     </style>
 
@@ -192,55 +322,128 @@
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade" id="Information">
-                                <c:if test="${not empty userDTO}">
-                                    <p>생년월일 : ${userDTO.userBirth}</p><br>
-                                    <p>키 : ${userDTO.userHeight}</p><br>
-                                    <p>체형 : ${userDTO.userBody}</p><br>
-                                    <p>MBTI : ${userDTO.userMbti}</p><br>
-                                    <p>학력 : ${userDTO.userEducation}</p><br>
-                                    <p>종교 : ${userDTO.userReligion}</p><br>
+                                <div class="user-info-container">
+                                    <c:if test="${not empty userDTO}">
+                                        <div class="row user-info-row">
+                                            <div class="col-md-6">
+                                                <div class="info-item">
+                                                    <i class="fas fa-birthday-cake"></i>
+                                                    <span class="info-label">생년월일:</span>
+                                                    <span class="info-value">${userDTO.userBirth}</span>
+                                                </div>
+                                                <div class="info-item">
+                                                    <i class="fas fa-arrows-alt-v"></i>
+                                                    <span class="info-label">키:</span>
+                                                    <span class="info-value">${userDTO.userHeight}</span>
+                                                </div>
+                                                <div class="info-item">
+                                                    <i class="fas fa-user"></i>
+                                                    <span class="info-label">체형:</span>
+                                                    <span class="info-value">${userDTO.userBody}</span>
+                                                </div>
+                                                <div class="info-item">
+                                                    <i class="fas fa-brain"></i>
+                                                    <span class="info-label">MBTI:</span>
+                                                    <span class="info-value">${userDTO.userMbti}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="info-item">
+                                                    <i class="fas fa-graduation-cap"></i>
+                                                    <span class="info-label">학력:</span>
+                                                    <span class="info-value">${userDTO.userEducation}</span>
+                                                </div>
+                                                <div class="info-item">
+                                                    <i class="fas fa-heart"></i>
+                                                    <span class="info-label">종교:</span>
+                                                    <span class="info-value">${userDTO.userReligion}</span>
+                                                </div>
+                                                <div class="info-item">
+                                                    <i class="fas fa-glass-cheers"></i>
+                                                    <span class="info-label">음주:</span>
+                                                    <span class="info-value">
+                            <c:choose>
+                                <c:when test="${userDTO.userDrink == 0}">전혀 안함</c:when>
+                                <c:when test="${userDTO.userDrink == 1}">가끔</c:when>
+                                <c:when test="${userDTO.userDrink == 2}">자주</c:when>
+                                <c:otherwise>입력 안됨</c:otherwise>
+                            </c:choose>
+                        </span>
+                                                </div>
+                                                <div class="info-item">
+                                                    <i class="fas fa-smoking"></i>
+                                                    <span class="info-label">흡연:</span>
+                                                    <span class="info-value">
+                            <c:choose>
+                                <c:when test="${userDTO.userSmoke}">흡연</c:when>
+                                <c:otherwise>비흡연</c:otherwise>
+                            </c:choose>
+                        </span>
+                                                </div>
+                                                <div class="info-item">
+                                                    <i class="fas fa-briefcase"></i>
+                                                    <span class="info-label">직업:</span>
+                                                    <span class="info-value">${userDTO.userJob}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:if>
 
-                                    <p>
-                                        음주 :
-                                        <c:choose>
-                                            <c:when test="${userDTO.userDrink == 0}">전혀 안함</c:when>
-                                            <c:when test="${userDTO.userDrink == 1}">가끔</c:when>
-                                            <c:when test="${userDTO.userDrink == 2}">자주</c:when>
-                                            <c:otherwise>입력 안됨</c:otherwise>
-                                        </c:choose>
-                                    </p><br>
-                                    <p>
-                                        흡연 :
-                                        <c:choose>
-                                            <c:when test="${userDTO.userSmoke}">흡연</c:when>
-                                            <c:otherwise>비흡연</c:otherwise>
-                                        </c:choose>
-                                    </p><br>
-                                    <p>직업 : ${userDTO.userJob}</p><br>
-                                </c:if>
-
-                                <c:if test="${empty userDTO}">
-                                    <p>사용자 정보를 찾을 수 없습니다.</p>
-                                </c:if>
+                                    <c:if test="${empty userDTO}">
+                                        <div class="alert alert-info">사용자 정보를 찾을 수 없습니다.</div>
+                                    </c:if>
+                                </div>
                             </div>
                             <div class="tab-pane fade in active" id="favorite">
-                                <!-- 첫번째 취향 넣는 곳-->
-                                <div class="review-item clearfix">
-                                    <div class="review-item-content">
-                                        <c:choose>
-                                            <c:when test="${not empty preferenceDTO}">
-                                                <p>선호 키 : ${preferenceDTO.preferenceHeight}</p><br>
-                                                <p>선호 체형 : ${preferenceDTO.preferenceBody}</p><br>
-                                                <p>선호 나이 : ${preferenceDTO.preferenceAge}</p><br>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <p>사용자 정보를 찾을 수 없습니다.</p>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </div>
+                                <div class="user-preference-container">
+                                    <c:choose>
+                                        <c:when test="${not empty preferenceDTO}">
+                                            <div class="preference-header">
+                                                <h3>선호하는 조건</h3>
+                                            </div>
+                                            <div class="row preference-row">
+                                                <div class="col-md-4">
+                                                    <div class="preference-item">
+                                                        <div class="preference-icon">
+                                                            <i class="fas fa-arrows-alt-v"></i>
+                                                        </div>
+                                                        <div class="preference-content">
+                                                            <h4>선호 키</h4>
+                                                            <p>${preferenceDTO.preferenceHeight}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="preference-item">
+                                                        <div class="preference-icon">
+                                                            <i class="fas fa-user-alt"></i>
+                                                        </div>
+                                                        <div class="preference-content">
+                                                            <h4>선호 체형</h4>
+                                                            <p>${preferenceDTO.preferenceBody}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="preference-item">
+                                                        <div class="preference-icon">
+                                                            <i class="fas fa-calendar-check"></i>
+                                                        </div>
+                                                        <div class="preference-content">
+                                                            <h4>선호 나이</h4>
+                                                            <p>${preferenceDTO.preferenceAge}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="alert alert-info">사용자의 선호 정보를 찾을 수 없습니다.</div>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>

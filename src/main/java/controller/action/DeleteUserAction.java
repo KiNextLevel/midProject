@@ -2,6 +2,7 @@ package controller.action;
 
 import controller.common.Action;
 import controller.common.ActionForward;
+import controller.logic.SendEmail;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.webapp.model.dao.UserDAO;
@@ -39,6 +40,7 @@ public class DeleteUserAction implements Action {
 
         // 회원 상태 변경 (ROLE을 3으로 변경)
         if (userDAO.update(userDTO)) {
+            SendEmail.sendMail(userEmail,"[Next Love]회원 탈퇴 안내", "그동안 이용해주셔서 감사합니다");
             // 탈퇴 성공 시 세션 무효화
             session.invalidate();
 

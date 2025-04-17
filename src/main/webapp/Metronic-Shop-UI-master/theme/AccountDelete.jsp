@@ -10,6 +10,9 @@
 <html lang="en">
 <!-- Head BEGIN -->
 <head>
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
     <meta charset="utf-8">
     <title>회원 탈퇴</title>
 

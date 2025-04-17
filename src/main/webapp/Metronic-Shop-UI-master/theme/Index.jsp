@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-32x32.png">
     <meta charset="UTF-8">
     <title>로그인 회원가입</title>
     <link rel="stylesheet" href="../../css/style.css">

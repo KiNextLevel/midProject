@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-32x32.png">
 <meta charset="UTF-8">
 <title>알림창</title>
 </head>

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-32x32.png">
     <meta charset="utf-8"/>
     <title>마이페이지 | Next Level</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>

@@ -7,6 +7,7 @@
     <!DOCTYPE html>
     <html lang="ko">
     <head>
+        <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-32x32.png">
         <meta charset="utf-8">
         <title>정보 수정 페이지</title>
 

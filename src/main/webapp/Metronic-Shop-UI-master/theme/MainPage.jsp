@@ -1,6 +1,6 @@
-<%@ page import="org.example.webapp.model.dto.UserDTO" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="org.example.webapp.model.dto.AlertDTO" %>
+<%--<%@ page import="org.example.webapp.model.dto.UserDTO" %>--%>
+<%--<%@ page import="java.util.ArrayList" %>--%>
+<%--<%@ page import="org.example.webapp.model.dto.AlertDTO" %>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
@@ -25,6 +25,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 <!-- Head BEGIN -->
 <head>
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-32x32.png">
     <meta charset="utf-8">
     <title>메인 페이지</title>
     <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/ProductPage.css" rel="stylesheet">
@@ -178,8 +179,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <!-- 성별 필터 -->
                     <h3>성별</h3>
                     <div class="checkbox-list" id="gender-filters">
-                        <label><input type="checkbox" name="gender" value="남" > 남</label>
-                        <label><input type="checkbox" name="gender" value="여" > 여</label>
+                        <label><input type="checkbox" name="gender" value="여" > 남</label>
+                        <label><input type="checkbox" name="gender" value="남" > 여</label>
                     </div>
 
                     <!-- 거리 필터 -->
@@ -187,7 +188,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <div class="checkbox-list" id="distance-filters">
                         <label><input type="radio" name="distance" value="10"> 10km 이내</label>
                         <label><input type="radio" name="distance" value="50"> 50km</label>
-                        <label><input type="radio" name="distance" value="100" checked="checked"> 100km 이상</label>
+                        <label><input type="radio" name="distance" value="100" checked="checked"> 전체선택</label>
                     </div>
                     <!-- 나이 슬라이더 -->
                     <h3>나이</h3>

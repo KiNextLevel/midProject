@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-32x32.png">
     <meta charset="UTF-8">
     <title>지도</title>
     <style>

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<link rel="icon" type="image/png" sizes="16x16"  href="/favicon-32x32.png">
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>관리자 메인 페이지</title>
@@ -48,7 +49,7 @@
 			<ul class="nav" id="main-menu">
 
 				<li>
-					<a class="waves-effect waves-dark" href="boardPage.do"><i class="fa fa-dashboard"></i> 게시글 페이지</a>
+					<a class="waves-effect waves-dark" href="boardPage.do"><i class="fa fa-dashboard"></i> 이벤트 페이지</a>
 				</li>
 				<li>
 					<a href="adminPaymentListPage.do" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> 결제 내역 페이지</a>

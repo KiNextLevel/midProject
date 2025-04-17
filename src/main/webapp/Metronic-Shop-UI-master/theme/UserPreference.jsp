@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-32x32.png">
     <meta charset="utf-8">
     <title>선호 취향 입력</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">

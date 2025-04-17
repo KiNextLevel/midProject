@@ -6,6 +6,7 @@
 
 <html>
 <head>
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-32x32.png">
     <meta charset="utf-8">
     <title>결제 상품 페이지</title>
     <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/ProductPage.css" rel="stylesheet">

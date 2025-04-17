@@ -52,7 +52,7 @@ public class AdminAddBlackAction implements Action{
 		userDTO.setCondition("UPDATE_ROLE");
 		userDTO.setUserRole(2);
 		if(userDAO.update(userDTO) && reportDAO.delete(reportDTO)) {	//userRole 2로 바꾸고 신고 리스트에서 삭제
-			SendEmail.sendMail(reportedUserEmail, subject, content);
+//			SendEmail.sendMail(reportedUserEmail, subject, content);
 			request.setAttribute("msg", "사용자를 블랙 처리 했습니다");
 			request.setAttribute("flag", true);
 			request.setAttribute("url", "adminReportPage.do");

@@ -305,14 +305,18 @@
                             </div>
                         </div>
 
-                        <!-- 지도 iframe 추가 -->
-                        <div style="margin-top: 20px;">
-                            <iframe
-                                    src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/LocationMap.jsp?lat=${userDTO.userLatitude}&lng=${userDTO.userLongitude}"
-                                    width="100%" height="400"
-                                    style="border: none; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
-                            </iframe>
-                        </div>
+                        <!-- 지도 div -->
+                        <div id="map" style="width: 100%; height: 400px;"></div>
+
+                        <!-- 스크립트 파일 불러오기 -->
+                        <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=16e5b4c908303629d0e034ffce98abc8&libraries=services"></script>
+                        <script src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/js/MapView.js"></script>
+
+                        <script>
+                            initUserMap(${userDTO.userLatitude}, ${userDTO.userLongitude});
+                            console.log("위도:", ${userDTO.userLatitude});
+                            console.log("경도:", ${userDTO.userLongitude});
+                        </script>
                     </div>
 
                     <div class="product-page-content">

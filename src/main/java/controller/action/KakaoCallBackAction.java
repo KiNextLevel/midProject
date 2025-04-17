@@ -170,6 +170,8 @@ public class KakaoCallBackAction implements Action {
         String inputLine;
         StringBuffer responseStr = new StringBuffer();
         while ((inputLine = in.readLine()) != null) {
+            System.out.println(inputLine);
+            System.out.println();
             responseStr.append(inputLine);
         }
         in.close();

@@ -27,7 +27,8 @@ public class JspFilter implements Filter {
         System.out.println("pageName: " + pageName);
         System.out.println("userRole: " + userRole);
 
-        if (userEmail == null && !pageName.equals("Index.jsp") && !pageName.equals("Login.jsp") && !pageName.equals("JoinPage.jsp")) {
+        if (userEmail == null && !pageName.equals("Index.jsp") &&
+                !pageName.equals("Login.jsp") && !pageName.equals("JoinPage.jsp")) {
             System.out.println("User not logged in");
             String url = "Index.jsp";
             httpResponse.sendRedirect(url);
@@ -46,7 +47,7 @@ public class JspFilter implements Filter {
             }
         }
 
-        // 로그인된 사용자의 경우 요청을 계속 진행
+        // 예외가 아닌 경우에는 페이지 이동 진행
         chain.doFilter(request, response);
     }
 

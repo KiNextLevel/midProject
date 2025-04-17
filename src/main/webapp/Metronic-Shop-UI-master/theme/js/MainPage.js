@@ -154,7 +154,8 @@ function initSliders() {
             applyFilters(); // 슬라이더 변경 시 필터 적용
         }
     });
-    $('#ageAmount').val($('#age-slider-range').slider('values', 0) + ' - ' + $('#age-slider-range').slider('values', 1));
+    $('#ageAmount').val($('#age-slider-range').slider('values', 0) +
+        ' - ' + $('#age-slider-range').slider('values', 1));
 
     // 키 슬라이더 설정 (130~220cm)
     $('#height-slider-range').slider({
@@ -190,6 +191,12 @@ function applyFilters() {
     const selectedSmoking = $('input[name="smoking"]:checked').map(function () {
         return $(this).val();
     }).get(); // 선택된 흡연 여부
+
+    console.log("selectedGenders :" + selectedGenders);
+    console.log("selectedDistance :" + selectedDistance);
+    console.log("ageRange :" + ageRange);
+    console.log("heightRange :" + heightRange);
+    console.log("selectedSmoking :" + selectedSmoking);
 
     // 현재 사용자의 위도/경도 (JSP에서 전달된 값)
     const currentUserLatitude = parseFloat(window.currentUserLatitude);
@@ -261,7 +268,8 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 
 // 초기 사용자 목록을 로드하는 함수
 function loadInitialUsers() {
-    const usersToDisplay = filteredUsers.slice(start, start + limit); // 현재 페이지에 표시할 사용자 (limit 개수만큼)
+    // 현재 페이지에 표시할 사용자 (limit 개수만큼)
+    const usersToDisplay = filteredUsers.slice(start, start + limit);
     updateProductList(usersToDisplay, false); // 사용자 목록 렌더링 (덧붙이지 않음)
     start += limit; // 다음 페이지로 이동
     updateLoadMoreButton(); // 더 보기 버튼 상태 업데이트
@@ -269,7 +277,8 @@ function loadInitialUsers() {
 
 //페이지네이션
 function loadMoreUsers() {
-    const usersToDisplay = filteredUsers.slice(start, start + limit); // 다음 페이지 사용자
+    // 다음 페이지 사용자
+    const usersToDisplay = filteredUsers.slice(start, start + limit);
     updateProductList(usersToDisplay, true); // 사용자 목록 렌더링 (덧붙임)
     start += limit; // 다음 페이지로 이동
     updateLoadMoreButton(); // 더 보기 버튼 상태 업데이트

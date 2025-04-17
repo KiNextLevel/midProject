@@ -24,14 +24,14 @@ public class MainPageAction implements Action {
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		String userEmail = (String) session.getAttribute("userEmail");
-
+		int userRole = (int) session.getAttribute("userRole");
 		// 선호취향 입력 안한 상태라면
 		PreferenceDAO preferenceDAO = new PreferenceDAO();
 		PreferenceDTO preferenceDTO = new PreferenceDTO();
 		preferenceDTO.setUserEmail(userEmail);
 		preferenceDTO = preferenceDAO.selectOne(preferenceDTO);
 		System.out.println("preferenceDTO = " + preferenceDTO);
-		if (preferenceDTO == null) {
+		if (preferenceDTO == null && userRole == 0) {
 			request.setAttribute("msg", "먼저 선호 취향을 입력하시길 바랍니다.");
 			request.setAttribute("url", "userPreferencePage.do");
 			request.setAttribute("flag", true);

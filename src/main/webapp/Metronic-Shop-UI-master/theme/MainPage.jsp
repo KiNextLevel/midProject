@@ -25,6 +25,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 <!-- Head BEGIN -->
 <head>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <meta charset="utf-8">
     <title>메인 페이지</title>
     <link href="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/css/ProductPage.css" rel="stylesheet">
@@ -128,7 +133,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 src="${pageContext.request.contextPath}/Metronic-Shop-UI-master/theme/assets/corporate/img/logos/3.png"
                 alt="mainPage"/></a>
 
-        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+<%--        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>--%>
 
         <!-- BEGIN CART 읽지 않은 알림이 있으면 비동기로 "새 알림이 있습니다", 없으면 그냥 없음-->
         <div class="top-cart-block">
@@ -293,7 +298,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 </div>
                 <!-- BEGIN PRODUCT LIST -->
                 <div class="row product-list" id="product-list">
-                    <!-- 여기에 초기 데이터가 렌더링 됩니다. -->
+                    <!-- 여기에 초기 데이터가 렌더링 -->
                 </div>
                 <!-- END PRODUCT LIST -->
 

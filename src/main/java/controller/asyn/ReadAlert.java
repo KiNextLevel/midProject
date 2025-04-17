@@ -19,9 +19,7 @@ public class ReadAlert extends HttpServlet {
         System.out.println(request.getParameter("alertNumber"));
         boolean alertIsWatch = Boolean.parseBoolean(request.getParameter("alertIsWatch"));
 
-        // 여기서 알림 상태를 DB에서 업데이트하는 로직을 구현
         boolean updateSuccess = updateAlertStatusInDatabase(alertNumber, alertIsWatch);
-
         // 상태 업데이트 결과를 JSON 형식으로 응답
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
@@ -30,7 +28,6 @@ public class ReadAlert extends HttpServlet {
 
     private boolean updateAlertStatusInDatabase(String alertNumber, boolean alertIsWatch) {
         System.out.println(" -- updateAlertStatusInDatabase -- 로그: [updateAlertStatusInDatabase] ");
-        // DB 연결 후, 알림 상태를 업데이트하는 코드 작성
         AlertDAO alertDAO = new AlertDAO();
         AlertDTO alertDTO = new AlertDTO();
         System.out.println(" -- updateAlertStatusInDatabase -- alertDTO: " + alertNumber);

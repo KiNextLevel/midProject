@@ -12,7 +12,10 @@ import org.example.webapp.model.dto.UserDTO;
 
 
 public class LoginAction implements Action {
-
+    final static int USER = 0;
+    final static int ADMIN = 1;
+    final static int BLACK = 2;
+    final static int DEACTIVATED = 3;
     @Override
     public ActionForward execute(HttpServletRequest request) {
 		System.out.println("CONT 로그: LOGIN ACTION 도착");
@@ -28,21 +31,20 @@ public class LoginAction implements Action {
         userDTO = userDAO.selectOne(userDTO);
         if (userDTO != null) {
             // url, flag, msg 요청단위 저장
-            // alert.jsp에 url, true, msg 보내기
-            if (userDTO.getUserRole() == 0) { //유저
+            if (userDTO.getUserRole() == USER) { //유저
                 request.setAttribute("msg", "로그인 성공!");
                 request.setAttribute("url", "mainPage.do");
                 request.setAttribute("flag", true);
                 setSession(userDTO, request); // 세션에 정보 저장
-            } else if (userDTO.getUserRole() == 1) { // 관리자
+            } else if (userDTO.getUserRole() == ADMIN) { // 관리자
                 request.setAttribute("msg", "관리자 로그인 성공!");
                 request.setAttribute("url", "adminPage.do");
                 request.setAttribute("flag", true);
                 setSession(userDTO, request); // 세션에 정보 저장
-            } else if (userDTO.getUserRole() == 2) { // 블랙
+            } else if (userDTO.getUserRole() == BLACK) { // 블랙
                 request.setAttribute("msg", "블랙당한 계정입니다");
                 request.setAttribute("flag", false);
-            } else if (userDTO.getUserRole() == 3) { // 탈퇴
+            } else if (userDTO.getUserRole() == DEACTIVATED) { // 탈퇴
                 request.setAttribute("msg", "탈퇴한 계정입니다");
                 request.setAttribute("flag", false);
             }
@@ -52,6 +54,7 @@ public class LoginAction implements Action {
             request.setAttribute("msg", "로그인정보가 틀렸습니다");
             request.setAttribute("flag", false);
         }
+        // alert.jsp에 url, true, msg 보내기
         actionForward.setPath("/Metronic-Shop-UI-master/theme/Alert.jsp");
         actionForward.setRedirect(false);
         return actionForward;
@@ -71,7 +74,5 @@ public class LoginAction implements Action {
         userDTO = userDAO.selectOne(userDTO);
         session.setAttribute("userLatitude", userDTO.getUserLatitude());
         session.setAttribute("userLongitude", userDTO.getUserLongitude());
-
-        request.setAttribute("userEmail", userDTO.getUserEmail());
     }
 }
